@@ -1,0 +1,118 @@
+#include "DisplayInfo.h"
+
+#include <jni.h>
+
+#include "ActivityHost.h"
+#include "JniRuntime.h"
+#include "Utils/Logger.h"
+
+namespace AndroidPlatform
+{
+
+namespace
+{
+
+DisplaySize s_cached{};
+bool        s_cacheReady = false;
+
+// 反射 activity.getSystemService(WINDOW_SERVICE).getDefaultDisplay().getRealSize(Point)
+// 成功返回 true 并填充 out；任何环节失败返回 false。
+bool ResolveDisplaySize(JNIEnv* env, jobject activity, DisplaySize& out)
+{
+    if (!activity) return false;
+
+    // activity.getSystemService("window")
+    jclass actClass = env->GetObjectClass(activity);
+    jmethodID getSystemService = env->GetMethodID(actClass,
+        "getSystemService", "(Ljava/lang/String;)Ljava/lang/Object;");
+    if (!getSystemService || env->ExceptionCheck()) { env->ExceptionClear(); return false; }
+
+    jstring serviceName = env->NewStringUTF("window");
+    jobject windowMgr   = env->CallObjectMethod(activity, getSystemService, serviceName);
+    env->DeleteLocalRef(serviceName);
+    if (!windowMgr || env->ExceptionCheck()) { env->ExceptionClear(); return false; }
+
+    // windowMgr.getDefaultDisplay()
+    jclass wmClass = env->FindClass("android/view/WindowManager");
+    jmethodID getDefaultDisplay = env->GetMethodID(wmClass,
+        "getDefaultDisplay", "()Landroid/view/Display;");
+    if (!getDefaultDisplay || env->ExceptionCheck()) { env->ExceptionClear(); return false; }
+
+    jobject display = env->CallObjectMethod(windowMgr, getDefaultDisplay);
+    if (!display || env->ExceptionCheck()) { env->ExceptionClear(); return false; }
+
+    // display.getRealSize(Point)
+    jclass displayClass = env->GetObjectClass(display);
+    jmethodID getRealSize = env->GetMethodID(displayClass, "getRealSize", "(Landroid/graphics/Point;)V");
+    if (!getRealSize || env->ExceptionCheck()) { env->ExceptionClear(); return false; }
+
+    jclass pointClass = env->FindClass("android/graphics/Point");
+    jmethodID pointCtor = env->GetMethodID(pointClass, "<init>", "()V");
+    jobject point = env->NewObject(pointClass, pointCtor);
+    if (!point || env->ExceptionCheck()) { env->ExceptionClear(); return false; }
+
+    env->CallVoidMethod(display, getRealSize, point);
+    if (env->ExceptionCheck()) { env->ExceptionClear(); return false; }
+
+    jfieldID xField = env->GetFieldID(pointClass, "x", "I");
+    jfieldID yField = env->GetFieldID(pointClass, "y", "I");
+    jint x = env->GetIntField(point, xField);
+    jint y = env->GetIntField(point, yField);
+
+    // 横屏归一化
+    if (x >= y) { out.width = x; out.height = y; }
+    else        { out.width = y; out.height = x; }
+
+    return out.width > 0 && out.height > 0;
+}
+
+} // anonymous namespace
+
+DisplaySize GetDisplaySize()
+{
+    if (s_cacheReady)
+        return s_cached;
+
+    jobject activity = GetActivity();
+    if (!activity)
+        return {};
+
+    JavaVM* vm = GetJavaVM();
+    if (!vm)
+        return {};
+
+    JNIEnv* env       = nullptr;
+    bool    needDetach = false;
+
+    if (vm->GetEnv((void**)&env, JNI_VERSION_1_6) != JNI_OK)
+    {
+        if (vm->AttachCurrentThread(&env, nullptr) != JNI_OK)
+        {
+            LOGE("[DisplayInfo] AttachCurrentThread failed");
+            return {};
+        }
+        needDetach = true;
+    }
+
+    DisplaySize size{};
+    if (env->PushLocalFrame(16) == 0)
+    {
+        if (ResolveDisplaySize(env, activity, size))
+        {
+            s_cached     = size;
+            s_cacheReady = true;
+            LOGI("[DisplayInfo] DisplaySize=%dx%d", size.width, size.height);
+        }
+        env->PopLocalFrame(nullptr);
+    }
+
+    if (env->ExceptionCheck())
+        env->ExceptionClear();
+
+    if (needDetach)
+        vm->DetachCurrentThread();
+
+    return s_cacheReady ? s_cached : DisplaySize{};
+}
+
+}

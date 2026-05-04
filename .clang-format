@@ -1,0 +1,112 @@
+---
+Language: Cpp
+BasedOnStyle: LLVM
+
+# ===== 缩进 =====
+UseTab: Never
+TabWidth: 4
+IndentWidth: 4
+ContinuationIndentWidth: 4
+ConstructorInitializerIndentWidth: 4
+AccessModifierOffset: -4
+NamespaceIndentation: None
+IndentCaseLabels: false
+IndentPPDirectives: None
+IndentWrappedFunctionNames: false
+
+# ===== 行宽 =====
+ColumnLimit: 0
+
+# ===== 大括号：Allman 风格 =====
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterCaseLabel:    true
+  AfterClass:        true
+  AfterControlStatement: Always
+  AfterEnum:         true
+  AfterFunction:     true
+  AfterNamespace:    true
+  AfterStruct:       true
+  AfterUnion:        true
+  AfterExternBlock:  true
+  BeforeCatch:       true
+  BeforeElse:        true
+  BeforeLambdaBody:  true
+  BeforeWhile:       true
+  IndentBraces:      false
+  SplitEmptyFunction:  true
+  SplitEmptyRecord:    true
+  SplitEmptyNamespace: true
+
+# ===== 单行语句不折叠 =====
+AllowShortBlocksOnASingleLine:  Empty
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortFunctionsOnASingleLine:  InlineOnly
+AllowShortIfStatementsOnASingleLine: WithoutElse
+AllowShortLambdasOnASingleLine: All
+LambdaBodyIndentation: OuterScope
+AllowShortLoopsOnASingleLine:   false
+
+# ===== 模板与构造器 =====
+AlwaysBreakTemplateDeclarations: Yes
+BreakConstructorInitializers: BeforeComma
+ConstructorInitializerAllOnOneLineOrOnePerLine: false
+PackConstructorInitializers: Never
+
+# ===== 对齐：开启花式对齐 =====
+AlignAfterOpenBracket: Align
+AlignConsecutiveAssignments:   Consecutive
+AlignConsecutiveBitFields:     Consecutive
+AlignConsecutiveDeclarations:  Consecutive
+AlignConsecutiveMacros:        Consecutive
+AlignEscapedNewlines: Right
+AlignOperands:        Align
+AlignTrailingComments: true
+
+# ===== 形参/实参打包 =====
+AllowAllArgumentsOnNextLine:           true
+AllowAllParametersOfDeclarationOnNextLine: true
+BinPackArguments:  true
+BinPackParameters: true
+
+# ===== 指针 / 引用紧贴类型（UE 风格 int* X） =====
+PointerAlignment:       Left
+ReferenceAlignment:     Left
+DerivePointerAlignment: false
+
+# ===== 空格 =====
+SpaceAfterCStyleCast: false
+SpaceAfterTemplateKeyword: true
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeCpp11BracedList: false
+SpaceBeforeCtorInitializerColon: true
+SpaceBeforeInheritanceColon:     true
+SpaceBeforeParens: ControlStatements
+SpaceBeforeRangeBasedForLoopColon: true
+SpaceInEmptyParentheses: false
+SpacesBeforeTrailingComments: 1
+SpacesInAngles: false
+SpacesInCStyleCastParentheses: false
+SpacesInConditionalStatement: false
+SpacesInContainerLiterals:    false
+SpacesInParentheses:   false
+SpacesInSquareBrackets: false
+
+# ===== 空行 =====
+MaxEmptyLinesToKeep: 1
+KeepEmptyLinesAtTheStartOfBlocks: false
+
+# ===== include =====
+SortIncludes:          CaseSensitive
+SortUsingDeclarations: false
+IncludeBlocks:         Preserve
+
+# ===== 注释 =====
+ReflowComments: false
+FixNamespaceComments: true
+
+# ===== 其它 =====
+Cpp11BracedListStyle: true
+CompactNamespaces:    false
+Standard: Latest
+...
