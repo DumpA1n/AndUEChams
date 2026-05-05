@@ -3,7 +3,7 @@
 #include <map>
 #include <unordered_map>
 
-#include "UEGame/Engine/DFM/DFMEngine.h"
+#include "UEGame/UECore/SDK_A/SDK.hpp"
 
 class UE_Hack
 {
@@ -42,7 +42,7 @@ private:
     void ProcessItemMaterialHack(AActor* Actor);
     void ApplyChamsColor(AActor* Actor, UMeshComponent* Mesh, int Slot,
                          UMaterialInterface* CurMaterialInterface,
-                         FLinearColor Color, bool bForceColorUpdate);
+                         const FLinearColor& Color, bool bForceColorUpdate);
     bool IsValidActor(AActor* Actor);
     bool Visible(AActor* Other);
 	bool Visible(AActor* Other, const FVector& ViewPoint, const FVector& GoalLocation);

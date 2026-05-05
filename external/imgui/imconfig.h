@@ -103,7 +103,7 @@
 #include <glm/vec2.hpp>
 #include <glm/vec3.hpp>
 #include <glm/vec4.hpp>
-#include "UEGame/UECore/CoreUObject_structs.h"
+#include "UEGame/UECore/SDK_A/CoreUObject_structs.hpp"
 
 #define IM_VEC2_CLASS_EXTRA                                                     \
         constexpr ImVec2(const glm::vec2& f) : x(f.x), y(f.y) {}                \

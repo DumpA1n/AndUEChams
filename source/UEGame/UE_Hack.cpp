@@ -17,7 +17,6 @@
 
 #include "UEGame/MaterialManager.h"
 #include "UEGame/Offsets.h"
-#include "UEGame/UECore/Basic.h"
 #include "UEGame/UECore/UECoreInit.h"
 #include "UEGame/UECore/UEMemory.h"
 
@@ -365,7 +364,7 @@ void UE_Hack::Tick()
 
     LocalCampID = -1;
     LocalTeamID = -1;
-    if (auto* LocalTeam = Cast<ACHARACTER>(LocalPlayer)->GetTeamComp(); KT::IsValid(LocalTeam))
+    if (auto* LocalTeam = Cast<AGPCharacterBase>(LocalPlayer)->GetTeamComp(); KT::IsValid(LocalTeam))
     {
         LocalCampID = LocalTeam->GetCamp();
         LocalTeamID = LocalTeam->GetTeamID();
@@ -397,7 +396,7 @@ void UE_Hack::Tick()
 
 void UE_Hack::ApplyChamsColor(AActor* Actor, UMeshComponent* Mesh, int Slot,
                               UMaterialInterface* CurMaterialInterface,
-                              FLinearColor Color, bool bForceColorUpdate)
+                              const FLinearColor& Color, bool bForceColorUpdate)
 {
     if (!CurMaterialInterface) return;
 
@@ -445,7 +444,7 @@ void UE_Hack::ProcessMaterialHack(AActor* Actor)
     if (!MaterialManager::GetInstance()->GetXrayMaterial()) return;
 
     int32_t TeamID = -1;
-    if (auto* TeamComp = Cast<ACHARACTER>(Actor)->GetTeamComp(); KT::IsValid(TeamComp))
+    if (auto* TeamComp = Cast<AGPCharacterBase>(Actor)->GetTeamComp(); KT::IsValid(TeamComp))
     {
         int32_t CampID = TeamComp->GetCamp();
                 TeamID = TeamComp->GetTeamID();
@@ -483,7 +482,10 @@ void UE_Hack::ProcessItemMaterialHack(AActor* Actor)
 {
     if (!MaterialManager::GetInstance()->GetXrayMaterial()) return;
 
-    auto CommonItemRow = KT::Read<FDFMCommonItemRow*>(Actor, o_FDFMCommonItemRow);
+    ADFMCharacter* DFMCharacter = Cast<ADFMCharacter>(Actor);
+    if (!KT::IsValid(DFMCharacter)) return;
+
+    auto CommonItemRow = KT::Read<FDFMCommonItemRow*>(DFMCharacter, o_FDFMCommonItemRow);
     if (!KT::IsValid(CommonItemRow)) return;
 
     int32_t Price   = CommonItemRow->InitialGuidePrice;
@@ -503,7 +505,7 @@ void UE_Hack::ProcessItemMaterialHack(AActor* Actor)
     };
     FLinearColor Color = (Quality >= 0 && Quality < 7) ? QualityColors[Quality] : ChamsColor::White;
 
-    auto MeshArray = KT::Read<TArray<UMeshComponent*>>(Actor, o_CachedOutlineMeshComponents);
+    auto MeshArray = DFMCharacter->CachedOutlineMeshComponents;
     if (!MeshArray.IsValid()) return;
 
     for (const auto& Mesh : MeshArray)
@@ -516,7 +518,7 @@ void UE_Hack::ProcessItemMaterialHack(AActor* Actor)
         for (int j = 0; j < Materials.Num(); ++j)
         {
             if (!Materials.IsValidIndex(j)) continue;
-            ApplyChamsColor(Actor, Mesh, j, Materials[j], Color, /*bForceColorUpdate=*/false);
+            ApplyChamsColor(DFMCharacter, Mesh, j, Materials[j], Color, /*bForceColorUpdate=*/false);
         }
     }
 }

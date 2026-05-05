@@ -1,7 +1,10 @@
 #pragma once
 
+#include <atomic>
 #include <mutex>
 #include <string_view>
+
+#include "UEGame/UECore/SDK_A/SDK.hpp"
 
 class MaterialManager
 {
@@ -26,9 +29,9 @@ private:
     std::atomic<bool> bMaterialLoading{false};
     std::atomic<bool> bVelocityCheckRunning{false};
 
-    struct UMaterial* XrayMaterial        = nullptr;
-    struct APawn*     LocalPlayer         = nullptr;
-    bool              bIsBreakThroughMode = false;
+    UMaterial* XrayMaterial        = nullptr;
+    APawn*     LocalPlayer         = nullptr;
+    bool       bIsBreakThroughMode = false;
 
     void* LastLocalPlayer       = nullptr;
     bool  bLastBreakThroughMode = false;

@@ -11,8 +11,7 @@
 #include <vector>
 
 #include "ElfScanner/ElfScannerManager.h"
-#include "UECore/Basic.h"
-#include "UECore/CoreUObject_classes.h"
+#include "UEGame/UECore/SDK_A/SDK.hpp"
 #include "UEGame/Offsets.h"
 #include "Utils/KittyEx.h"
 
@@ -59,8 +58,6 @@ std::string ToLower(std::string_view s)
 
 SDK::UClass* FindClassByNameFast(const char* name)
 {
-    using namespace SDK;
-
     static std::unordered_map<std::string, UClass*> s_byLower;
     static std::once_flag                           s_built;
     std::call_once(s_built, []
@@ -72,7 +69,7 @@ SDK::UClass* FindClassByNameFast(const char* name)
         {
             UObject* Object = UObject::GObjects->GetByIndex(i);
             if (!Object || (reinterpret_cast<uintptr_t>(Object) & 0x7) != 0) continue;
-            if (!Object->Class) continue;
+            if (!Object->ClassPrivate) continue;
             if (!Object->HasTypeFlag(EClassCastFlags::Class)) continue;
 
             // 同小写名极少冲突，保留首次命中即可。
@@ -94,9 +91,7 @@ SDK::UClass* FindClassByNameFast(const char* name)
 
 int32_t ResolveInClass(SDK::UStruct* Cls, const char* propName)
 {
-    using namespace SDK;
-
-    for (UStruct* S = Cls; S; S = S->Super)
+    for (UStruct* S = Cls; S; S = S->SuperStruct)
     {
         for (FField* F = S->ChildProperties; F; F = F->Next)
         {
@@ -120,8 +115,6 @@ int32_t ResolveInClass(SDK::UStruct* Cls, const char* propName)
 
 void DumpResolveFailure(const char* className, const char* propName)
 {
-    using namespace SDK;
-
     UClass* Cls = FindClassByNameFast(className);
     if (!Cls)
     {
@@ -133,7 +126,7 @@ void DumpResolveFailure(const char* className, const char* propName)
 
     int chainIdx   = 0;
     int totalProps = 0;
-    for (UStruct* S = Cls; S; S = S->Super, ++chainIdx)
+    for (UStruct* S = Cls; S; S = S->SuperStruct, ++chainIdx)
     {
         int         classProps = 0;
         std::string sample;

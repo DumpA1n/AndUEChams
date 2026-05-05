@@ -1,13 +1,13 @@
 #include "UECoreInit.h"
 
-#include "Basic.h"
-#include "CoreUObject_classes.h"
 #include "IGameProfile.h"
 #include "ProfileRegistry.h"
 
 #include "ElfScanner/ElfScannerManager.h"
-#include "Logger.h"
+#include "Utils/Logger.h"
 #include "Utils/KittyEx.h"
+
+#include "UEGame/UECore/SDK_A/SDK.hpp"
 
 // =============================================================================
 //  UECoreInit

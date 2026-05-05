@@ -99,8 +99,8 @@ void MaterialManager::LoadMaterialAsync()
 
         if (Mat != nullptr)
         {
-            *(uint8_t*)((uint64_t)Mat + o_bDisableDepthTest) |= 0b00000001;
-            *(uint8_t*)((uint64_t)Mat + o_Wireframe)         |= 0b00001000;
+            Mat->bDisableDepthTest = 1;
+            Mat->Wireframe = 1;
             {
                 std::lock_guard<std::mutex> Lock(MatMtx);
                 XrayMaterial = Mat;
