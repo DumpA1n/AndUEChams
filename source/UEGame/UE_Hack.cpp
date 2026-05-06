@@ -180,8 +180,7 @@ inline std::vector<Target> Resolve()
     const uintptr_t sSaving  = SDK::Asm::FindWideString(elf, u"SavingMessage");
     const uintptr_t sLoading = SDK::Asm::FindWideString(elf, u"LoadingMessage");
     if (!sSaving || !sLoading) {
-        LOGE("[DrawTransition] anchor strings not found (saving=%p loading=%p)",
-             (void*)sSaving, (void*)sLoading);
+        LOGE("[DrawTransition] anchor strings not found");
         return {};
     }
 
@@ -189,8 +188,8 @@ inline std::vector<Target> Resolve()
     const auto refsSaving  = SDK::Asm::FindAdrpAddCodeRefs(elf, sSaving);
     const auto refsLoading = SDK::Asm::FindAdrpAddCodeRefs(elf, sLoading);
     if (refsSaving.empty() || refsLoading.empty()) {
-        LOGE("[DrawTransition] no code refs (saving=%zu loading=%zu)",
-             refsSaving.size(), refsLoading.size());
+        LOGE("[DrawTransition] no code refs (saving=%#lx loading=%#lx)",
+             sSaving - elf.base(), sLoading - elf.base());
         return {};
     }
 

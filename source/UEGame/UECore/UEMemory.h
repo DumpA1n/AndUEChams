@@ -174,19 +174,33 @@ struct AdrpRef { uintptr_t pc; uintptr_t segStart; };
 
 // 扫所有 r-x 段，返回每个 ADRP+ADD 加载 target 的 PC（指向 ADRP）。
 // 顺带产出该 PC 所在段的起始，便于后续在段内回溯。
+//
+// 编译器为了利用 ARM64 的乱序执行，常把多组 ADRP/ADD 交错排布
+// （e.g. ADRP X0; ADRP X1; ADRP X2; ADD X0; ADD X1; ADD X2;），
+// 配对的 ADD 不一定紧跟 ADRP。故扫描时对每条 ADRP 向前最多窥视
+// kAdrpAddLookahead 条指令，匹配同寄存器的 ADD imm12。
 inline std::vector<AdrpRef> FindAdrpAddCodeRefs(const ElfScanner& elf, uintptr_t target)
 {
+    constexpr int kAdrpAddLookahead = 8;
+
     std::vector<AdrpRef> refs;
     for (const auto& seg : elf.segments()) {
         if (!seg.readable || !seg.executable) continue;
         const uintptr_t s = seg.startAddress, e = seg.endAddress;
         if (e < s + 8) continue;
-        for (uintptr_t pc = s; pc + 8 <= e; pc += 4) {
-            uint32_t i1, i2;
-            std::memcpy(&i1, reinterpret_cast<const void*>(pc),     sizeof(i1));
-            std::memcpy(&i2, reinterpret_cast<const void*>(pc + 4), sizeof(i2));
-            if (DecodeAdrpAddPair(pc, i1, i2) == target) {
-                refs.push_back({pc, s});
+        for (uintptr_t pc = s; pc + 4 <= e; pc += 4) {
+            uint32_t i1;
+            std::memcpy(&i1, reinterpret_cast<const void*>(pc), sizeof(i1));
+            if (!IsAdrp(i1)) continue;
+            for (int k = 1; k <= kAdrpAddLookahead; ++k) {
+                const uintptr_t pc2 = pc + 4 * k;
+                if (pc2 + 4 > e) break;
+                uint32_t i2;
+                std::memcpy(&i2, reinterpret_cast<const void*>(pc2), sizeof(i2));
+                if (DecodeAdrpAddPair(pc, i1, i2) == target) {
+                    refs.push_back({pc, s});
+                    break;
+                }
             }
         }
     }

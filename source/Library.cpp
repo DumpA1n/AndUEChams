@@ -35,16 +35,16 @@ void main_thread()
 		MAKE_CRASH();
 	}
 
-	LOGI("Probing Activity via JNI...");
-	jobject activity = nullptr;
-	for (int i = 0; i < 500; ++i)
-	{
-		activity = AndroidPlatform::GetActivity();
-		if (activity) break;
-		std::this_thread::sleep_for(std::chrono::milliseconds(10));
-	}
-	if (activity) LOGI("[*] Activity: %p", activity);
-	else LOGW("[*] No Activity found in host process; Overlay mode will be unavailable");
+	// LOGI("Probing Activity via JNI...");
+	// jobject activity = nullptr;
+	// for (int i = 0; i < 500; ++i)
+	// {
+	// 	activity = AndroidPlatform::GetActivity();
+	// 	if (activity) break;
+	// 	std::this_thread::sleep_for(std::chrono::milliseconds(10));
+	// }
+	// if (activity) LOGI("[*] Activity: %p", activity);
+	// else LOGW("[*] No Activity found in host process; Overlay mode will be unavailable");
 
 	GetLogFile("DebugLog")->Append("{}    Hello\n", FormatedTime());
 

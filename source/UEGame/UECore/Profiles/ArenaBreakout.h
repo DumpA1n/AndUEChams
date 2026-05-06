@@ -44,6 +44,10 @@ class ArenaBreakoutProfile final : public IGameProfile
         {"? 06 00 F9 ? 02 40 F9 ? ? ? ? E1 03 00 AA ? ? ? 91 08 85 40 F9 E0 03 ? AA", -0xC},
         // P4: MOV X1,X0 → ADD → LDR [X8,#0x108] → MOV X0,Xn → MOV X3,X21 → BLR X8
         {"E1 03 00 AA ? ? ? 91 08 85 40 F9 E0 03 ? AA E3 03 15 AA 00 01 3F D6", -0x18},
+        // P5: 此 build 的指令调度——LDR X8,[X8,#vtbl_off] 被挪到 MOV X0/X3 之后、紧贴 BLR。
+        //     周围的 BL 多为负向跳（top byte 0x97 而非 0x94），无法用 ? ? ? 94 锚 BL。
+        //     改用尾部 `MOV X1,X0 → ADD → MOV X0,Xn → MOV X3,X21 → <LDR vtbl> → BLR X8`，
+        {"E1 03 00 AA ? ? ? 91 E0 03 ? AA E3 03 15 AA ? ? ? ? 00 01 3F D6", -0x18},
     };
 
     static uintptr_t FindGetPlainANSIString()
@@ -69,7 +73,7 @@ public:
     }
 
     // FUObjectArray.ObjObjects=0x10 + TUObjectArray.Objects=0x10
-    uintptr_t ObjectsFieldOffset() const override { return 0x20; }
+    uintptr_t ObjectsFieldOffset() const override { return 0x10; }
 
     std::string GetNameByID(int32_t id) const override
     {
