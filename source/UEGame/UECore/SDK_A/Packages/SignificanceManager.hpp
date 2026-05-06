@@ -13,13 +13,13 @@ namespace SDK
 struct USignificanceManager;
 
 // Object: Class SignificanceManager.SignificanceManager
-// Size: 0x118 (Inherited: 0x28)
+// Size: 0x120 (Inherited: 0x28)
 struct USignificanceManager : UObject
 {
 	DEFINE_UE_CLASS_HELPERS(USignificanceManager, "SignificanceManager")
 
-	uint8_t Pad_0x28[0xD8]; // 0x28(0xD8)
-	struct FSoftClassPath SignificanceManagerClassName; // 0x100(0x18)
+	uint8_t Pad_0x28[0xE0]; // 0x28(0xE0)
+	struct FSoftClassPath SignificanceManagerClassName; // 0x108(0x18)
 };
 
 } // namespace SDK

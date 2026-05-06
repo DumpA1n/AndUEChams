@@ -18,21 +18,21 @@ struct UGeometryCacheComponent* AGeometryCacheActor::GetGeometryCacheComponent()
 }
 
 // UGeometryCacheComponent
-void UGeometryCacheComponent::TickAtThisTime(float Time, uint8_t bInIsRunning, uint8_t bInBackwards, uint8_t bInIsLooping)
+void UGeometryCacheComponent::TickAtThisTime(float Time, bool bInIsRunning, bool bInBackwards, bool bInIsLooping)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("GeometryCacheComponent", "TickAtThisTime");
     struct
     {
         float Time;
-        uint8_t bInIsRunning;
-        uint8_t bInBackwards;
-        uint8_t bInIsLooping;
+        bool bInIsRunning;
+        bool bInBackwards;
+        bool bInIsLooping;
     } Parms{};
     Parms.Time = (float)Time;
-    Parms.bInIsRunning = (uint8_t)bInIsRunning;
-    Parms.bInBackwards = (uint8_t)bInBackwards;
-    Parms.bInIsLooping = (uint8_t)bInIsLooping;
+    Parms.bInIsRunning = (bool)bInIsRunning;
+    Parms.bInBackwards = (bool)bInBackwards;
+    Parms.bInIsLooping = (bool)bInIsLooping;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -70,26 +70,26 @@ void UGeometryCacheComponent::SetPlaybackSpeed(float NewPlaybackSpeed)
     this->ProcessEvent(Func, &Parms);
 }
 
-void UGeometryCacheComponent::SetLooping(uint8_t bNewLooping)
+void UGeometryCacheComponent::SetLooping(bool bNewLooping)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("GeometryCacheComponent", "SetLooping");
     struct
     {
-        uint8_t bNewLooping;
+        bool bNewLooping;
     } Parms{};
-    Parms.bNewLooping = (uint8_t)bNewLooping;
+    Parms.bNewLooping = (bool)bNewLooping;
     this->ProcessEvent(Func, &Parms);
 }
 
-uint8_t UGeometryCacheComponent::SetGeometryCache(struct UGeometryCache* NewGeomCache)
+bool UGeometryCacheComponent::SetGeometryCache(struct UGeometryCache* NewGeomCache)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("GeometryCacheComponent", "SetGeometryCache");
     struct
     {
         struct UGeometryCache* NewGeomCache;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.NewGeomCache = (struct UGeometryCache*)NewGeomCache;
     this->ProcessEvent(Func, &Parms);
@@ -146,37 +146,37 @@ void UGeometryCacheComponent::Pause()
     this->ProcessEvent(Func, &Parms);
 }
 
-uint8_t UGeometryCacheComponent::IsPlayingReversed()
+bool UGeometryCacheComponent::IsPlayingReversed()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("GeometryCacheComponent", "IsPlayingReversed");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UGeometryCacheComponent::IsPlaying()
+bool UGeometryCacheComponent::IsPlaying()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("GeometryCacheComponent", "IsPlaying");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UGeometryCacheComponent::IsLooping()
+bool UGeometryCacheComponent::IsLooping()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("GeometryCacheComponent", "IsLooping");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;

@@ -5,37 +5,6 @@
 namespace SDK
 {
 
-// UGameplayTask
-void UGameplayTask::ReadyForActivation()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("GameplayTask", "ReadyForActivation");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UGameplayTask::GenericGameplayTaskDelegate__DelegateSignature()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("GameplayTask", "GenericGameplayTaskDelegate__DelegateSignature");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UGameplayTask::EndTask()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("GameplayTask", "EndTask");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
 // UGameplayTasksComponent
 void UGameplayTasksComponent::OnRep_SimulatedTasks()
 {
@@ -67,6 +36,37 @@ EGameplayTaskRunResult UGameplayTasksComponent::K2_RunGameplayTask(struct TScrip
     Parms.AdditionalClaimedResources = (struct TArray<struct UGameplayTaskResource*>)AdditionalClaimedResources;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
+}
+
+// UGameplayTask
+void UGameplayTask::ReadyForActivation()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("GameplayTask", "ReadyForActivation");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UGameplayTask::GenericGameplayTaskDelegate__DelegateSignature()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("GameplayTask", "GenericGameplayTaskDelegate__DelegateSignature");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UGameplayTask::EndTask()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("GameplayTask", "EndTask");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
 }
 
 // UGameplayTask_ClaimResource
@@ -111,7 +111,7 @@ struct UGameplayTask_ClaimResource* UGameplayTask_ClaimResource::ClaimResource(s
 }
 
 // UGameplayTask_SpawnActor
-struct UGameplayTask_SpawnActor* UGameplayTask_SpawnActor::SpawnActor(struct TScriptInterface<IGameplayTaskOwnerInterface> TaskOwner, struct FVector SpawnLocation, struct FRotator SpawnRotation, struct AActor* Class, uint8_t bSpawnOnlyOnAuthority)
+struct UGameplayTask_SpawnActor* UGameplayTask_SpawnActor::SpawnActor(struct TScriptInterface<IGameplayTaskOwnerInterface> TaskOwner, struct FVector SpawnLocation, struct FRotator SpawnRotation, struct AActor* Class, bool bSpawnOnlyOnAuthority)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("GameplayTask_SpawnActor", "SpawnActor");
@@ -121,14 +121,14 @@ struct UGameplayTask_SpawnActor* UGameplayTask_SpawnActor::SpawnActor(struct TSc
         struct FVector SpawnLocation;
         struct FRotator SpawnRotation;
         struct AActor* Class;
-        uint8_t bSpawnOnlyOnAuthority;
+        bool bSpawnOnlyOnAuthority;
         struct UGameplayTask_SpawnActor* ReturnValue;
     } Parms{};
     Parms.TaskOwner = (struct TScriptInterface<IGameplayTaskOwnerInterface>)TaskOwner;
     Parms.SpawnLocation = (struct FVector)SpawnLocation;
     Parms.SpawnRotation = (struct FRotator)SpawnRotation;
     Parms.Class = (struct AActor*)Class;
-    Parms.bSpawnOnlyOnAuthority = (uint8_t)bSpawnOnlyOnAuthority;
+    Parms.bSpawnOnlyOnAuthority = (bool)bSpawnOnlyOnAuthority;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
@@ -147,7 +147,7 @@ void UGameplayTask_SpawnActor::FinishSpawningActor(struct UObject* WorldContextO
     this->ProcessEvent(Func, &Parms);
 }
 
-uint8_t UGameplayTask_SpawnActor::BeginSpawningActor(struct UObject* WorldContextObject, struct AActor*& SpawnedActor)
+bool UGameplayTask_SpawnActor::BeginSpawningActor(struct UObject* WorldContextObject, struct AActor*& SpawnedActor)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("GameplayTask_SpawnActor", "BeginSpawningActor");
@@ -155,7 +155,7 @@ uint8_t UGameplayTask_SpawnActor::BeginSpawningActor(struct UObject* WorldContex
     {
         struct UObject* WorldContextObject;
         struct AActor* SpawnedActor;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.WorldContextObject = (struct UObject*)WorldContextObject;
     this->ProcessEvent(Func, &Parms);

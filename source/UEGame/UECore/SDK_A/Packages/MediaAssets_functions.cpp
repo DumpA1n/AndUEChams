@@ -7,13 +7,13 @@ namespace SDK
 {
 
 // UMediaSource
-uint8_t UMediaSource::Validate()
+bool UMediaSource::Validate()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaSource", "Validate");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
@@ -61,17 +61,17 @@ void UMediaSource::SetMediaOptionFloat(const struct FName& Key, float Value)
     this->ProcessEvent(Func, &Parms);
 }
 
-void UMediaSource::SetMediaOptionBool(const struct FName& Key, uint8_t Value)
+void UMediaSource::SetMediaOptionBool(const struct FName& Key, bool Value)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaSource", "SetMediaOptionBool");
     struct
     {
         struct FName Key;
-        uint8_t Value;
+        bool Value;
     } Parms{};
     Parms.Key = (struct FName)Key;
-    Parms.Value = (uint8_t)Value;
+    Parms.Value = (bool)Value;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -143,64 +143,89 @@ void UMediaBlueprintFunctionLibrary::EnumerateAudioCaptureDevices(struct TArray<
     OutDevices = Parms.OutDevices;
 }
 
+// UMediaComponent
+struct UMediaTexture* UMediaComponent::GetMediaTexture()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MediaComponent", "GetMediaTexture");
+    struct
+    {
+        struct UMediaTexture* ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct UMediaPlayer* UMediaComponent::GetMediaPlayer()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MediaComponent", "GetMediaPlayer");
+    struct
+    {
+        struct UMediaPlayer* ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
 // UMediaPlayer
-uint8_t UMediaPlayer::SupportsSeeking()
+bool UMediaPlayer::SupportsSeeking()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "SupportsSeeking");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMediaPlayer::SupportsScrubbing()
+bool UMediaPlayer::SupportsScrubbing()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "SupportsScrubbing");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMediaPlayer::SupportsRate(float Rate, uint8_t Unthinned)
+bool UMediaPlayer::SupportsRate(float Rate, bool Unthinned)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "SupportsRate");
     struct
     {
         float Rate;
-        uint8_t Unthinned;
-        uint8_t ReturnValue;
+        bool Unthinned;
+        bool ReturnValue;
     } Parms{};
     Parms.Rate = (float)Rate;
-    Parms.Unthinned = (uint8_t)Unthinned;
+    Parms.Unthinned = (bool)Unthinned;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMediaPlayer::SetViewRotation(const struct FRotator& Rotation, uint8_t Absolute)
+bool UMediaPlayer::SetViewRotation(const struct FRotator& Rotation, bool Absolute)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "SetViewRotation");
     struct
     {
         struct FRotator Rotation;
-        uint8_t Absolute;
-        uint8_t ReturnValue;
+        bool Absolute;
+        bool ReturnValue;
     } Parms{};
     Parms.Rotation = (struct FRotator)Rotation;
-    Parms.Absolute = (uint8_t)Absolute;
+    Parms.Absolute = (bool)Absolute;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMediaPlayer::SetViewField(float Horizontal, float Vertical, uint8_t Absolute)
+bool UMediaPlayer::SetViewField(float Horizontal, float Vertical, bool Absolute)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "SetViewField");
@@ -208,17 +233,17 @@ uint8_t UMediaPlayer::SetViewField(float Horizontal, float Vertical, uint8_t Abs
     {
         float Horizontal;
         float Vertical;
-        uint8_t Absolute;
-        uint8_t ReturnValue;
+        bool Absolute;
+        bool ReturnValue;
     } Parms{};
     Parms.Horizontal = (float)Horizontal;
     Parms.Vertical = (float)Vertical;
-    Parms.Absolute = (uint8_t)Absolute;
+    Parms.Absolute = (bool)Absolute;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMediaPlayer::SetVideoTrackFrameRate(int32_t TrackIndex, int32_t FormatIndex, float FrameRate)
+bool UMediaPlayer::SetVideoTrackFrameRate(int32_t TrackIndex, int32_t FormatIndex, float FrameRate)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "SetVideoTrackFrameRate");
@@ -227,7 +252,7 @@ uint8_t UMediaPlayer::SetVideoTrackFrameRate(int32_t TrackIndex, int32_t FormatI
         int32_t TrackIndex;
         int32_t FormatIndex;
         float FrameRate;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.TrackIndex = (int32_t)TrackIndex;
     Parms.FormatIndex = (int32_t)FormatIndex;
@@ -236,7 +261,7 @@ uint8_t UMediaPlayer::SetVideoTrackFrameRate(int32_t TrackIndex, int32_t FormatI
     return Parms.ReturnValue;
 }
 
-uint8_t UMediaPlayer::SetTrackFormat(EMediaPlayerTrack TrackType, int32_t TrackIndex, int32_t FormatIndex)
+bool UMediaPlayer::SetTrackFormat(EMediaPlayerTrack TrackType, int32_t TrackIndex, int32_t FormatIndex)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "SetTrackFormat");
@@ -245,7 +270,7 @@ uint8_t UMediaPlayer::SetTrackFormat(EMediaPlayerTrack TrackType, int32_t TrackI
         enum EMediaPlayerTrack TrackType;
         int32_t TrackIndex;
         int32_t FormatIndex;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.TrackType = (enum EMediaPlayerTrack)TrackType;
     Parms.TrackIndex = (int32_t)TrackIndex;
@@ -266,28 +291,28 @@ void UMediaPlayer::SetTimeDelay(struct FTimespan TimeDelay)
     this->ProcessEvent(Func, &Parms);
 }
 
-uint8_t UMediaPlayer::SetRate(float Rate)
+bool UMediaPlayer::SetRate(float Rate)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "SetRate");
     struct
     {
         float Rate;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.Rate = (float)Rate;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMediaPlayer::SetNativeVolume(float Volume)
+bool UMediaPlayer::SetNativeVolume(float Volume)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "SetNativeVolume");
     struct
     {
         float Volume;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.Volume = (float)Volume;
     this->ProcessEvent(Func, &Parms);
@@ -306,16 +331,16 @@ void UMediaPlayer::SetMediaOptions(struct UMediaSource* Options)
     this->ProcessEvent(Func, &Parms);
 }
 
-uint8_t UMediaPlayer::SetLooping(uint8_t Looping)
+bool UMediaPlayer::SetLooping(bool Looping)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "SetLooping");
     struct
     {
-        uint8_t Looping;
-        uint8_t ReturnValue;
+        bool Looping;
+        bool ReturnValue;
     } Parms{};
-    Parms.Looping = (uint8_t)Looping;
+    Parms.Looping = (bool)Looping;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
@@ -344,7 +369,7 @@ void UMediaPlayer::SetBlockOnTime(const struct FTimespan& Time)
     this->ProcessEvent(Func, &Parms);
 }
 
-uint8_t UMediaPlayer::SelectTrack(EMediaPlayerTrack TrackType, int32_t TrackIndex)
+bool UMediaPlayer::SelectTrack(EMediaPlayerTrack TrackType, int32_t TrackIndex)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "SelectTrack");
@@ -352,7 +377,7 @@ uint8_t UMediaPlayer::SelectTrack(EMediaPlayerTrack TrackType, int32_t TrackInde
     {
         enum EMediaPlayerTrack TrackType;
         int32_t TrackIndex;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.TrackType = (enum EMediaPlayerTrack)TrackType;
     Parms.TrackIndex = (int32_t)TrackIndex;
@@ -360,95 +385,139 @@ uint8_t UMediaPlayer::SelectTrack(EMediaPlayerTrack TrackType, int32_t TrackInde
     return Parms.ReturnValue;
 }
 
-uint8_t UMediaPlayer::Seek(const struct FTimespan& Time)
+bool UMediaPlayer::Seek(const struct FTimespan& Time)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "Seek");
     struct
     {
         struct FTimespan Time;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.Time = (struct FTimespan)Time;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMediaPlayer::Rewind()
+bool UMediaPlayer::Rewind()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "Rewind");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMediaPlayer::Reopen()
+void UMediaPlayer::Reset()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "Reset");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+bool UMediaPlayer::Reopen()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "Reopen");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMediaPlayer::Previous()
+bool UMediaPlayer::Previous()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "Previous");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMediaPlayer::Play()
+void UMediaPlayer::PlayAndSeek()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "PlayAndSeek");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+bool UMediaPlayer::Play()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "Play");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMediaPlayer::Pause()
+void UMediaPlayer::PauseAtStart()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "PauseAtStart");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+bool UMediaPlayer::Pause()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "Pause");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMediaPlayer::OpenUrl(struct FString URL)
+void UMediaPlayer::OpenWithPauseAtStart(struct UMediaSource* MediaSource, const struct FMediaPlayerOptions& PlayerOptions)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "OpenWithPauseAtStart");
+    struct
+    {
+        struct UMediaSource* MediaSource;
+        struct FMediaPlayerOptions PlayerOptions;
+    } Parms{};
+    Parms.MediaSource = (struct UMediaSource*)MediaSource;
+    Parms.PlayerOptions = (struct FMediaPlayerOptions)PlayerOptions;
+    this->ProcessEvent(Func, &Parms);
+}
+
+bool UMediaPlayer::OpenUrl(struct FString URL)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "OpenUrl");
     struct
     {
         struct FString URL;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.URL = (struct FString)URL;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMediaPlayer::OpenSourceWithOptions(struct UMediaSource* MediaSource, const struct FMediaPlayerOptions& Options)
+bool UMediaPlayer::OpenSourceWithOptions(struct UMediaSource* MediaSource, const struct FMediaPlayerOptions& Options)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "OpenSourceWithOptions");
@@ -456,7 +525,7 @@ uint8_t UMediaPlayer::OpenSourceWithOptions(struct UMediaSource* MediaSource, co
     {
         struct UMediaSource* MediaSource;
         struct FMediaPlayerOptions Options;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.MediaSource = (struct UMediaSource*)MediaSource;
     Parms.Options = (struct FMediaPlayerOptions)Options;
@@ -464,7 +533,7 @@ uint8_t UMediaPlayer::OpenSourceWithOptions(struct UMediaSource* MediaSource, co
     return Parms.ReturnValue;
 }
 
-void UMediaPlayer::OpenSourceLatent(struct UObject* WorldContextObject, struct FLatentActionInfo LatentInfo, struct UMediaSource* MediaSource, const struct FMediaPlayerOptions& Options, uint8_t& bSuccess)
+void UMediaPlayer::OpenSourceLatent(struct UObject* WorldContextObject, struct FLatentActionInfo LatentInfo, struct UMediaSource* MediaSource, const struct FMediaPlayerOptions& Options, bool& bSuccess)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "OpenSourceLatent");
@@ -474,7 +543,7 @@ void UMediaPlayer::OpenSourceLatent(struct UObject* WorldContextObject, struct F
         struct FLatentActionInfo LatentInfo;
         struct UMediaSource* MediaSource;
         struct FMediaPlayerOptions Options;
-        uint8_t bSuccess;
+        bool bSuccess;
     } Parms{};
     Parms.WorldContextObject = (struct UObject*)WorldContextObject;
     Parms.LatentInfo = (struct FLatentActionInfo)LatentInfo;
@@ -484,21 +553,21 @@ void UMediaPlayer::OpenSourceLatent(struct UObject* WorldContextObject, struct F
     bSuccess = Parms.bSuccess;
 }
 
-uint8_t UMediaPlayer::OpenSource(struct UMediaSource* MediaSource)
+bool UMediaPlayer::OpenSource(struct UMediaSource* MediaSource)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "OpenSource");
     struct
     {
         struct UMediaSource* MediaSource;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.MediaSource = (struct UMediaSource*)MediaSource;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMediaPlayer::OpenPlaylistIndex(struct UMediaPlaylist* InPlaylist, int32_t Index)
+bool UMediaPlayer::OpenPlaylistIndex(struct UMediaPlaylist* InPlaylist, int32_t Index)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "OpenPlaylistIndex");
@@ -506,7 +575,7 @@ uint8_t UMediaPlayer::OpenPlaylistIndex(struct UMediaPlaylist* InPlaylist, int32
     {
         struct UMediaPlaylist* InPlaylist;
         int32_t Index;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.InPlaylist = (struct UMediaPlaylist*)InPlaylist;
     Parms.Index = (int32_t)Index;
@@ -514,149 +583,149 @@ uint8_t UMediaPlayer::OpenPlaylistIndex(struct UMediaPlaylist* InPlaylist, int32
     return Parms.ReturnValue;
 }
 
-uint8_t UMediaPlayer::OpenPlaylist(struct UMediaPlaylist* InPlaylist)
+bool UMediaPlayer::OpenPlaylist(struct UMediaPlaylist* InPlaylist)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "OpenPlaylist");
     struct
     {
         struct UMediaPlaylist* InPlaylist;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.InPlaylist = (struct UMediaPlaylist*)InPlaylist;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMediaPlayer::OpenFile(struct FString FilePath)
+bool UMediaPlayer::OpenFile(struct FString FilePath)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "OpenFile");
     struct
     {
         struct FString FilePath;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.FilePath = (struct FString)FilePath;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMediaPlayer::Next()
+bool UMediaPlayer::Next()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "Next");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMediaPlayer::IsReady()
+bool UMediaPlayer::IsReady()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "IsReady");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMediaPlayer::IsPreparing()
+bool UMediaPlayer::IsPreparing()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "IsPreparing");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMediaPlayer::IsPlaying()
+bool UMediaPlayer::IsPlaying()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "IsPlaying");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMediaPlayer::IsPaused()
+bool UMediaPlayer::IsPaused()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "IsPaused");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMediaPlayer::IsLooping()
+bool UMediaPlayer::IsLooping()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "IsLooping");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMediaPlayer::IsConnecting()
+bool UMediaPlayer::IsConnecting()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "IsConnecting");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMediaPlayer::IsClosed()
+bool UMediaPlayer::IsClosed()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "IsClosed");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMediaPlayer::IsBuffering()
+bool UMediaPlayer::IsBuffering()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "IsBuffering");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMediaPlayer::HasError()
+bool UMediaPlayer::HasError()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "HasError");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
@@ -826,6 +895,18 @@ struct FText UMediaPlayer::GetTrackDisplayName(EMediaPlayerTrack TrackType, int3
     return Parms.ReturnValue;
 }
 
+struct UMediaTimeStampInfo* UMediaPlayer::GetTimeStamp()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "GetTimeStamp");
+    struct
+    {
+        struct UMediaTimeStampInfo* ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
 struct FTimespan UMediaPlayer::GetTimeDelay()
 {
     static struct UFunction* Func = nullptr;
@@ -850,18 +931,42 @@ struct FTimespan UMediaPlayer::GetTime()
     return Parms.ReturnValue;
 }
 
-void UMediaPlayer::GetSupportedRates(struct TArray<struct FFloatRange>& OutRates, uint8_t Unthinned)
+int64_t UMediaPlayer::GetTicks()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "GetTicks");
+    struct
+    {
+        int64_t ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+void UMediaPlayer::GetSupportedRates(struct TArray<struct FFloatRange>& OutRates, bool Unthinned)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "GetSupportedRates");
     struct
     {
         struct TArray<struct FFloatRange> OutRates;
-        uint8_t Unthinned;
+        bool Unthinned;
     } Parms{};
-    Parms.Unthinned = (uint8_t)Unthinned;
+    Parms.Unthinned = (bool)Unthinned;
     this->ProcessEvent(Func, &Parms);
     OutRates = Parms.OutRates;
+}
+
+struct FString UMediaPlayer::GetStateToString()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "GetStateToString");
+    struct
+    {
+        struct FString ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
 }
 
 int32_t UMediaPlayer::GetSelectedTrack(EMediaPlayerTrack TrackType)
@@ -968,30 +1073,6 @@ struct FText UMediaPlayer::GetMediaName()
     return Parms.ReturnValue;
 }
 
-struct FTimespan UMediaPlayer::GetLastVideoSampleProcessedTime()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "GetLastVideoSampleProcessedTime");
-    struct
-    {
-        struct FTimespan ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct FTimespan UMediaPlayer::GetLastAudioSampleProcessedTime()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "GetLastAudioSampleProcessedTime");
-    struct
-    {
-        struct FTimespan ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
 float UMediaPlayer::GetHorizontalFieldOfView()
 {
     static struct UFunction* Func = nullptr;
@@ -1086,48 +1167,48 @@ void UMediaPlayer::Close()
     this->ProcessEvent(Func, &Parms);
 }
 
-uint8_t UMediaPlayer::CanPlayUrl(struct FString URL)
+bool UMediaPlayer::CanPlayUrl(struct FString URL)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "CanPlayUrl");
     struct
     {
         struct FString URL;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.URL = (struct FString)URL;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMediaPlayer::CanPlaySource(struct UMediaSource* MediaSource)
+bool UMediaPlayer::CanPlaySource(struct UMediaSource* MediaSource)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "CanPlaySource");
     struct
     {
         struct UMediaSource* MediaSource;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.MediaSource = (struct UMediaSource*)MediaSource;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMediaPlayer::CanPause()
+bool UMediaPlayer::CanPause()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlayer", "CanPause");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
 // UMediaPlaylist
-uint8_t UMediaPlaylist::Replace(int32_t Index, struct UMediaSource* Replacement)
+bool UMediaPlaylist::Replace(int32_t Index, struct UMediaSource* Replacement)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlaylist", "Replace");
@@ -1135,7 +1216,7 @@ uint8_t UMediaPlaylist::Replace(int32_t Index, struct UMediaSource* Replacement)
     {
         int32_t Index;
         struct UMediaSource* Replacement;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.Index = (int32_t)Index;
     Parms.Replacement = (struct UMediaSource*)Replacement;
@@ -1143,28 +1224,28 @@ uint8_t UMediaPlaylist::Replace(int32_t Index, struct UMediaSource* Replacement)
     return Parms.ReturnValue;
 }
 
-uint8_t UMediaPlaylist::RemoveAt(int32_t Index)
+bool UMediaPlaylist::RemoveAt(int32_t Index)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlaylist", "RemoveAt");
     struct
     {
         int32_t Index;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.Index = (int32_t)Index;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMediaPlaylist::Remove(struct UMediaSource* MediaSource)
+bool UMediaPlaylist::Remove(struct UMediaSource* MediaSource)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlaylist", "Remove");
     struct
     {
         struct UMediaSource* MediaSource;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.MediaSource = (struct UMediaSource*)MediaSource;
     this->ProcessEvent(Func, &Parms);
@@ -1253,42 +1334,42 @@ struct UMediaSource* UMediaPlaylist::Get(int32_t Index)
     return Parms.ReturnValue;
 }
 
-uint8_t UMediaPlaylist::AddUrl(struct FString URL)
+bool UMediaPlaylist::AddUrl(struct FString URL)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlaylist", "AddUrl");
     struct
     {
         struct FString URL;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.URL = (struct FString)URL;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMediaPlaylist::AddFile(struct FString FilePath)
+bool UMediaPlaylist::AddFile(struct FString FilePath)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlaylist", "AddFile");
     struct
     {
         struct FString FilePath;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.FilePath = (struct FString)FilePath;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMediaPlaylist::Add(struct UMediaSource* MediaSource)
+bool UMediaPlaylist::Add(struct UMediaSource* MediaSource)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaPlaylist", "Add");
     struct
     {
         struct UMediaSource* MediaSource;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.MediaSource = (struct UMediaSource*)MediaSource;
     this->ProcessEvent(Func, &Parms);
@@ -1336,27 +1417,27 @@ void UMediaSoundComponent::SetEnvelopeFollowingsettings(int32_t AttackTimeMsec, 
     this->ProcessEvent(Func, &Parms);
 }
 
-void UMediaSoundComponent::SetEnableSpectralAnalysis(uint8_t bInSpectralAnalysisEnabled)
+void UMediaSoundComponent::SetEnableSpectralAnalysis(bool bInSpectralAnalysisEnabled)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaSoundComponent", "SetEnableSpectralAnalysis");
     struct
     {
-        uint8_t bInSpectralAnalysisEnabled;
+        bool bInSpectralAnalysisEnabled;
     } Parms{};
-    Parms.bInSpectralAnalysisEnabled = (uint8_t)bInSpectralAnalysisEnabled;
+    Parms.bInSpectralAnalysisEnabled = (bool)bInSpectralAnalysisEnabled;
     this->ProcessEvent(Func, &Parms);
 }
 
-void UMediaSoundComponent::SetEnableEnvelopeFollowing(uint8_t bInEnvelopeFollowing)
+void UMediaSoundComponent::SetEnableEnvelopeFollowing(bool bInEnvelopeFollowing)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaSoundComponent", "SetEnableEnvelopeFollowing");
     struct
     {
-        uint8_t bInEnvelopeFollowing;
+        bool bInEnvelopeFollowing;
     } Parms{};
-    Parms.bInEnvelopeFollowing = (uint8_t)bInEnvelopeFollowing;
+    Parms.bInEnvelopeFollowing = (bool)bInEnvelopeFollowing;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -1364,6 +1445,18 @@ struct TArray<struct FMediaSoundComponentSpectralData> UMediaSoundComponent::Get
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaSoundComponent", "GetSpectralData");
+    struct
+    {
+        struct TArray<struct FMediaSoundComponentSpectralData> ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct TArray<struct FMediaSoundComponentSpectralData> UMediaSoundComponent::GetNormalizedSpectralData()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MediaSoundComponent", "GetNormalizedSpectralData");
     struct
     {
         struct TArray<struct FMediaSoundComponentSpectralData> ReturnValue;
@@ -1396,14 +1489,14 @@ float UMediaSoundComponent::GetEnvelopeValue()
     return Parms.ReturnValue;
 }
 
-uint8_t UMediaSoundComponent::BP_GetAttenuationSettingsToApply(struct FSoundAttenuationSettings& OutAttenuationSettings)
+bool UMediaSoundComponent::BP_GetAttenuationSettingsToApply(struct FSoundAttenuationSettings& OutAttenuationSettings)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MediaSoundComponent", "BP_GetAttenuationSettingsToApply");
     struct
     {
         struct FSoundAttenuationSettings OutAttenuationSettings;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     OutAttenuationSettings = Parms.OutAttenuationSettings;

@@ -18,52 +18,52 @@ void UEyeTrackerFunctionLibrary::SetEyeTrackedPlayer(struct APlayerController* P
     GetDefaultObj()->ProcessEvent(Func, &Parms);
 }
 
-uint8_t UEyeTrackerFunctionLibrary::IsStereoGazeDataAvailable()
+bool UEyeTrackerFunctionLibrary::IsStereoGazeDataAvailable()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("EyeTrackerFunctionLibrary", "IsStereoGazeDataAvailable");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UEyeTrackerFunctionLibrary::IsEyeTrackerConnected()
+bool UEyeTrackerFunctionLibrary::IsEyeTrackerConnected()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("EyeTrackerFunctionLibrary", "IsEyeTrackerConnected");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UEyeTrackerFunctionLibrary::GetStereoGazeData(struct FEyeTrackerStereoGazeData& OutGazeData)
+bool UEyeTrackerFunctionLibrary::GetStereoGazeData(struct FEyeTrackerStereoGazeData& OutGazeData)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("EyeTrackerFunctionLibrary", "GetStereoGazeData");
     struct
     {
         struct FEyeTrackerStereoGazeData OutGazeData;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     OutGazeData = Parms.OutGazeData;
     return Parms.ReturnValue;
 }
 
-uint8_t UEyeTrackerFunctionLibrary::GetGazeData(struct FEyeTrackerGazeData& OutGazeData)
+bool UEyeTrackerFunctionLibrary::GetGazeData(struct FEyeTrackerGazeData& OutGazeData)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("EyeTrackerFunctionLibrary", "GetGazeData");
     struct
     {
         struct FEyeTrackerGazeData OutGazeData;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     OutGazeData = Parms.OutGazeData;

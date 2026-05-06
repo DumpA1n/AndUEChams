@@ -33,14 +33,11 @@ struct FFileManifestData
 	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
 	struct TArray<struct FChunkPartData> FileChunkParts; // 0x28(0x10)
 	struct TArray<struct FString> InstallTags; // 0x38(0x10)
-	uint8_t bIsUnixExecutable : 1; // 0x48(0x1), Mask(0x1)
-	uint8_t BitPad_0x48_1 : 7; // 0x48(0x1)
+	bool bIsUnixExecutable; // 0x48(0x1)
 	uint8_t Pad_0x49[0x7]; // 0x49(0x7)
 	struct FString SymlinkTarget; // 0x50(0x10)
-	uint8_t bIsReadOnly : 1; // 0x60(0x1), Mask(0x1)
-	uint8_t BitPad_0x60_1 : 7; // 0x60(0x1)
-	uint8_t bIsCompressed : 1; // 0x61(0x1), Mask(0x1)
-	uint8_t BitPad_0x61_1 : 7; // 0x61(0x1)
+	bool bIsReadOnly; // 0x60(0x1)
+	bool bIsCompressed; // 0x61(0x1)
 	uint8_t Pad_0x62[0x6]; // 0x62(0x6)
 };
 
@@ -49,8 +46,8 @@ struct FFileManifestData
 struct FChunkPartData
 {
 	struct FGuid Guid; // 0x0(0x10)
-	uint32_t offset; // 0x10(0x4)
-	uint32_t size; // 0x14(0x4)
+	uint32_t Offset; // 0x10(0x4)
+	uint32_t Size; // 0x14(0x4)
 };
 
 // Object: ScriptStruct BuildPatchServices.ChunkInfoData
@@ -81,10 +78,9 @@ struct UBuildPatchManifest : UObject
 	DEFINE_UE_CLASS_HELPERS(UBuildPatchManifest, "BuildPatchManifest")
 
 	uint8_t ManifestFileVersion; // 0x28(0x1)
-	uint8_t bIsFileData : 1; // 0x29(0x1), Mask(0x1)
-	uint8_t BitPad_0x29_1 : 7; // 0x29(0x1)
+	bool bIsFileData; // 0x29(0x1)
 	uint8_t Pad_0x2A[0x2]; // 0x2A(0x2)
-	uint32_t APPID; // 0x2C(0x4)
+	uint32_t AppID; // 0x2C(0x4)
 	struct FString AppName; // 0x30(0x10)
 	struct FString BuildVersion; // 0x40(0x10)
 	struct FString LaunchExe; // 0x50(0x10)

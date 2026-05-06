@@ -172,7 +172,7 @@ std::vector<OffsetEntry>& GetEntries()
 
         // === All Actors ===
         {&o_PersistentLevel, "World", "PersistentLevel"},
-        {&o_Actors, "Level", "Actors"},
+        // {&o_Actors, "Level", "Actors"},
 
         // === Actor 校验 ===
         {&o_RootComponent, "Actor", "RootComponent"},
@@ -182,10 +182,10 @@ std::vector<OffsetEntry>& GetEntries()
         {&o_Mesh, "CHARACTER", "Mesh"},
 
         // === Item ===
-        {&o_ModularWeaponDesc, "InventoryPickup", "ModularWeaponDesc"},
+        // {&o_ModularWeaponDesc, "InventoryPickup", "ModularWeaponDesc"},
 
         // === Item Material ===
-        {&o_CachedOutlineMeshComponents, "InteractorBase", "CachedOutlineMeshComponents"},
+        // {&o_CachedOutlineMeshComponents, "InteractorBase", "CachedOutlineMeshComponents"},
 
         // === Material 位域 ===
         {&o_bDisableDepthTest, "Material", "bDisableDepthTest"},
@@ -197,7 +197,7 @@ std::vector<OffsetEntry>& GetEntries()
 // 派生偏移：从已解析项推导得到的字段，每次重试都重算（被依赖项可能仍在变化）。
 void RecomputeDerived()
 {
-    o_FDFMCommonItemRow = o_ModularWeaponDesc + 0x10;
+    // o_FDFMCommonItemRow = o_ModularWeaponDesc + 0x10;
 }
 
 // 单次尝试解析一个 entry。返回 true 表示该项已收尾（成功 or 已放弃）。

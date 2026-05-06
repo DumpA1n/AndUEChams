@@ -7,12 +7,10 @@ namespace SDK
 
 // Package: Renderer
 // Enums: 0
-// Structs: 2
-// Classes: 1
+// Structs: 1
+// Classes: 0
 
 struct FLightPropagationVolumeSettings;
-struct FPRTBufferAllocationBucketSetting;
-struct UPRTBufferAllocationSettings;
 
 // Object: ScriptStruct Renderer.LightPropagationVolumeSettings
 // Size: 0x40 (Inherited: 0x0)
@@ -48,25 +46,6 @@ struct FLightPropagationVolumeSettings
 	float LPVSpecularOcclusionIntensity; // 0x34(0x4)
 	float LPVFadeRange; // 0x38(0x4)
 	float LPVDirectionalOcclusionFadeRange; // 0x3C(0x4)
-};
-
-// Object: ScriptStruct Renderer.PRTBufferAllocationBucketSetting
-// Size: 0x8 (Inherited: 0x0)
-struct FPRTBufferAllocationBucketSetting
-{
-	int32_t BucketSizeMB; // 0x0(0x4)
-	int32_t NumBuckets; // 0x4(0x4)
-};
-
-// Object: Class Renderer.PRTBufferAllocationSettings
-// Size: 0x40 (Inherited: 0x28)
-struct UPRTBufferAllocationSettings : UObject
-{
-	DEFINE_UE_CLASS_HELPERS(UPRTBufferAllocationSettings, "PRTBufferAllocationSettings")
-
-	int32_t MinBufferSizeWithPool; // 0x28(0x4)
-	float MaxBufferSizeWasteRatio; // 0x2C(0x4)
-	struct TArray<struct FPRTBufferAllocationBucketSetting> BucketSettings; // 0x30(0x10)
 };
 
 } // namespace SDK

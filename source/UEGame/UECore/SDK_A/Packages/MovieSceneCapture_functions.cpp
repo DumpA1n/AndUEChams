@@ -6,13 +6,13 @@ namespace SDK
 {
 
 // UMovieSceneCaptureProtocolBase
-uint8_t UMovieSceneCaptureProtocolBase::IsCapturing()
+bool UMovieSceneCaptureProtocolBase::IsCapturing()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MovieSceneCaptureProtocolBase", "IsCapturing");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
@@ -80,13 +80,13 @@ struct UMovieSceneCaptureProtocolBase* UMovieSceneCapture::GetAudioCaptureProtoc
 }
 
 // UMovieSceneCaptureEnvironment
-uint8_t UMovieSceneCaptureEnvironment::IsCaptureInProgress()
+bool UMovieSceneCaptureEnvironment::IsCaptureInProgress()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("MovieSceneCaptureEnvironment", "IsCaptureInProgress");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
@@ -207,13 +207,13 @@ void UUserDefinedCaptureProtocol::OnStartCapture()
     this->ProcessEvent(Func, &Parms);
 }
 
-uint8_t UUserDefinedCaptureProtocol::OnSetup()
+bool UUserDefinedCaptureProtocol::OnSetup()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("UserDefinedCaptureProtocol", "OnSetup");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
@@ -275,13 +275,13 @@ void UUserDefinedCaptureProtocol::OnCaptureFrame()
     this->ProcessEvent(Func, &Parms);
 }
 
-uint8_t UUserDefinedCaptureProtocol::OnCanFinalize()
+bool UUserDefinedCaptureProtocol::OnCanFinalize()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("UserDefinedCaptureProtocol", "OnCanFinalize");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
@@ -324,7 +324,7 @@ struct FString UUserDefinedCaptureProtocol::GenerateFilename(const struct FFrame
 }
 
 // UUserDefinedImageCaptureProtocol
-void UUserDefinedImageCaptureProtocol::WriteImageToDisk(const struct FCapturedPixels& PixelData, const struct FCapturedPixelsID& StreamID, const struct FFrameMetrics& FrameMetrics, uint8_t bCopyImageData)
+void UUserDefinedImageCaptureProtocol::WriteImageToDisk(const struct FCapturedPixels& PixelData, const struct FCapturedPixelsID& StreamID, const struct FFrameMetrics& FrameMetrics, bool bCopyImageData)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("UserDefinedImageCaptureProtocol", "WriteImageToDisk");
@@ -333,12 +333,12 @@ void UUserDefinedImageCaptureProtocol::WriteImageToDisk(const struct FCapturedPi
         struct FCapturedPixels PixelData;
         struct FCapturedPixelsID StreamID;
         struct FFrameMetrics FrameMetrics;
-        uint8_t bCopyImageData;
+        bool bCopyImageData;
     } Parms{};
     Parms.PixelData = (struct FCapturedPixels)PixelData;
     Parms.StreamID = (struct FCapturedPixelsID)StreamID;
     Parms.FrameMetrics = (struct FFrameMetrics)FrameMetrics;
-    Parms.bCopyImageData = (uint8_t)bCopyImageData;
+    Parms.bCopyImageData = (bool)bCopyImageData;
     this->ProcessEvent(Func, &Parms);
 }
 

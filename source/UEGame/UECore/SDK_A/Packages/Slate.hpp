@@ -8,7 +8,7 @@ namespace SDK
 {
 
 // Package: Slate
-// Enums: 19
+// Enums: 20
 // Structs: 7
 // Classes: 13
 
@@ -32,16 +32,6 @@ struct USlateSettings;
 struct USpinBoxWidgetStyle;
 struct UTextBlockWidgetStyle;
 struct UToolMenuBase;
-
-// Object: Enum Slate.ECustomTextFlowPolicy
-enum class ECustomTextFlowPolicy : uint8_t
-{
-	DefaultTextFlow = 0,
-	DisableTextFlow = 1,
-	TextFlowForceLTR = 2,
-	TextFlowForceRTL = 3,
-	ECustomTextFlowPolicy_MAX = 4
-};
 
 // Object: Enum Slate.ETextJustify
 enum class ETextJustify : uint8_t
@@ -78,53 +68,12 @@ enum class EVirtualKeyboardTrigger : uint8_t
 	EVirtualKeyboardTrigger_MAX = 2
 };
 
-// Object: Enum Slate.ETextVerticalJustify
-enum class ETextVerticalJustify : uint8_t
-{
-	Top = 0,
-	Middle = 1,
-	Bottom = 2,
-	ETextVerticalJustify_MAX = 3
-};
-
 // Object: Enum Slate.ETextWrappingPolicy
 enum class ETextWrappingPolicy : uint8_t
 {
 	DefaultWrapping = 0,
 	AllowPerCharacterWrapping = 1,
 	ETextWrappingPolicy_MAX = 2
-};
-
-// Object: Enum Slate.EDescendantScrollDestination
-enum class EDescendantScrollDestination : uint8_t
-{
-	IntoView = 0,
-	TopOrLeft = 1,
-	Center = 2,
-	EDescendantScrollDestination_MAX = 3
-};
-
-// Object: Enum Slate.EStretchDirection
-enum class EStretchDirection : uint8_t
-{
-	Both = 0,
-	DownOnly = 1,
-	UpOnly = 2,
-	EStretchDirection_MAX = 3
-};
-
-// Object: Enum Slate.EStretch
-enum class EStretch : uint8_t
-{
-	None = 0,
-	Fill = 1,
-	ScaleToFit = 2,
-	ScaleToFitX = 3,
-	ScaleToFitY = 4,
-	ScaleToFill = 5,
-	ScaleBySafeZone = 6,
-	UserSpecified = 7,
-	EStretch_MAX = 8
 };
 
 // Object: Enum Slate.ETableViewMode
@@ -154,12 +103,11 @@ enum class EMultiBlockType : uint8_t
 	EditableText = 2,
 	Heading = 3,
 	MenuEntry = 4,
-	MenuSeparator = 5,
+	Separator = 5,
 	ToolBarButton = 6,
 	ToolBarComboButton = 7,
-	ToolBarSeparator = 8,
-	Widget = 9,
-	EMultiBlockType_MAX = 10
+	Widget = 8,
+	EMultiBlockType_MAX = 9
 };
 
 // Object: Enum Slate.EMultiBoxType
@@ -168,9 +116,9 @@ enum class EMultiBoxType : uint8_t
 	MenuBar = 0,
 	ToolBar = 1,
 	VerticalToolBar = 2,
-	Menu = 3,
-	ButtonRow = 4,
-	ToolMenuBar = 5,
+	UniformToolBar = 3,
+	Menu = 4,
+	ButtonRow = 5,
 	EMultiBoxType_MAX = 6
 };
 
@@ -182,8 +130,57 @@ enum class EProgressBarFillType : uint8_t
 	FillFromCenter = 2,
 	TopToBottom = 3,
 	BottomToTop = 4,
-	Bidirectional = 5,
-	EProgressBarFillType_MAX = 6
+	EProgressBarFillType_MAX = 5
+};
+
+// Object: Enum Slate.EAssumePaintSizeUse
+enum class EAssumePaintSizeUse : uint8_t
+{
+	None = 0,
+	Once = 1,
+	Always = 2,
+	EAssumePaintSizeUse_MAX = 3
+};
+
+// Object: Enum Slate.EStretch
+enum class EStretch : uint8_t
+{
+	None = 0,
+	Fill = 1,
+	ScaleToFit = 2,
+	ScaleToFitX = 3,
+	ScaleToFitY = 4,
+	ScaleToFill = 5,
+	ScaleBySafeZone = 6,
+	UserSpecified = 7,
+	EStretch_MAX = 8
+};
+
+// Object: Enum Slate.EStretchDirection
+enum class EStretchDirection : uint8_t
+{
+	Both = 0,
+	DownOnly = 1,
+	UpOnly = 2,
+	EStretchDirection_MAX = 3
+};
+
+// Object: Enum Slate.EScrollWhenFocusChanges
+enum class EScrollWhenFocusChanges : uint8_t
+{
+	NoScroll = 0,
+	InstantScroll = 1,
+	AnimatedScroll = 2,
+	EScrollWhenFocusChanges_MAX = 3
+};
+
+// Object: Enum Slate.EDescendantScrollDestination
+enum class EDescendantScrollDestination : uint8_t
+{
+	IntoView = 0,
+	TopOrLeft = 1,
+	Center = 2,
+	EDescendantScrollDestination_MAX = 3
 };
 
 // Object: Enum Slate.EListItemAlignment
@@ -197,6 +194,15 @@ enum class EListItemAlignment : uint8_t
 	CenterAligned = 5,
 	Fill = 6,
 	EListItemAlignment_MAX = 7
+};
+
+// Object: Enum Slate.ETextTransformPolicy
+enum class ETextTransformPolicy : uint8_t
+{
+	None = 0,
+	ToLower = 1,
+	ToUpper = 2,
+	ETextTransformPolicy_MAX = 3
 };
 
 // Object: Enum Slate.ECustomizedToolMenuVisibility
@@ -233,10 +239,8 @@ enum class EUserInterfaceActionType : uint8_t
 // Size: 0x2 (Inherited: 0x0)
 struct FVirtualKeyboardOptions
 {
-	uint8_t bEnableAutocorrect : 1; // 0x0(0x1), Mask(0x1)
-	uint8_t BitPad_0x0_1 : 7; // 0x0(0x1)
-	uint8_t bEnableSendButton : 1; // 0x1(0x1), Mask(0x1)
-	uint8_t BitPad_0x1_1 : 7; // 0x1(0x1)
+	bool bEnableAutocorrect; // 0x0(0x1)
+	bool bShowNumKeyboardMillion; // 0x1(0x1)
 };
 
 // Object: ScriptStruct Slate.InputChord
@@ -271,7 +275,7 @@ struct FCustomizedToolMenuEntry
 // Size: 0x10 (Inherited: 0x0)
 struct FCustomizedToolMenuNameArray
 {
-	struct TArray<struct FName> names; // 0x0(0x10)
+	struct TArray<struct FName> Names; // 0x0(0x10)
 };
 
 // Object: ScriptStruct Slate.CustomizedToolMenuSection
@@ -282,7 +286,7 @@ struct FCustomizedToolMenuSection
 };
 
 // Object: ScriptStruct Slate.CustomizedToolMenu
-// Size: 0x108 (Inherited: 0x0)
+// Size: 0x1E8 (Inherited: 0x0)
 struct FCustomizedToolMenu
 {
 	struct FName Name; // 0x0(0x8)
@@ -290,6 +294,7 @@ struct FCustomizedToolMenu
 	struct TMap<struct FName, struct FCustomizedToolMenuSection> Sections; // 0x58(0x50)
 	struct TMap<struct FName, struct FCustomizedToolMenuNameArray> EntryOrder; // 0xA8(0x50)
 	struct TArray<struct FName> SectionOrder; // 0xF8(0x10)
+	uint8_t Pad_0x108[0xE0]; // 0x108(0xE0)
 };
 
 // Object: Class Slate.ButtonWidgetStyle
@@ -311,39 +316,39 @@ struct UCheckBoxWidgetStyle : USlateWidgetStyleContainerBase
 };
 
 // Object: Class Slate.ComboBoxWidgetStyle
-// Size: 0x438 (Inherited: 0x30)
+// Size: 0x450 (Inherited: 0x30)
 struct UComboBoxWidgetStyle : USlateWidgetStyleContainerBase
 {
 	DEFINE_UE_CLASS_HELPERS(UComboBoxWidgetStyle, "ComboBoxWidgetStyle")
 
-	struct FComboBoxStyle ComboBoxStyle; // 0x30(0x408)
+	struct FComboBoxStyle ComboBoxStyle; // 0x30(0x420)
 };
 
 // Object: Class Slate.ComboButtonWidgetStyle
-// Size: 0x400 (Inherited: 0x30)
+// Size: 0x418 (Inherited: 0x30)
 struct UComboButtonWidgetStyle : USlateWidgetStyleContainerBase
 {
 	DEFINE_UE_CLASS_HELPERS(UComboButtonWidgetStyle, "ComboButtonWidgetStyle")
 
-	struct FComboButtonStyle ComboButtonStyle; // 0x30(0x3D0)
+	struct FComboButtonStyle ComboButtonStyle; // 0x30(0x3E8)
 };
 
 // Object: Class Slate.EditableTextBoxWidgetStyle
-// Size: 0x890 (Inherited: 0x30)
+// Size: 0x898 (Inherited: 0x30)
 struct UEditableTextBoxWidgetStyle : USlateWidgetStyleContainerBase
 {
 	DEFINE_UE_CLASS_HELPERS(UEditableTextBoxWidgetStyle, "EditableTextBoxWidgetStyle")
 
-	struct FEditableTextBoxStyle EditableTextBoxStyle; // 0x30(0x860)
+	struct FEditableTextBoxStyle EditableTextBoxStyle; // 0x30(0x868)
 };
 
 // Object: Class Slate.EditableTextWidgetStyle
-// Size: 0x268 (Inherited: 0x30)
+// Size: 0x270 (Inherited: 0x30)
 struct UEditableTextWidgetStyle : USlateWidgetStyleContainerBase
 {
 	DEFINE_UE_CLASS_HELPERS(UEditableTextWidgetStyle, "EditableTextWidgetStyle")
 
-	struct FEditableTextStyle EditableTextStyle; // 0x30(0x238)
+	struct FEditableTextStyle EditableTextStyle; // 0x30(0x240)
 };
 
 // Object: Class Slate.ProgressWidgetStyle
@@ -379,8 +384,7 @@ struct USlateSettings : UObject
 {
 	DEFINE_UE_CLASS_HELPERS(USlateSettings, "SlateSettings")
 
-	uint8_t bExplicitCanvasChildZOrder : 1; // 0x28(0x1), Mask(0x1)
-	uint8_t BitPad_0x28_1 : 7; // 0x28(0x1)
+	bool bExplicitCanvasChildZOrder; // 0x28(0x1)
 	uint8_t Pad_0x29[0x7]; // 0x29(0x7)
 };
 

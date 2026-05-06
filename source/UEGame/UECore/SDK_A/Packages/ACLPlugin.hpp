@@ -68,26 +68,26 @@ enum class EACLVisualFidelity : uint8_t
 };
 
 // Object: Class ACLPlugin.AnimationCompressionLibraryDatabase
-// Size: 0x1D0 (Inherited: 0x28)
+// Size: 0x160 (Inherited: 0x28)
 struct UAnimationCompressionLibraryDatabase : UObject
 {
 	DEFINE_UE_CLASS_HELPERS(UAnimationCompressionLibraryDatabase, "AnimationCompressionLibraryDatabase")
 
 	struct TArray<uint8_t> CookedCompressedBytes; // 0x28(0x10)
 	struct TArray<uint64_t> CookedAnimSequenceMappings; // 0x38(0x10)
-	uint8_t Pad_0x48[0x180]; // 0x48(0x180)
-	uint32_t MaxStreamRequestSizeKB; // 0x1C8(0x4)
-	uint8_t Pad_0x1CC[0x4]; // 0x1CC(0x4)
+	uint8_t Pad_0x48[0x110]; // 0x48(0x110)
+	uint32_t MaxStreamRequestSizeKB; // 0x158(0x4)
+	uint8_t Pad_0x15C[0x4]; // 0x15C(0x4)
 
 	// Object: Function ACLPlugin.AnimationCompressionLibraryDatabase.SetVisualFidelity
 	// Flags: [Final|Native|Static|Public|HasOutParms|BlueprintCallable]
-	// Offset: 0x7ade9d0
+	// Offset: 0x3887a64
 	// Params: [ Num(5) Size(0x2A) ]
 	static void SetVisualFidelity(struct UObject* WorldContextObject, struct FLatentActionInfo LatentInfo, struct UAnimationCompressionLibraryDatabase* DatabaseAsset, EACLVisualFidelityChangeResult& Result, EACLVisualFidelity VisualFidelity);
 
 	// Object: Function ACLPlugin.AnimationCompressionLibraryDatabase.GetVisualFidelity
 	// Flags: [Final|Native|Static|Public|BlueprintCallable]
-	// Offset: 0x7ade92c
+	// Offset: 0x38879bc
 	// Params: [ Num(2) Size(0x9) ]
 	static EACLVisualFidelity GetVisualFidelity(struct UAnimationCompressionLibraryDatabase* DatabaseAsset);
 };

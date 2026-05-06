@@ -33,10 +33,8 @@ struct FImageWriteOptions
 	uint8_t Pad_0x1[0x3]; // 0x1(0x3)
 	struct FDelegate OnComplete; // 0x4(0x10)
 	int32_t CompressionQuality; // 0x14(0x4)
-	uint8_t bOverwriteFile : 1; // 0x18(0x1), Mask(0x1)
-	uint8_t BitPad_0x18_1 : 7; // 0x18(0x1)
-	uint8_t bAsync : 1; // 0x19(0x1), Mask(0x1)
-	uint8_t BitPad_0x19_1 : 7; // 0x19(0x1)
+	bool bOverwriteFile; // 0x18(0x1)
+	bool bAsync; // 0x19(0x1)
 	uint8_t Pad_0x1A[0x46]; // 0x1A(0x46)
 };
 
@@ -48,7 +46,7 @@ struct UImageWriteBlueprintLibrary : UBlueprintFunctionLibrary
 
 	// Object: Function ImageWriteQueue.ImageWriteBlueprintLibrary.ExportToDisk
 	// Flags: [Final|RequiredAPI|Native|Static|Public|HasOutParms|BlueprintCallable]
-	// Offset: 0x15b8fb84
+	// Offset: 0xa7bce30
 	// Params: [ Num(3) Size(0x80) ]
 	static void ExportToDisk(struct UTexture* Texture, struct FString Filename, const struct FImageWriteOptions& Options);
 };

@@ -21,18 +21,19 @@ struct FCameraLensSettings;
 struct FNamedLensPreset;
 struct FCameraFilmbackSettings;
 struct FNamedFilmbackPreset;
-struct ACineCameraActor;
-struct UCineCameraComponent;
 struct ACameraRig_Crane;
 struct ACameraRig_Rail;
+struct ACineCameraActor;
+struct UCineCameraComponent;
 
 // Object: Enum CinematicCamera.ECameraFocusMethod
 enum class ECameraFocusMethod : uint8_t
 {
-	None = 0,
+	DoNotOverride = 0,
 	Manual = 1,
 	Tracking = 2,
-	ECameraFocusMethod_MAX = 3
+	Disable = 3,
+	MAX = 4
 };
 
 // Object: ScriptStruct CinematicCamera.CameraLookatTrackingSettings
@@ -84,7 +85,7 @@ struct FCameraFocusSettings
 };
 
 // Object: ScriptStruct CinematicCamera.CameraLensSettings
-// Size: 0x1C (Inherited: 0x0)
+// Size: 0x18 (Inherited: 0x0)
 struct FCameraLensSettings
 {
 	float MinFocalLength; // 0x0(0x4)
@@ -92,17 +93,15 @@ struct FCameraLensSettings
 	float MinFStop; // 0x8(0x4)
 	float MaxFStop; // 0xC(0x4)
 	float MinimumFocusDistance; // 0x10(0x4)
-	float SqueezeFactor; // 0x14(0x4)
-	int32_t DiaphragmBladeCount; // 0x18(0x4)
+	int32_t DiaphragmBladeCount; // 0x14(0x4)
 };
 
 // Object: ScriptStruct CinematicCamera.NamedLensPreset
-// Size: 0x30 (Inherited: 0x0)
+// Size: 0x28 (Inherited: 0x0)
 struct FNamedLensPreset
 {
 	struct FString Name; // 0x0(0x10)
-	struct FCameraLensSettings LensSettings; // 0x10(0x1C)
-	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+	struct FCameraLensSettings LensSettings; // 0x10(0x18)
 };
 
 // Object: ScriptStruct CinematicCamera.CameraFilmbackSettings
@@ -123,139 +122,142 @@ struct FNamedFilmbackPreset
 	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
 };
 
+// Object: Class CinematicCamera.CameraRig_Crane
+// Size: 0x330 (Inherited: 0x300)
+struct ACameraRig_Crane : AActor
+{
+	DEFINE_UE_CLASS_HELPERS(ACameraRig_Crane, "CameraRig_Crane")
+
+	float CranePitch; // 0x300(0x4)
+	float CraneYaw; // 0x304(0x4)
+	float CraneArmLength; // 0x308(0x4)
+	bool bLockMountPitch; // 0x30C(0x1)
+	bool bLockMountYaw; // 0x30D(0x1)
+	uint8_t Pad_0x30E[0x2]; // 0x30E(0x2)
+	struct USceneComponent* TransformComponent; // 0x310(0x8)
+	struct USceneComponent* CraneYawControl; // 0x318(0x8)
+	struct USceneComponent* CranePitchControl; // 0x320(0x8)
+	struct USceneComponent* CraneCameraMount; // 0x328(0x8)
+};
+
+// Object: Class CinematicCamera.CameraRig_Rail
+// Size: 0x320 (Inherited: 0x300)
+struct ACameraRig_Rail : AActor
+{
+	DEFINE_UE_CLASS_HELPERS(ACameraRig_Rail, "CameraRig_Rail")
+
+	float CurrentPositionOnRail; // 0x300(0x4)
+	bool bLockOrientationToRail; // 0x304(0x1)
+	uint8_t Pad_0x305[0x3]; // 0x305(0x3)
+	struct USceneComponent* TransformComponent; // 0x308(0x8)
+	struct USplineComponent* RailSplineComponent; // 0x310(0x8)
+	struct USceneComponent* RailCameraMount; // 0x318(0x8)
+
+	// Object: Function CinematicCamera.CameraRig_Rail.GetRailSplineComponent
+	// Flags: [Final|Native|Public|BlueprintCallable|BlueprintPure]
+	// Offset: 0xb09f898
+	// Params: [ Num(1) Size(0x8) ]
+	struct USplineComponent* GetRailSplineComponent();
+};
+
 // Object: Class CinematicCamera.CineCameraActor
-// Size: 0xD30 (Inherited: 0xCD0)
+// Size: 0x9B0 (Inherited: 0x950)
 struct ACineCameraActor : ACameraActor
 {
 	DEFINE_UE_CLASS_HELPERS(ACineCameraActor, "CineCameraActor")
 
-	struct FCameraLookatTrackingSettings LookatTrackingSettings; // 0xCD0(0x50)
-	uint8_t Pad_0xD20[0x10]; // 0xD20(0x10)
+	struct FCameraLookatTrackingSettings LookatTrackingSettings; // 0x950(0x50)
+	uint8_t Pad_0x9A0[0x10]; // 0x9A0(0x10)
 
 	// Object: Function CinematicCamera.CineCameraActor.GetCineCameraComponent
 	// Flags: [Final|Native|Public|BlueprintCallable|BlueprintPure|Const]
-	// Offset: 0x16686674
+	// Offset: 0xb09f8f8
 	// Params: [ Num(1) Size(0x8) ]
 	struct UCineCameraComponent* GetCineCameraComponent();
 };
 
 // Object: Class CinematicCamera.CineCameraComponent
-// Size: 0xCF0 (Inherited: 0xBF0)
+// Size: 0x9C0 (Inherited: 0x8C0)
 struct UCineCameraComponent : UCameraComponent
 {
 	DEFINE_UE_CLASS_HELPERS(UCineCameraComponent, "CineCameraComponent")
 
-	struct FCameraFilmbackSettings FilmbackSettings; // 0xBF0(0xC)
-	struct FCameraFilmbackSettings Filmback; // 0xBFC(0xC)
-	struct FCameraLensSettings LensSettings; // 0xC08(0x1C)
-	uint8_t Pad_0xC24[0x4]; // 0xC24(0x4)
-	struct FCameraFocusSettings FocusSettings; // 0xC28(0x58)
-	float CurrentFocalLength; // 0xC80(0x4)
-	float CurrentAperture; // 0xC84(0x4)
-	float CurrentFocusDistance; // 0xC88(0x4)
-	uint8_t Pad_0xC8C[0xC]; // 0xC8C(0xC)
-	struct TArray<struct FNamedFilmbackPreset> FilmbackPresets; // 0xC98(0x10)
-	struct TArray<struct FNamedLensPreset> LensPresets; // 0xCA8(0x10)
-	struct FString DefaultFilmbackPresetName; // 0xCB8(0x10)
-	struct FString DefaultFilmbackPreset; // 0xCC8(0x10)
-	struct FString DefaultLensPresetName; // 0xCD8(0x10)
-	float DefaultLensFocalLength; // 0xCE8(0x4)
-	float DefaultLensFStop; // 0xCEC(0x4)
+	struct FCameraFilmbackSettings FilmbackSettings; // 0x8C0(0xC)
+	struct FCameraFilmbackSettings Filmback; // 0x8CC(0xC)
+	struct FCameraLensSettings LensSettings; // 0x8D8(0x18)
+	struct FCameraFocusSettings FocusSettings; // 0x8F0(0x58)
+	float CurrentFocalLength; // 0x948(0x4)
+	float CurrentAperture; // 0x94C(0x4)
+	float CurrentFocusDistance; // 0x950(0x4)
+	uint8_t Pad_0x954[0xC]; // 0x954(0xC)
+	struct TArray<struct FNamedFilmbackPreset> FilmbackPresets; // 0x960(0x10)
+	struct TArray<struct FNamedLensPreset> LensPresets; // 0x970(0x10)
+	struct FString DefaultFilmbackPresetName; // 0x980(0x10)
+	struct FString DefaultFilmbackPreset; // 0x990(0x10)
+	struct FString DefaultLensPresetName; // 0x9A0(0x10)
+	float DefaultLensFocalLength; // 0x9B0(0x4)
+	float DefaultLensFStop; // 0x9B4(0x4)
+	uint8_t Pad_0x9B8[0x8]; // 0x9B8(0x8)
 
 	// Object: Function CinematicCamera.CineCameraComponent.SetLensPresetByName
 	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x16686b60
+	// Offset: 0xb09fba0
 	// Params: [ Num(1) Size(0x10) ]
 	void SetLensPresetByName(struct FString InPresetName);
 
 	// Object: Function CinematicCamera.CineCameraComponent.SetFilmbackPresetByName
 	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x16686ab4
+	// Offset: 0xb09fcf0
 	// Params: [ Num(1) Size(0x10) ]
 	void SetFilmbackPresetByName(struct FString InPresetName);
 
 	// Object: Function CinematicCamera.CineCameraComponent.SetCurrentFocalLength
-	// Flags: [Final|Native|Public|HasOutParms|BlueprintCallable]
-	// Offset: 0xeef0868
+	// Flags: [Final|Native|Public|BlueprintCallable]
+	// Offset: 0xb09ff78
 	// Params: [ Num(1) Size(0x4) ]
-	void SetCurrentFocalLength(const float& InFocalLength);
+	void SetCurrentFocalLength(float InFocalLength);
 
 	// Object: Function CinematicCamera.CineCameraComponent.GetVerticalFieldOfView
 	// Flags: [Final|Native|Public|BlueprintCallable|BlueprintPure|Const]
-	// Offset: 0x16686a80
+	// Offset: 0xb09ff10
 	// Params: [ Num(1) Size(0x4) ]
 	float GetVerticalFieldOfView();
 
 	// Object: Function CinematicCamera.CineCameraComponent.GetLensPresetsCopy
 	// Flags: [Final|Native|Static|Public|BlueprintCallable]
-	// Offset: 0x16686a10
+	// Offset: 0xb09f9b0
 	// Params: [ Num(1) Size(0x10) ]
 	static struct TArray<struct FNamedLensPreset> GetLensPresetsCopy();
 
 	// Object: Function CinematicCamera.CineCameraComponent.GetLensPresetName
 	// Flags: [Final|Native|Public|BlueprintCallable|BlueprintPure|Const]
-	// Offset: 0x16686978
+	// Offset: 0xb09fc54
 	// Params: [ Num(1) Size(0x10) ]
 	struct FString GetLensPresetName();
 
 	// Object: Function CinematicCamera.CineCameraComponent.GetHorizontalFieldOfView
 	// Flags: [Final|Native|Public|BlueprintCallable|BlueprintPure|Const]
-	// Offset: 0x16686944
+	// Offset: 0xb09ff44
 	// Params: [ Num(1) Size(0x4) ]
 	float GetHorizontalFieldOfView();
 
+	// Object: Function CinematicCamera.CineCameraComponent.GetFilmbackPresetsCopy
+	// Flags: [Final|Native|Static|Public|BlueprintCallable]
+	// Offset: 0xb09faa8
+	// Params: [ Num(1) Size(0x10) ]
+	static struct TArray<struct FNamedFilmbackPreset> GetFilmbackPresetsCopy();
+
 	// Object: Function CinematicCamera.CineCameraComponent.GetFilmbackPresetName
 	// Flags: [Final|Native|Public|BlueprintCallable|BlueprintPure|Const]
-	// Offset: 0x166868ac
+	// Offset: 0xb09fe74
 	// Params: [ Num(1) Size(0x10) ]
 	struct FString GetFilmbackPresetName();
 
 	// Object: Function CinematicCamera.CineCameraComponent.GetDefaultFilmbackPresetName
 	// Flags: [Final|Native|Public|BlueprintCallable|BlueprintPure|Const]
-	// Offset: 0x166867e0
+	// Offset: 0xb09fda4
 	// Params: [ Num(1) Size(0x10) ]
 	struct FString GetDefaultFilmbackPresetName();
-};
-
-// Object: Class CinematicCamera.CameraRig_Crane
-// Size: 0x3A0 (Inherited: 0x370)
-struct ACameraRig_Crane : AActor
-{
-	DEFINE_UE_CLASS_HELPERS(ACameraRig_Crane, "CameraRig_Crane")
-
-	float CranePitch; // 0x370(0x4)
-	float CraneYaw; // 0x374(0x4)
-	float CraneArmLength; // 0x378(0x4)
-	uint8_t bLockMountPitch : 1; // 0x37C(0x1), Mask(0x1)
-	uint8_t BitPad_0x37C_1 : 7; // 0x37C(0x1)
-	uint8_t bLockMountYaw : 1; // 0x37D(0x1), Mask(0x1)
-	uint8_t BitPad_0x37D_1 : 7; // 0x37D(0x1)
-	uint8_t Pad_0x37E[0x2]; // 0x37E(0x2)
-	struct USceneComponent* TransformComponent; // 0x380(0x8)
-	struct USceneComponent* CraneYawControl; // 0x388(0x8)
-	struct USceneComponent* CranePitchControl; // 0x390(0x8)
-	struct USceneComponent* CraneCameraMount; // 0x398(0x8)
-};
-
-// Object: Class CinematicCamera.CameraRig_Rail
-// Size: 0x390 (Inherited: 0x370)
-struct ACameraRig_Rail : AActor
-{
-	DEFINE_UE_CLASS_HELPERS(ACameraRig_Rail, "CameraRig_Rail")
-
-	float CurrentPositionOnRail; // 0x370(0x4)
-	uint8_t bLockOrientationToRail : 1; // 0x374(0x1), Mask(0x1)
-	uint8_t BitPad_0x374_1 : 7; // 0x374(0x1)
-	uint8_t Pad_0x375[0x3]; // 0x375(0x3)
-	struct USceneComponent* TransformComponent; // 0x378(0x8)
-	struct USplineComponent* RailSplineComponent; // 0x380(0x8)
-	struct USceneComponent* RailCameraMount; // 0x388(0x8)
-
-	// Object: Function CinematicCamera.CameraRig_Rail.GetRailSplineComponent
-	// Flags: [Final|Native|Public|BlueprintCallable|BlueprintPure]
-	// Offset: 0x16686614
-	// Params: [ Num(1) Size(0x8) ]
-	struct USplineComponent* GetRailSplineComponent();
 };
 
 } // namespace SDK

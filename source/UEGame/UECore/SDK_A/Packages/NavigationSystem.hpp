@@ -8,17 +8,13 @@ namespace SDK
 
 // Package: NavigationSystem
 // Enums: 4
-// Structs: 9
-// Classes: 40
+// Structs: 10
+// Classes: 38
 
 struct AActor;
 struct AController;
-enum class ECollisionChannel : uint8_t;
 enum class EFNavigationSystemRunMode : uint8_t;
 enum class ENavDataGatheringModeConfig : uint8_t;
-enum class ENavLinkDirection : uint8_t;
-enum class ENavigationOptionFlag : uint8_t;
-enum class ENavigationQueryResult : uint8_t;
 struct FNavDataConfig;
 struct FNavigationLink;
 struct UCapsuleComponent;
@@ -32,13 +28,18 @@ struct FNavGraphEdge;
 struct FNavigationFilterFlags;
 struct FNavigationFilterArea;
 struct FNavLinkCustomInstanceData;
+struct FNavMeshTileData;
 struct FRecastNavMeshGenerationProperties;
-struct UNavigationQueryFilter;
+struct UNavigationSystemV1;
+struct UNavigationSystemModuleConfig;
+struct ANavigationTestingActor;
+struct ANavModifierVolume;
 struct UNavArea;
+struct UNavigationQueryFilter;
 struct ANavigationData;
+struct ARecastNavMesh;
 struct AAbstractNavData;
 struct UCrowdManagerBase;
-struct UNavArea_Bumpy;
 struct UNavArea_Default;
 struct UNavArea_LowHeight;
 struct UNavArea_Null;
@@ -52,9 +53,6 @@ struct UNavigationGraphNodeComponent;
 struct UNavigationInvokerComponent;
 struct UNavigationPath;
 struct INavigationPathGenerator;
-struct UNavigationSystemV1;
-struct UNavigationSystemModuleConfig;
-struct ANavigationTestingActor;
 struct UNavLinkComponent;
 struct UNavRelevantComponent;
 struct UNavLinkCustomComponent;
@@ -65,13 +63,10 @@ struct UNavLinkTrivial;
 struct ANavMeshBoundsVolume;
 struct UNavMeshRenderingComponent;
 struct UNavModifierComponent;
-struct ANavModifierVolume;
 struct INavNodeInterface;
 struct ANavSystemConfigOverride;
 struct UNavTestRenderingComponent;
-struct URecastFilter_Bumpy;
 struct URecastFilter_UseDefaultArea;
-struct ARecastNavMesh;
 struct URecastNavMeshDataChunk;
 
 // Object: Enum NavigationSystem.ERuntimeGenerationType
@@ -115,7 +110,7 @@ enum class ERecastPartitioning : uint8_t
 // Size: 0x18 (Inherited: 0x0)
 struct FNavCollisionBox
 {
-	struct FVector offset; // 0x0(0xC)
+	struct FVector Offset; // 0x0(0xC)
 	struct FVector Extent; // 0xC(0xC)
 };
 
@@ -123,8 +118,8 @@ struct FNavCollisionBox
 // Size: 0x14 (Inherited: 0x0)
 struct FNavCollisionCylinder
 {
-	struct FVector offset; // 0x0(0xC)
-	float radius; // 0xC(0x4)
+	struct FVector Offset; // 0x0(0xC)
+	float Radius; // 0xC(0x4)
 	float Height; // 0x10(0x4)
 };
 
@@ -191,11 +186,18 @@ struct FNavigationFilterArea
 };
 
 // Object: ScriptStruct NavigationSystem.NavLinkCustomInstanceData
-// Size: 0x60 (Inherited: 0x58)
+// Size: 0x70 (Inherited: 0x68)
 struct FNavLinkCustomInstanceData : FActorComponentInstanceData
 {
-	uint32_t NavLinkUserId; // 0x58(0x4)
-	uint8_t Pad_0x5C[0x4]; // 0x5C(0x4)
+	uint32_t NavLinkUserId; // 0x68(0x4)
+	uint8_t Pad_0x6C[0x4]; // 0x6C(0x4)
+};
+
+// Object: ScriptStruct NavigationSystem.NavMeshTileData
+// Size: 0x38 (Inherited: 0x0)
+struct FNavMeshTileData
+{
+	uint8_t Pad_0x0[0x38]; // 0x0(0x38)
 };
 
 // Object: ScriptStruct NavigationSystem.RecastNavMeshGenerationProperties
@@ -214,31 +216,289 @@ struct FRecastNavMeshGenerationProperties
 	float MergeRegionSize; // 0x24(0x4)
 	float MaxSimplificationError; // 0x28(0x4)
 	int32_t TileNumberHardLimit; // 0x2C(0x4)
-	ERecastPartitioning RegionPartitioning; // 0x30(0x1)
-	ERecastPartitioning LayerPartitioning; // 0x31(0x1)
+	uint8_t RegionPartitioning; // 0x30(0x1)
+	uint8_t LayerPartitioning; // 0x31(0x1)
 	uint8_t Pad_0x32[0x2]; // 0x32(0x2)
 	int32_t RegionChunkSplits; // 0x34(0x4)
 	int32_t LayerChunkSplits; // 0x38(0x4)
 	uint8_t bSortNavigationAreasByCost : 1; // 0x3C(0x1), Mask(0x1)
 	uint8_t bPerformVoxelFiltering : 1; // 0x3C(0x1), Mask(0x2)
 	uint8_t bMarkLowHeightAreas : 1; // 0x3C(0x1), Mask(0x4)
-	uint8_t bFilterLowSpanSequences : 1; // 0x3C(0x1), Mask(0x8)
-	uint8_t bFilterLowSpanFromTileCache : 1; // 0x3C(0x1), Mask(0x10)
-	uint8_t bFixedTilePoolSize : 1; // 0x3C(0x1), Mask(0x20)
-	uint8_t BitPad_0x3C_6 : 2; // 0x3C(0x1)
+	uint8_t bUseExtraTopCellWhenMarkingAreas : 1; // 0x3C(0x1), Mask(0x8)
+	uint8_t bFilterLowSpanSequences : 1; // 0x3C(0x1), Mask(0x10)
+	uint8_t bFilterLowSpanFromTileCache : 1; // 0x3C(0x1), Mask(0x20)
+	uint8_t bFixedTilePoolSize : 1; // 0x3C(0x1), Mask(0x40)
+	uint8_t BitPad_0x3C_7 : 1; // 0x3C(0x1)
 	uint8_t Pad_0x3D[0x3]; // 0x3D(0x3)
 };
 
-// Object: Class NavigationSystem.NavigationQueryFilter
-// Size: 0x48 (Inherited: 0x28)
-struct UNavigationQueryFilter : UObject
+// Object: Class NavigationSystem.NavigationSystemV1
+// Size: 0x15F8 (Inherited: 0x28)
+struct UNavigationSystemV1 : UNavigationSystemBase
 {
-	DEFINE_UE_CLASS_HELPERS(UNavigationQueryFilter, "NavigationQueryFilter")
+	DEFINE_UE_CLASS_HELPERS(UNavigationSystemV1, "NavigationSystemV1")
 
-	struct TArray<struct FNavigationFilterArea> Areas; // 0x28(0x10)
-	struct FNavigationFilterFlags IncludeFlags; // 0x38(0x4)
-	struct FNavigationFilterFlags ExcludeFlags; // 0x3C(0x4)
-	uint8_t Pad_0x40[0x8]; // 0x40(0x8)
+	struct ANavigationData* MainNavData; // 0x28(0x8)
+	struct ANavigationData* AbstractNavData; // 0x30(0x8)
+	struct FName DefaultAgentName; // 0x38(0x8)
+	struct TSoftClassPtr<struct UCrowdManagerBase*> CrowdManagerClass; // 0x40(0x28)
+	uint8_t bAutoCreateNavigationData : 1; // 0x68(0x1), Mask(0x1)
+	uint8_t bSpawnNavDataInNavBoundsLevel : 1; // 0x68(0x1), Mask(0x2)
+	uint8_t bAllowClientSideNavigation : 1; // 0x68(0x1), Mask(0x4)
+	uint8_t bShouldDiscardSubLevelNavData : 1; // 0x68(0x1), Mask(0x8)
+	uint8_t bTickWhilePaused : 1; // 0x68(0x1), Mask(0x10)
+	uint8_t bSupportRebuilding : 1; // 0x68(0x1), Mask(0x20)
+	uint8_t bInitialBuildingLocked : 1; // 0x68(0x1), Mask(0x40)
+	uint8_t BitPad_0x68_7 : 1; // 0x68(0x1)
+	uint8_t bSkipAgentHeightCheckWhenPickingNavData : 1; // 0x69(0x1), Mask(0x1)
+	uint8_t BitPad_0x69_1 : 7; // 0x69(0x1)
+	uint8_t Pad_0x6A[0x2]; // 0x6A(0x2)
+	float NavMeshQueryFindPathTimeLimit; // 0x6C(0x4)
+	uint8_t bGenerateNavigationOnlyAroundNavigationInvokers : 1; // 0x70(0x1), Mask(0x1)
+	uint8_t BitPad_0x70_1 : 7; // 0x70(0x1)
+	uint8_t Pad_0x71[0x3]; // 0x71(0x3)
+	float ActiveTilesUpdateInterval; // 0x74(0x4)
+	ENavDataGatheringModeConfig DataGatheringMode; // 0x78(0x1)
+	uint8_t Pad_0x79[0x3]; // 0x79(0x3)
+	float DirtyAreaWarningSizeThreshold; // 0x7C(0x4)
+	struct TArray<struct FNavDataConfig> SupportedAgents; // 0x80(0x10)
+	struct FNavAgentSelector SupportedAgentsMask; // 0x90(0x4)
+	uint8_t Pad_0x94[0x4]; // 0x94(0x4)
+	struct TArray<struct ANavigationData*> NavDataSet; // 0x98(0x10)
+	struct TArray<struct ANavigationData*> NavDataRegistrationQueue; // 0xA8(0x10)
+	uint8_t Pad_0xB8[0x10]; // 0xB8(0x10)
+	struct FMulticastInlineDelegate OnNavDataRegisteredEvent; // 0xC8(0x10)
+	struct FMulticastInlineDelegate OnNavigationGenerationFinishedDelegate; // 0xD8(0x10)
+	struct FMulticastInlineDelegate OnNavigationGenerationBeginDelegate; // 0xE8(0x10)
+	uint8_t Pad_0xF8[0xDC]; // 0xF8(0xDC)
+	EFNavigationSystemRunMode OperationMode; // 0x1D4(0x1)
+	uint8_t Pad_0x1D5[0x13FF]; // 0x1D5(0x13FF)
+	float DirtyAreasUpdateFreq; // 0x15D4(0x4)
+	uint8_t Pad_0x15D8[0x20]; // 0x15D8(0x20)
+
+	// Object: Function NavigationSystem.NavigationSystemV1.UnregisterNavigationInvoker
+	// Flags: [Final|Native|Public|BlueprintCallable]
+	// Offset: 0xbe5f574
+	// Params: [ Num(1) Size(0x8) ]
+	void UnregisterNavigationInvoker(struct AActor* Invoker);
+
+	// Object: Function NavigationSystem.NavigationSystemV1.SimpleMoveToLocation
+	// Flags: [Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable]
+	// Offset: 0xbe5ec2c
+	// Params: [ Num(2) Size(0x14) ]
+	static void SimpleMoveToLocation(struct AController* Controller, const struct FVector& Goal);
+
+	// Object: Function NavigationSystem.NavigationSystemV1.SimpleMoveToActor
+	// Flags: [Final|Native|Static|Public|BlueprintCallable]
+	// Offset: 0xbe5ed0c
+	// Params: [ Num(2) Size(0x10) ]
+	static void SimpleMoveToActor(struct AController* Controller, struct AActor* Goal);
+
+	// Object: Function NavigationSystem.NavigationSystemV1.SetMaxSimultaneousTileGenerationJobsCount
+	// Flags: [Final|Native|Public|BlueprintCallable]
+	// Offset: 0xbe5f754
+	// Params: [ Num(1) Size(0x4) ]
+	void SetMaxSimultaneousTileGenerationJobsCount(int32_t MaxNumberOfJobs);
+
+	// Object: Function NavigationSystem.NavigationSystemV1.SetGeometryGatheringMode
+	// Flags: [Final|Native|Public|BlueprintCallable]
+	// Offset: 0xbe5f4cc
+	// Params: [ Num(1) Size(0x1) ]
+	void SetGeometryGatheringMode(ENavDataGatheringModeConfig NewMode);
+
+	// Object: Function NavigationSystem.NavigationSystemV1.ResetMaxSimultaneousTileGenerationJobsCount
+	// Flags: [Final|Native|Public|BlueprintCallable]
+	// Offset: 0xbe5f740
+	// Params: [ Num(0) Size(0x0) ]
+	void ResetMaxSimultaneousTileGenerationJobsCount();
+
+	// Object: Function NavigationSystem.NavigationSystemV1.RegisterNavigationInvoker
+	// Flags: [Final|Native|Public|BlueprintCallable]
+	// Offset: 0xbe5f61c
+	// Params: [ Num(3) Size(0x10) ]
+	void RegisterNavigationInvoker(struct AActor* Invoker, float TileGenerationRadius, float TileRemovalRadius);
+
+	// Object: Function NavigationSystem.NavigationSystemV1.ProjectPointToNavigation
+	// Flags: [Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure]
+	// Offset: 0xbe5f140
+	// Params: [ Num(6) Size(0x40) ]
+	static struct FVector ProjectPointToNavigation(struct UObject* WorldContextObject, const struct FVector& Point, struct ANavigationData* NavData, struct UNavigationQueryFilter* FilterClass, struct FVector QueryExtent);
+
+	// Object: Function NavigationSystem.NavigationSystemV1.OnNavigationBoundsUpdated
+	// Flags: [Final|Native|Public|BlueprintCallable]
+	// Offset: 0xbe5f2f4
+	// Params: [ Num(1) Size(0x8) ]
+	void OnNavigationBoundsUpdated(struct ANavMeshBoundsVolume* NavVolume);
+
+	// Object: Function NavigationSystem.NavigationSystemV1.NavigationRaycast
+	// Flags: [Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable]
+	// Offset: 0xbe5f7fc
+	// Params: [ Num(7) Size(0x41) ]
+	static bool NavigationRaycast(struct UObject* WorldContextObject, const struct FVector& RayStart, const struct FVector& RayEnd, struct FVector& HitLocation, struct UNavigationQueryFilter* FilterClass, struct AController* Querier);
+
+	// Object: Function NavigationSystem.NavigationSystemV1.K2_ReplaceAreaInOctreeData
+	// Flags: [Final|Native|Public|BlueprintCallable]
+	// Offset: 0xbe5f39c
+	// Params: [ Num(4) Size(0x19) ]
+	bool K2_ReplaceAreaInOctreeData(struct UObject* Object, struct UNavArea* OldArea, struct UNavArea* NewArea);
+
+	// Object: Function NavigationSystem.NavigationSystemV1.K2_ProjectPointToNavigation
+	// Flags: [Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure]
+	// Offset: 0xbe60714
+	// Params: [ Num(7) Size(0x3D) ]
+	static bool K2_ProjectPointToNavigation(struct UObject* WorldContextObject, const struct FVector& Point, struct FVector& ProjectedLocation, struct ANavigationData* NavData, struct UNavigationQueryFilter* FilterClass, struct FVector QueryExtent);
+
+	// Object: Function NavigationSystem.NavigationSystemV1.K2_GetRandomReachablePointInRadius
+	// Flags: [Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure]
+	// Offset: 0xbe60514
+	// Params: [ Num(7) Size(0x39) ]
+	static bool K2_GetRandomReachablePointInRadius(struct UObject* WorldContextObject, const struct FVector& Origin, struct FVector& RandomLocation, float Radius, struct ANavigationData* NavData, struct UNavigationQueryFilter* FilterClass);
+
+	// Object: Function NavigationSystem.NavigationSystemV1.K2_GetRandomPointInNavigableRadius
+	// Flags: [Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure]
+	// Offset: 0xbe5ea2c
+	// Params: [ Num(7) Size(0x39) ]
+	static bool K2_GetRandomPointInNavigableRadius(struct UObject* WorldContextObject, const struct FVector& Origin, struct FVector& RandomLocation, float Radius, struct ANavigationData* NavData, struct UNavigationQueryFilter* FilterClass);
+
+	// Object: Function NavigationSystem.NavigationSystemV1.K2_GetRandomLocationInNavigableRadius
+	// Flags: [Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable]
+	// Offset: 0xbe60314
+	// Params: [ Num(7) Size(0x39) ]
+	static bool K2_GetRandomLocationInNavigableRadius(struct UObject* WorldContextObject, const struct FVector& Origin, struct FVector& RandomLocation, float Radius, struct ANavigationData* NavData, struct UNavigationQueryFilter* FilterClass);
+
+	// Object: Function NavigationSystem.NavigationSystemV1.IsNavigationBeingBuiltOrLocked
+	// Flags: [Final|Native|Static|Public|BlueprintCallable|BlueprintPure]
+	// Offset: 0xbe5fdac
+	// Params: [ Num(2) Size(0x9) ]
+	static bool IsNavigationBeingBuiltOrLocked(struct UObject* WorldContextObject);
+
+	// Object: Function NavigationSystem.NavigationSystemV1.IsNavigationBeingBuilt
+	// Flags: [Final|Native|Static|Public|BlueprintCallable|BlueprintPure]
+	// Offset: 0xbe5fe58
+	// Params: [ Num(2) Size(0x9) ]
+	static bool IsNavigationBeingBuilt(struct UObject* WorldContextObject);
+
+	// Object: Function NavigationSystem.NavigationSystemV1.GetRandomReachablePointInRadius
+	// Flags: [Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure]
+	// Offset: 0xbe5ef90
+	// Params: [ Num(6) Size(0x34) ]
+	static struct FVector GetRandomReachablePointInRadius(struct UObject* WorldContextObject, const struct FVector& Origin, float Radius, struct ANavigationData* NavData, struct UNavigationQueryFilter* FilterClass);
+
+	// Object: Function NavigationSystem.NavigationSystemV1.GetRandomPointInNavigableRadius
+	// Flags: [Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure]
+	// Offset: 0xbe5ede0
+	// Params: [ Num(6) Size(0x34) ]
+	static struct FVector GetRandomPointInNavigableRadius(struct UObject* WorldContextObject, const struct FVector& Origin, float Radius, struct ANavigationData* NavData, struct UNavigationQueryFilter* FilterClass);
+
+	// Object: Function NavigationSystem.NavigationSystemV1.GetPathLength
+	// Flags: [Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure]
+	// Offset: 0xbe5ff04
+	// Params: [ Num(7) Size(0x39) ]
+	static uint8_t GetPathLength(struct UObject* WorldContextObject, const struct FVector& PathStart, const struct FVector& PathEnd, float& PathLength, struct ANavigationData* NavData, struct UNavigationQueryFilter* FilterClass);
+
+	// Object: Function NavigationSystem.NavigationSystemV1.GetPathCost
+	// Flags: [Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure]
+	// Offset: 0xbe6010c
+	// Params: [ Num(7) Size(0x39) ]
+	static uint8_t GetPathCost(struct UObject* WorldContextObject, const struct FVector& PathStart, const struct FVector& PathEnd, float& PathCost, struct ANavigationData* NavData, struct UNavigationQueryFilter* FilterClass);
+
+	// Object: Function NavigationSystem.NavigationSystemV1.GetNavigationSystem
+	// Flags: [Final|Native|Static|Public|BlueprintCallable|BlueprintPure]
+	// Offset: 0xbe60914
+	// Params: [ Num(2) Size(0x10) ]
+	static struct UNavigationSystemV1* GetNavigationSystem(struct UObject* WorldContextObject);
+
+	// Object: Function NavigationSystem.NavigationSystemV1.FindPathToLocationSynchronously
+	// Flags: [Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable]
+	// Offset: 0xbe5fbf0
+	// Params: [ Num(6) Size(0x38) ]
+	static struct UNavigationPath* FindPathToLocationSynchronously(struct UObject* WorldContextObject, const struct FVector& PathStart, const struct FVector& PathEnd, struct AActor* PathfindingContext, struct UNavigationQueryFilter* FilterClass);
+
+	// Object: Function NavigationSystem.NavigationSystemV1.FindPathToActorSynchronously
+	// Flags: [Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable]
+	// Offset: 0xbe5fa04
+	// Params: [ Num(7) Size(0x40) ]
+	static struct UNavigationPath* FindPathToActorSynchronously(struct UObject* WorldContextObject, const struct FVector& PathStart, struct AActor* GoalActor, float TetherDistance, struct AActor* PathfindingContext, struct UNavigationQueryFilter* FilterClass);
+};
+
+// Object: Class NavigationSystem.NavigationSystemModuleConfig
+// Size: 0x50 (Inherited: 0x50)
+struct UNavigationSystemModuleConfig : UNavigationSystemConfig
+{
+	DEFINE_UE_CLASS_HELPERS(UNavigationSystemModuleConfig, "NavigationSystemModuleConfig")
+
+	uint8_t bStrictlyStatic : 1; // 0x4D(0x1), Mask(0x1)
+	uint8_t bCreateOnClient : 1; // 0x4D(0x1), Mask(0x2)
+	uint8_t bAutoSpawnMissingNavData : 1; // 0x4D(0x1), Mask(0x4)
+	uint8_t bSpawnNavDataInNavBoundsLevel : 1; // 0x4D(0x1), Mask(0x8)
+};
+
+// Object: Class NavigationSystem.NavigationTestingActor
+// Size: 0x3F0 (Inherited: 0x300)
+struct ANavigationTestingActor : AActor
+{
+	DEFINE_UE_CLASS_HELPERS(ANavigationTestingActor, "NavigationTestingActor")
+
+	uint8_t Pad_0x300[0x10]; // 0x300(0x10)
+	struct UCapsuleComponent* CapsuleComponent; // 0x310(0x8)
+	struct UNavigationInvokerComponent* InvokerComponent; // 0x318(0x8)
+	uint8_t bActAsNavigationInvoker : 1; // 0x320(0x1), Mask(0x1)
+	uint8_t BitPad_0x320_1 : 7; // 0x320(0x1)
+	uint8_t Pad_0x321[0x7]; // 0x321(0x7)
+	struct FNavAgentProperties NavAgentProps; // 0x328(0x30)
+	struct FVector QueryingExtent; // 0x358(0xC)
+	uint8_t Pad_0x364[0x4]; // 0x364(0x4)
+	struct ANavigationData* MyNavData; // 0x368(0x8)
+	struct FVector ProjectedLocation; // 0x370(0xC)
+	uint8_t bProjectedLocationValid : 1; // 0x37C(0x1), Mask(0x1)
+	uint8_t bSearchStart : 1; // 0x37C(0x1), Mask(0x2)
+	uint8_t BitPad_0x37C_2 : 6; // 0x37C(0x1)
+	uint8_t Pad_0x37D[0x3]; // 0x37D(0x3)
+	float CostLimitFactor; // 0x380(0x4)
+	float MinimumCostLimit; // 0x384(0x4)
+	uint8_t bBacktracking : 1; // 0x388(0x1), Mask(0x1)
+	uint8_t bUseHierarchicalPathfinding : 1; // 0x388(0x1), Mask(0x2)
+	uint8_t bGatherDetailedInfo : 1; // 0x388(0x1), Mask(0x4)
+	uint8_t bDrawDistanceToWall : 1; // 0x388(0x1), Mask(0x8)
+	uint8_t bShowNodePool : 1; // 0x388(0x1), Mask(0x10)
+	uint8_t bShowBestPath : 1; // 0x388(0x1), Mask(0x20)
+	uint8_t bShowDiffWithPreviousStep : 1; // 0x388(0x1), Mask(0x40)
+	uint8_t bShouldBeVisibleInGame : 1; // 0x388(0x1), Mask(0x80)
+	uint8_t CostDisplayMode; // 0x389(0x1)
+	uint8_t Pad_0x38A[0x2]; // 0x38A(0x2)
+	struct FVector2D TextCanvasOffset; // 0x38C(0x8)
+	uint8_t bPathExist : 1; // 0x394(0x1), Mask(0x1)
+	uint8_t bPathIsPartial : 1; // 0x394(0x1), Mask(0x2)
+	uint8_t bPathSearchOutOfNodes : 1; // 0x394(0x1), Mask(0x4)
+	uint8_t BitPad_0x394_3 : 5; // 0x394(0x1)
+	uint8_t Pad_0x395[0x3]; // 0x395(0x3)
+	float PathfindingTime; // 0x398(0x4)
+	float PathCost; // 0x39C(0x4)
+	int32_t PathfindingSteps; // 0x3A0(0x4)
+	uint8_t Pad_0x3A4[0x4]; // 0x3A4(0x4)
+	struct ANavigationTestingActor* OtherActor; // 0x3A8(0x8)
+	struct UNavigationQueryFilter* FilterClass; // 0x3B0(0x8)
+	int32_t ShowStepIndex; // 0x3B8(0x4)
+	float OffsetFromCornersDistance; // 0x3BC(0x4)
+	uint8_t Pad_0x3C0[0x30]; // 0x3C0(0x30)
+};
+
+// Object: Class NavigationSystem.NavModifierVolume
+// Size: 0x350 (Inherited: 0x338)
+struct ANavModifierVolume : AVolume
+{
+	DEFINE_UE_CLASS_HELPERS(ANavModifierVolume, "NavModifierVolume")
+
+	uint8_t Pad_0x338[0x8]; // 0x338(0x8)
+	struct UNavArea* AreaClass; // 0x340(0x8)
+	bool bMaskFillCollisionUnderneathForNavmesh; // 0x348(0x1)
+	uint8_t Pad_0x349[0x7]; // 0x349(0x7)
+
+	// Object: Function NavigationSystem.NavModifierVolume.SetAreaClass
+	// Flags: [Final|Native|Public|BlueprintCallable]
+	// Offset: 0xbe641a8
+	// Params: [ Num(1) Size(0x8) ]
+	void SetAreaClass(struct UNavArea* NewAreaClass);
 };
 
 // Object: Class NavigationSystem.NavArea
@@ -270,33 +530,124 @@ struct UNavArea : UNavAreaBase
 	uint8_t Pad_0x42[0x6]; // 0x42(0x6)
 };
 
+// Object: Class NavigationSystem.NavigationQueryFilter
+// Size: 0x48 (Inherited: 0x28)
+struct UNavigationQueryFilter : UObject
+{
+	DEFINE_UE_CLASS_HELPERS(UNavigationQueryFilter, "NavigationQueryFilter")
+
+	struct TArray<struct FNavigationFilterArea> Areas; // 0x28(0x10)
+	struct FNavigationFilterFlags IncludeFlags; // 0x38(0x4)
+	struct FNavigationFilterFlags ExcludeFlags; // 0x3C(0x4)
+	uint8_t Pad_0x40[0x8]; // 0x40(0x8)
+};
+
 // Object: Class NavigationSystem.NavigationData
-// Size: 0x558 (Inherited: 0x370)
+// Size: 0x508 (Inherited: 0x300)
 struct ANavigationData : AActor
 {
 	DEFINE_UE_CLASS_HELPERS(ANavigationData, "NavigationData")
 
-	uint8_t Pad_0x370[0x8]; // 0x370(0x8)
-	struct UPrimitiveComponent* RenderingComp; // 0x378(0x8)
-	struct FNavDataConfig NavDataConfig; // 0x380(0x78)
-	uint8_t bEnableDrawing : 1; // 0x3F8(0x1), Mask(0x1)
-	uint8_t bForceRebuildOnLoad : 1; // 0x3F8(0x1), Mask(0x2)
-	uint8_t bAutoDestroyWhenNoNavigation : 1; // 0x3F8(0x1), Mask(0x4)
-	uint8_t bCanBeMainNavData : 1; // 0x3F8(0x1), Mask(0x8)
-	uint8_t bCanSpawnOnRebuild : 1; // 0x3F8(0x1), Mask(0x10)
-	uint8_t bRebuildAtRuntime : 1; // 0x3F8(0x1), Mask(0x20)
-	uint8_t BitPad_0x3F8_6 : 2; // 0x3F8(0x1)
-	ERuntimeGenerationType RuntimeGeneration; // 0x3F9(0x1)
-	uint8_t Pad_0x3FA[0x2]; // 0x3FA(0x2)
-	float ObservedPathsTickInterval; // 0x3FC(0x4)
-	uint32_t DataVersion; // 0x400(0x4)
-	uint8_t Pad_0x404[0xEC]; // 0x404(0xEC)
-	struct TArray<struct FSupportedAreaData> SupportedAreas; // 0x4F0(0x10)
-	uint8_t Pad_0x500[0x58]; // 0x500(0x58)
+	uint8_t Pad_0x300[0x8]; // 0x300(0x8)
+	struct UPrimitiveComponent* RenderingComp; // 0x308(0x8)
+	struct FNavDataConfig NavDataConfig; // 0x310(0x78)
+	uint8_t bEnableDrawing : 1; // 0x388(0x1), Mask(0x1)
+	uint8_t bForceRebuildOnLoad : 1; // 0x388(0x1), Mask(0x2)
+	uint8_t bAutoDestroyWhenNoNavigation : 1; // 0x388(0x1), Mask(0x4)
+	uint8_t bCanBeMainNavData : 1; // 0x388(0x1), Mask(0x8)
+	uint8_t bCanSpawnOnRebuild : 1; // 0x388(0x1), Mask(0x10)
+	uint8_t bRebuildAtRuntime : 1; // 0x388(0x1), Mask(0x20)
+	uint8_t BitPad_0x388_6 : 2; // 0x388(0x1)
+	ERuntimeGenerationType RuntimeGeneration; // 0x389(0x1)
+	uint8_t Pad_0x38A[0x2]; // 0x38A(0x2)
+	float ObservedPathsTickInterval; // 0x38C(0x4)
+	uint32_t DataVersion; // 0x390(0x4)
+	uint8_t Pad_0x394[0x10C]; // 0x394(0x10C)
+	struct TArray<struct FSupportedAreaData> SupportedAreas; // 0x4A0(0x10)
+	uint8_t Pad_0x4B0[0x58]; // 0x4B0(0x58)
+};
+
+// Object: Class NavigationSystem.RecastNavMesh
+// Size: 0x5B8 (Inherited: 0x508)
+struct ARecastNavMesh : ANavigationData
+{
+	DEFINE_UE_CLASS_HELPERS(ARecastNavMesh, "RecastNavMesh")
+
+	uint8_t bDrawTriangleEdges : 1; // 0x504(0x1), Mask(0x1)
+	uint8_t bDrawPolyEdges : 1; // 0x504(0x1), Mask(0x2)
+	uint8_t bDrawFilledPolys : 1; // 0x504(0x1), Mask(0x4)
+	uint8_t bDrawNavMeshEdges : 1; // 0x504(0x1), Mask(0x8)
+	uint8_t bDrawNavMeshClosedAngle : 1; // 0x504(0x1), Mask(0x10)
+	uint8_t bDrawTileBounds : 1; // 0x504(0x1), Mask(0x20)
+	uint8_t bDrawPathCollidingGeometry : 1; // 0x504(0x1), Mask(0x40)
+	uint8_t bDrawTileLabels : 1; // 0x504(0x1), Mask(0x80)
+	uint8_t bDrawPolygonLabels : 1; // 0x505(0x1), Mask(0x1)
+	uint8_t bDrawDefaultPolygonCost : 1; // 0x505(0x1), Mask(0x2)
+	uint8_t bDrawLabelsOnPathNodes : 1; // 0x505(0x1), Mask(0x4)
+	uint8_t bDrawNavLinks : 1; // 0x505(0x1), Mask(0x8)
+	uint8_t bDrawFailedNavLinks : 1; // 0x505(0x1), Mask(0x10)
+	uint8_t bDrawClusters : 1; // 0x505(0x1), Mask(0x20)
+	uint8_t bDrawOctree : 1; // 0x505(0x1), Mask(0x40)
+	uint8_t bDrawOctreeDetails : 1; // 0x505(0x1), Mask(0x80)
+	uint8_t bDrawMarkedForbiddenPolys : 1; // 0x506(0x1), Mask(0x1)
+	uint8_t bDistinctlyDrawTilesBeingBuilt : 1; // 0x506(0x1), Mask(0x2)
+	float DrawOffset; // 0x508(0x4)
+	uint8_t bFixedTilePoolSize : 1; // 0x50C(0x1), Mask(0x1)
+	uint8_t BitPad_0x50E_3 : 5; // 0x50E(0x1)
+	uint8_t Pad_0x50F[0x1]; // 0x50F(0x1)
+	int32_t TilePoolSize; // 0x510(0x4)
+	float TileSizeUU; // 0x514(0x4)
+	float CellSize; // 0x518(0x4)
+	float CellHeight; // 0x51C(0x4)
+	float AgentRadius; // 0x520(0x4)
+	float AgentHeight; // 0x524(0x4)
+	float AgentMaxSlope; // 0x528(0x4)
+	float AgentMaxStepHeight; // 0x52C(0x4)
+	float MinRegionArea; // 0x530(0x4)
+	float MergeRegionSize; // 0x534(0x4)
+	float MaxSimplificationError; // 0x538(0x4)
+	int32_t MaxSimultaneousTileGenerationJobsCount; // 0x53C(0x4)
+	int32_t TileNumberHardLimit; // 0x540(0x4)
+	int32_t PolyRefTileBits; // 0x544(0x4)
+	int32_t PolyRefNavPolyBits; // 0x548(0x4)
+	int32_t PolyRefSaltBits; // 0x54C(0x4)
+	struct FVector NavMeshOriginOffset; // 0x550(0xC)
+	float DefaultDrawDistance; // 0x55C(0x4)
+	float DefaultMaxSearchNodes; // 0x560(0x4)
+	float DefaultMaxHierarchicalSearchNodes; // 0x564(0x4)
+	uint8_t RegionPartitioning; // 0x568(0x1)
+	uint8_t LayerPartitioning; // 0x569(0x1)
+	uint8_t Pad_0x56A[0x2]; // 0x56A(0x2)
+	int32_t RegionChunkSplits; // 0x56C(0x4)
+	int32_t LayerChunkSplits; // 0x570(0x4)
+	uint8_t bSortNavigationAreasByCost : 1; // 0x574(0x1), Mask(0x1)
+	uint8_t bPerformVoxelFiltering : 1; // 0x574(0x1), Mask(0x2)
+	uint8_t bMarkLowHeightAreas : 1; // 0x574(0x1), Mask(0x4)
+	uint8_t bUseExtraTopCellWhenMarkingAreas : 1; // 0x574(0x1), Mask(0x8)
+	uint8_t bFilterLowSpanSequences : 1; // 0x574(0x1), Mask(0x10)
+	uint8_t bFilterLowSpanFromTileCache : 1; // 0x574(0x1), Mask(0x20)
+	uint8_t bDoFullyAsyncNavDataGathering : 1; // 0x574(0x1), Mask(0x40)
+	uint8_t bUseBetterOffsetsFromCorners : 1; // 0x574(0x1), Mask(0x80)
+	uint8_t bStoreEmptyTileLayers : 1; // 0x575(0x1), Mask(0x1)
+	uint8_t bUseVirtualFilters : 1; // 0x575(0x1), Mask(0x2)
+	uint8_t bAllowNavLinkAsPathEnd : 1; // 0x575(0x1), Mask(0x4)
+	uint8_t bUseVoxelCache : 1; // 0x575(0x1), Mask(0x8)
+	uint8_t BitPad_0x575_4 : 4; // 0x575(0x1)
+	uint8_t Pad_0x576[0x2]; // 0x576(0x2)
+	float TileSetUpdateInterval; // 0x578(0x4)
+	float HeuristicScale; // 0x57C(0x4)
+	float VerticalDeviationFromGroundCompensation; // 0x580(0x4)
+	uint8_t Pad_0x584[0x34]; // 0x584(0x34)
+
+	// Object: Function NavigationSystem.RecastNavMesh.K2_ReplaceAreaInTileBounds
+	// Flags: [Final|Native|Public|HasDefaults|BlueprintCallable]
+	// Offset: 0xbe644b0
+	// Params: [ Num(5) Size(0x32) ]
+	bool K2_ReplaceAreaInTileBounds(struct FBox Bounds, struct UNavArea* OldArea, struct UNavArea* NewArea, bool ReplaceLinks);
 };
 
 // Object: Class NavigationSystem.AbstractNavData
-// Size: 0x558 (Inherited: 0x558)
+// Size: 0x508 (Inherited: 0x508)
 struct AAbstractNavData : ANavigationData
 {
 	DEFINE_UE_CLASS_HELPERS(AAbstractNavData, "AbstractNavData")
@@ -307,13 +658,6 @@ struct AAbstractNavData : ANavigationData
 struct UCrowdManagerBase : UObject
 {
 	DEFINE_UE_CLASS_HELPERS(UCrowdManagerBase, "CrowdManagerBase")
-};
-
-// Object: Class NavigationSystem.NavArea_Bumpy
-// Size: 0x48 (Inherited: 0x48)
-struct UNavArea_Bumpy : UNavArea
-{
-	DEFINE_UE_CLASS_HELPERS(UNavArea_Bumpy, "NavArea_Bumpy")
 };
 
 // Object: Class NavigationSystem.NavArea_Default
@@ -392,39 +736,38 @@ struct UNavCollision : UNavCollisionBase
 };
 
 // Object: Class NavigationSystem.NavigationGraph
-// Size: 0x558 (Inherited: 0x558)
+// Size: 0x508 (Inherited: 0x508)
 struct ANavigationGraph : ANavigationData
 {
 	DEFINE_UE_CLASS_HELPERS(ANavigationGraph, "NavigationGraph")
 };
 
 // Object: Class NavigationSystem.NavigationGraphNode
-// Size: 0x370 (Inherited: 0x370)
+// Size: 0x300 (Inherited: 0x300)
 struct ANavigationGraphNode : AActor
 {
 	DEFINE_UE_CLASS_HELPERS(ANavigationGraphNode, "NavigationGraphNode")
 };
 
 // Object: Class NavigationSystem.NavigationGraphNodeComponent
-// Size: 0x270 (Inherited: 0x240)
+// Size: 0x250 (Inherited: 0x230)
 struct UNavigationGraphNodeComponent : USceneComponent
 {
 	DEFINE_UE_CLASS_HELPERS(UNavigationGraphNodeComponent, "NavigationGraphNodeComponent")
 
-	struct FNavGraphNode Node; // 0x240(0x18)
-	struct UNavigationGraphNodeComponent* NextNodeComponent; // 0x258(0x8)
-	struct UNavigationGraphNodeComponent* PrevNodeComponent; // 0x260(0x8)
-	uint8_t Pad_0x268[0x8]; // 0x268(0x8)
+	struct FNavGraphNode Node; // 0x228(0x18)
+	struct UNavigationGraphNodeComponent* NextNodeComponent; // 0x240(0x8)
+	struct UNavigationGraphNodeComponent* PrevNodeComponent; // 0x248(0x8)
 };
 
 // Object: Class NavigationSystem.NavigationInvokerComponent
-// Size: 0x100 (Inherited: 0xF8)
+// Size: 0xE8 (Inherited: 0xE0)
 struct UNavigationInvokerComponent : UActorComponent
 {
 	DEFINE_UE_CLASS_HELPERS(UNavigationInvokerComponent, "NavigationInvokerComponent")
 
-	float TileGenerationRadius; // 0xF8(0x4)
-	float TileRemovalRadius; // 0xFC(0x4)
+	float TileGenerationRadius; // 0xE0(0x4)
+	float TileRemovalRadius; // 0xE4(0x4)
 };
 
 // Object: Class NavigationSystem.NavigationPath
@@ -435,56 +778,56 @@ struct UNavigationPath : UObject
 
 	struct FMulticastInlineDelegate PathUpdatedNotifier; // 0x28(0x10)
 	struct TArray<struct FVector> PathPoints; // 0x38(0x10)
-	ENavigationOptionFlag RecalculateOnInvalidation; // 0x48(0x1)
+	uint8_t RecalculateOnInvalidation; // 0x48(0x1)
 	uint8_t Pad_0x49[0x37]; // 0x49(0x37)
 
 	// Object: Function NavigationSystem.NavigationPath.IsValid
 	// Flags: [Final|Native|Public|BlueprintCallable|BlueprintPure|Const]
-	// Offset: 0x1768e1c4
+	// Offset: 0xbe5e5a0
 	// Params: [ Num(1) Size(0x1) ]
-	uint8_t IsValid();
+	bool IsValid();
 
 	// Object: Function NavigationSystem.NavigationPath.IsStringPulled
 	// Flags: [Final|Native|Public|BlueprintCallable|BlueprintPure|Const]
-	// Offset: 0x1768e18c
+	// Offset: 0xbe5e568
 	// Params: [ Num(1) Size(0x1) ]
-	uint8_t IsStringPulled();
+	bool IsStringPulled();
 
 	// Object: Function NavigationSystem.NavigationPath.IsPartial
 	// Flags: [Final|Native|Public|BlueprintCallable|BlueprintPure|Const]
-	// Offset: 0x1768e154
+	// Offset: 0xbe5e5d8
 	// Params: [ Num(1) Size(0x1) ]
-	uint8_t IsPartial();
+	bool IsPartial();
 
 	// Object: Function NavigationSystem.NavigationPath.GetPathLength
 	// Flags: [Final|Native|Public|BlueprintCallable|BlueprintPure|Const]
-	// Offset: 0x1768e120
+	// Offset: 0xbe5e644
 	// Params: [ Num(1) Size(0x4) ]
 	float GetPathLength();
 
 	// Object: Function NavigationSystem.NavigationPath.GetPathCost
 	// Flags: [Final|Native|Public|BlueprintCallable|BlueprintPure|Const]
-	// Offset: 0x1768e0ec
+	// Offset: 0xbe5e610
 	// Params: [ Num(1) Size(0x4) ]
 	float GetPathCost();
 
 	// Object: Function NavigationSystem.NavigationPath.GetDebugString
 	// Flags: [Final|Native|Public|BlueprintCallable|BlueprintPure|Const]
-	// Offset: 0x1768e054
+	// Offset: 0xbe5e810
 	// Params: [ Num(1) Size(0x10) ]
 	struct FString GetDebugString();
 
 	// Object: Function NavigationSystem.NavigationPath.EnableRecalculationOnInvalidation
 	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x1768dfb0
+	// Offset: 0xbe5e678
 	// Params: [ Num(1) Size(0x1) ]
-	void EnableRecalculationOnInvalidation(ENavigationOptionFlag DoRecalculation);
+	void EnableRecalculationOnInvalidation(uint8_t DoRecalculation);
 
 	// Object: Function NavigationSystem.NavigationPath.EnableDebugDrawing
 	// Flags: [Final|Native|Public|HasDefaults|BlueprintCallable]
-	// Offset: 0x1768dec8
+	// Offset: 0xbe5e720
 	// Params: [ Num(2) Size(0x14) ]
-	void EnableDebugDrawing(uint8_t bShouldDrawDebugData, struct FLinearColor PathColor);
+	void EnableDebugDrawing(bool bShouldDrawDebugData, struct FLinearColor PathColor);
 };
 
 // Object: Class NavigationSystem.NavigationPathGenerator
@@ -494,308 +837,62 @@ struct INavigationPathGenerator : IInterface
 	DEFINE_UE_CLASS_HELPERS(INavigationPathGenerator, "NavigationPathGenerator")
 };
 
-// Object: Class NavigationSystem.NavigationSystemV1
-// Size: 0x590 (Inherited: 0x28)
-struct UNavigationSystemV1 : UNavigationSystemBase
-{
-	DEFINE_UE_CLASS_HELPERS(UNavigationSystemV1, "NavigationSystemV1")
-
-	struct ANavigationData* MainNavData; // 0x28(0x8)
-	struct ANavigationData* AbstractNavData; // 0x30(0x8)
-	struct FName DefaultAgentName; // 0x38(0x8)
-	struct TSoftClassPtr<struct UCrowdManagerBase*> CrowdManagerClass; // 0x40(0x28)
-	uint8_t bAutoCreateNavigationData : 1; // 0x68(0x1), Mask(0x1)
-	uint8_t bSpawnNavDataInNavBoundsLevel : 1; // 0x68(0x1), Mask(0x2)
-	uint8_t bAllowClientSideNavigation : 1; // 0x68(0x1), Mask(0x4)
-	uint8_t bShouldDiscardSubLevelNavData : 1; // 0x68(0x1), Mask(0x8)
-	uint8_t bTickWhilePaused : 1; // 0x68(0x1), Mask(0x10)
-	uint8_t bSupportRebuilding : 1; // 0x68(0x1), Mask(0x20)
-	uint8_t bInitialBuildingLocked : 1; // 0x68(0x1), Mask(0x40)
-	uint8_t BitPad_0x68_7 : 1; // 0x68(0x1)
-	uint8_t bSkipAgentHeightCheckWhenPickingNavData : 1; // 0x69(0x1), Mask(0x1)
-	uint8_t bNavmeshPolyRegion : 1; // 0x69(0x1), Mask(0x2)
-	uint8_t bCrowdNavWalking : 1; // 0x69(0x1), Mask(0x4)
-	uint8_t BitPad_0x69_3 : 5; // 0x69(0x1)
-	ENavDataGatheringModeConfig DataGatheringMode; // 0x6A(0x1)
-	uint8_t bGenerateNavigationOnlyAroundNavigationInvokers : 1; // 0x6B(0x1), Mask(0x1)
-	uint8_t BitPad_0x6B_1 : 7; // 0x6B(0x1)
-	float ActiveTilesUpdateInterval; // 0x6C(0x4)
-	struct TArray<struct FNavDataConfig> SupportedAgents; // 0x70(0x10)
-	struct FNavAgentSelector SupportedAgentsMask; // 0x80(0x4)
-	uint8_t Pad_0x84[0x4]; // 0x84(0x4)
-	struct TArray<struct ANavigationData*> NavDataSet; // 0x88(0x10)
-	struct TArray<struct ANavigationData*> NavDataRegistrationQueue; // 0x98(0x10)
-	uint8_t Pad_0xA8[0x10]; // 0xA8(0x10)
-	struct FMulticastInlineDelegate OnNavDataRegisteredEvent; // 0xB8(0x10)
-	struct FMulticastInlineDelegate OnMainNavDataRegisteredEvent; // 0xC8(0x10)
-	struct FMulticastInlineDelegate OnNavigationGenerationFinishedDelegate; // 0xD8(0x10)
-	uint8_t Pad_0xE8[0xDC]; // 0xE8(0xDC)
-	EFNavigationSystemRunMode OperationMode; // 0x1C4(0x1)
-	uint8_t Pad_0x1C5[0x3A7]; // 0x1C5(0x3A7)
-	float DirtyAreasUpdateFreq; // 0x56C(0x4)
-	uint8_t Pad_0x570[0x20]; // 0x570(0x20)
-
-	// Object: Function NavigationSystem.NavigationSystemV1.UnregisterNavigationInvoker
-	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x17690170
-	// Params: [ Num(1) Size(0x8) ]
-	void UnregisterNavigationInvoker(struct AActor* Invoker);
-
-	// Object: Function NavigationSystem.NavigationSystemV1.SimpleMoveToLocation
-	// Flags: [Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable]
-	// Offset: 0x17690094
-	// Params: [ Num(2) Size(0x14) ]
-	static void SimpleMoveToLocation(struct AController* Controller, const struct FVector& Goal);
-
-	// Object: Function NavigationSystem.NavigationSystemV1.SimpleMoveToActor
-	// Flags: [Final|Native|Static|Public|BlueprintCallable]
-	// Offset: 0x1768ffc8
-	// Params: [ Num(2) Size(0x10) ]
-	static void SimpleMoveToActor(struct AController* Controller, struct AActor* Goal);
-
-	// Object: Function NavigationSystem.NavigationSystemV1.SetMaxSimultaneousTileGenerationJobsCount
-	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x1768ff24
-	// Params: [ Num(1) Size(0x4) ]
-	void SetMaxSimultaneousTileGenerationJobsCount(int32_t MaxNumberOfJobs);
-
-	// Object: Function NavigationSystem.NavigationSystemV1.SetGeometryGatheringMode
-	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x1768fe80
-	// Params: [ Num(1) Size(0x1) ]
-	void SetGeometryGatheringMode(ENavDataGatheringModeConfig NewMode);
-
-	// Object: Function NavigationSystem.NavigationSystemV1.ResetMaxSimultaneousTileGenerationJobsCount
-	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x1768fe6c
-	// Params: [ Num(0) Size(0x0) ]
-	void ResetMaxSimultaneousTileGenerationJobsCount();
-
-	// Object: Function NavigationSystem.NavigationSystemV1.RegisterNavigationInvoker
-	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x1768fd54
-	// Params: [ Num(3) Size(0x10) ]
-	void RegisterNavigationInvoker(struct AActor* Invoker, float TileGenerationRadius, float TileRemovalRadius);
-
-	// Object: Function NavigationSystem.NavigationSystemV1.ProjectPointToNavigation
-	// Flags: [Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure]
-	// Offset: 0x1768fbb4
-	// Params: [ Num(6) Size(0x40) ]
-	static struct FVector ProjectPointToNavigation(struct UObject* WorldContextObject, const struct FVector& Point, struct ANavigationData* NavData, struct UNavigationQueryFilter* FilterClass, struct FVector QueryExtent);
-
-	// Object: Function NavigationSystem.NavigationSystemV1.OnNavigationBoundsUpdated
-	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x1768fb10
-	// Params: [ Num(1) Size(0x8) ]
-	void OnNavigationBoundsUpdated(struct ANavMeshBoundsVolume* NavVolume);
-
-	// Object: Function NavigationSystem.NavigationSystemV1.NavigationRaycast
-	// Flags: [Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable]
-	// Offset: 0x1768f914
-	// Params: [ Num(7) Size(0x41) ]
-	static uint8_t NavigationRaycast(struct UObject* WorldContextObject, const struct FVector& RayStart, const struct FVector& RayEnd, struct FVector& HitLocation, struct UNavigationQueryFilter* FilterClass, struct AController* Querier);
-
-	// Object: Function NavigationSystem.NavigationSystemV1.K2_ReplaceAreaInOctreeData
-	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x1768f7f0
-	// Params: [ Num(4) Size(0x19) ]
-	uint8_t K2_ReplaceAreaInOctreeData(struct UObject* Object, struct UNavArea* OldArea, struct UNavArea* NewArea);
-
-	// Object: Function NavigationSystem.NavigationSystemV1.K2_ProjectPointToNavigation
-	// Flags: [Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure]
-	// Offset: 0x1768f600
-	// Params: [ Num(7) Size(0x3D) ]
-	static uint8_t K2_ProjectPointToNavigation(struct UObject* WorldContextObject, const struct FVector& Point, struct FVector& ProjectedLocation, struct ANavigationData* NavData, struct UNavigationQueryFilter* FilterClass, struct FVector QueryExtent);
-
-	// Object: Function NavigationSystem.NavigationSystemV1.K2_GetRandomReachablePointInRadius
-	// Flags: [Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure]
-	// Offset: 0x1768f410
-	// Params: [ Num(7) Size(0x39) ]
-	static uint8_t K2_GetRandomReachablePointInRadius(struct UObject* WorldContextObject, const struct FVector& Origin, struct FVector& RandomLocation, float radius, struct ANavigationData* NavData, struct UNavigationQueryFilter* FilterClass);
-
-	// Object: Function NavigationSystem.NavigationSystemV1.K2_GetRandomPointInNavigableRadius
-	// Flags: [Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure]
-	// Offset: 0x1768f220
-	// Params: [ Num(7) Size(0x39) ]
-	static uint8_t K2_GetRandomPointInNavigableRadius(struct UObject* WorldContextObject, const struct FVector& Origin, struct FVector& RandomLocation, float radius, struct ANavigationData* NavData, struct UNavigationQueryFilter* FilterClass);
-
-	// Object: Function NavigationSystem.NavigationSystemV1.K2_GetRandomLocationInNavigableRadius
-	// Flags: [Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable]
-	// Offset: 0x1768f030
-	// Params: [ Num(7) Size(0x39) ]
-	static uint8_t K2_GetRandomLocationInNavigableRadius(struct UObject* WorldContextObject, const struct FVector& Origin, struct FVector& RandomLocation, float radius, struct ANavigationData* NavData, struct UNavigationQueryFilter* FilterClass);
-
-	// Object: Function NavigationSystem.NavigationSystemV1.IsNavigationBeingBuiltOrLocked
-	// Flags: [Final|Native|Static|Public|BlueprintCallable|BlueprintPure]
-	// Offset: 0x1768ef88
-	// Params: [ Num(2) Size(0x9) ]
-	static uint8_t IsNavigationBeingBuiltOrLocked(struct UObject* WorldContextObject);
-
-	// Object: Function NavigationSystem.NavigationSystemV1.IsNavigationBeingBuilt
-	// Flags: [Final|Native|Static|Public|BlueprintCallable|BlueprintPure]
-	// Offset: 0x1768eee0
-	// Params: [ Num(2) Size(0x9) ]
-	static uint8_t IsNavigationBeingBuilt(struct UObject* WorldContextObject);
-
-	// Object: Function NavigationSystem.NavigationSystemV1.GetRandomReachablePointInRadius
-	// Flags: [Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure]
-	// Offset: 0x1768ed40
-	// Params: [ Num(6) Size(0x34) ]
-	static struct FVector GetRandomReachablePointInRadius(struct UObject* WorldContextObject, const struct FVector& Origin, float radius, struct ANavigationData* NavData, struct UNavigationQueryFilter* FilterClass);
-
-	// Object: Function NavigationSystem.NavigationSystemV1.GetRandomPointInNavigableRadius
-	// Flags: [Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure]
-	// Offset: 0x1768eba0
-	// Params: [ Num(6) Size(0x34) ]
-	static struct FVector GetRandomPointInNavigableRadius(struct UObject* WorldContextObject, const struct FVector& Origin, float radius, struct ANavigationData* NavData, struct UNavigationQueryFilter* FilterClass);
-
-	// Object: Function NavigationSystem.NavigationSystemV1.GetPathLength
-	// Flags: [Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure]
-	// Offset: 0x1768e9a4
-	// Params: [ Num(7) Size(0x39) ]
-	static ENavigationQueryResult GetPathLength(struct UObject* WorldContextObject, const struct FVector& PathStart, const struct FVector& PathEnd, float& PathLength, struct ANavigationData* NavData, struct UNavigationQueryFilter* FilterClass);
-
-	// Object: Function NavigationSystem.NavigationSystemV1.GetPathCost
-	// Flags: [Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable|BlueprintPure]
-	// Offset: 0x1768e7a8
-	// Params: [ Num(7) Size(0x39) ]
-	static ENavigationQueryResult GetPathCost(struct UObject* WorldContextObject, const struct FVector& PathStart, const struct FVector& PathEnd, float& PathCost, struct ANavigationData* NavData, struct UNavigationQueryFilter* FilterClass);
-
-	// Object: Function NavigationSystem.NavigationSystemV1.GetNavigationSystem
-	// Flags: [Final|Native|Static|Public|BlueprintCallable|BlueprintPure]
-	// Offset: 0x1768e704
-	// Params: [ Num(2) Size(0x10) ]
-	static struct UNavigationSystemV1* GetNavigationSystem(struct UObject* WorldContextObject);
-
-	// Object: Function NavigationSystem.NavigationSystemV1.FindPathToLocationSynchronously
-	// Flags: [Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable]
-	// Offset: 0x1768e554
-	// Params: [ Num(6) Size(0x38) ]
-	static struct UNavigationPath* FindPathToLocationSynchronously(struct UObject* WorldContextObject, const struct FVector& PathStart, const struct FVector& PathEnd, struct AActor* PathfindingContext, struct UNavigationQueryFilter* FilterClass);
-
-	// Object: Function NavigationSystem.NavigationSystemV1.FindPathToActorSynchronously
-	// Flags: [Final|Native|Static|Public|HasOutParms|HasDefaults|BlueprintCallable]
-	// Offset: 0x1768e37c
-	// Params: [ Num(7) Size(0x40) ]
-	static struct UNavigationPath* FindPathToActorSynchronously(struct UObject* WorldContextObject, const struct FVector& PathStart, struct AActor* GoalActor, float TetherDistance, struct AActor* PathfindingContext, struct UNavigationQueryFilter* FilterClass);
-};
-
-// Object: Class NavigationSystem.NavigationSystemModuleConfig
-// Size: 0x50 (Inherited: 0x50)
-struct UNavigationSystemModuleConfig : UNavigationSystemConfig
-{
-	DEFINE_UE_CLASS_HELPERS(UNavigationSystemModuleConfig, "NavigationSystemModuleConfig")
-
-	uint8_t bStrictlyStatic : 1; // 0x4D(0x1), Mask(0x1)
-	uint8_t bCreateOnClient : 1; // 0x4D(0x1), Mask(0x2)
-	uint8_t bAutoSpawnMissingNavData : 1; // 0x4D(0x1), Mask(0x4)
-	uint8_t bSpawnNavDataInNavBoundsLevel : 1; // 0x4D(0x1), Mask(0x8)
-};
-
-// Object: Class NavigationSystem.NavigationTestingActor
-// Size: 0x450 (Inherited: 0x370)
-struct ANavigationTestingActor : AActor
-{
-	DEFINE_UE_CLASS_HELPERS(ANavigationTestingActor, "NavigationTestingActor")
-
-	uint8_t Pad_0x370[0x10]; // 0x370(0x10)
-	struct UCapsuleComponent* CapsuleComponent; // 0x380(0x8)
-	struct UNavigationInvokerComponent* InvokerComponent; // 0x388(0x8)
-	uint8_t bActAsNavigationInvoker : 1; // 0x390(0x1), Mask(0x1)
-	uint8_t BitPad_0x390_1 : 7; // 0x390(0x1)
-	uint8_t Pad_0x391[0x7]; // 0x391(0x7)
-	struct FNavAgentProperties NavAgentProps; // 0x398(0x30)
-	struct FVector QueryingExtent; // 0x3C8(0xC)
-	uint8_t Pad_0x3D4[0x4]; // 0x3D4(0x4)
-	struct ANavigationData* MyNavData; // 0x3D8(0x8)
-	struct FVector ProjectedLocation; // 0x3E0(0xC)
-	uint8_t bProjectedLocationValid : 1; // 0x3EC(0x1), Mask(0x1)
-	uint8_t bSearchStart : 1; // 0x3EC(0x1), Mask(0x2)
-	uint8_t bBacktracking : 1; // 0x3EC(0x1), Mask(0x4)
-	uint8_t bUseHierarchicalPathfinding : 1; // 0x3EC(0x1), Mask(0x8)
-	uint8_t bGatherDetailedInfo : 1; // 0x3EC(0x1), Mask(0x10)
-	uint8_t bDrawDistanceToWall : 1; // 0x3EC(0x1), Mask(0x20)
-	uint8_t bShowNodePool : 1; // 0x3EC(0x1), Mask(0x40)
-	uint8_t bShowBestPath : 1; // 0x3EC(0x1), Mask(0x80)
-	uint8_t bShowDiffWithPreviousStep : 1; // 0x3ED(0x1), Mask(0x1)
-	uint8_t bShouldBeVisibleInGame : 1; // 0x3ED(0x1), Mask(0x2)
-	uint8_t BitPad_0x3ED_2 : 6; // 0x3ED(0x1)
-	ENavCostDisplay CostDisplayMode; // 0x3EE(0x1)
-	uint8_t Pad_0x3EF[0x1]; // 0x3EF(0x1)
-	struct FVector2D TextCanvasOffset; // 0x3F0(0x8)
-	uint8_t bPathExist : 1; // 0x3F8(0x1), Mask(0x1)
-	uint8_t bPathIsPartial : 1; // 0x3F8(0x1), Mask(0x2)
-	uint8_t bPathSearchOutOfNodes : 1; // 0x3F8(0x1), Mask(0x4)
-	uint8_t BitPad_0x3F8_3 : 5; // 0x3F8(0x1)
-	uint8_t Pad_0x3F9[0x3]; // 0x3F9(0x3)
-	float PathfindingTime; // 0x3FC(0x4)
-	float PathCost; // 0x400(0x4)
-	int32_t PathfindingSteps; // 0x404(0x4)
-	struct ANavigationTestingActor* OtherActor; // 0x408(0x8)
-	struct UNavigationQueryFilter* FilterClass; // 0x410(0x8)
-	int32_t ShowStepIndex; // 0x418(0x4)
-	float OffsetFromCornersDistance; // 0x41C(0x4)
-	uint8_t Pad_0x420[0x30]; // 0x420(0x30)
-};
-
 // Object: Class NavigationSystem.NavLinkComponent
-// Size: 0x590 (Inherited: 0x580)
+// Size: 0x690 (Inherited: 0x680)
 struct UNavLinkComponent : UPrimitiveComponent
 {
 	DEFINE_UE_CLASS_HELPERS(UNavLinkComponent, "NavLinkComponent")
 
-	struct TArray<struct FNavigationLink> Links; // 0x580(0x10)
+	struct TArray<struct FNavigationLink> Links; // 0x680(0x10)
 };
 
 // Object: Class NavigationSystem.NavRelevantComponent
-// Size: 0x128 (Inherited: 0xF8)
+// Size: 0x110 (Inherited: 0xE0)
 struct UNavRelevantComponent : UActorComponent
 {
 	DEFINE_UE_CLASS_HELPERS(UNavRelevantComponent, "NavRelevantComponent")
 
-	uint8_t Pad_0xF8[0x24]; // 0xF8(0x24)
-	uint8_t bAttachToOwnersRoot : 1; // 0x11C(0x1), Mask(0x1)
-	uint8_t BitPad_0x11C_1 : 7; // 0x11C(0x1)
-	uint8_t Pad_0x11D[0x3]; // 0x11D(0x3)
-	struct UObject* CachedNavParent; // 0x120(0x8)
+	uint8_t Pad_0xE0[0x24]; // 0xE0(0x24)
+	uint8_t bAttachToOwnersRoot : 1; // 0x104(0x1), Mask(0x1)
+	uint8_t BitPad_0x104_1 : 7; // 0x104(0x1)
+	uint8_t Pad_0x105[0x3]; // 0x105(0x3)
+	struct UObject* CachedNavParent; // 0x108(0x8)
 
 	// Object: Function NavigationSystem.NavRelevantComponent.SetNavigationRelevancy
 	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x1769241c
+	// Offset: 0xbe64270
 	// Params: [ Num(1) Size(0x1) ]
-	void SetNavigationRelevancy(uint8_t bRelevant);
+	void SetNavigationRelevancy(bool bRelevant);
 };
 
 // Object: Class NavigationSystem.NavLinkCustomComponent
-// Size: 0x1D8 (Inherited: 0x128)
+// Size: 0x1C8 (Inherited: 0x110)
 struct UNavLinkCustomComponent : UNavRelevantComponent
 {
 	DEFINE_UE_CLASS_HELPERS(UNavLinkCustomComponent, "NavLinkCustomComponent")
 
-	uint8_t Pad_0x128[0x8]; // 0x128(0x8)
-	float SnapRadius; // 0x130(0x4)
-	uint32_t NavLinkUserId; // 0x134(0x4)
-	uint32_t ExtData; // 0x138(0x4)
-	uint8_t Pad_0x13C[0x4]; // 0x13C(0x4)
-	struct UNavArea* EnabledAreaClass; // 0x140(0x8)
-	struct UNavArea* DisabledAreaClass; // 0x148(0x8)
-	struct FNavAgentSelector SupportedAgents; // 0x150(0x4)
-	struct FVector LinkRelativeStart; // 0x154(0xC)
-	struct FVector LinkRelativeEnd; // 0x160(0xC)
-	ENavLinkDirection LinkDirection; // 0x16C(0x1)
-	uint8_t bLinkEnabled : 1; // 0x16D(0x1), Mask(0x1)
-	uint8_t bNotifyWhenEnabled : 1; // 0x16D(0x1), Mask(0x2)
-	uint8_t bNotifyWhenDisabled : 1; // 0x16D(0x1), Mask(0x4)
-	uint8_t bCreateBoxObstacle : 1; // 0x16D(0x1), Mask(0x8)
-	uint8_t BitPad_0x16D_4 : 4; // 0x16D(0x1)
-	uint8_t Pad_0x16E[0x2]; // 0x16E(0x2)
-	struct FVector ObstacleOffset; // 0x170(0xC)
-	struct FVector ObstacleExtent; // 0x17C(0xC)
-	struct UNavArea* ObstacleAreaClass; // 0x188(0x8)
-	float BroadcastRadius; // 0x190(0x4)
-	float BroadcastInterval; // 0x194(0x4)
-	ECollisionChannel BroadcastChannel; // 0x198(0x1)
-	uint8_t Pad_0x199[0x3F]; // 0x199(0x3F)
+	uint8_t Pad_0x110[0x8]; // 0x110(0x8)
+	uint32_t NavLinkUserId; // 0x118(0x4)
+	uint8_t Pad_0x11C[0x4]; // 0x11C(0x4)
+	struct UNavArea* EnabledAreaClass; // 0x120(0x8)
+	struct UNavArea* DisabledAreaClass; // 0x128(0x8)
+	struct FNavAgentSelector SupportedAgents; // 0x130(0x4)
+	struct FVector LinkRelativeStart; // 0x134(0xC)
+	struct FVector LinkRelativeEnd; // 0x140(0xC)
+	uint8_t LinkDirection; // 0x14C(0x1)
+	uint8_t bLinkEnabled : 1; // 0x14D(0x1), Mask(0x1)
+	uint8_t bNotifyWhenEnabled : 1; // 0x14D(0x1), Mask(0x2)
+	uint8_t bNotifyWhenDisabled : 1; // 0x14D(0x1), Mask(0x4)
+	uint8_t bCreateBoxObstacle : 1; // 0x14D(0x1), Mask(0x8)
+	uint8_t BitPad_0x14D_4 : 4; // 0x14D(0x1)
+	uint8_t Pad_0x14E[0x2]; // 0x14E(0x2)
+	struct FVector ObstacleOffset; // 0x150(0xC)
+	struct FVector ObstacleExtent; // 0x15C(0xC)
+	struct UNavArea* ObstacleAreaClass; // 0x168(0x8)
+	float BroadcastRadius; // 0x170(0x4)
+	float BroadcastInterval; // 0x174(0x4)
+	uint8_t BroadcastChannel; // 0x178(0x1)
+	uint8_t Pad_0x179[0x4F]; // 0x179(0x4F)
 };
 
 // Object: Class NavigationSystem.NavLinkCustomInterface
@@ -813,7 +910,7 @@ struct INavLinkHostInterface : IInterface
 };
 
 // Object: Class NavigationSystem.NavLinkRenderingComponent
-// Size: 0x580 (Inherited: 0x580)
+// Size: 0x680 (Inherited: 0x680)
 struct UNavLinkRenderingComponent : UPrimitiveComponent
 {
 	DEFINE_UE_CLASS_HELPERS(UNavLinkRenderingComponent, "NavLinkRenderingComponent")
@@ -827,55 +924,39 @@ struct UNavLinkTrivial : UNavLinkDefinition
 };
 
 // Object: Class NavigationSystem.NavMeshBoundsVolume
-// Size: 0x3B0 (Inherited: 0x3A8)
+// Size: 0x340 (Inherited: 0x338)
 struct ANavMeshBoundsVolume : AVolume
 {
 	DEFINE_UE_CLASS_HELPERS(ANavMeshBoundsVolume, "NavMeshBoundsVolume")
 
-	struct FNavAgentSelector SupportedAgents; // 0x3A8(0x4)
-	uint8_t Pad_0x3AC[0x4]; // 0x3AC(0x4)
+	struct FNavAgentSelector SupportedAgents; // 0x338(0x4)
+	uint8_t Pad_0x33C[0x4]; // 0x33C(0x4)
 };
 
 // Object: Class NavigationSystem.NavMeshRenderingComponent
-// Size: 0x590 (Inherited: 0x580)
+// Size: 0x690 (Inherited: 0x680)
 struct UNavMeshRenderingComponent : UPrimitiveComponent
 {
 	DEFINE_UE_CLASS_HELPERS(UNavMeshRenderingComponent, "NavMeshRenderingComponent")
 
-	uint8_t Pad_0x580[0x10]; // 0x580(0x10)
+	uint8_t Pad_0x680[0x10]; // 0x680(0x10)
 };
 
 // Object: Class NavigationSystem.NavModifierComponent
-// Size: 0x190 (Inherited: 0x128)
+// Size: 0x170 (Inherited: 0x110)
 struct UNavModifierComponent : UNavRelevantComponent
 {
 	DEFINE_UE_CLASS_HELPERS(UNavModifierComponent, "NavModifierComponent")
 
-	struct UNavArea* AreaClass; // 0x128(0x8)
-	struct FVector FailsafeExtent; // 0x130(0xC)
-	uint8_t bIncludeAgentHeight : 1; // 0x13C(0x1), Mask(0x1)
-	uint8_t BitPad_0x13C_1 : 7; // 0x13C(0x1)
-	uint8_t Pad_0x13D[0x53]; // 0x13D(0x53)
+	struct UNavArea* AreaClass; // 0x110(0x8)
+	struct FVector FailsafeExtent; // 0x118(0xC)
+	uint8_t bIncludeAgentHeight : 1; // 0x124(0x1), Mask(0x1)
+	uint8_t BitPad_0x124_1 : 7; // 0x124(0x1)
+	uint8_t Pad_0x125[0x4B]; // 0x125(0x4B)
 
 	// Object: Function NavigationSystem.NavModifierComponent.SetAreaClass
 	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x176922a8
-	// Params: [ Num(1) Size(0x8) ]
-	void SetAreaClass(struct UNavArea* NewAreaClass);
-};
-
-// Object: Class NavigationSystem.NavModifierVolume
-// Size: 0x3B8 (Inherited: 0x3A8)
-struct ANavModifierVolume : AVolume
-{
-	DEFINE_UE_CLASS_HELPERS(ANavModifierVolume, "NavModifierVolume")
-
-	uint8_t Pad_0x3A8[0x8]; // 0x3A8(0x8)
-	struct UNavArea* AreaClass; // 0x3B0(0x8)
-
-	// Object: Function NavigationSystem.NavModifierVolume.SetAreaClass
-	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x17692364
+	// Offset: 0xbe640e8
 	// Params: [ Num(1) Size(0x8) ]
 	void SetAreaClass(struct UNavArea* NewAreaClass);
 };
@@ -888,30 +969,23 @@ struct INavNodeInterface : IInterface
 };
 
 // Object: Class NavigationSystem.NavSystemConfigOverride
-// Size: 0x380 (Inherited: 0x370)
+// Size: 0x310 (Inherited: 0x300)
 struct ANavSystemConfigOverride : AActor
 {
 	DEFINE_UE_CLASS_HELPERS(ANavSystemConfigOverride, "NavSystemConfigOverride")
 
-	struct UNavigationSystemConfig* NavigationSystemConfig; // 0x370(0x8)
-	ENavSystemOverridePolicy OverridePolicy; // 0x378(0x1)
-	uint8_t bLoadOnClient : 1; // 0x379(0x1), Mask(0x1)
-	uint8_t BitPad_0x379_1 : 7; // 0x379(0x1)
-	uint8_t Pad_0x37A[0x6]; // 0x37A(0x6)
+	struct UNavigationSystemConfig* NavigationSystemConfig; // 0x300(0x8)
+	ENavSystemOverridePolicy OverridePolicy; // 0x308(0x1)
+	uint8_t bLoadOnClient : 1; // 0x309(0x1), Mask(0x1)
+	uint8_t BitPad_0x309_1 : 7; // 0x309(0x1)
+	uint8_t Pad_0x30A[0x6]; // 0x30A(0x6)
 };
 
 // Object: Class NavigationSystem.NavTestRenderingComponent
-// Size: 0x580 (Inherited: 0x580)
+// Size: 0x680 (Inherited: 0x680)
 struct UNavTestRenderingComponent : UPrimitiveComponent
 {
 	DEFINE_UE_CLASS_HELPERS(UNavTestRenderingComponent, "NavTestRenderingComponent")
-};
-
-// Object: Class NavigationSystem.RecastFilter_Bumpy
-// Size: 0x48 (Inherited: 0x48)
-struct URecastFilter_Bumpy : UNavigationQueryFilter
-{
-	DEFINE_UE_CLASS_HELPERS(URecastFilter_Bumpy, "RecastFilter_Bumpy")
 };
 
 // Object: Class NavigationSystem.RecastFilter_UseDefaultArea
@@ -921,117 +995,13 @@ struct URecastFilter_UseDefaultArea : UNavigationQueryFilter
 	DEFINE_UE_CLASS_HELPERS(URecastFilter_UseDefaultArea, "RecastFilter_UseDefaultArea")
 };
 
-// Object: Class NavigationSystem.RecastNavMesh
-// Size: 0x7D0 (Inherited: 0x558)
-struct ARecastNavMesh : ANavigationData
-{
-	DEFINE_UE_CLASS_HELPERS(ARecastNavMesh, "RecastNavMesh")
-
-	uint8_t bDrawTriangleEdges : 1; // 0x554(0x1), Mask(0x1)
-	uint8_t bDrawPolyEdges : 1; // 0x554(0x1), Mask(0x2)
-	uint8_t bDrawFilledPolys : 1; // 0x554(0x1), Mask(0x4)
-	uint8_t bDrawFilledRegions : 1; // 0x554(0x1), Mask(0x8)
-	uint8_t bDrawPilotVoxelBlock : 1; // 0x554(0x1), Mask(0x10)
-	uint8_t bDrawTileCont : 1; // 0x554(0x1), Mask(0x20)
-	uint8_t bDrawNavMeshEdges : 1; // 0x554(0x1), Mask(0x40)
-	uint8_t bDrawTileBounds : 1; // 0x554(0x1), Mask(0x80)
-	uint8_t bDrawPathCollidingGeometry : 1; // 0x555(0x1), Mask(0x1)
-	uint8_t bDrawTileLabels : 1; // 0x555(0x1), Mask(0x2)
-	uint8_t bDrawPolygonLabels : 1; // 0x555(0x1), Mask(0x4)
-	uint8_t bDrawDefaultPolygonCost : 1; // 0x555(0x1), Mask(0x8)
-	uint8_t bDrawLabelsOnPathNodes : 1; // 0x555(0x1), Mask(0x10)
-	uint8_t bDrawNavLinks : 1; // 0x555(0x1), Mask(0x20)
-	uint8_t bDrawFailedNavLinks : 1; // 0x555(0x1), Mask(0x40)
-	uint8_t bDrawClusters : 1; // 0x555(0x1), Mask(0x80)
-	uint8_t bDrawOctree : 1; // 0x556(0x1), Mask(0x1)
-	uint8_t bDrawOctreeDetails : 1; // 0x556(0x1), Mask(0x2)
-	uint8_t bDrawMarkedForbiddenPolys : 1; // 0x556(0x1), Mask(0x4)
-	uint8_t bDistinctlyDrawTilesBeingBuilt : 1; // 0x556(0x1), Mask(0x8)
-	uint8_t bDrawNavMesh : 1; // 0x556(0x1), Mask(0x10)
-	float DrawOffset; // 0x558(0x4)
-	uint8_t bFixedTilePoolSize : 1; // 0x55C(0x1), Mask(0x1)
-	uint8_t BitPad_0x55E_6 : 2; // 0x55E(0x1)
-	uint8_t Pad_0x55F[0x1]; // 0x55F(0x1)
-	int32_t TilePoolSize; // 0x560(0x4)
-	float TileSizeUU; // 0x564(0x4)
-	float CellSize; // 0x568(0x4)
-	float CellHeight; // 0x56C(0x4)
-	float AgentRadius; // 0x570(0x4)
-	float AgentHeight; // 0x574(0x4)
-	float AgentMaxHeight; // 0x578(0x4)
-	float AgentMaxSlope; // 0x57C(0x4)
-	float AgentMaxStepHeight; // 0x580(0x4)
-	float MinRegionArea; // 0x584(0x4)
-	float MergeRegionSize; // 0x588(0x4)
-	float MaxSimplificationError; // 0x58C(0x4)
-	float AvgLayersPerTile; // 0x590(0x4)
-	int32_t MaxSimultaneousTileGenerationJobsCount; // 0x594(0x4)
-	int32_t TileNumberHardLimit; // 0x598(0x4)
-	int32_t PolyRefTileBits; // 0x59C(0x4)
-	int32_t PolyRefNavPolyBits; // 0x5A0(0x4)
-	int32_t PolyRefSaltBits; // 0x5A4(0x4)
-	struct FVector NavMeshOriginOffset; // 0x5A8(0xC)
-	uint8_t bOptimizePolyLand : 1; // 0x5B4(0x1), Mask(0x1)
-	uint8_t bOptimizeDetailMesh : 1; // 0x5B4(0x1), Mask(0x2)
-	uint8_t bOptimizeBVTree : 1; // 0x5B4(0x1), Mask(0x4)
-	uint8_t bOptimizeTileCache : 1; // 0x5B4(0x1), Mask(0x8)
-	uint8_t bDetourPilot : 1; // 0x5B4(0x1), Mask(0x10)
-	uint8_t bRunMapVoxel : 1; // 0x5B4(0x1), Mask(0x20)
-	uint8_t bDebugLandNavMesh : 1; // 0x5B4(0x1), Mask(0x40)
-	uint8_t BitPad_0x5B4_7 : 1; // 0x5B4(0x1)
-	uint8_t Pad_0x5B5[0x3]; // 0x5B5(0x3)
-	float DetourPilotSize; // 0x5B8(0x4)
-	float AvoidRadius; // 0x5BC(0x4)
-	float DefaultDrawDistance; // 0x5C0(0x4)
-	float DefaultMaxSearchNodes; // 0x5C4(0x4)
-	float DefaultMaxHierarchicalSearchNodes; // 0x5C8(0x4)
-	ERecastPartitioning RegionPartitioning; // 0x5CC(0x1)
-	ERecastPartitioning LayerPartitioning; // 0x5CD(0x1)
-	uint8_t Pad_0x5CE[0x2]; // 0x5CE(0x2)
-	int32_t RegionChunkSplits; // 0x5D0(0x4)
-	int32_t LayerChunkSplits; // 0x5D4(0x4)
-	uint8_t bSortNavigationAreasByCost : 1; // 0x5D8(0x1), Mask(0x1)
-	uint8_t bPerformVoxelFiltering : 1; // 0x5D8(0x1), Mask(0x2)
-	uint8_t bMarkLowHeightAreas : 1; // 0x5D8(0x1), Mask(0x4)
-	uint8_t bFilterLowSpanSequences : 1; // 0x5D8(0x1), Mask(0x8)
-	uint8_t bFilterLowSpanFromTileCache : 1; // 0x5D8(0x1), Mask(0x10)
-	uint8_t bDoFullyAsyncNavDataGathering : 1; // 0x5D8(0x1), Mask(0x20)
-	uint8_t bUseBetterOffsetsFromCorners : 1; // 0x5D8(0x1), Mask(0x40)
-	uint8_t bStoreEmptyTileLayers : 1; // 0x5D8(0x1), Mask(0x80)
-	uint8_t bUseVirtualFilters : 1; // 0x5D9(0x1), Mask(0x1)
-	uint8_t bAllowNavLinkAsPathEnd : 1; // 0x5D9(0x1), Mask(0x2)
-	uint8_t bAllowCookNavData : 1; // 0x5D9(0x1), Mask(0x4)
-	uint8_t BitPad_0x5D9_3 : 5; // 0x5D9(0x1)
-	uint8_t Pad_0x5DA[0x2]; // 0x5DA(0x2)
-	float DetailEdgeSampleDist; // 0x5DC(0x4)
-	float DetailEdgeSampleError; // 0x5E0(0x4)
-	float DetailAreaSampleDist; // 0x5E4(0x4)
-	float DetailAreaSampleError; // 0x5E8(0x4)
-	float FloodFillExtent; // 0x5EC(0x4)
-	float DetailAreaCheckBumpyDist; // 0x5F0(0x4)
-	float DetailAreaCheckBumpyHeight; // 0x5F4(0x4)
-	uint8_t bUseVoxelCache : 1; // 0x5F8(0x1), Mask(0x1)
-	uint8_t BitPad_0x5F8_1 : 7; // 0x5F8(0x1)
-	uint8_t Pad_0x5F9[0x3]; // 0x5F9(0x3)
-	float TileSetUpdateInterval; // 0x5FC(0x4)
-	float HeuristicScale; // 0x600(0x4)
-	float VerticalDeviationFromGroundCompensation; // 0x604(0x4)
-	uint8_t Pad_0x608[0x1C8]; // 0x608(0x1C8)
-
-	// Object: Function NavigationSystem.RecastNavMesh.K2_ReplaceAreaInTileBounds
-	// Flags: [Final|Native|Public|HasDefaults|BlueprintCallable]
-	// Offset: 0x17692654
-	// Params: [ Num(5) Size(0x32) ]
-	uint8_t K2_ReplaceAreaInTileBounds(struct FBox Bounds, struct UNavArea* OldArea, struct UNavArea* NewArea, uint8_t ReplaceLinks);
-};
-
 // Object: Class NavigationSystem.RecastNavMeshDataChunk
-// Size: 0x48 (Inherited: 0x30)
+// Size: 0x40 (Inherited: 0x30)
 struct URecastNavMeshDataChunk : UNavigationDataChunk
 {
 	DEFINE_UE_CLASS_HELPERS(URecastNavMeshDataChunk, "RecastNavMeshDataChunk")
 
-	uint8_t Pad_0x30[0x18]; // 0x30(0x18)
+	uint8_t Pad_0x30[0x10]; // 0x30(0x10)
 };
 
 } // namespace SDK

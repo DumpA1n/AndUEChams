@@ -7,7 +7,7 @@ namespace SDK
 {
 
 // UAchievementBlueprintLibrary
-void UAchievementBlueprintLibrary::GetCachedAchievementProgress(struct UObject* WorldContextObject, struct APlayerController* PlayerController, struct FName AchievementId, uint8_t& bFoundID, float& Progress)
+void UAchievementBlueprintLibrary::GetCachedAchievementProgress(struct UObject* WorldContextObject, struct APlayerController* PlayerController, struct FName AchievementID, bool& bFoundID, float& Progress)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("AchievementBlueprintLibrary", "GetCachedAchievementProgress");
@@ -15,19 +15,19 @@ void UAchievementBlueprintLibrary::GetCachedAchievementProgress(struct UObject* 
     {
         struct UObject* WorldContextObject;
         struct APlayerController* PlayerController;
-        struct FName AchievementId;
-        uint8_t bFoundID;
+        struct FName AchievementID;
+        bool bFoundID;
         float Progress;
     } Parms{};
     Parms.WorldContextObject = (struct UObject*)WorldContextObject;
     Parms.PlayerController = (struct APlayerController*)PlayerController;
-    Parms.AchievementId = (struct FName)AchievementId;
+    Parms.AchievementID = (struct FName)AchievementID;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     bFoundID = Parms.bFoundID;
     Progress = Parms.Progress;
 }
 
-void UAchievementBlueprintLibrary::GetCachedAchievementDescription(struct UObject* WorldContextObject, struct APlayerController* PlayerController, struct FName AchievementId, uint8_t& bFoundID, struct FText& Title, struct FText& LockedDescription, struct FText& UnlockedDescription, uint8_t& bHidden)
+void UAchievementBlueprintLibrary::GetCachedAchievementDescription(struct UObject* WorldContextObject, struct APlayerController* PlayerController, struct FName AchievementID, bool& bFoundID, struct FText& Title, struct FText& LockedDescription, struct FText& UnlockedDescription, bool& bHidden)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("AchievementBlueprintLibrary", "GetCachedAchievementDescription");
@@ -35,16 +35,16 @@ void UAchievementBlueprintLibrary::GetCachedAchievementDescription(struct UObjec
     {
         struct UObject* WorldContextObject;
         struct APlayerController* PlayerController;
-        struct FName AchievementId;
-        uint8_t bFoundID;
+        struct FName AchievementID;
+        bool bFoundID;
         struct FText Title;
         struct FText LockedDescription;
         struct FText UnlockedDescription;
-        uint8_t bHidden;
+        bool bHidden;
     } Parms{};
     Parms.WorldContextObject = (struct UObject*)WorldContextObject;
     Parms.PlayerController = (struct APlayerController*)PlayerController;
-    Parms.AchievementId = (struct FName)AchievementId;
+    Parms.AchievementID = (struct FName)AchievementID;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     bFoundID = Parms.bFoundID;
     Title = Parms.Title;
@@ -127,7 +127,7 @@ struct UConnectionCallbackProxy* UConnectionCallbackProxy::ConnectToService(stru
 }
 
 // UCreateSessionCallbackProxy
-struct UCreateSessionCallbackProxy* UCreateSessionCallbackProxy::CreateSession(struct UObject* WorldContextObject, struct APlayerController* PlayerController, int32_t PublicConnections, uint8_t bUseLAN)
+struct UCreateSessionCallbackProxy* UCreateSessionCallbackProxy::CreateSession(struct UObject* WorldContextObject, struct APlayerController* PlayerController, int32_t PublicConnections, bool bUseLAN)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("CreateSessionCallbackProxy", "CreateSession");
@@ -136,13 +136,13 @@ struct UCreateSessionCallbackProxy* UCreateSessionCallbackProxy::CreateSession(s
         struct UObject* WorldContextObject;
         struct APlayerController* PlayerController;
         int32_t PublicConnections;
-        uint8_t bUseLAN;
+        bool bUseLAN;
         struct UCreateSessionCallbackProxy* ReturnValue;
     } Parms{};
     Parms.WorldContextObject = (struct UObject*)WorldContextObject;
     Parms.PlayerController = (struct APlayerController*)PlayerController;
     Parms.PublicConnections = (int32_t)PublicConnections;
-    Parms.bUseLAN = (uint8_t)bUseLAN;
+    Parms.bUseLAN = (bool)bUseLAN;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
@@ -165,7 +165,7 @@ struct UDestroySessionCallbackProxy* UDestroySessionCallbackProxy::DestroySessio
 }
 
 // UEndMatchCallbackProxy
-struct UEndMatchCallbackProxy* UEndMatchCallbackProxy::EndMatch(struct UObject* WorldContextObject, struct APlayerController* PlayerController, struct TScriptInterface<ITurnBasedMatchInterface> MatchActor, struct FString MatchID, EMPMatchOutcome LocalPlayerOutcome, EMPMatchOutcome OtherPlayersOutcome)
+struct UEndMatchCallbackProxy* UEndMatchCallbackProxy::EndMatch(struct UObject* WorldContextObject, struct APlayerController* PlayerController, struct TScriptInterface<ITurnBasedMatchInterface> MatchActor, struct FString MatchID, uint8_t LocalPlayerOutcome, uint8_t OtherPlayersOutcome)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("EndMatchCallbackProxy", "EndMatch");
@@ -175,16 +175,16 @@ struct UEndMatchCallbackProxy* UEndMatchCallbackProxy::EndMatch(struct UObject* 
         struct APlayerController* PlayerController;
         struct TScriptInterface<ITurnBasedMatchInterface> MatchActor;
         struct FString MatchID;
-        enum EMPMatchOutcome LocalPlayerOutcome;
-        enum EMPMatchOutcome OtherPlayersOutcome;
+        uint8_t LocalPlayerOutcome;
+        uint8_t OtherPlayersOutcome;
         struct UEndMatchCallbackProxy* ReturnValue;
     } Parms{};
     Parms.WorldContextObject = (struct UObject*)WorldContextObject;
     Parms.PlayerController = (struct APlayerController*)PlayerController;
     Parms.MatchActor = (struct TScriptInterface<ITurnBasedMatchInterface>)MatchActor;
     Parms.MatchID = (struct FString)MatchID;
-    Parms.LocalPlayerOutcome = (enum EMPMatchOutcome)LocalPlayerOutcome;
-    Parms.OtherPlayersOutcome = (enum EMPMatchOutcome)OtherPlayersOutcome;
+    Parms.LocalPlayerOutcome = (uint8_t)LocalPlayerOutcome;
+    Parms.OtherPlayersOutcome = (uint8_t)OtherPlayersOutcome;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
@@ -267,7 +267,7 @@ int32_t UFindSessionsCallbackProxy::GetCurrentPlayers(const struct FBlueprintSes
     return Parms.ReturnValue;
 }
 
-struct UFindSessionsCallbackProxy* UFindSessionsCallbackProxy::FindSessions(struct UObject* WorldContextObject, struct APlayerController* PlayerController, int32_t MaxResults, uint8_t bUseLAN)
+struct UFindSessionsCallbackProxy* UFindSessionsCallbackProxy::FindSessions(struct UObject* WorldContextObject, struct APlayerController* PlayerController, int32_t MaxResults, bool bUseLAN)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("FindSessionsCallbackProxy", "FindSessions");
@@ -276,19 +276,19 @@ struct UFindSessionsCallbackProxy* UFindSessionsCallbackProxy::FindSessions(stru
         struct UObject* WorldContextObject;
         struct APlayerController* PlayerController;
         int32_t MaxResults;
-        uint8_t bUseLAN;
+        bool bUseLAN;
         struct UFindSessionsCallbackProxy* ReturnValue;
     } Parms{};
     Parms.WorldContextObject = (struct UObject*)WorldContextObject;
     Parms.PlayerController = (struct APlayerController*)PlayerController;
     Parms.MaxResults = (int32_t)MaxResults;
-    Parms.bUseLAN = (uint8_t)bUseLAN;
+    Parms.bUseLAN = (bool)bUseLAN;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
 // UFindTurnBasedMatchCallbackProxy
-struct UFindTurnBasedMatchCallbackProxy* UFindTurnBasedMatchCallbackProxy::FindTurnBasedMatch(struct UObject* WorldContextObject, struct APlayerController* PlayerController, struct TScriptInterface<ITurnBasedMatchInterface> MatchActor, int32_t MinPlayers, int32_t MaxPlayers, int32_t PlayerGroup, uint8_t ShowExistingMatches)
+struct UFindTurnBasedMatchCallbackProxy* UFindTurnBasedMatchCallbackProxy::FindTurnBasedMatch(struct UObject* WorldContextObject, struct APlayerController* PlayerController, struct TScriptInterface<ITurnBasedMatchInterface> MatchActor, int32_t MinPlayers, int32_t MaxPlayers, int32_t PlayerGroup, bool ShowExistingMatches)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("FindTurnBasedMatchCallbackProxy", "FindTurnBasedMatch");
@@ -300,7 +300,7 @@ struct UFindTurnBasedMatchCallbackProxy* UFindTurnBasedMatchCallbackProxy::FindT
         int32_t MinPlayers;
         int32_t MaxPlayers;
         int32_t PlayerGroup;
-        uint8_t ShowExistingMatches;
+        bool ShowExistingMatches;
         struct UFindTurnBasedMatchCallbackProxy* ReturnValue;
     } Parms{};
     Parms.WorldContextObject = (struct UObject*)WorldContextObject;
@@ -309,7 +309,7 @@ struct UFindTurnBasedMatchCallbackProxy* UFindTurnBasedMatchCallbackProxy::FindT
     Parms.MinPlayers = (int32_t)MinPlayers;
     Parms.MaxPlayers = (int32_t)MaxPlayers;
     Parms.PlayerGroup = (int32_t)PlayerGroup;
-    Parms.ShowExistingMatches = (uint8_t)ShowExistingMatches;
+    Parms.ShowExistingMatches = (bool)ShowExistingMatches;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
@@ -331,6 +331,51 @@ struct UInAppPurchaseCallbackProxy* UInAppPurchaseCallbackProxy::CreateProxyObje
     return Parms.ReturnValue;
 }
 
+// UInAppPurchaseCallbackProxy2
+struct UInAppPurchaseCallbackProxy2* UInAppPurchaseCallbackProxy2::CreateProxyObjectForInAppPurchaseUnprocessedPurchases(struct APlayerController* PlayerController)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("InAppPurchaseCallbackProxy2", "CreateProxyObjectForInAppPurchaseUnprocessedPurchases");
+    struct
+    {
+        struct APlayerController* PlayerController;
+        struct UInAppPurchaseCallbackProxy2* ReturnValue;
+    } Parms{};
+    Parms.PlayerController = (struct APlayerController*)PlayerController;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct UInAppPurchaseCallbackProxy2* UInAppPurchaseCallbackProxy2::CreateProxyObjectForInAppPurchaseQueryOwned(struct APlayerController* PlayerController)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("InAppPurchaseCallbackProxy2", "CreateProxyObjectForInAppPurchaseQueryOwned");
+    struct
+    {
+        struct APlayerController* PlayerController;
+        struct UInAppPurchaseCallbackProxy2* ReturnValue;
+    } Parms{};
+    Parms.PlayerController = (struct APlayerController*)PlayerController;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct UInAppPurchaseCallbackProxy2* UInAppPurchaseCallbackProxy2::CreateProxyObjectForInAppPurchase(struct APlayerController* PlayerController, const struct FInAppPurchaseProductRequest2& ProductRequest)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("InAppPurchaseCallbackProxy2", "CreateProxyObjectForInAppPurchase");
+    struct
+    {
+        struct APlayerController* PlayerController;
+        struct FInAppPurchaseProductRequest2 ProductRequest;
+        struct UInAppPurchaseCallbackProxy2* ReturnValue;
+    } Parms{};
+    Parms.PlayerController = (struct APlayerController*)PlayerController;
+    Parms.ProductRequest = (struct FInAppPurchaseProductRequest2)ProductRequest;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
 // UInAppPurchaseQueryCallbackProxy
 struct UInAppPurchaseQueryCallbackProxy* UInAppPurchaseQueryCallbackProxy::CreateProxyObjectForInAppPurchaseQuery(struct APlayerController* PlayerController, const struct TArray<struct FString>& ProductIdentifiers)
 {
@@ -341,6 +386,23 @@ struct UInAppPurchaseQueryCallbackProxy* UInAppPurchaseQueryCallbackProxy::Creat
         struct APlayerController* PlayerController;
         struct TArray<struct FString> ProductIdentifiers;
         struct UInAppPurchaseQueryCallbackProxy* ReturnValue;
+    } Parms{};
+    Parms.PlayerController = (struct APlayerController*)PlayerController;
+    Parms.ProductIdentifiers = (struct TArray<struct FString>)ProductIdentifiers;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// UInAppPurchaseQueryCallbackProxy2
+struct UInAppPurchaseQueryCallbackProxy2* UInAppPurchaseQueryCallbackProxy2::CreateProxyObjectForInAppPurchaseQuery(struct APlayerController* PlayerController, const struct TArray<struct FString>& ProductIdentifiers)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("InAppPurchaseQueryCallbackProxy2", "CreateProxyObjectForInAppPurchaseQuery");
+    struct
+    {
+        struct APlayerController* PlayerController;
+        struct TArray<struct FString> ProductIdentifiers;
+        struct UInAppPurchaseQueryCallbackProxy2* ReturnValue;
     } Parms{};
     Parms.PlayerController = (struct APlayerController*)PlayerController;
     Parms.ProductIdentifiers = (struct TArray<struct FString>)ProductIdentifiers;
@@ -360,6 +422,23 @@ struct UInAppPurchaseRestoreCallbackProxy* UInAppPurchaseRestoreCallbackProxy::C
         struct UInAppPurchaseRestoreCallbackProxy* ReturnValue;
     } Parms{};
     Parms.ConsumableProductFlags = (struct TArray<struct FInAppPurchaseProductRequest>)ConsumableProductFlags;
+    Parms.PlayerController = (struct APlayerController*)PlayerController;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// UInAppPurchaseRestoreCallbackProxy2
+struct UInAppPurchaseRestoreCallbackProxy2* UInAppPurchaseRestoreCallbackProxy2::CreateProxyObjectForInAppPurchaseRestore(const struct TArray<struct FInAppPurchaseProductRequest2>& ConsumableProductFlags, struct APlayerController* PlayerController)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("InAppPurchaseRestoreCallbackProxy2", "CreateProxyObjectForInAppPurchaseRestore");
+    struct
+    {
+        struct TArray<struct FInAppPurchaseProductRequest2> ConsumableProductFlags;
+        struct APlayerController* PlayerController;
+        struct UInAppPurchaseRestoreCallbackProxy2* ReturnValue;
+    } Parms{};
+    Parms.ConsumableProductFlags = (struct TArray<struct FInAppPurchaseProductRequest2>)ConsumableProductFlags;
     Parms.PlayerController = (struct APlayerController*)PlayerController;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
@@ -385,7 +464,7 @@ struct UJoinSessionCallbackProxy* UJoinSessionCallbackProxy::JoinSession(struct 
 }
 
 // ULeaderboardBlueprintLibrary
-uint8_t ULeaderboardBlueprintLibrary::WriteLeaderboardInteger(struct APlayerController* PlayerController, struct FName StatName, int32_t StatValue)
+bool ULeaderboardBlueprintLibrary::WriteLeaderboardInteger(struct APlayerController* PlayerController, struct FName StatName, int32_t StatValue)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("LeaderboardBlueprintLibrary", "WriteLeaderboardInteger");
@@ -394,7 +473,7 @@ uint8_t ULeaderboardBlueprintLibrary::WriteLeaderboardInteger(struct APlayerCont
         struct APlayerController* PlayerController;
         struct FName StatName;
         int32_t StatValue;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.PlayerController = (struct APlayerController*)PlayerController;
     Parms.StatName = (struct FName)StatName;
@@ -542,32 +621,32 @@ void APartyBeaconClient::ClientSendReservationFull()
     this->ProcessEvent(Func, &Parms);
 }
 
-void APartyBeaconClient::ClientReservationResponse(EPartyReservationResult ReservationResponse)
+void APartyBeaconClient::ClientReservationResponse(uint8_t ReservationResponse)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("PartyBeaconClient", "ClientReservationResponse");
     struct
     {
-        enum EPartyReservationResult ReservationResponse;
+        uint8_t ReservationResponse;
     } Parms{};
-    Parms.ReservationResponse = (enum EPartyReservationResult)ReservationResponse;
+    Parms.ReservationResponse = (uint8_t)ReservationResponse;
     this->ProcessEvent(Func, &Parms);
 }
 
-void APartyBeaconClient::ClientCancelReservationResponse(EPartyReservationResult ReservationResponse)
+void APartyBeaconClient::ClientCancelReservationResponse(uint8_t ReservationResponse)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("PartyBeaconClient", "ClientCancelReservationResponse");
     struct
     {
-        enum EPartyReservationResult ReservationResponse;
+        uint8_t ReservationResponse;
     } Parms{};
-    Parms.ReservationResponse = (enum EPartyReservationResult)ReservationResponse;
+    Parms.ReservationResponse = (uint8_t)ReservationResponse;
     this->ProcessEvent(Func, &Parms);
 }
 
 // UQuitMatchCallbackProxy
-struct UQuitMatchCallbackProxy* UQuitMatchCallbackProxy::QuitMatch(struct UObject* WorldContextObject, struct APlayerController* PlayerController, struct FString MatchID, EMPMatchOutcome Outcome, int32_t TurnTimeoutInSeconds)
+struct UQuitMatchCallbackProxy* UQuitMatchCallbackProxy::QuitMatch(struct UObject* WorldContextObject, struct APlayerController* PlayerController, struct FString MatchID, uint8_t Outcome, int32_t TurnTimeoutInSeconds)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("QuitMatchCallbackProxy", "QuitMatch");
@@ -576,14 +655,14 @@ struct UQuitMatchCallbackProxy* UQuitMatchCallbackProxy::QuitMatch(struct UObjec
         struct UObject* WorldContextObject;
         struct APlayerController* PlayerController;
         struct FString MatchID;
-        enum EMPMatchOutcome Outcome;
+        uint8_t Outcome;
         int32_t TurnTimeoutInSeconds;
         struct UQuitMatchCallbackProxy* ReturnValue;
     } Parms{};
     Parms.WorldContextObject = (struct UObject*)WorldContextObject;
     Parms.PlayerController = (struct APlayerController*)PlayerController;
     Parms.MatchID = (struct FString)MatchID;
-    Parms.Outcome = (enum EMPMatchOutcome)Outcome;
+    Parms.Outcome = (uint8_t)Outcome;
     Parms.TurnTimeoutInSeconds = (int32_t)TurnTimeoutInSeconds;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
@@ -655,27 +734,27 @@ void ASpectatorBeaconClient::ClientSendReservationFull()
     this->ProcessEvent(Func, &Parms);
 }
 
-void ASpectatorBeaconClient::ClientReservationResponse(ESpectatorReservationResult ReservationResponse)
+void ASpectatorBeaconClient::ClientReservationResponse(uint8_t ReservationResponse)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("SpectatorBeaconClient", "ClientReservationResponse");
     struct
     {
-        enum ESpectatorReservationResult ReservationResponse;
+        uint8_t ReservationResponse;
     } Parms{};
-    Parms.ReservationResponse = (enum ESpectatorReservationResult)ReservationResponse;
+    Parms.ReservationResponse = (uint8_t)ReservationResponse;
     this->ProcessEvent(Func, &Parms);
 }
 
-void ASpectatorBeaconClient::ClientCancelReservationResponse(ESpectatorReservationResult ReservationResponse)
+void ASpectatorBeaconClient::ClientCancelReservationResponse(uint8_t ReservationResponse)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("SpectatorBeaconClient", "ClientCancelReservationResponse");
     struct
     {
-        enum ESpectatorReservationResult ReservationResponse;
+        uint8_t ReservationResponse;
     } Parms{};
-    Parms.ReservationResponse = (enum ESpectatorReservationResult)ReservationResponse;
+    Parms.ReservationResponse = (uint8_t)ReservationResponse;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -755,7 +834,7 @@ void UTurnBasedBlueprintLibrary::GetMyPlayerIndex(struct UObject* WorldContextOb
     PlayerIndex = Parms.PlayerIndex;
 }
 
-void UTurnBasedBlueprintLibrary::GetIsMyTurn(struct UObject* WorldContextObject, struct APlayerController* PlayerController, struct FString MatchID, uint8_t& bIsMyTurn)
+void UTurnBasedBlueprintLibrary::GetIsMyTurn(struct UObject* WorldContextObject, struct APlayerController* PlayerController, struct FString MatchID, bool& bIsMyTurn)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("TurnBasedBlueprintLibrary", "GetIsMyTurn");
@@ -764,7 +843,7 @@ void UTurnBasedBlueprintLibrary::GetIsMyTurn(struct UObject* WorldContextObject,
         struct UObject* WorldContextObject;
         struct APlayerController* PlayerController;
         struct FString MatchID;
-        uint8_t bIsMyTurn;
+        bool bIsMyTurn;
     } Parms{};
     Parms.WorldContextObject = (struct UObject*)WorldContextObject;
     Parms.PlayerController = (struct APlayerController*)PlayerController;
@@ -774,13 +853,13 @@ void UTurnBasedBlueprintLibrary::GetIsMyTurn(struct UObject* WorldContextObject,
 }
 
 // UVoipListenerSynthComponent
-uint8_t UVoipListenerSynthComponent::IsIdling()
+bool UVoipListenerSynthComponent::IsIdling()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("VoipListenerSynthComponent", "IsIdling");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;

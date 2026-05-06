@@ -83,10 +83,8 @@ struct UConsoleSettings : UObject
 	struct TArray<struct FAutoCompleteCommand> ManualAutoCompleteList; // 0x30(0x10)
 	struct TArray<struct FString> AutoCompleteMapPaths; // 0x40(0x10)
 	float BackgroundOpacityPercentage; // 0x50(0x4)
-	uint8_t bOrderTopToBottom : 1; // 0x54(0x1), Mask(0x1)
-	uint8_t BitPad_0x54_1 : 7; // 0x54(0x1)
-	uint8_t bDisplayHelpInAutoComplete : 1; // 0x55(0x1), Mask(0x1)
-	uint8_t BitPad_0x55_1 : 7; // 0x55(0x1)
+	bool bOrderTopToBottom; // 0x54(0x1)
+	bool bDisplayHelpInAutoComplete; // 0x55(0x1)
 	uint8_t Pad_0x56[0x2]; // 0x56(0x2)
 	struct FColor InputColor; // 0x58(0x4)
 	struct FColor HistoryColor; // 0x5C(0x4)
@@ -104,13 +102,11 @@ struct UGameMapsSettings : UObject
 
 	struct FString LocalMapOptions; // 0x28(0x10)
 	struct FSoftObjectPath TransitionMap; // 0x38(0x18)
-	uint8_t bUseSplitscreen : 1; // 0x50(0x1), Mask(0x1)
-	uint8_t BitPad_0x50_1 : 7; // 0x50(0x1)
-	ETwoPlayerSplitScreenType TwoPlayerSplitscreenLayout; // 0x51(0x1)
-	EThreePlayerSplitScreenType ThreePlayerSplitscreenLayout; // 0x52(0x1)
+	bool bUseSplitscreen; // 0x50(0x1)
+	uint8_t TwoPlayerSplitscreenLayout; // 0x51(0x1)
+	uint8_t ThreePlayerSplitscreenLayout; // 0x52(0x1)
 	EFourPlayerSplitScreenType FourPlayerSplitscreenLayout; // 0x53(0x1)
-	uint8_t bOffsetPlayerGamepadIds : 1; // 0x54(0x1), Mask(0x1)
-	uint8_t BitPad_0x54_1 : 7; // 0x54(0x1)
+	bool bOffsetPlayerGamepadIds; // 0x54(0x1)
 	uint8_t Pad_0x55[0x3]; // 0x55(0x3)
 	struct FSoftClassPath GameInstanceClass; // 0x58(0x18)
 	struct FSoftObjectPath GameDefaultMap; // 0x70(0x18)
@@ -122,19 +118,19 @@ struct UGameMapsSettings : UObject
 
 	// Object: Function EngineSettings.GameMapsSettings.SetSkipAssigningGamepadToPlayer1
 	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x15b94110
+	// Offset: 0xa7e4740
 	// Params: [ Num(1) Size(0x1) ]
-	void SetSkipAssigningGamepadToPlayer1(uint8_t bSkipFirstPlayer);
+	void SetSkipAssigningGamepadToPlayer1(bool bSkipFirstPlayer);
 
 	// Object: Function EngineSettings.GameMapsSettings.GetSkipAssigningGamepadToPlayer1
 	// Flags: [Final|Native|Public|BlueprintCallable|BlueprintPure|Const]
-	// Offset: 0x15b940d8
+	// Offset: 0xa7e4708
 	// Params: [ Num(1) Size(0x1) ]
-	uint8_t GetSkipAssigningGamepadToPlayer1();
+	bool GetSkipAssigningGamepadToPlayer1();
 
 	// Object: Function EngineSettings.GameMapsSettings.GetGameMapsSettings
 	// Flags: [Final|Native|Static|Public|BlueprintCallable|BlueprintPure]
-	// Offset: 0x15b940a4
+	// Offset: 0xa7e47f0
 	// Params: [ Num(1) Size(0x8) ]
 	static struct UGameMapsSettings* GetGameMapsSettings();
 };
@@ -182,7 +178,7 @@ struct UGeneralEngineSettings : UObject
 };
 
 // Object: Class EngineSettings.GeneralProjectSettings
-// Size: 0x118 (Inherited: 0x28)
+// Size: 0x110 (Inherited: 0x28)
 struct UGeneralProjectSettings : UObject
 {
 	DEFINE_UE_CLASS_HELPERS(UGeneralProjectSettings, "GeneralProjectSettings")
@@ -200,25 +196,14 @@ struct UGeneralProjectSettings : UObject
 	struct FString SupportContact; // 0xC8(0x10)
 	struct FText ProjectDisplayedTitle; // 0xD8(0x18)
 	struct FText ProjectDebugTitleInfo; // 0xF0(0x18)
-	uint8_t bShouldWindowPreserveAspectRatio : 1; // 0x108(0x1), Mask(0x1)
-	uint8_t BitPad_0x108_1 : 7; // 0x108(0x1)
-	uint8_t bUseBorderlessWindow : 1; // 0x109(0x1), Mask(0x1)
-	uint8_t BitPad_0x109_1 : 7; // 0x109(0x1)
-	uint8_t bStartInVR : 1; // 0x10A(0x1), Mask(0x1)
-	uint8_t BitPad_0x10A_1 : 7; // 0x10A(0x1)
-	uint8_t bStartInAR : 1; // 0x10B(0x1), Mask(0x1)
-	uint8_t BitPad_0x10B_1 : 7; // 0x10B(0x1)
-	uint8_t bSupportAR : 1; // 0x10C(0x1), Mask(0x1)
-	uint8_t BitPad_0x10C_1 : 7; // 0x10C(0x1)
-	uint8_t bAllowWindowResize : 1; // 0x10D(0x1), Mask(0x1)
-	uint8_t BitPad_0x10D_1 : 7; // 0x10D(0x1)
-	uint8_t bAllowClose : 1; // 0x10E(0x1), Mask(0x1)
-	uint8_t BitPad_0x10E_1 : 7; // 0x10E(0x1)
-	uint8_t bAllowMaximize : 1; // 0x10F(0x1), Mask(0x1)
-	uint8_t BitPad_0x10F_1 : 7; // 0x10F(0x1)
-	uint8_t bAllowMinimize : 1; // 0x110(0x1), Mask(0x1)
-	uint8_t BitPad_0x110_1 : 7; // 0x110(0x1)
-	uint8_t Pad_0x111[0x7]; // 0x111(0x7)
+	bool bShouldWindowPreserveAspectRatio; // 0x108(0x1)
+	bool bUseBorderlessWindow; // 0x109(0x1)
+	bool bStartInVR; // 0x10A(0x1)
+	bool bAllowWindowResize; // 0x10B(0x1)
+	bool bAllowClose; // 0x10C(0x1)
+	bool bAllowMaximize; // 0x10D(0x1)
+	bool bAllowMinimize; // 0x10E(0x1)
+	uint8_t Pad_0x10F[0x1]; // 0x10F(0x1)
 };
 
 // Object: Class EngineSettings.HudSettings

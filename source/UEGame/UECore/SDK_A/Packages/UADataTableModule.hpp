@@ -1,0 +1,16347 @@
+#pragma once
+
+#include "../CoreUObject_classes.hpp"
+#include "Engine.hpp"
+
+namespace SDK
+{
+
+// Package: UADataTableModule
+// Enums: 0
+// Structs: 1174
+// Classes: 0
+
+struct FAvatarItemCfgTableRow;
+struct FWeaponAssembleConfTableRow;
+struct FWeaponItemConf;
+struct FTimeLimitedResourcesTableRow;
+struct FWeaponPresetConfTableRow;
+struct FrankedTableRow;
+struct FdialogTableRow;
+struct FWxGameShareConfTableRow;
+struct FWxGameShareRewardConf;
+struct FWhiteListConfTableRow;
+struct FWhiteListCommonConfTableRow;
+struct FWelfareAttrConfTableRow;
+struct FWelfareReward;
+struct FWelfareCondition;
+struct FWeeklyTakeOutItemConfTableRow;
+struct FWeeklyKillTargetConfTableRow;
+struct FWeeklyCollectItemConfTableRow;
+struct FWeeklyClearVirtualItemConfTableRow;
+struct FWeeklyActiveTaskRefreshConfTableRow;
+struct FTaskPoolConf;
+struct FWeeklyActiveTaskPoolConfTableRow;
+struct FWTaskConf;
+struct FWeeklyActiveRewardConfTableRow;
+struct FAwardItemDescConf;
+struct FAwardItemConf;
+struct FWeatherRuleConfTableRow;
+struct FWeatherGroupList;
+struct FWeatherListConfTableRow;
+struct FWeatherList;
+struct FWeaponSkinConfTableRow;
+struct FAdditionMeshAnimInfo;
+struct FInvAnimationInfo;
+struct FOverridePerWeaponAnims;
+struct FSkinMaterialInfo;
+struct FWeaponRuleWDCFTableRow;
+struct FWeaponTag;
+struct FWeaponSocket;
+struct FWeaponRuleWDCTableRow;
+struct FWeaponRuleConfTableRow;
+struct FRuleConf;
+struct FWeaponRecommendWithSprayConfTableRow;
+struct FRecommendWeaponItemConf;
+struct FWeaponRecommendWeaponConfTableRow;
+struct FWhiteListSet;
+struct FWeaponRecommendConfTableRow;
+struct FWeaponRecommendArgConfTableRow;
+struct FWeaponNumConfTableRow;
+struct FWeaponFilterItemsConfTableRow;
+struct FWeaponDetailValueToAttributeTableRow;
+struct FWeaponDetailConfTableRow;
+struct FWeaponClassifyConfTableRow;
+struct FWeaponAvatarSetCfgTableRow;
+struct FWealthTagConfTableRow;
+struct FWarmScoreConfTableRow;
+struct FWarmProfitConfTableRow;
+struct FWarmLossConfTableRow;
+struct FWarmLevelConfTableRow;
+struct FWarmExpConfTableRow;
+struct FWarmContinuousLoseConfTableRow;
+struct FWareHouseConfTableRow;
+struct FWarZoneConfTableRow;
+struct FWalkInTableRow;
+struct FVoiceToneConfTableRow;
+struct FVoiceIconSoundTableRow;
+struct FVideoUrlConfTableRow;
+struct FVideoConfTableRow;
+struct FVeteranKVConfTableRow;
+struct FVersionRouteConfTableRow;
+struct FVersionRouteItem;
+struct FVehiclePartDetailTableRow;
+struct FVehicleMachineDetailTableRow;
+struct FVehicleAssembleConfTableRow;
+struct FVehiclePartsConf;
+struct FValueDistributionConfTableRow;
+struct FUserTagVarParamTableRow;
+struct FUserTagTableRow;
+struct FConditionItem;
+struct FUpgradeUnlockTableRow;
+struct FUpgradeReportTableRow;
+struct FUnbanMapIdConfTableRow;
+struct FUnbanLootMapIdConfTableRow;
+struct FTrialCardConfTableRow;
+struct FTreasureMapMapToItemTableRow;
+struct FTreasureMapWeight;
+struct FTreasureMapItemToPlaceTableRow;
+struct FTreasureMapConfTableRow;
+struct FTrainBulletConfTableRow;
+struct FTraderScaleConfTableRow;
+struct FTradePromotionConfTableRow;
+struct FTradeItemClassifyConfTableRow;
+struct FTradeHeadIconTableRow;
+struct FBusinessHeadConf;
+struct FTradeFactionConfTableRow;
+struct FTradeDialogVoiceConfTableRow;
+struct FTradeConfTableRow;
+struct FExchangeItemConf;
+struct FTpnsPushConfTableRow;
+struct FTitleItemConfTableRow;
+struct FTimeCountDownTipsTableRow;
+struct FTicketConfTableRow;
+struct FTicketInfoConf;
+struct FThrowableWeaponDetailTableRow;
+struct FTeamVoiceTableRow;
+struct FTeamVersionConfTableRow;
+struct FTeamConfVersionRange;
+struct FTeamUpAvatarBgConfTableRow;
+struct FTeamTargetConfTableRow;
+struct FTeamStyleConfTableRow;
+struct FTeamRatingCommConfTableRow;
+struct FTeamRatingBattleConfTableRow;
+struct FRatingConditionConf;
+struct FTeamPlayerEnterConfTableRow;
+struct FTeamOptionTableRow;
+struct FTeamLendConfTableRow;
+struct FTeamKVConfTableRow;
+struct FTeamDegreeConfTableRow;
+struct FTeamActDataConfTableRow;
+struct FTaskTargetConfTableRow;
+struct FTaskListAddressConfTableRow;
+struct FTargetItemConf;
+struct FTaskDialogueTableRow;
+struct FCommonItemConfItem;
+struct FTaskConfTableRow;
+struct FTaskTargetRefItem;
+struct FUnlockCondtionRef;
+struct FTaskCommitTargetConfTableRow;
+struct FTaskClueListTableRow;
+struct FTaskActTargetDescParamConfTableRow;
+struct FTaskActTargetDescConfTableRow;
+struct FTaskActDescOutSideConfTableRow;
+struct FTaskActDescConfTableRow;
+struct FTaskActConfTableRow;
+struct FMapModeNode;
+struct FActTargetRef;
+struct FTargetArmorTableRow;
+struct FTakeInEquipLimitConfTableRow;
+struct FTagSheet2TableRow;
+struct FTagSheet1TableRow;
+struct FTagMatchedConfTableRow;
+struct FTCardSkillConfTableRow;
+struct FEffectConf;
+struct FTCardRangeSelectorConfTableRow;
+struct FTCardGameMsgConfTableRow;
+struct FTCardFactionIconConfTableRow;
+struct FTCardDeckConfTableRow;
+struct FTCardConfTableRow;
+struct FSystemRefreshPerkConfTableRow;
+struct FSystemRefreshConfTableRow;
+struct FSurveyConfTableRow;
+struct Fitem;
+struct FSupplyCardRewardConfTableRow;
+struct FRewardItem;
+struct FSupplyCardConfTableRow;
+struct FStrongRedPointConfTableRow;
+struct FStreakExpTableRow;
+struct FStoryTaskConfTableRow;
+struct FStickersTableRow;
+struct FStashSlotConfTableRow;
+struct FStashExtraRowConfTableRow;
+struct FStandaloneWeatherTableRow;
+struct FSquadKVConfTableRow;
+struct FSquadTime;
+struct FSprayIconTextureTableRow;
+struct FSpeechConfTableRow;
+struct FSpecialIdleConfTableRow;
+struct FSpecialGroupIdConfTableRow;
+struct FSpecialDanceTableRow;
+struct FSpecialConditionsConfTableRow;
+struct FDispatchEquipConditions;
+struct FSoundConfTableRow;
+struct FSocialMediaConfTableRow;
+struct FSlotRecommendEquipTableRow;
+struct FSkipTutorialTableRow;
+struct FSingleGameInventoryIDConfTableRow;
+struct FSideClashConfTableRow;
+struct FShowExtendConfTableRow;
+struct FShowDetailTableRow;
+struct FShoppingStationTabConfigTableRow;
+struct FShoppingStationItemConfigTableRow;
+struct FSpendItemConf;
+struct FShoppingStationGroupConfigTableRow;
+struct FShoppingStationConfigTableRow;
+struct FGroupListConf;
+struct FShoppingStationBuybackConfigTableRow;
+struct FShockConfTableRow;
+struct FShareTextTableRow;
+struct FShareTableRow;
+struct FSetItemDuraConfTableRow;
+struct FServerLimitConfTableRow;
+struct FServerKey2TextTableRow;
+struct FServerInfoTableRow;
+struct FSeasonShopConfTableRow;
+struct FSeasonPublicityTableRow;
+struct FSeasonProfileTypeIconPathConfTableRow;
+struct FSeasonProfileRewardConfTableRow;
+struct FSeasonProfileConfTableRow;
+struct FUnlockItems;
+struct FSeasonPVConfTableRow;
+struct FRewardItems;
+struct FSeasonChallengeTaskTabConfTableRow;
+struct FSeasonChallengeRewardConfTableRow;
+struct FSeasonBPHotSoundConfTableRow;
+struct FSeasonBPHotIntroduceConfTableRow;
+struct FSeasonBPHotConfTableRow;
+struct FScreenEffectPaddingTableRow;
+struct FScopeScaleConfigTableRow;
+struct FWeaponScopeScale;
+struct FScheme703060006TableRow;
+struct FScheme703060005TableRow;
+struct FScheme703060004TableRow;
+struct FScheme703060003TableRow;
+struct FScheme703060002TableRow;
+struct FScheme703060001TableRow;
+struct FScavScoreMappingTableRow;
+struct FScavScoreConfTableRow;
+struct FScavExpFactorTableRow;
+struct FScavEquipConfTableRow;
+struct FExtEquipConf;
+struct FScavContainerConfTableRow;
+struct FCntrItemConf;
+struct FScavAIDynamicLimitTableRow;
+struct FSafeLootLimitTableRow;
+struct FLimitPoolConf;
+struct FSafeBoxConfTableRow;
+struct FRoomKVConfTableRow;
+struct FRookirTriggerSummaryConfTableRow;
+struct FRookieTriggerConfTableRow;
+struct FRookieTriggerBubbleConfTableRow;
+struct FRookieTaskTreeBranchConfTableRow;
+struct FRookieTaskUnlockCondConf;
+struct FRookieTaskListConfTableRow;
+struct FRookieStepVersionProcessConfTableRow;
+struct FRookieStepVersionOverseaConfTableRow;
+struct FTutorialType;
+struct FRookieStepInbattleOverseaConfTableRow;
+struct FRookieStepConfTableRow;
+struct FRookieSendItemBackConfTableRow;
+struct FRookieOverSeaStepConfTableRow;
+struct FRookieOutlineOverrideConfTableRow;
+struct FRookieDetailConfTableRow;
+struct FRookieBStepEquipConfTableRow;
+struct FBlackItemConf;
+struct FRookieAutoEquipConfTableRow;
+struct FExtEquipRookieConf;
+struct FRoleKVConfTableRow;
+struct FRoleKVDailyTimeConf;
+struct FRoleIdentityConfTableRow;
+struct FRoadmapAwardsConfTableRow;
+struct FRewardShareConfTableRow;
+struct FReturnTypeConfTableRow;
+struct FDailyCheckinReward;
+struct FReward2Exp;
+struct FReturnTaskTypeConfTableRow;
+struct FTaskProgressConf;
+struct FReturnPlayerTypeConfTableRow;
+struct FReturnPlayerBuffConfTableRow;
+struct FReturnDisplayConfTableRow;
+struct FResourceTypeIconConfTableRow;
+struct FResourceListConfTableRow;
+struct FResourceAreaConfTableRow;
+struct FReputationLevelConfTableRow;
+struct FReportReasonConfTableRow;
+struct FReportCategoryConfTableRow;
+struct FRepairItemConfTableRow;
+struct FRepairDurabilityConfTableRow;
+struct FDurabilityPriceConf;
+struct FRepairCoefConfTableRow;
+struct FRegistWhiteListConfTableRow;
+struct FRegistVirtualItemConfTableRow;
+struct FRegistLimitConfTableRow;
+struct FRegistEquipConfTableRow;
+struct FRegionConfTableRow;
+struct FRedPointWhiteListConfTableRow;
+struct FRedPointConfTableRow;
+struct FRedPacketConfTableRow;
+struct FRecycleSlotConfTableRow;
+struct FRechargeConfTableRow;
+struct FRankedWeekRewardConfTableRow;
+struct FRankedTopRankRewardConfTableRow;
+struct FRankedTeamScoreConfTableRow;
+struct FRankedTargetTypeConfTableRow;
+struct FRankedSettleScoreConfTableRow;
+struct FRankedSeasonRewardConfTableRow;
+struct FRankedSeasonDocConfTableRow;
+struct FRankedSeasonConfTableRow;
+struct FSeasonChapterRef;
+struct FRankedRankingConfTableRow;
+struct FRankedNewScoreConfTableRow;
+struct FRankedMapConfTableRow;
+struct FRankedLevelRangeConfTableRow;
+struct FRankedLevelConfTableRow;
+struct FRankedLevelAwardConfTableRow;
+struct FRankedTargetConf;
+struct FRankedLeaderboardSaleConfTableRow;
+struct FRankedKillScoreConfTableRow;
+struct FRankedHistoryInfoConfTableRow;
+struct FRankedCommonConfTableRow;
+struct FRankedBoxConfTableRow;
+struct FRandomMapGroupConfTableRow;
+struct FRandomMapGroup;
+struct FRandomFormulaConfTableRow;
+struct FRandClassConfTableRow;
+struct FQuickSortContainerPriorityTableRow;
+struct FQuickModeRefreshCostConfTableRow;
+struct FQuickRefreshGroupVec;
+struct FEnterCostVec;
+struct FRefreshCostVec;
+struct FQuickGiveConfTableRow;
+struct FQuickChatDataStaticsTableRow;
+struct FQuickChatTableRow;
+struct FQuickBuyLimitTableRow;
+struct FQQSubscribeEventConfTableRow;
+struct FQCommandImageConfTableRow;
+struct FQCommandConfTableRow;
+struct FPurchaseConfTableRow;
+struct FProxysvrKVConfTableRow;
+struct FProvinceConfTableRow;
+struct FProtectionTypeConfTableRow;
+struct FPrivilegeTransferConfTableRow;
+struct FPrivilegeItemConfTableRow;
+struct FPrivilegeDesConfTableRow;
+struct FPrivilegeConfTableRow;
+struct FPrivilegeCommonConfTableRow;
+struct FPrivilegeBubbleConfTableRow;
+struct FPriceConfTableRow;
+struct FPresetModesConfTableRow;
+struct FPostmanTaskConfTableRow;
+struct FPostmanAwardItemVector;
+struct FPostmanRefreshConfTableRow;
+struct FPoolLimitValueTableRow;
+struct FPmcAiScoreConfTableRow;
+struct FPmcAiLimitItemConfTableRow;
+struct FPmcAiEqptPoolConfTableRow;
+struct FPmcAiConfTableRow;
+struct FPlotEndingConfTableRow;
+struct FPlayerNamePoolTableRow;
+struct FPlayerEquipmentPoolTableRow;
+struct FPlayerEquipmentTableRow;
+struct FPlayerAvatarPopupMenuButtonTableRow;
+struct FPlayerAvatarPopupMenuTableRow;
+struct FPlayModeTableRow;
+struct FPersonalSeasonProfileTableRow;
+struct FPersonalSeasonChallengeTableRow;
+struct FPersonalRadarMapTableRow;
+struct FPersonalRadarFactorTableRow;
+struct FPersonalNewSheetTest3TableRow;
+struct FPersonalBattleOverviewTableRow;
+struct FPermitConfTableRow;
+struct FPerkConfTableRow;
+struct FAbilityInfo;
+struct FPerkConditionConfTableRow;
+struct FPerkCommConfTableRow;
+struct FPeriodRefreshConfTableRow;
+struct FPeriodMapRefreshConf;
+struct FPeriodRefreshDailyTimeConf;
+struct FPeriodCardConfTableRow;
+struct FPaybackGiftConfTableRow;
+struct FPakBlackListTableRow;
+struct FPPTPageConfTableRow;
+struct FOverseaSubtitleTableRow;
+struct FOverseaDefaultGameSettingTableRow;
+struct FOverSaleValueTableRow;
+struct FOverSaleNewbieLevelTableRow;
+struct FOverSaleLackFundTableRow;
+struct FOverConsumptionValueTableRow;
+struct FOtherDetailConfTableRow;
+struct FOrderKVConfTableRow;
+struct FOptionDefineConfTableRow;
+struct FOnShelfConfTableRow;
+struct FObResetEquipConfTableRow;
+struct FObRegistEquipConfTableRow;
+struct FObRegistBasicConfTableRow;
+struct FObDSListConfTableRow;
+struct FOBTeamLogoTableRow;
+struct FNewbieLevelTableRow;
+struct FNationalFlagConfTableRow;
+struct FNOTESTableRow;
+struct FMultiModeWidgetTableRow;
+struct FMultiModeGroupConfTableRow;
+struct FMultiModeCommConfTableRow;
+struct FMonopolyLatticeConfTableRow;
+struct FMonopolyEventConfTableRow;
+struct FQuestionLatticeChoices;
+struct FMomentTableRow;
+struct FModeGameSettingConfTableRow;
+struct FMiniBattlePassLevelConfTableRow;
+struct FMiniBpLevelItem;
+struct FMiniBattlePassConfTableRow;
+struct FMilestoneTaskScoreConfTableRow;
+struct FMilestoneTaskConfTableRow;
+struct FMidasbuyExchangeConfTableRow;
+struct FMidasPayChannelConfTableRow;
+struct FMeticulousWarmTagConfTableRow;
+struct FMemberBenefitsConfTableRow;
+struct FMeleeWeaponDetailTableRow;
+struct FMedGuidePageConfTableRow;
+struct FMatchRankScoreExpansionConfTableRow;
+struct FMatchPoolConfTableRow;
+struct FMultiModeMatchConf;
+struct FMatchFactionTeamConf;
+struct FJoinTimeConf;
+struct FMatchPoolConditionConfTableRow;
+struct FMatchDailyTimeConf;
+struct FMatchMapReplaceConfTableRow;
+struct FMatchMapReplaceItemConf;
+struct FMatchLockDsConfTableRow;
+struct FMatchKVConfTableRow;
+struct FMatchHallTeamDegreeConfTableRow;
+struct FMatchFactionOpenConditionConfTableRow;
+struct FMatchFactionOpenConf;
+struct FMatchCountryLimitConfTableRow;
+struct FMatchConditionPointsConfTableRow;
+struct FMarqueeConfTableRow;
+struct FMapWeatherConfTableRow;
+struct FWeatherRateItem;
+struct FMapUnlockTableRow;
+struct FMapUnlockDailyTimeConf;
+struct FMapTaskTreeConfTableRow;
+struct FmapTaskTreeItem;
+struct FMapTaskConfTableRow;
+struct FMapRuleRangeConfTableRow;
+struct FMapRolePlayConfTableRow;
+struct FMapProtectConfTableRow;
+struct FMapNewsInfoTableRow;
+struct FMapLayoutTableRow;
+struct FMapKeyListTableRow;
+struct FMapHighValueTipsConfTableRow;
+struct FMapGroupConfTableRow;
+struct FMapGameModeConfTableRow;
+struct FMapEntranceConfTableRow;
+struct FMapDetailTableRow;
+struct FMapBornPointConfTableRow;
+struct FMapBanTaskConfTableRow;
+struct FMallSuitConfTableRow;
+struct FMallRecommendConfTableRow;
+struct FMallKVConfTableRow;
+struct FMallBlockChannelInfo;
+struct FMallJumpConfTableRow;
+struct FMallItemConfTableRow;
+struct FSubTitle;
+struct FTag;
+struct FExchange;
+struct FMallGroupItemsConfTableRow;
+struct FGroupExchange;
+struct FMallGroupDescConfTableRow;
+struct FMallGroupConfTableRow;
+struct FMallGradeDivisionConfTableRow;
+struct FMallGradeDescConfTableRow;
+struct FMallClassConfTableRow;
+struct FClassBanner;
+struct FMallABFirstChargeConfTableRow;
+struct FMainUIBgConfTableRow;
+struct FMainTaskTreeConfTableRow;
+struct FMailTypeConfTableRow;
+struct FMailPresentConfTableRow;
+struct FMailLangConfTableRow;
+struct FMailConfTableRow;
+struct FLuckyCharmConfTableRow;
+struct FLotteryJudgeReasonTableRow;
+struct FReasonDesc;
+struct FLoseDropConfTableRow;
+struct FLootResourceConfTableRow;
+struct FLootReplaceConfTableRow;
+struct FLootProtectionItemsConfTableRow;
+struct FLootProtectionConfTableRow;
+struct FLootPoolScaleConfTableRow;
+struct FLootPoolConfTableRow;
+struct FLootPoolBlackListConfTableRow;
+struct FLootObjExpTableRow;
+struct FLootLimitUserTagTableRow;
+struct FLimitUserTagConditions;
+struct FLootLimitTimeConfTableRow;
+struct FLootLimitPointTypeBlacklistTableRow;
+struct FLootLimitConfTableRow;
+struct FLootFactionItemConfTableRow;
+struct FLootDropPoolConfTableRow;
+struct FLootDropPoolInfo;
+struct FLootDropOperationConfTableRow;
+struct FActivityLootDropInfoConf;
+struct FLootDropControlConfTableRow;
+struct FLootDropActivityPoolConfTableRow;
+struct FLootDropActivityConfTableRow;
+struct FNewActivityLootDropInfoConf;
+struct FLootDropTableRow;
+struct FLootDefaultConfTableRow;
+struct FLoginLoadingTipsTableRow;
+struct FLoginLoadingImageTableRow;
+struct FLoginControlConfTableRow;
+struct FConfVersionRange;
+struct FLocalizationConf_zh_HansTableRow;
+struct FLocalizationConfTableRow;
+struct FLobbyPakRulesConfigTableRow;
+struct FLoadingTipsTableRow;
+struct FTipItem;
+struct FLoadingImageTableRow;
+struct FImageRefItem;
+struct FLoadingFrameConfTableRow;
+struct FLimitGameDsZoneConfTableRow;
+struct FLevelConfTableRow;
+struct FLeaderboardDesConfTableRow;
+struct FLbsTitleConfTableRow;
+struct FLackFundTableRow;
+struct FKeyContainerConfTableRow;
+struct FKeyCabinetConfTableRow;
+struct FJumpGotoCfgTableRow;
+struct FItemTakeInLimitConfTableRow;
+struct FItemLimitConf;
+struct FItemStackFactionConfTableRow;
+struct FItemSortTableRow;
+struct FItemSketchIconPathTableRow;
+struct FItemShelveConfTableRow;
+struct FItemShareConfTableRow;
+struct FItemPriceGearTableRow;
+struct FItemInflationTypeTableRow;
+struct FItemFilterConfTableRow;
+struct FItemFactoryTableRow;
+struct FItemExtraConfTableRow;
+struct FItemEffectConfTableRow;
+struct FExchangeEffect;
+struct FItemDynamicPriceTableRow;
+struct FItemConfTableRow;
+struct FItemComponentsIconTableRow;
+struct FItemClassifyGroupConfTableRow;
+struct FItemCheckWhiteListConfTableRow;
+struct FItemCategoryIconPathTableRow;
+struct FIpListConfTableRow;
+struct FIpAreaWhitelistConfTableRow;
+struct FIpAreaRegistConfTableRow;
+struct FIpAreaConfTableRow;
+struct FIpAlertListConfTableRow;
+struct FInterpretationSelectionTableRow;
+struct FInterpSelection;
+struct FInsideAvatarConfTableRow;
+struct FInnerGameActConfTableRow;
+struct FOpenMapModeConf;
+struct FDailyTimeConf;
+struct FIndividualWeaponConfTableRow;
+struct FIdcPingConfTableRow;
+struct FPingItemVec;
+struct FIconScaleConfTableRow;
+struct FHotUpdateGlobalConfTableRow;
+struct FHighRatioScavConfTableRow;
+struct FHighRatioScavDailyTimeConf;
+struct FHighRatioConfVector;
+struct FHeroConfTableRow;
+struct FHelperConfTableRow;
+struct FHelpTrainTargetConfTableRow;
+struct FHelpTrainItemConfTableRow;
+struct FHelpTrainConfTableRow;
+struct FHelpTrainConditionConfTableRow;
+struct FHelpRootTypeConfTableRow;
+struct FHelpEntryInfoConfTableRow;
+struct FTabDetailItem;
+struct FHelpDialogConfTableRow;
+struct FHelpDialogContentItem;
+struct FH5MediaItem;
+struct FHealthThresholdTableRow;
+struct FHealKVConfTableRow;
+struct FHeadPictureItemConfTableRow;
+struct FHeadPicConfTableRow;
+struct FHeadConfTableRow;
+struct FHeadBoxItemConfTableRow;
+struct FGuaranteedUseAttrTableRow;
+struct FGuaranteedConditions;
+struct FGuaranteedPoolConfTableRow;
+struct FGuaranteeLimitStrategyTableRow;
+struct FGuaranteeGenItemTableRow;
+struct FGuaranteeContainerTableRow;
+struct FGuaranteePoolConf;
+struct FGuaranteeCheckItemTableRow;
+struct FGroupScaleConfTableRow;
+struct FScaleTimeConf;
+struct FGoldDogTagConfTableRow;
+struct FGmToolEquipConfTableRow;
+struct FGlovesGestureTableRow;
+struct FGlobalNumConfTableRow;
+struct FGlobalConfTableRow;
+struct FGiftPackageShowItemsConfTableRow;
+struct FGiftPackageLotteryConfTableRow;
+struct FDropPoolsConf;
+struct FGiftPackageEquipConfTableRow;
+struct FGiftEquipItem;
+struct FGiftPackageEquipTableRow;
+struct FGiftPackageConfTableRow;
+struct FGiftPackTemplateConfTableRow;
+struct FGiftItemConf;
+struct FGidAndMailAdressTableRow;
+struct FGestureIconMontageTableRow;
+struct FGestureMontageInfo;
+struct FGenericShopTradeConfTableRow;
+struct FGShopDiscount;
+struct FGShopOnshelfTime;
+struct FGenericShopTagConfTableRow;
+struct FGenericShopConfTableRow;
+struct FConfGShopGood;
+struct FGenEqptSkinStyleConfTableRow;
+struct FGenEqptSkinConfTableRow;
+struct FSpraiedAccessory;
+struct FGameViewSettingTableRow;
+struct FGameSettingRedpointTableRow;
+struct FGamePadLayerTableRow;
+struct FGameBgmMainConfTableRow;
+struct FGameBgmConfTableRow;
+struct FGalleryShowWeaponConfTableRow;
+struct FGalleryMedalTaskConfTableRow;
+struct FNeedItemRef;
+struct FGalleryGlobalConfTableRow;
+struct FGalleryCollectionTaskConfTableRow;
+struct FGalleryCollectionExchangeConfTableRow;
+struct FexchangeItem;
+struct FGalleryBackMusicConfTableRow;
+struct FGachaClientLiveConfTableRow;
+struct FGachaClientConfTableRow;
+struct FInvList;
+struct FFunctionControlCfgTableRow;
+struct FFriRecommTagsTableRow;
+struct FFriRecommConfTableRow;
+struct FFriKVConfTableRow;
+struct FFriInviteCodeRewardTableRow;
+struct FInviteRewardListConf;
+struct FForbiddenVersionConfTableRow;
+struct FFcmPushConfTableRow;
+struct FFactionalItemConfTableRow;
+struct FFactionSelectConfTableRow;
+struct FFactionConfTableRow;
+struct FFactionChoiceConfTableRow;
+struct FactionChoiceItem;
+struct FPreTaskId;
+struct FFacePicConfTableRow;
+struct FFaceOrderConfTableRow;
+struct FExtraSkinConfTableRow;
+struct FBlackSocketInfo;
+struct FExpConstantTableRow;
+struct FExchangeTransferConfTableRow;
+struct FExchangeStashConfTableRow;
+struct FExchangeRarityConfTableRow;
+struct FExchangeFixConfTableRow;
+struct FEventAIIDModifierDataTableTableRow;
+struct FEvaluationPartitionTagConfTableRow;
+struct FGroupTagNode;
+struct FEvaluationConfTableRow;
+struct FEvaluationCommConfTableRow;
+struct FEuropeanUnionCountryConfTableRow;
+struct FErrorCodeTableRow;
+struct FEquipmentSkinConfTableRow;
+struct FEquipmentKVConfTableRow;
+struct FEquipTemplateConfTableRow;
+struct FEquipTemplateInfo;
+struct FEquipSlotPrepareConfTableRow;
+struct FEquipSlotConfTableRow;
+struct FEquipReturnItemConfTableRow;
+struct FEquipReturnConfTableRow;
+struct FEquipReturnCardConfTableRow;
+struct FEquipPurchaseConfTableRow;
+struct FPurchaseEquipInfo;
+struct FEquipOnShelfConfTableRow;
+struct FEquipAvatarSetCfgTableRow;
+struct FEloChangeConfTableRow;
+struct FEliteSuiteExpansionConfTableRow;
+struct FEliteSuiteConfTableRow;
+struct FEliteRefreshCostVec;
+struct FRefreshGroupVec;
+struct FEliteEnterCostVec;
+struct FEliminationExpTableRow;
+struct FEasterEggAvatarCfgTableRow;
+struct FEAttachPositionTableRow;
+struct FDynamicParamTemplateConfTableRow;
+struct FDurabilityChangeTableRow;
+struct FDsVersionConfTableRow;
+struct FDsConfVersionRange;
+struct FDsGrayConfTableRow;
+struct FDsGameFunctionConfigTableRow;
+struct FDsExtParamTemplateConfTableRow;
+struct FDropPicShowConfTableRow;
+struct FDropNonAvatarItemConfTableRow;
+struct FDownloadPropertyConfigTableRow;
+struct FDownloadDisplayTableRow;
+struct FDownloadConfTableRow;
+struct FDownloadBlockConfTableRow;
+struct FDispelExpTableRow;
+struct FDispatchRewardPoolConfTableRow;
+struct FPrizeConf;
+struct FDispatchRandomNameConfTableRow;
+struct FDispatchRandomAvatarConfTableRow;
+struct FDispatchPerkPoolConfTableRow;
+struct FPerkPool;
+struct FDispatchPerkConfTableRow;
+struct FDispatchMemberTypeConfTableRow;
+struct FWeightPerkPool;
+struct FDispatchMemberConfTableRow;
+struct FSpecialCondition;
+struct FDispatchHelpConfTableRow;
+struct FDispatchEventConfTableRow;
+struct FDispatchEventTextConf;
+struct FDispatchConversionConfTableRow;
+struct FConversionConf;
+struct FConversionExpandConf;
+struct FDispatchAvatarSuitConfTableRow;
+struct FDeviceWorkloadScoreTableRow;
+struct FDeviceModelViewSettingTableRow;
+struct FDescMiddleLayerConfTableRow;
+struct FDeathBoxSkinConfTableRow;
+struct FDataPathTableRow;
+struct FDSCountryZoneConfTableRow;
+struct FDSCountryGroupConfTableRow;
+struct FDMGLimitMapidConfTableRow;
+struct FDMGLimitConfTableRow;
+struct FCustomizedExchangeRuleConfTableRow;
+struct FDailyRefreshTimeConf;
+struct FCustomizedExchangeConfTableRow;
+struct FCustomizedExchangeItemConf;
+struct FCustomMetricConfTableRow;
+struct FConditionConfVector;
+struct FCustomLayoutOverrideTableRow;
+struct FCustomLayoutConfTableRow;
+struct FCurrencyExchangeConfTableRow;
+struct FCreditPaneltyConfTableRow;
+struct FCreditLevelConfTableRow;
+struct FCreditEventConfTableRow;
+struct FCreditBehaviorDescConfTableRow;
+struct FCreateRoleAvatarShowConfTableRow;
+struct FCreateRoleAvatarConfTableRow;
+struct FAvatarSet;
+struct FCourtSettleConfTableRow;
+struct FCourtRewardConfTableRow;
+struct FCourtRanksConfTableRow;
+struct FCourtRanksCommonConfTableRow;
+struct FCrewRewardSeg;
+struct FCourtRankTargetTypeConfTableRow;
+struct FCourtRankLevelRangeConfTableRow;
+struct FCountryLayoutConfTableRow;
+struct FCountryGroupConfTableRow;
+struct FCountryCurrencyExchangeConfTableRow;
+struct FCountryCurrencyConfTableRow;
+struct FCountryConfTableRow;
+struct FCosBucketConfTableRow;
+struct FCoreWeaponSkinConfTableRow;
+struct FCoreWeaponConfTableRow;
+struct FCoreSprayConfTableRow;
+struct FCoreOtherConfTableRow;
+struct FCoreGeneralAssetConfTableRow;
+struct FCoreEquipSkinConfTableRow;
+struct FCoreAvatarConfTableRow;
+struct FContextMenuPickUpConfTableRow;
+struct FContextMenuLevel2ConfTableRow;
+struct FContextMenuLevel1ConfTableRow;
+struct FContestWarZoneConfTableRow;
+struct FContestTaskConfTableRow;
+struct FContainerRuleConfTableRow;
+struct FContainerPriorityOutGameTableRow;
+struct FPriorityConf;
+struct FContainerPriorityInGameTableRow;
+struct FContainerConfTableRow;
+struct FContainerSizeConfItem;
+struct FContainerArmorConfTableRow;
+struct FConsumablesUseAwardConfTableRow;
+struct FConsumablesUseAward;
+struct FConsumablesDetailConfTableRow;
+struct FConsumeBuffConf;
+struct FConsumeRemoveStatusConf;
+struct FConsumablesConfTableRow;
+struct FRecommandSuppliesPack;
+struct FConsumablesBuffConfTableRow;
+struct FConnectLineGameConfTableRow;
+struct FLineGameItemInfo;
+struct FCompetitionTeamLogoConfTableRow;
+struct FCompetitionTeamFactionConfTableRow;
+struct FCompetitionTeamFaction;
+struct FCompetitionDefaultTeamNameConfTableRow;
+struct FCompetitionAuthorityConfTableRow;
+struct FCommonKVConfTableRow;
+struct FCommonCreditLimitSceneTableRow;
+struct FCommonCreditLimitConfTableRow;
+struct FCommonAffixsConfTableRow;
+struct FCommercialSchemeConfTableRow;
+struct FComebackConfTableRow;
+struct FCombatReadinessInitConfTableRow;
+struct FCombatReadinessConfTableRow;
+struct FCollectsvrKVConfTableRow;
+struct FClueListTableRow;
+struct FClueConnectionListTableRow;
+struct FClanKVConfTableRow;
+struct FCityConfTableRow;
+struct FChatTemplateConfTableRow;
+struct FChatLocalBlockConfTableRow;
+struct FChatKVConfTableRow;
+struct FChatDialogBubbleConfTableRow;
+struct FChannelPromotionConfTableRow;
+struct FChannelDefineConfTableRow;
+struct FChainPlotConfTableRow;
+struct FCarvingShowConfTableRow;
+struct FCardpvpKVConfTableRow;
+struct FCardConfTableRow;
+struct FCaptureTableRow;
+struct FCanaryUserConfTableRow;
+struct FCalendarEventConfTableRow;
+struct FCalExtendConfTableRow;
+struct FCGVoiceConfTableRow;
+struct FBusinessmanStageConfTableRow;
+struct FBusinessmanConfTableRow;
+struct FShowTimeConf;
+struct FBusinessBaseInfoVec;
+struct FBusinessGrateDescribeConfTableRow;
+struct FBulletPrepareConfTableRow;
+struct FBulletDetailConfTableRow;
+struct FVehiclePartsDamageScaleConf;
+struct FBulletConfTableRow;
+struct FMagazineBulletPack;
+struct FBugTestTableRow;
+struct FBugSubmitConfTableRow;
+struct FBuffIconConfTableRow;
+struct FBrokenImageConfTableRow;
+struct FBpRewardConfTableRow;
+struct FBoxRowConfTableRow;
+struct FBossTokenConfTableRow;
+struct FBornShowConfTableRow;
+struct FBodyPartsTableTableRow;
+struct FBodyDetailsPartsTableTableRow;
+struct FBlockWordIconCfgTableRow;
+struct FBlackMarketPoolConfTableRow;
+struct FBlackMarketItemConfTableRow;
+struct FBlackListConfTableRow;
+struct FBenefitsRewardConfTableRow;
+struct FBenefitsItemConfTableRow;
+struct FBenefitsCommonConfTableRow;
+struct FBehaviorNodeConfTableRow;
+struct FBehaviorGameplayConfTableRow;
+struct FBehaviorDialogConfTableRow;
+struct FBattleStatConfTableRow;
+struct FBattleResultTransTemplateConfTableRow;
+struct FBattleResultTransConfTableRow;
+struct FTransAwardConf;
+struct FTransConditionConf;
+struct FBattleResultTeachTableRow;
+struct FBattleResultReferTableRow;
+struct FBattleResultPointEventConfTableRow;
+struct FDescribeArg;
+struct FBattleResultMultiModeConfTableRow;
+struct FBattleResultMainShowData;
+struct FBattleResultKillTitleTableRow;
+struct FBattleResultJudgeReasonTableRow;
+struct FBattleResultJudgeConfTableRow;
+struct FBattleResultJudgeConf;
+struct FBattleResultInjuredRecordTableRow;
+struct FBattleResultEnemyTipsFuncTableRow;
+struct FBattleResultEnemyTipsTableRow;
+struct FCheckFuncs;
+struct FBattleResultEXPRatioTableRow;
+struct FBattleResultDieTypeTableRow;
+struct FBattleResultDieTipsTableRow;
+struct FBattleResultConfTableRow;
+struct FBattleResultBlockWeaponsConfTableRow;
+struct FBattleResultAreaConfTableRow;
+struct FBattleResultAppraiseSeasonConfTableRow;
+struct FBattleResultAppraiseActionConfTableRow;
+struct FBattleResultAppraiseTableRow;
+struct FShareDesArg;
+struct FShowConditionConf;
+struct FAppraiseConditionConf;
+struct FBattlePassWorldLevelConfTableRow;
+struct FBattlePassVipShowConfTableRow;
+struct FBattlePassVipShowItem;
+struct FBattlePassVipPreorderConfTableRow;
+struct FBattlePassVipPreorderItemConf;
+struct FBattlePassVipConfTableRow;
+struct FBattlePassVipItem;
+struct FBattlePassShowTypeTableRow;
+struct FBattlePassShowRewardConfTableRow;
+struct FBattlePassPreviewConfTableRow;
+struct FBattlePassOtherWayTableRow;
+struct FBattlePassLevelConfTableRow;
+struct FBattlePassLevelItem;
+struct FBattlePassHallPopTableRow;
+struct FBattlePassHallPopItem;
+struct FBattlePassConfTableRow;
+struct FBattlePassCommonMeshConfTableRow;
+struct FBattlePassAwardItemsConfTableRow;
+struct FBattlePassABVipConfTableRow;
+struct FBattlePassABVipItem;
+struct FBattlePassABSeasonPreviewConfTableRow;
+struct FABSeasonPreviewItemConf;
+struct FABGroupListConf;
+struct FBattlePassABSeasonBuyConfTableRow;
+struct FBattlePassABSeasonBuyItem;
+struct FBattlePassABPreviewConfTableRow;
+struct FBattlePassABLevelConfTableRow;
+struct FBattlePassABLevelItem;
+struct FBattlePassABGroupConfTableRow;
+struct FABPreviewItemConf;
+struct FBattlePassABConfTableRow;
+struct FBattlePassABCommonMeshConfTableRow;
+struct FBattleModeTemplateConfTableRow;
+struct FBattleModeDailyTimeConf;
+struct FBasicEquipConfTableRow;
+struct FBanTypeConfTableRow;
+struct FBanThrowsconfTableRow;
+struct FBanTakeInTrainConfTableRow;
+struct FBanReasonConfTableRow;
+struct FBanGenEqptConfTableRow;
+struct FBadgeSlotConfTableRow;
+struct FBadgeConfTableRow;
+struct FAvatarValueShowTableRow;
+struct FBuffInfo;
+struct FAvatarValueNameTableRow;
+struct FAvatarTagCfgTableRow;
+struct FAvatarTabCfgTableRow;
+struct FAvatarSuitReissueConfTableRow;
+struct FAvatarSuitLoadingCardConfTableRow;
+struct FAvatarSuitConfTableRow;
+struct FAvatarSetCfgTableRow;
+struct FAvatarRoleConfTableRow;
+struct FAvatarReplaceConfTableRow;
+struct FAvatarPreviewBgConfTableRow;
+struct FAvatarPartTabCfgTableRow;
+struct FAvatarLightPlanConfTableRow;
+struct FAvatarItemConfTableRow;
+struct FAvatarHairOptionsTableRow;
+struct FAvatarFreeOfChargePoolConfTableRow;
+struct FAvatarFreeOfChargeConfTableRow;
+struct FAvatarFactoryCfgTableRow;
+struct FAvatarCompleteShareConfTableRow;
+struct FAvatarAwardConfTableRow;
+struct FAuctionTagsTableRow;
+struct FAuctionSpecialDelayTableRow;
+struct FAuctionSingleRecycleTableRow;
+struct FAuctionScaleConfTableRow;
+struct FAuctionSafeQuestionConfTableRow;
+struct FAuctionRecycleFilterOptionsTableRow;
+struct FAuctionOrderParamsTableRow;
+struct FAuctionMinorTableRow;
+struct FAuctionMapProtectRecycleTableRow;
+struct FAuctionMajorTableRow;
+struct FAuctionKVConfTableRow;
+struct FAuctionItemRecycleTableRow;
+struct FAuctionItemTableRow;
+struct FAuctionGetRightsWayTableRow;
+struct FAuctionExtraTableRow;
+struct FAuctionDelayTableRow;
+struct FAuctionContextMenuWhiteListTableRow;
+struct FAuctionCombineRecycleTableRow;
+struct FAssetsToCookRuleConfigTableRow;
+struct FAssetWhiteListTableRow;
+struct FArmorValueRangeConfTableRow;
+struct FArmorProtectDisplayConfTableRow;
+struct FArmorProtectConfTableRow;
+struct FArmorMaterialConfTableRow;
+struct FArmorDetailValueToAttributeTableRow;
+struct FArmorDetailConfTableRow;
+struct FArmorCorrespongdingConfTableRow;
+struct FPriceIntervalVector;
+struct FAppearancePresetConfTableRow;
+struct FAnchorConfTableRow;
+struct FAmmoNumTableRow;
+struct FAmmoMagazineRelationTableRow;
+struct FAllowTakeInItemConfTableRow;
+struct FMultiModeItemOutConf;
+struct FMultiModeItemLimitConf;
+struct FAiTemplateConfTableRow;
+struct FAiEquipTemplateInfo;
+struct FAiLimitConfTableRow;
+struct FAiLevelConfTableRow;
+struct FAiEquipmentPoolConfTableRow;
+struct FAiEquipID2ContainerDropIdTableRow;
+struct FAiDropConfTableRow;
+struct FDropItemList;
+struct FAiContainerDropConfTableRow;
+struct FAiCommonConfTableRow;
+struct FAdcodeConfTableRow;
+struct FActivityInventoryAdditionDataTableRow;
+struct FActWishConfTableRow;
+struct FOptionalRewardsConf;
+struct FActWelfareConfTableRow;
+struct FActVoteObjectConfTableRow;
+struct FActVoteConfTableRow;
+struct FActVestBagHeroConfTableRow;
+struct FVestBags;
+struct FActUpgradeBoxConfTableRow;
+struct FBoxLevelConf;
+struct FActTreasureMapConfTableRow;
+struct FActTavernDropDropRangeConfTableRow;
+struct FDropRangeConf;
+struct FActTavernDropConfTableRow;
+struct FDropRewardConf;
+struct FActTaskConfTableRow;
+struct FActTakeoutBoxConfTableRow;
+struct FActTabConfTableRow;
+struct FTabConf;
+struct FActSubscribeObjectConfTableRow;
+struct FActStrongRedPointConfTableRow;
+struct FActSongkranConfTableRow;
+struct FSplashedWishConf;
+struct FSplashWishConf;
+struct FSongkranJumpConf;
+struct FActSimpleDropConfTableRow;
+struct FActSimpleDialogConfTableRow;
+struct FActSimpleConfTableRow;
+struct FPPTNode;
+struct FShowItem;
+struct FActSideClashConfTableRow;
+struct FActSelfGameSettleScoreConfTableRow;
+struct FSettleEvent;
+struct FActSeasonPageConfTableRow;
+struct FActSeasonActEntranceConfTableRow;
+struct FActScratchRewardConfTableRow;
+struct FScratchRewardConf;
+struct FActScratchConfTableRow;
+struct FScratchShowRewardConf;
+struct FActRoleBpRewardsConfTableRow;
+struct FRoleBPRewardNode;
+struct FActRoleBpConfTableRow;
+struct FActRedPacketConfTableRow;
+struct FTaskListConf;
+struct FActRecruitGiftPackageConfTableRow;
+struct FGiftItem;
+struct FActReconnaissanceRewardConfTableRow;
+struct FReconnaissanceRewardsConf;
+struct FActReconnaissancePartnerConfTableRow;
+struct FActReconnaissanceMapConfTableRow;
+struct FActReconnaissanceMailConfTableRow;
+struct FReconnaissanceMailTextConf;
+struct FActReconnaissanceConfTableRow;
+struct FContractItemConf;
+struct FPartnerEquipItemConf;
+struct FActRechargeRebateTierConfTableRow;
+struct FRechargeRewardConf;
+struct FActRechargeRebateConfTableRow;
+struct FActRecallTaskConfTableRow;
+struct FActRecallRewardConf;
+struct FActRecallInGameConfTableRow;
+struct FActRandomRangeConfTableRow;
+struct FActRandomPriceConfTableRow;
+struct FActPushGiftMallConfTableRow;
+struct FActPushGiftConfTableRow;
+struct FActProbShowConfTableRow;
+struct FActPopImageConfTableRow;
+struct FActPlayerDashboardConfTableRow;
+struct FActNewGunEvaluationConfTableRow;
+struct FEvaluationsConf;
+struct FActNewGunChallengeConfTableRow;
+struct FActMonopolyConfTableRow;
+struct FActMonopolyRewardsConf;
+struct FGuaranteedLoopConf;
+struct FRollResultsConf;
+struct FActMoneyBuyGuideConfTableRow;
+struct FActMapExplorationConfTableRow;
+struct FProgressRankConf;
+struct FActMapExplorationCommentConfTableRow;
+struct FCommentRewardConf;
+struct FCommentTextConf;
+struct FActLotteryTaskRewardPoolConfTableRow;
+struct FRewardConf;
+struct FActLotteryTaskRewardConfTableRow;
+struct FProbConf;
+struct FGuaranteeConf;
+struct FActLotteryStepConfTableRow;
+struct FActLotterySkipPoolConfTableRow;
+struct FPrizeEffectNode;
+struct FActLotterySkipEffectConfTableRow;
+struct FSkipPoolComboEffect;
+struct FActLotterySeriesBoxPoolConfTableRow;
+struct FActLotterySeriesBoxConfTableRow;
+struct FActLotteryPermanentConfTableRow;
+struct FPermanentPoolNode;
+struct FActLotteryOfflineTradeConfTableRow;
+struct FAShopDiscount;
+struct FAShopOnshelfTime;
+struct FActLotteryOfflineOutsideConfTableRow;
+struct FModelNode;
+struct FActLotteryOfflineExchangeConfTableRow;
+struct FActLotteryOfflineConfTableRow;
+struct FTagNodeConf;
+struct FActShopGoods;
+struct FActLotteryNormalPointConfTableRow;
+struct FActLotteryNormalConfTableRow;
+struct FActLotteryBlindBoxEffectConfTableRow;
+struct FActLotteryBlindBoxConfTableRow;
+struct FActLootLotteryConfTableRow;
+struct FLootRateIncConf;
+struct FActLiveStreamPlatConfTableRow;
+struct FActLiveStreamConfTableRow;
+struct FActLikeLotteryConfTableRow;
+struct FBonusTimeRangeConf;
+struct FActKVConfTableRow;
+struct FActIllustratedBookConfTableRow;
+struct FPopupUnlockedConf;
+struct FActHandbookTaskConfTableRow;
+struct FActHandbookRewardConfTableRow;
+struct FActHandbookConfTableRow;
+struct FActGoodCommentConfTableRow;
+struct FChannelInfo;
+struct FActGoldenWeekConfTableRow;
+struct FGoldenWeekTreasuryConf;
+struct FActGoldenWeekBoxConfTableRow;
+struct FActGoldenWeekCDNConf;
+struct FActGoldIdCardConfTableRow;
+struct FActGeneralOpenBoxConfTableRow;
+struct FActLuckyPool;
+struct FActFriNumInviteCodeConfTableRow;
+struct FriNumTaskConf;
+struct FActFriLevelInviteCodeConfTableRow;
+struct FriLevelTaskConf;
+struct FActFollowCommunityConfTableRow;
+struct FActFlashConsumeConfTableRow;
+struct FActExchangeGlobalConfTableRow;
+struct FActExchangeConfTableRow;
+struct FExchangeRewardConf;
+struct FSubmitItemNode;
+struct FCostItemNode;
+struct FActEvaluateMineralConfTableRow;
+struct FMineralConf;
+struct FActEntryConfTableRow;
+struct FActEntryBannerConfigTableRow;
+struct FActDynamicDialogTreeConfTableRow;
+struct FDialogTreeConf;
+struct FActDynamicDialogConfTableRow;
+struct FRandomRewardConf;
+struct FActDoss2ConfTableRow;
+struct FActDialogConfTableRow;
+struct FActDailyTreasureConfTableRow;
+struct FTreasureLuckyPoolConf;
+struct FTreasureRewardConf;
+struct FActDailyShopItemConfTableRow;
+struct FActDailyShopConfTableRow;
+struct FActDailyLoginConfTableRow;
+struct FActContestConfTableRow;
+struct FRewardSeg;
+struct FActConfigTableRow;
+struct FActCodePacketConfTableRow;
+struct FCodePacketConf;
+struct FActChainTaskNodeConfTableRow;
+struct FActChainTaskConfTableRow;
+struct FActChainTaskDetailConf;
+struct FActCdnReplaceConfTableRow;
+struct FActBpTaskConfTableRow;
+struct FActBpConfTableRow;
+struct FActBlindBoxLoginConfTableRow;
+struct FBlindBoxTypeConf;
+struct FActBingoLotteryConfTableRow;
+struct FActBingoLotteryBoardPointConfTableRow;
+struct FActBingoLotteryBoardPointRewardConf;
+struct FActBingoLotteryBoardLineConfTableRow;
+struct FActBingoLotteryBoardLineRewardConf;
+struct FActAwardConfTableRow;
+struct FActAnchorConfTableRow;
+struct FActAccumRechargeRuleConfTableRow;
+struct FActAccumRechargeConfTableRow;
+struct FAwardAccumRechargeConf;
+struct FActAccumConsumeRuleConfTableRow;
+struct FActAccumConsumeConfTableRow;
+struct FAwardAccumConsumeConf;
+struct FActAccountBindConfTableRow;
+struct FAccessoryAvatarSetCfgTableRow;
+struct FAccessRepairDurabilityConfTableRow;
+struct FAccessDurabilityPriceConf;
+struct FAccessMatArchIdConfTableRow;
+struct FAccessDurabilityArchIdConfTableRow;
+struct FAISpawnSupportTableRow;
+struct FAISpawnScavSpawnControllerTableRow;
+struct FAreaInfo;
+struct FScavWaveInfoArray;
+struct FAISpawnPlayerScavConfigTableRow;
+struct FAISpawnPlanConfigTableRow;
+struct FAISpawnPMCSpawnControllerTableRow;
+struct FAISpawnPMCConfigTableRow;
+struct FPMCAIEquipmentLimit;
+struct FAISpawnByVectorTableRow;
+struct FAIPool;
+struct FAISpawnBossSpawnControllerTableRow;
+struct FTriggerArea;
+struct FAISpawnAreaInfoTableRow;
+struct FAISpawnAntiCamperTableRow;
+struct FAINameOverseaTableRow;
+struct FAINameTableRow;
+struct FAIAvatarSetConfTableRow;
+
+// Object: ScriptStruct UADataTableModule.AvatarItemCfgTableRow
+// Size: 0x90 (Inherited: 0x8)
+struct FAvatarItemCfgTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Level; // 0xC(0x4)
+	uint32_t is_show; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct TArray<uint32_t> jump_goto; // 0x18(0x10)
+	struct FText no_source_description; // 0x28(0x18)
+	uint32_t factory_id; // 0x40(0x4)
+	uint8_t Pad_0x44[0x4]; // 0x44(0x4)
+	struct FString effect_bg_path; // 0x48(0x10)
+	struct FString video_url; // 0x58(0x10)
+	struct TArray<uint32_t> Tags; // 0x68(0x10)
+	uint32_t Score; // 0x78(0x4)
+	uint8_t Pad_0x7C[0x4]; // 0x7C(0x4)
+	struct FString release_date; // 0x80(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.WeaponAssembleConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FWeaponAssembleConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t col_size; // 0xC(0x4)
+	uint32_t row_size; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct FString unique_id; // 0x18(0x10)
+	uint32_t can_fire; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+	struct TArray<struct FWeaponItemConf> Items; // 0x30(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.WeaponItemConf
+// Size: 0x18 (Inherited: 0x0)
+struct FWeaponItemConf
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+	uint32_t slot_index; // 0x8(0x4)
+	uint32_t Parent; // 0xC(0x4)
+	uint32_t parent_idx; // 0x10(0x4)
+	uint32_t spray_item_id; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.TimeLimitedResourcesTableRow
+// Size: 0x58 (Inherited: 0x8)
+struct FTimeLimitedResourcesTableRow : FTableRowBase
+{
+	struct FString ID; // 0x8(0x10)
+	struct FString startTime; // 0x18(0x10)
+	struct FString endTime; // 0x28(0x10)
+	struct FString LoginCG; // 0x38(0x10)
+	struct TArray<struct FString> GameLoadingTextures; // 0x48(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.WeaponPresetConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FWeaponPresetConfTableRow : FTableRowBase
+{
+	uint64_t ID; // 0x8(0x8)
+	struct FText Name; // 0x10(0x18)
+	uint32_t isSuper; // 0x28(0x4)
+	uint32_t baseId; // 0x2C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.rankedTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FrankedTableRow : FTableRowBase
+{
+	uint32_t rangeid; // 0x8(0x4)
+	uint32_t rangecount; // 0xC(0x4)
+	uint32_t StageId; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct FText main_name; // 0x18(0x18)
+	struct FText sub_name; // 0x30(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.dialogTableRow
+// Size: 0x70 (Inherited: 0x8)
+struct FdialogTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Name; // 0x10(0x18)
+	struct FText ICON; // 0x28(0x18)
+	struct FText dialog; // 0x40(0x18)
+	struct FText Sound; // 0x58(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.WxGameShareConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FWxGameShareConfTableRow : FTableRowBase
+{
+	uint32_t sys_id; // 0x8(0x4)
+	uint32_t Type; // 0xC(0x4)
+	uint32_t act_id; // 0x10(0x4)
+	uint32_t content_id; // 0x14(0x4)
+	struct TArray<struct FWxGameShareRewardConf> share_reward; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.WxGameShareRewardConf
+// Size: 0xC (Inherited: 0x0)
+struct FWxGameShareRewardConf
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+	uint32_t is_black; // 0x8(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.WhiteListConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FWhiteListConfTableRow : FTableRowBase
+{
+	uint64_t GOpenID; // 0x8(0x8)
+	uint32_t Type; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.WhiteListCommonConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FWhiteListCommonConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Val; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.WelfareAttrConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FWelfareAttrConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<struct FWelfareCondition> welfare_condition_list; // 0x10(0x10)
+	struct TArray<struct FWelfareReward> welfare_reward_list; // 0x20(0x10)
+	struct TArray<struct FString> finish_text_list; // 0x30(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.WelfareReward
+// Size: 0xC (Inherited: 0x0)
+struct FWelfareReward
+{
+	uint32_t Weight; // 0x0(0x4)
+	uint32_t min_value; // 0x4(0x4)
+	uint32_t max_value; // 0x8(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.WelfareCondition
+// Size: 0x18 (Inherited: 0x0)
+struct FWelfareCondition
+{
+	uint32_t attr_id; // 0x0(0x4)
+	uint8_t Pad_0x4[0x4]; // 0x4(0x4)
+	int64_t attr_low; // 0x8(0x8)
+	int64_t attr_up; // 0x10(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.WeeklyTakeOutItemConfTableRow
+// Size: 0xA8 (Inherited: 0x8)
+struct FWeeklyTakeOutItemConfTableRow : FTableRowBase
+{
+	uint32_t task_id; // 0x8(0x4)
+	uint32_t target_id; // 0xC(0x4)
+	struct TArray<uint32_t> mode_ids; // 0x10(0x10)
+	struct TArray<uint32_t> map_ids; // 0x20(0x10)
+	struct TArray<uint32_t> rule_ids; // 0x30(0x10)
+	struct TArray<uint32_t> difficulties; // 0x40(0x10)
+	uint32_t instigator_charactertype; // 0x50(0x4)
+	uint32_t CountDownStartSeconds; // 0x54(0x4)
+	uint32_t ChangeValueToCount; // 0x58(0x4)
+	uint8_t Pad_0x5C[0x4]; // 0x5C(0x4)
+	struct TArray<uint32_t> TakeOutItemIDs; // 0x60(0x10)
+	uint32_t Istakein; // 0x70(0x4)
+	uint8_t Pad_0x74[0x4]; // 0x74(0x4)
+	struct FText instigator_stayvolume; // 0x78(0x18)
+	uint32_t EquipItemType; // 0x90(0x4)
+	uint8_t Pad_0x94[0x4]; // 0x94(0x4)
+	struct TArray<uint32_t> EquipItemIDs; // 0x98(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.WeeklyKillTargetConfTableRow
+// Size: 0xF0 (Inherited: 0x8)
+struct FWeeklyKillTargetConfTableRow : FTableRowBase
+{
+	uint32_t task_id; // 0x8(0x4)
+	uint32_t target_id; // 0xC(0x4)
+	struct TArray<uint32_t> mode_ids; // 0x10(0x10)
+	struct TArray<uint32_t> map_ids; // 0x20(0x10)
+	struct TArray<uint32_t> rule_ids; // 0x30(0x10)
+	struct TArray<uint32_t> difficulties; // 0x40(0x10)
+	uint32_t instigator_charactertype; // 0x50(0x4)
+	uint32_t CountDownStartSeconds; // 0x54(0x4)
+	struct TArray<uint32_t> killedplayer_charactertypes; // 0x58(0x10)
+	struct FText instigator_stayvolume; // 0x68(0x18)
+	struct FText killedplayer_stayvolume; // 0x80(0x18)
+	struct TArray<uint32_t> KillerWeaponIDs; // 0x98(0x10)
+	struct TArray<uint32_t> RequireAdaptersIDs; // 0xA8(0x10)
+	uint32_t EquipItemType; // 0xB8(0x4)
+	uint8_t Pad_0xBC[0x4]; // 0xBC(0x4)
+	struct TArray<uint32_t> EquipItemIDs; // 0xC0(0x10)
+	uint32_t MinDistance; // 0xD0(0x4)
+	uint32_t MaxDistance; // 0xD4(0x4)
+	struct TArray<uint32_t> EnduranceTypes; // 0xD8(0x10)
+	uint32_t WeaponZoomTpye; // 0xE8(0x4)
+	uint8_t Pad_0xEC[0x4]; // 0xEC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.WeeklyCollectItemConfTableRow
+// Size: 0xA8 (Inherited: 0x8)
+struct FWeeklyCollectItemConfTableRow : FTableRowBase
+{
+	uint32_t task_id; // 0x8(0x4)
+	uint32_t target_id; // 0xC(0x4)
+	struct TArray<uint32_t> mode_ids; // 0x10(0x10)
+	struct TArray<uint32_t> map_ids; // 0x20(0x10)
+	struct TArray<uint32_t> rule_ids; // 0x30(0x10)
+	struct TArray<uint32_t> difficulties; // 0x40(0x10)
+	uint32_t instigator_charactertype; // 0x50(0x4)
+	uint32_t CountDownStartSeconds; // 0x54(0x4)
+	uint32_t CollectionType; // 0x58(0x4)
+	uint8_t Pad_0x5C[0x4]; // 0x5C(0x4)
+	struct TArray<uint32_t> CollectItemIDs; // 0x60(0x10)
+	uint32_t Istakein; // 0x70(0x4)
+	uint8_t Pad_0x74[0x4]; // 0x74(0x4)
+	struct FText instigator_stayvolume; // 0x78(0x18)
+	uint32_t EquipItemType; // 0x90(0x4)
+	uint8_t Pad_0x94[0x4]; // 0x94(0x4)
+	struct TArray<uint32_t> EquipItemIDs; // 0x98(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.WeeklyClearVirtualItemConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FWeeklyClearVirtualItemConfTableRow : FTableRowBase
+{
+	uint32_t item_id; // 0x8(0x4)
+	uint32_t refillable; // 0xC(0x4)
+	uint32_t clear_period; // 0x10(0x4)
+	uint32_t remain_num; // 0x14(0x4)
+	uint32_t need_clear; // 0x18(0x4)
+	uint32_t refill_period; // 0x1C(0x4)
+	uint32_t refill_num; // 0x20(0x4)
+	uint32_t limit_num; // 0x24(0x4)
+	uint32_t return_mail; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.WeeklyActiveTaskRefreshConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FWeeklyActiveTaskRefreshConfTableRow : FTableRowBase
+{
+	uint32_t week_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FDateTime begin_time; // 0x10(0x8)
+	struct TArray<struct FTaskPoolConf> task_cate_a; // 0x18(0x10)
+	struct TArray<struct FTaskPoolConf> task_cate_b; // 0x28(0x10)
+	uint32_t game_play_task_num; // 0x38(0x4)
+	uint32_t delegated_task_pool_id; // 0x3C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.TaskPoolConf
+// Size: 0x4 (Inherited: 0x0)
+struct FTaskPoolConf
+{
+	uint32_t pool_id; // 0x0(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.WeeklyActiveTaskPoolConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FWeeklyActiveTaskPoolConfTableRow : FTableRowBase
+{
+	uint32_t pool_id; // 0x8(0x4)
+	uint32_t multi_mode_id; // 0xC(0x4)
+	struct TArray<uint32_t> map_ids; // 0x10(0x10)
+	struct TArray<struct FWTaskConf> weighted_tasks; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.WTaskConf
+// Size: 0x8 (Inherited: 0x0)
+struct FWTaskConf
+{
+	uint32_t task_id; // 0x0(0x4)
+	uint32_t Weight; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.WeeklyActiveRewardConfTableRow
+// Size: 0x78 (Inherited: 0x8)
+struct FWeeklyActiveRewardConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t reward_id; // 0xC(0x4)
+	uint32_t from_week_id; // 0x10(0x4)
+	uint32_t need_currency_num; // 0x14(0x4)
+	struct TArray<struct FAwardItemConf> rewards; // 0x18(0x10)
+	struct TArray<struct FAwardItemDescConf> rewards_desc; // 0x28(0x10)
+	struct FText item_desc; // 0x38(0x18)
+	struct FText item_name; // 0x50(0x18)
+	struct FString icon_path; // 0x68(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.AwardItemDescConf
+// Size: 0x18 (Inherited: 0x0)
+struct FAwardItemDescConf
+{
+	struct FText item_desc; // 0x0(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.AwardItemConf
+// Size: 0x10 (Inherited: 0x0)
+struct FAwardItemConf
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+	uint32_t is_black; // 0x8(0x4)
+	uint32_t is_faction; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.WeatherRuleConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FWeatherRuleConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t day_start_time; // 0xC(0x4)
+	struct TArray<struct FWeatherGroupList> weather_group_list; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.WeatherGroupList
+// Size: 0x8 (Inherited: 0x0)
+struct FWeatherGroupList
+{
+	uint32_t weather_list_id; // 0x0(0x4)
+	uint32_t Weight; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.WeatherListConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FWeatherListConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<struct FWeatherList> weather_list; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.WeatherList
+// Size: 0x4 (Inherited: 0x0)
+struct FWeatherList
+{
+	uint32_t weather; // 0x0(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.WeaponSkinConfTableRow
+// Size: 0xE0 (Inherited: 0x8)
+struct FWeaponSkinConfTableRow : FTableRowBase
+{
+	uint32_t SkinID; // 0x8(0x4)
+	uint32_t itemID; // 0xC(0x4)
+	uint32_t SkinAssemble; // 0x10(0x4)
+	uint32_t SprayID; // 0x14(0x4)
+	uint32_t SkinType; // 0x18(0x4)
+	uint32_t SlaveOwnerID; // 0x1C(0x4)
+	uint32_t RewardBoxSkinID; // 0x20(0x4)
+	bool IsStaticMesh; // 0x24(0x1)
+	uint8_t Pad_0x25[0x3]; // 0x25(0x3)
+	struct FSoftObjectPath MeshPathGame; // 0x28(0x18)
+	struct FSoftObjectPath MeshPathLobby; // 0x40(0x18)
+	uint32_t CustomCubemapIndex; // 0x58(0x4)
+	uint8_t Pad_0x5C[0x4]; // 0x5C(0x4)
+	struct TArray<struct FSkinMaterialInfo> OverrideMaterials; // 0x60(0x10)
+	struct TArray<uint32_t> HasWeaponOrAdapterAnimationType; // 0x70(0x10)
+	struct TArray<struct FOverridePerWeaponAnims> OverridePerWeaponAnims; // 0x80(0x10)
+	struct FSoftClassPath OverrideAnimSet; // 0x90(0x18)
+	struct FSoftClassPath OverrideInvAnimBP; // 0xA8(0x18)
+	struct TArray<struct FInvAnimationInfo> OverrideInvAnimation; // 0xC0(0x10)
+	struct TArray<struct FAdditionMeshAnimInfo> AdditionMeshAnimInfos; // 0xD0(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.AdditionMeshAnimInfo
+// Size: 0x60 (Inherited: 0x0)
+struct FAdditionMeshAnimInfo
+{
+	uint32_t AnimType; // 0x0(0x4)
+	uint8_t Pad_0x4[0x4]; // 0x4(0x4)
+	struct FSoftObjectPath SkeletalMeshPath; // 0x8(0x18)
+	bool bAttachToCharacter; // 0x20(0x1)
+	uint8_t Pad_0x21[0x3]; // 0x21(0x3)
+	struct FName AttachSocketName; // 0x24(0x8)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+	struct FSoftClassPath AdditionMeshAnimInstance; // 0x30(0x18)
+	struct FSoftObjectPath AdditionMeshAnim; // 0x48(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.InvAnimationInfo
+// Size: 0x20 (Inherited: 0x0)
+struct FInvAnimationInfo
+{
+	uint32_t AnimType; // 0x0(0x4)
+	uint8_t Pad_0x4[0x4]; // 0x4(0x4)
+	struct FSoftObjectPath OverrideAnimation; // 0x8(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.OverridePerWeaponAnims
+// Size: 0x30 (Inherited: 0x0)
+struct FOverridePerWeaponAnims
+{
+	struct FString AnimTypeTag; // 0x0(0x10)
+	uint32_t RelavantItemID; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct FSoftObjectPath AnimPath; // 0x18(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.SkinMaterialInfo
+// Size: 0x20 (Inherited: 0x0)
+struct FSkinMaterialInfo
+{
+	uint32_t Index; // 0x0(0x4)
+	uint8_t Pad_0x4[0x4]; // 0x4(0x4)
+	struct FSoftObjectPath OverrideMaterial; // 0x8(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.WeaponRuleWDCFTableRow
+// Size: 0x1C0 (Inherited: 0x8)
+struct FWeaponRuleWDCFTableRow : FTableRowBase
+{
+	uint32_t itemID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText BulletSize; // 0x10(0x18)
+	uint32_t AmmoCapacity; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+	struct TArray<uint32_t> size_ext; // 0x30(0x10)
+	uint32_t CanFold; // 0x40(0x4)
+	uint8_t Pad_0x44[0x4]; // 0x44(0x4)
+	struct FString assembleTag; // 0x48(0x10)
+	struct FString SubAssembleTag; // 0x58(0x10)
+	uint64_t slot_type; // 0x68(0x8)
+	uint64_t sub_slot_type; // 0x70(0x8)
+	struct TArray<struct FWeaponSocket> Sockets; // 0x78(0x10)
+	struct TArray<uint32_t> ConflictedItemIds; // 0x88(0x10)
+	float Engonomics; // 0x98(0x4)
+	float Accuracy; // 0x9C(0x4)
+	float MoaScale; // 0xA0(0x4)
+	float AdsMoaX; // 0xA4(0x4)
+	float AdsMoaY; // 0xA8(0x4)
+	float HorizontalRecoil; // 0xAC(0x4)
+	float VerticalRecoil; // 0xB0(0x4)
+	float SightRange; // 0xB4(0x4)
+	float MuzzleVelocity; // 0xB8(0x4)
+	uint32_t RaceStrategy; // 0xBC(0x4)
+	float MaxCount; // 0xC0(0x4)
+	float Recoil; // 0xC4(0x4)
+	float ZeroDropDistance; // 0xC8(0x4)
+	uint8_t Pad_0xCC[0x4]; // 0xCC(0x4)
+	struct FText TypesOfFire; // 0xD0(0x18)
+	struct FText Caliber; // 0xE8(0x18)
+	struct FString FireRate; // 0x100(0x10)
+	struct FString EffectiveDistance; // 0x110(0x10)
+	struct TArray<struct FString> FireRequireTags; // 0x120(0x10)
+	struct TArray<struct FWeaponTag> fi_require_tags; // 0x130(0x10)
+	struct TArray<struct FString> AdapterFireRequireTags; // 0x140(0x10)
+	struct TArray<struct FWeaponTag> ad_require_tags; // 0x150(0x10)
+	struct FString FireRequireTagsDecrease; // 0x160(0x10)
+	struct TArray<struct FWeaponTag> de_require_tags; // 0x170(0x10)
+	int8_t ShouldReloadByOne; // 0x180(0x1)
+	uint8_t Pad_0x181[0x7]; // 0x181(0x7)
+	struct FString AccessoryType; // 0x188(0x10)
+	float AdapterAdjustDamage; // 0x198(0x4)
+	uint8_t Pad_0x19C[0x4]; // 0x19C(0x4)
+	struct FString Scope; // 0x1A0(0x10)
+	float ReloadSpeedRatio; // 0x1B0(0x4)
+	float ADSMoveSpeedRatio; // 0x1B4(0x4)
+	float MoveSpeedRatio; // 0x1B8(0x4)
+	uint8_t Pad_0x1BC[0x4]; // 0x1BC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.WeaponTag
+// Size: 0x20 (Inherited: 0x0)
+struct FWeaponTag
+{
+	struct TArray<uint64_t> masks; // 0x0(0x10)
+	struct TArray<uint64_t> Types; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.WeaponSocket
+// Size: 0x58 (Inherited: 0x0)
+struct FWeaponSocket
+{
+	struct FString SocketName; // 0x0(0x10)
+	struct FText PartName; // 0x10(0x18)
+	struct TArray<struct FString> SupportAdapterTagList; // 0x28(0x10)
+	struct TArray<uint64_t> masks; // 0x38(0x10)
+	struct TArray<uint64_t> Types; // 0x48(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.WeaponRuleWDCTableRow
+// Size: 0x1C0 (Inherited: 0x8)
+struct FWeaponRuleWDCTableRow : FTableRowBase
+{
+	uint32_t itemID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText BulletSize; // 0x10(0x18)
+	uint32_t AmmoCapacity; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+	struct TArray<uint32_t> size_ext; // 0x30(0x10)
+	uint32_t CanFold; // 0x40(0x4)
+	uint8_t Pad_0x44[0x4]; // 0x44(0x4)
+	struct FString assembleTag; // 0x48(0x10)
+	struct FString SubAssembleTag; // 0x58(0x10)
+	uint64_t slot_type; // 0x68(0x8)
+	uint64_t sub_slot_type; // 0x70(0x8)
+	struct TArray<struct FWeaponSocket> Sockets; // 0x78(0x10)
+	struct TArray<uint32_t> ConflictedItemIds; // 0x88(0x10)
+	float Engonomics; // 0x98(0x4)
+	float Accuracy; // 0x9C(0x4)
+	float MoaScale; // 0xA0(0x4)
+	float AdsMoaX; // 0xA4(0x4)
+	float AdsMoaY; // 0xA8(0x4)
+	float HorizontalRecoil; // 0xAC(0x4)
+	float VerticalRecoil; // 0xB0(0x4)
+	float SightRange; // 0xB4(0x4)
+	float MuzzleVelocity; // 0xB8(0x4)
+	uint32_t RaceStrategy; // 0xBC(0x4)
+	float MaxCount; // 0xC0(0x4)
+	float Recoil; // 0xC4(0x4)
+	float ZeroDropDistance; // 0xC8(0x4)
+	uint8_t Pad_0xCC[0x4]; // 0xCC(0x4)
+	struct FText TypesOfFire; // 0xD0(0x18)
+	struct FText Caliber; // 0xE8(0x18)
+	struct FString FireRate; // 0x100(0x10)
+	struct FString EffectiveDistance; // 0x110(0x10)
+	struct TArray<struct FString> FireRequireTags; // 0x120(0x10)
+	struct TArray<struct FWeaponTag> fi_require_tags; // 0x130(0x10)
+	struct TArray<struct FString> AdapterFireRequireTags; // 0x140(0x10)
+	struct TArray<struct FWeaponTag> ad_require_tags; // 0x150(0x10)
+	struct FString FireRequireTagsDecrease; // 0x160(0x10)
+	struct TArray<struct FWeaponTag> de_require_tags; // 0x170(0x10)
+	int8_t ShouldReloadByOne; // 0x180(0x1)
+	uint8_t Pad_0x181[0x7]; // 0x181(0x7)
+	struct FString AccessoryType; // 0x188(0x10)
+	float AdapterAdjustDamage; // 0x198(0x4)
+	uint8_t Pad_0x19C[0x4]; // 0x19C(0x4)
+	struct FString Scope; // 0x1A0(0x10)
+	float ReloadSpeedRatio; // 0x1B0(0x4)
+	float ADSMoveSpeedRatio; // 0x1B4(0x4)
+	float MoveSpeedRatio; // 0x1B8(0x4)
+	uint8_t Pad_0x1BC[0x4]; // 0x1BC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.WeaponRuleConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FWeaponRuleConfTableRow : FTableRowBase
+{
+	uint32_t base_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<struct FRuleConf> rules; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.RuleConf
+// Size: 0x18 (Inherited: 0x0)
+struct FRuleConf
+{
+	uint32_t cond; // 0x0(0x4)
+	uint8_t Pad_0x4[0x4]; // 0x4(0x4)
+	struct TArray<uint32_t> cond_ids; // 0x8(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.WeaponRecommendWithSprayConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FWeaponRecommendWithSprayConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t avatar_set_id; // 0xC(0x4)
+	struct TArray<struct FRecommendWeaponItemConf> Items; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.RecommendWeaponItemConf
+// Size: 0x14 (Inherited: 0x0)
+struct FRecommendWeaponItemConf
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+	uint32_t slot_index; // 0x8(0x4)
+	uint32_t Parent; // 0xC(0x4)
+	uint32_t parent_idx; // 0x10(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.WeaponRecommendWeaponConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FWeaponRecommendWeaponConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t max_num; // 0xC(0x4)
+	struct TArray<uint32_t> Blacklist; // 0x10(0x10)
+	struct TArray<struct FWhiteListSet> whitelist_set; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.WhiteListSet
+// Size: 0x10 (Inherited: 0x0)
+struct FWhiteListSet
+{
+	struct TArray<uint32_t> ids; // 0x0(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.WeaponRecommendConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FWeaponRecommendConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<struct FRecommendWeaponItemConf> Items; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.WeaponRecommendArgConfTableRow
+// Size: 0x58 (Inherited: 0x8)
+struct FWeaponRecommendArgConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<uint32_t> Blacklist; // 0x10(0x10)
+	uint32_t design_prob; // 0x20(0x4)
+	uint32_t ds_out_prob; // 0x24(0x4)
+	struct TArray<uint32_t> magazine_whitelist; // 0x28(0x10)
+	struct TArray<uint32_t> pool_prob_list; // 0x38(0x10)
+	struct TArray<uint32_t> weaponrecommend_blacklist; // 0x48(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.WeaponNumConfTableRow
+// Size: 0x8 (Inherited: 0x8)
+struct FWeaponNumConfTableRow : FTableRowBase
+{
+};
+
+// Object: ScriptStruct UADataTableModule.WeaponFilterItemsConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FWeaponFilterItemsConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Name; // 0x10(0x18)
+	struct TArray<uint32_t> arr; // 0x28(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.WeaponDetailValueToAttributeTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FWeaponDetailValueToAttributeTableRow : FTableRowBase
+{
+	struct FString DetailValueName; // 0x8(0x10)
+	struct FString AttributeName; // 0x18(0x10)
+	uint32_t ModOp; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.WeaponDetailConfTableRow
+// Size: 0x2D8 (Inherited: 0x8)
+struct FWeaponDetailConfTableRow : FTableRowBase
+{
+	uint32_t itemID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText BulletSize; // 0x10(0x18)
+	struct TArray<uint32_t> size_ext; // 0x28(0x10)
+	struct FText TypesOfFire; // 0x38(0x18)
+	struct TArray<uint32_t> TypesOfFireIcon; // 0x50(0x10)
+	struct FString FireRate; // 0x60(0x10)
+	float MuzzleVelocity; // 0x70(0x4)
+	float AdapterAdjustDamage; // 0x74(0x4)
+	struct FText FiringPowerDisplay; // 0x78(0x18)
+	float Engonomics; // 0x90(0x4)
+	float Accuracy; // 0x94(0x4)
+	float ZeroDropDistance; // 0x98(0x4)
+	float MoaScale; // 0x9C(0x4)
+	float AdsMoaX; // 0xA0(0x4)
+	float AdsMoaY; // 0xA4(0x4)
+	float HorizontalRecoil; // 0xA8(0x4)
+	float VerticalRecoil; // 0xAC(0x4)
+	float Recoil; // 0xB0(0x4)
+	uint8_t Pad_0xB4[0x4]; // 0xB4(0x4)
+	struct FString EffectiveDistance; // 0xB8(0x10)
+	struct TArray<float> RecoilMultipliers; // 0xC8(0x10)
+	float InitialRecoilMultipliers; // 0xD8(0x4)
+	float ContinuousRecoilMultipliers; // 0xDC(0x4)
+	float HorizontalStabilization; // 0xE0(0x4)
+	float VerticalStabilization; // 0xE4(0x4)
+	float ADSMoveSpeedRatio; // 0xE8(0x4)
+	float MoveSpeedRatio; // 0xEC(0x4)
+	float CheckMagRatio; // 0xF0(0x4)
+	uint8_t Pad_0xF4[0x4]; // 0xF4(0x4)
+	struct FText SuppressorSoundShow; // 0xF8(0x18)
+	uint8_t SilencerType; // 0x110(0x1)
+	uint8_t MuzzleType; // 0x111(0x1)
+	uint8_t Pad_0x112[0x6]; // 0x112(0x6)
+	struct FText MuzzleSoundAmplifier; // 0x118(0x18)
+	float RunSpeedRatio; // 0x130(0x4)
+	float SprintSpeedRatio; // 0x134(0x4)
+	float SilentWalkSpeedRatio; // 0x138(0x4)
+	float AccuracyPunishRatio; // 0x13C(0x4)
+	float PenaltyForTakingHit; // 0x140(0x4)
+	float LeanRatio; // 0x144(0x4)
+	int8_t ShouldReloadByOne; // 0x148(0x1)
+	uint8_t Pad_0x149[0x3]; // 0x149(0x3)
+	uint32_t CanFold; // 0x14C(0x4)
+	struct FString Scope; // 0x150(0x10)
+	uint32_t AmmoCapacity; // 0x160(0x4)
+	uint32_t RaceStrategy; // 0x164(0x4)
+	struct FText LightIntensityDisplay; // 0x168(0x18)
+	float EnergyCostPerFire; // 0x180(0x4)
+	float EnergyCostRatio; // 0x184(0x4)
+	struct FText AdapterArmorLevel; // 0x188(0x18)
+	struct FText Caliber; // 0x1A0(0x18)
+	struct FString AccessoryType; // 0x1B8(0x10)
+	float ReloadSpeedRatio; // 0x1C8(0x4)
+	float MaxCount; // 0x1CC(0x4)
+	float SightRange; // 0x1D0(0x4)
+	float SprintToIdle; // 0x1D4(0x4)
+	float RecoverTimeRatio; // 0x1D8(0x4)
+	uint32_t SprintReloadType; // 0x1DC(0x4)
+	uint32_t IgnoreDBNOFeature; // 0x1E0(0x4)
+	float JumpZVelocityScaleMultiplier; // 0x1E4(0x4)
+	struct TArray<struct FString> FireRequireTags; // 0x1E8(0x10)
+	struct TArray<struct FWeaponTag> fi_require_tags; // 0x1F8(0x10)
+	struct TArray<struct FString> AdapterFireRequireTags; // 0x208(0x10)
+	struct TArray<struct FWeaponTag> ad_require_tags; // 0x218(0x10)
+	struct FString FireRequireTagsDecrease; // 0x228(0x10)
+	struct TArray<struct FWeaponTag> de_require_tags; // 0x238(0x10)
+	struct FString assembleTag; // 0x248(0x10)
+	struct FString SubAssembleTag; // 0x258(0x10)
+	struct TArray<uint32_t> ConflictedItemIds; // 0x268(0x10)
+	uint64_t slot_type; // 0x278(0x8)
+	uint64_t sub_slot_type; // 0x280(0x8)
+	struct FString DurabilityAccuracyCurvePath; // 0x288(0x10)
+	struct FString DurabilityMalfunctionCurvePath; // 0x298(0x10)
+	struct FString DurabilityMoaCurvePath; // 0x2A8(0x10)
+	struct TArray<struct FWeaponSocket> Sockets; // 0x2B8(0x10)
+	struct TArray<uint32_t> HasWeaponOrAdapterAnimationType; // 0x2C8(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.WeaponClassifyConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FWeaponClassifyConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString IconPath; // 0x10(0x10)
+	struct FText Name; // 0x20(0x18)
+	uint32_t ItemType; // 0x38(0x4)
+	uint8_t Pad_0x3C[0x4]; // 0x3C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.WeaponAvatarSetCfgTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FWeaponAvatarSetCfgTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t SkinAssemble; // 0xC(0x4)
+	struct TArray<uint32_t> ExtSkinAssemble; // 0x10(0x10)
+	struct TArray<uint32_t> ExtSkinList; // 0x20(0x10)
+	struct FString seq_plan; // 0x30(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.WealthTagConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FWealthTagConfTableRow : FTableRowBase
+{
+	uint32_t wealth_conf_type; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	int64_t Param; // 0x10(0x8)
+	int32_t possibility; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.WarmScoreConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FWarmScoreConfTableRow : FTableRowBase
+{
+	uint32_t score_type; // 0x8(0x4)
+	uint32_t Val; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.WarmProfitConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FWarmProfitConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	int32_t profit_rate; // 0xC(0x4)
+	int32_t profit_score; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.WarmLossConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FWarmLossConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	int32_t loss_rate; // 0xC(0x4)
+	int32_t loss_score; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.WarmLevelConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FWarmLevelConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Level; // 0xC(0x4)
+	uint32_t add_level_rate; // 0x10(0x4)
+	uint32_t del_level_rate; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.WarmExpConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FWarmExpConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Exp; // 0xC(0x4)
+	uint32_t add_exp_rate; // 0x10(0x4)
+	uint32_t del_exp_rate; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.WarmContinuousLoseConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FWarmContinuousLoseConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t continuous_lose; // 0xC(0x4)
+	uint32_t add_continuous_lose_rate; // 0x10(0x4)
+	uint32_t del_continuous_lose_rate; // 0x14(0x4)
+	int32_t extra_score; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.WareHouseConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FWareHouseConfTableRow : FTableRowBase
+{
+	uint32_t languageID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<uint32_t> itemID; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.WarZoneConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FWarZoneConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<uint32_t> country_codes; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.WalkInTableRow
+// Size: 0xA0 (Inherited: 0x8)
+struct FWalkInTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString GestureIconPath; // 0x10(0x10)
+	uint32_t Level; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+	struct FText GestureDescription; // 0x28(0x18)
+	struct TArray<struct FText> AnimationName; // 0x40(0x10)
+	uint32_t depend_avatar; // 0x50(0x4)
+	uint8_t Pad_0x54[0x4]; // 0x54(0x4)
+	struct TArray<uint32_t> sp_avatar; // 0x58(0x10)
+	struct FText AnimationNamePlus; // 0x68(0x18)
+	struct FText HideEquipAnimationFix; // 0x80(0x18)
+	uint32_t FixAnimationOrder; // 0x98(0x4)
+	uint32_t Weight; // 0x9C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.VoiceToneConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FVoiceToneConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString VoiceTone; // 0x10(0x10)
+	struct FString Desc; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.VoiceIconSoundTableRow
+// Size: 0x88 (Inherited: 0x8)
+struct FVoiceIconSoundTableRow : FTableRowBase
+{
+	int32_t itemID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString VoiceIconPath; // 0x10(0x10)
+	uint32_t Level; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+	struct FText VoiceDescription; // 0x28(0x18)
+	struct TArray<struct FString> VoiceSoundPaths; // 0x40(0x10)
+	struct TArray<struct FString> WanderVoiceSoundPaths; // 0x50(0x10)
+	struct TArray<uint32_t> jump_goto; // 0x60(0x10)
+	struct FText no_source_description; // 0x70(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.VideoUrlConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FVideoUrlConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString Language; // 0x10(0x10)
+	struct FString jump_url; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.VideoConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FVideoConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Name; // 0x10(0x18)
+	struct TArray<uint32_t> url_list; // 0x28(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.VeteranKVConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FVeteranKVConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	int64_t Val; // 0x10(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.VersionRouteConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FVersionRouteConfTableRow : FTableRowBase
+{
+	uint32_t env_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<struct FVersionRouteItem> version_routes; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.VersionRouteItem
+// Size: 0x28 (Inherited: 0x0)
+struct FVersionRouteItem
+{
+	struct FString min_version; // 0x0(0x10)
+	struct FString max_version; // 0x10(0x10)
+	uint32_t svr_version; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.VehiclePartDetailTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FVehiclePartDetailTableRow : FTableRowBase
+{
+	uint32_t itemID; // 0x8(0x4)
+	uint32_t Durability; // 0xC(0x4)
+	uint32_t FullRepairCost; // 0x10(0x4)
+	uint32_t ExtendAttrType; // 0x14(0x4)
+	uint32_t ExtendAttrVal; // 0x18(0x4)
+	uint32_t FullExtendAttrValCost; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.VehicleMachineDetailTableRow
+// Size: 0x78 (Inherited: 0x8)
+struct FVehicleMachineDetailTableRow : FTableRowBase
+{
+	uint32_t itemID; // 0x8(0x4)
+	uint32_t KeyID; // 0xC(0x4)
+	uint32_t BrandID; // 0x10(0x4)
+	uint32_t DriveModeID; // 0x14(0x4)
+	uint32_t LoadNumber; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	struct FSoftObjectPath MeshResouce; // 0x20(0x18)
+	struct FString ICON; // 0x38(0x10)
+	struct FSoftObjectPath BpResouce; // 0x48(0x18)
+	struct FString HornResouce; // 0x60(0x10)
+	uint32_t RequireKey; // 0x70(0x4)
+	uint8_t Pad_0x74[0x4]; // 0x74(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.VehicleAssembleConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FVehicleAssembleConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t col_size; // 0xC(0x4)
+	uint32_t row_size; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct FString unique_id; // 0x18(0x10)
+	struct TArray<struct FVehiclePartsConf> Items; // 0x28(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.VehiclePartsConf
+// Size: 0x14 (Inherited: 0x0)
+struct FVehiclePartsConf
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+	uint32_t slot_index; // 0x8(0x4)
+	uint32_t Parent; // 0xC(0x4)
+	uint32_t parent_idx; // 0x10(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ValueDistributionConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FValueDistributionConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Inclination; // 0xC(0x4)
+	uint32_t Gun; // 0x10(0x4)
+	uint32_t ContainerArmor; // 0x14(0x4)
+	uint32_t head; // 0x18(0x4)
+	uint32_t Bullet; // 0x1C(0x4)
+	uint32_t Consumables; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.UserTagVarParamTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FUserTagVarParamTableRow : FTableRowBase
+{
+	struct FText ID; // 0x8(0x18)
+	uint32_t Param_1; // 0x20(0x4)
+	uint32_t Param_2; // 0x24(0x4)
+	uint32_t Param_3; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.UserTagTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FUserTagTableRow : FTableRowBase
+{
+	uint32_t tag_id; // 0x8(0x4)
+	uint32_t tag_type; // 0xC(0x4)
+	struct FText tag_name; // 0x10(0x18)
+	uint32_t tag_priority; // 0x28(0x4)
+	uint32_t tag_param; // 0x2C(0x4)
+	struct TArray<struct FConditionItem> Conditions; // 0x30(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ConditionItem
+// Size: 0x20 (Inherited: 0x0)
+struct FConditionItem
+{
+	struct FText expresion; // 0x0(0x18)
+	uint32_t Op; // 0x18(0x4)
+	uint32_t Value; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.UpgradeUnlockTableRow
+// Size: 0xC8 (Inherited: 0x8)
+struct FUpgradeUnlockTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Type; // 0xC(0x4)
+	uint32_t function_control_id; // 0x10(0x4)
+	uint32_t preview_level; // 0x14(0x4)
+	uint32_t sort; // 0x18(0x4)
+	uint32_t sys_id; // 0x1C(0x4)
+	struct FText unlock_tip; // 0x20(0x18)
+	struct FText preview_label; // 0x38(0x18)
+	struct FText preview_desc; // 0x50(0x18)
+	struct FText label; // 0x68(0x18)
+	struct FText desc1; // 0x80(0x18)
+	struct FString image_path; // 0x98(0x10)
+	struct FText robot_help_key; // 0xA8(0x18)
+	uint32_t jumpgoto; // 0xC0(0x4)
+	uint8_t Pad_0xC4[0x4]; // 0xC4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.UpgradeReportTableRow
+// Size: 0x80 (Inherited: 0x8)
+struct FUpgradeReportTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Level; // 0xC(0x4)
+	struct FString global_ios; // 0x10(0x10)
+	struct FString global_android; // 0x20(0x10)
+	struct FString lite; // 0x30(0x10)
+	struct FString tw_ios; // 0x40(0x10)
+	struct FString tw_android; // 0x50(0x10)
+	struct FString vng_ios; // 0x60(0x10)
+	struct FString vng_android; // 0x70(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.UnbanMapIdConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FUnbanMapIdConfTableRow : FTableRowBase
+{
+	uint32_t mapIDPrefix; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.UnbanLootMapIdConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FUnbanLootMapIdConfTableRow : FTableRowBase
+{
+	uint32_t mapIDPrefix; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.TrialCardConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FTrialCardConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t avatar_id; // 0xC(0x4)
+	uint32_t expire_time; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.TreasureMapMapToItemTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FTreasureMapMapToItemTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t map_id; // 0xC(0x4)
+	struct TArray<struct FTreasureMapWeight> treasure_map_weight_list; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.TreasureMapWeight
+// Size: 0x4 (Inherited: 0x0)
+struct FTreasureMapWeight
+{
+	uint32_t item_id; // 0x0(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.TreasureMapItemToPlaceTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FTreasureMapItemToPlaceTableRow : FTableRowBase
+{
+	uint32_t item_id; // 0x8(0x4)
+	uint32_t place_index; // 0xC(0x4)
+	uint32_t Weight; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.TreasureMapConfTableRow
+// Size: 0x58 (Inherited: 0x8)
+struct FTreasureMapConfTableRow : FTableRowBase
+{
+	int32_t ConfigID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText LeftDownText; // 0x10(0x18)
+	struct FText Text; // 0x28(0x18)
+	struct FSoftObjectPath TreasureMapTexture; // 0x40(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.TrainBulletConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FTrainBulletConfTableRow : FTableRowBase
+{
+	uint32_t item_id; // 0x8(0x4)
+	uint32_t on_the_train; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.TraderScaleConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FTraderScaleConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	float DistancePercentA; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.TradePromotionConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FTradePromotionConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t promotion_factor; // 0xC(0x4)
+	uint32_t promotion_limit; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.TradeItemClassifyConfTableRow
+// Size: 0x58 (Inherited: 0x8)
+struct FTradeItemClassifyConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t bussinessman_id; // 0xC(0x4)
+	struct FText icon_path; // 0x10(0x18)
+	struct FText Name; // 0x28(0x18)
+	struct TArray<uint64_t> item_types; // 0x40(0x10)
+	uint32_t classify_type; // 0x50(0x4)
+	uint32_t is_act_classify; // 0x54(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.TradeHeadIconTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FTradeHeadIconTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t businessman_id; // 0xC(0x4)
+	struct FString BusinessHead_Path; // 0x10(0x10)
+	struct TArray<struct FBusinessHeadConf> stage_head_vec; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.BusinessHeadConf
+// Size: 0xE0 (Inherited: 0x0)
+struct FBusinessHeadConf
+{
+	struct FString Path_1; // 0x0(0x10)
+	struct FString Path_2; // 0x10(0x10)
+	struct FString Path_3; // 0x20(0x10)
+	struct FString Path_4; // 0x30(0x10)
+	struct FString Path_5; // 0x40(0x10)
+	struct FString Path_6; // 0x50(0x10)
+	struct FString Path_7; // 0x60(0x10)
+	struct FString Path_8; // 0x70(0x10)
+	struct FString Path_9; // 0x80(0x10)
+	struct FString Path_10; // 0x90(0x10)
+	struct FString Path_11; // 0xA0(0x10)
+	struct FString Path_12; // 0xB0(0x10)
+	struct FString Path_13; // 0xC0(0x10)
+	struct FString Path_14; // 0xD0(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.TradeFactionConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FTradeFactionConfTableRow : FTableRowBase
+{
+	uint32_t sell_item_id; // 0x8(0x4)
+	uint32_t cash_item_id; // 0xC(0x4)
+	uint32_t cash_item_discount; // 0x10(0x4)
+	uint32_t Num; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.TradeDialogVoiceConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FTradeDialogVoiceConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t businessman_id; // 0xC(0x4)
+	struct FString DialogTypeDef; // 0x10(0x10)
+	struct FString AudioSourceName; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.TradeConfTableRow
+// Size: 0x88 (Inherited: 0x8)
+struct FTradeConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t businessman_id; // 0xC(0x4)
+	uint32_t classify_id; // 0x10(0x4)
+	uint32_t seq; // 0x14(0x4)
+	struct FText lock_desc; // 0x18(0x18)
+	uint32_t is_hide; // 0x30(0x4)
+	uint32_t task_id; // 0x34(0x4)
+	uint32_t Level; // 0x38(0x4)
+	uint32_t have_item; // 0x3C(0x4)
+	uint32_t buy_limit; // 0x40(0x4)
+	uint8_t Pad_0x44[0x4]; // 0x44(0x4)
+	struct FDateTime refresh_begin_time; // 0x48(0x8)
+	uint32_t refresh_period; // 0x50(0x4)
+	uint8_t Pad_0x54[0x4]; // 0x54(0x4)
+	struct FDateTime limit_refresh_begin_time; // 0x58(0x8)
+	uint32_t limit_refresh_period; // 0x60(0x4)
+	uint32_t sell_item_id; // 0x64(0x4)
+	uint32_t sell_num; // 0x68(0x4)
+	uint32_t is_faction; // 0x6C(0x4)
+	struct TArray<struct FExchangeItemConf> exchange_item_vec; // 0x70(0x10)
+	uint32_t onsale; // 0x80(0x4)
+	uint8_t Pad_0x84[0x4]; // 0x84(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ExchangeItemConf
+// Size: 0x8 (Inherited: 0x0)
+struct FExchangeItemConf
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.TpnsPushConfTableRow
+// Size: 0x58 (Inherited: 0x8)
+struct FTpnsPushConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Title; // 0x10(0x18)
+	struct FText Content; // 0x28(0x18)
+	struct FText ios_subtitle; // 0x40(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.TitleItemConfTableRow
+// Size: 0x60 (Inherited: 0x8)
+struct FTitleItemConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Level; // 0xC(0x4)
+	struct FDateTime start_time; // 0x10(0x8)
+	struct FDateTime end_time; // 0x18(0x8)
+	uint32_t JumpId; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+	struct FText JumpDesc; // 0x28(0x18)
+	struct FText CannotGetDesc; // 0x40(0x18)
+	uint32_t ShowNormalGetPanel; // 0x58(0x4)
+	uint32_t is_off_sale; // 0x5C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.TimeCountDownTipsTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FTimeCountDownTipsTableRow : FTableRowBase
+{
+	uint32_t TimeCountGate; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText MatchDescription; // 0x10(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.TicketConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FTicketConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<struct FTicketInfoConf> infos; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.TicketInfoConf
+// Size: 0xC (Inherited: 0x0)
+struct FTicketInfoConf
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t cast_num; // 0x4(0x4)
+	int32_t tip_id; // 0x8(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ThrowableWeaponDetailTableRow
+// Size: 0x108 (Inherited: 0x8)
+struct FThrowableWeaponDetailTableRow : FTableRowBase
+{
+	uint64_t itemID; // 0x8(0x8)
+	struct TArray<float> DelayEffect; // 0x10(0x10)
+	struct FText EffectRange; // 0x20(0x18)
+	float EffectTime; // 0x38(0x4)
+	uint8_t Pad_0x3C[0x4]; // 0x3C(0x4)
+	struct FText ArmorDamage; // 0x40(0x18)
+	struct FText Penetration; // 0x58(0x18)
+	struct FText PieceCount; // 0x70(0x18)
+	struct FText PieceType; // 0x88(0x18)
+	struct FText InterferenceIntensity; // 0xA0(0x18)
+	float depositetime; // 0xB8(0x4)
+	uint8_t Pad_0xBC[0x4]; // 0xBC(0x4)
+	struct FText battery; // 0xC0(0x18)
+	struct FText signalrange; // 0xD8(0x18)
+	struct FText detectrange; // 0xF0(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.TeamVoiceTableRow
+// Size: 0x78 (Inherited: 0x8)
+struct FTeamVoiceTableRow : FTableRowBase
+{
+	int32_t itemID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText VoiceDesc; // 0x10(0x18)
+	struct FString VoicePath; // 0x28(0x10)
+	struct FText VoiceContent; // 0x38(0x18)
+	struct FString WanderPath; // 0x50(0x10)
+	struct FString WanderContent; // 0x60(0x10)
+	int32_t VoiceType; // 0x70(0x4)
+	uint8_t RoleNoUse; // 0x74(0x1)
+	uint8_t UseOriginAudioPath; // 0x75(0x1)
+	uint8_t Pad_0x76[0x2]; // 0x76(0x2)
+};
+
+// Object: ScriptStruct UADataTableModule.TeamVersionConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FTeamVersionConfTableRow : FTableRowBase
+{
+	uint32_t env_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<struct FTeamConfVersionRange> version_ranges; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.TeamConfVersionRange
+// Size: 0x20 (Inherited: 0x0)
+struct FTeamConfVersionRange
+{
+	struct FString min_version; // 0x0(0x10)
+	struct FString max_version; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.TeamUpAvatarBgConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FTeamUpAvatarBgConfTableRow : FTableRowBase
+{
+	uint32_t itemID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText BgActorTag; // 0x10(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.TeamTargetConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FTeamTargetConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText target_name; // 0x10(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.TeamStyleConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FTeamStyleConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText style_name; // 0x10(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.TeamRatingCommConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FTeamRatingCommConfTableRow : FTableRowBase
+{
+	uint32_t conf_type; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	int64_t Val; // 0x10(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.TeamRatingBattleConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FTeamRatingBattleConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t group_id; // 0xC(0x4)
+	uint32_t Weight; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	int64_t rating_change; // 0x18(0x8)
+	int64_t rating_limit_change; // 0x20(0x8)
+	struct TArray<struct FRatingConditionConf> Conditions; // 0x28(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.RatingConditionConf
+// Size: 0x28 (Inherited: 0x0)
+struct FRatingConditionConf
+{
+	struct FText expression; // 0x0(0x18)
+	uint32_t Op; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	int64_t Val; // 0x20(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.TeamPlayerEnterConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FTeamPlayerEnterConfTableRow : FTableRowBase
+{
+	uint32_t team_player_enter_type; // 0x8(0x4)
+	uint32_t Val; // 0xC(0x4)
+	int32_t tip_id; // 0x10(0x4)
+	uint32_t Priority; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.TeamOptionTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FTeamOptionTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Name; // 0x10(0x18)
+	uint32_t DefaultValue; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.TeamLendConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FTeamLendConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Val; // 0xC(0x4)
+	struct TArray<uint32_t> ary; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.TeamKVConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FTeamKVConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	int64_t Val; // 0x10(0x8)
+	struct TArray<int64_t> val_array; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.TeamDegreeConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FTeamDegreeConfTableRow : FTableRowBase
+{
+	uint32_t hall_degree_type; // 0x8(0x4)
+	uint32_t ID; // 0xC(0x4)
+	int32_t Val; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.TeamActDataConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FTeamActDataConfTableRow : FTableRowBase
+{
+	uint32_t act_team_data_type; // 0x8(0x4)
+	uint32_t stat_method; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.TaskTargetConfTableRow
+// Size: 0x98 (Inherited: 0x8)
+struct FTaskTargetConfTableRow : FTableRowBase
+{
+	uint32_t target_id; // 0x8(0x4)
+	uint32_t target_type; // 0xC(0x4)
+	struct FText Desc; // 0x10(0x18)
+	uint32_t jump_goto; // 0x28(0x4)
+	uint32_t Progress; // 0x2C(0x4)
+	int64_t Param1; // 0x30(0x8)
+	int64_t Param2; // 0x38(0x8)
+	int64_t Param3; // 0x40(0x8)
+	uint32_t target_stage; // 0x48(0x4)
+	uint32_t team_share; // 0x4C(0x4)
+	int64_t icon_item_id; // 0x50(0x8)
+	struct TArray<int64_t> item_list; // 0x58(0x10)
+	uint32_t big_type; // 0x68(0x4)
+	uint32_t mid_type; // 0x6C(0x4)
+	uint32_t sub_type; // 0x70(0x4)
+	uint8_t Pad_0x74[0x4]; // 0x74(0x4)
+	struct TArray<uint32_t> prev_target; // 0x78(0x10)
+	uint32_t prev_type; // 0x88(0x4)
+	uint32_t fail_when_next_fail; // 0x8C(0x4)
+	uint32_t node_type; // 0x90(0x4)
+	uint8_t Pad_0x94[0x4]; // 0x94(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.TaskListAddressConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FTaskListAddressConfTableRow : FTableRowBase
+{
+	uint32_t task_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText disp_title; // 0x10(0x18)
+	uint32_t Type; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+	struct TArray<struct FTargetItemConf> Targets; // 0x30(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.TargetItemConf
+// Size: 0x8 (Inherited: 0x0)
+struct FTargetItemConf
+{
+	uint32_t target_id; // 0x0(0x4)
+	uint32_t target_map; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.TaskDialogueTableRow
+// Size: 0x58 (Inherited: 0x8)
+struct FTaskDialogueTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText conversation; // 0x10(0x18)
+	struct FText Title; // 0x28(0x18)
+	uint32_t NPC; // 0x40(0x4)
+	uint8_t Pad_0x44[0x4]; // 0x44(0x4)
+	struct TArray<struct FCommonItemConfItem> gifts; // 0x48(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.CommonItemConfItem
+// Size: 0x8 (Inherited: 0x0)
+struct FCommonItemConfItem
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.TaskConfTableRow
+// Size: 0x140 (Inherited: 0x8)
+struct FTaskConfTableRow : FTableRowBase
+{
+	uint32_t task_id; // 0x8(0x4)
+	uint32_t Type; // 0xC(0x4)
+	struct FText disp_title; // 0x10(0x18)
+	uint32_t season_id; // 0x28(0x4)
+	uint32_t disp_type; // 0x2C(0x4)
+	struct FText disp_desc; // 0x30(0x18)
+	struct FText disp_detail; // 0x48(0x18)
+	struct FText disp_reward; // 0x60(0x18)
+	uint32_t disp_address; // 0x78(0x4)
+	uint32_t CountDown; // 0x7C(0x4)
+	uint32_t tier; // 0x80(0x4)
+	uint8_t Pad_0x84[0x4]; // 0x84(0x4)
+	struct FDateTime unlock_time; // 0x88(0x8)
+	struct TArray<struct FUnlockCondtionRef> unlock_condtions; // 0x90(0x10)
+	struct TArray<uint32_t> pre_tasks; // 0xA0(0x10)
+	uint32_t pre_logic; // 0xB0(0x4)
+	uint32_t source_type; // 0xB4(0x4)
+	uint32_t source_id; // 0xB8(0x4)
+	uint32_t faction_icon; // 0xBC(0x4)
+	uint32_t Faction; // 0xC0(0x4)
+	uint32_t show_specified_businessman_stage; // 0xC4(0x4)
+	uint32_t businessman_stage; // 0xC8(0x4)
+	uint8_t Pad_0xCC[0x4]; // 0xCC(0x4)
+	struct TArray<struct FTaskTargetRefItem> Targets; // 0xD0(0x10)
+	uint32_t gift_exp; // 0xE0(0x4)
+	uint32_t gift_ruble; // 0xE4(0x4)
+	struct TArray<struct FAwardItemConf> rewards; // 0xE8(0x10)
+	uint32_t prev_type; // 0xF8(0x4)
+	uint32_t reaccept_if_failed; // 0xFC(0x4)
+	uint32_t task_difficult; // 0x100(0x4)
+	bool complete_in_one_battle; // 0x104(0x1)
+	uint8_t Pad_0x105[0x3]; // 0x105(0x3)
+	uint32_t activity_id; // 0x108(0x4)
+	uint8_t Pad_0x10C[0x4]; // 0x10C(0x4)
+	struct TArray<int32_t> reports_id; // 0x110(0x10)
+	bool gradually_unlock; // 0x120(0x1)
+	uint8_t Pad_0x121[0x3]; // 0x121(0x3)
+	uint32_t HUD_OpenOrClose; // 0x124(0x4)
+	uint32_t HUD_Weight; // 0x128(0x4)
+	uint8_t Pad_0x12C[0x4]; // 0x12C(0x4)
+	struct FString weekBg; // 0x130(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.TaskTargetRefItem
+// Size: 0xC (Inherited: 0x0)
+struct FTaskTargetRefItem
+{
+	uint32_t target_id; // 0x0(0x4)
+	uint32_t group_id; // 0x4(0x4)
+	uint32_t Property; // 0x8(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.UnlockCondtionRef
+// Size: 0x8 (Inherited: 0x0)
+struct FUnlockCondtionRef
+{
+	uint32_t cond_type; // 0x0(0x4)
+	uint32_t cond_value; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.TaskCommitTargetConfTableRow
+// Size: 0x158 (Inherited: 0x8)
+struct FTaskCommitTargetConfTableRow : FTableRowBase
+{
+	uint32_t target_id; // 0x8(0x4)
+	uint32_t commit_type; // 0xC(0x4)
+	uint32_t item_id; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct TArray<uint32_t> item_list; // 0x18(0x10)
+	uint32_t big_type; // 0x28(0x4)
+	uint32_t mid_type; // 0x2C(0x4)
+	uint32_t sub_type; // 0x30(0x4)
+	uint8_t Pad_0x34[0x4]; // 0x34(0x4)
+	struct TArray<uint32_t> size_x; // 0x38(0x10)
+	struct TArray<uint32_t> size_y; // 0x48(0x10)
+	struct TArray<uint32_t> size_all; // 0x58(0x10)
+	uint32_t is_raidloot; // 0x68(0x4)
+	uint8_t Pad_0x6C[0x4]; // 0x6C(0x4)
+	struct TArray<uint32_t> Durability; // 0x70(0x10)
+	struct TArray<uint32_t> durability_limit; // 0x80(0x10)
+	struct TArray<uint32_t> Engonomics; // 0x90(0x10)
+	struct TArray<uint32_t> Accuracy; // 0xA0(0x10)
+	struct TArray<uint32_t> ads_moa_y; // 0xB0(0x10)
+	struct TArray<uint32_t> horizontal_recoil; // 0xC0(0x10)
+	struct TArray<uint32_t> vertical_recoil; // 0xD0(0x10)
+	struct TArray<uint32_t> sight_range; // 0xE0(0x10)
+	struct TArray<uint32_t> muzzle_velocity; // 0xF0(0x10)
+	struct TArray<uint32_t> max_count; // 0x100(0x10)
+	struct TArray<uint32_t> Recoil; // 0x110(0x10)
+	uint32_t fire_type; // 0x120(0x4)
+	uint32_t Caliber; // 0x124(0x4)
+	struct TArray<uint32_t> fire_rate; // 0x128(0x10)
+	struct TArray<uint32_t> effect_dist; // 0x138(0x10)
+	struct TArray<uint32_t> Components; // 0x148(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.TaskClueListTableRow
+// Size: 0xA8 (Inherited: 0x8)
+struct FTaskClueListTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t clueId; // 0xC(0x4)
+	uint32_t TaskId; // 0x10(0x4)
+	uint32_t belong; // 0x14(0x4)
+	struct FText clue; // 0x18(0x18)
+	struct FString IcoPath; // 0x30(0x10)
+	struct FString bgPath; // 0x40(0x10)
+	struct FText lockedDesc; // 0x50(0x18)
+	struct FText clueDesc; // 0x68(0x18)
+	uint32_t clueType; // 0x80(0x4)
+	uint8_t Pad_0x84[0x4]; // 0x84(0x4)
+	struct FText extJson; // 0x88(0x18)
+	uint32_t dispOrder; // 0xA0(0x4)
+	uint8_t Pad_0xA4[0x4]; // 0xA4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.TaskActTargetDescParamConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FTaskActTargetDescParamConfTableRow : FTableRowBase
+{
+	int64_t ID; // 0x8(0x8)
+	struct FText Desc; // 0x10(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.TaskActTargetDescConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FTaskActTargetDescConfTableRow : FTableRowBase
+{
+	uint32_t target_type; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<struct FText> target_desc; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.TaskActDescOutSideConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FTaskActDescOutSideConfTableRow : FTableRowBase
+{
+	uint32_t task_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText task_title; // 0x10(0x18)
+	struct FText task_detail; // 0x28(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.TaskActDescConfTableRow
+// Size: 0x58 (Inherited: 0x8)
+struct FTaskActDescConfTableRow : FTableRowBase
+{
+	uint32_t task_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText task_title; // 0x10(0x18)
+	struct FText task_detail; // 0x28(0x18)
+	struct TArray<struct FAwardItemConf> rewards; // 0x40(0x10)
+	uint32_t need_reissue; // 0x50(0x4)
+	uint8_t Pad_0x54[0x4]; // 0x54(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.TaskActConfTableRow
+// Size: 0xF8 (Inherited: 0x8)
+struct FTaskActConfTableRow : FTableRowBase
+{
+	uint32_t task_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText task_title; // 0x10(0x18)
+	uint32_t begin_day; // 0x28(0x4)
+	uint32_t end_day; // 0x2C(0x4)
+	struct FString begin_time; // 0x30(0x10)
+	struct FString end_time; // 0x40(0x10)
+	struct FDateTime abs_begin_time; // 0x50(0x8)
+	struct FDateTime abs_end_time; // 0x58(0x8)
+	uint32_t bonus_ratio; // 0x60(0x4)
+	uint32_t bonus_begin_day; // 0x64(0x4)
+	uint32_t bonus_end_day; // 0x68(0x4)
+	uint8_t Pad_0x6C[0x4]; // 0x6C(0x4)
+	struct FString bonus_begin_time; // 0x70(0x10)
+	struct FString bonus_end_time; // 0x80(0x10)
+	struct FDateTime bonus_abs_begin_time; // 0x90(0x8)
+	struct FDateTime bonus_abs_end_time; // 0x98(0x8)
+	struct TArray<struct FActTargetRef> Targets; // 0xA0(0x10)
+	struct TArray<struct FAwardItemConf> rewards; // 0xB0(0x10)
+	uint32_t need_reissue; // 0xC0(0x4)
+	uint32_t reissue_mail_id; // 0xC4(0x4)
+	uint32_t map_need; // 0xC8(0x4)
+	uint32_t Point; // 0xCC(0x4)
+	uint32_t show_in_game; // 0xD0(0x4)
+	uint32_t role_type; // 0xD4(0x4)
+	uint32_t map_mode_match_type; // 0xD8(0x4)
+	uint8_t Pad_0xDC[0x4]; // 0xDC(0x4)
+	struct TArray<struct FMapModeNode> map_mode; // 0xE0(0x10)
+	uint32_t finished_when_complete; // 0xF0(0x4)
+	uint8_t Pad_0xF4[0x4]; // 0xF4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.MapModeNode
+// Size: 0x8 (Inherited: 0x0)
+struct FMapModeNode
+{
+	uint32_t map_id; // 0x0(0x4)
+	uint32_t mode_id; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActTargetRef
+// Size: 0x58 (Inherited: 0x0)
+struct FActTargetRef
+{
+	uint32_t target_type; // 0x0(0x4)
+	uint32_t max_progress; // 0x4(0x4)
+	int64_t Param1; // 0x8(0x8)
+	int64_t Param2; // 0x10(0x8)
+	int64_t Param3; // 0x18(0x8)
+	int64_t Param4; // 0x20(0x8)
+	struct FString Param5; // 0x28(0x10)
+	struct FDateTime param6; // 0x38(0x8)
+	int64_t param7; // 0x40(0x8)
+	uint32_t Difficulty; // 0x48(0x4)
+	uint32_t jump_id; // 0x4C(0x4)
+	uint32_t desc_id; // 0x50(0x4)
+	uint8_t Pad_0x54[0x4]; // 0x54(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.TargetArmorTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FTargetArmorTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t item_id; // 0xC(0x4)
+	uint32_t unlock_item; // 0x10(0x4)
+	uint32_t is_default; // 0x14(0x4)
+	struct TArray<struct FWeaponItemConf> Items; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.TakeInEquipLimitConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FTakeInEquipLimitConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t item_type_num; // 0xC(0x4)
+	uint32_t item_type; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.TagSheet2TableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FTagSheet2TableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString SocketName; // 0x10(0x10)
+	struct FText PartName; // 0x20(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.TagSheet1TableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FTagSheet1TableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString Tag; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.TagMatchedConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FTagMatchedConfTableRow : FTableRowBase
+{
+	struct FString Tag; // 0x8(0x10)
+	struct TArray<uint32_t> matchedItemIDs; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.TCardSkillConfTableRow
+// Size: 0x58 (Inherited: 0x8)
+struct FTCardSkillConfTableRow : FTableRowBase
+{
+	uint32_t skill_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Desc; // 0x10(0x18)
+	uint32_t skill_type; // 0x28(0x4)
+	uint32_t Trigger; // 0x2C(0x4)
+	uint32_t duration_turns; // 0x30(0x4)
+	uint32_t after_n_turn; // 0x34(0x4)
+	uint32_t trigger_range_selector; // 0x38(0x4)
+	uint32_t target_range_selector; // 0x3C(0x4)
+	bool need_manual_select; // 0x40(0x1)
+	uint8_t Pad_0x41[0x3]; // 0x41(0x3)
+	uint32_t target_num; // 0x44(0x4)
+	struct TArray<struct FEffectConf> effects; // 0x48(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.EffectConf
+// Size: 0xC (Inherited: 0x0)
+struct FEffectConf
+{
+	uint32_t Effect; // 0x0(0x4)
+	int32_t Param1; // 0x4(0x4)
+	int32_t Param2; // 0x8(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.TCardRangeSelectorConfTableRow
+// Size: 0xA0 (Inherited: 0x8)
+struct FTCardRangeSelectorConfTableRow : FTableRowBase
+{
+	uint32_t selector_id; // 0x8(0x4)
+	uint32_t unit_type; // 0xC(0x4)
+	struct TArray<uint32_t> card_type; // 0x10(0x10)
+	struct TArray<uint32_t> gun_family; // 0x20(0x10)
+	struct TArray<uint32_t> camp; // 0x30(0x10)
+	struct TArray<uint32_t> battle_line; // 0x40(0x10)
+	struct TArray<uint32_t> white_keywords; // 0x50(0x10)
+	struct TArray<uint32_t> black_keywords; // 0x60(0x10)
+	struct TArray<uint32_t> cost_range; // 0x70(0x10)
+	struct TArray<uint32_t> attack_range; // 0x80(0x10)
+	struct TArray<uint32_t> health_range; // 0x90(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.TCardGameMsgConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FTCardGameMsgConfTableRow : FTableRowBase
+{
+	uint32_t message_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText message_content; // 0x10(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.TCardFactionIconConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FTCardFactionIconConfTableRow : FTableRowBase
+{
+	uint32_t Faction; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Path; // 0x10(0x18)
+	struct FText commander_skill_path; // 0x28(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.TCardDeckConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FTCardDeckConfTableRow : FTableRowBase
+{
+	uint32_t deck_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<uint32_t> cards; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.TCardConfTableRow
+// Size: 0x70 (Inherited: 0x8)
+struct FTCardConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Name; // 0x10(0x18)
+	struct FText Desc; // 0x28(0x18)
+	uint32_t Faction; // 0x40(0x4)
+	uint32_t card_type; // 0x44(0x4)
+	uint32_t gun_family; // 0x48(0x4)
+	uint32_t rarity; // 0x4C(0x4)
+	uint32_t Cost; // 0x50(0x4)
+	uint32_t atk; // 0x54(0x4)
+	uint32_t hp; // 0x58(0x4)
+	bool is_rush; // 0x5C(0x1)
+	bool is_taunt; // 0x5D(0x1)
+	bool is_windfury; // 0x5E(0x1)
+	bool is_cannot_action; // 0x5F(0x1)
+	struct TArray<uint32_t> skills; // 0x60(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.SystemRefreshPerkConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FSystemRefreshPerkConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t map_mode_id; // 0xC(0x4)
+	uint32_t character_type; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct TArray<uint32_t> refresh_perk_id; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.SystemRefreshConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FSystemRefreshConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t map_mode_id; // 0xC(0x4)
+	uint32_t refresh_group_id; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.SurveyConfTableRow
+// Size: 0xC8 (Inherited: 0x8)
+struct FSurveyConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Priority; // 0xC(0x4)
+	struct FText Title; // 0x10(0x18)
+	struct FText Content; // 0x28(0x18)
+	struct FDateTime begin_time; // 0x40(0x8)
+	struct FDateTime end_time; // 0x48(0x8)
+	uint32_t vaild_time; // 0x50(0x4)
+	uint32_t TaskId; // 0x54(0x4)
+	struct FText sid; // 0x58(0x18)
+	struct FText URL; // 0x70(0x18)
+	struct FText Code; // 0x88(0x18)
+	uint32_t Type; // 0xA0(0x4)
+	uint32_t cirle; // 0xA4(0x4)
+	uint32_t Limit; // 0xA8(0x4)
+	uint8_t Pad_0xAC[0x4]; // 0xAC(0x4)
+	struct TArray<struct Fitem> gifts; // 0xB0(0x10)
+	uint32_t svr_limit_id; // 0xC0(0x4)
+	int32_t open_date; // 0xC4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.item
+// Size: 0x8 (Inherited: 0x0)
+struct Fitem
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t item_num; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.SupplyCardRewardConfTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FSupplyCardRewardConfTableRow : FTableRowBase
+{
+	uint32_t reward_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText reward_name; // 0x10(0x18)
+	uint32_t buy_mall_id; // 0x28(0x4)
+	uint32_t reward_mall_id; // 0x2C(0x4)
+	struct TArray<struct FRewardItem> immediate_reward_list; // 0x30(0x10)
+	uint32_t return_rate; // 0x40(0x4)
+	uint8_t Pad_0x44[0x4]; // 0x44(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.RewardItem
+// Size: 0xC (Inherited: 0x0)
+struct FRewardItem
+{
+	uint32_t ID; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+	uint32_t is_black; // 0x8(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.SupplyCardConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FSupplyCardConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t reward_id; // 0xC(0x4)
+	uint32_t effective_days; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.StrongRedPointConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FStrongRedPointConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t show_pos; // 0xC(0x4)
+	struct FText notice; // 0x10(0x18)
+	uint32_t Priority; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.StreakExpTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FStreakExpTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Exp; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.StoryTaskConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FStoryTaskConfTableRow : FTableRowBase
+{
+	uint32_t storytask_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<uint32_t> target_ids; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.StickersTableRow
+// Size: 0x60 (Inherited: 0x8)
+struct FStickersTableRow : FTableRowBase
+{
+	uint32_t itemID; // 0x8(0x4)
+	uint32_t Level; // 0xC(0x4)
+	struct FString StickersIconPath; // 0x10(0x10)
+	struct FString StickersGifTexture; // 0x20(0x10)
+	uint32_t isGif; // 0x30(0x4)
+	uint8_t Pad_0x34[0x4]; // 0x34(0x4)
+	struct TArray<uint32_t> jump_goto; // 0x38(0x10)
+	struct FText no_source_description; // 0x48(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.StashSlotConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FStashSlotConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t money_id; // 0xC(0x4)
+	uint32_t money_num; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.StashExtraRowConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FStashExtraRowConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t row_count; // 0xC(0x4)
+	uint32_t need_level; // 0x10(0x4)
+	uint32_t need_moeny; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.StandaloneWeatherTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FStandaloneWeatherTableRow : FTableRowBase
+{
+	uint32_t PlaymModeID; // 0x8(0x4)
+	uint32_t Weather1; // 0xC(0x4)
+	uint32_t Weather2; // 0x10(0x4)
+	uint32_t Weather3; // 0x14(0x4)
+	uint32_t Weather4; // 0x18(0x4)
+	uint32_t Weather5; // 0x1C(0x4)
+	uint32_t Weather6; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.SquadKVConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FSquadKVConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	int64_t Val; // 0x10(0x8)
+	struct TArray<struct FSquadTime> time_list; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.SquadTime
+// Size: 0x10 (Inherited: 0x0)
+struct FSquadTime
+{
+	struct FDateTime begin_time; // 0x0(0x8)
+	struct FDateTime end_time; // 0x8(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.SprayIconTextureTableRow
+// Size: 0x70 (Inherited: 0x8)
+struct FSprayIconTextureTableRow : FTableRowBase
+{
+	uint32_t itemID; // 0x8(0x4)
+	uint32_t isGif; // 0xC(0x4)
+	uint32_t Level; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct FSoftObjectPath SprayTexture; // 0x18(0x18)
+	float SprayScale; // 0x30(0x4)
+	uint8_t Pad_0x34[0x4]; // 0x34(0x4)
+	struct TArray<uint32_t> jump_goto; // 0x38(0x10)
+	struct FText no_source_description; // 0x48(0x18)
+	struct FVector2D SprayUVTiling; // 0x60(0x8)
+	float SprayFrameRate; // 0x68(0x4)
+	uint8_t Pad_0x6C[0x4]; // 0x6C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.SpeechConfTableRow
+// Size: 0x58 (Inherited: 0x8)
+struct FSpeechConfTableRow : FTableRowBase
+{
+	uint32_t SpeechID; // 0x8(0x4)
+	uint32_t NPCID; // 0xC(0x4)
+	struct TArray<uint32_t> Npc_stage; // 0x10(0x10)
+	uint32_t SpeechType; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+	struct FText SpeechText; // 0x28(0x18)
+	struct TArray<uint32_t> Level; // 0x40(0x10)
+	uint32_t QuestID; // 0x50(0x4)
+	uint32_t QspeechType; // 0x54(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.SpecialIdleConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FSpecialIdleConfTableRow : FTableRowBase
+{
+	uint32_t SuitId; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText SuitName; // 0x10(0x18)
+	uint32_t LoopInterval; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.SpecialGroupIdConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FSpecialGroupIdConfTableRow : FTableRowBase
+{
+	uint32_t Kind; // 0x8(0x4)
+	uint32_t group_id; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.SpecialDanceTableRow
+// Size: 0xD0 (Inherited: 0x8)
+struct FSpecialDanceTableRow : FTableRowBase
+{
+	uint32_t itemID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString GestureIconPath; // 0x10(0x10)
+	uint32_t Level; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+	struct FText GestureDescription; // 0x28(0x18)
+	struct TArray<struct FText> AnimationName; // 0x40(0x10)
+	uint32_t depend_avatar; // 0x50(0x4)
+	uint8_t Pad_0x54[0x4]; // 0x54(0x4)
+	struct TArray<uint32_t> sp_avatar; // 0x58(0x10)
+	struct FText AnimationNamePlus; // 0x68(0x18)
+	struct FText HideEquipAnimationFix; // 0x80(0x18)
+	uint32_t FixAnimationOrder; // 0x98(0x4)
+	uint8_t Pad_0x9C[0x4]; // 0x9C(0x4)
+	struct TArray<uint32_t> jump_goto; // 0xA0(0x10)
+	struct FText no_source_description; // 0xB0(0x18)
+	uint32_t Weight; // 0xC8(0x4)
+	uint8_t Pad_0xCC[0x4]; // 0xCC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.SpecialConditionsConfTableRow
+// Size: 0x60 (Inherited: 0x8)
+struct FSpecialConditionsConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString Title; // 0x10(0x10)
+	struct FText des; // 0x20(0x18)
+	uint32_t dispatch_member_type; // 0x38(0x4)
+	uint32_t condition_reward_value; // 0x3C(0x4)
+	uint32_t slot_index; // 0x40(0x4)
+	uint32_t exclusive_slot_index; // 0x44(0x4)
+	uint32_t condition_assemble; // 0x48(0x4)
+	uint8_t Pad_0x4C[0x4]; // 0x4C(0x4)
+	struct TArray<struct FDispatchEquipConditions> Conditions; // 0x50(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.DispatchEquipConditions
+// Size: 0xC (Inherited: 0x0)
+struct FDispatchEquipConditions
+{
+	uint32_t condition_type; // 0x0(0x4)
+	uint32_t compare; // 0x4(0x4)
+	uint32_t compare_value; // 0x8(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.SoundConfTableRow
+// Size: 0x50 (Inherited: 0x8)
+struct FSoundConfTableRow : FTableRowBase
+{
+	struct FName sound_name; // 0x8(0x8)
+	struct FText chn_name; // 0x10(0x18)
+	struct FText Desc; // 0x28(0x18)
+	struct FString sound_ak_event; // 0x40(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.SocialMediaConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FSocialMediaConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString platform_url; // 0x10(0x10)
+	struct FString ICON; // 0x20(0x10)
+	struct FString Content; // 0x30(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.SlotRecommendEquipTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FSlotRecommendEquipTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<uint32_t> RecommendEquipType; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.SkipTutorialTableRow
+// Size: 0x90 (Inherited: 0x8)
+struct FSkipTutorialTableRow : FTableRowBase
+{
+	uint32_t QuestionId; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Question; // 0x10(0x18)
+	struct FText Option1; // 0x28(0x18)
+	struct FText Option2; // 0x40(0x18)
+	struct FText Option3; // 0x58(0x18)
+	struct FText Option4; // 0x70(0x18)
+	uint32_t Answer; // 0x88(0x4)
+	uint8_t Pad_0x8C[0x4]; // 0x8C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.SingleGameInventoryIDConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FSingleGameInventoryIDConfTableRow : FTableRowBase
+{
+	uint64_t itemID; // 0x8(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.SideClashConfTableRow
+// Size: 0x60 (Inherited: 0x8)
+struct FSideClashConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Show_Type; // 0xC(0x4)
+	struct FText Content; // 0x10(0x18)
+	int32_t per_unit_score; // 0x28(0x4)
+	int32_t Limit; // 0x2C(0x4)
+	uint32_t win_condition; // 0x30(0x4)
+	uint32_t win_coeff; // 0x34(0x4)
+	uint32_t lose_coeff; // 0x38(0x4)
+	uint8_t Pad_0x3C[0x4]; // 0x3C(0x4)
+	struct TArray<uint32_t> special_rules; // 0x40(0x10)
+	struct TArray<uint32_t> special_award; // 0x50(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ShowExtendConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FShowExtendConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Lower_Price; // 0xC(0x4)
+	uint32_t Upper_Price; // 0x10(0x4)
+	uint32_t Lower_Extend; // 0x14(0x4)
+	uint32_t Upper_Extend; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ShowDetailTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FShowDetailTableRow : FTableRowBase
+{
+	uint64_t itemID; // 0x8(0x8)
+	uint32_t ShowDetailType; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct FString ResourcePath; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ShoppingStationTabConfigTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FShoppingStationTabConfigTableRow : FTableRowBase
+{
+	uint32_t TabID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText TabName; // 0x10(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.ShoppingStationItemConfigTableRow
+// Size: 0x70 (Inherited: 0x8)
+struct FShoppingStationItemConfigTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t itemID; // 0xC(0x4)
+	uint32_t ItemNum; // 0x10(0x4)
+	uint32_t ItemCount; // 0x14(0x4)
+	uint32_t Weight; // 0x18(0x4)
+	bool IsUseMarketPrice; // 0x1C(0x1)
+	bool IsPutbackRandomDiscountFactor; // 0x1D(0x1)
+	uint8_t Pad_0x1E[0x2]; // 0x1E(0x2)
+	struct TArray<float> DiscountFactor; // 0x20(0x10)
+	uint32_t TabID; // 0x30(0x4)
+	int32_t PlayerPurchaseLimit; // 0x34(0x4)
+	int32_t TeamUnlockValue; // 0x38(0x4)
+	uint8_t Pad_0x3C[0x4]; // 0x3C(0x4)
+	struct TArray<struct FSpendItemConf> SpendItems; // 0x40(0x10)
+	float GiftProbability; // 0x50(0x4)
+	uint32_t GiftID; // 0x54(0x4)
+	uint32_t GiftNum; // 0x58(0x4)
+	uint32_t Action; // 0x5C(0x4)
+	struct TArray<int32_t> ActionParams; // 0x60(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.SpendItemConf
+// Size: 0xC (Inherited: 0x0)
+struct FSpendItemConf
+{
+	uint8_t Spend_Policy; // 0x0(0x1)
+	uint8_t Pad_0x1[0x3]; // 0x1(0x3)
+	uint32_t item_id; // 0x4(0x4)
+	uint32_t item_num; // 0x8(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ShoppingStationGroupConfigTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FShoppingStationGroupConfigTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<uint32_t> ItemList; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ShoppingStationConfigTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FShoppingStationConfigTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	bool WhetherPutbackRandom; // 0xC(0x1)
+	uint8_t TradeUnlockPolicy; // 0xD(0x1)
+	uint8_t Pad_0xE[0x2]; // 0xE(0x2)
+	struct TArray<struct FGroupListConf> GroupList; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.GroupListConf
+// Size: 0x8 (Inherited: 0x0)
+struct FGroupListConf
+{
+	uint32_t ShoppingGroupNum; // 0x0(0x4)
+	uint32_t ItemCount; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ShoppingStationBuybackConfigTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FShoppingStationBuybackConfigTableRow : FTableRowBase
+{
+	uint32_t itemID; // 0x8(0x4)
+	bool bBuybackPriceOverride; // 0xC(0x1)
+	uint8_t Pad_0xD[0x3]; // 0xD(0x3)
+	float StandardPriceBuybackRate; // 0x10(0x4)
+	uint32_t BuybackPrice; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ShockConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FShockConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString ShockPath; // 0x10(0x10)
+	float Duration; // 0x20(0x4)
+	uint32_t Amplitude; // 0x24(0x4)
+	float CoolDownTime; // 0x28(0x4)
+	uint32_t Default; // 0x2C(0x4)
+	uint32_t Loop; // 0x30(0x4)
+	uint32_t Interval; // 0x34(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ShareTextTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FShareTextTableRow : FTableRowBase
+{
+	uint64_t ID; // 0x8(0x8)
+	struct FText Text; // 0x10(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.ShareTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FShareTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText pic_desc; // 0x10(0x18)
+	struct FString pic; // 0x28(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.SetItemDuraConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FSetItemDuraConfTableRow : FTableRowBase
+{
+	uint32_t is_npc; // 0x8(0x4)
+	uint32_t group_id; // 0xC(0x4)
+	uint32_t class_id; // 0x10(0x4)
+	uint32_t item_id; // 0x14(0x4)
+	uint32_t max_durability; // 0x18(0x4)
+	uint32_t min_durabiliy; // 0x1C(0x4)
+	uint32_t max_real_durability; // 0x20(0x4)
+	uint32_t min_real_durability; // 0x24(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ServerLimitConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FServerLimitConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<uint32_t> hourly_refresh_time; // 0x10(0x10)
+	uint32_t hourly_limit_num; // 0x20(0x4)
+	uint32_t daily_limit_num; // 0x24(0x4)
+	uint32_t weekly_limit_num; // 0x28(0x4)
+	uint32_t monthly_limit_num; // 0x2C(0x4)
+	uint32_t season_limit_num; // 0x30(0x4)
+	uint32_t permanent_limit_num; // 0x34(0x4)
+	uint32_t num_type; // 0x38(0x4)
+	uint8_t Pad_0x3C[0x4]; // 0x3C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ServerKey2TextTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FServerKey2TextTableRow : FTableRowBase
+{
+	struct FString ServerKey; // 0x8(0x10)
+	struct FText ServerText; // 0x18(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.ServerInfoTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FServerInfoTableRow : FTableRowBase
+{
+	uint32_t ServerCode; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Describe; // 0x10(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.SeasonShopConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FSeasonShopConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t sell_item_id; // 0xC(0x4)
+	uint32_t sell_num; // 0x10(0x4)
+	uint32_t cost_num; // 0x14(0x4)
+	uint32_t buy_limit; // 0x18(0x4)
+	uint32_t buy_limit_season; // 0x1C(0x4)
+	uint32_t ranked_Level; // 0x20(0x4)
+	uint32_t bind_season; // 0x24(0x4)
+	struct FDateTime unlock_time; // 0x28(0x8)
+	uint32_t sort_param; // 0x30(0x4)
+	uint8_t Pad_0x34[0x4]; // 0x34(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.SeasonPublicityTableRow
+// Size: 0x90 (Inherited: 0x8)
+struct FSeasonPublicityTableRow : FTableRowBase
+{
+	uint32_t info_id; // 0x8(0x4)
+	uint32_t info_type; // 0xC(0x4)
+	struct FString info_picture; // 0x10(0x10)
+	struct FText info_big_title; // 0x20(0x18)
+	struct FText info_small_title; // 0x38(0x18)
+	struct FText info_describe1; // 0x50(0x18)
+	struct FText info_describe2; // 0x68(0x18)
+	struct FString info_path; // 0x80(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.SeasonProfileTypeIconPathConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FSeasonProfileTypeIconPathConfTableRow : FTableRowBase
+{
+	uint32_t type_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText type_name; // 0x10(0x18)
+	struct FString type_image; // 0x28(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.SeasonProfileRewardConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FSeasonProfileRewardConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t season_id; // 0xC(0x4)
+	uint32_t star_value; // 0x10(0x4)
+	uint32_t item_id; // 0x14(0x4)
+	uint32_t Num; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.SeasonProfileConfTableRow
+// Size: 0x110 (Inherited: 0x8)
+struct FSeasonProfileConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t season_id; // 0xC(0x4)
+	uint32_t sort_param; // 0x10(0x4)
+	uint32_t type_id; // 0x14(0x4)
+	uint32_t core_profile; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	struct FDateTime abs_begin_time; // 0x20(0x8)
+	struct FDateTime abs_end_time; // 0x28(0x8)
+	struct FText Name; // 0x30(0x18)
+	uint32_t unlock_type; // 0x48(0x4)
+	uint8_t Pad_0x4C[0x4]; // 0x4C(0x4)
+	struct FText unlock_des; // 0x50(0x18)
+	uint32_t reward_star; // 0x68(0x4)
+	uint8_t Pad_0x6C[0x4]; // 0x6C(0x4)
+	struct TArray<struct FUnlockItems> unlock_items; // 0x70(0x10)
+	struct FText Describe; // 0x80(0x18)
+	struct FString ICON; // 0x98(0x10)
+	struct FString Resource; // 0xA8(0x10)
+	struct FString Sound_Resource; // 0xB8(0x10)
+	int32_t location_x; // 0xC8(0x4)
+	int32_t location_y; // 0xCC(0x4)
+	int32_t location_z; // 0xD0(0x4)
+	int32_t rotator_x; // 0xD4(0x4)
+	int32_t rotator_y; // 0xD8(0x4)
+	int32_t rotator_z; // 0xDC(0x4)
+	int32_t scale_x; // 0xE0(0x4)
+	int32_t scale_y; // 0xE4(0x4)
+	int32_t scale_z; // 0xE8(0x4)
+	int32_t core_location_x; // 0xEC(0x4)
+	int32_t core_location_y; // 0xF0(0x4)
+	int32_t core_location_z; // 0xF4(0x4)
+	int32_t core_rotator_x; // 0xF8(0x4)
+	int32_t core_rotator_y; // 0xFC(0x4)
+	int32_t core_rotator_z; // 0x100(0x4)
+	int32_t core_scale_x; // 0x104(0x4)
+	int32_t core_scale_y; // 0x108(0x4)
+	int32_t core_scale_z; // 0x10C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.UnlockItems
+// Size: 0x8 (Inherited: 0x0)
+struct FUnlockItems
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.SeasonPVConfTableRow
+// Size: 0x68 (Inherited: 0x8)
+struct FSeasonPVConfTableRow : FTableRowBase
+{
+	uint32_t season_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText season_name; // 0x10(0x18)
+	struct FString season_PV_Resource; // 0x28(0x10)
+	struct FString season_slideshow; // 0x38(0x10)
+	struct FString season_coreshow; // 0x48(0x10)
+	struct TArray<struct FRewardItems> reward_items; // 0x58(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.RewardItems
+// Size: 0x10 (Inherited: 0x0)
+struct FRewardItems
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+	uint32_t is_black; // 0x8(0x4)
+	uint32_t is_faction; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.SeasonChallengeTaskTabConfTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FSeasonChallengeTaskTabConfTableRow : FTableRowBase
+{
+	uint32_t tab_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText tab_name; // 0x10(0x18)
+	uint32_t tab_season; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+	struct FText tab_task; // 0x30(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.SeasonChallengeRewardConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FSeasonChallengeRewardConfTableRow : FTableRowBase
+{
+	uint32_t reward_id; // 0x8(0x4)
+	uint32_t season_id; // 0xC(0x4)
+	uint32_t need_star_num; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct TArray<struct FAwardItemConf> rewards; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.SeasonBPHotSoundConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FSeasonBPHotSoundConfTableRow : FTableRowBase
+{
+	uint32_t season_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString SeasonPreviewMusicName; // 0x10(0x10)
+	struct FString StopMusicName; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.SeasonBPHotIntroduceConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FSeasonBPHotIntroduceConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t season_id; // 0xC(0x4)
+	uint32_t list_Id; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct FText Title; // 0x18(0x18)
+	struct FDateTime begin_time; // 0x30(0x8)
+	struct FDateTime end_time; // 0x38(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.SeasonBPHotConfTableRow
+// Size: 0x80 (Inherited: 0x8)
+struct FSeasonBPHotConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t season_id; // 0xC(0x4)
+	uint32_t list_Id; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct FText Title; // 0x18(0x18)
+	struct FText Desc; // 0x30(0x18)
+	struct FString cdn; // 0x48(0x10)
+	uint32_t introduction_link; // 0x58(0x4)
+	uint8_t Pad_0x5C[0x4]; // 0x5C(0x4)
+	struct FString jumpgoto; // 0x60(0x10)
+	struct FDateTime begin_time; // 0x70(0x8)
+	struct FDateTime end_time; // 0x78(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.ScreenEffectPaddingTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FScreenEffectPaddingTableRow : FTableRowBase
+{
+	struct FString AssetName; // 0x8(0x10)
+	float Left; // 0x18(0x4)
+	float Top; // 0x1C(0x4)
+	float Right; // 0x20(0x4)
+	float Bottom; // 0x24(0x4)
+	float MarginLeft; // 0x28(0x4)
+	float MarginTop; // 0x2C(0x4)
+	float MarginRight; // 0x30(0x4)
+	float MarginBottom; // 0x34(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ScopeScaleConfigTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FScopeScaleConfigTableRow : FTableRowBase
+{
+	uint64_t ID; // 0x8(0x8)
+	struct TArray<struct FWeaponScopeScale> WeaponScopeScale; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.WeaponScopeScale
+// Size: 0x30 (Inherited: 0x0)
+struct FWeaponScopeScale
+{
+	uint64_t ID; // 0x0(0x8)
+	struct FText WeaponName; // 0x8(0x18)
+	float RoScale; // 0x20(0x4)
+	float LoScale; // 0x24(0x4)
+	float ADSGunKickScale; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.Scheme703060006TableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FScheme703060006TableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Vest; // 0xC(0x4)
+	uint32_t Armor; // 0x10(0x4)
+	uint32_t BackPack; // 0x14(0x4)
+	uint32_t Helmet; // 0x18(0x4)
+	uint32_t Visor; // 0x1C(0x4)
+	uint32_t Headset; // 0x20(0x4)
+	uint32_t mask; // 0x24(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.Scheme703060005TableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FScheme703060005TableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Vest; // 0xC(0x4)
+	uint32_t Armor; // 0x10(0x4)
+	uint32_t BackPack; // 0x14(0x4)
+	uint32_t Helmet; // 0x18(0x4)
+	uint32_t Visor; // 0x1C(0x4)
+	uint32_t Headset; // 0x20(0x4)
+	uint32_t mask; // 0x24(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.Scheme703060004TableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FScheme703060004TableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Vest; // 0xC(0x4)
+	uint32_t Armor; // 0x10(0x4)
+	uint32_t BackPack; // 0x14(0x4)
+	uint32_t Helmet; // 0x18(0x4)
+	uint32_t Visor; // 0x1C(0x4)
+	uint32_t Headset; // 0x20(0x4)
+	uint32_t mask; // 0x24(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.Scheme703060003TableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FScheme703060003TableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Vest; // 0xC(0x4)
+	uint32_t Armor; // 0x10(0x4)
+	uint32_t BackPack; // 0x14(0x4)
+	uint32_t Helmet; // 0x18(0x4)
+	uint32_t Visor; // 0x1C(0x4)
+	uint32_t Headset; // 0x20(0x4)
+	uint32_t mask; // 0x24(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.Scheme703060002TableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FScheme703060002TableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Vest; // 0xC(0x4)
+	uint32_t Armor; // 0x10(0x4)
+	uint32_t BackPack; // 0x14(0x4)
+	uint32_t Helmet; // 0x18(0x4)
+	uint32_t Visor; // 0x1C(0x4)
+	uint32_t Headset; // 0x20(0x4)
+	uint32_t mask; // 0x24(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.Scheme703060001TableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FScheme703060001TableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Vest; // 0xC(0x4)
+	uint32_t Armor; // 0x10(0x4)
+	uint32_t BackPack; // 0x14(0x4)
+	uint32_t Helmet; // 0x18(0x4)
+	uint32_t Visor; // 0x1C(0x4)
+	uint32_t Headset; // 0x20(0x4)
+	uint32_t mask; // 0x24(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ScavScoreMappingTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FScavScoreMappingTableRow : FTableRowBase
+{
+	int32_t Score; // 0x8(0x4)
+	int32_t group_id; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ScavScoreConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FScavScoreConfTableRow : FTableRowBase
+{
+	uint32_t score_id; // 0x8(0x4)
+	int32_t Value; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ScavExpFactorTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FScavExpFactorTableRow : FTableRowBase
+{
+	struct FString ID; // 0x8(0x10)
+	uint32_t Factor; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ScavEquipConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FScavEquipConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t is_npc; // 0xC(0x4)
+	uint32_t group_id; // 0x10(0x4)
+	uint32_t class_id; // 0x14(0x4)
+	uint32_t slot_index; // 0x18(0x4)
+	uint32_t Weight; // 0x1C(0x4)
+	uint32_t item_id; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+	struct TArray<struct FExtEquipConf> exts; // 0x28(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ExtEquipConf
+// Size: 0xC (Inherited: 0x0)
+struct FExtEquipConf
+{
+	uint32_t ID; // 0x0(0x4)
+	uint32_t Type; // 0x4(0x4)
+	uint32_t Num; // 0x8(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ScavContainerConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FScavContainerConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Weight; // 0xC(0x4)
+	struct TArray<struct FCntrItemConf> Items; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.CntrItemConf
+// Size: 0x10 (Inherited: 0x0)
+struct FCntrItemConf
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+	uint32_t min_dura; // 0x8(0x4)
+	uint32_t max_dura; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ScavAIDynamicLimitTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FScavAIDynamicLimitTableRow : FTableRowBase
+{
+	int32_t ConfigID; // 0x8(0x4)
+	int32_t MapID; // 0xC(0x4)
+	struct TArray<int32_t> AISpawnConfigID; // 0x10(0x10)
+	int32_t EventId; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+	struct TArray<float> weather; // 0x28(0x10)
+	int32_t ExpectedPMCPlayerNum; // 0x38(0x4)
+	float ScavAIDynamicLimitStartTime; // 0x3C(0x4)
+	int32_t ScavLimitPerPMCPlayer; // 0x40(0x4)
+	int32_t ScavLimitBase; // 0x44(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.SafeLootLimitTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FSafeLootLimitTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<struct FLimitPoolConf> PoolLists; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.LimitPoolConf
+// Size: 0x14 (Inherited: 0x0)
+struct FLimitPoolConf
+{
+	uint32_t shield_type; // 0x0(0x4)
+	uint32_t sub_item_id; // 0x4(0x4)
+	uint32_t sub_item_num; // 0x8(0x4)
+	uint32_t Probability; // 0xC(0x4)
+	uint32_t pool_id; // 0x10(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.SafeBoxConfTableRow
+// Size: 0x60 (Inherited: 0x8)
+struct FSafeBoxConfTableRow : FTableRowBase
+{
+	uint32_t container_id; // 0x8(0x4)
+	uint32_t show_index; // 0xC(0x4)
+	uint32_t day_price; // 0x10(0x4)
+	uint32_t is_hidden; // 0x14(0x4)
+	uint32_t group_id; // 0x18(0x4)
+	uint32_t is_time; // 0x1C(0x4)
+	struct FText list_desc; // 0x20(0x18)
+	uint32_t jump_goto; // 0x38(0x4)
+	uint32_t price; // 0x3C(0x4)
+	uint32_t Level; // 0x40(0x4)
+	uint8_t Pad_0x44[0x4]; // 0x44(0x4)
+	struct FText Context; // 0x48(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.RoomKVConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FRoomKVConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	int64_t Val; // 0x10(0x8)
+	struct TArray<int64_t> val_array; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.RookirTriggerSummaryConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FRookirTriggerSummaryConfTableRow : FTableRowBase
+{
+	uint32_t trigger_id; // 0x8(0x4)
+	uint32_t repetition_allowed; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.RookieTriggerConfTableRow
+// Size: 0x60 (Inherited: 0x8)
+struct FRookieTriggerConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t trigger_id; // 0xC(0x4)
+	uint32_t trigger_type; // 0x10(0x4)
+	uint32_t is_pop_after_unlock; // 0x14(0x4)
+	uint32_t season_id; // 0x18(0x4)
+	uint32_t relation_next_id; // 0x1C(0x4)
+	struct TArray<uint64_t> cond_value; // 0x20(0x10)
+	struct TArray<uint32_t> extra_param; // 0x30(0x10)
+	uint8_t trigger_level; // 0x40(0x1)
+	uint8_t Pad_0x41[0x3]; // 0x41(0x3)
+	uint32_t Priority; // 0x44(0x4)
+	uint32_t triggertimes; // 0x48(0x4)
+	uint32_t cdtimes; // 0x4C(0x4)
+	struct TArray<uint32_t> List; // 0x50(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.RookieTriggerBubbleConfTableRow
+// Size: 0x90 (Inherited: 0x8)
+struct FRookieTriggerBubbleConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t trigger_id; // 0xC(0x4)
+	struct FString panelName; // 0x10(0x10)
+	struct FString ButtonName; // 0x20(0x10)
+	uint32_t NeedAddToChild; // 0x30(0x4)
+	uint32_t DirectType; // 0x34(0x4)
+	float offsetX; // 0x38(0x4)
+	float offsetY; // 0x3C(0x4)
+	struct FString WaitPanelName; // 0x40(0x10)
+	struct FString ButtonClickName; // 0x50(0x10)
+	uint32_t bubbleUnlockLevel; // 0x60(0x4)
+	uint8_t Pad_0x64[0x4]; // 0x64(0x4)
+	struct FString arg; // 0x68(0x10)
+	struct FText bubbledesc; // 0x78(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.RookieTaskTreeBranchConfTableRow
+// Size: 0x50 (Inherited: 0x8)
+struct FRookieTaskTreeBranchConfTableRow : FTableRowBase
+{
+	uint32_t group_id; // 0x8(0x4)
+	uint32_t task_id; // 0xC(0x4)
+	uint32_t Row; // 0x10(0x4)
+	uint32_t order_in_row; // 0x14(0x4)
+	uint32_t unlock_cond_type; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	struct TArray<struct FRookieTaskUnlockCondConf> unlock_conds; // 0x20(0x10)
+	uint32_t help_id; // 0x30(0x4)
+	uint32_t button_type; // 0x34(0x4)
+	struct FText button_text; // 0x38(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.RookieTaskUnlockCondConf
+// Size: 0x18 (Inherited: 0x0)
+struct FRookieTaskUnlockCondConf
+{
+	uint32_t unlock_type; // 0x0(0x4)
+	uint8_t Pad_0x4[0x4]; // 0x4(0x4)
+	struct TArray<uint32_t> prev_task_ids; // 0x8(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.RookieTaskListConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FRookieTaskListConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t is_main_task; // 0xC(0x4)
+	uint32_t pre_task_id; // 0x10(0x4)
+	uint32_t attach_position1; // 0x14(0x4)
+	uint32_t attach_position2; // 0x18(0x4)
+	uint32_t attach_position3; // 0x1C(0x4)
+	uint32_t item_id; // 0x20(0x4)
+	uint32_t item_num; // 0x24(0x4)
+	struct FText Desc; // 0x28(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.RookieStepVersionProcessConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FRookieStepVersionProcessConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t version_id; // 0xC(0x4)
+	uint32_t ab_test_type; // 0x10(0x4)
+	uint32_t start_step_id; // 0x14(0x4)
+	uint32_t rookie_type; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.RookieStepVersionOverseaConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FRookieStepVersionOverseaConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t version_id; // 0xC(0x4)
+	struct TArray<struct FTutorialType> tutorial_list; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.TutorialType
+// Size: 0x8 (Inherited: 0x0)
+struct FTutorialType
+{
+	uint32_t forceguild_type; // 0x0(0x4)
+	uint32_t tutorial_type; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.RookieStepInbattleOverseaConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FRookieStepInbattleOverseaConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t rookie_index; // 0xC(0x4)
+	uint32_t forceguildtype; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.RookieStepConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FRookieStepConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t pre_taskid; // 0xC(0x4)
+	uint32_t forceguildtype; // 0x10(0x4)
+	uint32_t jump_id; // 0x14(0x4)
+	uint32_t break_jump; // 0x18(0x4)
+	uint32_t protected_jump; // 0x1C(0x4)
+	uint32_t is_effective; // 0x20(0x4)
+	uint32_t is_repeatable; // 0x24(0x4)
+	uint32_t ActionDoneType; // 0x28(0x4)
+	uint32_t ActionDoneParams; // 0x2C(0x4)
+	uint32_t itemID; // 0x30(0x4)
+	uint32_t trade_id; // 0x34(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.RookieSendItemBackConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FRookieSendItemBackConfTableRow : FTableRowBase
+{
+	uint32_t item_id; // 0x8(0x4)
+	uint32_t Num; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.RookieOverSeaStepConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FRookieOverSeaStepConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t pre_taskid; // 0xC(0x4)
+	uint32_t forceguildtype; // 0x10(0x4)
+	uint32_t jump_id; // 0x14(0x4)
+	uint32_t break_jump; // 0x18(0x4)
+	uint32_t protected_jump; // 0x1C(0x4)
+	uint32_t is_effective; // 0x20(0x4)
+	uint32_t is_repeatable; // 0x24(0x4)
+	struct TArray<uint32_t> get_itemid; // 0x28(0x10)
+	uint32_t itemID; // 0x38(0x4)
+	uint32_t trade_id; // 0x3C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.RookieOutlineOverrideConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FRookieOutlineOverrideConfTableRow : FTableRowBase
+{
+	uint32_t item_id; // 0x8(0x4)
+	uint32_t override_color_index; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.RookieDetailConfTableRow
+// Size: 0x1E0 (Inherited: 0x8)
+struct FRookieDetailConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Type; // 0xC(0x4)
+	struct FText Desc; // 0x10(0x18)
+	struct FText desc1; // 0x28(0x18)
+	uint32_t SubType; // 0x40(0x4)
+	float EffectScale; // 0x44(0x4)
+	uint32_t buttonSizeX; // 0x48(0x4)
+	uint32_t buttonSizeY; // 0x4C(0x4)
+	struct FString panelName; // 0x50(0x10)
+	struct FString btnName; // 0x60(0x10)
+	struct FString btnIconName; // 0x70(0x10)
+	struct FString WaitPanelName; // 0x80(0x10)
+	struct FString judge_function; // 0x90(0x10)
+	uint32_t next_rookieId; // 0xA0(0x4)
+	float positionX; // 0xA4(0x4)
+	float positionY; // 0xA8(0x4)
+	float SizeX; // 0xAC(0x4)
+	float SizeY; // 0xB0(0x4)
+	float offsetX; // 0xB4(0x4)
+	uint32_t unloadchecktype; // 0xB8(0x4)
+	uint32_t AttachType; // 0xBC(0x4)
+	uint32_t CheckCondition; // 0xC0(0x4)
+	uint32_t conditionSkipRookieId; // 0xC4(0x4)
+	uint32_t TaskId; // 0xC8(0x4)
+	uint32_t businessId; // 0xCC(0x4)
+	uint32_t classifyId; // 0xD0(0x4)
+	uint32_t warehousesubid; // 0xD4(0x4)
+	uint32_t prepareid; // 0xD8(0x4)
+	uint32_t prepareTab; // 0xDC(0x4)
+	uint32_t mapRuleType; // 0xE0(0x4)
+	uint32_t itemSpaceType; // 0xE4(0x4)
+	struct FString backPanelName; // 0xE8(0x10)
+	struct FString waitSubPanelName; // 0xF8(0x10)
+	struct FString waitClosePanelName; // 0x108(0x10)
+	uint64_t dragItemid; // 0x118(0x8)
+	uint64_t ParentID; // 0x120(0x8)
+	uint32_t movieid; // 0x128(0x4)
+	uint8_t Pad_0x12C[0x4]; // 0x12C(0x4)
+	struct TArray<uint32_t> pptid; // 0x130(0x10)
+	uint32_t pptwaittime; // 0x140(0x4)
+	uint32_t pptemptyclose; // 0x144(0x4)
+	struct FText DisplayName; // 0x148(0x18)
+	uint32_t displayType; // 0x160(0x4)
+	uint8_t Pad_0x164[0x4]; // 0x164(0x4)
+	struct FString sound_name; // 0x168(0x10)
+	uint32_t attachCheckType; // 0x178(0x4)
+	uint32_t passCheck; // 0x17C(0x4)
+	struct FText floatTitle; // 0x180(0x18)
+	struct TArray<struct FText> floatContent; // 0x198(0x10)
+	uint32_t isfloating; // 0x1A8(0x4)
+	uint32_t isShowpromptly; // 0x1AC(0x4)
+	uint32_t talkcharacter; // 0x1B0(0x4)
+	uint32_t scrollAttachType; // 0x1B4(0x4)
+	struct TArray<uint32_t> task_ids; // 0x1B8(0x10)
+	struct TArray<struct FString> hide_widgets; // 0x1C8(0x10)
+	uint32_t btnInterfaceType; // 0x1D8(0x4)
+	uint32_t addNum; // 0x1DC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.RookieBStepEquipConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FRookieBStepEquipConfTableRow : FTableRowBase
+{
+	uint32_t Index; // 0x8(0x4)
+	uint32_t oversea_rookie_branch; // 0xC(0x4)
+	uint32_t item_id; // 0x10(0x4)
+	uint32_t Num; // 0x14(0x4)
+	uint32_t can_not_sell; // 0x18(0x4)
+	uint32_t is_black; // 0x1C(0x4)
+	struct TArray<struct FBlackItemConf> Items; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.BlackItemConf
+// Size: 0xC (Inherited: 0x0)
+struct FBlackItemConf
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+	uint32_t is_black; // 0x8(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.RookieAutoEquipConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FRookieAutoEquipConfTableRow : FTableRowBase
+{
+	uint32_t slot_id; // 0x8(0x4)
+	uint32_t item_id; // 0xC(0x4)
+	uint32_t Rule; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct TArray<struct FExtEquipRookieConf> exts; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ExtEquipRookieConf
+// Size: 0xC (Inherited: 0x0)
+struct FExtEquipRookieConf
+{
+	uint32_t ID; // 0x0(0x4)
+	uint32_t Type; // 0x4(0x4)
+	uint32_t Num; // 0x8(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.RoleKVConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FRoleKVConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	int64_t Val; // 0x10(0x8)
+	struct FDateTime timepoint; // 0x18(0x8)
+	struct TArray<int64_t> val_array; // 0x20(0x10)
+	struct TArray<struct FRoleKVDailyTimeConf> daily_time_vec; // 0x30(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.RoleKVDailyTimeConf
+// Size: 0x18 (Inherited: 0x0)
+struct FRoleKVDailyTimeConf
+{
+	struct FText daily_time; // 0x0(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.RoleIdentityConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FRoleIdentityConfTableRow : FTableRowBase
+{
+	uint32_t IdentityId; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Describe; // 0x10(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.RoadmapAwardsConfTableRow
+// Size: 0x58 (Inherited: 0x8)
+struct FRoadmapAwardsConfTableRow : FTableRowBase
+{
+	uint32_t award_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString map_task_sheet_name; // 0x10(0x10)
+	struct FString background_path; // 0x20(0x10)
+	uint32_t task_type; // 0x30(0x4)
+	uint8_t Pad_0x34[0x4]; // 0x34(0x4)
+	struct FDateTime unlock_time; // 0x38(0x8)
+	uint32_t task_num; // 0x40(0x4)
+	uint32_t need_preview; // 0x44(0x4)
+	struct TArray<struct FAwardItemConf> awards; // 0x48(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.RewardShareConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FRewardShareConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<uint32_t> avatar_set; // 0x10(0x10)
+	uint32_t is_after; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ReturnTypeConfTableRow
+// Size: 0xC8 (Inherited: 0x8)
+struct FReturnTypeConfTableRow : FTableRowBase
+{
+	uint32_t return_type; // 0x8(0x4)
+	uint32_t return_time; // 0xC(0x4)
+	struct FText login_reward; // 0x10(0x18)
+	struct FText settle_reward; // 0x28(0x18)
+	struct TArray<uint32_t> random_reward; // 0x40(0x10)
+	struct TArray<uint32_t> elo_interval; // 0x50(0x10)
+	struct TArray<uint32_t> login_decrease_elo; // 0x60(0x10)
+	struct TArray<uint32_t> settle_increase_elo; // 0x70(0x10)
+	uint32_t elo_increase_battle_cnt; // 0x80(0x4)
+	uint8_t Pad_0x84[0x4]; // 0x84(0x4)
+	struct TArray<uint32_t> login_decrease_wealth_elo; // 0x88(0x10)
+	struct TArray<struct FReward2Exp> bp_reward; // 0x98(0x10)
+	struct TArray<struct FDailyCheckinReward> daily_checkin_reward; // 0xA8(0x10)
+	struct TArray<struct FText> daily_reward; // 0xB8(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.DailyCheckinReward
+// Size: 0x18 (Inherited: 0x0)
+struct FDailyCheckinReward
+{
+	struct FText reward; // 0x0(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.Reward2Exp
+// Size: 0x14 (Inherited: 0x0)
+struct FReward2Exp
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+	uint32_t icon_size; // 0x8(0x4)
+	uint32_t is_black; // 0xC(0x4)
+	uint32_t Exp; // 0x10(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ReturnTaskTypeConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FReturnTaskTypeConfTableRow : FTableRowBase
+{
+	uint32_t return_task_type; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<struct FTaskProgressConf> task_progress_list; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.TaskProgressConf
+// Size: 0x4 (Inherited: 0x0)
+struct FTaskProgressConf
+{
+	uint32_t Progress; // 0x0(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ReturnPlayerTypeConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FReturnPlayerTypeConfTableRow : FTableRowBase
+{
+	uint32_t return_player_type; // 0x8(0x4)
+	uint32_t rookie_node; // 0xC(0x4)
+	uint32_t Level; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ReturnPlayerBuffConfTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FReturnPlayerBuffConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Desc; // 0x10(0x18)
+	struct FString icon_path; // 0x28(0x10)
+	struct FString bg_path; // 0x38(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ReturnDisplayConfTableRow
+// Size: 0x88 (Inherited: 0x8)
+struct FReturnDisplayConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FDateTime start_time; // 0x10(0x8)
+	struct FDateTime end_time; // 0x18(0x8)
+	uint32_t jump_goto; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+	struct FString cdn; // 0x28(0x10)
+	struct FText Title; // 0x38(0x18)
+	struct FText Detail; // 0x50(0x18)
+	uint32_t Weight; // 0x68(0x4)
+	uint32_t act_id; // 0x6C(0x4)
+	struct FText button_text; // 0x70(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.ResourceTypeIconConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FResourceTypeIconConfTableRow : FTableRowBase
+{
+	uint32_t typeId; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString ICON; // 0x10(0x10)
+	uint32_t IsDefault; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ResourceListConfTableRow
+// Size: 0x50 (Inherited: 0x8)
+struct FResourceListConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Name; // 0x10(0x18)
+	struct FString ICON; // 0x28(0x10)
+	uint8_t rare; // 0x38(0x1)
+	uint8_t Pad_0x39[0x7]; // 0x39(0x7)
+	struct TArray<uint32_t> typeId; // 0x40(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ResourceAreaConfTableRow
+// Size: 0x50 (Inherited: 0x8)
+struct FResourceAreaConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t MapID; // 0xC(0x4)
+	uint32_t TagId; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct FText TagName; // 0x18(0x18)
+	uint32_t MapVolumeId; // 0x30(0x4)
+	uint8_t Pad_0x34[0x4]; // 0x34(0x4)
+	struct TArray<uint32_t> ShowLootVolumeId; // 0x38(0x10)
+	uint32_t IsShowAll; // 0x48(0x4)
+	uint8_t Pad_0x4C[0x4]; // 0x4C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ReputationLevelConfTableRow
+// Size: 0x68 (Inherited: 0x8)
+struct FReputationLevelConfTableRow : FTableRowBase
+{
+	uint32_t reputation_level; // 0x8(0x4)
+	uint32_t prosthesis_level; // 0xC(0x4)
+	struct FText prosthesis_name; // 0x10(0x18)
+	struct FText prosthesis_des; // 0x28(0x18)
+	struct FText equip_des; // 0x40(0x18)
+	struct FString prosthesis_Icon; // 0x58(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ReportReasonConfTableRow
+// Size: 0x50 (Inherited: 0x8)
+struct FReportReasonConfTableRow : FTableRowBase
+{
+	uint32_t reason_id; // 0x8(0x4)
+	uint32_t Category; // 0xC(0x4)
+	struct TArray<uint32_t> use_scene; // 0x10(0x10)
+	struct FText Content; // 0x20(0x18)
+	struct FText Desc; // 0x38(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.ReportCategoryConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FReportCategoryConfTableRow : FTableRowBase
+{
+	uint32_t CategoryID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Desc; // 0x10(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.RepairItemConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FRepairItemConfTableRow : FTableRowBase
+{
+	uint32_t item_id; // 0x8(0x4)
+	uint32_t repair_coef_id; // 0xC(0x4)
+	uint32_t value_level; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.RepairDurabilityConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FRepairDurabilityConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<struct FDurabilityPriceConf> durability_price_conf; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.DurabilityPriceConf
+// Size: 0x8 (Inherited: 0x0)
+struct FDurabilityPriceConf
+{
+	uint32_t value_level; // 0x0(0x4)
+	uint32_t durability_price; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.RepairCoefConfTableRow
+// Size: 0x60 (Inherited: 0x8)
+struct FRepairCoefConfTableRow : FTableRowBase
+{
+	uint32_t repair_coef_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText material_name; // 0x10(0x18)
+	uint32_t repair_coef; // 0x28(0x4)
+	uint32_t tech_coef; // 0x2C(0x4)
+	struct TArray<uint32_t> repair_businessman_ids; // 0x30(0x10)
+	uint32_t unit_repair_price_coef; // 0x40(0x4)
+	uint32_t avg_unit_repair_price_coef; // 0x44(0x4)
+	struct FText repairability; // 0x48(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.RegistWhiteListConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FRegistWhiteListConfTableRow : FTableRowBase
+{
+	uint64_t GOpenID; // 0x8(0x8)
+	uint32_t ignore_open; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.RegistVirtualItemConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FRegistVirtualItemConfTableRow : FTableRowBase
+{
+	uint32_t item_id; // 0x8(0x4)
+	uint32_t Num; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.RegistLimitConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FRegistLimitConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FDateTime begin_time; // 0x10(0x8)
+	struct FDateTime end_time; // 0x18(0x8)
+	uint32_t qq_total; // 0x20(0x4)
+	uint32_t qq_ios; // 0x24(0x4)
+	uint32_t qq_adroid; // 0x28(0x4)
+	uint32_t wx_total; // 0x2C(0x4)
+	uint32_t wx_ios; // 0x30(0x4)
+	uint32_t wx_adroid; // 0x34(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.RegistEquipConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FRegistEquipConfTableRow : FTableRowBase
+{
+	uint32_t Index; // 0x8(0x4)
+	uint32_t oversea_rookie_branch; // 0xC(0x4)
+	uint32_t item_id; // 0x10(0x4)
+	uint32_t Num; // 0x14(0x4)
+	uint32_t can_not_sell; // 0x18(0x4)
+	uint32_t is_black; // 0x1C(0x4)
+	struct TArray<struct FBlackItemConf> Items; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.RegionConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FRegionConfTableRow : FTableRowBase
+{
+	uint32_t region; // 0x8(0x4)
+	uint32_t Open; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.RedPointWhiteListConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FRedPointWhiteListConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Level; // 0xC(0x4)
+	struct FString redpoint; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.RedPointConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FRedPointConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Type; // 0xC(0x4)
+	struct TArray<uint32_t> sub_id; // 0x10(0x10)
+	uint32_t is_external; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.RedPacketConfTableRow
+// Size: 0xD0 (Inherited: 0x8)
+struct FRedPacketConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t daily_limit; // 0xC(0x4)
+	struct FDateTime start_time; // 0x10(0x8)
+	struct FDateTime end_time; // 0x18(0x8)
+	struct FString red_packet_pic; // 0x20(0x10)
+	uint32_t show_pop_up; // 0x30(0x4)
+	uint8_t Pad_0x34[0x4]; // 0x34(0x4)
+	struct FString ntf_pic; // 0x38(0x10)
+	struct FString show_title; // 0x48(0x10)
+	struct FString show_tips; // 0x58(0x10)
+	struct FString show_button; // 0x68(0x10)
+	uint32_t show_win; // 0x78(0x4)
+	uint8_t Pad_0x7C[0x4]; // 0x7C(0x4)
+	struct FString des_win; // 0x80(0x10)
+	struct FString jump_win; // 0x90(0x10)
+	struct FString Tips; // 0xA0(0x10)
+	struct FString msg_title; // 0xB0(0x10)
+	struct FString msg_content; // 0xC0(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.RecycleSlotConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FRecycleSlotConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t is_recycle; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.RechargeConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FRechargeConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t recharge_money; // 0xC(0x4)
+	uint32_t recharge_reward; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.RankedWeekRewardConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FRankedWeekRewardConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Level; // 0xC(0x4)
+	uint32_t active_point; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct TArray<struct FCommonItemConfItem> rewards; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.RankedTopRankRewardConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FRankedTopRankRewardConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t start_rank; // 0xC(0x4)
+	uint32_t end_rank; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct TArray<struct FCommonItemConfItem> rewards; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.RankedTeamScoreConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FRankedTeamScoreConfTableRow : FTableRowBase
+{
+	uint32_t Rank; // 0x8(0x4)
+	uint32_t Weight; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.RankedTargetTypeConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FRankedTargetTypeConfTableRow : FTableRowBase
+{
+	uint32_t TargetType; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Desc; // 0x10(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.RankedSettleScoreConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FRankedSettleScoreConfTableRow : FTableRowBase
+{
+	uint32_t Level; // 0x8(0x4)
+	uint32_t kill_pmc_score_limit; // 0xC(0x4)
+	uint32_t kill_scav_score_limit; // 0x10(0x4)
+	uint32_t loot_value_score_limit; // 0x14(0x4)
+	uint32_t loot_times_score_limit; // 0x18(0x4)
+	uint32_t survial_score_limit; // 0x1C(0x4)
+	uint32_t assist_kill_score_limit; // 0x20(0x4)
+	int32_t penalty_score; // 0x24(0x4)
+	int32_t chall_coin_factor; // 0x28(0x4)
+	int32_t chall_coin_bonus; // 0x2C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.RankedSeasonRewardConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FRankedSeasonRewardConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<struct FCommonItemConfItem> rewards; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.RankedSeasonDocConfTableRow
+// Size: 0x70 (Inherited: 0x8)
+struct FRankedSeasonDocConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t season_id; // 0xC(0x4)
+	uint32_t chapter_id; // 0x10(0x4)
+	uint32_t type_id; // 0x14(0x4)
+	struct FText Name; // 0x18(0x18)
+	uint32_t is_corefile; // 0x30(0x4)
+	uint8_t Pad_0x34[0x4]; // 0x34(0x4)
+	struct FText Describe; // 0x38(0x18)
+	struct FString photo; // 0x50(0x10)
+	struct FString Mesh; // 0x60(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.RankedSeasonConfTableRow
+// Size: 0xA0 (Inherited: 0x8)
+struct FRankedSeasonConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FDateTime begin_time; // 0x10(0x8)
+	struct FDateTime warmup_end_time; // 0x18(0x8)
+	struct FDateTime end_time; // 0x20(0x8)
+	struct FDateTime carnival_end_time; // 0x28(0x8)
+	struct FDateTime season_end_time; // 0x30(0x8)
+	struct FText Desc; // 0x38(0x18)
+	struct FText entry_cdn; // 0x50(0x18)
+	uint32_t is_delay_start; // 0x68(0x4)
+	uint32_t show_season_id; // 0x6C(0x4)
+	uint32_t season_reward_base; // 0x70(0x4)
+	uint8_t Pad_0x74[0x4]; // 0x74(0x4)
+	struct FDateTime countdown_time; // 0x78(0x8)
+	uint32_t bp_lv_award_group_id; // 0x80(0x4)
+	uint32_t ranked_lv_award_group_id; // 0x84(0x4)
+	uint32_t badge_group_id; // 0x88(0x4)
+	uint8_t Pad_0x8C[0x4]; // 0x8C(0x4)
+	struct TArray<struct FSeasonChapterRef> season_chapter; // 0x90(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.SeasonChapterRef
+// Size: 0x48 (Inherited: 0x0)
+struct FSeasonChapterRef
+{
+	uint32_t chapter_id; // 0x0(0x4)
+	uint8_t Pad_0x4[0x4]; // 0x4(0x4)
+	struct FText chapter_name; // 0x8(0x18)
+	struct FString cdn_image; // 0x20(0x10)
+	uint32_t rotate_distance; // 0x30(0x4)
+	uint8_t Pad_0x34[0x4]; // 0x34(0x4)
+	struct FDateTime chapter_begin_time; // 0x38(0x8)
+	struct FDateTime chapter_end_time; // 0x40(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.RankedRankingConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FRankedRankingConfTableRow : FTableRowBase
+{
+	uint32_t conf_type; // 0x8(0x4)
+	int32_t Val; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.RankedNewScoreConfTableRow
+// Size: 0x1D0 (Inherited: 0x8)
+struct FRankedNewScoreConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Group; // 0xC(0x4)
+	uint32_t Level; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct TArray<int32_t> ranked_level_diff; // 0x18(0x10)
+	struct TArray<uint32_t> bonus_score; // 0x28(0x10)
+	struct TArray<int32_t> playerscav_ranked_level_diff; // 0x38(0x10)
+	struct TArray<uint32_t> playerscav_bonus_score; // 0x48(0x10)
+	uint32_t kill_wander_normal_score; // 0x58(0x4)
+	uint32_t kill_wander_boss_score; // 0x5C(0x4)
+	uint32_t loot_value_score; // 0x60(0x4)
+	uint32_t loot_times_score; // 0x64(0x4)
+	uint32_t survial_score; // 0x68(0x4)
+	uint32_t assist_kill_score; // 0x6C(0x4)
+	uint32_t faction_win_score; // 0x70(0x4)
+	uint8_t Pad_0x74[0x4]; // 0x74(0x4)
+	struct TArray<int32_t> round_kill_range; // 0x78(0x10)
+	struct TArray<uint32_t> round_kill_score; // 0x88(0x10)
+	struct TArray<int32_t> round_dead_range; // 0x98(0x10)
+	struct TArray<int32_t> round_dead_score; // 0xA8(0x10)
+	struct TArray<int32_t> round_kd_range; // 0xB8(0x10)
+	struct TArray<uint32_t> round_kd_score; // 0xC8(0x10)
+	uint32_t round_win_basescore; // 0xD8(0x4)
+	uint8_t Pad_0xDC[0x4]; // 0xDC(0x4)
+	struct TArray<int32_t> round_win_scorediff_range; // 0xE0(0x10)
+	struct TArray<uint32_t> round_win_scorediff_value; // 0xF0(0x10)
+	struct TArray<int32_t> round_win_teamrun; // 0x100(0x10)
+	struct TArray<uint32_t> round_win_teamrun_value; // 0x110(0x10)
+	int32_t round_lose_basescore; // 0x120(0x4)
+	uint8_t Pad_0x124[0x4]; // 0x124(0x4)
+	struct TArray<int32_t> round_lose_scorediff_range; // 0x128(0x10)
+	struct TArray<uint32_t> round_lose_scorediff_value; // 0x138(0x10)
+	struct TArray<int32_t> round_lose_teamrun; // 0x148(0x10)
+	struct TArray<uint32_t> round_lose_teamrun_value; // 0x158(0x10)
+	int32_t round_run_score; // 0x168(0x4)
+	uint32_t kill_pmc_score_limit; // 0x16C(0x4)
+	uint32_t kill_playerscav_score_limit; // 0x170(0x4)
+	uint32_t kill_scav_score_limit; // 0x174(0x4)
+	uint32_t loot_value_score_limit; // 0x178(0x4)
+	uint32_t loot_times_score_limit; // 0x17C(0x4)
+	uint32_t survial_score_limit; // 0x180(0x4)
+	uint32_t assist_kill_score_limit; // 0x184(0x4)
+	int32_t penalty_score; // 0x188(0x4)
+	int32_t chall_coin_factor; // 0x18C(0x4)
+	int32_t chall_coin_bonus; // 0x190(0x4)
+	uint8_t Pad_0x194[0x4]; // 0x194(0x4)
+	struct TArray<int32_t> fight_times; // 0x198(0x10)
+	struct TArray<int32_t> fight_times_factor; // 0x1A8(0x10)
+	int32_t difficulty_score_factor; // 0x1B8(0x4)
+	int32_t difficulty_penalty_score_factor; // 0x1BC(0x4)
+	struct TArray<struct FText> score_Des; // 0x1C0(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.RankedMapConfTableRow
+// Size: 0x50 (Inherited: 0x8)
+struct FRankedMapConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FDateTime begin_time; // 0x10(0x8)
+	struct FDateTime end_time; // 0x18(0x8)
+	struct TArray<uint32_t> ranked_map_list; // 0x20(0x10)
+	struct TArray<int32_t> factor_list; // 0x30(0x10)
+	struct TArray<int32_t> ranked_rulegroup; // 0x40(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.RankedLevelRangeConfTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FRankedLevelRangeConfTableRow : FTableRowBase
+{
+	uint32_t rangeid; // 0x8(0x4)
+	uint32_t rangecount; // 0xC(0x4)
+	uint32_t StageId; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct FText main_name; // 0x18(0x18)
+	struct FText sub_name; // 0x30(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.RankedLevelConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FRankedLevelConfTableRow : FTableRowBase
+{
+	uint32_t Level; // 0x8(0x4)
+	uint32_t upgrade_score; // 0xC(0x4)
+	struct FText TitleDesc; // 0x10(0x18)
+	uint32_t ranking_k_factor; // 0x28(0x4)
+	uint32_t ICON; // 0x2C(0x4)
+	uint32_t nextseason_level; // 0x30(0x4)
+	uint32_t dogtag_itemid; // 0x34(0x4)
+	uint32_t ranked_level_type; // 0x38(0x4)
+	uint8_t Pad_0x3C[0x4]; // 0x3C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.RankedLevelAwardConfTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FRankedLevelAwardConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t group_id; // 0xC(0x4)
+	uint32_t Level; // 0x10(0x4)
+	uint32_t task_rw_id; // 0x14(0x4)
+	uint32_t task_rw_num; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	struct TArray<struct FRankedTargetConf> target_list; // 0x20(0x10)
+	uint32_t is_core; // 0x30(0x4)
+	uint8_t Pad_0x34[0x4]; // 0x34(0x4)
+	struct FString cdn; // 0x38(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.RankedTargetConf
+// Size: 0x8 (Inherited: 0x0)
+struct FRankedTargetConf
+{
+	uint32_t Type; // 0x0(0x4)
+	uint32_t Progress; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.RankedLeaderboardSaleConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FRankedLeaderboardSaleConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t lowindex; // 0xC(0x4)
+	uint32_t Ratio; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.RankedKillScoreConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FRankedKillScoreConfTableRow : FTableRowBase
+{
+	int32_t ranked_level_diff; // 0x8(0x4)
+	int32_t bonus_score; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.RankedHistoryInfoConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FRankedHistoryInfoConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText field_text; // 0x10(0x18)
+	struct FString Field; // 0x28(0x10)
+	uint32_t Type; // 0x38(0x4)
+	uint32_t Priority; // 0x3C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.RankedCommonConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FRankedCommonConfTableRow : FTableRowBase
+{
+	uint32_t Ranked_conf_type; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString Val; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.RankedBoxConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FRankedBoxConfTableRow : FTableRowBase
+{
+	uint32_t item_id; // 0x8(0x4)
+	uint32_t Level; // 0xC(0x4)
+	uint32_t equip_num; // 0x10(0x4)
+	uint32_t def_num; // 0x14(0x4)
+	uint32_t use_num; // 0x18(0x4)
+	uint32_t etc_num; // 0x1C(0x4)
+	struct FText Desc; // 0x20(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.RandomMapGroupConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FRandomMapGroupConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<struct FRandomMapGroup> random_map_group; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.RandomMapGroup
+// Size: 0x8 (Inherited: 0x0)
+struct FRandomMapGroup
+{
+	uint32_t play_mode_id; // 0x0(0x4)
+	uint32_t Weight; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.RandomFormulaConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FRandomFormulaConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	int64_t Val; // 0x10(0x8)
+	struct TArray<int64_t> val_array; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.RandClassConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FRandClassConfTableRow : FTableRowBase
+{
+	uint32_t is_npc; // 0x8(0x4)
+	uint32_t group_id; // 0xC(0x4)
+	uint32_t class_id; // 0x10(0x4)
+	uint32_t Weight; // 0x14(0x4)
+	uint32_t weapon_comb_type; // 0x18(0x4)
+	uint32_t need_check_exts_loot_limit; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.QuickSortContainerPriorityTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FQuickSortContainerPriorityTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Priority; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.QuickModeRefreshCostConfTableRow
+// Size: 0xA0 (Inherited: 0x8)
+struct FQuickModeRefreshCostConfTableRow : FTableRowBase
+{
+	uint32_t uniq_id; // 0x8(0x4)
+	uint32_t ID; // 0xC(0x4)
+	uint32_t map_mode_id; // 0x10(0x4)
+	uint32_t page_id; // 0x14(0x4)
+	struct FText page_name; // 0x18(0x18)
+	struct FText page_icon; // 0x30(0x18)
+	uint32_t index_id; // 0x48(0x4)
+	uint8_t Pad_0x4C[0x4]; // 0x4C(0x4)
+	struct FText index_name; // 0x50(0x18)
+	struct TArray<struct FRefreshCostVec> refresh_cost_vec; // 0x68(0x10)
+	struct TArray<struct FEnterCostVec> enter_cost_vec; // 0x78(0x10)
+	uint32_t dynamic_enter_cost_item_id; // 0x88(0x4)
+	uint32_t refresh_group_id; // 0x8C(0x4)
+	struct TArray<struct FQuickRefreshGroupVec> refresh_group_vec; // 0x90(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.QuickRefreshGroupVec
+// Size: 0xC (Inherited: 0x0)
+struct FQuickRefreshGroupVec
+{
+	uint32_t act_team_data_key; // 0x0(0x4)
+	uint32_t act_team_data_val; // 0x4(0x4)
+	uint32_t group_id; // 0x8(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.EnterCostVec
+// Size: 0x8 (Inherited: 0x0)
+struct FEnterCostVec
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t cost_num; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.RefreshCostVec
+// Size: 0x18 (Inherited: 0x0)
+struct FRefreshCostVec
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint8_t Pad_0x4[0x4]; // 0x4(0x4)
+	struct TArray<uint32_t> cost_num_array; // 0x8(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.QuickGiveConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FQuickGiveConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t sell_item_id; // 0xC(0x4)
+	uint32_t exchange_item_id; // 0x10(0x4)
+	uint32_t exchange_num; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.QuickChatDataStaticsTableRow
+// Size: 0x90 (Inherited: 0x8)
+struct FQuickChatDataStaticsTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Key; // 0x10(0x18)
+	struct FText BattleInfoTable; // 0x28(0x18)
+	struct FText BattleInfoCalculate; // 0x40(0x18)
+	struct FText Format; // 0x58(0x18)
+	struct FText Operation; // 0x70(0x18)
+	uint32_t Factor; // 0x88(0x4)
+	uint8_t Pad_0x8C[0x4]; // 0x8C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.QuickChatTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FQuickChatTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Content; // 0x10(0x18)
+	uint32_t isLeader; // 0x28(0x4)
+	uint32_t isBattleInfo; // 0x2C(0x4)
+	struct FText BattleInfoField; // 0x30(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.QuickBuyLimitTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FQuickBuyLimitTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t buy_max; // 0xC(0x4)
+	struct FString limit_tip; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.QQSubscribeEventConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FQQSubscribeEventConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString event_name; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.QCommandImageConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FQCommandImageConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString Path; // 0x10(0x10)
+	uint32_t QCommandImageType; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.QCommandConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FQCommandConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t QCommandResType; // 0xC(0x4)
+	uint32_t is_enable; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.PurchaseConfTableRow
+// Size: 0xB8 (Inherited: 0x8)
+struct FPurchaseConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Type; // 0xC(0x4)
+	uint32_t is_for_act; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct FString product_id; // 0x18(0x10)
+	uint32_t price; // 0x28(0x4)
+	uint32_t item_id; // 0x2C(0x4)
+	uint32_t item_num; // 0x30(0x4)
+	uint8_t Pad_0x34[0x4]; // 0x34(0x4)
+	struct FText item_name; // 0x38(0x18)
+	struct FText item_desc; // 0x50(0x18)
+	uint32_t sell_type; // 0x68(0x4)
+	uint8_t Pad_0x6C[0x4]; // 0x6C(0x4)
+	struct FText service_code; // 0x70(0x18)
+	struct FText service_name; // 0x88(0x18)
+	uint32_t cycle_seconds; // 0xA0(0x4)
+	uint32_t threshold_seconds; // 0xA4(0x4)
+	uint32_t add_total_cost; // 0xA8(0x4)
+	uint32_t skip_ntf; // 0xAC(0x4)
+	uint32_t is_mail; // 0xB0(0x4)
+	uint32_t mail_id; // 0xB4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ProxysvrKVConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FProxysvrKVConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	int64_t Val; // 0x10(0x8)
+	struct TArray<int64_t> val_array; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ProvinceConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FProvinceConfTableRow : FTableRowBase
+{
+	uint32_t ADCode; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString ip_show; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ProtectionTypeConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FProtectionTypeConfTableRow : FTableRowBase
+{
+	uint32_t ProtectionType; // 0x8(0x4)
+	uint32_t ProtectionTime; // 0xC(0x4)
+	uint32_t ProtectionDuraction; // 0x10(0x4)
+	uint32_t ForbidInteractProtectionTime; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.PrivilegeTransferConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FPrivilegeTransferConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Val; // 0xC(0x4)
+	struct FDateTime Time; // 0x10(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.PrivilegeItemConfTableRow
+// Size: 0x78 (Inherited: 0x8)
+struct FPrivilegeItemConfTableRow : FTableRowBase
+{
+	uint32_t active_item; // 0x8(0x4)
+	uint32_t Type; // 0xC(0x4)
+	struct FText get_item; // 0x10(0x18)
+	struct FText season_get_item; // 0x28(0x18)
+	struct FText daily_item; // 0x40(0x18)
+	struct FText Str; // 0x58(0x18)
+	uint32_t Value; // 0x70(0x4)
+	uint8_t Pad_0x74[0x4]; // 0x74(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.PrivilegeDesConfTableRow
+// Size: 0x80 (Inherited: 0x8)
+struct FPrivilegeDesConfTableRow : FTableRowBase
+{
+	uint32_t DataID; // 0x8(0x4)
+	uint32_t vip_id; // 0xC(0x4)
+	uint32_t vipsubitem_id; // 0x10(0x4)
+	uint32_t client_check_type; // 0x14(0x4)
+	struct FText privilegedes; // 0x18(0x18)
+	struct FText bubbledes; // 0x30(0x18)
+	struct FText big_icon_desc; // 0x48(0x18)
+	uint32_t sort; // 0x60(0x4)
+	uint8_t Pad_0x64[0x4]; // 0x64(0x4)
+	struct FString icon_name; // 0x68(0x10)
+	uint32_t show_new; // 0x78(0x4)
+	uint8_t Pad_0x7C[0x4]; // 0x7C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.PrivilegeConfTableRow
+// Size: 0xA0 (Inherited: 0x8)
+struct FPrivilegeConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Type; // 0xC(0x4)
+	uint32_t cost_num; // 0x10(0x4)
+	uint32_t Duration; // 0x14(0x4)
+	uint32_t cost_num2; // 0x18(0x4)
+	uint32_t duration2; // 0x1C(0x4)
+	struct FText ICON; // 0x20(0x18)
+	struct FText Name; // 0x38(0x18)
+	struct FText cdn; // 0x50(0x18)
+	uint32_t rest_renew_days; // 0x68(0x4)
+	uint8_t Pad_0x6C[0x4]; // 0x6C(0x4)
+	struct FText renewal_face_pic; // 0x70(0x18)
+	uint32_t jumpgotoid; // 0x88(0x4)
+	uint8_t Pad_0x8C[0x4]; // 0x8C(0x4)
+	struct TArray<uint32_t> item_list; // 0x90(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.PrivilegeCommonConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FPrivilegeCommonConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Val; // 0xC(0x4)
+	struct FDateTime Time; // 0x10(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.PrivilegeBubbleConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FPrivilegeBubbleConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t vip_id; // 0xC(0x4)
+	uint32_t bubble_type; // 0x10(0x4)
+	float bubble_pos_x; // 0x14(0x4)
+	float bubble_pos_y; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	struct FText bubble_des; // 0x20(0x18)
+	uint32_t is_work; // 0x38(0x4)
+	uint8_t Pad_0x3C[0x4]; // 0x3C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.PriceConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FPriceConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t price; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.PresetModesConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FPresetModesConfTableRow : FTableRowBase
+{
+	uint32_t ModeIndex; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText ModeDisplayName; // 0x10(0x18)
+	uint32_t MapID; // 0x28(0x4)
+	uint32_t ModeID; // 0x2C(0x4)
+	uint32_t RuleID; // 0x30(0x4)
+	uint32_t Difficulty; // 0x34(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.PostmanTaskConfTableRow
+// Size: 0xB8 (Inherited: 0x8)
+struct FPostmanTaskConfTableRow : FTableRowBase
+{
+	uint32_t task_id; // 0x8(0x4)
+	uint32_t battle_task_id; // 0xC(0x4)
+	uint32_t battle_task_target_id; // 0x10(0x4)
+	uint32_t map_mode_id; // 0x14(0x4)
+	uint32_t is_in_pool; // 0x18(0x4)
+	uint32_t Weight; // 0x1C(0x4)
+	uint32_t mail_id; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+	struct TArray<struct FPostmanAwardItemVector> award_item_list; // 0x28(0x10)
+	uint32_t refresh_group_id; // 0x38(0x4)
+	uint32_t multi_mode_id; // 0x3C(0x4)
+	struct FText task_quality; // 0x40(0x18)
+	struct FText task_name; // 0x58(0x18)
+	struct FText task_desc; // 0x70(0x18)
+	struct FText task_pic; // 0x88(0x18)
+	struct FText task_dialog; // 0xA0(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.PostmanAwardItemVector
+// Size: 0x8 (Inherited: 0x0)
+struct FPostmanAwardItemVector
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.PostmanRefreshConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FPostmanRefreshConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t refresh_task_item_id; // 0xC(0x4)
+	struct TArray<uint32_t> refresh_task_item_num_array; // 0x10(0x10)
+	uint32_t refresh_equip_item_id; // 0x20(0x4)
+	uint32_t refresh_equip_item_num; // 0x24(0x4)
+	uint32_t daily_task_limit; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.PoolLimitValueTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FPoolLimitValueTableRow : FTableRowBase
+{
+	uint32_t pool_id; // 0x8(0x4)
+	uint32_t value_limit; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.PmcAiScoreConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FPmcAiScoreConfTableRow : FTableRowBase
+{
+	uint32_t Level; // 0x8(0x4)
+	uint32_t min_val; // 0xC(0x4)
+	uint32_t max_val; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.PmcAiLimitItemConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FPmcAiLimitItemConfTableRow : FTableRowBase
+{
+	uint32_t item_id; // 0x8(0x4)
+	uint32_t limit_rate; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.PmcAiEqptPoolConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FPmcAiEqptPoolConfTableRow : FTableRowBase
+{
+	uint32_t play_mode_id; // 0x8(0x4)
+	uint32_t pool_id; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.PmcAiConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FPmcAiConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	uint64_t Openid; // 0x10(0x8)
+	uint32_t Level; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	struct FString Name; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.PlotEndingConfTableRow
+// Size: 0x50 (Inherited: 0x8)
+struct FPlotEndingConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<uint32_t> plot_ending_key; // 0x10(0x10)
+	struct FText plot_ending_name; // 0x20(0x18)
+	uint32_t simple_dialog_id; // 0x38(0x4)
+	uint8_t Pad_0x3C[0x4]; // 0x3C(0x4)
+	struct FString json_param; // 0x40(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.PlayerNamePoolTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FPlayerNamePoolTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Group; // 0xC(0x4)
+	struct FText Name; // 0x10(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.PlayerEquipmentPoolTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FPlayerEquipmentPoolTableRow : FTableRowBase
+{
+	uint32_t Index; // 0x8(0x4)
+	uint32_t pool_id; // 0xC(0x4)
+	uint32_t equipment_id; // 0x10(0x4)
+	uint32_t Weight; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.PlayerEquipmentTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FPlayerEquipmentTableRow : FTableRowBase
+{
+	uint32_t Index; // 0x8(0x4)
+	uint32_t group_id; // 0xC(0x4)
+	uint32_t slot_index; // 0x10(0x4)
+	uint32_t item_id; // 0x14(0x4)
+	uint32_t Num; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.PlayerAvatarPopupMenuButtonTableRow
+// Size: 0x60 (Inherited: 0x8)
+struct FPlayerAvatarPopupMenuButtonTableRow : FTableRowBase
+{
+	uint16_t ID; // 0x8(0x2)
+	uint8_t Pad_0xA[0x6]; // 0xA(0x6)
+	struct FText DisplayName; // 0x10(0x18)
+	struct FString IconName; // 0x28(0x10)
+	uint8_t displayType; // 0x38(0x1)
+	uint8_t Pad_0x39[0x7]; // 0x39(0x7)
+	struct FString ExecFunc; // 0x40(0x10)
+	struct TArray<uint16_t> ForbiddenMode; // 0x50(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.PlayerAvatarPopupMenuTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FPlayerAvatarPopupMenuTableRow : FTableRowBase
+{
+	uint16_t ID; // 0x8(0x2)
+	uint8_t Pad_0xA[0x2]; // 0xA(0x2)
+	uint32_t Type; // 0xC(0x4)
+	uint32_t sub_type; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct TArray<uint16_t> ButtonTypes; // 0x18(0x10)
+	struct TArray<uint16_t> PersonalInfoButtonTypes; // 0x28(0x10)
+	uint32_t InviteTeamType; // 0x38(0x4)
+	uint32_t AddFriendType; // 0x3C(0x4)
+	uint32_t StateShowType; // 0x40(0x4)
+	uint8_t Pad_0x44[0x4]; // 0x44(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.PlayModeTableRow
+// Size: 0x68 (Inherited: 0x8)
+struct FPlayModeTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t mode_id; // 0xC(0x4)
+	uint32_t sub_mod_id; // 0x10(0x4)
+	uint32_t map_id; // 0x14(0x4)
+	uint32_t rule_id; // 0x18(0x4)
+	uint32_t difficult; // 0x1C(0x4)
+	uint32_t Time; // 0x20(0x4)
+	uint32_t min_pmc; // 0x24(0x4)
+	uint32_t max_pmc; // 0x28(0x4)
+	uint32_t max_pmc_team; // 0x2C(0x4)
+	uint32_t pmc_team_num; // 0x30(0x4)
+	uint32_t scav_team_num; // 0x34(0x4)
+	uint32_t NormalBeginTime; // 0x38(0x4)
+	uint32_t NormalBeginPersonNum; // 0x3C(0x4)
+	uint32_t LongTimeBeginTime; // 0x40(0x4)
+	uint32_t LongTimeBeginPersonNum; // 0x44(0x4)
+	uint32_t TimeoutTime; // 0x48(0x4)
+	uint32_t SpawnAIPersonPercent; // 0x4C(0x4)
+	uint32_t UnprotectAllPlayerTime; // 0x50(0x4)
+	uint32_t MaxProtectPlayerTime; // 0x54(0x4)
+	uint32_t prefer_score; // 0x58(0x4)
+	uint32_t ds_tick_rate; // 0x5C(0x4)
+	uint32_t Dynamic_Light; // 0x60(0x4)
+	int32_t DSNetTickRate; // 0x64(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.PersonalSeasonProfileTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FPersonalSeasonProfileTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t floor; // 0xC(0x4)
+	uint32_t upper; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct FString IconPath; // 0x18(0x10)
+	struct FText gradeName; // 0x28(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.PersonalSeasonChallengeTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FPersonalSeasonChallengeTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t floor; // 0xC(0x4)
+	uint32_t upper; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct FString IconPath; // 0x18(0x10)
+	struct FText gradeName; // 0x28(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.PersonalRadarMapTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FPersonalRadarMapTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<float> score_list; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.PersonalRadarFactorTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FPersonalRadarFactorTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	float MapCoefficient; // 0xC(0x4)
+	uint32_t IsSegment; // 0x10(0x4)
+	uint32_t RadarType; // 0x14(0x4)
+	uint32_t RadarDataSourceType; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	struct FText AppendId; // 0x20(0x18)
+	uint32_t Coefficient; // 0x38(0x4)
+	uint32_t ConvertId; // 0x3C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.PersonalNewSheetTest3TableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FPersonalNewSheetTest3TableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<float> score_list; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.PersonalBattleOverviewTableRow
+// Size: 0xB0 (Inherited: 0x8)
+struct FPersonalBattleOverviewTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText ShowName; // 0x10(0x18)
+	struct FString Name; // 0x28(0x10)
+	struct FString Format; // 0x38(0x10)
+	struct FText Suffix; // 0x48(0x18)
+	struct FText Desc; // 0x60(0x18)
+	uint32_t CaculateType; // 0x78(0x4)
+	uint32_t Show; // 0x7C(0x4)
+	uint32_t Category; // 0x80(0x4)
+	uint32_t OuterWeight; // 0x84(0x4)
+	uint32_t SubCategory; // 0x88(0x4)
+	uint32_t Weight; // 0x8C(0x4)
+	struct TArray<uint64_t> AppendId; // 0x90(0x10)
+	struct FString ClientAppendId; // 0xA0(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.PermitConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FPermitConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t check_svr; // 0xC(0x4)
+	uint32_t check_iparea; // 0x10(0x4)
+	uint32_t check_alertip; // 0x14(0x4)
+	struct TArray<uint32_t> env_list; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.PerkConfTableRow
+// Size: 0x130 (Inherited: 0x8)
+struct FPerkConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Name; // 0x10(0x18)
+	struct FSoftObjectPath ICON; // 0x28(0x18)
+	uint32_t Group; // 0x40(0x4)
+	uint32_t Level; // 0x44(0x4)
+	uint32_t Order; // 0x48(0x4)
+	uint8_t Pad_0x4C[0x4]; // 0x4C(0x4)
+	struct TArray<uint32_t> show_multimode_list; // 0x50(0x10)
+	struct FText Desc; // 0x60(0x18)
+	struct FText aside_desc; // 0x78(0x18)
+	uint32_t Type; // 0x90(0x4)
+	uint32_t Cost; // 0x94(0x4)
+	uint32_t default_add; // 0x98(0x4)
+	uint8_t Pad_0x9C[0x4]; // 0x9C(0x4)
+	struct TArray<uint32_t> prev_perk_list; // 0xA0(0x10)
+	uint32_t default_unlock; // 0xB0(0x4)
+	uint8_t Pad_0xB4[0x4]; // 0xB4(0x4)
+	struct TArray<uint32_t> unlock_condition_list; // 0xB8(0x10)
+	struct TArray<uint32_t> lobby_effect_list; // 0xC8(0x10)
+	uint32_t is_open; // 0xD8(0x4)
+	uint8_t Pad_0xDC[0x4]; // 0xDC(0x4)
+	struct FDateTime begin_time; // 0xE0(0x8)
+	struct FDateTime end_time; // 0xE8(0x8)
+	struct TArray<uint32_t> excludeList; // 0xF0(0x10)
+	struct TArray<uint32_t> ban_mapunlockList; // 0x100(0x10)
+	struct TArray<uint32_t> ban_multimodeList; // 0x110(0x10)
+	struct TArray<struct FAbilityInfo> AbilityInfos; // 0x120(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.AbilityInfo
+// Size: 0x30 (Inherited: 0x0)
+struct FAbilityInfo
+{
+	struct FSoftClassPath AbilityClass; // 0x0(0x18)
+	struct FSoftObjectPath AbilityPayload; // 0x18(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.PerkConditionConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FPerkConditionConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t unlock_num; // 0xC(0x4)
+	struct FText condition_desc; // 0x10(0x18)
+	uint32_t task_id; // 0x28(0x4)
+	uint32_t jumpgoto; // 0x2C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.PerkCommConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FPerkCommConfTableRow : FTableRowBase
+{
+	uint32_t conf_type; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	int64_t Val; // 0x10(0x8)
+	struct TArray<int64_t> val_list; // 0x18(0x10)
+	struct FDateTime regist_time; // 0x28(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.PeriodRefreshConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FPeriodRefreshConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<struct FPeriodRefreshDailyTimeConf> refresh_daily_time_vec; // 0x10(0x10)
+	struct TArray<struct FPeriodMapRefreshConf> map_refresh_conf; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.PeriodMapRefreshConf
+// Size: 0x8 (Inherited: 0x0)
+struct FPeriodMapRefreshConf
+{
+	uint32_t map_mode_id; // 0x0(0x4)
+	uint32_t refresh_group_id; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.PeriodRefreshDailyTimeConf
+// Size: 0x18 (Inherited: 0x0)
+struct FPeriodRefreshDailyTimeConf
+{
+	struct FText daily_time; // 0x0(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.PeriodCardConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FPeriodCardConfTableRow : FTableRowBase
+{
+	uint32_t Type; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<struct FAwardItemConf> instant_rewards; // 0x10(0x10)
+	struct TArray<struct FAwardItemConf> daily_rewards; // 0x20(0x10)
+	uint32_t reward_mail_id; // 0x30(0x4)
+	uint32_t expire_mail_id; // 0x34(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.PaybackGiftConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FPaybackGiftConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t bring_in_value; // 0xC(0x4)
+	uint32_t payback_money; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.PakBlackListTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FPakBlackListTableRow : FTableRowBase
+{
+	struct FString ExcludePath; // 0x8(0x10)
+	struct FString RefName; // 0x18(0x10)
+	uint32_t AccurateMatching; // 0x28(0x4)
+	uint32_t DirectoryMatching; // 0x2C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.PPTPageConfTableRow
+// Size: 0x58 (Inherited: 0x8)
+struct FPPTPageConfTableRow : FTableRowBase
+{
+	uint32_t pageID; // 0x8(0x4)
+	uint32_t umgPath; // 0xC(0x4)
+	struct TArray<struct FString> Animations; // 0x10(0x10)
+	uint32_t showDesc; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+	struct FText Title; // 0x28(0x18)
+	struct FText Desc; // 0x40(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.OverseaSubtitleTableRow
+// Size: 0x50 (Inherited: 0x8)
+struct FOverseaSubtitleTableRow : FTableRowBase
+{
+	struct FString Key; // 0x8(0x10)
+	struct FString umg_name; // 0x18(0x10)
+	struct FString animation_name; // 0x28(0x10)
+	float start_time; // 0x38(0x4)
+	float end_time; // 0x3C(0x4)
+	struct FString SourceString; // 0x40(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.OverseaDefaultGameSettingTableRow
+// Size: 0x68 (Inherited: 0x8)
+struct FOverseaDefaultGameSettingTableRow : FTableRowBase
+{
+	uint32_t SettingIndex; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString Section; // 0x10(0x10)
+	struct FString Key; // 0x20(0x10)
+	uint32_t Type; // 0x30(0x4)
+	bool DefaultBoolA; // 0x34(0x1)
+	bool DefaultBoolB; // 0x35(0x1)
+	uint8_t Pad_0x36[0x2]; // 0x36(0x2)
+	int32_t DefaultIntA; // 0x38(0x4)
+	int32_t DefaultIntB; // 0x3C(0x4)
+	float DefaultFloatA; // 0x40(0x4)
+	float DefaultFloatB; // 0x44(0x4)
+	struct FString DefaultStringA; // 0x48(0x10)
+	struct FString DefaultStringB; // 0x58(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.OverSaleValueTableRow
+// Size: 0x58 (Inherited: 0x8)
+struct FOverSaleValueTableRow : FTableRowBase
+{
+	uint32_t item_type; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText type_name; // 0x10(0x18)
+	struct FText sale_warning_message; // 0x28(0x18)
+	struct FText sale_warning_advice; // 0x40(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.OverSaleNewbieLevelTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FOverSaleNewbieLevelTableRow : FTableRowBase
+{
+	uint32_t newbie_level; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.OverSaleLackFundTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FOverSaleLackFundTableRow : FTableRowBase
+{
+	uint32_t lack_fund_wealth1; // 0x8(0x4)
+	uint32_t lack_fund_wealth2; // 0xC(0x4)
+	uint32_t lack_fund_cash; // 0x10(0x4)
+	uint32_t lack_fund_mud; // 0x14(0x4)
+	uint32_t lack_fund_gold; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.OverConsumptionValueTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FOverConsumptionValueTableRow : FTableRowBase
+{
+	uint32_t item_type; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText type_name; // 0x10(0x18)
+	uint32_t over_consumption_value; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.OtherDetailConfTableRow
+// Size: 0x50 (Inherited: 0x8)
+struct FOtherDetailConfTableRow : FTableRowBase
+{
+	uint32_t item_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString assembleTag; // 0x10(0x10)
+	struct FString SubAssembleTag; // 0x20(0x10)
+	uint64_t slot_type; // 0x30(0x8)
+	uint64_t sub_slot_type; // 0x38(0x8)
+	struct TArray<struct FWeaponSocket> Sockets; // 0x40(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.OrderKVConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FOrderKVConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Val; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.OptionDefineConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FOptionDefineConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Type; // 0xC(0x4)
+	struct FText Name; // 0x10(0x18)
+	struct FString aliasName; // 0x28(0x10)
+	uint32_t DefaultValue; // 0x38(0x4)
+	uint32_t Value; // 0x3C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.OnShelfConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FOnShelfConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t on_the_shelf; // 0xC(0x4)
+	uint32_t is_recommend; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ObResetEquipConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FObResetEquipConfTableRow : FTableRowBase
+{
+	uint32_t Index; // 0x8(0x4)
+	uint32_t item_id; // 0xC(0x4)
+	uint32_t Num; // 0x10(0x4)
+	uint32_t can_not_sell; // 0x14(0x4)
+	uint32_t is_black; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	struct TArray<struct FBlackItemConf> Items; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ObRegistEquipConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FObRegistEquipConfTableRow : FTableRowBase
+{
+	uint32_t Index; // 0x8(0x4)
+	uint32_t item_id; // 0xC(0x4)
+	uint32_t Num; // 0x10(0x4)
+	uint32_t can_not_sell; // 0x14(0x4)
+	uint32_t is_black; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	struct TArray<struct FBlackItemConf> Items; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ObRegistBasicConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FObRegistBasicConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Level; // 0xC(0x4)
+	uint32_t are_all_tasks_done; // 0x10(0x4)
+	uint32_t bullion; // 0x14(0x4)
+	uint32_t gold; // 0x18(0x4)
+	uint32_t whether_start_rookie; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ObDSListConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FObDSListConfTableRow : FTableRowBase
+{
+	uint32_t ds_zone_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText display_name; // 0x10(0x18)
+	struct FText region; // 0x28(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.OBTeamLogoTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FOBTeamLogoTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText logo_path; // 0x10(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.NewbieLevelTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FNewbieLevelTableRow : FTableRowBase
+{
+	uint32_t newbie_level; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.NationalFlagConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FNationalFlagConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString country_alpha; // 0x10(0x10)
+	struct FString country_img_url; // 0x20(0x10)
+	uint32_t enable_teamup; // 0x30(0x4)
+	uint8_t Pad_0x34[0x4]; // 0x34(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.NOTESTableRow
+// Size: 0x8 (Inherited: 0x8)
+struct FNOTESTableRow : FTableRowBase
+{
+};
+
+// Object: ScriptStruct UADataTableModule.MultiModeWidgetTableRow
+// Size: 0x160 (Inherited: 0x8)
+struct FMultiModeWidgetTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Name; // 0x10(0x18)
+	struct FString sysIds; // 0x28(0x10)
+	bool isShowMode; // 0x38(0x1)
+	uint8_t Pad_0x39[0x3]; // 0x39(0x3)
+	uint32_t multi_mode_group_type; // 0x3C(0x4)
+	uint32_t elo_type; // 0x40(0x4)
+	uint32_t cd_time; // 0x44(0x4)
+	uint32_t calculate_elo; // 0x48(0x4)
+	uint32_t use_ticket; // 0x4C(0x4)
+	uint32_t need_take_in_threshold; // 0x50(0x4)
+	uint32_t need_check_weapon_need_teammate; // 0x54(0x4)
+	uint32_t settle_type; // 0x58(0x4)
+	uint32_t order_params_flag; // 0x5C(0x4)
+	uint32_t recycle_container_id; // 0x60(0x4)
+	uint32_t use_self_equip; // 0x64(0x4)
+	uint32_t multimode_perk_type; // 0x68(0x4)
+	uint8_t Pad_0x6C[0x4]; // 0x6C(0x4)
+	struct TArray<uint32_t> alone_equip_default_perk_list; // 0x70(0x10)
+	uint32_t quick_equip_showticket; // 0x80(0x4)
+	uint32_t open_team_voice_room_in_battle; // 0x84(0x4)
+	uint32_t allow_not_equipped; // 0x88(0x4)
+	uint32_t ban_by_panelty; // 0x8C(0x4)
+	uint32_t ban_combat_readiness; // 0x90(0x4)
+	uint32_t ban_use_elite_suite; // 0x94(0x4)
+	uint32_t ban_use_lend_item; // 0x98(0x4)
+	uint32_t is_take_in_key; // 0x9C(0x4)
+	uint32_t need_refresh_safe_box; // 0xA0(0x4)
+	uint32_t use_self_avatar; // 0xA4(0x4)
+	uint32_t default_avatar_set_id; // 0xA8(0x4)
+	uint32_t avatar_gender; // 0xAC(0x4)
+	uint32_t bind_character_type; // 0xB0(0x4)
+	uint32_t bind_faction_id; // 0xB4(0x4)
+	uint32_t default_game_faction_id; // 0xB8(0x4)
+	uint32_t use_spray; // 0xBC(0x4)
+	uint32_t show_wash_white; // 0xC0(0x4)
+	uint32_t block_item_back_mail; // 0xC4(0x4)
+	uint32_t need_select_faction; // 0xC8(0x4)
+	uint32_t ignore_stat; // 0xCC(0x4)
+	uint32_t add_return_total_profit; // 0xD0(0x4)
+	uint32_t ban_teammate; // 0xD4(0x4)
+	uint32_t ban_ready; // 0xD8(0x4)
+	uint32_t skip_check_need_teammate; // 0xDC(0x4)
+	uint32_t use_crossregion_match; // 0xE0(0x4)
+	uint8_t Pad_0xE4[0x4]; // 0xE4(0x4)
+	struct FText enter_button_name; // 0xE8(0x18)
+	struct FText ban_rule_desc; // 0x100(0x18)
+	struct TArray<uint32_t> ai_equip_template_vec; // 0x118(0x10)
+	uint32_t ban_entershow; // 0x128(0x4)
+	uint32_t special_section; // 0x12C(0x4)
+	uint32_t ban_role_show; // 0x130(0x4)
+	uint8_t Pad_0x134[0x4]; // 0x134(0x4)
+	struct FText modeIcon; // 0x138(0x18)
+	uint32_t equip_season_clear; // 0x150(0x4)
+	uint32_t need_avatar_kill; // 0x154(0x4)
+	uint32_t avatar_share; // 0x158(0x4)
+	uint8_t Pad_0x15C[0x4]; // 0x15C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.MultiModeGroupConfTableRow
+// Size: 0x78 (Inherited: 0x8)
+struct FMultiModeGroupConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<uint32_t> seasonId_List; // 0x10(0x10)
+	uint32_t group_id; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+	struct TArray<uint32_t> TopData; // 0x28(0x10)
+	struct TArray<uint32_t> LeftOuterData; // 0x38(0x10)
+	struct TArray<uint32_t> LeftInnerData; // 0x48(0x10)
+	struct TArray<uint32_t> RightOuterData; // 0x58(0x10)
+	struct TArray<uint32_t> RightInnerData; // 0x68(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.MultiModeCommConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FMultiModeCommConfTableRow : FTableRowBase
+{
+	uint32_t multi_mode_conf_type; // 0x8(0x4)
+	uint32_t Val; // 0xC(0x4)
+	struct TArray<uint32_t> vec; // 0x10(0x10)
+	struct FDateTime begin_time; // 0x20(0x8)
+	struct FDateTime end_time; // 0x28(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.MonopolyLatticeConfTableRow
+// Size: 0x58 (Inherited: 0x8)
+struct FMonopolyLatticeConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t lattice_id; // 0xC(0x4)
+	uint32_t lattice_type; // 0x10(0x4)
+	uint32_t item_id; // 0x14(0x4)
+	uint32_t Num; // 0x18(0x4)
+	uint32_t is_black; // 0x1C(0x4)
+	uint32_t is_faction; // 0x20(0x4)
+	uint32_t event_id; // 0x24(0x4)
+	struct FText locked_desc; // 0x28(0x18)
+	struct FText unlocked_desc; // 0x40(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.MonopolyEventConfTableRow
+// Size: 0x58 (Inherited: 0x8)
+struct FMonopolyEventConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t event_id; // 0xC(0x4)
+	struct FText Question; // 0x10(0x18)
+	struct TArray<struct FQuestionLatticeChoices> choices; // 0x28(0x10)
+	uint32_t answer_index; // 0x38(0x4)
+	uint32_t forward_num; // 0x3C(0x4)
+	struct FText forward_desc; // 0x40(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.QuestionLatticeChoices
+// Size: 0x18 (Inherited: 0x0)
+struct FQuestionLatticeChoices
+{
+	struct FText choice; // 0x0(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.MomentTableRow
+// Size: 0x78 (Inherited: 0x8)
+struct FMomentTableRow : FTableRowBase
+{
+	uint32_t MomentId; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText MomentTitle; // 0x10(0x18)
+	uint32_t Proportion; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+	struct FText Describe; // 0x30(0x18)
+	struct FText UrlTitle; // 0x48(0x18)
+	struct FText UrlDescribe; // 0x60(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.ModeGameSettingConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FModeGameSettingConfTableRow : FTableRowBase
+{
+	uint32_t SettingIndex; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString Section; // 0x10(0x10)
+	struct FString Key; // 0x20(0x10)
+	struct TArray<int32_t> Modes; // 0x30(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.MiniBattlePassLevelConfTableRow
+// Size: 0x58 (Inherited: 0x8)
+struct FMiniBattlePassLevelConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Level; // 0xC(0x4)
+	uint32_t group_id; // 0x10(0x4)
+	uint32_t cluster_id; // 0x14(0x4)
+	struct TArray<struct FMiniBpLevelItem> award; // 0x18(0x10)
+	struct TArray<struct FMiniBpLevelItem> extra_award; // 0x28(0x10)
+	struct FString on_main_show; // 0x38(0x10)
+	struct FString big_picture; // 0x48(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.MiniBpLevelItem
+// Size: 0x10 (Inherited: 0x0)
+struct FMiniBpLevelItem
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+	uint32_t seq_type; // 0x8(0x4)
+	uint32_t is_black; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.MiniBattlePassConfTableRow
+// Size: 0xD8 (Inherited: 0x8)
+struct FMiniBattlePassConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t max_level; // 0xC(0x4)
+	uint32_t need_exp; // 0x10(0x4)
+	uint32_t basic_weary_value; // 0x14(0x4)
+	uint32_t vip_card_id; // 0x18(0x4)
+	uint32_t purchase_id; // 0x1C(0x4)
+	int32_t exp2weary_scale; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+	struct FString hall_entry_cdn; // 0x28(0x10)
+	struct FString pre_show_cdn; // 0x38(0x10)
+	struct FText cg_name; // 0x48(0x18)
+	struct FText cg_audio; // 0x60(0x18)
+	struct FText tab_main; // 0x78(0x18)
+	struct FText tab_mini; // 0x90(0x18)
+	struct FText mini_title_img; // 0xA8(0x18)
+	struct FText mini_title; // 0xC0(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.MilestoneTaskScoreConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FMilestoneTaskScoreConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	int64_t Val; // 0x10(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.MilestoneTaskConfTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FMilestoneTaskConfTableRow : FTableRowBase
+{
+	uint32_t task_id; // 0x8(0x4)
+	uint32_t Type; // 0xC(0x4)
+	uint32_t pic_type; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct FString pic_value; // 0x18(0x10)
+	uint32_t is_big_image; // 0x28(0x4)
+	uint32_t Score; // 0x2C(0x4)
+	struct FText Desc; // 0x30(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.MidasbuyExchangeConfTableRow
+// Size: 0x190 (Inherited: 0x8)
+struct FMidasbuyExchangeConfTableRow : FTableRowBase
+{
+	struct FString product_id; // 0x8(0x10)
+	float price_HK; // 0x18(0x4)
+	float price_AE; // 0x1C(0x4)
+	float price_AT; // 0x20(0x4)
+	float price_AU; // 0x24(0x4)
+	float price_BD; // 0x28(0x4)
+	float price_BE; // 0x2C(0x4)
+	float price_BG; // 0x30(0x4)
+	float price_BH; // 0x34(0x4)
+	float price_BM; // 0x38(0x4)
+	float price_BO; // 0x3C(0x4)
+	float price_BR; // 0x40(0x4)
+	float price_CA; // 0x44(0x4)
+	float price_CH; // 0x48(0x4)
+	float price_CL; // 0x4C(0x4)
+	float price_CO; // 0x50(0x4)
+	float price_CR; // 0x54(0x4)
+	float price_CY; // 0x58(0x4)
+	float price_CZ; // 0x5C(0x4)
+	float price_DE; // 0x60(0x4)
+	float price_DK; // 0x64(0x4)
+	float price_DZ; // 0x68(0x4)
+	float price_EC; // 0x6C(0x4)
+	float price_EE; // 0x70(0x4)
+	float price_EG; // 0x74(0x4)
+	float price_ES; // 0x78(0x4)
+	float price_FI; // 0x7C(0x4)
+	float price_FM; // 0x80(0x4)
+	float price_FR; // 0x84(0x4)
+	float price_GB; // 0x88(0x4)
+	float price_GE; // 0x8C(0x4)
+	float price_GH; // 0x90(0x4)
+	float price_GI; // 0x94(0x4)
+	float price_GR; // 0x98(0x4)
+	float price_HR; // 0x9C(0x4)
+	float price_HU; // 0xA0(0x4)
+	float price_ID; // 0xA4(0x4)
+	float price_IE; // 0xA8(0x4)
+	float price_IL; // 0xAC(0x4)
+	float price_IN; // 0xB0(0x4)
+	float price_IQ; // 0xB4(0x4)
+	float price_IT; // 0xB8(0x4)
+	float price_JO; // 0xBC(0x4)
+	float price_JP; // 0xC0(0x4)
+	float price_KE; // 0xC4(0x4)
+	float price_KH; // 0xC8(0x4)
+	float price_KR; // 0xCC(0x4)
+	float price_KW; // 0xD0(0x4)
+	float price_KY; // 0xD4(0x4)
+	float price_KZ; // 0xD8(0x4)
+	float price_LI; // 0xDC(0x4)
+	float price_LK; // 0xE0(0x4)
+	float price_LT; // 0xE4(0x4)
+	float price_LU; // 0xE8(0x4)
+	float price_LV; // 0xEC(0x4)
+	float price_MA; // 0xF0(0x4)
+	float price_MC; // 0xF4(0x4)
+	float price_MM; // 0xF8(0x4)
+	float price_MO; // 0xFC(0x4)
+	float price_MX; // 0x100(0x4)
+	float price_MY; // 0x104(0x4)
+	float price_NG; // 0x108(0x4)
+	float price_NL; // 0x10C(0x4)
+	float price_NO; // 0x110(0x4)
+	float price_NZ; // 0x114(0x4)
+	float price_OM; // 0x118(0x4)
+	float price_PA; // 0x11C(0x4)
+	float price_PE; // 0x120(0x4)
+	float price_PH; // 0x124(0x4)
+	float price_PK; // 0x128(0x4)
+	float price_PL; // 0x12C(0x4)
+	float price_PT; // 0x130(0x4)
+	float price_PY; // 0x134(0x4)
+	float price_QA; // 0x138(0x4)
+	float price_RO; // 0x13C(0x4)
+	float price_RS; // 0x140(0x4)
+	float price_RU; // 0x144(0x4)
+	float price_SA; // 0x148(0x4)
+	float price_SE; // 0x14C(0x4)
+	float price_SG; // 0x150(0x4)
+	float price_SI; // 0x154(0x4)
+	float price_SK; // 0x158(0x4)
+	float price_SM; // 0x15C(0x4)
+	float price_SV; // 0x160(0x4)
+	float price_TC; // 0x164(0x4)
+	float price_TH; // 0x168(0x4)
+	float price_TR; // 0x16C(0x4)
+	float price_TW; // 0x170(0x4)
+	float price_TZ; // 0x174(0x4)
+	float price_UA; // 0x178(0x4)
+	float price_VA; // 0x17C(0x4)
+	float price_VG; // 0x180(0x4)
+	float price_VN; // 0x184(0x4)
+	float price_ZA; // 0x188(0x4)
+	float price_US; // 0x18C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.MidasPayChannelConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FMidasPayChannelConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FDateTime begin_time; // 0x10(0x8)
+	struct FDateTime end_time; // 0x18(0x8)
+	uint32_t regist_days; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.MeticulousWarmTagConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FMeticulousWarmTagConfTableRow : FTableRowBase
+{
+	uint32_t regist_country_group; // 0x8(0x4)
+	uint32_t warm_tag_switch; // 0xC(0x4)
+	uint32_t positive_warm_game_max_count; // 0x10(0x4)
+	uint32_t negative_warm_game_max_count; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.MemberBenefitsConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FMemberBenefitsConfTableRow : FTableRowBase
+{
+	uint32_t Level; // 0x8(0x4)
+	uint32_t cost_sum; // 0xC(0x4)
+	struct FText peroid_rewards; // 0x10(0x18)
+	uint32_t Period; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.MeleeWeaponDetailTableRow
+// Size: 0xE8 (Inherited: 0x8)
+struct FMeleeWeaponDetailTableRow : FTableRowBase
+{
+	uint64_t itemID; // 0x8(0x8)
+	struct TArray<float> BaseDamage; // 0x10(0x10)
+	struct TArray<float> ComboBaseDamage; // 0x20(0x10)
+	float ArmorDamage; // 0x30(0x4)
+	float ArmorDamageRatio; // 0x34(0x4)
+	float BleedChance; // 0x38(0x4)
+	float EnergyConsume; // 0x3C(0x4)
+	struct FText AttackSpeed; // 0x40(0x18)
+	struct TArray<float> DamageReduction; // 0x58(0x10)
+	struct TArray<float> TraceRange; // 0x68(0x10)
+	struct TArray<float> ComboTraceRange; // 0x78(0x10)
+	struct FText BleedProbabilityDisplay; // 0x88(0x18)
+	struct FText TraceRangeDisplay; // 0xA0(0x18)
+	struct FText ComboTraceRangeDisplay; // 0xB8(0x18)
+	float MeleeMoveSpeedRatio; // 0xD0(0x4)
+	float DamageScaleHead; // 0xD4(0x4)
+	float DamageScaleArms; // 0xD8(0x4)
+	float DamageScaleLegs; // 0xDC(0x4)
+	float DamageScaleStomach; // 0xE0(0x4)
+	float DamageScaleChest; // 0xE4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.MedGuidePageConfTableRow
+// Size: 0x50 (Inherited: 0x8)
+struct FMedGuidePageConfTableRow : FTableRowBase
+{
+	uint32_t IndexId; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString ICON; // 0x10(0x10)
+	struct FText Desc; // 0x20(0x18)
+	struct TArray<uint64_t> CureItemId; // 0x38(0x10)
+	uint32_t ShowPage; // 0x48(0x4)
+	uint8_t Pad_0x4C[0x4]; // 0x4C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.MatchRankScoreExpansionConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FMatchRankScoreExpansionConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t min_team_num; // 0xC(0x4)
+	uint32_t min_role_num; // 0x10(0x4)
+	uint32_t Type; // 0x14(0x4)
+	struct TArray<uint32_t> expansion_time; // 0x18(0x10)
+	struct TArray<uint32_t> expansion_range; // 0x28(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.MatchPoolConfTableRow
+// Size: 0x1B8 (Inherited: 0x8)
+struct FMatchPoolConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t play_mode_id; // 0xC(0x4)
+	uint32_t matchsvr_division; // 0x10(0x4)
+	uint32_t match_process; // 0x14(0x4)
+	uint32_t wander_default_need_teammate; // 0x18(0x4)
+	uint32_t default_gentleman_type; // 0x1C(0x4)
+	uint32_t need_notify_queue_size; // 0x20(0x4)
+	uint32_t time_seg; // 0x24(0x4)
+	struct TArray<uint32_t> min_open_condition_time_array; // 0x28(0x10)
+	struct TArray<uint32_t> min_player_num_array; // 0x38(0x10)
+	uint32_t max_player_num; // 0x48(0x4)
+	uint8_t Pad_0x4C[0x4]; // 0x4C(0x4)
+	struct TArray<uint32_t> min_team_num_array; // 0x50(0x10)
+	uint32_t max_team_num; // 0x60(0x4)
+	uint32_t condition_points_id; // 0x64(0x4)
+	uint32_t solo_battle_play_mode_id; // 0x68(0x4)
+	uint8_t Pad_0x6C[0x4]; // 0x6C(0x4)
+	struct TArray<uint32_t> solo_battle_open_condition_time_array; // 0x70(0x10)
+	struct TArray<uint32_t> solo_battle_min_player_num_array; // 0x80(0x10)
+	uint32_t solo_battle_max_player_num; // 0x90(0x4)
+	uint32_t wait_fill_time; // 0x94(0x4)
+	uint32_t max_ds_num; // 0x98(0x4)
+	uint32_t ds_join_match_pool_id; // 0x9C(0x4)
+	uint32_t is_join_open; // 0xA0(0x4)
+	uint32_t player_join_time_begin; // 0xA4(0x4)
+	int32_t ds_elo_modify_percent; // 0xA8(0x4)
+	uint8_t Pad_0xAC[0x4]; // 0xAC(0x4)
+	struct TArray<struct FJoinTimeConf> join_time_conf; // 0xB0(0x10)
+	uint32_t join_time_end; // 0xC0(0x4)
+	uint32_t max_wait_style_teammate_time; // 0xC4(0x4)
+	uint32_t max_wait_teammate_time; // 0xC8(0x4)
+	uint32_t min_player_team; // 0xCC(0x4)
+	uint32_t max_player_team; // 0xD0(0x4)
+	uint32_t min_wander_player_team; // 0xD4(0x4)
+	uint32_t max_wander_player_team; // 0xD8(0x4)
+	uint32_t close_protectline_check; // 0xDC(0x4)
+	struct TArray<uint32_t> time_expansion_check_ids; // 0xE0(0x10)
+	uint32_t major_axis_id; // 0xF0(0x4)
+	uint32_t minor_axis_id; // 0xF4(0x4)
+	uint32_t elo_angle; // 0xF8(0x4)
+	uint32_t max_wait_country_time; // 0xFC(0x4)
+	uint32_t max_wait_region_time; // 0x100(0x4)
+	uint32_t jump_pool_time; // 0x104(0x4)
+	uint32_t jump_pool_id; // 0x108(0x4)
+	uint8_t Pad_0x10C[0x4]; // 0x10C(0x4)
+	struct TArray<uint32_t> ping_expansion_time; // 0x110(0x10)
+	struct TArray<uint32_t> ping_expansion_range; // 0x120(0x10)
+	uint32_t dynamic_param_template_id; // 0x130(0x4)
+	uint32_t close_teammate_best_idc_check; // 0x134(0x4)
+	uint32_t open_strict_ping_strategy; // 0x138(0x4)
+	uint32_t open_country_limit; // 0x13C(0x4)
+	uint32_t rank_level_division; // 0x140(0x4)
+	uint32_t random_map_group_id; // 0x144(0x4)
+	uint32_t max_wait_idc_time; // 0x148(0x4)
+	uint32_t role_play_jump_pool_time; // 0x14C(0x4)
+	uint32_t role_play_jump_pool_id; // 0x150(0x4)
+	uint8_t Pad_0x154[0x4]; // 0x154(0x4)
+	struct TArray<uint32_t> role_play_faction_array; // 0x158(0x10)
+	struct TArray<uint32_t> role_play_battle_mode_template_array; // 0x168(0x10)
+	struct TArray<uint32_t> faction_open_condition_array; // 0x178(0x10)
+	struct TArray<struct FMatchFactionTeamConf> match_faction_team_vec; // 0x188(0x10)
+	struct TArray<struct FMultiModeMatchConf> multi_mode_match_conf; // 0x198(0x10)
+	struct TArray<int32_t> ds_param_array; // 0x1A8(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.MultiModeMatchConf
+// Size: 0x38 (Inherited: 0x0)
+struct FMultiModeMatchConf
+{
+	uint32_t multi_mode_id; // 0x0(0x4)
+	uint8_t Pad_0x4[0x4]; // 0x4(0x4)
+	struct TArray<uint32_t> max_team_num_array; // 0x8(0x10)
+	struct TArray<uint32_t> max_player_num_array; // 0x18(0x10)
+	uint64_t jump_pool_time; // 0x28(0x8)
+	uint32_t jump_pool_id; // 0x30(0x4)
+	uint8_t Pad_0x34[0x4]; // 0x34(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.MatchFactionTeamConf
+// Size: 0x10 (Inherited: 0x0)
+struct FMatchFactionTeamConf
+{
+	uint32_t faction_id; // 0x0(0x4)
+	uint32_t role_num_ratio; // 0x4(0x4)
+	uint32_t min_player_team; // 0x8(0x4)
+	uint32_t max_player_team; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.JoinTimeConf
+// Size: 0x30 (Inherited: 0x0)
+struct FJoinTimeConf
+{
+	uint32_t join_time_begin_delay; // 0x0(0x4)
+	uint32_t join_time_begin; // 0x4(0x4)
+	uint32_t max_scav_join_num; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<uint32_t> multi_mode_id_array; // 0x10(0x10)
+	struct TArray<uint32_t> max_player_num_array; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.MatchPoolConditionConfTableRow
+// Size: 0xC8 (Inherited: 0x8)
+struct FMatchPoolConditionConfTableRow : FTableRowBase
+{
+	uint32_t match_pool_id; // 0x8(0x4)
+	uint32_t play_mode_id; // 0xC(0x4)
+	uint32_t match_type; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct TArray<uint32_t> allowed_game_mode_array; // 0x18(0x10)
+	uint32_t min_level; // 0x28(0x4)
+	uint32_t max_level; // 0x2C(0x4)
+	uint32_t min_pmc_battle_cnt; // 0x30(0x4)
+	uint32_t max_pmc_battle_cnt; // 0x34(0x4)
+	uint32_t min_stash_mail_pmc_value; // 0x38(0x4)
+	uint32_t max_stash_mail_pmc_value; // 0x3C(0x4)
+	uint32_t max_role_num; // 0x40(0x4)
+	uint32_t is_all_under_protect_line; // 0x44(0x4)
+	uint32_t leader_parity; // 0x48(0x4)
+	uint32_t parity_abtest; // 0x4C(0x4)
+	uint32_t oversea_rookie_branch; // 0x50(0x4)
+	uint32_t match_isolation_type; // 0x54(0x4)
+	struct TArray<uint32_t> need_step_array; // 0x58(0x10)
+	struct TArray<uint32_t> step_transfer_pool_array; // 0x68(0x10)
+	uint32_t transfer_pool_id; // 0x78(0x4)
+	uint32_t wealth_transfer_pool_id; // 0x7C(0x4)
+	uint32_t take_in_transfer_pool_id; // 0x80(0x4)
+	uint32_t new_return_transfer_pool_id; // 0x84(0x4)
+	uint32_t return_transfer_pool_id; // 0x88(0x4)
+	uint32_t wealth_elo_transfer_pool_id; // 0x8C(0x4)
+	uint32_t time_transfer_pool_id; // 0x90(0x4)
+	uint8_t Pad_0x94[0x4]; // 0x94(0x4)
+	struct TArray<uint32_t> map_protect_transfer_array; // 0x98(0x10)
+	struct FDateTime begin_time; // 0xA8(0x8)
+	struct FDateTime end_time; // 0xB0(0x8)
+	struct TArray<struct FMatchDailyTimeConf> daily_time_vec; // 0xB8(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.MatchDailyTimeConf
+// Size: 0x20 (Inherited: 0x0)
+struct FMatchDailyTimeConf
+{
+	struct FString daily_begin_time; // 0x0(0x10)
+	struct FString daily_end_time; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.MatchMapReplaceConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FMatchMapReplaceConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<struct FMatchMapReplaceItemConf> map_mode_list; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.MatchMapReplaceItemConf
+// Size: 0x8 (Inherited: 0x0)
+struct FMatchMapReplaceItemConf
+{
+	uint32_t map_mode_id; // 0x0(0x4)
+	uint32_t Weight; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.MatchLockDsConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FMatchLockDsConfTableRow : FTableRowBase
+{
+	uint32_t world_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<uint32_t> country_codes; // 0x10(0x10)
+	struct TArray<uint32_t> match_isolation_types; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.MatchKVConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FMatchKVConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	int64_t Val; // 0x10(0x8)
+	struct TArray<int64_t> val_array; // 0x18(0x10)
+	struct FDateTime begin_time; // 0x28(0x8)
+	struct FDateTime end_time; // 0x30(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.MatchHallTeamDegreeConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FMatchHallTeamDegreeConfTableRow : FTableRowBase
+{
+	uint32_t match_hall_team_degree_type; // 0x8(0x4)
+	uint32_t ID; // 0xC(0x4)
+	int32_t Val; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.MatchFactionOpenConditionConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FMatchFactionOpenConditionConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<uint32_t> min_open_condition_time_array; // 0x10(0x10)
+	struct TArray<struct FMatchFactionOpenConf> match_faction_vec; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.MatchFactionOpenConf
+// Size: 0x18 (Inherited: 0x0)
+struct FMatchFactionOpenConf
+{
+	uint32_t faction_id; // 0x0(0x4)
+	uint8_t Pad_0x4[0x4]; // 0x4(0x4)
+	struct TArray<uint32_t> team_num_array; // 0x8(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.MatchCountryLimitConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FMatchCountryLimitConfTableRow : FTableRowBase
+{
+	uint32_t country_limit_group_id; // 0x8(0x4)
+	uint32_t is_open; // 0xC(0x4)
+	struct TArray<uint32_t> country_limit_country_code; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.MatchConditionPointsConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FMatchConditionPointsConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t guarantee_time; // 0xC(0x4)
+	uint32_t guarantee_team_num; // 0x10(0x4)
+	uint32_t guarantee_role_num; // 0x14(0x4)
+	struct FText valid_points; // 0x18(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.MarqueeConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FMarqueeConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Type; // 0xC(0x4)
+	struct FText Content; // 0x10(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.MapWeatherConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FMapWeatherConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t cur_weather; // 0xC(0x4)
+	struct TArray<struct FWeatherRateItem> weather_list; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.WeatherRateItem
+// Size: 0x8 (Inherited: 0x0)
+struct FWeatherRateItem
+{
+	uint32_t weather; // 0x0(0x4)
+	uint32_t Weight; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.MapUnlockTableRow
+// Size: 0x318 (Inherited: 0x8)
+struct FMapUnlockTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<uint32_t> real_map_mode_id_array; // 0x10(0x10)
+	uint32_t mode_id; // 0x20(0x4)
+	uint32_t sub_mod_id; // 0x24(0x4)
+	uint32_t map_id; // 0x28(0x4)
+	uint32_t rule_id; // 0x2C(0x4)
+	struct FText ShowName; // 0x30(0x18)
+	uint32_t ShowIndex; // 0x48(0x4)
+	uint8_t Pad_0x4C[0x4]; // 0x4C(0x4)
+	struct TArray<struct FString> helpJumpId; // 0x50(0x10)
+	struct TArray<struct FString> helpJumpId2; // 0x60(0x10)
+	uint32_t unlock_type; // 0x70(0x4)
+	uint8_t Pad_0x74[0x4]; // 0x74(0x4)
+	struct TArray<uint64_t> unlock_param; // 0x78(0x10)
+	struct TArray<uint32_t> pmc_open_mode_list; // 0x88(0x10)
+	struct TArray<uint32_t> wander_open_mode_list; // 0x98(0x10)
+	uint32_t ticket; // 0xA8(0x4)
+	uint32_t ticket_cash; // 0xAC(0x4)
+	uint32_t scav_ticket; // 0xB0(0x4)
+	uint32_t scav_ticket_cash; // 0xB4(0x4)
+	uint32_t is_scav_unlock; // 0xB8(0x4)
+	uint32_t need_return_player_leader; // 0xBC(0x4)
+	uint32_t act_ticket; // 0xC0(0x4)
+	uint32_t act_id; // 0xC4(0x4)
+	uint32_t take_in_threshold; // 0xC8(0x4)
+	uint32_t take_in_value_limit; // 0xCC(0x4)
+	uint32_t take_in_all_item_vaule_limit; // 0xD0(0x4)
+	uint32_t intervened_factor; // 0xD4(0x4)
+	struct FString sysIds; // 0xD8(0x10)
+	uint32_t map_picture; // 0xE8(0x4)
+	uint8_t Pad_0xEC[0x4]; // 0xEC(0x4)
+	struct FString map_spine; // 0xF0(0x10)
+	struct TArray<struct FString> typeIcon; // 0x100(0x10)
+	uint32_t title_bg; // 0x110(0x4)
+	uint32_t map_plug; // 0x114(0x4)
+	struct FString map_bg_name; // 0x118(0x10)
+	struct FString map_bg_scene; // 0x128(0x10)
+	struct FString map_loading_res; // 0x138(0x10)
+	uint32_t ranked_level_limit; // 0x148(0x4)
+	uint8_t Pad_0x14C[0x4]; // 0x14C(0x4)
+	struct FText lockreason_out; // 0x150(0x18)
+	struct FText lockreason_pop; // 0x168(0x18)
+	struct FText map_pmc_num; // 0x180(0x18)
+	struct FString MapResourceList; // 0x198(0x10)
+	uint32_t history_open; // 0x1A8(0x4)
+	uint8_t Pad_0x1AC[0x4]; // 0x1AC(0x4)
+	struct FText MapDesc; // 0x1B0(0x18)
+	uint32_t help_type; // 0x1C8(0x4)
+	uint8_t Pad_0x1CC[0x4]; // 0x1CC(0x4)
+	struct FText Help_cdn; // 0x1D0(0x18)
+	struct FText Takeout_rule; // 0x1E8(0x18)
+	struct FText Drop_rule; // 0x200(0x18)
+	struct FString dialog; // 0x218(0x10)
+	uint32_t map_unlock_level; // 0x228(0x4)
+	uint32_t map_unlock_task; // 0x22C(0x4)
+	struct FDateTime begin_time; // 0x230(0x8)
+	struct FDateTime end_time; // 0x238(0x8)
+	struct TArray<uint32_t> weekly_day_vec; // 0x240(0x10)
+	struct TArray<struct FMapUnlockDailyTimeConf> daily_time_vec; // 0x250(0x10)
+	uint32_t open_range_voice_room; // 0x260(0x4)
+	uint8_t Pad_0x264[0x4]; // 0x264(0x4)
+	struct TArray<uint32_t> weekly_show_day_vec; // 0x268(0x10)
+	uint32_t wealth_elo_map_mode_id; // 0x278(0x4)
+	int32_t wealth_elo_max_harvest_ratio; // 0x27C(0x4)
+	int32_t wealth_elo_min_harvest_ratio; // 0x280(0x4)
+	uint32_t map_exp_ratio; // 0x284(0x4)
+	uint32_t battle_buy_limit; // 0x288(0x4)
+	uint8_t Pad_0x28C[0x4]; // 0x28C(0x4)
+	struct TArray<uint32_t> ai_template_vec; // 0x290(0x10)
+	struct TArray<uint32_t> trans_multi_mode_vec; // 0x2A0(0x10)
+	struct TArray<uint32_t> trans_template_vec; // 0x2B0(0x10)
+	uint32_t allow_connect_time; // 0x2C0(0x4)
+	int32_t team_transfer_value_rate; // 0x2C4(0x4)
+	int32_t transfer_value_rate; // 0x2C8(0x4)
+	uint32_t weather; // 0x2CC(0x4)
+	struct TArray<uint32_t> weather_show; // 0x2D0(0x10)
+	struct TArray<uint32_t> battle_mode_template_array; // 0x2E0(0x10)
+	uint32_t need_check_weapon_need_teammate; // 0x2F0(0x4)
+	uint32_t killCam_open; // 0x2F4(0x4)
+	uint32_t replay_open; // 0x2F8(0x4)
+	uint32_t highlight_open; // 0x2FC(0x4)
+	uint32_t appraise_action_open; // 0x300(0x4)
+	uint32_t is_removed; // 0x304(0x4)
+	uint32_t open_faction_voice_room; // 0x308(0x4)
+	uint32_t open_room_chat; // 0x30C(0x4)
+	uint32_t need_all_player_info; // 0x310(0x4)
+	uint8_t Pad_0x314[0x4]; // 0x314(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.MapUnlockDailyTimeConf
+// Size: 0x20 (Inherited: 0x0)
+struct FMapUnlockDailyTimeConf
+{
+	struct FString daily_begin_time; // 0x0(0x10)
+	struct FString daily_end_time; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.MapTaskTreeConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FMapTaskTreeConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t disp_address; // 0xC(0x4)
+	uint32_t show_order; // 0x10(0x4)
+	uint32_t child_len; // 0x14(0x4)
+	uint32_t root_task_id; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	struct TArray<struct FmapTaskTreeItem> child_list; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.mapTaskTreeItem
+// Size: 0x8 (Inherited: 0x0)
+struct FmapTaskTreeItem
+{
+	uint32_t ID; // 0x0(0x4)
+	uint32_t Type; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.MapTaskConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FMapTaskConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t disp_address; // 0xC(0x4)
+	struct FText map_task_sheet_name; // 0x10(0x18)
+	uint32_t award_id; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.MapRuleRangeConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FMapRuleRangeConfTableRow : FTableRowBase
+{
+	uint32_t rule_id; // 0x8(0x4)
+	uint32_t Index; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.MapRolePlayConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FMapRolePlayConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t map_mode_id; // 0xC(0x4)
+	uint32_t character_type; // 0x10(0x4)
+	uint32_t avatar_set_id; // 0x14(0x4)
+	uint32_t avatar_gender; // 0x18(0x4)
+	uint32_t faction_id; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.MapProtectConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FMapProtectConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t is_open; // 0xC(0x4)
+	struct TArray<uint32_t> map_mode_ids; // 0x10(0x10)
+	uint32_t protect_times; // 0x20(0x4)
+	uint32_t protect_value; // 0x24(0x4)
+	uint8_t map_protect_type; // 0x28(0x1)
+	uint8_t Pad_0x29[0x3]; // 0x29(0x3)
+	uint32_t map_protect_mission_id; // 0x2C(0x4)
+	uint32_t max_level; // 0x30(0x4)
+	uint8_t Pad_0x34[0x4]; // 0x34(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.MapNewsInfoTableRow
+// Size: 0x98 (Inherited: 0x8)
+struct FMapNewsInfoTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Title; // 0x10(0x18)
+	struct FText Desc; // 0x28(0x18)
+	struct FString pic; // 0x40(0x10)
+	struct FText show_open_time; // 0x50(0x18)
+	struct FText show_daily_time; // 0x68(0x18)
+	uint32_t Order; // 0x80(0x4)
+	uint32_t mapunlockId; // 0x84(0x4)
+	uint32_t GroupID; // 0x88(0x4)
+	bool isPop; // 0x8C(0x1)
+	uint8_t Pad_0x8D[0x3]; // 0x8D(0x3)
+	uint32_t pop_order; // 0x90(0x4)
+	uint8_t Pad_0x94[0x4]; // 0x94(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.MapLayoutTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FMapLayoutTableRow : FTableRowBase
+{
+	uint32_t mapunlock_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString select_list; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.MapKeyListTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FMapKeyListTableRow : FTableRowBase
+{
+	uint32_t mapunlock_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString key_list; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.MapHighValueTipsConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FMapHighValueTipsConfTableRow : FTableRowBase
+{
+	uint32_t map_unlock_id_A; // 0x8(0x4)
+	uint32_t Value; // 0xC(0x4)
+	uint32_t map_unlock_id_B; // 0x10(0x4)
+	uint32_t Level; // 0x14(0x4)
+	uint32_t jump_id; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.MapGroupConfTableRow
+// Size: 0xF0 (Inherited: 0x8)
+struct FMapGroupConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t MapGroupType; // 0xC(0x4)
+	struct FText ShowName; // 0x10(0x18)
+	uint32_t ShowIndex; // 0x28(0x4)
+	uint32_t is_scav_unlock; // 0x2C(0x4)
+	struct FText lockreason_out; // 0x30(0x18)
+	struct FText lockreason_pop; // 0x48(0x18)
+	uint32_t map_entrance_type; // 0x60(0x4)
+	uint32_t RoleType; // 0x64(0x4)
+	uint32_t GameMode; // 0x68(0x4)
+	uint8_t Pad_0x6C[0x4]; // 0x6C(0x4)
+	struct FText mode_des; // 0x70(0x18)
+	struct FText mode_des_detail; // 0x88(0x18)
+	struct FString modeIcon; // 0xA0(0x10)
+	struct FString mode_pic_bg; // 0xB0(0x10)
+	struct FString title_bg; // 0xC0(0x10)
+	uint32_t list_showtype; // 0xD0(0x4)
+	uint32_t showtype_plug; // 0xD4(0x4)
+	uint32_t act_tag_show; // 0xD8(0x4)
+	uint8_t Pad_0xDC[0x4]; // 0xDC(0x4)
+	struct TArray<uint32_t> weekly_day_vec; // 0xE0(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.MapGameModeConfTableRow
+// Size: 0x60 (Inherited: 0x8)
+struct FMapGameModeConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FDateTime begin_time; // 0x10(0x8)
+	struct FDateTime end_time; // 0x18(0x8)
+	struct TArray<uint32_t> pmc_map_list; // 0x20(0x10)
+	struct TArray<uint32_t> pmc_mode_list; // 0x30(0x10)
+	struct TArray<uint32_t> wander_map_list; // 0x40(0x10)
+	struct TArray<uint32_t> wander_mode_list; // 0x50(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.MapEntranceConfTableRow
+// Size: 0xC0 (Inherited: 0x8)
+struct FMapEntranceConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Name; // 0x10(0x18)
+	uint32_t ShowIndex; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+	struct FText des; // 0x30(0x18)
+	struct FText title_short; // 0x48(0x18)
+	struct FText title_short_sub; // 0x60(0x18)
+	struct FText title_short_pic; // 0x78(0x18)
+	struct FText entrance_pic_bg; // 0x90(0x18)
+	struct FText entrance_icon; // 0xA8(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.MapDetailTableRow
+// Size: 0xB8 (Inherited: 0x8)
+struct FMapDetailTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText map_level; // 0x10(0x18)
+	struct FString mobile_map_level; // 0x28(0x10)
+	struct FText Name; // 0x38(0x18)
+	struct FString level_path; // 0x50(0x10)
+	struct FText Picture; // 0x60(0x18)
+	struct FText Desc; // 0x78(0x18)
+	struct FVector2D MapSize; // 0x90(0x8)
+	struct TArray<struct FVector2D> SampleScenePoints; // 0x98(0x10)
+	struct TArray<struct FVector2D> SampleMapPoints; // 0xA8(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.MapBornPointConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FMapBornPointConfTableRow : FTableRowBase
+{
+	int32_t PointID; // 0x8(0x4)
+	int32_t mapunlockId; // 0xC(0x4)
+	float LocationX; // 0x10(0x4)
+	float LocationY; // 0x14(0x4)
+	float VolumeWidth; // 0x18(0x4)
+	float VolumeHeight; // 0x1C(0x4)
+	int32_t TeamMaxNum; // 0x20(0x4)
+	int32_t IsUseful; // 0x24(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.MapBanTaskConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FMapBanTaskConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<int32_t> banned_task_types; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.MallSuitConfTableRow
+// Size: 0x58 (Inherited: 0x8)
+struct FMallSuitConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Name; // 0x10(0x18)
+	struct FText Desc; // 0x28(0x18)
+	uint32_t icon_id; // 0x40(0x4)
+	uint8_t Pad_0x44[0x4]; // 0x44(0x4)
+	struct TArray<uint32_t> sell_group_ids; // 0x48(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.MallRecommendConfTableRow
+// Size: 0xD0 (Inherited: 0x8)
+struct FMallRecommendConfTableRow : FTableRowBase
+{
+	uint32_t pic_id; // 0x8(0x4)
+	uint32_t pic_seq; // 0xC(0x4)
+	struct FText pic_name; // 0x10(0x18)
+	struct FString banner_url; // 0x28(0x10)
+	uint32_t pic_url_type; // 0x38(0x4)
+	uint8_t Pad_0x3C[0x4]; // 0x3C(0x4)
+	struct FString pic_url; // 0x40(0x10)
+	struct FString video_static_pic; // 0x50(0x10)
+	struct FDateTime pre_begin_time; // 0x60(0x8)
+	struct FDateTime pre_end_time; // 0x68(0x8)
+	struct FDateTime begin_time; // 0x70(0x8)
+	struct FDateTime end_time; // 0x78(0x8)
+	uint32_t pin_duration; // 0x80(0x4)
+	uint8_t Pad_0x84[0x4]; // 0x84(0x4)
+	struct FText item_desc; // 0x88(0x18)
+	uint32_t item_quality; // 0xA0(0x4)
+	uint32_t mall_item_id; // 0xA4(0x4)
+	uint32_t jump_id; // 0xA8(0x4)
+	uint8_t Pad_0xAC[0x4]; // 0xAC(0x4)
+	struct FString art_name; // 0xB0(0x10)
+	struct TArray<uint32_t> avatar_tags; // 0xC0(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.MallKVConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FMallKVConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	int64_t Val; // 0x10(0x8)
+	struct TArray<struct FMallBlockChannelInfo> block_channel_info; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.MallBlockChannelInfo
+// Size: 0x8 (Inherited: 0x0)
+struct FMallBlockChannelInfo
+{
+	uint32_t Channel; // 0x0(0x4)
+	uint32_t plat; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.MallJumpConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FMallJumpConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText jump_desc; // 0x10(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.MallItemConfTableRow
+// Size: 0x190 (Inherited: 0x8)
+struct FMallItemConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t jump_id; // 0xC(0x4)
+	uint32_t first_class_order; // 0x10(0x4)
+	uint32_t second_class_order; // 0x14(0x4)
+	uint32_t third_class_order; // 0x18(0x4)
+	uint32_t item_tag; // 0x1C(0x4)
+	uint32_t seq; // 0x20(0x4)
+	uint32_t sell_item_id; // 0x24(0x4)
+	uint32_t sell_num; // 0x28(0x4)
+	uint32_t sell_group_id; // 0x2C(0x4)
+	uint32_t sell_suit_id; // 0x30(0x4)
+	uint32_t can_multi_sell; // 0x34(0x4)
+	uint32_t is_black; // 0x38(0x4)
+	uint32_t purchase_id; // 0x3C(0x4)
+	struct TArray<struct FExchange> exchange_list; // 0x40(0x10)
+	struct TArray<uint32_t> daily_differential_exchange_count_array; // 0x50(0x10)
+	struct TArray<uint32_t> daily_differential_exchange_num_array; // 0x60(0x10)
+	struct FDateTime pre_begin_time; // 0x70(0x8)
+	struct FDateTime pre_end_time; // 0x78(0x8)
+	struct FDateTime begin_time; // 0x80(0x8)
+	struct FDateTime end_time; // 0x88(0x8)
+	struct TArray<uint32_t> weekly_days; // 0x90(0x10)
+	uint32_t pin_hour; // 0xA0(0x4)
+	uint32_t Quality; // 0xA4(0x4)
+	uint32_t preview_mode; // 0xA8(0x4)
+	uint8_t Pad_0xAC[0x4]; // 0xAC(0x4)
+	struct TArray<struct FTag> tag_list; // 0xB0(0x10)
+	uint32_t buy_limit; // 0xC0(0x4)
+	uint32_t buy_limit_num; // 0xC4(0x4)
+	uint32_t reactivate_redpoint; // 0xC8(0x4)
+	uint32_t need_vip_level; // 0xCC(0x4)
+	struct FString URL; // 0xD0(0x10)
+	struct FString banner; // 0xE0(0x10)
+	struct FString back_ground; // 0xF0(0x10)
+	struct FString need_version; // 0x100(0x10)
+	uint32_t is_backup; // 0x110(0x4)
+	uint32_t country_group_id; // 0x114(0x4)
+	uint32_t can_gift; // 0x118(0x4)
+	uint32_t gift_limit; // 0x11C(0x4)
+	uint32_t gift_limit_num; // 0x120(0x4)
+	uint32_t need_level; // 0x124(0x4)
+	uint32_t need_bp_vip; // 0x128(0x4)
+	uint32_t need_bp_level; // 0x12C(0x4)
+	uint32_t front_id; // 0x130(0x4)
+	uint32_t grade_id; // 0x134(0x4)
+	uint32_t sell_channel; // 0x138(0x4)
+	uint32_t sell_channel_value; // 0x13C(0x4)
+	struct FString sell_channel_name; // 0x140(0x10)
+	struct TArray<uint32_t> on_shelf_chans; // 0x150(0x10)
+	struct TArray<uint32_t> avatar_tags; // 0x160(0x10)
+	struct TArray<struct FSubTitle> Subtitles; // 0x170(0x10)
+	struct FString art_name; // 0x180(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.SubTitle
+// Size: 0x18 (Inherited: 0x0)
+struct FSubTitle
+{
+	struct FString Desc; // 0x0(0x10)
+	uint32_t icon_id; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.Tag
+// Size: 0x28 (Inherited: 0x0)
+struct FTag
+{
+	uint32_t tag_type; // 0x0(0x4)
+	uint8_t Pad_0x4[0x4]; // 0x4(0x4)
+	struct FString tag_desc; // 0x8(0x10)
+	struct FDateTime tag_begin_time; // 0x18(0x8)
+	struct FDateTime tag_end_time; // 0x20(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.Exchange
+// Size: 0x20 (Inherited: 0x0)
+struct FExchange
+{
+	uint32_t exchange_item_id; // 0x0(0x4)
+	uint32_t exchange_num; // 0x4(0x4)
+	uint32_t discount_exchange_num; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FDateTime discount_begin_time; // 0x10(0x8)
+	struct FDateTime discount_end_time; // 0x18(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.MallGroupItemsConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FMallGroupItemsConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t group_id; // 0xC(0x4)
+	uint32_t item_id; // 0x10(0x4)
+	uint32_t item_num; // 0x14(0x4)
+	uint32_t is_black; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	struct TArray<struct FGroupExchange> group_exchange_list; // 0x20(0x10)
+	uint32_t mall_item_id; // 0x30(0x4)
+	uint8_t Pad_0x34[0x4]; // 0x34(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.GroupExchange
+// Size: 0x8 (Inherited: 0x0)
+struct FGroupExchange
+{
+	uint32_t exchange_item_id; // 0x0(0x4)
+	uint32_t exchange_num; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.MallGroupDescConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FMallGroupDescConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Detail; // 0x10(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.MallGroupConfTableRow
+// Size: 0x50 (Inherited: 0x8)
+struct FMallGroupConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Name; // 0x10(0x18)
+	uint32_t desc_id; // 0x28(0x4)
+	uint32_t icon_id; // 0x2C(0x4)
+	struct FText mutil_lang_cdn_url; // 0x30(0x18)
+	uint32_t Type; // 0x48(0x4)
+	uint8_t Pad_0x4C[0x4]; // 0x4C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.MallGradeDivisionConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FMallGradeDivisionConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t class_order_id; // 0xC(0x4)
+	uint32_t payment_limit; // 0x10(0x4)
+	uint32_t grade; // 0x14(0x4)
+	uint32_t Type; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.MallGradeDescConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FMallGradeDescConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString Desc; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.MallClassConfTableRow
+// Size: 0x90 (Inherited: 0x8)
+struct FMallClassConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t class_type; // 0xC(0x4)
+	uint32_t Type; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct FText Name; // 0x18(0x18)
+	uint32_t parent_class; // 0x30(0x4)
+	uint8_t Pad_0x34[0x4]; // 0x34(0x4)
+	struct FString ICON; // 0x38(0x10)
+	struct FString PageType; // 0x48(0x10)
+	uint32_t parent_hide_empty; // 0x58(0x4)
+	uint32_t is_hide; // 0x5C(0x4)
+	struct FDateTime begin_time; // 0x60(0x8)
+	struct FDateTime end_time; // 0x68(0x8)
+	uint32_t show_empty; // 0x70(0x4)
+	uint32_t red_point_id; // 0x74(0x4)
+	uint32_t red_point_type; // 0x78(0x4)
+	uint32_t display_order; // 0x7C(0x4)
+	struct TArray<struct FClassBanner> banner_list; // 0x80(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ClassBanner
+// Size: 0x20 (Inherited: 0x0)
+struct FClassBanner
+{
+	struct FDateTime begin_time; // 0x0(0x8)
+	struct FDateTime end_time; // 0x8(0x8)
+	struct FString cdn; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.MallABFirstChargeConfTableRow
+// Size: 0x78 (Inherited: 0x8)
+struct FMallABFirstChargeConfTableRow : FTableRowBase
+{
+	uint32_t Index; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Name; // 0x10(0x18)
+	struct FText Desc; // 0x28(0x18)
+	uint32_t jump_id; // 0x40(0x4)
+	uint8_t Pad_0x44[0x4]; // 0x44(0x4)
+	struct FDateTime begin_time; // 0x48(0x8)
+	struct FDateTime end_time; // 0x50(0x8)
+	struct FString cdn_bg; // 0x58(0x10)
+	struct FString cdn_icon; // 0x68(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.MainUIBgConfTableRow
+// Size: 0x60 (Inherited: 0x8)
+struct FMainUIBgConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t jump_goto; // 0xC(0x4)
+	struct FText obtain; // 0x10(0x18)
+	uint32_t Level; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+	struct FText Asset; // 0x30(0x18)
+	struct FText stream_level; // 0x48(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.MainTaskTreeConfTableRow
+// Size: 0x70 (Inherited: 0x8)
+struct FMainTaskTreeConfTableRow : FTableRowBase
+{
+	uint32_t show_order; // 0x8(0x4)
+	uint32_t child_len; // 0xC(0x4)
+	uint32_t root_task_id; // 0x10(0x4)
+	uint32_t child1; // 0x14(0x4)
+	uint32_t child2; // 0x18(0x4)
+	uint32_t child3; // 0x1C(0x4)
+	uint32_t child4; // 0x20(0x4)
+	uint32_t child5; // 0x24(0x4)
+	uint32_t child6; // 0x28(0x4)
+	uint32_t child7; // 0x2C(0x4)
+	uint32_t child8; // 0x30(0x4)
+	uint32_t child9; // 0x34(0x4)
+	uint32_t child10; // 0x38(0x4)
+	uint32_t child11; // 0x3C(0x4)
+	uint32_t child12; // 0x40(0x4)
+	uint32_t child13; // 0x44(0x4)
+	uint32_t child14; // 0x48(0x4)
+	uint32_t child15; // 0x4C(0x4)
+	uint32_t child16; // 0x50(0x4)
+	uint32_t child17; // 0x54(0x4)
+	uint32_t child18; // 0x58(0x4)
+	uint32_t child19; // 0x5C(0x4)
+	uint32_t child20; // 0x60(0x4)
+	uint32_t child21; // 0x64(0x4)
+	uint32_t child22; // 0x68(0x4)
+	uint32_t child23; // 0x6C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.MailTypeConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FMailTypeConfTableRow : FTableRowBase
+{
+	uint32_t Type; // 0x8(0x4)
+	uint32_t is_stage; // 0xC(0x4)
+	uint32_t mail_max_count; // 0x10(0x4)
+	uint32_t extend_max_size; // 0x14(0x4)
+	uint32_t once_query_extends_max_count; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.MailPresentConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FMailPresentConfTableRow : FTableRowBase
+{
+	uint32_t Type; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Content; // 0x10(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.MailLangConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FMailLangConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Str; // 0x10(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.MailConfTableRow
+// Size: 0x170 (Inherited: 0x8)
+struct FMailConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Type; // 0xC(0x4)
+	struct FText Title; // 0x10(0x18)
+	struct FText title_short; // 0x28(0x18)
+	struct FText Content; // 0x40(0x18)
+	uint32_t sender_type; // 0x58(0x4)
+	uint8_t Pad_0x5C[0x4]; // 0x5C(0x4)
+	struct FText sender; // 0x60(0x18)
+	uint32_t sender_id; // 0x78(0x4)
+	uint8_t Pad_0x7C[0x4]; // 0x7C(0x4)
+	struct FText sender_head; // 0x80(0x18)
+	uint32_t expire_time; // 0x98(0x4)
+	uint8_t Pad_0x9C[0x4]; // 0x9C(0x4)
+	struct FDateTime expire_date; // 0xA0(0x8)
+	uint32_t auto_delete; // 0xA8(0x4)
+	uint32_t auto_award; // 0xAC(0x4)
+	uint32_t auto_suit_reward; // 0xB0(0x4)
+	uint32_t through_season; // 0xB4(0x4)
+	uint32_t skip_batch_delete; // 0xB8(0x4)
+	uint8_t Pad_0xBC[0x4]; // 0xBC(0x4)
+	struct TArray<uint32_t> account_channel_type; // 0xC0(0x10)
+	struct TArray<uint32_t> client_plat_type; // 0xD0(0x10)
+	struct FString client_version_low; // 0xE0(0x10)
+	struct FString client_version_up; // 0xF0(0x10)
+	uint32_t link_type; // 0x100(0x4)
+	uint8_t Pad_0x104[0x4]; // 0x104(0x4)
+	struct FText link_dest; // 0x108(0x18)
+	struct FString link_params; // 0x120(0x10)
+	struct FText link_text; // 0x130(0x18)
+	struct TArray<struct FBlackItemConf> awards; // 0x148(0x10)
+	struct FString mutil_lang_content_url; // 0x158(0x10)
+	uint32_t country_group_id; // 0x168(0x4)
+	uint8_t Pad_0x16C[0x4]; // 0x16C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.LuckyCharmConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FLuckyCharmConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t item_id; // 0xC(0x4)
+	uint32_t dispatch_member_type; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct FText Desc; // 0x18(0x18)
+	uint32_t Weight; // 0x30(0x4)
+	uint32_t carry_pool_id; // 0x34(0x4)
+	uint32_t not_carry_pool_id; // 0x38(0x4)
+	uint8_t Pad_0x3C[0x4]; // 0x3C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.LotteryJudgeReasonTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FLotteryJudgeReasonTableRow : FTableRowBase
+{
+	uint32_t reason_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<struct FReasonDesc> reason_list; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ReasonDesc
+// Size: 0x18 (Inherited: 0x0)
+struct FReasonDesc
+{
+	struct FText reason_desc; // 0x0(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.LoseDropConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FLoseDropConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.LootResourceConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FLootResourceConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Type; // 0xC(0x4)
+	uint8_t rare; // 0x10(0x1)
+	uint8_t Priority; // 0x11(0x1)
+	uint8_t Pad_0x12[0x6]; // 0x12(0x6)
+};
+
+// Object: ScriptStruct UADataTableModule.LootReplaceConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FLootReplaceConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t is_consumable; // 0xC(0x4)
+	uint32_t shield_type; // 0x10(0x4)
+	uint32_t sub_item_id; // 0x14(0x4)
+	uint32_t sub_item_num; // 0x18(0x4)
+	uint32_t need_sub_items; // 0x1C(0x4)
+	struct TArray<struct FCommonItemConfItem> sub_scav_items; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.LootProtectionItemsConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FLootProtectionItemsConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t item_id; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.LootProtectionConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FLootProtectionConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t ProtectionType; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.LootPoolScaleConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FLootPoolScaleConfTableRow : FTableRowBase
+{
+	uint32_t loot_pool; // 0x8(0x4)
+	float loot_pool_scale_min; // 0xC(0x4)
+	float loot_pool_scale_max; // 0x10(0x4)
+	float loot_pool_scale_base; // 0x14(0x4)
+	float loot_pool_scale_rate; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.LootPoolConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FLootPoolConfTableRow : FTableRowBase
+{
+	uint32_t play_mode_id; // 0x8(0x4)
+	uint32_t loot_pool; // 0xC(0x4)
+	uint32_t guaranteed_pool; // 0x10(0x4)
+	uint32_t loot_game_num_factor; // 0x14(0x4)
+	uint32_t guaranteed_game_num_factor; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.LootPoolBlackListConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FLootPoolBlackListConfTableRow : FTableRowBase
+{
+	uint32_t play_mode_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.LootObjExpTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FLootObjExpTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t loot_exp; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.LootLimitUserTagTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FLootLimitUserTagTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	int32_t tag_priority; // 0xC(0x4)
+	uint32_t remove_guarantee_pr; // 0x10(0x4)
+	uint32_t remove_protect_pr; // 0x14(0x4)
+	struct TArray<uint32_t> dont_remove_containers; // 0x18(0x10)
+	uint32_t extra_time; // 0x28(0x4)
+	uint32_t extra_time_pr; // 0x2C(0x4)
+	struct TArray<struct FLimitUserTagConditions> limit_conditions; // 0x30(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.LimitUserTagConditions
+// Size: 0x18 (Inherited: 0x0)
+struct FLimitUserTagConditions
+{
+	uint32_t tag_id; // 0x0(0x4)
+	uint32_t attr_id; // 0x4(0x4)
+	int64_t attr_down; // 0x8(0x8)
+	int64_t attr_up; // 0x10(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.LootLimitTimeConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FLootLimitTimeConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t shield_prob; // 0xC(0x4)
+	struct FDateTime begin_time; // 0x10(0x8)
+	struct FDateTime end_time; // 0x18(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.LootLimitPointTypeBlacklistTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FLootLimitPointTypeBlacklistTableRow : FTableRowBase
+{
+	uint32_t loot_point_type_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.LootLimitConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FLootLimitConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	float normal_value; // 0xC(0x4)
+	float redline_value; // 0x10(0x4)
+	uint32_t calc_type; // 0x14(0x4)
+	uint32_t loot_pool; // 0x18(0x4)
+	uint32_t need_scale; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.LootFactionItemConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FLootFactionItemConfTableRow : FTableRowBase
+{
+	uint64_t itemID; // 0x8(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.LootDropPoolConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FLootDropPoolConfTableRow : FTableRowBase
+{
+	uint64_t ID; // 0x8(0x8)
+	struct TArray<struct FLootDropPoolInfo> Items; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.LootDropPoolInfo
+// Size: 0x10 (Inherited: 0x0)
+struct FLootDropPoolInfo
+{
+	uint64_t item_id; // 0x0(0x8)
+	uint32_t item_num; // 0x8(0x4)
+	uint32_t Probability; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.LootDropOperationConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FLootDropOperationConfTableRow : FTableRowBase
+{
+	uint64_t ID; // 0x8(0x8)
+	struct TArray<struct FActivityLootDropInfoConf> Items; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActivityLootDropInfoConf
+// Size: 0x14 (Inherited: 0x0)
+struct FActivityLootDropInfoConf
+{
+	uint32_t activity_id; // 0x0(0x4)
+	uint32_t activity_weight; // 0x4(0x4)
+	uint32_t in_game_time; // 0x8(0x4)
+	uint32_t weather; // 0xC(0x4)
+	uint32_t pool_id; // 0x10(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.LootDropControlConfTableRow
+// Size: 0x70 (Inherited: 0x8)
+struct FLootDropControlConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	uint64_t map_id; // 0x10(0x8)
+	uint64_t is_map_all; // 0x18(0x8)
+	uint64_t box_id; // 0x20(0x8)
+	uint64_t is_box_all; // 0x28(0x8)
+	uint64_t loot_id; // 0x30(0x8)
+	uint32_t activity_id; // 0x38(0x4)
+	uint32_t activity_order; // 0x3C(0x4)
+	uint32_t in_game_time; // 0x40(0x4)
+	uint32_t weather; // 0x44(0x4)
+	struct TArray<uint32_t> commonitem_id_array; // 0x48(0x10)
+	uint64_t relace_rate; // 0x58(0x8)
+	struct TArray<uint32_t> pool_id; // 0x60(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.LootDropActivityPoolConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FLootDropActivityPoolConfTableRow : FTableRowBase
+{
+	uint64_t ID; // 0x8(0x8)
+	struct TArray<struct FLootDropPoolInfo> Items; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.LootDropActivityConfTableRow
+// Size: 0x50 (Inherited: 0x8)
+struct FLootDropActivityConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	uint64_t map_id; // 0x10(0x8)
+	uint64_t is_map_all; // 0x18(0x8)
+	uint64_t box_id; // 0x20(0x8)
+	uint64_t is_box_all; // 0x28(0x8)
+	uint64_t loot_id; // 0x30(0x8)
+	uint32_t activity_order; // 0x38(0x4)
+	uint8_t Pad_0x3C[0x4]; // 0x3C(0x4)
+	struct TArray<struct FNewActivityLootDropInfoConf> Items; // 0x40(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.NewActivityLootDropInfoConf
+// Size: 0x20 (Inherited: 0x0)
+struct FNewActivityLootDropInfoConf
+{
+	uint32_t activity_id; // 0x0(0x4)
+	uint32_t activity_weight; // 0x4(0x4)
+	uint32_t in_game_time; // 0x8(0x4)
+	uint32_t weather; // 0xC(0x4)
+	struct TArray<uint32_t> pool_id; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.LootDropTableRow
+// Size: 0xA0 (Inherited: 0x8)
+struct FLootDropTableRow : FTableRowBase
+{
+	uint64_t ID; // 0x8(0x8)
+	struct FString Desc; // 0x10(0x10)
+	uint8_t ItemType; // 0x20(0x1)
+	uint8_t Pad_0x21[0x7]; // 0x21(0x7)
+	uint64_t itemID; // 0x28(0x8)
+	struct TArray<uint32_t> ItemNum; // 0x30(0x10)
+	struct TArray<uint64_t> SubItemTable; // 0x40(0x10)
+	uint32_t Weight; // 0x50(0x4)
+	float Percent; // 0x54(0x4)
+	float RandTimes; // 0x58(0x4)
+	float WeightTimes; // 0x5C(0x4)
+	uint8_t OperationType; // 0x60(0x1)
+	uint8_t IsPermanent; // 0x61(0x1)
+	uint8_t Pad_0x62[0x2]; // 0x62(0x2)
+	uint32_t ACtID; // 0x64(0x4)
+	struct TArray<uint64_t> LootPointWhite; // 0x68(0x10)
+	struct TArray<uint64_t> LootPointBlack; // 0x78(0x10)
+	struct FString Describe; // 0x88(0x10)
+	uint32_t MaxRepeatRandomNum; // 0x98(0x4)
+	uint8_t Pad_0x9C[0x4]; // 0x9C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.LootDefaultConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FLootDefaultConfTableRow : FTableRowBase
+{
+	uint32_t pool_id; // 0x8(0x4)
+	float loot_scale; // 0xC(0x4)
+	float ai_scale; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.LoginLoadingTipsTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FLoginLoadingTipsTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Tip; // 0x10(0x18)
+	uint32_t Weight; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.LoginLoadingImageTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FLoginLoadingImageTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString Path; // 0x10(0x10)
+	uint32_t Weight; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.LoginControlConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FLoginControlConfTableRow : FTableRowBase
+{
+	uint32_t env_id; // 0x8(0x4)
+	uint32_t is_open; // 0xC(0x4)
+	struct FDateTime open_time; // 0x10(0x8)
+	struct FDateTime close_time; // 0x18(0x8)
+	uint32_t force_all_update; // 0x20(0x4)
+	uint32_t force_version_update; // 0x24(0x4)
+	struct TArray<struct FConfVersionRange> version_ranges; // 0x28(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ConfVersionRange
+// Size: 0x20 (Inherited: 0x0)
+struct FConfVersionRange
+{
+	struct FString min_version; // 0x0(0x10)
+	struct FString max_version; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.LocalizationConf_zh_HansTableRow
+// Size: 0x8 (Inherited: 0x8)
+struct FLocalizationConf_zh_HansTableRow : FTableRowBase
+{
+};
+
+// Object: ScriptStruct UADataTableModule.LocalizationConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FLocalizationConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText EnumName; // 0x10(0x18)
+	struct FText LocalizedText; // 0x28(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.LobbyPakRulesConfigTableRow
+// Size: 0x78 (Inherited: 0x8)
+struct FLobbyPakRulesConfigTableRow : FTableRowBase
+{
+	struct FString ID; // 0x8(0x10)
+	struct FText DownloadBlockTitle; // 0x18(0x18)
+	struct FString DownloadBlockPictureCDN; // 0x30(0x10)
+	struct FString PakChunkID; // 0x40(0x10)
+	int32_t PakPriority; // 0x50(0x4)
+	uint8_t Pad_0x54[0x4]; // 0x54(0x4)
+	struct TArray<struct FString> Panels; // 0x58(0x10)
+	struct TArray<struct FString> Levels; // 0x68(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.LoadingTipsTableRow
+// Size: 0x58 (Inherited: 0x8)
+struct FLoadingTipsTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t ModelID; // 0xC(0x4)
+	uint32_t GameModeID; // 0x10(0x4)
+	uint32_t MainModeID; // 0x14(0x4)
+	uint32_t SubModeID; // 0x18(0x4)
+	uint32_t MapID; // 0x1C(0x4)
+	uint32_t RuleID; // 0x20(0x4)
+	uint32_t ActivityID; // 0x24(0x4)
+	uint32_t Activityweight; // 0x28(0x4)
+	float MinWealthy; // 0x2C(0x4)
+	float MaxWealthy; // 0x30(0x4)
+	uint32_t MinLevel; // 0x34(0x4)
+	uint32_t MaxLevel; // 0x38(0x4)
+	float MinEscapeProbability; // 0x3C(0x4)
+	float MaxEscapeProbability; // 0x40(0x4)
+	uint8_t Pad_0x44[0x4]; // 0x44(0x4)
+	struct TArray<struct FTipItem> Tips; // 0x48(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.TipItem
+// Size: 0x20 (Inherited: 0x0)
+struct FTipItem
+{
+	struct FText Tips; // 0x0(0x18)
+	uint32_t Weight; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.LoadingImageTableRow
+// Size: 0x50 (Inherited: 0x8)
+struct FLoadingImageTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t ModelID; // 0xC(0x4)
+	uint32_t GameModeID; // 0x10(0x4)
+	uint32_t MainModeID; // 0x14(0x4)
+	uint32_t SubModeID; // 0x18(0x4)
+	uint32_t MapID; // 0x1C(0x4)
+	uint32_t RuleID; // 0x20(0x4)
+	uint32_t ActivityID; // 0x24(0x4)
+	uint32_t Activityweight; // 0x28(0x4)
+	uint32_t LoadingUIType; // 0x2C(0x4)
+	struct TArray<struct FImageRefItem> ImageRef; // 0x30(0x10)
+	struct FString umgPath; // 0x40(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ImageRefItem
+// Size: 0x18 (Inherited: 0x0)
+struct FImageRefItem
+{
+	uint32_t ImageType; // 0x0(0x4)
+	uint8_t Pad_0x4[0x4]; // 0x4(0x4)
+	struct FString Path; // 0x8(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.LoadingFrameConfTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FLoadingFrameConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t jump_goto; // 0xC(0x4)
+	struct FText obtain; // 0x10(0x18)
+	uint32_t Level; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+	struct FText Asset; // 0x30(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.LimitGameDsZoneConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FLimitGameDsZoneConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t is_open; // 0xC(0x4)
+	struct TArray<uint32_t> login_channels; // 0x10(0x10)
+	struct TArray<uint32_t> limit_ds_zone; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.LevelConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FLevelConfTableRow : FTableRowBase
+{
+	uint32_t Level; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	uint64_t PMCExpPerLevel; // 0x10(0x8)
+	uint64_t PMCExpTotal; // 0x18(0x8)
+	uint32_t PMCIcon; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+	uint64_t ScavExpPerLevel; // 0x28(0x8)
+	uint64_t ScavExpTotal; // 0x30(0x8)
+	uint32_t ScavIcon; // 0x38(0x4)
+	uint32_t extra_row; // 0x3C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.LeaderboardDesConfTableRow
+// Size: 0x80 (Inherited: 0x8)
+struct FLeaderboardDesConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText titledes; // 0x10(0x18)
+	struct FText tipdes; // 0x28(0x18)
+	uint32_t Type; // 0x40(0x4)
+	uint32_t is_open; // 0x44(0x4)
+	uint32_t SpecialType; // 0x48(0x4)
+	uint8_t Pad_0x4C[0x4]; // 0x4C(0x4)
+	struct FText titlecountdes; // 0x50(0x18)
+	struct FText nogetnumdes; // 0x68(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.LbsTitleConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FLbsTitleConfTableRow : FTableRowBase
+{
+	uint32_t rank_type; // 0x8(0x4)
+	uint32_t item_id; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.LackFundTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FLackFundTableRow : FTableRowBase
+{
+	uint32_t lack_fund_wealth1; // 0x8(0x4)
+	uint32_t lack_fund_wealth2; // 0xC(0x4)
+	uint32_t lack_fund_cash; // 0x10(0x4)
+	uint32_t lack_fund_mud; // 0x14(0x4)
+	uint32_t lack_fund_gold; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.KeyContainerConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FKeyContainerConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t container_id; // 0xC(0x4)
+	uint32_t show_index; // 0x10(0x4)
+	uint32_t is_hidden; // 0x14(0x4)
+	uint32_t group_id; // 0x18(0x4)
+	uint32_t is_time; // 0x1C(0x4)
+	struct FText list_desc; // 0x20(0x18)
+	uint32_t jump_goto; // 0x38(0x4)
+	uint8_t Pad_0x3C[0x4]; // 0x3C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.KeyCabinetConfTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FKeyCabinetConfTableRow : FTableRowBase
+{
+	uint32_t Index; // 0x8(0x4)
+	uint32_t map_id; // 0xC(0x4)
+	uint32_t is_enable; // 0x10(0x4)
+	uint32_t key_Item_Type; // 0x14(0x4)
+	struct TArray<uint32_t> key_Item_List; // 0x18(0x10)
+	struct FText key_desc; // 0x28(0x18)
+	uint32_t mapunlockId; // 0x40(0x4)
+	uint8_t Pad_0x44[0x4]; // 0x44(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.JumpGotoCfgTableRow
+// Size: 0xC0 (Inherited: 0x8)
+struct FJumpGotoCfgTableRow : FTableRowBase
+{
+	uint32_t jump_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText jump_button_name; // 0x10(0x18)
+	struct FText jump_name; // 0x28(0x18)
+	struct FString Command; // 0x40(0x10)
+	struct FString jump_target; // 0x50(0x10)
+	struct FString Param; // 0x60(0x10)
+	struct FText open_tips; // 0x70(0x18)
+	uint32_t display_gray; // 0x88(0x4)
+	uint32_t replace_content; // 0x8C(0x4)
+	struct FText display_content; // 0x90(0x18)
+	struct FText extra_logic; // 0xA8(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.ItemTakeInLimitConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FItemTakeInLimitConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t total_value_limit; // 0xC(0x4)
+	int32_t total_value_limit_tip_id; // 0x10(0x4)
+	uint32_t safebox_value_limit; // 0x14(0x4)
+	int32_t safebox_value_limit_tip_id; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	struct TArray<struct FItemLimitConf> item_limit_vec; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ItemLimitConf
+// Size: 0x14 (Inherited: 0x0)
+struct FItemLimitConf
+{
+	uint32_t item_type; // 0x0(0x4)
+	uint32_t item_type_num; // 0x4(0x4)
+	uint32_t num_limit; // 0x8(0x4)
+	uint32_t value_limit; // 0xC(0x4)
+	int32_t tips_id; // 0x10(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ItemStackFactionConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FItemStackFactionConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ItemSortTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FItemSortTableRow : FTableRowBase
+{
+	uint64_t item_id; // 0x8(0x8)
+	struct FString ICON; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ItemSketchIconPathTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FItemSketchIconPathTableRow : FTableRowBase
+{
+	int32_t row_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Describe; // 0x10(0x18)
+	int32_t item_id; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+	struct FString sketch_icon_path; // 0x30(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ItemShelveConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FItemShelveConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t show_in_wardrobe; // 0xC(0x4)
+	struct FDateTime start_time; // 0x10(0x8)
+	struct FDateTime end_time; // 0x18(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.ItemShareConfTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FItemShareConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString iconUrl; // 0x10(0x10)
+	struct FString bgUrl; // 0x20(0x10)
+	uint32_t itemShareType; // 0x30(0x4)
+	uint8_t Pad_0x34[0x4]; // 0x34(0x4)
+	struct TArray<struct FText> extraDesc; // 0x38(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ItemPriceGearTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FItemPriceGearTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t PriceRange; // 0xC(0x4)
+	uint32_t Step; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ItemInflationTypeTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FItemInflationTypeTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t low_inflation; // 0xC(0x4)
+	uint32_t high_inflation; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ItemFilterConfTableRow
+// Size: 0x50 (Inherited: 0x8)
+struct FItemFilterConfTableRow : FTableRowBase
+{
+	uint16_t ID; // 0x8(0x2)
+	uint8_t Pad_0xA[0x6]; // 0xA(0x6)
+	struct TArray<uint32_t> Types; // 0x10(0x10)
+	struct TArray<uint32_t> ExclusiveTypes; // 0x20(0x10)
+	struct FString IconPath; // 0x30(0x10)
+	struct FString SelectedIconPath; // 0x40(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ItemFactoryTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FItemFactoryTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText factory_name; // 0x10(0x18)
+	struct FString IconPath; // 0x28(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ItemExtraConfTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FItemExtraConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Text; // 0x10(0x18)
+	struct FText Name; // 0x28(0x18)
+	uint32_t discount; // 0x40(0x4)
+	uint32_t jumpgoto; // 0x44(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ItemEffectConfTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FItemEffectConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t effect_type; // 0xC(0x4)
+	uint32_t auto_use; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct TArray<struct FExchangeEffect> exchange_list; // 0x18(0x10)
+	uint32_t privilege_item_id; // 0x28(0x4)
+	uint32_t privilege_num; // 0x2C(0x4)
+	uint32_t bp_season; // 0x30(0x4)
+	uint32_t bp_vip_lv; // 0x34(0x4)
+	uint32_t auction_week_sale_order_num; // 0x38(0x4)
+	uint32_t auction_intime_sale_order_num; // 0x3C(0x4)
+	uint32_t auction_effect_num; // 0x40(0x4)
+	uint32_t auction_card_priority; // 0x44(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ExchangeEffect
+// Size: 0x10 (Inherited: 0x0)
+struct FExchangeEffect
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+	uint32_t change_item_id; // 0x8(0x4)
+	uint32_t change_num; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ItemDynamicPriceTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FItemDynamicPriceTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t y_standard_price; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ItemConfTableRow
+// Size: 0x138 (Inherited: 0x8)
+struct FItemConfTableRow : FTableRowBase
+{
+	uint32_t itemID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Name; // 0x10(0x18)
+	struct FText ShortName; // 0x28(0x18)
+	uint32_t IconID; // 0x40(0x4)
+	uint8_t Pad_0x44[0x4]; // 0x44(0x4)
+	struct FText Describe; // 0x48(0x18)
+	uint32_t SizeX; // 0x60(0x4)
+	uint32_t SizeY; // 0x64(0x4)
+	float Weight; // 0x68(0x4)
+	uint8_t Pad_0x6C[0x4]; // 0x6C(0x4)
+	struct FString pickup_sound; // 0x70(0x10)
+	struct FString use_sound; // 0x80(0x10)
+	struct FString drop_sound; // 0x90(0x10)
+	uint32_t sell_price; // 0xA0(0x4)
+	uint32_t sell_rate; // 0xA4(0x4)
+	uint32_t can_sell; // 0xA8(0x4)
+	uint32_t standard_price; // 0xAC(0x4)
+	uint32_t StackMax; // 0xB0(0x4)
+	int32_t TakeInCount; // 0xB4(0x4)
+	struct FDateTime expire_time; // 0xB8(0x8)
+	struct TArray<struct FCommonItemConfItem> compensate; // 0xC0(0x10)
+	uint32_t not_discard; // 0xD0(0x4)
+	uint32_t Bind; // 0xD4(0x4)
+	uint32_t rarity; // 0xD8(0x4)
+	uint32_t can_repair; // 0xDC(0x4)
+	uint32_t take_in_durability; // 0xE0(0x4)
+	uint32_t Durability; // 0xE4(0x4)
+	uint32_t is_armor_dura; // 0xE8(0x4)
+	uint32_t UseExp; // 0xEC(0x4)
+	struct TArray<uint8_t> RejectSlot; // 0xF0(0x10)
+	struct TArray<uint32_t> RejectItems; // 0x100(0x10)
+	uint32_t sort; // 0x110(0x4)
+	uint32_t jump_goto; // 0x114(0x4)
+	int32_t PackageFlags; // 0x118(0x4)
+	uint32_t FactoryId; // 0x11C(0x4)
+	uint32_t is_Arenaitem; // 0x120(0x4)
+	uint32_t is_faction; // 0x124(0x4)
+	uint32_t FactionType; // 0x128(0x4)
+	int32_t transfer_value_rate; // 0x12C(0x4)
+	uint32_t is_show_price; // 0x130(0x4)
+	uint8_t Pad_0x134[0x4]; // 0x134(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ItemComponentsIconTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FItemComponentsIconTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText component_name; // 0x10(0x18)
+	struct FString icon_name; // 0x28(0x10)
+	struct FString icon_path; // 0x38(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ItemClassifyGroupConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FItemClassifyGroupConfTableRow : FTableRowBase
+{
+	uint8_t ID; // 0x8(0x1)
+	uint8_t Pad_0x9[0x7]; // 0x9(0x7)
+	struct TArray<uint64_t> Types; // 0x10(0x10)
+	uint8_t SortOrder; // 0x20(0x1)
+	uint8_t Pad_0x21[0x7]; // 0x21(0x7)
+};
+
+// Object: ScriptStruct UADataTableModule.ItemCheckWhiteListConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FItemCheckWhiteListConfTableRow : FTableRowBase
+{
+	uint32_t itemID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ItemCategoryIconPathTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FItemCategoryIconPathTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText category_name; // 0x10(0x18)
+	uint32_t seg; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+	struct FString icon_path; // 0x30(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.IpListConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FIpListConfTableRow : FTableRowBase
+{
+	struct FText ip_begin; // 0x8(0x18)
+	struct FText ip_end; // 0x20(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.IpAreaWhitelistConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FIpAreaWhitelistConfTableRow : FTableRowBase
+{
+	uint32_t country_code; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.IpAreaRegistConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FIpAreaRegistConfTableRow : FTableRowBase
+{
+	uint32_t country_code; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FDateTime forbidden_regist_time; // 0x10(0x8)
+	uint32_t only_gameloop; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.IpAreaConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FIpAreaConfTableRow : FTableRowBase
+{
+	uint32_t country_code; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.IpAlertListConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FIpAlertListConfTableRow : FTableRowBase
+{
+	struct FText ip_begin; // 0x8(0x18)
+	struct FText ip_end; // 0x20(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.InterpretationSelectionTableRow
+// Size: 0x60 (Inherited: 0x8)
+struct FInterpretationSelectionTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t belongTask; // 0xC(0x4)
+	struct FText dialog; // 0x10(0x18)
+	struct FText Desc; // 0x28(0x18)
+	struct FString extJson; // 0x40(0x10)
+	struct TArray<struct FInterpSelection> selectionList; // 0x50(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.InterpSelection
+// Size: 0x30 (Inherited: 0x0)
+struct FInterpSelection
+{
+	struct FText Selection; // 0x0(0x18)
+	struct FString AnimName; // 0x18(0x10)
+	int32_t pre; // 0x28(0x4)
+	int32_t Next; // 0x2C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.InsideAvatarConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FInsideAvatarConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FSoftObjectPath AssetPath; // 0x10(0x18)
+	struct FString RefName; // 0x28(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.InnerGameActConfTableRow
+// Size: 0xE0 (Inherited: 0x8)
+struct FInnerGameActConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Name; // 0x10(0x18)
+	uint32_t is_open; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+	struct FDateTime begin_time; // 0x30(0x8)
+	struct FDateTime end_time; // 0x38(0x8)
+	uint32_t inner_game_act_type; // 0x40(0x4)
+	uint8_t Pad_0x44[0x4]; // 0x44(0x4)
+	struct FText json_param; // 0x48(0x18)
+	struct FText notice; // 0x60(0x18)
+	struct FText des; // 0x78(0x18)
+	struct TArray<uint32_t> gameplay_related_items; // 0x90(0x10)
+	struct TArray<uint32_t> weekly_day_vec; // 0xA0(0x10)
+	struct TArray<struct FDailyTimeConf> daily_time_vec; // 0xB0(0x10)
+	struct TArray<uint32_t> open_map_vec; // 0xC0(0x10)
+	struct TArray<struct FOpenMapModeConf> open_map_mode_vec; // 0xD0(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.OpenMapModeConf
+// Size: 0x8 (Inherited: 0x0)
+struct FOpenMapModeConf
+{
+	uint32_t map_mode_id; // 0x0(0x4)
+	uint32_t time_seg; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.DailyTimeConf
+// Size: 0x30 (Inherited: 0x0)
+struct FDailyTimeConf
+{
+	struct FText daily_begin_time; // 0x0(0x18)
+	struct FText daily_end_time; // 0x18(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.IndividualWeaponConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FIndividualWeaponConfTableRow : FTableRowBase
+{
+	uint32_t weapon_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<uint32_t> bullet_list; // 0x10(0x10)
+	uint32_t default_bullet; // 0x20(0x4)
+	uint32_t check_magazine; // 0x24(0x4)
+	struct TArray<uint32_t> multi_mode_block_list; // 0x28(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.IdcPingConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FIdcPingConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t ignore; // 0xC(0x4)
+	struct TArray<struct FPingItemVec> item_vec; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.PingItemVec
+// Size: 0x20 (Inherited: 0x0)
+struct FPingItemVec
+{
+	struct FText ip; // 0x0(0x18)
+	uint32_t Port; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.IconScaleConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FIconScaleConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	float DistancePercentA; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.HotUpdateGlobalConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FHotUpdateGlobalConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	int64_t Val; // 0x10(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.HighRatioScavConfTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FHighRatioScavConfTableRow : FTableRowBase
+{
+	uint32_t Type; // 0x8(0x4)
+	uint32_t ID; // 0xC(0x4)
+	uint32_t conf_type; // 0x10(0x4)
+	int32_t conf_val; // 0x14(0x4)
+	struct TArray<struct FHighRatioConfVector> conf_vec; // 0x18(0x10)
+	struct FDateTime begin_time; // 0x28(0x8)
+	struct FDateTime end_time; // 0x30(0x8)
+	struct TArray<struct FHighRatioScavDailyTimeConf> daily_time_vec; // 0x38(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.HighRatioScavDailyTimeConf
+// Size: 0x20 (Inherited: 0x0)
+struct FHighRatioScavDailyTimeConf
+{
+	struct FString daily_begin_time; // 0x0(0x10)
+	struct FString daily_end_time; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.HighRatioConfVector
+// Size: 0x8 (Inherited: 0x0)
+struct FHighRatioConfVector
+{
+	uint32_t Param1; // 0x0(0x4)
+	int32_t Param2; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.HeroConfTableRow
+// Size: 0x98 (Inherited: 0x8)
+struct FHeroConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t camp; // 0xC(0x4)
+	struct FText Name; // 0x10(0x18)
+	uint32_t avatar; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+	struct FString ICON; // 0x30(0x10)
+	struct FString capture_path; // 0x40(0x10)
+	struct FString unconfirmed_icon; // 0x50(0x10)
+	struct FString pick_icon; // 0x60(0x10)
+	struct TArray<struct FString> label_desc; // 0x70(0x10)
+	uint32_t Opening_Talk; // 0x80(0x4)
+	uint8_t Pad_0x84[0x4]; // 0x84(0x4)
+	struct FString hero_audio; // 0x88(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.HelperConfTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FHelperConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Type; // 0xC(0x4)
+	uint32_t Index; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct FText Title; // 0x18(0x18)
+	struct FText Desc; // 0x30(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.HelpTrainTargetConfTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FHelpTrainTargetConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Type; // 0xC(0x4)
+	struct FText Desc; // 0x10(0x18)
+	struct TArray<uint32_t> condition_list; // 0x28(0x10)
+	struct FString json_param; // 0x38(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.HelpTrainItemConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FHelpTrainItemConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString json_param; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.HelpTrainConfTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FHelpTrainConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Type; // 0xC(0x4)
+	struct FText Name; // 0x10(0x18)
+	struct TArray<uint32_t> item_list; // 0x28(0x10)
+	struct TArray<uint32_t> target_list; // 0x38(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.HelpTrainConditionConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FHelpTrainConditionConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Type; // 0xC(0x4)
+	struct FString json_param; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.HelpRootTypeConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FHelpRootTypeConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Name; // 0x10(0x18)
+	uint32_t SortIndex; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.HelpEntryInfoConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FHelpEntryInfoConfTableRow : FTableRowBase
+{
+	uint32_t entry_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText main_title; // 0x10(0x18)
+	struct TArray<struct FTabDetailItem> tab_content; // 0x28(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.TabDetailItem
+// Size: 0x20 (Inherited: 0x0)
+struct FTabDetailItem
+{
+	struct FText tab_title; // 0x0(0x18)
+	uint32_t ppt_id; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.HelpDialogConfTableRow
+// Size: 0x90 (Inherited: 0x8)
+struct FHelpDialogConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Type; // 0xC(0x4)
+	struct FText Title; // 0x10(0x18)
+	uint32_t canGetTime; // 0x28(0x4)
+	uint32_t rootType; // 0x2C(0x4)
+	uint32_t SortIndex; // 0x30(0x4)
+	uint32_t isTop; // 0x34(0x4)
+	uint32_t IsPermanent; // 0x38(0x4)
+	uint32_t showVersion; // 0x3C(0x4)
+	uint32_t functioncontrolId; // 0x40(0x4)
+	uint32_t unlockLevel; // 0x44(0x4)
+	uint32_t isHidden; // 0x48(0x4)
+	uint8_t Pad_0x4C[0x4]; // 0x4C(0x4)
+	struct TArray<uint32_t> triggerIds; // 0x50(0x10)
+	struct TArray<uint32_t> mediaArray; // 0x60(0x10)
+	struct TArray<struct FH5MediaItem> h5Media; // 0x70(0x10)
+	struct TArray<struct FHelpDialogContentItem> Content; // 0x80(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.HelpDialogContentItem
+// Size: 0x38 (Inherited: 0x0)
+struct FHelpDialogContentItem
+{
+	struct FText contentTitle; // 0x0(0x18)
+	uint32_t pageIndex; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	struct FText ContentText; // 0x20(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.H5MediaItem
+// Size: 0x20 (Inherited: 0x0)
+struct FH5MediaItem
+{
+	struct FString h5BgIcon; // 0x0(0x10)
+	struct FString h5Url; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.HealthThresholdTableRow
+// Size: 0x80 (Inherited: 0x8)
+struct FHealthThresholdTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Content; // 0x10(0x18)
+	uint32_t Parameter; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+	struct TArray<uint32_t> ParameterArr; // 0x30(0x10)
+	uint32_t Alert; // 0x40(0x4)
+	uint32_t Priority; // 0x44(0x4)
+	uint32_t LevelLimit; // 0x48(0x4)
+	uint8_t Pad_0x4C[0x4]; // 0x4C(0x4)
+	struct TArray<uint32_t> IgnoreMode; // 0x50(0x10)
+	struct TArray<uint32_t> IgnoreMap; // 0x60(0x10)
+	uint32_t CheckPrepare; // 0x70(0x4)
+	uint32_t PrepareType; // 0x74(0x4)
+	uint32_t jumpgoto; // 0x78(0x4)
+	uint8_t Pad_0x7C[0x4]; // 0x7C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.HealKVConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FHealKVConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	int64_t Val; // 0x10(0x8)
+	struct TArray<int64_t> val_array; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.HeadPictureItemConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FHeadPictureItemConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t use_directly; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.HeadPicConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FHeadPicConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Asset; // 0x10(0x18)
+	uint32_t is_gif; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.HeadConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FHeadConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t price; // 0xC(0x4)
+	uint32_t Helmet; // 0x10(0x4)
+	uint32_t Visor; // 0x14(0x4)
+	uint32_t Headset; // 0x18(0x4)
+	uint32_t mask; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.HeadBoxItemConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FHeadBoxItemConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Type; // 0xC(0x4)
+	uint32_t jump_goto; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct FText obtain; // 0x18(0x18)
+	uint32_t Order; // 0x30(0x4)
+	uint32_t Level; // 0x34(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.GuaranteedUseAttrTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FGuaranteedUseAttrTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t guaranteed_pool_id; // 0xC(0x4)
+	int32_t attr_value; // 0x10(0x4)
+	int32_t extra_value; // 0x14(0x4)
+	uint32_t calculate_time; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	struct TArray<struct FGuaranteedConditions> guaranteed_conditions; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.GuaranteedConditions
+// Size: 0x18 (Inherited: 0x0)
+struct FGuaranteedConditions
+{
+	uint32_t tag_id; // 0x0(0x4)
+	uint32_t attr_id; // 0x4(0x4)
+	int64_t attr_low; // 0x8(0x8)
+	int64_t attr_up; // 0x10(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.GuaranteedPoolConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FGuaranteedPoolConfTableRow : FTableRowBase
+{
+	uint32_t guaranteed_pool_id; // 0x8(0x4)
+	uint32_t defalut_limit; // 0xC(0x4)
+	uint32_t max_limit; // 0x10(0x4)
+	uint32_t min_limit; // 0x14(0x4)
+	uint32_t stage_1_times; // 0x18(0x4)
+	uint32_t stage_1_limit; // 0x1C(0x4)
+	struct FDateTime begin_time; // 0x20(0x8)
+	struct FDateTime end_time; // 0x28(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.GuaranteeLimitStrategyTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FGuaranteeLimitStrategyTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t shield_type; // 0xC(0x4)
+	uint32_t sub_item_id; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct TArray<uint32_t> sub_item_num; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.GuaranteeGenItemTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FGuaranteeGenItemTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t gen_group_id; // 0xC(0x4)
+	uint32_t gen_item_id; // 0x10(0x4)
+	uint32_t Weight; // 0x14(0x4)
+	struct TArray<uint32_t> item_num; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.GuaranteeContainerTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FGuaranteeContainerTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t play_mode_id; // 0xC(0x4)
+	uint32_t lootpoint_type_id; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct TArray<struct FGuaranteePoolConf> guarantee_strategies; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.GuaranteePoolConf
+// Size: 0x10 (Inherited: 0x0)
+struct FGuaranteePoolConf
+{
+	uint32_t guarantee_id; // 0x0(0x4)
+	uint32_t Value; // 0x4(0x4)
+	uint32_t check_group_id; // 0x8(0x4)
+	uint32_t gen_group_id; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.GuaranteeCheckItemTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FGuaranteeCheckItemTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t check_group_id; // 0xC(0x4)
+	uint32_t check_item_id; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.GroupScaleConfTableRow
+// Size: 0x50 (Inherited: 0x8)
+struct FGroupScaleConfTableRow : FTableRowBase
+{
+	uint32_t env_id; // 0x8(0x4)
+	uint32_t open_scale; // 0xC(0x4)
+	uint32_t group_id; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct FString group_name; // 0x18(0x10)
+	uint32_t max_replica; // 0x28(0x4)
+	uint32_t desired_replica; // 0x2C(0x4)
+	struct TArray<uint32_t> custom_metric_list; // 0x30(0x10)
+	struct TArray<struct FScaleTimeConf> scale_time_vec; // 0x40(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ScaleTimeConf
+// Size: 0x18 (Inherited: 0x0)
+struct FScaleTimeConf
+{
+	struct FDateTime begin_time; // 0x0(0x8)
+	struct FDateTime end_time; // 0x8(0x8)
+	uint32_t replica; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.GoldDogTagConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FGoldDogTagConfTableRow : FTableRowBase
+{
+	uint64_t ID; // 0x8(0x8)
+	struct FString bgUrl; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.GmToolEquipConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FGmToolEquipConfTableRow : FTableRowBase
+{
+	uint32_t Index; // 0x8(0x4)
+	uint32_t item_id; // 0xC(0x4)
+	uint32_t Num; // 0x10(0x4)
+	uint32_t can_not_sell; // 0x14(0x4)
+	uint32_t is_black; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	struct TArray<struct FBlackItemConf> Items; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.GlovesGestureTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FGlovesGestureTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t gesture_id; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.GlobalNumConfTableRow
+// Size: 0x8 (Inherited: 0x8)
+struct FGlobalNumConfTableRow : FTableRowBase
+{
+};
+
+// Object: ScriptStruct UADataTableModule.GlobalConfTableRow
+// Size: 0x50 (Inherited: 0x8)
+struct FGlobalConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	int64_t Val; // 0x10(0x8)
+	struct TArray<uint64_t> ary; // 0x18(0x10)
+	struct TArray<int64_t> iary; // 0x28(0x10)
+	struct FText Str; // 0x38(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.GiftPackageShowItemsConfTableRow
+// Size: 0x70 (Inherited: 0x8)
+struct FGiftPackageShowItemsConfTableRow : FTableRowBase
+{
+	uint32_t package_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<uint32_t> item_id; // 0x10(0x10)
+	struct TArray<uint32_t> is_black; // 0x20(0x10)
+	struct TArray<uint32_t> item_num; // 0x30(0x10)
+	struct TArray<uint32_t> Weight; // 0x40(0x10)
+	struct TArray<uint32_t> Tags; // 0x50(0x10)
+	struct TArray<uint32_t> Level; // 0x60(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.GiftPackageLotteryConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FGiftPackageLotteryConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t upgrade_times; // 0xC(0x4)
+	struct FString cdn; // 0x10(0x10)
+	struct TArray<struct FDropPoolsConf> drop_pools; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.DropPoolsConf
+// Size: 0x38 (Inherited: 0x0)
+struct FDropPoolsConf
+{
+	uint32_t Level; // 0x0(0x4)
+	uint32_t pool_id; // 0x4(0x4)
+	uint32_t Weight; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Name; // 0x10(0x18)
+	struct FString cdn; // 0x28(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.GiftPackageEquipConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FGiftPackageEquipConfTableRow : FTableRowBase
+{
+	uint32_t Key; // 0x8(0x4)
+	uint32_t ID; // 0xC(0x4)
+	struct TArray<struct FGiftEquipItem> Items; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.GiftEquipItem
+// Size: 0x20 (Inherited: 0x0)
+struct FGiftEquipItem
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+	uint32_t Parent; // 0x8(0x4)
+	uint32_t is_black; // 0xC(0x4)
+	uint32_t is_rotate; // 0x10(0x4)
+	uint32_t Index; // 0x14(0x4)
+	uint32_t pos_x; // 0x18(0x4)
+	uint32_t pos_y; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.GiftPackageEquipTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FGiftPackageEquipTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString Equip; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.GiftPackageConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FGiftPackageConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Type; // 0xC(0x4)
+	uint32_t is_equip_package; // 0x10(0x4)
+	bool is_more_suit; // 0x14(0x1)
+	uint8_t Pad_0x15[0x3]; // 0x15(0x3)
+	uint32_t auto_open; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	struct FString Level; // 0x20(0x10)
+	uint32_t filter_type; // 0x30(0x4)
+	uint32_t relate_suit_id; // 0x34(0x4)
+	uint32_t level_limit; // 0x38(0x4)
+	uint32_t self_select_num; // 0x3C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.GiftPackTemplateConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FGiftPackTemplateConfTableRow : FTableRowBase
+{
+	uint32_t template_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<struct FGiftItemConf> Items; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.GiftItemConf
+// Size: 0x10 (Inherited: 0x0)
+struct FGiftItemConf
+{
+	uint32_t col; // 0x0(0x4)
+	uint32_t Row; // 0x4(0x4)
+	uint32_t Width; // 0x8(0x4)
+	uint32_t hight; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.GidAndMailAdressTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FGidAndMailAdressTableRow : FTableRowBase
+{
+	struct FText email; // 0x8(0x18)
+	uint64_t gid; // 0x20(0x8)
+	uint64_t recruiter_gid; // 0x28(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.GestureIconMontageTableRow
+// Size: 0xA0 (Inherited: 0x8)
+struct FGestureIconMontageTableRow : FTableRowBase
+{
+	uint32_t itemID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString GestureIconPath; // 0x10(0x10)
+	uint32_t Level; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+	struct FText GestureDescription; // 0x28(0x18)
+	struct TArray<struct FGestureMontageInfo> GestureMontageInfos; // 0x40(0x10)
+	struct TArray<uint32_t> jump_goto; // 0x50(0x10)
+	struct FText no_source_description; // 0x60(0x18)
+	struct FString VoicePath; // 0x78(0x10)
+	struct FText VoiceContent; // 0x88(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.GestureMontageInfo
+// Size: 0x8 (Inherited: 0x0)
+struct FGestureMontageInfo
+{
+	uint32_t GestureMontagesMapID; // 0x0(0x4)
+	float Weight; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.GenericShopTradeConfTableRow
+// Size: 0xE8 (Inherited: 0x8)
+struct FGenericShopTradeConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t shop_id; // 0xC(0x4)
+	uint32_t tag_id; // 0x10(0x4)
+	uint32_t second_pop; // 0x14(0x4)
+	uint32_t is_core; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	struct FText banner; // 0x20(0x18)
+	struct FText gacha_banner; // 0x38(0x18)
+	uint32_t sell_item_id; // 0x50(0x4)
+	uint32_t sell_num; // 0x54(0x4)
+	uint32_t is_black; // 0x58(0x4)
+	uint32_t is_faction; // 0x5C(0x4)
+	uint32_t can_buy_multi; // 0x60(0x4)
+	uint8_t Pad_0x64[0x4]; // 0x64(0x4)
+	struct TArray<struct FCommonItemConfItem> cost_items; // 0x68(0x10)
+	uint32_t unlock_type; // 0x78(0x4)
+	uint32_t unlock_param; // 0x7C(0x4)
+	struct TArray<int32_t> unlock_list_param; // 0x80(0x10)
+	struct FText unlock_str_param; // 0x90(0x18)
+	uint32_t buy_limit_type; // 0xA8(0x4)
+	uint32_t buy_limit_num; // 0xAC(0x4)
+	uint32_t bind_season_begin; // 0xB0(0x4)
+	uint32_t bind_season_end; // 0xB4(0x4)
+	uint32_t preshelf_seconds; // 0xB8(0x4)
+	uint8_t Pad_0xBC[0x4]; // 0xBC(0x4)
+	struct TArray<struct FGShopOnshelfTime> onshelf_time; // 0xC0(0x10)
+	struct TArray<struct FGShopDiscount> discounts; // 0xD0(0x10)
+	uint32_t sort_param; // 0xE0(0x4)
+	uint8_t Pad_0xE4[0x4]; // 0xE4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.GShopDiscount
+// Size: 0x18 (Inherited: 0x0)
+struct FGShopDiscount
+{
+	struct FDateTime start_time; // 0x0(0x8)
+	struct FDateTime end_time; // 0x8(0x8)
+	uint32_t item_id; // 0x10(0x4)
+	uint32_t price; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.GShopOnshelfTime
+// Size: 0x10 (Inherited: 0x0)
+struct FGShopOnshelfTime
+{
+	struct FDateTime start_time; // 0x0(0x8)
+	struct FDateTime end_time; // 0x8(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.GenericShopTagConfTableRow
+// Size: 0x58 (Inherited: 0x8)
+struct FGenericShopTagConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText tag_name; // 0x10(0x18)
+	struct FString tag_icon; // 0x28(0x10)
+	uint32_t sort; // 0x38(0x4)
+	uint8_t Pad_0x3C[0x4]; // 0x3C(0x4)
+	struct FText Desc; // 0x40(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.GenericShopConfTableRow
+// Size: 0xB0 (Inherited: 0x8)
+struct FGenericShopConfTableRow : FTableRowBase
+{
+	uint32_t shop_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText shop_name; // 0x10(0x18)
+	struct FText page_class_type; // 0x28(0x18)
+	struct FText page_lua_type; // 0x40(0x18)
+	struct TArray<struct FConfGShopGood> cost_items; // 0x58(0x10)
+	struct FText shop_detail; // 0x68(0x18)
+	uint32_t red_point_type; // 0x80(0x4)
+	uint8_t Pad_0x84[0x4]; // 0x84(0x4)
+	struct TArray<uint32_t> red_point_id; // 0x88(0x10)
+	struct FText page_cdn; // 0x98(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.ConfGShopGood
+// Size: 0x4 (Inherited: 0x0)
+struct FConfGShopGood
+{
+	uint32_t item_id; // 0x0(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.GenEqptSkinStyleConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FGenEqptSkinStyleConfTableRow : FTableRowBase
+{
+	uint32_t is_npc; // 0x8(0x4)
+	uint32_t group_id; // 0xC(0x4)
+	uint32_t style_class_id; // 0x10(0x4)
+	uint32_t Weight; // 0x14(0x4)
+	struct FDateTime begin_time; // 0x18(0x8)
+	struct FDateTime end_time; // 0x20(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.GenEqptSkinConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FGenEqptSkinConfTableRow : FTableRowBase
+{
+	uint32_t style_id; // 0x8(0x4)
+	uint32_t item_id; // 0xC(0x4)
+	struct TArray<struct FSpraiedAccessory> spraied_accessories; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.SpraiedAccessory
+// Size: 0x8 (Inherited: 0x0)
+struct FSpraiedAccessory
+{
+	uint32_t accessory; // 0x0(0x4)
+	uint32_t spray_id; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.GameViewSettingTableRow
+// Size: 0xD8 (Inherited: 0x8)
+struct FGameViewSettingTableRow : FTableRowBase
+{
+	uint32_t SettingIndex; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString Platform; // 0x10(0x10)
+	uint32_t DeviceLevel; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+	struct FString DeviceLevelComment; // 0x28(0x10)
+	uint32_t BattleOrLobby; // 0x38(0x4)
+	int32_t DefaultGraphicsLevel; // 0x3C(0x4)
+	int32_t DefaultFrameLevel; // 0x40(0x4)
+	uint8_t Pad_0x44[0x4]; // 0x44(0x4)
+	struct TArray<int32_t> GraphicsPriority; // 0x48(0x10)
+	struct TArray<int32_t> BalancePriority; // 0x58(0x10)
+	struct TArray<int32_t> FramePriority; // 0x68(0x10)
+	struct TArray<int32_t> DefautlResolution; // 0x78(0x10)
+	struct TArray<int32_t> DefaultTextureBias; // 0x88(0x10)
+	struct TArray<int32_t> DefaultPlantQuality; // 0x98(0x10)
+	struct TArray<int32_t> DefaultLagAdaptive; // 0xA8(0x10)
+	struct TArray<int32_t> DefaultEnergysavingAdaptive; // 0xB8(0x10)
+	struct TArray<int32_t> DefaultAA; // 0xC8(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.GameSettingRedpointTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FGameSettingRedpointTableRow : FTableRowBase
+{
+	uint32_t Index; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString Value; // 0x10(0x10)
+	int32_t redpointKey; // 0x20(0x4)
+	int32_t LevelCondition; // 0x24(0x4)
+	uint32_t PassType; // 0x28(0x4)
+	uint32_t Type; // 0x2C(0x4)
+	uint32_t DisappearType; // 0x30(0x4)
+	uint8_t Pad_0x34[0x4]; // 0x34(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.GamePadLayerTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FGamePadLayerTableRow : FTableRowBase
+{
+	uint32_t Index; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText LayerName; // 0x10(0x18)
+	uint32_t StartZOrder; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.GameBgmMainConfTableRow
+// Size: 0x58 (Inherited: 0x8)
+struct FGameBgmMainConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Level; // 0xC(0x4)
+	struct FString wwise_bgm_state; // 0x10(0x10)
+	struct FString bgm_picture; // 0x20(0x10)
+	struct TArray<uint32_t> jump_goto; // 0x30(0x10)
+	struct FText get_tip; // 0x40(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.GameBgmConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FGameBgmConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString wwiseName; // 0x10(0x10)
+	struct FText SettingShowName; // 0x20(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.GalleryShowWeaponConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FGalleryShowWeaponConfTableRow : FTableRowBase
+{
+	uint32_t weapon_id; // 0x8(0x4)
+	uint32_t kill_num; // 0xC(0x4)
+	uint32_t need_ruble; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct FDateTime abs_begin_time; // 0x18(0x8)
+	struct FDateTime abs_end_time; // 0x20(0x8)
+	uint32_t assemble_id; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.GalleryMedalTaskConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FGalleryMedalTaskConfTableRow : FTableRowBase
+{
+	uint32_t medal_id; // 0x8(0x4)
+	uint32_t is_reward_item_flag; // 0xC(0x4)
+	struct FText mesh_resouce; // 0x10(0x18)
+	struct TArray<struct FNeedItemRef> needitem; // 0x28(0x10)
+	uint32_t Season; // 0x38(0x4)
+	uint8_t Pad_0x3C[0x4]; // 0x3C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.NeedItemRef
+// Size: 0x30 (Inherited: 0x0)
+struct FNeedItemRef
+{
+	struct TArray<uint32_t> has_items; // 0x0(0x10)
+	struct FText Desc; // 0x10(0x18)
+	uint32_t need_num; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.GalleryGlobalConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FGalleryGlobalConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	int64_t Val; // 0x10(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.GalleryCollectionTaskConfTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FGalleryCollectionTaskConfTableRow : FTableRowBase
+{
+	uint32_t collection_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FSoftObjectPath mesh_resouce; // 0x10(0x18)
+	struct FDateTime abs_begin_time; // 0x28(0x8)
+	struct FDateTime abs_end_time; // 0x30(0x8)
+	uint32_t target_type; // 0x38(0x4)
+	uint32_t item_id; // 0x3C(0x4)
+	uint32_t Num; // 0x40(0x4)
+	uint8_t Pad_0x44[0x4]; // 0x44(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.GalleryCollectionExchangeConfTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FGalleryCollectionExchangeConfTableRow : FTableRowBase
+{
+	uint32_t collection_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FSoftObjectPath mesh_resouce; // 0x10(0x18)
+	struct FDateTime abs_begin_time; // 0x28(0x8)
+	struct FDateTime abs_end_time; // 0x30(0x8)
+	struct TArray<struct FexchangeItem> exchange_items; // 0x38(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.exchangeItem
+// Size: 0x8 (Inherited: 0x0)
+struct FexchangeItem
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.GalleryBackMusicConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FGalleryBackMusicConfTableRow : FTableRowBase
+{
+	uint32_t item_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText State; // 0x10(0x18)
+	struct FText author; // 0x28(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.GachaClientLiveConfTableRow
+// Size: 0x68 (Inherited: 0x8)
+struct FGachaClientLiveConfTableRow : FTableRowBase
+{
+	uint32_t gacha_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString live_name; // 0x10(0x10)
+	uint32_t open_this_season; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+	struct FString audio_name; // 0x28(0x10)
+	struct FString audio_state; // 0x38(0x10)
+	struct FString audio_state_group; // 0x48(0x10)
+	struct FString audio_state_hide; // 0x58(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.GachaClientConfTableRow
+// Size: 0x90 (Inherited: 0x8)
+struct FGachaClientConfTableRow : FTableRowBase
+{
+	struct FString gacha_level; // 0x8(0x10)
+	uint32_t open_this_season; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	struct FString seq_audio; // 0x20(0x10)
+	struct FString loading_anim; // 0x30(0x10)
+	struct TArray<uint32_t> forbid_when_low_quality; // 0x40(0x10)
+	struct TArray<uint32_t> sex_list; // 0x50(0x10)
+	struct TArray<struct FString> montage_list; // 0x60(0x10)
+	struct TArray<struct FInvList> inventory_list; // 0x70(0x10)
+	struct TArray<struct FInvList> fashion_list; // 0x80(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.InvList
+// Size: 0x10 (Inherited: 0x0)
+struct FInvList
+{
+	struct TArray<uint32_t> List; // 0x0(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.FunctionControlCfgTableRow
+// Size: 0xF8 (Inherited: 0x8)
+struct FFunctionControlCfgTableRow : FTableRowBase
+{
+	uint32_t sys_id; // 0x8(0x4)
+	uint32_t sys_type; // 0xC(0x4)
+	struct FString sys_param; // 0x10(0x10)
+	uint32_t is_backend; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+	struct TArray<uint32_t> active_platforms; // 0x28(0x10)
+	struct FString Channel; // 0x38(0x10)
+	struct FString cloud_platform_hide; // 0x48(0x10)
+	struct FString android_client_version; // 0x58(0x10)
+	struct FString ios_client_version; // 0x68(0x10)
+	uint32_t season_level; // 0x78(0x4)
+	uint32_t battle_pmc; // 0x7C(0x4)
+	uint32_t Condition; // 0x80(0x4)
+	uint32_t open_pmc_level; // 0x84(0x4)
+	uint32_t history_max_level; // 0x88(0x4)
+	uint32_t open_mission_id; // 0x8C(0x4)
+	uint32_t open_bussiness_level; // 0x90(0x4)
+	uint8_t Pad_0x94[0x4]; // 0x94(0x4)
+	struct FDateTime open_date; // 0x98(0x8)
+	struct FDateTime cloe_date; // 0xA0(0x8)
+	uint32_t pre_sys; // 0xA8(0x4)
+	uint8_t Pad_0xAC[0x4]; // 0xAC(0x4)
+	struct FText Tips; // 0xB0(0x18)
+	struct FText btn_tips; // 0xC8(0x18)
+	uint32_t is_close; // 0xE0(0x4)
+	uint32_t lockstate; // 0xE4(0x4)
+	uint32_t country_group_id; // 0xE8(0x4)
+	uint32_t regist_country_group_id; // 0xEC(0x4)
+	uint32_t need_necessary_dlc; // 0xF0(0x4)
+	uint8_t Pad_0xF4[0x4]; // 0xF4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.FriRecommTagsTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FFriRecommTagsTableRow : FTableRowBase
+{
+	uint32_t recom_id; // 0x8(0x4)
+	uint32_t tag_type; // 0xC(0x4)
+	uint32_t tag_id; // 0x10(0x4)
+	int32_t Weight; // 0x14(0x4)
+	uint32_t Active; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	struct FText tag_name; // 0x20(0x18)
+	uint32_t need_check; // 0x38(0x4)
+	uint8_t Pad_0x3C[0x4]; // 0x3C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.FriRecommConfTableRow
+// Size: 0x88 (Inherited: 0x8)
+struct FFriRecommConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t show_interact; // 0xC(0x4)
+	uint32_t show_pop_up; // 0x10(0x4)
+	uint32_t Val; // 0x14(0x4)
+	struct FText reason; // 0x18(0x18)
+	struct FText friendPanelDisplay; // 0x30(0x18)
+	struct FText battleReulstDisplay; // 0x48(0x18)
+	struct FText battleResultDesc; // 0x60(0x18)
+	struct TArray<uint32_t> battleResultDesc_paramTypes; // 0x78(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.FriKVConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FFriKVConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	int64_t Val; // 0x10(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.FriInviteCodeRewardTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FFriInviteCodeRewardTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<struct FInviteRewardListConf> reward_list; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.InviteRewardListConf
+// Size: 0xC (Inherited: 0x0)
+struct FInviteRewardListConf
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+	uint32_t is_black; // 0x8(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ForbiddenVersionConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FForbiddenVersionConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString version_low; // 0x10(0x10)
+	struct FString version_up; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.FcmPushConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FFcmPushConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t language_id; // 0xC(0x4)
+	struct FString Title; // 0x10(0x10)
+	struct FString Body; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.FactionalItemConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FFactionalItemConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Is_Factional_Item; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.FactionSelectConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FFactionSelectConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t map_mode_id; // 0xC(0x4)
+	uint32_t index_id; // 0x10(0x4)
+	uint32_t faction_id; // 0x14(0x4)
+	struct FText str_param; // 0x18(0x18)
+	uint32_t refresh_group_id; // 0x30(0x4)
+	uint8_t Pad_0x34[0x4]; // 0x34(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.FactionConfTableRow
+// Size: 0xC0 (Inherited: 0x8)
+struct FFactionConfTableRow : FTableRowBase
+{
+	uint32_t faction_id; // 0x8(0x4)
+	uint32_t avatar_set_id; // 0xC(0x4)
+	struct FText faction_role_name; // 0x10(0x18)
+	uint64_t faction_currency; // 0x28(0x8)
+	struct FString faction_npc_pic; // 0x30(0x10)
+	struct FString faction_bg_pic; // 0x40(0x10)
+	struct FText faction_name; // 0x50(0x18)
+	struct FText faction_name_2; // 0x68(0x18)
+	uint32_t battle_faction_id; // 0x80(0x4)
+	uint8_t Pad_0x84[0x4]; // 0x84(0x4)
+	struct FString faction_logo_select; // 0x88(0x10)
+	struct FString faction_logo_teamup; // 0x98(0x10)
+	struct FString faction_logo_teaminfo; // 0xA8(0x10)
+	uint32_t faction_group; // 0xB8(0x4)
+	uint8_t Pad_0xBC[0x4]; // 0xBC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.FactionChoiceConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FFactionChoiceConfTableRow : FTableRowBase
+{
+	uint32_t choice_id; // 0x8(0x4)
+	uint32_t season_id; // 0xC(0x4)
+	struct TArray<struct FPreTaskId> pre_task_ids; // 0x10(0x10)
+	struct TArray<struct FactionChoiceItem> faction_choice_items; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.actionChoiceItem
+// Size: 0x20 (Inherited: 0x0)
+struct FactionChoiceItem
+{
+	uint32_t faction_id; // 0x0(0x4)
+	uint8_t Pad_0x4[0x4]; // 0x4(0x4)
+	struct FText faction_dec; // 0x8(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.PreTaskId
+// Size: 0x4 (Inherited: 0x0)
+struct FPreTaskId
+{
+	uint32_t task_id; // 0x0(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.FacePicConfTableRow
+// Size: 0xD0 (Inherited: 0x8)
+struct FFacePicConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FDateTime begin_time; // 0x10(0x8)
+	struct FDateTime end_time; // 0x18(0x8)
+	uint32_t min_level; // 0x20(0x4)
+	uint32_t max_level; // 0x24(0x4)
+	struct TArray<uint32_t> client_channel; // 0x28(0x10)
+	struct TArray<uint32_t> server_channel; // 0x38(0x10)
+	struct TArray<uint32_t> plat_type; // 0x48(0x10)
+	uint32_t white_country_group_id; // 0x58(0x4)
+	uint8_t Pad_0x5C[0x4]; // 0x5C(0x4)
+	struct FString client_version_low; // 0x60(0x10)
+	struct FString client_version_up; // 0x70(0x10)
+	struct FString URL; // 0x80(0x10)
+	uint32_t order_id; // 0x90(0x4)
+	uint8_t Pad_0x94[0x4]; // 0x94(0x4)
+	struct FString Jump; // 0x98(0x10)
+	struct FText btn_desc; // 0xA8(0x18)
+	uint32_t apear_times; // 0xC0(0x4)
+	uint32_t appear_once; // 0xC4(0x4)
+	uint32_t Type; // 0xC8(0x4)
+	uint8_t Pad_0xCC[0x4]; // 0xCC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.FaceOrderConfTableRow
+// Size: 0x58 (Inherited: 0x8)
+struct FFaceOrderConfTableRow : FTableRowBase
+{
+	uint32_t face_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText face_type; // 0x10(0x18)
+	uint32_t Priority; // 0x28(0x4)
+	uint32_t is_necessary; // 0x2C(0x4)
+	struct FText json_param; // 0x30(0x18)
+	uint32_t function_control; // 0x48(0x4)
+	uint32_t is_login; // 0x4C(0x4)
+	uint32_t is_trainning_field; // 0x50(0x4)
+	uint32_t is_battle; // 0x54(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ExtraSkinConfTableRow
+// Size: 0x80 (Inherited: 0x8)
+struct FExtraSkinConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t BaseItemID; // 0xC(0x4)
+	uint32_t AssembleItemID; // 0x10(0x4)
+	uint32_t ActionType; // 0x14(0x4)
+	struct FSoftObjectPath MeshPathGame; // 0x18(0x18)
+	struct FSoftObjectPath MeshPathLobby; // 0x30(0x18)
+	struct FSoftClassPath AnimBPPath; // 0x48(0x18)
+	struct TArray<struct FName> BoneHiddenPairs; // 0x60(0x10)
+	struct TArray<struct FBlackSocketInfo> BlackSocketList; // 0x70(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.BlackSocketInfo
+// Size: 0xC (Inherited: 0x0)
+struct FBlackSocketInfo
+{
+	uint32_t ParentItemID; // 0x0(0x4)
+	struct FName SocketName; // 0x4(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.ExpConstantTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FExpConstantTableRow : FTableRowBase
+{
+	struct FString ID; // 0x8(0x10)
+	int64_t Val; // 0x18(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.ExchangeTransferConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FExchangeTransferConfTableRow : FTableRowBase
+{
+	uint32_t exchange_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<uint32_t> trans_list; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ExchangeStashConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FExchangeStashConfTableRow : FTableRowBase
+{
+	uint32_t stash_value_min; // 0x8(0x4)
+	uint32_t stash_value_max; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ExchangeRarityConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FExchangeRarityConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t rarity; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ExchangeFixConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FExchangeFixConfTableRow : FTableRowBase
+{
+	uint32_t user_tag_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.EventAIIDModifierDataTableTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FEventAIIDModifierDataTableTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t ActivityID; // 0xC(0x4)
+	uint32_t Priority; // 0x10(0x4)
+	uint32_t SourceCategory; // 0x14(0x4)
+	uint32_t SourceCareer; // 0x18(0x4)
+	uint32_t SourceTendency; // 0x1C(0x4)
+	uint32_t SourceDifficulty; // 0x20(0x4)
+	uint32_t TargetCategory; // 0x24(0x4)
+	uint32_t TargetCareer; // 0x28(0x4)
+	uint32_t TargetTendency; // 0x2C(0x4)
+	uint32_t TargetDifficulty; // 0x30(0x4)
+	uint32_t TargetEquipPoolID; // 0x34(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.EvaluationPartitionTagConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FEvaluationPartitionTagConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Angle; // 0xC(0x4)
+	struct TArray<struct FGroupTagNode> group_tag_vec; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.GroupTagNode
+// Size: 0x8 (Inherited: 0x0)
+struct FGroupTagNode
+{
+	uint32_t Tag; // 0x0(0x4)
+	uint32_t magnitude_percent; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.EvaluationConfTableRow
+// Size: 0x60 (Inherited: 0x8)
+struct FEvaluationConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText show_name; // 0x10(0x18)
+	uint32_t emotion_type; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+	int64_t basic_weight; // 0x30(0x8)
+	struct TArray<int64_t> event_id_array; // 0x38(0x10)
+	struct TArray<int64_t> event_weight_array; // 0x48(0x10)
+	uint32_t is_show; // 0x58(0x4)
+	uint8_t Pad_0x5C[0x4]; // 0x5C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.EvaluationCommConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FEvaluationCommConfTableRow : FTableRowBase
+{
+	uint32_t conf_type; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	int64_t event_id; // 0x10(0x8)
+	int64_t Val; // 0x18(0x8)
+	int64_t Score; // 0x20(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.EuropeanUnionCountryConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FEuropeanUnionCountryConfTableRow : FTableRowBase
+{
+	uint32_t country_code; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ErrorCodeTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FErrorCodeTableRow : FTableRowBase
+{
+	int32_t ErrorCode; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Describe; // 0x10(0x18)
+	int8_t ShowType; // 0x28(0x1)
+	bool need_block; // 0x29(0x1)
+	uint8_t Pad_0x2A[0x6]; // 0x2A(0x6)
+};
+
+// Object: ScriptStruct UADataTableModule.EquipmentSkinConfTableRow
+// Size: 0x68 (Inherited: 0x8)
+struct FEquipmentSkinConfTableRow : FTableRowBase
+{
+	uint32_t SkinID; // 0x8(0x4)
+	uint32_t itemID; // 0xC(0x4)
+	bool IsStaticMesh; // 0x10(0x1)
+	uint8_t Pad_0x11[0x7]; // 0x11(0x7)
+	struct FSoftObjectPath MeshPathGame; // 0x18(0x18)
+	struct FSoftObjectPath MeshPathLobby; // 0x30(0x18)
+	struct TArray<struct FSkinMaterialInfo> OverrideMaterialsGame; // 0x48(0x10)
+	struct TArray<struct FSkinMaterialInfo> OverrideMaterialsLobby; // 0x58(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.EquipmentKVConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FEquipmentKVConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	int64_t Val; // 0x10(0x8)
+	struct TArray<int64_t> val_array; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.EquipTemplateConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FEquipTemplateConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t is_recommand; // 0xC(0x4)
+	struct TArray<struct FEquipTemplateInfo> equip_template_list; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.EquipTemplateInfo
+// Size: 0x18 (Inherited: 0x0)
+struct FEquipTemplateInfo
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+	uint64_t parent_id; // 0x8(0x8)
+	uint64_t ID; // 0x10(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.EquipSlotPrepareConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FEquipSlotPrepareConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<uint32_t> MatchEquipType; // 0x10(0x10)
+	uint32_t ShowIndex; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.EquipSlotConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FEquipSlotConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<uint32_t> MatchEquipType; // 0x10(0x10)
+	uint32_t ShowIndex; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.EquipReturnItemConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FEquipReturnItemConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Low; // 0xC(0x4)
+	uint32_t Up; // 0x10(0x4)
+	uint32_t item_id; // 0x14(0x4)
+	uint32_t Num; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.EquipReturnConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FEquipReturnConfTableRow : FTableRowBase
+{
+	uint32_t Type; // 0x8(0x4)
+	uint32_t Low; // 0xC(0x4)
+	uint32_t Up; // 0x10(0x4)
+	int32_t prob; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.EquipReturnCardConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FEquipReturnCardConfTableRow : FTableRowBase
+{
+	uint32_t item_id; // 0x8(0x4)
+	uint32_t item_value; // 0xC(0x4)
+	struct FString icon_path; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.EquipPurchaseConfTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FEquipPurchaseConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t template_id; // 0xC(0x4)
+	uint32_t money_num; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct FText market_name; // 0x18(0x18)
+	uint32_t Type; // 0x30(0x4)
+	uint32_t limit_num; // 0x34(0x4)
+	struct TArray<struct FPurchaseEquipInfo> purchase_equip_list; // 0x38(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.PurchaseEquipInfo
+// Size: 0x18 (Inherited: 0x0)
+struct FPurchaseEquipInfo
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+	uint64_t parent_id; // 0x8(0x8)
+	uint64_t ID; // 0x10(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.EquipOnShelfConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FEquipOnShelfConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t on_the_shelf; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.EquipAvatarSetCfgTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FEquipAvatarSetCfgTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t combined_id; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.EloChangeConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FEloChangeConfTableRow : FTableRowBase
+{
+	uint32_t elo_conf_type; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	int64_t Param; // 0x10(0x8)
+	int64_t elo_change; // 0x18(0x8)
+	int64_t ignore_elo_change; // 0x20(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.EliteSuiteExpansionConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FEliteSuiteExpansionConfTableRow : FTableRowBase
+{
+	uint32_t item_id; // 0x8(0x4)
+	uint32_t expansion; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.EliteSuiteConfTableRow
+// Size: 0xC0 (Inherited: 0x8)
+struct FEliteSuiteConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t page_id; // 0xC(0x4)
+	struct FText page_name; // 0x10(0x18)
+	struct FText page_icon; // 0x28(0x18)
+	uint32_t index_id; // 0x40(0x4)
+	uint8_t Pad_0x44[0x4]; // 0x44(0x4)
+	struct FText suite_title; // 0x48(0x18)
+	struct FText set_name; // 0x60(0x18)
+	uint32_t unlock_level; // 0x78(0x4)
+	uint8_t Pad_0x7C[0x4]; // 0x7C(0x4)
+	struct TArray<struct FEliteEnterCostVec> enter_cost_vec; // 0x80(0x10)
+	uint32_t use_dynamic_limit; // 0x90(0x4)
+	uint8_t Pad_0x94[0x4]; // 0x94(0x4)
+	struct TArray<struct FRefreshGroupVec> refresh_group_vec; // 0x98(0x10)
+	uint32_t set_value; // 0xA8(0x4)
+	uint8_t Pad_0xAC[0x4]; // 0xAC(0x4)
+	struct TArray<struct FEliteRefreshCostVec> refresh_cost_vec; // 0xB0(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.EliteRefreshCostVec
+// Size: 0x8 (Inherited: 0x0)
+struct FEliteRefreshCostVec
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t cost_num; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.RefreshGroupVec
+// Size: 0x14 (Inherited: 0x0)
+struct FRefreshGroupVec
+{
+	uint32_t min_level; // 0x0(0x4)
+	uint32_t max_level; // 0x4(0x4)
+	uint32_t min_battle_cnt; // 0x8(0x4)
+	uint32_t max_battle_cnt; // 0xC(0x4)
+	uint32_t refresh_group_id; // 0x10(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.EliteEnterCostVec
+// Size: 0xC (Inherited: 0x0)
+struct FEliteEnterCostVec
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t cost_num; // 0x4(0x4)
+	uint32_t is_dynamic; // 0x8(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.EliminationExpTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FEliminationExpTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Level; // 0xC(0x4)
+	uint32_t Exp; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.EasterEggAvatarCfgTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FEasterEggAvatarCfgTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FDateTime start_time; // 0x10(0x8)
+	struct FDateTime end_time; // 0x18(0x8)
+	uint32_t avatar_suit_id; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.EAttachPositionTableRow
+// Size: 0x8 (Inherited: 0x8)
+struct FEAttachPositionTableRow : FTableRowBase
+{
+};
+
+// Object: ScriptStruct UADataTableModule.DynamicParamTemplateConfTableRow
+// Size: 0x58 (Inherited: 0x8)
+struct FDynamicParamTemplateConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t min_team_num; // 0xC(0x4)
+	uint32_t min_role_num; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct TArray<uint32_t> ping_expansion_time; // 0x18(0x10)
+	struct TArray<uint32_t> ping_expansion_range; // 0x28(0x10)
+	struct TArray<uint32_t> agreed_ping_expansion_time; // 0x38(0x10)
+	struct TArray<uint32_t> agreed_ping_expansion_range; // 0x48(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.DurabilityChangeTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FDurabilityChangeTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Version; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.DsVersionConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FDsVersionConfTableRow : FTableRowBase
+{
+	uint32_t env_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<struct FDsConfVersionRange> version_ranges; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.DsConfVersionRange
+// Size: 0x58 (Inherited: 0x0)
+struct FDsConfVersionRange
+{
+	struct FText ds_version; // 0x0(0x18)
+	uint32_t ds_buildno; // 0x18(0x4)
+	uint32_t ds_param_version; // 0x1C(0x4)
+	struct TArray<uint32_t> ds_ext_params_ids; // 0x20(0x10)
+	uint32_t gray_ratio; // 0x30(0x4)
+	uint8_t Pad_0x34[0x4]; // 0x34(0x4)
+	struct FText gray_ds_version; // 0x38(0x18)
+	uint32_t gray_ds_buildno; // 0x50(0x4)
+	uint8_t Pad_0x54[0x4]; // 0x54(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.DsGrayConfTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FDsGrayConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t idc_world; // 0xC(0x4)
+	uint32_t dsa_inst; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct FText ds_version; // 0x18(0x18)
+	uint32_t ds_buildno; // 0x30(0x4)
+	uint8_t Pad_0x34[0x4]; // 0x34(0x4)
+	struct TArray<uint64_t> gid_vec; // 0x38(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.DsGameFunctionConfigTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FDsGameFunctionConfigTableRow : FTableRowBase
+{
+	uint32_t play_mode_id; // 0x8(0x4)
+	uint32_t use_airl; // 0xC(0x4)
+	uint32_t use_poor_cheet; // 0x10(0x4)
+	uint32_t poor_cheet_value; // 0x14(0x4)
+	uint32_t use_safe_guard; // 0x18(0x4)
+	uint32_t use_launder_cheet; // 0x1C(0x4)
+	uint32_t use_anti_camper; // 0x20(0x4)
+	uint32_t use_airl_online_rate; // 0x24(0x4)
+	uint32_t use_airl_online_ranking_min; // 0x28(0x4)
+	uint32_t use_airl_online_ranking_max; // 0x2C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.DsExtParamTemplateConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FDsExtParamTemplateConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<struct FText> params_list; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.DropPicShowConfTableRow
+// Size: 0x50 (Inherited: 0x8)
+struct FDropPicShowConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString pic_path; // 0x10(0x10)
+	struct FString pic_url; // 0x20(0x10)
+	struct FText tag_name; // 0x30(0x18)
+	uint32_t tag_level; // 0x48(0x4)
+	uint8_t Pad_0x4C[0x4]; // 0x4C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.DropNonAvatarItemConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FDropNonAvatarItemConfTableRow : FTableRowBase
+{
+	uint32_t item_id; // 0x8(0x4)
+	uint32_t rarity; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.DownloadPropertyConfigTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FDownloadPropertyConfigTableRow : FTableRowBase
+{
+	struct FString DownloadPropertyName; // 0x8(0x10)
+	struct FString DownloadPropertyKey; // 0x18(0x10)
+	struct FString DownloadPropertyValue; // 0x28(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.DownloadDisplayTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FDownloadDisplayTableRow : FTableRowBase
+{
+	struct FString GroupID; // 0x8(0x10)
+	struct FText DisplayGroupName; // 0x18(0x18)
+	struct TArray<uint32_t> SubIDList; // 0x30(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.DownloadConfTableRow
+// Size: 0xE0 (Inherited: 0x8)
+struct FDownloadConfTableRow : FTableRowBase
+{
+	struct FString SourceID; // 0x8(0x10)
+	struct FString SourceType; // 0x18(0x10)
+	struct FString SourceName; // 0x28(0x10)
+	struct FText displayType; // 0x38(0x18)
+	struct FText DisplayName; // 0x50(0x18)
+	struct FText DisplayDesc; // 0x68(0x18)
+	struct FString IconPath; // 0x80(0x10)
+	uint32_t Recommand; // 0x90(0x4)
+	uint32_t PrizeItemID; // 0x94(0x4)
+	uint32_t PrizeItemTaskID; // 0x98(0x4)
+	uint8_t Pad_0x9C[0x4]; // 0x9C(0x4)
+	struct FString DisplayTag; // 0xA0(0x10)
+	uint32_t DownloadCompleteHidden; // 0xB0(0x4)
+	uint32_t WifiLogicInLobby; // 0xB4(0x4)
+	uint32_t WifiLogicInBattle; // 0xB8(0x4)
+	uint8_t Pad_0xBC[0x4]; // 0xBC(0x4)
+	struct TArray<uint32_t> LobbyWifiDownloadByDevice; // 0xC0(0x10)
+	uint32_t DownloadPriority; // 0xD0(0x4)
+	uint32_t WifiLogicInLobby_Emulator; // 0xD4(0x4)
+	uint32_t WifiLogicInBattle_Emulator; // 0xD8(0x4)
+	uint8_t Pad_0xDC[0x4]; // 0xDC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.DownloadBlockConfTableRow
+// Size: 0xA0 (Inherited: 0x8)
+struct FDownloadBlockConfTableRow : FTableRowBase
+{
+	struct FString ID; // 0x8(0x10)
+	struct FText DisplayName; // 0x18(0x18)
+	struct FText DisplayDesc; // 0x30(0x18)
+	struct FString bgPath; // 0x48(0x10)
+	uint32_t IsRookie; // 0x58(0x4)
+	uint32_t Order; // 0x5C(0x4)
+	uint32_t IsEnable; // 0x60(0x4)
+	uint32_t DisableTiYan; // 0x64(0x4)
+	struct FString UMGName; // 0x68(0x10)
+	uint32_t WidgetNameToIndex; // 0x78(0x4)
+	uint8_t Pad_0x7C[0x4]; // 0x7C(0x4)
+	struct TArray<struct FString> TextComponents; // 0x80(0x10)
+	struct TArray<struct FString> BGPaths; // 0x90(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.DispelExpTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FDispelExpTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t dispel_exp; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.DispatchRewardPoolConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FDispatchRewardPoolConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t dispatch_reward_pool_type; // 0xC(0x4)
+	uint32_t upper_limit; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct FString split_group; // 0x18(0x10)
+	struct TArray<struct FPrizeConf> rewards; // 0x28(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.PrizeConf
+// Size: 0x10 (Inherited: 0x0)
+struct FPrizeConf
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+	uint32_t limit_id; // 0x8(0x4)
+	uint32_t Weight; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.DispatchRandomNameConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FDispatchRandomNameConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Name; // 0x10(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.DispatchRandomAvatarConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FDispatchRandomAvatarConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t avatar_id; // 0xC(0x4)
+	uint32_t avatar_gender; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct FString pic; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.DispatchPerkPoolConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FDispatchPerkPoolConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<struct FPerkPool> perk_pool_list; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.PerkPool
+// Size: 0x18 (Inherited: 0x0)
+struct FPerkPool
+{
+	struct FString perk_id_list; // 0x0(0x10)
+	uint32_t Weight; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.DispatchPerkConfTableRow
+// Size: 0x50 (Inherited: 0x8)
+struct FDispatchPerkConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Name; // 0x10(0x18)
+	struct FText Desc; // 0x28(0x18)
+	uint32_t rarity; // 0x40(0x4)
+	uint32_t perk_buff_type; // 0x44(0x4)
+	uint32_t Value; // 0x48(0x4)
+	uint32_t id_segment; // 0x4C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.DispatchMemberTypeConfTableRow
+// Size: 0x88 (Inherited: 0x8)
+struct FDispatchMemberTypeConfTableRow : FTableRowBase
+{
+	uint32_t dispatch_member_type; // 0x8(0x4)
+	uint32_t dispatch_hour_num; // 0xC(0x4)
+	uint32_t refresh_cost_num; // 0x10(0x4)
+	uint32_t special_condition_num; // 0x14(0x4)
+	uint32_t perk_num; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	struct FString perk_pool_id_list; // 0x20(0x10)
+	struct FString conversion_ratio; // 0x30(0x10)
+	uint32_t lucky_event_prob; // 0x40(0x4)
+	uint32_t dispatch_lowyields_text; // 0x44(0x4)
+	uint32_t dispatch_highestyields_text; // 0x48(0x4)
+	uint8_t Pad_0x4C[0x4]; // 0x4C(0x4)
+	struct FText dispatch_member_text; // 0x50(0x18)
+	struct FString dispatch_risk_range; // 0x68(0x10)
+	struct TArray<struct FWeightPerkPool> weight_perk_pool_list; // 0x78(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.WeightPerkPool
+// Size: 0x8 (Inherited: 0x0)
+struct FWeightPerkPool
+{
+	uint32_t ID; // 0x0(0x4)
+	uint32_t Weight; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.DispatchMemberConfTableRow
+// Size: 0x78 (Inherited: 0x8)
+struct FDispatchMemberConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t dispatch_member_type; // 0xC(0x4)
+	struct FText Name; // 0x10(0x18)
+	uint32_t Weight; // 0x28(0x4)
+	uint32_t consume_token_id; // 0x2C(0x4)
+	uint32_t consume_token_num; // 0x30(0x4)
+	uint32_t lucky_charm_id; // 0x34(0x4)
+	uint32_t avatar_id; // 0x38(0x4)
+	uint32_t avatar_gender; // 0x3C(0x4)
+	struct FString pic; // 0x40(0x10)
+	struct FString dispatch_perk_id; // 0x50(0x10)
+	uint32_t dispatch_conversion_id; // 0x60(0x4)
+	uint8_t Pad_0x64[0x4]; // 0x64(0x4)
+	struct TArray<struct FSpecialCondition> special_condition_list; // 0x68(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.SpecialCondition
+// Size: 0x18 (Inherited: 0x0)
+struct FSpecialCondition
+{
+	struct FString id_list; // 0x0(0x10)
+	uint32_t Weight; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.DispatchHelpConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FDispatchHelpConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText helpTitle; // 0x10(0x18)
+	struct FText helpDesc; // 0x28(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.DispatchEventConfTableRow
+// Size: 0x88 (Inherited: 0x8)
+struct FDispatchEventConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString mail_title; // 0x10(0x10)
+	struct FString combat_record_text; // 0x20(0x10)
+	uint32_t condition_type; // 0x30(0x4)
+	uint32_t lower_limit; // 0x34(0x4)
+	uint32_t item_id; // 0x38(0x4)
+	uint32_t lucky_charm_id; // 0x3C(0x4)
+	uint32_t dispatch_member_id; // 0x40(0x4)
+	uint8_t Pad_0x44[0x4]; // 0x44(0x4)
+	struct TArray<struct FDispatchEventTextConf> text1; // 0x48(0x10)
+	struct TArray<struct FDispatchEventTextConf> text2; // 0x58(0x10)
+	struct TArray<struct FDispatchEventTextConf> text3; // 0x68(0x10)
+	struct TArray<struct FDispatchEventTextConf> text4; // 0x78(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.DispatchEventTextConf
+// Size: 0x10 (Inherited: 0x0)
+struct FDispatchEventTextConf
+{
+	struct FString Text; // 0x0(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.DispatchConversionConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FDispatchConversionConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t dispatch_member_type; // 0xC(0x4)
+	struct TArray<struct FConversionExpandConf> conversion_expand_list; // 0x10(0x10)
+	struct TArray<struct FConversionConf> conversion_list; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ConversionConf
+// Size: 0x8 (Inherited: 0x0)
+struct FConversionConf
+{
+	uint32_t conversion_ratio; // 0x0(0x4)
+	uint32_t Weight; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ConversionExpandConf
+// Size: 0x8 (Inherited: 0x0)
+struct FConversionExpandConf
+{
+	uint32_t perk_id; // 0x0(0x4)
+	uint32_t expand_id; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.DispatchAvatarSuitConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FDispatchAvatarSuitConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<uint32_t> avatar_set; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.DeviceWorkloadScoreTableRow
+// Size: 0x150 (Inherited: 0x8)
+struct FDeviceWorkloadScoreTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<float> GraphcisQualityScoreData; // 0x10(0x10)
+	struct TArray<float> FrameRateLevelScoreData; // 0x20(0x10)
+	struct TArray<float> ResolutionScoreData; // 0x30(0x10)
+	struct TArray<float> AAScoreData; // 0x40(0x10)
+	struct TArray<float> RayTracingScoreData; // 0x50(0x10)
+	struct TArray<float> BloomScoreData; // 0x60(0x10)
+	struct TArray<float> PlanarReflectionScoreData; // 0x70(0x10)
+	struct TArray<float> DetailModeScoreData; // 0x80(0x10)
+	struct TArray<float> DOFScoreData; // 0x90(0x10)
+	struct TArray<float> DeviceMaxScoreData; // 0xA0(0x10)
+	struct TArray<float> SuperFirstGearScoreRange; // 0xB0(0x10)
+	struct TArray<float> FirstGearScoreRange; // 0xC0(0x10)
+	struct TArray<float> SecondGearScoreRange; // 0xD0(0x10)
+	struct TArray<float> ThirdGearScoreRange; // 0xE0(0x10)
+	struct TArray<float> FourthGearScoreRange; // 0xF0(0x10)
+	struct TArray<float> FifthGearScoreRange; // 0x100(0x10)
+	struct TArray<float> SixthGearScoreRange; // 0x110(0x10)
+	struct TArray<float> SuperResolutionPercentage; // 0x120(0x10)
+	struct TArray<float> TexMipPercentage; // 0x130(0x10)
+	struct TArray<float> PlantQualityScoreData; // 0x140(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.DeviceModelViewSettingTableRow
+// Size: 0xE0 (Inherited: 0x8)
+struct FDeviceModelViewSettingTableRow : FTableRowBase
+{
+	uint32_t SettingIndex; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString Platform; // 0x10(0x10)
+	struct FString DeviceModelName; // 0x20(0x10)
+	uint32_t MemoryLevel; // 0x30(0x4)
+	uint32_t BattleOrLobby; // 0x34(0x4)
+	int32_t DefaultGraphicsLevel; // 0x38(0x4)
+	int32_t DefaultFrameLevel; // 0x3C(0x4)
+	struct TArray<int32_t> GraphicsPriority; // 0x40(0x10)
+	struct TArray<int32_t> BalancePriority; // 0x50(0x10)
+	struct TArray<int32_t> FramePriority; // 0x60(0x10)
+	struct TArray<int32_t> DefautlResolution; // 0x70(0x10)
+	struct TArray<int32_t> DefaultAA; // 0x80(0x10)
+	struct TArray<int32_t> DefaultTextureBias; // 0x90(0x10)
+	struct TArray<int32_t> DefaultPlantQuality; // 0xA0(0x10)
+	struct TArray<int32_t> DefaultSuperResolution; // 0xB0(0x10)
+	struct TArray<int32_t> DefaultLagAdaptive; // 0xC0(0x10)
+	struct TArray<int32_t> DefaultEnergysavingAdaptive; // 0xD0(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.DescMiddleLayerConfTableRow
+// Size: 0x50 (Inherited: 0x8)
+struct FDescMiddleLayerConfTableRow : FTableRowBase
+{
+	struct FString ActReplaceDescribeKey; // 0x8(0x10)
+	struct FText ActReplaceDescribeTranslate; // 0x18(0x18)
+	struct FString ActReplaceDescribeType; // 0x30(0x10)
+	struct FString TaskId; // 0x40(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.DeathBoxSkinConfTableRow
+// Size: 0x100 (Inherited: 0x8)
+struct FDeathBoxSkinConfTableRow : FTableRowBase
+{
+	uint32_t SkinID; // 0x8(0x4)
+	uint32_t itemID; // 0xC(0x4)
+	struct FSoftClassPath DeathBoxBPResource; // 0x10(0x18)
+	bool IsStaticMesh; // 0x28(0x1)
+	uint8_t Pad_0x29[0x7]; // 0x29(0x7)
+	struct FSoftObjectPath Mesh0PathGame; // 0x30(0x18)
+	struct FSoftObjectPath Mesh0PathLobby; // 0x48(0x18)
+	struct FSoftObjectPath Mesh1PathGame; // 0x60(0x18)
+	struct FSoftObjectPath Mesh1PathLobby; // 0x78(0x18)
+	struct FSoftObjectPath AnimationOpen; // 0x90(0x18)
+	struct FSoftObjectPath AnimationOpenedLoop; // 0xA8(0x18)
+	struct FSoftObjectPath AnimationClose; // 0xC0(0x18)
+	struct FSoftObjectPath AnimationClosedLoop; // 0xD8(0x18)
+	struct TArray<struct FSkinMaterialInfo> OverrideMaterials; // 0xF0(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.DataPathTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FDataPathTableRow : FTableRowBase
+{
+	uint32_t PathID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString PathName; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.DSCountryZoneConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FDSCountryZoneConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t ds_zone_id; // 0xC(0x4)
+	struct TArray<uint32_t> country_codes; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.DSCountryGroupConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FDSCountryGroupConfTableRow : FTableRowBase
+{
+	uint32_t country_code; // 0x8(0x4)
+	uint32_t ds_group_id; // 0xC(0x4)
+	uint32_t ds_zone_id; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.DMGLimitMapidConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FDMGLimitMapidConfTableRow : FTableRowBase
+{
+	uint32_t mapIDPrefix; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.DMGLimitConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FDMGLimitConfTableRow : FTableRowBase
+{
+	int32_t RowNum; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	uint64_t itemID; // 0x10(0x8)
+	uint32_t HitGroup; // 0x18(0x4)
+	float HealthThreshold; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.CustomizedExchangeRuleConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FCustomizedExchangeRuleConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t shelf_type; // 0xC(0x4)
+	uint32_t businessman_id; // 0x10(0x4)
+	uint32_t Level; // 0x14(0x4)
+	uint32_t Num; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	struct TArray<struct FDailyRefreshTimeConf> daily_refresh_time_vec; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.DailyRefreshTimeConf
+// Size: 0x10 (Inherited: 0x0)
+struct FDailyRefreshTimeConf
+{
+	struct FString refresh_time; // 0x0(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.CustomizedExchangeConfTableRow
+// Size: 0x60 (Inherited: 0x8)
+struct FCustomizedExchangeConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t businessman_id; // 0xC(0x4)
+	uint32_t shelf_id; // 0x10(0x4)
+	uint32_t seq; // 0x14(0x4)
+	uint32_t buy_limit; // 0x18(0x4)
+	uint32_t is_hide; // 0x1C(0x4)
+	uint32_t sell_item_id; // 0x20(0x4)
+	uint32_t sell_num; // 0x24(0x4)
+	uint32_t is_faction; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+	struct TArray<struct FCustomizedExchangeItemConf> exchange_item_vec; // 0x30(0x10)
+	uint32_t min_level; // 0x40(0x4)
+	uint32_t max_level; // 0x44(0x4)
+	uint32_t min_player_wealth; // 0x48(0x4)
+	uint32_t max_player_wealth; // 0x4C(0x4)
+	uint32_t min_escape_percent; // 0x50(0x4)
+	uint32_t max_escape_percent; // 0x54(0x4)
+	uint32_t Weight; // 0x58(0x4)
+	uint8_t Pad_0x5C[0x4]; // 0x5C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.CustomizedExchangeItemConf
+// Size: 0x8 (Inherited: 0x0)
+struct FCustomizedExchangeItemConf
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.CustomMetricConfTableRow
+// Size: 0x90 (Inherited: 0x8)
+struct FCustomMetricConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString metric_name; // 0x10(0x10)
+	uint32_t agg_method; // 0x20(0x4)
+	uint32_t agg_interval; // 0x24(0x4)
+	struct TArray<struct FString> group_by; // 0x28(0x10)
+	uint32_t stat_time_length; // 0x38(0x4)
+	uint32_t stat_time_offset; // 0x3C(0x4)
+	uint32_t stat_method; // 0x40(0x4)
+	int32_t target_val; // 0x44(0x4)
+	int32_t replica_offset; // 0x48(0x4)
+	uint8_t Pad_0x4C[0x4]; // 0x4C(0x4)
+	struct TArray<struct FConditionConfVector> condition_vec; // 0x50(0x10)
+	struct FString Table; // 0x60(0x10)
+	struct FString data_label; // 0x70(0x10)
+	struct FString data_source_label; // 0x80(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ConditionConfVector
+// Size: 0x40 (Inherited: 0x0)
+struct FConditionConfVector
+{
+	struct FString Key; // 0x0(0x10)
+	struct FString Method; // 0x10(0x10)
+	struct FString Value; // 0x20(0x10)
+	struct FString Condition; // 0x30(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.CustomLayoutOverrideTableRow
+// Size: 0x60 (Inherited: 0x8)
+struct FCustomLayoutOverrideTableRow : FTableRowBase
+{
+	int32_t Num; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString LayoutKey; // 0x10(0x10)
+	struct FText LayoutName; // 0x20(0x18)
+	struct FString LayoutIconPath; // 0x38(0x10)
+	struct FString Layout; // 0x48(0x10)
+	int32_t Active; // 0x58(0x4)
+	int32_t ActiveOversea; // 0x5C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.CustomLayoutConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FCustomLayoutConfTableRow : FTableRowBase
+{
+	uint32_t Index; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText TipsText; // 0x10(0x18)
+	uint32_t bSecondaryMenu; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.CurrencyExchangeConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FCurrencyExchangeConfTableRow : FTableRowBase
+{
+	struct FString CurrencyName; // 0x8(0x10)
+	float CurrencyCount; // 0x18(0x4)
+	float CurrencyCount_IOS; // 0x1C(0x4)
+	uint32_t CurrencyCountUseComma; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.CreditPaneltyConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FCreditPaneltyConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString Description; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.CreditLevelConfTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FCreditLevelConfTableRow : FTableRowBase
+{
+	uint32_t credit_upperbound; // 0x8(0x4)
+	uint32_t Level; // 0xC(0x4)
+	uint32_t daily_attainable_credit; // 0x10(0x4)
+	uint32_t deduct_coeff_percent; // 0x14(0x4)
+	struct TArray<uint32_t> panelty; // 0x18(0x10)
+	uint32_t reward; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+	struct FText Desc; // 0x30(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.CreditEventConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FCreditEventConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText reason; // 0x10(0x18)
+	int32_t event_type; // 0x28(0x4)
+	uint32_t credit_change; // 0x2C(0x4)
+	uint32_t max_count; // 0x30(0x4)
+	uint8_t Pad_0x34[0x4]; // 0x34(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.CreditBehaviorDescConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FCreditBehaviorDescConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t isPositive; // 0xC(0x4)
+	struct FText Desc; // 0x10(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.CreateRoleAvatarShowConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FCreateRoleAvatarShowConfTableRow : FTableRowBase
+{
+	uint32_t Type; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<uint32_t> avatar_set; // 0x10(0x10)
+	struct TArray<uint32_t> avatar_set_female; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.CreateRoleAvatarConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FCreateRoleAvatarConfTableRow : FTableRowBase
+{
+	uint32_t Type; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<struct FAvatarSet> avatar_sets; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.AvatarSet
+// Size: 0x10 (Inherited: 0x0)
+struct FAvatarSet
+{
+	struct TArray<uint32_t> Avatars; // 0x0(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.CourtSettleConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FCourtSettleConfTableRow : FTableRowBase
+{
+	uint32_t Ranking; // 0x8(0x4)
+	int32_t star_num; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.CourtRewardConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FCourtRewardConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Level; // 0xC(0x4)
+	uint32_t Type; // 0x10(0x4)
+	uint32_t max_progress; // 0x14(0x4)
+	uint32_t reward_item_id; // 0x18(0x4)
+	uint32_t reward_item_num; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.CourtRanksConfTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FCourtRanksConfTableRow : FTableRowBase
+{
+	uint32_t Level; // 0x8(0x4)
+	uint32_t court_rank_major_type; // 0xC(0x4)
+	uint32_t court_rank_sub_type; // 0x10(0x4)
+	uint32_t demotion_protect; // 0x14(0x4)
+	uint32_t up_skip; // 0x18(0x4)
+	uint32_t down_skip; // 0x1C(0x4)
+	uint32_t rank_star_count; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+	struct FText rank_name; // 0x28(0x18)
+	uint32_t icon_index; // 0x40(0x4)
+	uint8_t Pad_0x44[0x4]; // 0x44(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.CourtRanksCommonConfTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FCourtRanksCommonConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Val; // 0xC(0x4)
+	struct FString Str; // 0x10(0x10)
+	struct FDateTime Time; // 0x20(0x8)
+	struct FDateTime begin_time; // 0x28(0x8)
+	struct FDateTime end_time; // 0x30(0x8)
+	struct TArray<struct FCrewRewardSeg> reward_segs; // 0x38(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.CrewRewardSeg
+// Size: 0x18 (Inherited: 0x0)
+struct FCrewRewardSeg
+{
+	uint32_t start_rank; // 0x0(0x4)
+	uint32_t end_rank; // 0x4(0x4)
+	struct FString reward_list; // 0x8(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.CourtRankTargetTypeConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FCourtRankTargetTypeConfTableRow : FTableRowBase
+{
+	uint32_t TargetType; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Desc; // 0x10(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.CourtRankLevelRangeConfTableRow
+// Size: 0x60 (Inherited: 0x8)
+struct FCourtRankLevelRangeConfTableRow : FTableRowBase
+{
+	uint32_t rangeid; // 0x8(0x4)
+	uint32_t level_floor; // 0xC(0x4)
+	uint32_t range_count; // 0x10(0x4)
+	uint32_t Type; // 0x14(0x4)
+	uint32_t sub_type; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	struct FText main_name; // 0x20(0x18)
+	struct FText sub_name; // 0x38(0x18)
+	struct TArray<struct FText> score_desc; // 0x50(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.CountryLayoutConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FCountryLayoutConfTableRow : FTableRowBase
+{
+	uint32_t CountryCode; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString LayoutMode; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.CountryGroupConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FCountryGroupConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<uint32_t> country_codes; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.CountryCurrencyExchangeConfTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FCountryCurrencyExchangeConfTableRow : FTableRowBase
+{
+	uint32_t CountryCode; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText CountryAlpha; // 0x10(0x18)
+	struct FString CurrencyName; // 0x28(0x10)
+	float CurrencyCount; // 0x38(0x4)
+	uint32_t IsOpenThirdPayGoogle; // 0x3C(0x4)
+	uint32_t IsOpenThirdPayIOS; // 0x40(0x4)
+	uint8_t Pad_0x44[0x4]; // 0x44(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.CountryCurrencyConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FCountryCurrencyConfTableRow : FTableRowBase
+{
+	uint32_t country_code; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText region; // 0x10(0x18)
+	struct FText currency_type; // 0x28(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.CountryConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FCountryConfTableRow : FTableRowBase
+{
+	uint32_t country_code; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText country_name; // 0x10(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.CosBucketConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FCosBucketConfTableRow : FTableRowBase
+{
+	uint32_t bucket_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString bucket_name; // 0x10(0x10)
+	uint32_t day_upload_limit; // 0x20(0x4)
+	uint32_t valid_days; // 0x24(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.CoreWeaponSkinConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FCoreWeaponSkinConfTableRow : FTableRowBase
+{
+	struct FString CoreID; // 0x8(0x10)
+	struct FString RefName; // 0x18(0x10)
+	uint32_t PutPakIndex; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.CoreWeaponConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FCoreWeaponConfTableRow : FTableRowBase
+{
+	struct FString CoreID; // 0x8(0x10)
+	struct FString RefName; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.CoreSprayConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FCoreSprayConfTableRow : FTableRowBase
+{
+	struct FString CoreID; // 0x8(0x10)
+	struct FText RefName; // 0x18(0x18)
+	uint32_t PutPakIndex; // 0x30(0x4)
+	uint8_t Pad_0x34[0x4]; // 0x34(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.CoreOtherConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FCoreOtherConfTableRow : FTableRowBase
+{
+	struct FString CoreID; // 0x8(0x10)
+	struct FString RefName; // 0x18(0x10)
+	uint32_t PutPakIndex; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.CoreGeneralAssetConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FCoreGeneralAssetConfTableRow : FTableRowBase
+{
+	struct FString CoreID; // 0x8(0x10)
+	struct FString RefName; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.CoreEquipSkinConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FCoreEquipSkinConfTableRow : FTableRowBase
+{
+	struct FString CoreID; // 0x8(0x10)
+	struct FString RefName; // 0x18(0x10)
+	uint32_t PutPakIndex; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.CoreAvatarConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FCoreAvatarConfTableRow : FTableRowBase
+{
+	struct FString CoreID; // 0x8(0x10)
+	struct FString RefName; // 0x18(0x10)
+	uint32_t PutPakIndex; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ContextMenuPickUpConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FContextMenuPickUpConfTableRow : FTableRowBase
+{
+	uint16_t ID; // 0x8(0x2)
+	uint8_t Pad_0xA[0x6]; // 0xA(0x6)
+	struct FString PanelType; // 0x10(0x10)
+	struct FString PickUpType; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ContextMenuLevel2ConfTableRow
+// Size: 0x70 (Inherited: 0x8)
+struct FContextMenuLevel2ConfTableRow : FTableRowBase
+{
+	uint16_t ID; // 0x8(0x2)
+	uint8_t Pad_0xA[0x6]; // 0xA(0x6)
+	struct FText DisplayName; // 0x10(0x18)
+	uint8_t ShowIndex; // 0x28(0x1)
+	uint8_t displayType; // 0x29(0x1)
+	uint8_t Pad_0x2A[0x6]; // 0x2A(0x6)
+	struct FString ExecFunc; // 0x30(0x10)
+	struct TArray<uint64_t> ItemTypes; // 0x40(0x10)
+	uint8_t ItemTypeMode; // 0x50(0x1)
+	uint8_t Pad_0x51[0x7]; // 0x51(0x7)
+	struct TArray<uint16_t> PickTypeIds; // 0x58(0x10)
+	uint8_t isEquiped; // 0x68(0x1)
+	uint8_t IsLendItem; // 0x69(0x1)
+	uint8_t Pad_0x6A[0x2]; // 0x6A(0x2)
+	uint32_t SysId; // 0x6C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ContextMenuLevel1ConfTableRow
+// Size: 0x70 (Inherited: 0x8)
+struct FContextMenuLevel1ConfTableRow : FTableRowBase
+{
+	uint16_t ID; // 0x8(0x2)
+	uint8_t Pad_0xA[0x6]; // 0xA(0x6)
+	struct FText DisplayName; // 0x10(0x18)
+	uint8_t ShowIndex; // 0x28(0x1)
+	uint8_t displayType; // 0x29(0x1)
+	uint8_t Pad_0x2A[0x6]; // 0x2A(0x6)
+	struct FString ExecFunc; // 0x30(0x10)
+	struct TArray<uint64_t> ItemTypes; // 0x40(0x10)
+	uint8_t ItemTypeMode; // 0x50(0x1)
+	uint8_t Pad_0x51[0x7]; // 0x51(0x7)
+	struct TArray<uint16_t> PickTypeIds; // 0x58(0x10)
+	uint8_t isEquiped; // 0x68(0x1)
+	uint8_t IsLendItem; // 0x69(0x1)
+	uint8_t Pad_0x6A[0x2]; // 0x6A(0x2)
+	uint32_t SysId; // 0x6C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ContestWarZoneConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FContestWarZoneConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<uint32_t> country_codes; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ContestTaskConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FContestTaskConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t daily_task_id; // 0xC(0x4)
+	struct TArray<struct FText> task_list; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ContainerRuleConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FContainerRuleConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t need_roll_up; // 0xC(0x4)
+	struct TArray<uint32_t> black_list; // 0x10(0x10)
+	struct TArray<uint32_t> white_list; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ContainerPriorityOutGameTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FContainerPriorityOutGameTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText category_name; // 0x10(0x18)
+	uint32_t seg_id; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+	struct TArray<struct FPriorityConf> Priority; // 0x30(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.PriorityConf
+// Size: 0x8 (Inherited: 0x0)
+struct FPriorityConf
+{
+	uint32_t Slot; // 0x0(0x4)
+	uint32_t Weight; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ContainerPriorityInGameTableRow
+// Size: 0x68 (Inherited: 0x8)
+struct FContainerPriorityInGameTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText category_name; // 0x10(0x18)
+	uint32_t seg_id; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+	int64_t limited_value; // 0x30(0x8)
+	int64_t pocket_basic_weight_in; // 0x38(0x8)
+	int64_t armour_basic_weight_in; // 0x40(0x8)
+	int64_t bag_basic_weight_in; // 0x48(0x8)
+	int64_t safe_basic_weight_in; // 0x50(0x8)
+	int64_t keyPack_basic_weight_in; // 0x58(0x8)
+	int64_t tempSpace_basic_weight_in; // 0x60(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.ContainerConfTableRow
+// Size: 0x50 (Inherited: 0x8)
+struct FContainerConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t rollup_size_x; // 0xC(0x4)
+	uint32_t rollup_size_y; // 0x10(0x4)
+	float rollup_time; // 0x14(0x4)
+	uint32_t rule_id; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	struct FString open_sound; // 0x20(0x10)
+	struct FString close_sound; // 0x30(0x10)
+	struct TArray<struct FContainerSizeConfItem> sizes; // 0x40(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ContainerSizeConfItem
+// Size: 0x28 (Inherited: 0x0)
+struct FContainerSizeConfItem
+{
+	struct TArray<float> PosX; // 0x0(0x10)
+	struct TArray<float> PosY; // 0x10(0x10)
+	uint32_t col; // 0x20(0x4)
+	uint32_t Row; // 0x24(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ContainerArmorConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FContainerArmorConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t price; // 0xC(0x4)
+	uint32_t Vest; // 0x10(0x4)
+	uint32_t Armor; // 0x14(0x4)
+	uint32_t BackPack; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ConsumablesUseAwardConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FConsumablesUseAwardConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t innergameactid; // 0xC(0x4)
+	uint32_t overallRandomAwards; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct TArray<struct FConsumablesUseAward> awards; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ConsumablesUseAward
+// Size: 0xC (Inherited: 0x0)
+struct FConsumablesUseAward
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+	uint32_t prob; // 0x8(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ConsumablesDetailConfTableRow
+// Size: 0x80 (Inherited: 0x8)
+struct FConsumablesDetailConfTableRow : FTableRowBase
+{
+	uint32_t consumables_id; // 0x8(0x4)
+	uint32_t start_time; // 0xC(0x4)
+	uint32_t energy_value; // 0x10(0x4)
+	int32_t hydration_value; // 0x14(0x4)
+	int32_t food_value; // 0x18(0x4)
+	float Treat_speed; // 0x1C(0x4)
+	int32_t minus_healthupper_value; // 0x20(0x4)
+	int32_t recover_health_value; // 0x24(0x4)
+	struct FText energy_recover_desc; // 0x28(0x18)
+	uint32_t remove_all_parts_buff; // 0x40(0x4)
+	uint8_t Pad_0x44[0x4]; // 0x44(0x4)
+	struct TArray<struct FConsumeRemoveStatusConf> remove_status_vec; // 0x48(0x10)
+	struct FText buff_extend_desc; // 0x58(0x18)
+	struct TArray<struct FConsumeBuffConf> buff_vec; // 0x70(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ConsumeBuffConf
+// Size: 0x8 (Inherited: 0x0)
+struct FConsumeBuffConf
+{
+	uint32_t buff_id; // 0x0(0x4)
+	uint32_t is_buff; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ConsumeRemoveStatusConf
+// Size: 0x8 (Inherited: 0x0)
+struct FConsumeRemoveStatusConf
+{
+	uint32_t remove_id; // 0x0(0x4)
+	uint32_t durability_consume; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ConsumablesConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FConsumablesConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t price; // 0xC(0x4)
+	struct TArray<struct FRecommandSuppliesPack> RecommandSuppliesPackList; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.RecommandSuppliesPack
+// Size: 0x8 (Inherited: 0x0)
+struct FRecommandSuppliesPack
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ConsumablesBuffConfTableRow
+// Size: 0x78 (Inherited: 0x8)
+struct FConsumablesBuffConfTableRow : FTableRowBase
+{
+	uint32_t buff_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString logic_id; // 0x10(0x10)
+	struct FText Name; // 0x20(0x18)
+	struct FString ICON; // 0x38(0x10)
+	uint64_t delay_time; // 0x48(0x8)
+	uint64_t total_time; // 0x50(0x8)
+	uint64_t Value; // 0x58(0x8)
+	struct FText Describe; // 0x60(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.ConnectLineGameConfTableRow
+// Size: 0x50 (Inherited: 0x8)
+struct FConnectLineGameConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t belong_task; // 0xC(0x4)
+	struct FText rule_desc; // 0x10(0x18)
+	struct FString json_param; // 0x28(0x10)
+	uint32_t board_size_x; // 0x38(0x4)
+	uint32_t board_size_y; // 0x3C(0x4)
+	struct TArray<struct FLineGameItemInfo> item_info_list; // 0x40(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.LineGameItemInfo
+// Size: 0x14 (Inherited: 0x0)
+struct FLineGameItemInfo
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t item_icon_index; // 0x4(0x4)
+	uint32_t item_sel_bg_index; // 0x8(0x4)
+	int32_t pos_x; // 0xC(0x4)
+	int32_t pos_y; // 0x10(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.CompetitionTeamLogoConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FCompetitionTeamLogoConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString logo_cdn; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.CompetitionTeamFactionConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FCompetitionTeamFactionConfTableRow : FTableRowBase
+{
+	uint32_t play_mode_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<struct FCompetitionTeamFaction> team_faction; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.CompetitionTeamFaction
+// Size: 0x8 (Inherited: 0x0)
+struct FCompetitionTeamFaction
+{
+	uint32_t team_id; // 0x0(0x4)
+	uint32_t faction_index; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.CompetitionDefaultTeamNameConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FCompetitionDefaultTeamNameConfTableRow : FTableRowBase
+{
+	uint32_t team_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString default_team_name; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.CompetitionAuthorityConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FCompetitionAuthorityConfTableRow : FTableRowBase
+{
+	uint64_t GOpenID; // 0x8(0x8)
+	uint32_t authority; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.CommonKVConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FCommonKVConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	int64_t Val; // 0x10(0x8)
+	struct TArray<int64_t> val_array; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.CommonCreditLimitSceneTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FCommonCreditLimitSceneTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString scene_id; // 0x10(0x10)
+	uint32_t need_ntf; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+	struct FText ntf_msg; // 0x28(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.CommonCreditLimitConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FCommonCreditLimitConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Type; // 0xC(0x4)
+	int32_t group_id; // 0x10(0x4)
+	int32_t threshold_lo; // 0x14(0x4)
+	int32_t threshold_hi; // 0x18(0x4)
+	int32_t is_tag_used; // 0x1C(0x4)
+	struct FString tag_type; // 0x20(0x10)
+	int32_t tag_lo; // 0x30(0x4)
+	int32_t tag_hi; // 0x34(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.CommonAffixsConfTableRow
+// Size: 0xC0 (Inherited: 0x8)
+struct FCommonAffixsConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString FieldName; // 0x10(0x10)
+	int8_t ShowIndex; // 0x20(0x1)
+	int8_t AccesoryShowIndex; // 0x21(0x1)
+	uint8_t Pad_0x22[0x6]; // 0x22(0x6)
+	struct FText DisplayName; // 0x28(0x18)
+	uint32_t Algorithm; // 0x40(0x4)
+	uint32_t IsWeaponBase; // 0x44(0x4)
+	struct FString AccesoryFormat; // 0x48(0x10)
+	struct FString WeaponFormat; // 0x58(0x10)
+	struct FText WeaponUnit; // 0x68(0x18)
+	struct FText AccesoryUnit; // 0x80(0x18)
+	float Rato; // 0x98(0x4)
+	uint32_t LessIsBetter; // 0x9C(0x4)
+	int32_t MaxValue; // 0xA0(0x4)
+	uint32_t displayType; // 0xA4(0x4)
+	uint32_t IsBaseAttr; // 0xA8(0x4)
+	uint32_t isNegative; // 0xAC(0x4)
+	struct TArray<struct FText> ParamsArray; // 0xB0(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.CommercialSchemeConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FCommercialSchemeConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString SchemeConf; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ComebackConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FComebackConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t afktime_p1; // 0xC(0x4)
+	uint32_t afktime_p2; // 0x10(0x4)
+	uint32_t rankedlv_p1; // 0x14(0x4)
+	uint32_t rankedlv_p2; // 0x18(0x4)
+	uint32_t Value; // 0x1C(0x4)
+	uint32_t Tag; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.CombatReadinessInitConfTableRow
+// Size: 0x50 (Inherited: 0x8)
+struct FCombatReadinessInitConfTableRow : FTableRowBase
+{
+	uint32_t Type; // 0x8(0x4)
+	uint32_t Version; // 0xC(0x4)
+	struct TArray<uint32_t> initializer_list; // 0x10(0x10)
+	struct TArray<uint32_t> discard_list; // 0x20(0x10)
+	struct TArray<uint32_t> oversea_initializer_list; // 0x30(0x10)
+	struct TArray<uint32_t> oversea_discard_list; // 0x40(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.CombatReadinessConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FCombatReadinessConfTableRow : FTableRowBase
+{
+	uint32_t Type; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<uint32_t> recommend_list; // 0x10(0x10)
+	struct TArray<uint32_t> oversea_recommend_list; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.CollectsvrKVConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FCollectsvrKVConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	int64_t Val; // 0x10(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.ClueListTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FClueListTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t belong; // 0xC(0x4)
+	struct FText clue; // 0x10(0x18)
+	struct FText clueDesc; // 0x28(0x18)
+	uint32_t nodeType; // 0x40(0x4)
+	uint32_t dispOrder; // 0x44(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ClueConnectionListTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FClueConnectionListTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t belong; // 0xC(0x4)
+	uint32_t Source; // 0x10(0x4)
+	uint32_t Target; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ClanKVConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FClanKVConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	int64_t Val; // 0x10(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.CityConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FCityConfTableRow : FTableRowBase
+{
+	uint32_t ADCode; // 0x8(0x4)
+	uint32_t ID; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ChatTemplateConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FChatTemplateConfTableRow : FTableRowBase
+{
+	uint32_t template_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText template_content; // 0x10(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.ChatLocalBlockConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FChatLocalBlockConfTableRow : FTableRowBase
+{
+	uint32_t sender_language_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<uint32_t> local_language_ids; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ChatKVConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FChatKVConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	int64_t Val; // 0x10(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.ChatDialogBubbleConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FChatDialogBubbleConfTableRow : FTableRowBase
+{
+	uint32_t bubbleId; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText getMethodDesc; // 0x10(0x18)
+	int32_t bubbleLevel; // 0x28(0x4)
+	uint32_t Level; // 0x2C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ChannelPromotionConfTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FChannelPromotionConfTableRow : FTableRowBase
+{
+	uint32_t plat_type; // 0x8(0x4)
+	uint32_t channel_number; // 0xC(0x4)
+	uint32_t channel_type; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct FText Desc; // 0x18(0x18)
+	struct FText jump_url; // 0x30(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.ChannelDefineConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FChannelDefineConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Name; // 0x10(0x18)
+	struct FString IconPath; // 0x28(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ChainPlotConfTableRow
+// Size: 0x80 (Inherited: 0x8)
+struct FChainPlotConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<uint32_t> behavior_node_ids_in_plot_node; // 0x10(0x10)
+	struct FText section_of_plot; // 0x20(0x18)
+	struct FText plot_node_name; // 0x38(0x18)
+	struct FSoftObjectPath plot_node_icon; // 0x50(0x18)
+	uint32_t plot_node_type; // 0x68(0x4)
+	uint32_t next_plot_node; // 0x6C(0x4)
+	struct FString json_param; // 0x70(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.CarvingShowConfTableRow
+// Size: 0x70 (Inherited: 0x8)
+struct FCarvingShowConfTableRow : FTableRowBase
+{
+	uint32_t itemID; // 0x8(0x4)
+	uint32_t PerformID; // 0xC(0x4)
+	struct FText MeleeName; // 0x10(0x18)
+	struct FText LevelName; // 0x28(0x18)
+	uint32_t SuitId; // 0x40(0x4)
+	uint8_t Pad_0x44[0x4]; // 0x44(0x4)
+	struct TArray<uint32_t> DressAvatar; // 0x48(0x10)
+	struct TArray<uint32_t> DressSpray; // 0x58(0x10)
+	uint32_t HeadWearEquip; // 0x68(0x4)
+	uint8_t Pad_0x6C[0x4]; // 0x6C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.CardpvpKVConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FCardpvpKVConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	int64_t Val; // 0x10(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.CardConfTableRow
+// Size: 0x60 (Inherited: 0x8)
+struct FCardConfTableRow : FTableRowBase
+{
+	uint32_t card_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString asset_id; // 0x10(0x10)
+	uint32_t jump_id; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+	struct FText get_tip; // 0x28(0x18)
+	uint32_t card_type; // 0x40(0x4)
+	uint8_t Pad_0x44[0x4]; // 0x44(0x4)
+	struct TArray<uint32_t> effect_color; // 0x48(0x10)
+	uint32_t Level; // 0x58(0x4)
+	uint8_t Pad_0x5C[0x4]; // 0x5C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.CaptureTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FCaptureTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	int32_t X; // 0xC(0x4)
+	int32_t Y; // 0x10(0x4)
+	int32_t Z; // 0x14(0x4)
+	uint32_t LightGroupType; // 0x18(0x4)
+	bool bAdjustFoldBounds; // 0x1C(0x1)
+	uint8_t Pad_0x1D[0x3]; // 0x1D(0x3)
+	float FoldBoundsRate; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.CanaryUserConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FCanaryUserConfTableRow : FTableRowBase
+{
+	uint64_t GOpenID; // 0x8(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.CalendarEventConfTableRow
+// Size: 0x60 (Inherited: 0x8)
+struct FCalendarEventConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString event_name; // 0x10(0x10)
+	struct FDateTime event_start_time; // 0x20(0x8)
+	struct FDateTime event_display_time; // 0x28(0x8)
+	struct FString calendar_title; // 0x30(0x10)
+	struct FDateTime calendar_start_time; // 0x40(0x8)
+	struct FDateTime calendar_end_time; // 0x48(0x8)
+	struct FString calendar_note; // 0x50(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.CalExtendConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FCalExtendConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Lower_Price; // 0xC(0x4)
+	uint32_t Upper_Price; // 0x10(0x4)
+	uint32_t Lower_Extend; // 0x14(0x4)
+	uint32_t Upper_Extend; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.CGVoiceConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FCGVoiceConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString voice_name; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.BusinessmanStageConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FBusinessmanStageConfTableRow : FTableRowBase
+{
+	uint32_t businessman_id; // 0x8(0x4)
+	uint32_t stage_id; // 0xC(0x4)
+	uint32_t cond_type; // 0x10(0x4)
+	uint32_t cond_param; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.BusinessmanConfTableRow
+// Size: 0xD8 (Inherited: 0x8)
+struct FBusinessmanConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t businessman_type; // 0xC(0x4)
+	uint32_t system_lock_id; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct TArray<struct FBusinessBaseInfoVec> base_info_vec; // 0x18(0x10)
+	struct FString icon_path; // 0x28(0x10)
+	struct FText reputation_display_name; // 0x38(0x18)
+	struct FDateTime refresh_begin_time; // 0x50(0x8)
+	uint32_t refresh_period; // 0x58(0x4)
+	uint32_t money_id; // 0x5C(0x4)
+	struct TArray<uint64_t> item_types; // 0x60(0x10)
+	uint32_t point_key_unlock; // 0x70(0x4)
+	uint32_t point_key_trade_unlock; // 0x74(0x4)
+	uint32_t can_sell; // 0x78(0x4)
+	uint32_t can_buy; // 0x7C(0x4)
+	struct TArray<struct FShowTimeConf> show_time_vec; // 0x80(0x10)
+	uint32_t is_hide; // 0x90(0x4)
+	uint32_t is_faction_only; // 0x94(0x4)
+	uint32_t jump_id; // 0x98(0x4)
+	uint8_t Pad_0x9C[0x4]; // 0x9C(0x4)
+	struct FDateTime jump_begin_time; // 0xA0(0x8)
+	struct FDateTime jump_end_time; // 0xA8(0x8)
+	uint32_t show_order; // 0xB0(0x4)
+	uint8_t Pad_0xB4[0x4]; // 0xB4(0x4)
+	struct FString function_icon; // 0xB8(0x10)
+	struct FString function_des; // 0xC8(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ShowTimeConf
+// Size: 0x10 (Inherited: 0x0)
+struct FShowTimeConf
+{
+	struct FDateTime start_time; // 0x0(0x8)
+	struct FDateTime end_time; // 0x8(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.BusinessBaseInfoVec
+// Size: 0x30 (Inherited: 0x0)
+struct FBusinessBaseInfoVec
+{
+	struct FText Name; // 0x0(0x18)
+	struct FText Description; // 0x18(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.BusinessGrateDescribeConfTableRow
+// Size: 0xC8 (Inherited: 0x8)
+struct FBusinessGrateDescribeConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText leveldescribe; // 0x10(0x18)
+	struct FText selltype; // 0x28(0x18)
+	struct FString selltypeicon; // 0x40(0x10)
+	struct FText leveltextdes; // 0x50(0x18)
+	struct FText loyaltyonedata; // 0x68(0x18)
+	struct FText loyaltytwodata; // 0x80(0x18)
+	struct FText loyaltythreedata; // 0x98(0x18)
+	struct FText loyaltyfourdata; // 0xB0(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.BulletPrepareConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FBulletPrepareConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t bullet_fill_step; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.BulletDetailConfTableRow
+// Size: 0xF8 (Inherited: 0x8)
+struct FBulletDetailConfTableRow : FTableRowBase
+{
+	uint32_t itemID; // 0x8(0x4)
+	float BaseDamage; // 0xC(0x4)
+	float BaseSpeed; // 0x10(0x4)
+	float PenetrationFactor; // 0x14(0x4)
+	int32_t PenetrationLevel; // 0x18(0x4)
+	float BrokenProbability; // 0x1C(0x4)
+	float BrokenDamageScale; // 0x20(0x4)
+	float ArmorDamage; // 0x24(0x4)
+	float BleedProbabilityForPenetration; // 0x28(0x4)
+	float BleedProbabilityForBlock; // 0x2C(0x4)
+	float BleedProbabilityForBody; // 0x30(0x4)
+	uint8_t Pad_0x34[0x4]; // 0x34(0x4)
+	struct FText BleedProbabilityDisplay; // 0x38(0x18)
+	float HitSlowDownEffectScale; // 0x50(0x4)
+	float HitSlowDownEffectScaleForPenetration; // 0x54(0x4)
+	float HitSlowDownTime; // 0x58(0x4)
+	uint8_t Pad_0x5C[0x4]; // 0x5C(0x4)
+	struct FText HitSlowDownEffectDisplay; // 0x60(0x18)
+	struct FText HitSlowDownTimeDisplay; // 0x78(0x18)
+	struct FString assembleTag; // 0x90(0x10)
+	uint64_t slot_type; // 0xA0(0x8)
+	int32_t ShotsInOneBullet; // 0xA8(0x4)
+	float BodyHitThroughDamageFactor; // 0xAC(0x4)
+	struct FString PrimaryHitBones; // 0xB0(0x10)
+	struct FString SecondaryHitBones; // 0xC0(0x10)
+	float MoaX; // 0xD0(0x4)
+	float MoaY; // 0xD4(0x4)
+	float HorizontalRecoil; // 0xD8(0x4)
+	float VerticalRecoil; // 0xDC(0x4)
+	uint32_t ZeroDropDistance; // 0xE0(0x4)
+	float EnergyBreak; // 0xE4(0x4)
+	struct TArray<struct FVehiclePartsDamageScaleConf> VehiclePartsDamageScale; // 0xE8(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.VehiclePartsDamageScaleConf
+// Size: 0xC (Inherited: 0x0)
+struct FVehiclePartsDamageScaleConf
+{
+	float Body; // 0x0(0x4)
+	float Tire; // 0x4(0x4)
+	float Window; // 0x8(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.BulletConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FBulletConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t GunId; // 0xC(0x4)
+	struct TArray<struct FMagazineBulletPack> MagazineBulletList; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.MagazineBulletPack
+// Size: 0x8 (Inherited: 0x0)
+struct FMagazineBulletPack
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.BugTestTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FBugTestTableRow : FTableRowBase
+{
+	uint32_t show_order; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText battle_question; // 0x10(0x18)
+	struct FText other_question; // 0x28(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.BugSubmitConfTableRow
+// Size: 0x58 (Inherited: 0x8)
+struct FBugSubmitConfTableRow : FTableRowBase
+{
+	uint32_t show_order; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText battle_question; // 0x10(0x18)
+	struct FText other_question; // 0x28(0x18)
+	struct FText picture_quality_question; // 0x40(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.BuffIconConfTableRow
+// Size: 0x110 (Inherited: 0x8)
+struct FBuffIconConfTableRow : FTableRowBase
+{
+	uint32_t buff_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString buff_name; // 0x10(0x10)
+	struct FString icon_path; // 0x20(0x10)
+	struct FString inspecticon_path; // 0x30(0x10)
+	struct FText display_name; // 0x40(0x18)
+	struct FText Describe; // 0x58(0x18)
+	uint32_t Type; // 0x70(0x4)
+	uint32_t showicon; // 0x74(0x4)
+	uint32_t Priority; // 0x78(0x4)
+	uint8_t Pad_0x7C[0x4]; // 0x7C(0x4)
+	struct FString Show_Type; // 0x80(0x10)
+	struct FString part_head; // 0x90(0x10)
+	struct FString part_chest; // 0xA0(0x10)
+	struct FString part_stomach; // 0xB0(0x10)
+	struct FString part_leftarm; // 0xC0(0x10)
+	struct FString part_rightarm; // 0xD0(0x10)
+	struct FString part_leftleg; // 0xE0(0x10)
+	struct FString part_rightleg; // 0xF0(0x10)
+	struct FString sound_name; // 0x100(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.BrokenImageConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FBrokenImageConfTableRow : FTableRowBase
+{
+	uint32_t Index; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString FilePath; // 0x10(0x10)
+	float Left; // 0x20(0x4)
+	float Top; // 0x24(0x4)
+	float Right; // 0x28(0x4)
+	float Bottom; // 0x2C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.BpRewardConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FBpRewardConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t reward_id; // 0xC(0x4)
+	struct FText cdn; // 0x10(0x18)
+	uint32_t item_id; // 0x28(0x4)
+	uint32_t Num; // 0x2C(0x4)
+	uint32_t is_black; // 0x30(0x4)
+	uint32_t deluxe; // 0x34(0x4)
+	uint32_t Level; // 0x38(0x4)
+	uint32_t Type; // 0x3C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.BoxRowConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FBoxRowConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t row_count; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.BossTokenConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FBossTokenConfTableRow : FTableRowBase
+{
+	uint32_t GroupID; // 0x8(0x4)
+	uint32_t itemID; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.BornShowConfTableRow
+// Size: 0x108 (Inherited: 0x8)
+struct FBornShowConfTableRow : FTableRowBase
+{
+	uint32_t itemID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText LevelName; // 0x10(0x18)
+	struct FText AvatarSuitName; // 0x28(0x18)
+	struct FText AudioName; // 0x40(0x18)
+	struct FText VideoSound; // 0x58(0x18)
+	struct FText SeqTag; // 0x70(0x18)
+	uint32_t IsTeamDifferent; // 0x88(0x4)
+	uint8_t Pad_0x8C[0x4]; // 0x8C(0x4)
+	struct TArray<uint32_t> BranchItemId; // 0x90(0x10)
+	uint32_t Order; // 0xA0(0x4)
+	uint8_t Pad_0xA4[0x4]; // 0xA4(0x4)
+	struct TArray<uint32_t> DressAvatar_A; // 0xA8(0x10)
+	struct TArray<uint32_t> DressAvatar_C; // 0xB8(0x10)
+	struct TArray<uint32_t> DressAvatar_D; // 0xC8(0x10)
+	struct FText ShowLevelName; // 0xD8(0x18)
+	struct FText BattleResultShowSuitName; // 0xF0(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.BodyPartsTableTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FBodyPartsTableTableRow : FTableRowBase
+{
+	uint64_t PositionId; // 0x8(0x8)
+	struct FText Describe; // 0x10(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.BodyDetailsPartsTableTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FBodyDetailsPartsTableTableRow : FTableRowBase
+{
+	uint64_t PositionId; // 0x8(0x8)
+	uint64_t BodyPartId; // 0x10(0x8)
+	struct FText Describe; // 0x18(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.BlockWordIconCfgTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FBlockWordIconCfgTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText block_word; // 0x10(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.BlackMarketPoolConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FBlackMarketPoolConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Val; // 0xC(0x4)
+	struct FString Str; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.BlackMarketItemConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FBlackMarketItemConfTableRow : FTableRowBase
+{
+	uint32_t mall_item_id; // 0x8(0x4)
+	uint32_t normal_weight; // 0xC(0x4)
+	uint32_t guaranteed_weight; // 0x10(0x4)
+	uint32_t discount_lower_bound; // 0x14(0x4)
+	uint32_t discount_upper_bound; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.BlackListConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FBlackListConfTableRow : FTableRowBase
+{
+	uint64_t GOpenID; // 0x8(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.BenefitsRewardConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FBenefitsRewardConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t unlock_level; // 0xC(0x4)
+	uint32_t reward_item_id; // 0x10(0x4)
+	uint32_t reward_item_num; // 0x14(0x4)
+	struct FString pic; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.BenefitsItemConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FBenefitsItemConfTableRow : FTableRowBase
+{
+	uint32_t benefit_id; // 0x8(0x4)
+	uint32_t unlock_level; // 0xC(0x4)
+	uint32_t Val; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.BenefitsCommonConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FBenefitsCommonConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Val; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.BehaviorNodeConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FBehaviorNodeConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t node_type; // 0xC(0x4)
+	struct TArray<uint32_t> node_param; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.BehaviorGameplayConfTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FBehaviorGameplayConfTableRow : FTableRowBase
+{
+	uint32_t gameplay_id; // 0x8(0x4)
+	uint32_t Type; // 0xC(0x4)
+	struct TArray<uint32_t> ref_int_params; // 0x10(0x10)
+	struct FSoftObjectPath Image; // 0x20(0x18)
+	struct FString json_param; // 0x38(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.BehaviorDialogConfTableRow
+// Size: 0x138 (Inherited: 0x8)
+struct FBehaviorDialogConfTableRow : FTableRowBase
+{
+	uint32_t dialog_id; // 0x8(0x4)
+	uint32_t Next; // 0xC(0x4)
+	uint32_t Type; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct FText Name; // 0x18(0x18)
+	struct FText Content; // 0x30(0x18)
+	struct FSoftObjectPath ICON; // 0x48(0x18)
+	struct FText Text_1; // 0x60(0x18)
+	struct FText Text_2; // 0x78(0x18)
+	struct FSoftObjectPath Image_1; // 0x90(0x18)
+	struct FSoftObjectPath Image_2; // 0xA8(0x18)
+	struct FText voice_event; // 0xC0(0x18)
+	struct FText Param1; // 0xD8(0x18)
+	struct FText Param2; // 0xF0(0x18)
+	struct FText Param3; // 0x108(0x18)
+	struct FText Param4; // 0x120(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.BattleStatConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FBattleStatConfTableRow : FTableRowBase
+{
+	uint32_t stat_type; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.BattleResultTransTemplateConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FBattleResultTransTemplateConfTableRow : FTableRowBase
+{
+	uint32_t template_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<uint32_t> trans_id_list; // 0x10(0x10)
+	struct TArray<uint32_t> game_trans_id_list; // 0x20(0x10)
+	uint32_t mail_id; // 0x30(0x4)
+	uint32_t team_mail_id; // 0x34(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.BattleResultTransConfTableRow
+// Size: 0xC0 (Inherited: 0x8)
+struct FBattleResultTransConfTableRow : FTableRowBase
+{
+	uint32_t trans_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	int64_t event_id; // 0x10(0x8)
+	int64_t coeff; // 0x18(0x8)
+	uint32_t item_id; // 0x20(0x4)
+	uint32_t max_num; // 0x24(0x4)
+	struct TArray<struct FTransConditionConf> Conditions; // 0x28(0x10)
+	struct TArray<struct FTransAwardConf> awards; // 0x38(0x10)
+	struct FText EventName; // 0x48(0x18)
+	uint32_t DescType; // 0x60(0x4)
+	uint8_t Pad_0x64[0x4]; // 0x64(0x4)
+	struct FText Scale; // 0x68(0x18)
+	struct FText Format; // 0x80(0x18)
+	struct FText Unit; // 0x98(0x18)
+	uint32_t RoundingType; // 0xB0(0x4)
+	uint32_t is_team_cal; // 0xB4(0x4)
+	uint32_t team_cal_op; // 0xB8(0x4)
+	uint8_t Pad_0xBC[0x4]; // 0xBC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.TransAwardConf
+// Size: 0x28 (Inherited: 0x0)
+struct FTransAwardConf
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint8_t Pad_0x4[0x4]; // 0x4(0x4)
+	struct FText item_num_expression; // 0x8(0x18)
+	uint32_t max_num; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.TransConditionConf
+// Size: 0x28 (Inherited: 0x0)
+struct FTransConditionConf
+{
+	struct FText expression; // 0x0(0x18)
+	uint32_t Op; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	int64_t Val; // 0x20(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.BattleResultTeachTableRow
+// Size: 0x98 (Inherited: 0x8)
+struct FBattleResultTeachTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText titlesToShown; // 0x10(0x18)
+	struct FText tipsToShown; // 0x28(0x18)
+	struct FText buttonToNext; // 0x40(0x18)
+	struct FString picturePosition; // 0x58(0x10)
+	struct FString picturePosition2; // 0x68(0x10)
+	uint32_t lifeTimeShown; // 0x78(0x4)
+	uint8_t Pad_0x7C[0x4]; // 0x7C(0x4)
+	struct FText tipsForUser; // 0x80(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.BattleResultReferTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FBattleResultReferTableRow : FTableRowBase
+{
+	uint32_t StatisticsId; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Describe; // 0x10(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.BattleResultPointEventConfTableRow
+// Size: 0x138 (Inherited: 0x8)
+struct FBattleResultPointEventConfTableRow : FTableRowBase
+{
+	uint32_t EventId; // 0x8(0x4)
+	uint32_t EventType; // 0xC(0x4)
+	uint32_t CombinedEventType; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct FString EventImgPath; // 0x18(0x10)
+	uint32_t EventLevel; // 0x28(0x4)
+	uint32_t SkipMark; // 0x2C(0x4)
+	struct TArray<struct FText> ignore_multi_mode_list; // 0x30(0x10)
+	struct FText EventTypeDes; // 0x40(0x18)
+	struct FText EventTitle; // 0x58(0x18)
+	struct FText DescribeWord; // 0x70(0x18)
+	uint32_t SummaryWeigth; // 0x88(0x4)
+	uint32_t Weight; // 0x8C(0x4)
+	uint32_t ShareShowType; // 0x90(0x4)
+	uint8_t Pad_0x94[0x4]; // 0x94(0x4)
+	struct FText ShareTitle; // 0x98(0x18)
+	struct FText ShareDes; // 0xB0(0x18)
+	struct FText CombinedShareDes; // 0xC8(0x18)
+	uint32_t ShareImgType; // 0xE0(0x4)
+	uint8_t Pad_0xE4[0x4]; // 0xE4(0x4)
+	struct FString ShareImgPath; // 0xE8(0x10)
+	uint32_t ExtraInfo1; // 0xF8(0x4)
+	uint8_t Pad_0xFC[0x4]; // 0xFC(0x4)
+	struct TArray<struct FDescribeArg> DescribeWordArgsList; // 0x100(0x10)
+	struct FText CombinedDescribeWord; // 0x110(0x18)
+	struct TArray<struct FDescribeArg> CombinedDescribeWordArgsList; // 0x128(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.DescribeArg
+// Size: 0x28 (Inherited: 0x0)
+struct FDescribeArg
+{
+	struct FString arg; // 0x0(0x10)
+	uint32_t ResolveMethod; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct FString LocalizationKey; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.BattleResultMultiModeConfTableRow
+// Size: 0x58 (Inherited: 0x8)
+struct FBattleResultMultiModeConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Name; // 0x10(0x18)
+	struct TArray<uint32_t> BattleResultDetailPanelTabArray; // 0x28(0x10)
+	struct TArray<uint32_t> BattleResultPanelTaskArray; // 0x38(0x10)
+	struct TArray<struct FBattleResultMainShowData> BattleResultMainShowDataArray; // 0x48(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.BattleResultMainShowData
+// Size: 0x28 (Inherited: 0x0)
+struct FBattleResultMainShowData
+{
+	struct FString TitleKey; // 0x0(0x10)
+	uint32_t Type; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct FString Param1; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.BattleResultKillTitleTableRow
+// Size: 0x58 (Inherited: 0x8)
+struct FBattleResultKillTitleTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t KillNum; // 0xC(0x4)
+	uint32_t KillBossNum; // 0x10(0x4)
+	uint32_t KillPMCNum; // 0x14(0x4)
+	uint32_t killScavNumButBoss; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	struct FText killTitle; // 0x20(0x18)
+	struct FText TitleText; // 0x38(0x18)
+	uint32_t Weight; // 0x50(0x4)
+	uint8_t Pad_0x54[0x4]; // 0x54(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.BattleResultJudgeReasonTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FBattleResultJudgeReasonTableRow : FTableRowBase
+{
+	uint32_t reason_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<struct FReasonDesc> reason_list; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.BattleResultJudgeConfTableRow
+// Size: 0x90 (Inherited: 0x8)
+struct FBattleResultJudgeConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Title; // 0x10(0x18)
+	struct FText des; // 0x28(0x18)
+	uint32_t Propotion; // 0x40(0x4)
+	uint32_t CountDown; // 0x44(0x4)
+	struct TArray<struct FBattleResultJudgeConf> Conditions; // 0x48(0x10)
+	uint32_t TriggerPeriod; // 0x58(0x4)
+	uint8_t Pad_0x5C[0x4]; // 0x5C(0x4)
+	struct TArray<uint32_t> TriggerMultiMode; // 0x60(0x10)
+	struct TArray<uint32_t> TriggerMapId; // 0x70(0x10)
+	struct FDateTime begin_time; // 0x80(0x8)
+	struct FDateTime end_time; // 0x88(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.BattleResultJudgeConf
+// Size: 0x20 (Inherited: 0x0)
+struct FBattleResultJudgeConf
+{
+	struct FText expression; // 0x0(0x18)
+	uint32_t Op; // 0x18(0x4)
+	uint32_t Val; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.BattleResultInjuredRecordTableRow
+// Size: 0x50 (Inherited: 0x8)
+struct FBattleResultInjuredRecordTableRow : FTableRowBase
+{
+	uint32_t InjuredId; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText InjuredRecordDescription; // 0x10(0x18)
+	struct FText InjuredRecordDescribe; // 0x28(0x18)
+	struct FString InjuredFormType; // 0x40(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.BattleResultEnemyTipsFuncTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FBattleResultEnemyTipsFuncTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString CheckFunc; // 0x10(0x10)
+	struct TArray<struct FText> Params; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.BattleResultEnemyTipsTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FBattleResultEnemyTipsTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Priority; // 0xC(0x4)
+	struct FText Tips; // 0x10(0x18)
+	struct TArray<struct FCheckFuncs> CheckFuncs; // 0x28(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.CheckFuncs
+// Size: 0x8 (Inherited: 0x0)
+struct FCheckFuncs
+{
+	uint32_t funcId; // 0x0(0x4)
+	bool judgeResult; // 0x4(0x1)
+	uint8_t Pad_0x5[0x3]; // 0x5(0x3)
+};
+
+// Object: ScriptStruct UADataTableModule.BattleResultEXPRatioTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FBattleResultEXPRatioTableRow : FTableRowBase
+{
+	uint32_t ResultId; // 0x8(0x4)
+	uint32_t EXPRatio; // 0xC(0x4)
+	struct FText Describe; // 0x10(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.BattleResultDieTypeTableRow
+// Size: 0xC8 (Inherited: 0x8)
+struct FBattleResultDieTypeTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t DieType; // 0xC(0x4)
+	struct FString DetailBodyPart; // 0x10(0x10)
+	struct FString BodyPart; // 0x20(0x10)
+	uint32_t SpreadBodyPart; // 0x30(0x4)
+	uint32_t HitArmor; // 0x34(0x4)
+	uint32_t IsThough; // 0x38(0x4)
+	uint32_t OverBulletKill; // 0x3C(0x4)
+	struct TArray<uint32_t> DeathCauserIdList; // 0x40(0x10)
+	struct FText ResultTitle; // 0x50(0x18)
+	struct FText DamageWidgetTitle; // 0x68(0x18)
+	struct FText PenetrationWidgetTitle; // 0x80(0x18)
+	struct FString TipsArray; // 0x98(0x10)
+	struct FString DietypeImgPath; // 0xA8(0x10)
+	struct FString BulletImgPath; // 0xB8(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.BattleResultDieTipsTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FBattleResultDieTipsTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Tips; // 0x10(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.BattleResultConfTableRow
+// Size: 0x90 (Inherited: 0x8)
+struct FBattleResultConfTableRow : FTableRowBase
+{
+	uint64_t ID; // 0x8(0x8)
+	uint32_t AttributeType; // 0x10(0x4)
+	uint32_t Proportion; // 0x14(0x4)
+	struct FText Describe; // 0x18(0x18)
+	uint32_t FromType; // 0x30(0x4)
+	uint8_t Pad_0x34[0x4]; // 0x34(0x4)
+	struct TArray<uint32_t> AppendId; // 0x38(0x10)
+	struct FText Scale; // 0x48(0x18)
+	struct FString Format; // 0x60(0x10)
+	struct FText Unit; // 0x70(0x18)
+	uint32_t RoundingType; // 0x88(0x4)
+	uint8_t Pad_0x8C[0x4]; // 0x8C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.BattleResultBlockWeaponsConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FBattleResultBlockWeaponsConfTableRow : FTableRowBase
+{
+	uint32_t WeaponId; // 0x8(0x4)
+	uint32_t IsBlock_WeaponPanel; // 0xC(0x4)
+	uint32_t IsBlock_TipText; // 0x10(0x4)
+	uint32_t IsBlock_Avatar; // 0x14(0x4)
+	uint32_t IsBlock_PlayerInfo; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.BattleResultAreaConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FBattleResultAreaConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText AreaName; // 0x10(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.BattleResultAppraiseSeasonConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FBattleResultAppraiseSeasonConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<uint32_t> appraise_id_list; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.BattleResultAppraiseActionConfTableRow
+// Size: 0xD8 (Inherited: 0x8)
+struct FBattleResultAppraiseActionConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Title; // 0x10(0x18)
+	struct FText des; // 0x28(0x18)
+	uint32_t Propotion; // 0x40(0x4)
+	uint8_t Pad_0x44[0x4]; // 0x44(0x4)
+	struct TArray<uint32_t> AppraiseIds; // 0x48(0x10)
+	struct FString LevelName; // 0x58(0x10)
+	struct FString SeqName; // 0x68(0x10)
+	uint32_t UMGAdaptType; // 0x78(0x4)
+	uint8_t Pad_0x7C[0x4]; // 0x7C(0x4)
+	struct FString AudioStateName; // 0x80(0x10)
+	struct FString BehaviourAnimName; // 0x90(0x10)
+	struct FString BossImg; // 0xA0(0x10)
+	struct FSoftObjectPath MeshSoftPath; // 0xB0(0x18)
+	struct FString AttachName; // 0xC8(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.BattleResultAppraiseTableRow
+// Size: 0x238 (Inherited: 0x8)
+struct FBattleResultAppraiseTableRow : FTableRowBase
+{
+	uint32_t AppraiseId; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText AppraiseName; // 0x10(0x18)
+	struct FText Describe; // 0x28(0x18)
+	struct FText DesWords; // 0x40(0x18)
+	struct FText HideName; // 0x58(0x18)
+	struct FText HideDesc; // 0x70(0x18)
+	struct TArray<int64_t> event_id_array; // 0x88(0x10)
+	struct TArray<int64_t> event_val_array; // 0x98(0x10)
+	struct TArray<uint32_t> ignore_multi_mode_list; // 0xA8(0x10)
+	struct TArray<struct FAppraiseConditionConf> Conditions; // 0xB8(0x10)
+	uint32_t is_show; // 0xC8(0x4)
+	uint8_t Pad_0xCC[0x4]; // 0xCC(0x4)
+	struct TArray<struct FShowConditionConf> show_conditions; // 0xD0(0x10)
+	int64_t basic_show_weight; // 0xE0(0x8)
+	struct FText show_weight_expression; // 0xE8(0x18)
+	int64_t min_show_weight; // 0x100(0x8)
+	int64_t max_show_weight; // 0x108(0x8)
+	struct FString ICON; // 0x110(0x10)
+	uint32_t Group; // 0x120(0x4)
+	uint32_t GroupShowIndex; // 0x124(0x4)
+	uint32_t Class; // 0x128(0x4)
+	uint32_t ClassIndex; // 0x12C(0x4)
+	uint32_t Quality; // 0x130(0x4)
+	uint8_t Pad_0x134[0x4]; // 0x134(0x4)
+	struct FString Border; // 0x138(0x10)
+	struct TArray<uint32_t> FacePicMapUnlockIds; // 0x148(0x10)
+	uint32_t SeasonPropotion; // 0x158(0x4)
+	uint32_t Proportion; // 0x15C(0x4)
+	uint32_t PlatformCDNImageURLID; // 0x160(0x4)
+	uint8_t Pad_0x164[0x4]; // 0x164(0x4)
+	struct FText MagazineShareDesc; // 0x168(0x18)
+	uint32_t AppraiseImageIndex; // 0x180(0x4)
+	uint8_t Pad_0x184[0x4]; // 0x184(0x4)
+	struct FText BattleResultBossImagePath; // 0x188(0x18)
+	struct FText BattleResultSuppliesOutImageCDN; // 0x1A0(0x18)
+	struct FText DataDes; // 0x1B8(0x18)
+	struct FText ShareDescribe; // 0x1D0(0x18)
+	struct FText ShareDesWords; // 0x1E8(0x18)
+	uint32_t CanShare; // 0x200(0x4)
+	uint32_t SeasonForceShowType; // 0x204(0x4)
+	uint32_t ForceShowType; // 0x208(0x4)
+	uint32_t Type; // 0x20C(0x4)
+	uint32_t HistoryShareType; // 0x210(0x4)
+	uint32_t AppraiseShowType; // 0x214(0x4)
+	uint32_t TimeShow; // 0x218(0x4)
+	uint32_t Param1; // 0x21C(0x4)
+	uint32_t Param2; // 0x220(0x4)
+	uint32_t Param3; // 0x224(0x4)
+	struct TArray<struct FShareDesArg> ShareDesArgList; // 0x228(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ShareDesArg
+// Size: 0x18 (Inherited: 0x0)
+struct FShareDesArg
+{
+	uint32_t Type; // 0x0(0x4)
+	uint32_t Param1; // 0x4(0x4)
+	struct FString LocalizationKey; // 0x8(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ShowConditionConf
+// Size: 0x28 (Inherited: 0x0)
+struct FShowConditionConf
+{
+	struct FText expression; // 0x0(0x18)
+	uint32_t Op; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	int64_t Val; // 0x20(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.AppraiseConditionConf
+// Size: 0x28 (Inherited: 0x0)
+struct FAppraiseConditionConf
+{
+	struct FText expression; // 0x0(0x18)
+	uint32_t Op; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	int64_t Val; // 0x20(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.BattlePassWorldLevelConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FBattlePassWorldLevelConfTableRow : FTableRowBase
+{
+	uint32_t week_idx; // 0x8(0x4)
+	uint32_t Level; // 0xC(0x4)
+	uint32_t delta_level; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.BattlePassVipShowConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FBattlePassVipShowConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t group_id; // 0xC(0x4)
+	uint32_t vip_id; // 0x10(0x4)
+	uint32_t is_extra; // 0x14(0x4)
+	struct TArray<struct FBattlePassVipShowItem> award; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.BattlePassVipShowItem
+// Size: 0x40 (Inherited: 0x0)
+struct FBattlePassVipShowItem
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+	uint32_t is_black; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText unlock_desc; // 0x10(0x18)
+	struct FText item_desc; // 0x28(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.BattlePassVipPreorderConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FBattlePassVipPreorderConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t group_id; // 0xC(0x4)
+	uint32_t season_id; // 0x10(0x4)
+	uint32_t pre_vip_lv; // 0x14(0x4)
+	uint32_t vip_lv; // 0x18(0x4)
+	uint32_t mail_id; // 0x1C(0x4)
+	struct TArray<struct FBattlePassVipPreorderItemConf> rewards; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.BattlePassVipPreorderItemConf
+// Size: 0xC (Inherited: 0x0)
+struct FBattlePassVipPreorderItemConf
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+	uint32_t is_show; // 0x8(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.BattlePassVipConfTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FBattlePassVipConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t group_id; // 0xC(0x4)
+	uint32_t pre_vip_lv; // 0x10(0x4)
+	uint32_t vip_lv; // 0x14(0x4)
+	struct FText Name; // 0x18(0x18)
+	uint32_t purchase_id; // 0x30(0x4)
+	uint8_t Pad_0x34[0x4]; // 0x34(0x4)
+	struct TArray<struct FBattlePassVipItem> award; // 0x38(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.BattlePassVipItem
+// Size: 0x10 (Inherited: 0x0)
+struct FBattlePassVipItem
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+	uint32_t Show_Type; // 0x8(0x4)
+	uint32_t is_black; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.BattlePassShowTypeTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FBattlePassShowTypeTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Show_Type; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.BattlePassShowRewardConfTableRow
+// Size: 0x78 (Inherited: 0x8)
+struct FBattlePassShowRewardConfTableRow : FTableRowBase
+{
+	uint32_t group_id; // 0x8(0x4)
+	uint32_t core_avatar1; // 0xC(0x4)
+	uint32_t core_avatar2; // 0x10(0x4)
+	uint32_t currency; // 0x14(0x4)
+	uint32_t currency_num; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	struct TArray<uint32_t> avatar_items; // 0x20(0x10)
+	struct TArray<uint32_t> reward_items; // 0x30(0x10)
+	struct TArray<uint32_t> weapon_items; // 0x40(0x10)
+	struct TArray<uint32_t> rich_list; // 0x50(0x10)
+	struct FText cdn; // 0x60(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.BattlePassPreviewConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FBattlePassPreviewConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t group_id; // 0xC(0x4)
+	uint32_t vip_lv; // 0x10(0x4)
+	uint32_t pre_idx; // 0x14(0x4)
+	uint32_t item_id; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	struct FText item_name; // 0x20(0x18)
+	uint32_t rarity; // 0x38(0x4)
+	uint32_t Tag; // 0x3C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.BattlePassOtherWayTableRow
+// Size: 0x60 (Inherited: 0x8)
+struct FBattlePassOtherWayTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t unlock_level; // 0xC(0x4)
+	uint32_t is_new; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct FDateTime start_time; // 0x18(0x8)
+	struct FDateTime end_time; // 0x20(0x8)
+	struct FText Desc; // 0x28(0x18)
+	uint32_t jump_goto; // 0x40(0x4)
+	uint8_t Pad_0x44[0x4]; // 0x44(0x4)
+	struct FText btn_title; // 0x48(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.BattlePassLevelConfTableRow
+// Size: 0x60 (Inherited: 0x8)
+struct FBattlePassLevelConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Level; // 0xC(0x4)
+	uint32_t end_level; // 0x10(0x4)
+	uint32_t group_id; // 0x14(0x4)
+	uint32_t cluster_id; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	struct TArray<struct FBattlePassLevelItem> award; // 0x20(0x10)
+	struct TArray<struct FBattlePassLevelItem> extra_award; // 0x30(0x10)
+	struct FString on_main_show; // 0x40(0x10)
+	struct FString big_picture; // 0x50(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.BattlePassLevelItem
+// Size: 0x10 (Inherited: 0x0)
+struct FBattlePassLevelItem
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+	uint32_t seq_type; // 0x8(0x4)
+	uint32_t is_black; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.BattlePassHallPopTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FBattlePassHallPopTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<struct FBattlePassHallPopItem> popInfo; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.BattlePassHallPopItem
+// Size: 0x30 (Inherited: 0x0)
+struct FBattlePassHallPopItem
+{
+	uint32_t pop_type; // 0x0(0x4)
+	uint8_t Pad_0x4[0x4]; // 0x4(0x4)
+	struct FDateTime start_time; // 0x8(0x8)
+	struct FDateTime end_time; // 0x10(0x8)
+	struct FText pop_des; // 0x18(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.BattlePassConfTableRow
+// Size: 0xD0 (Inherited: 0x8)
+struct FBattlePassConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t max_level; // 0xC(0x4)
+	uint32_t award_max_level; // 0x10(0x4)
+	uint32_t need_exp; // 0x14(0x4)
+	uint32_t buy_exp_item; // 0x18(0x4)
+	uint32_t buy_exp_cost; // 0x1C(0x4)
+	uint32_t basic_weary_value; // 0x20(0x4)
+	uint32_t extra_weary_value; // 0x24(0x4)
+	int32_t exp2weary_scale; // 0x28(0x4)
+	uint32_t change_tag_show; // 0x2C(0x4)
+	struct FDateTime cant_vip_start_time; // 0x30(0x8)
+	struct FDateTime cant_vip_end_time; // 0x38(0x8)
+	struct FText sub_title; // 0x40(0x18)
+	struct FString level_bg_path; // 0x58(0x10)
+	struct TArray<uint32_t> try_wear_list; // 0x68(0x10)
+	struct TArray<uint32_t> upgrade_step; // 0x78(0x10)
+	struct FText growup_items_desc; // 0x88(0x18)
+	struct FText cg_name; // 0xA0(0x18)
+	struct FText cg_audio; // 0xB8(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.BattlePassCommonMeshConfTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FBattlePassCommonMeshConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString Resource; // 0x10(0x10)
+	int32_t location_x; // 0x20(0x4)
+	int32_t location_y; // 0x24(0x4)
+	int32_t location_z; // 0x28(0x4)
+	int32_t rotator_x; // 0x2C(0x4)
+	int32_t rotator_y; // 0x30(0x4)
+	int32_t rotator_z; // 0x34(0x4)
+	int32_t scale_x; // 0x38(0x4)
+	int32_t scale_y; // 0x3C(0x4)
+	int32_t scale_z; // 0x40(0x4)
+	uint8_t Pad_0x44[0x4]; // 0x44(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.BattlePassAwardItemsConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FBattlePassAwardItemsConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<struct FBlackItemConf> award; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.BattlePassABVipConfTableRow
+// Size: 0x60 (Inherited: 0x8)
+struct FBattlePassABVipConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t group_id; // 0xC(0x4)
+	uint32_t pre_vip_lv; // 0x10(0x4)
+	uint32_t vip_lv; // 0x14(0x4)
+	struct FText Name; // 0x18(0x18)
+	uint32_t purchase_id; // 0x30(0x4)
+	uint8_t Pad_0x34[0x4]; // 0x34(0x4)
+	struct TArray<struct FBattlePassABVipItem> award; // 0x38(0x10)
+	struct FText vip_desc; // 0x48(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.BattlePassABVipItem
+// Size: 0x10 (Inherited: 0x0)
+struct FBattlePassABVipItem
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+	uint32_t Show_Type; // 0x8(0x4)
+	uint32_t is_black; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.BattlePassABSeasonPreviewConfTableRow
+// Size: 0x70 (Inherited: 0x8)
+struct FBattlePassABSeasonPreviewConfTableRow : FTableRowBase
+{
+	uint32_t season_id; // 0x8(0x4)
+	uint32_t mall_item_id; // 0xC(0x4)
+	struct FText Desc; // 0x10(0x18)
+	struct FString icon_cdn_path; // 0x28(0x10)
+	struct FText vip_desc; // 0x38(0x18)
+	struct TArray<struct FABGroupListConf> group_list; // 0x50(0x10)
+	struct TArray<struct FABSeasonPreviewItemConf> item_list; // 0x60(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ABSeasonPreviewItemConf
+// Size: 0x4 (Inherited: 0x0)
+struct FABSeasonPreviewItemConf
+{
+	uint32_t item_index; // 0x0(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ABGroupListConf
+// Size: 0x4 (Inherited: 0x0)
+struct FABGroupListConf
+{
+	uint32_t group_id; // 0x0(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.BattlePassABSeasonBuyConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FBattlePassABSeasonBuyConfTableRow : FTableRowBase
+{
+	uint32_t season_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<struct FBattlePassABSeasonBuyItem> award; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.BattlePassABSeasonBuyItem
+// Size: 0x8 (Inherited: 0x0)
+struct FBattlePassABSeasonBuyItem
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.BattlePassABPreviewConfTableRow
+// Size: 0x58 (Inherited: 0x8)
+struct FBattlePassABPreviewConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t group_id; // 0xC(0x4)
+	uint32_t vip_lv; // 0x10(0x4)
+	uint32_t pre_idx; // 0x14(0x4)
+	uint32_t item_id; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	struct FText item_name; // 0x20(0x18)
+	uint32_t rarity; // 0x38(0x4)
+	uint32_t Tag; // 0x3C(0x4)
+	uint32_t jump_type; // 0x40(0x4)
+	uint8_t Pad_0x44[0x4]; // 0x44(0x4)
+	struct FString cdn_path; // 0x48(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.BattlePassABLevelConfTableRow
+// Size: 0x60 (Inherited: 0x8)
+struct FBattlePassABLevelConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Level; // 0xC(0x4)
+	uint32_t end_level; // 0x10(0x4)
+	uint32_t group_id; // 0x14(0x4)
+	uint32_t cluster_id; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	struct TArray<struct FBattlePassABLevelItem> award; // 0x20(0x10)
+	struct TArray<struct FBattlePassABLevelItem> extra_award; // 0x30(0x10)
+	struct FString on_main_show; // 0x40(0x10)
+	struct FString big_picture; // 0x50(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.BattlePassABLevelItem
+// Size: 0x10 (Inherited: 0x0)
+struct FBattlePassABLevelItem
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+	uint32_t seq_type; // 0x8(0x4)
+	uint32_t is_black; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.BattlePassABGroupConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FBattlePassABGroupConfTableRow : FTableRowBase
+{
+	uint32_t group_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString face_pic_bg; // 0x10(0x10)
+	struct TArray<struct FABPreviewItemConf> item_list; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ABPreviewItemConf
+// Size: 0x4 (Inherited: 0x0)
+struct FABPreviewItemConf
+{
+	uint32_t item_index; // 0x0(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.BattlePassABConfTableRow
+// Size: 0xC8 (Inherited: 0x8)
+struct FBattlePassABConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t max_level; // 0xC(0x4)
+	uint32_t award_max_level; // 0x10(0x4)
+	uint32_t need_exp; // 0x14(0x4)
+	uint32_t buy_exp_item; // 0x18(0x4)
+	uint32_t buy_exp_cost; // 0x1C(0x4)
+	uint32_t basic_weary_value; // 0x20(0x4)
+	uint32_t extra_weary_value; // 0x24(0x4)
+	int32_t exp2weary_scale; // 0x28(0x4)
+	uint32_t change_tag_show; // 0x2C(0x4)
+	struct FDateTime cant_vip_start_time; // 0x30(0x8)
+	struct FDateTime cant_vip_end_time; // 0x38(0x8)
+	struct FText sub_title; // 0x40(0x18)
+	struct FString level_bg_path; // 0x58(0x10)
+	struct TArray<uint32_t> try_wear_list; // 0x68(0x10)
+	struct TArray<uint32_t> upgrade_step; // 0x78(0x10)
+	struct FText growup_items_desc; // 0x88(0x18)
+	struct FText group_name; // 0xA0(0x18)
+	struct FString group_image; // 0xB8(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.BattlePassABCommonMeshConfTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FBattlePassABCommonMeshConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString Resource; // 0x10(0x10)
+	int32_t location_x; // 0x20(0x4)
+	int32_t location_y; // 0x24(0x4)
+	int32_t location_z; // 0x28(0x4)
+	int32_t rotator_x; // 0x2C(0x4)
+	int32_t rotator_y; // 0x30(0x4)
+	int32_t rotator_z; // 0x34(0x4)
+	int32_t scale_x; // 0x38(0x4)
+	int32_t scale_y; // 0x3C(0x4)
+	int32_t scale_z; // 0x40(0x4)
+	uint8_t Pad_0x44[0x4]; // 0x44(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.BattleModeTemplateConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FBattleModeTemplateConfTableRow : FTableRowBase
+{
+	uint32_t template_id; // 0x8(0x4)
+	uint32_t mode_id; // 0xC(0x4)
+	struct FDateTime begin_time; // 0x10(0x8)
+	struct FDateTime end_time; // 0x18(0x8)
+	struct TArray<struct FBattleModeDailyTimeConf> daily_time_vec; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.BattleModeDailyTimeConf
+// Size: 0x20 (Inherited: 0x0)
+struct FBattleModeDailyTimeConf
+{
+	struct FString daily_begin_time; // 0x0(0x10)
+	struct FString daily_end_time; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.BasicEquipConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FBasicEquipConfTableRow : FTableRowBase
+{
+	uint32_t is_npc; // 0x8(0x4)
+	uint32_t group_id; // 0xC(0x4)
+	uint32_t class_id; // 0x10(0x4)
+	uint32_t slot_index; // 0x14(0x4)
+	uint32_t item_id; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	struct TArray<struct FExtEquipConf> exts; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.BanTypeConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FBanTypeConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Content; // 0x10(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.BanThrowsconfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FBanThrowsconfTableRow : FTableRowBase
+{
+	int32_t RowNum; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	uint64_t itemID; // 0x10(0x8)
+	uint32_t HitGroup; // 0x18(0x4)
+	float DamageThres; // 0x1C(0x4)
+	int32_t DamageTimes; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+	struct TArray<int32_t> TimeThres; // 0x28(0x10)
+	uint64_t BanTime; // 0x38(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.BanTakeInTrainConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FBanTakeInTrainConfTableRow : FTableRowBase
+{
+	uint32_t item_id; // 0x8(0x4)
+	uint32_t ban_take_in_train; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.BanReasonConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FBanReasonConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Content; // 0x10(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.BanGenEqptConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FBanGenEqptConfTableRow : FTableRowBase
+{
+	uint32_t is_npc; // 0x8(0x4)
+	uint32_t group_id; // 0xC(0x4)
+	uint32_t class_id; // 0x10(0x4)
+	uint32_t item_id; // 0x14(0x4)
+	struct FDateTime abs_begin_time; // 0x18(0x8)
+	struct FDateTime abs_end_time; // 0x20(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.BadgeSlotConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FBadgeSlotConfTableRow : FTableRowBase
+{
+	uint32_t slot_id; // 0x8(0x4)
+	uint32_t is_unlock; // 0xC(0x4)
+	struct FText slot_name; // 0x10(0x18)
+	uint32_t sort; // 0x28(0x4)
+	uint32_t check_wear; // 0x2C(0x4)
+	struct FString slot_icon; // 0x30(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.BadgeConfTableRow
+// Size: 0x58 (Inherited: 0x8)
+struct FBadgeConfTableRow : FTableRowBase
+{
+	uint32_t badge_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText badge_name; // 0x10(0x18)
+	uint32_t Level; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+	struct TArray<uint32_t> jump_goto; // 0x30(0x10)
+	struct FText no_source_description; // 0x40(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.AvatarValueShowTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FAvatarValueShowTableRow : FTableRowBase
+{
+	uint32_t avatar_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<struct FBuffInfo> buff_list; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.BuffInfo
+// Size: 0x18 (Inherited: 0x0)
+struct FBuffInfo
+{
+	uint32_t ID; // 0x0(0x4)
+	uint8_t Pad_0x4[0x4]; // 0x4(0x4)
+	struct FString Value; // 0x8(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.AvatarValueNameTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FAvatarValueNameTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Name; // 0x10(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.AvatarTagCfgTableRow
+// Size: 0x88 (Inherited: 0x8)
+struct FAvatarTagCfgTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Name; // 0x10(0x18)
+	uint32_t Level; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+	struct FText Describe; // 0x30(0x18)
+	struct FText URL; // 0x48(0x18)
+	struct FText JsonKey; // 0x60(0x18)
+	struct TArray<uint32_t> ShowOptions; // 0x78(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.AvatarTabCfgTableRow
+// Size: 0x50 (Inherited: 0x8)
+struct FAvatarTabCfgTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Index; // 0xC(0x4)
+	uint32_t head_index; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct TArray<uint32_t> sub_part_id; // 0x18(0x10)
+	struct FString Name; // 0x28(0x10)
+	struct FString ICON; // 0x38(0x10)
+	uint32_t show_sub_tab; // 0x48(0x4)
+	uint32_t Version; // 0x4C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AvatarSuitReissueConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FAvatarSuitReissueConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t avatar_id; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AvatarSuitLoadingCardConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FAvatarSuitLoadingCardConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<uint32_t> loading_card_id; // 0x10(0x10)
+	uint32_t default_card_id; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AvatarSuitConfTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FAvatarSuitConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t send_type; // 0xC(0x4)
+	struct TArray<uint32_t> avatar_set; // 0x10(0x10)
+	struct TArray<uint32_t> expand_avatar_set; // 0x20(0x10)
+	uint32_t can_switch_appearance; // 0x30(0x4)
+	uint8_t Pad_0x34[0x4]; // 0x34(0x4)
+	struct TArray<uint32_t> exclusive_avatar_set; // 0x38(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.AvatarSetCfgTableRow
+// Size: 0x50 (Inherited: 0x8)
+struct FAvatarSetCfgTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t IsIntergral; // 0xC(0x4)
+	struct FString seq_plan; // 0x10(0x10)
+	struct TArray<uint32_t> gesture_id; // 0x20(0x10)
+	struct TArray<uint32_t> voice_id; // 0x30(0x10)
+	struct TArray<uint32_t> voice_tone_list; // 0x40(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.AvatarRoleConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FAvatarRoleConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Gender; // 0xC(0x4)
+	struct TArray<uint32_t> unlock_slots; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.AvatarReplaceConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FAvatarReplaceConfTableRow : FTableRowBase
+{
+	uint32_t rule_id; // 0x8(0x4)
+	uint32_t ID; // 0xC(0x4)
+	uint32_t replace_itemid; // 0x10(0x4)
+	uint32_t replace_num; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AvatarPreviewBgConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FAvatarPreviewBgConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString Name; // 0x10(0x10)
+	struct FString BgAsset; // 0x20(0x10)
+	struct FString GroundAsset; // 0x30(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.AvatarPartTabCfgTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FAvatarPartTabCfgTableRow : FTableRowBase
+{
+	uint32_t PartID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString Name; // 0x10(0x10)
+	struct FString ICON; // 0x20(0x10)
+	uint32_t not_show_empty; // 0x30(0x4)
+	uint8_t Pad_0x34[0x4]; // 0x34(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AvatarLightPlanConfTableRow
+// Size: 0x60 (Inherited: 0x8)
+struct FAvatarLightPlanConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString light_plan_fp; // 0x10(0x10)
+	struct FString light_plan_tp; // 0x20(0x10)
+	struct FString light_plan_guns; // 0x30(0x10)
+	struct FString light_plan_items; // 0x40(0x10)
+	struct FString light_plan_walkin; // 0x50(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.AvatarItemConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FAvatarItemConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<uint32_t> conflect_types; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.AvatarHairOptionsTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FAvatarHairOptionsTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t hair; // 0xC(0x4)
+	uint32_t Color; // 0x10(0x4)
+	uint32_t composite_id; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AvatarFreeOfChargePoolConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FAvatarFreeOfChargePoolConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AvatarFreeOfChargeConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FAvatarFreeOfChargeConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FDateTime time_begin; // 0x10(0x8)
+	struct FDateTime time_end; // 0x18(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.AvatarFactoryCfgTableRow
+// Size: 0x60 (Inherited: 0x8)
+struct FAvatarFactoryCfgTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Name; // 0x10(0x18)
+	struct FString ICON; // 0x28(0x10)
+	struct FText Desc; // 0x38(0x18)
+	struct TArray<uint32_t> series; // 0x50(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.AvatarCompleteShareConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FAvatarCompleteShareConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString cdn_url; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.AvatarAwardConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FAvatarAwardConfTableRow : FTableRowBase
+{
+	uint32_t avatar_id; // 0x8(0x4)
+	uint32_t item_id; // 0xC(0x4)
+	uint32_t slot_index; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AuctionTagsTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FAuctionTagsTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Name; // 0x10(0x18)
+	struct FString icon_path; // 0x28(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.AuctionSpecialDelayTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FAuctionSpecialDelayTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t place_up_delay_min; // 0xC(0x4)
+	uint32_t place_up_delay_max; // 0x10(0x4)
+	uint32_t send_mail_delay; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AuctionSingleRecycleTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FAuctionSingleRecycleTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t show_recycle_price_rate; // 0xC(0x4)
+	uint32_t show_recycle_rand; // 0x10(0x4)
+	uint32_t expire_recycle_num_rate; // 0x14(0x4)
+	uint32_t expire_recycle_price_rate; // 0x18(0x4)
+	uint32_t rookie_recycle_avg_price_rate; // 0x1C(0x4)
+	uint32_t rookie_recycle_standard_price_rate; // 0x20(0x4)
+	uint32_t standard_order_params_flag; // 0x24(0x4)
+	uint32_t standard_recycle_price_rate; // 0x28(0x4)
+	uint32_t standard_recycle_num_rate; // 0x2C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AuctionScaleConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FAuctionScaleConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	float DistancePercentA; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AuctionSafeQuestionConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FAuctionSafeQuestionConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t number1; // 0xC(0x4)
+	struct FText symbol; // 0x10(0x18)
+	uint32_t number2; // 0x28(0x4)
+	uint32_t Answer; // 0x2C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AuctionRecycleFilterOptionsTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FAuctionRecycleFilterOptionsTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText optionName; // 0x10(0x18)
+	struct TArray<uint32_t> ItemTypes; // 0x28(0x10)
+	uint32_t defaultState; // 0x38(0x4)
+	uint8_t Pad_0x3C[0x4]; // 0x3C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AuctionOrderParamsTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FAuctionOrderParamsTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t params_a; // 0xC(0x4)
+	uint32_t params_b; // 0x10(0x4)
+	int32_t params_c; // 0x14(0x4)
+	int32_t params_d; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AuctionMinorTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FAuctionMinorTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Name; // 0x10(0x18)
+	uint32_t Parent; // 0x28(0x4)
+	uint32_t Show; // 0x2C(0x4)
+	uint32_t sort; // 0x30(0x4)
+	uint8_t Pad_0x34[0x4]; // 0x34(0x4)
+	struct FString icon_path; // 0x38(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.AuctionMapProtectRecycleTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FAuctionMapProtectRecycleTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t map_protect_official_recycle_rate; // 0xC(0x4)
+	uint32_t map_protect_user_recycle_rate; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AuctionMajorTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FAuctionMajorTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Name; // 0x10(0x18)
+	uint32_t sort; // 0x28(0x4)
+	uint32_t Show; // 0x2C(0x4)
+	struct FString icon_path; // 0x30(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.AuctionKVConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FAuctionKVConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	int64_t Val; // 0x10(0x8)
+	struct FDateTime timepoint; // 0x18(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.AuctionItemRecycleTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FAuctionItemRecycleTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t item_use_official_recycle_rate; // 0xC(0x4)
+	uint32_t item_use_user_recycle_rate; // 0x10(0x4)
+	uint32_t elite_suite_official_recycle_rate; // 0x14(0x4)
+	uint32_t elite_suite_user_recycle_rate; // 0x18(0x4)
+	uint32_t order_official_recycle_price; // 0x1C(0x4)
+	uint32_t order_user_recycle_price; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AuctionItemTableRow
+// Size: 0x80 (Inherited: 0x8)
+struct FAuctionItemTableRow : FTableRowBase
+{
+	uint64_t ID; // 0x8(0x8)
+	uint32_t Parent; // 0x10(0x4)
+	uint32_t weapon_parent; // 0x14(0x4)
+	struct TArray<uint32_t> durability_rate; // 0x18(0x10)
+	uint32_t on_the_shelf; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+	struct FDateTime begin_time; // 0x30(0x8)
+	struct FDateTime end_time; // 0x38(0x8)
+	struct TArray<uint32_t> sort; // 0x40(0x10)
+	uint32_t min_sell_num; // 0x50(0x4)
+	uint32_t minimum_sell_num; // 0x54(0x4)
+	uint32_t max_buy_num; // 0x58(0x4)
+	uint32_t max_sale_num; // 0x5C(0x4)
+	float min_price_scale; // 0x60(0x4)
+	float max_price_scale; // 0x64(0x4)
+	uint32_t item_flag; // 0x68(0x4)
+	uint32_t standprice_a1; // 0x6C(0x4)
+	uint32_t standprice_b1; // 0x70(0x4)
+	uint32_t avgprice_a2; // 0x74(0x4)
+	uint32_t avgprice_b2; // 0x78(0x4)
+	uint32_t step_len; // 0x7C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AuctionGetRightsWayTableRow
+// Size: 0x50 (Inherited: 0x8)
+struct FAuctionGetRightsWayTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Desc; // 0x10(0x18)
+	uint32_t jump_goto; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+	struct FText btn_title; // 0x30(0x18)
+	uint32_t is_check; // 0x48(0x4)
+	uint8_t Pad_0x4C[0x4]; // 0x4C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AuctionExtraTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FAuctionExtraTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	int32_t place_up_delay_min_extra; // 0xC(0x4)
+	int32_t place_up_delay_max_extra; // 0x10(0x4)
+	int32_t send_mail_delay_extra; // 0x14(0x4)
+	struct TArray<int32_t> replace_order_price_rate_extra; // 0x18(0x10)
+	struct TArray<int32_t> replace_order_random_extra; // 0x28(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.AuctionDelayTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FAuctionDelayTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t place_up_delay_min; // 0xC(0x4)
+	uint32_t place_up_delay_max; // 0x10(0x4)
+	uint32_t send_mail_delay; // 0x14(0x4)
+	uint32_t weapon_place_up_delay_min; // 0x18(0x4)
+	uint32_t weapon_place_up_delay_max; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AuctionContextMenuWhiteListTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FAuctionContextMenuWhiteListTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Search_Related; // 0xC(0x4)
+	uint32_t Search_This; // 0x10(0x4)
+	uint32_t Search_Ammo; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AuctionCombineRecycleTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FAuctionCombineRecycleTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t show_recycle_price_rate; // 0xC(0x4)
+	uint32_t show_recycle_rand; // 0x10(0x4)
+	uint32_t rookie_recycle_avg_price_rate; // 0x14(0x4)
+	uint32_t rookie_recycle_standard_price_rate; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AssetsToCookRuleConfigTableRow
+// Size: 0x50 (Inherited: 0x8)
+struct FAssetsToCookRuleConfigTableRow : FTableRowBase
+{
+	struct FString AssetKey; // 0x8(0x10)
+	struct FString RefName; // 0x18(0x10)
+	struct TArray<struct FString> MustContains; // 0x28(0x10)
+	struct TArray<struct FString> MustNotContains; // 0x38(0x10)
+	uint32_t CollectByActConfig; // 0x48(0x4)
+	uint32_t CollectByActId; // 0x4C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AssetWhiteListTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FAssetWhiteListTableRow : FTableRowBase
+{
+	struct FString Name; // 0x8(0x10)
+	struct FString RefName; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ArmorValueRangeConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FArmorValueRangeConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t DefaultValue; // 0xC(0x4)
+	uint32_t MinValue; // 0x10(0x4)
+	uint32_t MaxValue; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ArmorProtectDisplayConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FArmorProtectDisplayConfTableRow : FTableRowBase
+{
+	uint32_t protect_display_id; // 0x8(0x4)
+	uint32_t protect_display_type; // 0xC(0x4)
+	struct FText protect_part_name; // 0x10(0x18)
+	uint32_t protect_part_dec; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+	struct FString protect_pic; // 0x30(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ArmorProtectConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FArmorProtectConfTableRow : FTableRowBase
+{
+	uint32_t protect_id; // 0x8(0x4)
+	uint32_t protect_type; // 0xC(0x4)
+	uint32_t protect_part_hex; // 0x10(0x4)
+	uint32_t protect_part_dec; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ArmorMaterialConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FArmorMaterialConfTableRow : FTableRowBase
+{
+	uint32_t material_id; // 0x8(0x4)
+	float material_coef; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ArmorDetailValueToAttributeTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FArmorDetailValueToAttributeTableRow : FTableRowBase
+{
+	struct FString DetailValueName; // 0x8(0x10)
+	uint32_t ConvertType; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	struct FString ConvertTargetName; // 0x20(0x10)
+	uint32_t OperationType; // 0x30(0x4)
+	uint32_t SubOperationType; // 0x34(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ArmorDetailConfTableRow
+// Size: 0x1E8 (Inherited: 0x8)
+struct FArmorDetailConfTableRow : FTableRowBase
+{
+	uint32_t armor_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<uint32_t> size_ext; // 0x10(0x10)
+	uint32_t armor_protecttype; // 0x20(0x4)
+	uint32_t armor_level; // 0x24(0x4)
+	uint32_t armor_protectmask; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+	struct TArray<uint32_t> armor_protectdisplay; // 0x30(0x10)
+	uint32_t armor_headdetailprotectmask; // 0x40(0x4)
+	uint32_t armor_antipenetrationfactor; // 0x44(0x4)
+	float armor_damagescaleforblock; // 0x48(0x4)
+	float armor_penetrate_coefficient; // 0x4C(0x4)
+	float armor_penetrate_coefficient_constant; // 0x50(0x4)
+	float armor_destructibility; // 0x54(0x4)
+	struct TArray<float> ArmorDestructibilityScaleByPart; // 0x58(0x10)
+	uint32_t armor_material_id; // 0x68(0x4)
+	uint8_t Pad_0x6C[0x4]; // 0x6C(0x4)
+	struct FText armor_materialname; // 0x70(0x18)
+	struct FText StructureStrength; // 0x88(0x18)
+	float MoveSpeed; // 0xA0(0x4)
+	float TurnSpeed; // 0xA4(0x4)
+	float Engonomics; // 0xA8(0x4)
+	uint8_t Pad_0xAC[0x4]; // 0xAC(0x4)
+	struct FText SoundPick; // 0xB0(0x18)
+	struct FText NoiseReduce; // 0xC8(0x18)
+	struct FText DefenseFlash; // 0xE0(0x18)
+	struct FText DefensePoison; // 0xF8(0x18)
+	uint32_t SoundBlock; // 0x110(0x4)
+	float SoundLevelInfluence; // 0x114(0x4)
+	float SoundMaxDistanceInfluenceFactor; // 0x118(0x4)
+	float SoundIndicatorLevelInfluence; // 0x11C(0x4)
+	float SoundIndicatorMaxDistanceInfluenceFactor; // 0x120(0x4)
+	float FlashTimeInfluenceFactor; // 0x124(0x4)
+	float FlashEffectInfluenceFactor; // 0x128(0x4)
+	uint8_t Pad_0x12C[0x4]; // 0x12C(0x4)
+	struct TArray<uint32_t> ConflictedItemIds; // 0x130(0x10)
+	struct TArray<uint32_t> IgnoreSoundIndicatorType; // 0x140(0x10)
+	uint32_t bPreventFatalHit; // 0x150(0x4)
+	uint8_t Pad_0x154[0x4]; // 0x154(0x4)
+	struct TArray<uint64_t> IgnoreDBNOFeatureWeapons; // 0x158(0x10)
+	struct TArray<uint64_t> IgnoreDBNOFeatureBullets; // 0x168(0x10)
+	uint32_t bInfluenceByPerk; // 0x178(0x4)
+	uint8_t Pad_0x17C[0x4]; // 0x17C(0x4)
+	struct FString StaticScreenEffectPath; // 0x180(0x10)
+	struct FString MaterialScreenEffectPath; // 0x190(0x10)
+	uint32_t HasBrokenScreenEffect; // 0x1A0(0x4)
+	uint8_t Pad_0x1A4[0x4]; // 0x1A4(0x4)
+	struct FString assembleTag; // 0x1A8(0x10)
+	struct FString SubAssembleTag; // 0x1B8(0x10)
+	uint64_t slot_type; // 0x1C8(0x8)
+	uint64_t sub_slot_type; // 0x1D0(0x8)
+	struct TArray<struct FWeaponSocket> Sockets; // 0x1D8(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ArmorCorrespongdingConfTableRow
+// Size: 0x88 (Inherited: 0x8)
+struct FArmorCorrespongdingConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t PriceLowerLimit; // 0xC(0x4)
+	uint32_t PriceUpperLimit; // 0x10(0x4)
+	float Gun; // 0x14(0x4)
+	float ContainerArmor; // 0x18(0x4)
+	float head; // 0x1C(0x4)
+	float Bullet; // 0x20(0x4)
+	float Consumables; // 0x24(0x4)
+	struct TArray<struct FPriceIntervalVector> ContainerArmorPriceList; // 0x28(0x10)
+	struct TArray<uint32_t> ContainerArmorRawAry; // 0x38(0x10)
+	struct TArray<struct FPriceIntervalVector> HeadPriceList; // 0x48(0x10)
+	struct TArray<uint32_t> HeadRawAry; // 0x58(0x10)
+	struct TArray<struct FPriceIntervalVector> ConsumablesPriceList; // 0x68(0x10)
+	struct TArray<uint32_t> ConsumablesRawAry; // 0x78(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.PriceIntervalVector
+// Size: 0x8 (Inherited: 0x0)
+struct FPriceIntervalVector
+{
+	uint32_t Min; // 0x0(0x4)
+	uint32_t Max; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AppearancePresetConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FAppearancePresetConfTableRow : FTableRowBase
+{
+	uint64_t ID; // 0x8(0x8)
+	struct FText Name; // 0x10(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.AnchorConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FAnchorConfTableRow : FTableRowBase
+{
+	uint64_t gid; // 0x8(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.AmmoNumTableRow
+// Size: 0xF8 (Inherited: 0x8)
+struct FAmmoNumTableRow : FTableRowBase
+{
+	uint64_t magazine_id; // 0x8(0x8)
+	int32_t Type; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct FText full_name; // 0x18(0x18)
+	uint32_t full_max; // 0x30(0x4)
+	uint32_t full_min; // 0x34(0x4)
+	struct FText almostfull_name; // 0x38(0x18)
+	int32_t almostfull_max; // 0x50(0x4)
+	int32_t almostfull_min; // 0x54(0x4)
+	struct FText morethanhalf_name; // 0x58(0x18)
+	int32_t morethanhalf_max; // 0x70(0x4)
+	int32_t morethanhalf_min; // 0x74(0x4)
+	struct FText abouthalf_name; // 0x78(0x18)
+	int32_t abouthalf_max; // 0x90(0x4)
+	int32_t abouthalf_min; // 0x94(0x4)
+	struct FText lessthanhalf_name; // 0x98(0x18)
+	int32_t lessthanhalf_max; // 0xB0(0x4)
+	int32_t lessthanhalf_min; // 0xB4(0x4)
+	struct FText almostempty_name; // 0xB8(0x18)
+	int32_t almostempty_max; // 0xD0(0x4)
+	int32_t almostempty_min; // 0xD4(0x4)
+	struct FText empty_name; // 0xD8(0x18)
+	int32_t Empty; // 0xF0(0x4)
+	uint8_t Pad_0xF4[0x4]; // 0xF4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AmmoMagazineRelationTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FAmmoMagazineRelationTableRow : FTableRowBase
+{
+	uint32_t item_id; // 0x8(0x4)
+	uint32_t ammo_count; // 0xC(0x4)
+	uint32_t ammo_count_mul; // 0x10(0x4)
+	uint32_t capacity_ratio; // 0x14(0x4)
+	uint32_t filling_ratio; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AllowTakeInItemConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FAllowTakeInItemConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<struct FMultiModeItemLimitConf> item_limit_vec; // 0x10(0x10)
+	struct TArray<struct FMultiModeItemOutConf> item_out_vec; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.MultiModeItemOutConf
+// Size: 0x8 (Inherited: 0x0)
+struct FMultiModeItemOutConf
+{
+	uint32_t item_type; // 0x0(0x4)
+	uint32_t item_type_num; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.MultiModeItemLimitConf
+// Size: 0x8 (Inherited: 0x0)
+struct FMultiModeItemLimitConf
+{
+	uint32_t item_type; // 0x0(0x4)
+	uint32_t item_type_num; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AiTemplateConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FAiTemplateConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Name; // 0x10(0x18)
+	uint32_t avatar_gender; // 0x28(0x4)
+	uint32_t avatar_set_id; // 0x2C(0x4)
+	struct TArray<struct FAiEquipTemplateInfo> equip_template_list; // 0x30(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.AiEquipTemplateInfo
+// Size: 0x28 (Inherited: 0x0)
+struct FAiEquipTemplateInfo
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+	uint64_t parent_id; // 0x8(0x8)
+	uint32_t Index; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	uint64_t ID; // 0x18(0x8)
+	uint32_t spray_item_id; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AiLimitConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FAiLimitConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	float normal_value; // 0xC(0x4)
+	float redline_value; // 0x10(0x4)
+	uint32_t calc_type; // 0x14(0x4)
+	uint32_t loot_pool; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AiLevelConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FAiLevelConfTableRow : FTableRowBase
+{
+	uint32_t Level; // 0x8(0x4)
+	uint32_t start_id; // 0xC(0x4)
+	uint32_t end_id; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AiEquipmentPoolConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FAiEquipmentPoolConfTableRow : FTableRowBase
+{
+	uint32_t group_id; // 0x8(0x4)
+	int32_t loot_pool_id; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AiEquipID2ContainerDropIdTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FAiEquipID2ContainerDropIdTableRow : FTableRowBase
+{
+	uint32_t EquipmentID; // 0x8(0x4)
+	uint32_t PocketDropID; // 0xC(0x4)
+	uint32_t PocketDropProbability; // 0x10(0x4)
+	uint32_t ChestDropID; // 0x14(0x4)
+	uint32_t ChestDropProbability; // 0x18(0x4)
+	uint32_t BagDropID; // 0x1C(0x4)
+	uint32_t BagDropProbability; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AiDropConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FAiDropConfTableRow : FTableRowBase
+{
+	uint32_t group_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<struct FDropItemList> drop_items; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.DropItemList
+// Size: 0x10 (Inherited: 0x0)
+struct FDropItemList
+{
+	uint32_t act_id; // 0x0(0x4)
+	uint32_t item_id; // 0x4(0x4)
+	uint32_t Num; // 0x8(0x4)
+	uint32_t Weight; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AiContainerDropConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FAiContainerDropConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t pool_id; // 0xC(0x4)
+	uint32_t Weight; // 0x10(0x4)
+	uint32_t item_id; // 0x14(0x4)
+	uint32_t Num; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AiCommonConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FAiCommonConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Val; // 0xC(0x4)
+	struct FString pic_prefix; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.AdcodeConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FAdcodeConfTableRow : FTableRowBase
+{
+	uint32_t ADCode; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<struct FText> region; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActivityInventoryAdditionDataTableRow
+// Size: 0xA0 (Inherited: 0x8)
+struct FActivityInventoryAdditionDataTableRow : FTableRowBase
+{
+	uint32_t ActivitySignID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText StrParamOne; // 0x10(0x18)
+	struct FText StrParamTwo; // 0x28(0x18)
+	struct FText StrParamThree; // 0x40(0x18)
+	struct FText IntParamOne; // 0x58(0x18)
+	struct FText IntParamTwo; // 0x70(0x18)
+	struct FText IntParamThree; // 0x88(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.ActWishConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FActWishConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t task_id; // 0xC(0x4)
+	struct FDateTime reward_time; // 0x10(0x8)
+	uint32_t recoup_tasks_complete_type; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	struct TArray<uint32_t> recoup_tasks; // 0x20(0x10)
+	struct TArray<struct FOptionalRewardsConf> optional_rewards; // 0x30(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.OptionalRewardsConf
+// Size: 0x20 (Inherited: 0x0)
+struct FOptionalRewardsConf
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+	uint32_t is_black; // 0x8(0x4)
+	uint32_t is_faction; // 0xC(0x4)
+	struct FString cdn; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActWelfareConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FActWelfareConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString initial_text_conf; // 0x10(0x10)
+	struct FString received_text_conf; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActVoteObjectConfTableRow
+// Size: 0x78 (Inherited: 0x8)
+struct FActVoteObjectConfTableRow : FTableRowBase
+{
+	uint32_t object_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString reward_list; // 0x10(0x10)
+	uint32_t limit_id; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+	struct FString object_pic; // 0x28(0x10)
+	struct FString object_title; // 0x38(0x10)
+	struct FString object_desc; // 0x48(0x10)
+	struct TArray<uint32_t> inc_progress_per_hour; // 0x58(0x10)
+	struct TArray<float> inc_progress_day_factor; // 0x68(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActVoteConfTableRow
+// Size: 0x78 (Inherited: 0x8)
+struct FActVoteConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t vote_source; // 0xC(0x4)
+	struct TArray<uint32_t> act_id; // 0x10(0x10)
+	struct TArray<uint32_t> vote_objects; // 0x20(0x10)
+	uint32_t ticket_id; // 0x30(0x4)
+	uint32_t ticket_cost_once; // 0x34(0x4)
+	uint32_t ticket_cost_limit; // 0x38(0x4)
+	uint32_t get_ticket_btn_jump_id; // 0x3C(0x4)
+	struct FString get_ticket_guide; // 0x40(0x10)
+	struct TArray<uint32_t> unlock_reward_task_id; // 0x50(0x10)
+	struct TArray<uint32_t> reacquire_reward_task_id; // 0x60(0x10)
+	struct FDateTime vote_deadline; // 0x70(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.ActVestBagHeroConfTableRow
+// Size: 0x50 (Inherited: 0x8)
+struct FActVestBagHeroConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FDateTime stage_2_start_time; // 0x10(0x8)
+	uint32_t task_id; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	struct TArray<struct FVestBags> vest_bag_list; // 0x20(0x10)
+	struct FString core_reward_list; // 0x30(0x10)
+	uint32_t pool_id_1_grid; // 0x40(0x4)
+	uint32_t pool_id_2_grid; // 0x44(0x4)
+	uint32_t pool_id_4_grid; // 0x48(0x4)
+	uint8_t Pad_0x4C[0x4]; // 0x4C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.VestBags
+// Size: 0xC (Inherited: 0x0)
+struct FVestBags
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t inter_str; // 0x4(0x4)
+	uint32_t Exp; // 0x8(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActUpgradeBoxConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FActUpgradeBoxConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t box_id; // 0xC(0x4)
+	uint32_t search_item_id; // 0x10(0x4)
+	uint32_t search_limit; // 0x14(0x4)
+	uint32_t guarantee_time; // 0x18(0x4)
+	uint32_t daily_open_limit; // 0x1C(0x4)
+	uint32_t week_open_limit; // 0x20(0x4)
+	uint32_t total_open_limit; // 0x24(0x4)
+	struct TArray<struct FBoxLevelConf> box_level_list; // 0x28(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.BoxLevelConf
+// Size: 0xC (Inherited: 0x0)
+struct FBoxLevelConf
+{
+	uint32_t pool_id; // 0x0(0x4)
+	uint32_t drop_num; // 0x4(0x4)
+	uint32_t prob_show_id; // 0x8(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActTreasureMapConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FActTreasureMapConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t treasure_map_box_id; // 0xC(0x4)
+	uint32_t map_to_item_group_id; // 0x10(0x4)
+	uint32_t max_treasure_record_num; // 0x14(0x4)
+	uint32_t treasure_map_num_per_box; // 0x18(0x4)
+	uint32_t max_open_box_once; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActTavernDropDropRangeConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FActTavernDropDropRangeConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t drop_range_id; // 0xC(0x4)
+	struct TArray<struct FDropRangeConf> drop_ranges; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.DropRangeConf
+// Size: 0xC (Inherited: 0x0)
+struct FDropRangeConf
+{
+	uint32_t min_num; // 0x0(0x4)
+	uint32_t max_num; // 0x4(0x4)
+	uint32_t Weight; // 0x8(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActTavernDropConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FActTavernDropConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t max_drop_count; // 0xC(0x4)
+	uint32_t drop_count; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct TArray<struct FDropRewardConf> drop_rewards; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.DropRewardConf
+// Size: 0x58 (Inherited: 0x0)
+struct FDropRewardConf
+{
+	uint32_t drop_id; // 0x0(0x4)
+	uint8_t Pad_0x4[0x4]; // 0x4(0x4)
+	struct TArray<uint32_t> item_ids; // 0x8(0x10)
+	struct FString Tips; // 0x18(0x10)
+	struct FText cdn; // 0x28(0x18)
+	uint32_t Weight; // 0x40(0x4)
+	uint8_t Pad_0x44[0x4]; // 0x44(0x4)
+	struct TArray<uint32_t> drop_range_ids; // 0x48(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActTaskConfTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FActTaskConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t reset_type; // 0xC(0x4)
+	uint32_t all_complete_mail_id; // 0x10(0x4)
+	uint32_t take_reward_limit; // 0x14(0x4)
+	uint32_t auto_send_award_mail; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	struct TArray<uint32_t> task_list; // 0x20(0x10)
+	struct TArray<uint32_t> popup_task_list; // 0x30(0x10)
+	uint32_t popup_img_id; // 0x40(0x4)
+	uint8_t Pad_0x44[0x4]; // 0x44(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActTakeoutBoxConfTableRow
+// Size: 0x50 (Inherited: 0x8)
+struct FActTakeoutBoxConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t box_item_id; // 0xC(0x4)
+	uint32_t total_exchange_limit; // 0x10(0x4)
+	uint32_t daily_exchange_limit; // 0x14(0x4)
+	uint32_t week_exchange_limit; // 0x18(0x4)
+	uint32_t pool_id_1_grid; // 0x1C(0x4)
+	uint32_t pool_id_2_grid; // 0x20(0x4)
+	uint32_t pool_id_3_grid; // 0x24(0x4)
+	uint32_t pool_id_4_grid; // 0x28(0x4)
+	uint32_t pool_id_6_grid; // 0x2C(0x4)
+	struct FString core_reward_list; // 0x30(0x10)
+	uint32_t special_pool_id; // 0x40(0x4)
+	uint32_t replaced_pool_id; // 0x44(0x4)
+	uint32_t replace_limit; // 0x48(0x4)
+	uint8_t Pad_0x4C[0x4]; // 0x4C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActTabConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FActTabConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t final_task_id; // 0xC(0x4)
+	uint32_t is_normal_reward; // 0x10(0x4)
+	uint32_t stash_row_reward; // 0x14(0x4)
+	struct TArray<struct FTabConf> tabs; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.TabConf
+// Size: 0x28 (Inherited: 0x0)
+struct FTabConf
+{
+	uint32_t daily_task_id; // 0x0(0x4)
+	uint8_t Pad_0x4[0x4]; // 0x4(0x4)
+	struct TArray<uint32_t> task_ids; // 0x8(0x10)
+	struct TArray<uint32_t> unrestricted_task_ids; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActSubscribeObjectConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FActSubscribeObjectConfTableRow : FTableRowBase
+{
+	uint32_t act_id; // 0x8(0x4)
+	uint32_t limit_id; // 0xC(0x4)
+	struct TArray<uint32_t> inc_progress_per_hour; // 0x10(0x10)
+	struct TArray<float> inc_progress_day_factor; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActStrongRedPointConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FActStrongRedPointConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Type; // 0xC(0x4)
+	struct TArray<uint32_t> tasks; // 0x10(0x10)
+	uint32_t red_point_id; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActSongkranConfTableRow
+// Size: 0x68 (Inherited: 0x8)
+struct FActSongkranConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t water_id; // 0xC(0x4)
+	uint32_t splash_pool_id; // 0x10(0x4)
+	uint32_t splashed_pool_id; // 0x14(0x4)
+	uint32_t extra_reward_id; // 0x18(0x4)
+	uint32_t splashed_level_limit; // 0x1C(0x4)
+	uint32_t reset_type; // 0x20(0x4)
+	uint32_t splash_limit; // 0x24(0x4)
+	uint32_t splashed_limit; // 0x28(0x4)
+	uint32_t reward_limit; // 0x2C(0x4)
+	uint32_t history_count; // 0x30(0x4)
+	uint8_t Pad_0x34[0x4]; // 0x34(0x4)
+	struct TArray<struct FSongkranJumpConf> jump_list; // 0x38(0x10)
+	struct TArray<struct FSplashWishConf> splash_wish_list; // 0x48(0x10)
+	struct TArray<struct FSplashedWishConf> splashed_wish_list; // 0x58(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.SplashedWishConf
+// Size: 0x18 (Inherited: 0x0)
+struct FSplashedWishConf
+{
+	struct FString wish_text; // 0x0(0x10)
+	uint32_t Weight; // 0x10(0x4)
+	uint32_t gif_id; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.SplashWishConf
+// Size: 0x18 (Inherited: 0x0)
+struct FSplashWishConf
+{
+	struct FString wish_text; // 0x0(0x10)
+	uint32_t Weight; // 0x10(0x4)
+	uint32_t gif_id; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.SongkranJumpConf
+// Size: 0x18 (Inherited: 0x0)
+struct FSongkranJumpConf
+{
+	struct FString jump_text; // 0x0(0x10)
+	uint32_t jump_id; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActSimpleDropConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FActSimpleDropConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t drop_limit; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActSimpleDialogConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FActSimpleDialogConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<uint32_t> tree_root_indexs; // 0x10(0x10)
+	uint32_t ignore_dialog_redpoint; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActSimpleConfTableRow
+// Size: 0x50 (Inherited: 0x8)
+struct FActSimpleConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t need_pandora; // 0xC(0x4)
+	struct FString pandora_test_url; // 0x10(0x10)
+	struct FString pandora_prod_url; // 0x20(0x10)
+	struct TArray<struct FShowItem> show_item_infos; // 0x30(0x10)
+	struct TArray<struct FPPTNode> ppts; // 0x40(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.PPTNode
+// Size: 0x30 (Inherited: 0x0)
+struct FPPTNode
+{
+	struct FString Title; // 0x0(0x10)
+	struct FString Desc; // 0x10(0x10)
+	struct FString pic; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ShowItem
+// Size: 0x30 (Inherited: 0x0)
+struct FShowItem
+{
+	struct TArray<uint32_t> ID; // 0x0(0x10)
+	struct FString json_param; // 0x10(0x10)
+	struct FString Desc; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActSideClashConfTableRow
+// Size: 0xD8 (Inherited: 0x8)
+struct FActSideClashConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText play_mode; // 0x10(0x18)
+	struct TArray<uint32_t> play_mode_id; // 0x28(0x10)
+	uint32_t jump_goto; // 0x38(0x4)
+	uint32_t cdis_mapping; // 0x3C(0x4)
+	uint32_t mnst_mapping; // 0x40(0x4)
+	uint32_t need_side; // 0x44(0x4)
+	uint32_t reward_type; // 0x48(0x4)
+	uint32_t reward_coeff; // 0x4C(0x4)
+	uint32_t settle_item; // 0x50(0x4)
+	uint32_t ignore_quit; // 0x54(0x4)
+	uint32_t survive_event; // 0x58(0x4)
+	uint8_t Pad_0x5C[0x4]; // 0x5C(0x4)
+	struct TArray<uint32_t> teammate_event_list; // 0x60(0x10)
+	struct TArray<uint32_t> no_side_event_list; // 0x70(0x10)
+	struct TArray<uint32_t> no_side_coeff_list; // 0x80(0x10)
+	struct TArray<uint32_t> cdis_event_list; // 0x90(0x10)
+	uint32_t cdis_side_event; // 0xA0(0x4)
+	uint8_t Pad_0xA4[0x4]; // 0xA4(0x4)
+	struct TArray<uint32_t> mnst_event_list; // 0xA8(0x10)
+	uint32_t mnst_side_event; // 0xB8(0x4)
+	uint32_t week_send_item_limit; // 0xBC(0x4)
+	struct TArray<uint32_t> act_team_data_types; // 0xC0(0x10)
+	uint32_t mail_id; // 0xD0(0x4)
+	uint8_t Pad_0xD4[0x4]; // 0xD4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActSelfGameSettleScoreConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FActSelfGameSettleScoreConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<uint32_t> map_mode_ids; // 0x10(0x10)
+	struct TArray<struct FSettleEvent> settle_events; // 0x20(0x10)
+	uint32_t reward_event; // 0x30(0x4)
+	uint32_t reset_type; // 0x34(0x4)
+	uint32_t calculate_type; // 0x38(0x4)
+	uint32_t history_count; // 0x3C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.SettleEvent
+// Size: 0xC (Inherited: 0x0)
+struct FSettleEvent
+{
+	uint32_t event_id; // 0x0(0x4)
+	uint32_t initial_value; // 0x4(0x4)
+	uint32_t act_team_data_type; // 0x8(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActSeasonPageConfTableRow
+// Size: 0x60 (Inherited: 0x8)
+struct FActSeasonPageConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t entry_id; // 0xC(0x4)
+	uint32_t sys_id; // 0x10(0x4)
+	uint32_t season_id; // 0x14(0x4)
+	uint32_t display_order; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	struct FString Name; // 0x20(0x10)
+	struct FString begin_time; // 0x30(0x10)
+	struct FString Description; // 0x40(0x10)
+	struct FString pic; // 0x50(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActSeasonActEntranceConfTableRow
+// Size: 0x80 (Inherited: 0x8)
+struct FActSeasonActEntranceConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t main_act_id; // 0xC(0x4)
+	uint32_t Type; // 0x10(0x4)
+	uint32_t icon_type; // 0x14(0x4)
+	uint32_t parent_entry_id; // 0x18(0x4)
+	uint32_t red_point; // 0x1C(0x4)
+	struct FString jumpgoto_id; // 0x20(0x10)
+	struct FString Name; // 0x30(0x10)
+	struct FString Description; // 0x40(0x10)
+	struct FString pic; // 0x50(0x10)
+	struct FDateTime begin_time; // 0x60(0x8)
+	struct FDateTime end_time; // 0x68(0x8)
+	struct FString json_param; // 0x70(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActScratchRewardConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FActScratchRewardConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t reward_id; // 0xC(0x4)
+	uint32_t Weight; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct FString Text; // 0x18(0x10)
+	struct TArray<struct FScratchRewardConf> scratch_rewards; // 0x28(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ScratchRewardConf
+// Size: 0x14 (Inherited: 0x0)
+struct FScratchRewardConf
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+	uint32_t is_black; // 0x8(0x4)
+	uint32_t icon_num; // 0xC(0x4)
+	uint32_t Weight; // 0x10(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActScratchConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FActScratchConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t scratch_id; // 0xC(0x4)
+	uint32_t Num; // 0x10(0x4)
+	uint32_t history_count; // 0x14(0x4)
+	struct TArray<uint32_t> task_list; // 0x18(0x10)
+	uint32_t reset_type; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+	struct TArray<struct FScratchShowRewardConf> show_rewards; // 0x30(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ScratchShowRewardConf
+// Size: 0xC (Inherited: 0x0)
+struct FScratchShowRewardConf
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+	uint32_t is_black; // 0x8(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActRoleBpRewardsConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FActRoleBpRewardsConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<struct FRoleBPRewardNode> award; // 0x10(0x10)
+	struct TArray<struct FRoleBPRewardNode> vip_award; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.RoleBPRewardNode
+// Size: 0x10 (Inherited: 0x0)
+struct FRoleBPRewardNode
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+	uint32_t is_core; // 0x8(0x4)
+	uint32_t is_black; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActRoleBpConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FActRoleBpConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t purchase_id; // 0xC(0x4)
+	uint32_t vip_need_item_id; // 0x10(0x4)
+	uint32_t vip_need_item_num; // 0x14(0x4)
+	uint32_t buy_lv_item_id; // 0x18(0x4)
+	uint32_t buy_lv_item_num; // 0x1C(0x4)
+	uint32_t lv_up_need_exp; // 0x20(0x4)
+	uint32_t exp_item_id; // 0x24(0x4)
+	struct TArray<uint32_t> lv_rewards; // 0x28(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActRedPacketConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FActRedPacketConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t reset_type; // 0xC(0x4)
+	struct TArray<struct FTaskListConf> task_list; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.TaskListConf
+// Size: 0xC (Inherited: 0x0)
+struct FTaskListConf
+{
+	uint32_t task_id; // 0x0(0x4)
+	uint32_t Reset; // 0x4(0x4)
+	uint32_t Type; // 0x8(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActRecruitGiftPackageConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FActRecruitGiftPackageConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<struct FGiftItem> gift_items; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.GiftItem
+// Size: 0x58 (Inherited: 0x0)
+struct FGiftItem
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t item_num; // 0x4(0x4)
+	struct FString item_icon; // 0x8(0x10)
+	struct FString item_title; // 0x18(0x10)
+	struct FString item_desc; // 0x28(0x10)
+	struct FString item_tag; // 0x38(0x10)
+	uint32_t exchange_id; // 0x48(0x4)
+	uint32_t exchange_num; // 0x4C(0x4)
+	uint32_t discount_num; // 0x50(0x4)
+	uint8_t Pad_0x54[0x4]; // 0x54(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActReconnaissanceRewardConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FActReconnaissanceRewardConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t map_id; // 0xC(0x4)
+	uint32_t min_equip_value; // 0x10(0x4)
+	uint32_t max_equip_value; // 0x14(0x4)
+	uint32_t show_min_item_num; // 0x18(0x4)
+	uint32_t show_max_item_num; // 0x1C(0x4)
+	struct TArray<struct FReconnaissanceRewardsConf> reconnaissance_rewards; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ReconnaissanceRewardsConf
+// Size: 0xC (Inherited: 0x0)
+struct FReconnaissanceRewardsConf
+{
+	uint32_t min_num; // 0x0(0x4)
+	uint32_t max_num; // 0x4(0x4)
+	uint32_t Weight; // 0x8(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActReconnaissancePartnerConfTableRow
+// Size: 0x50 (Inherited: 0x8)
+struct FActReconnaissancePartnerConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t partner_type; // 0xC(0x4)
+	struct FString type_name; // 0x10(0x10)
+	uint32_t Quality; // 0x20(0x4)
+	uint32_t min_ability; // 0x24(0x4)
+	uint32_t max_ability; // 0x28(0x4)
+	uint32_t drop_pool_id; // 0x2C(0x4)
+	uint32_t bonus_prob; // 0x30(0x4)
+	uint32_t min_pic_no; // 0x34(0x4)
+	uint32_t max_pic_no; // 0x38(0x4)
+	uint32_t min_reduce_explore_time_percent; // 0x3C(0x4)
+	uint32_t max_reduce_explore_time_percent; // 0x40(0x4)
+	uint32_t min_additional_rewards_percent; // 0x44(0x4)
+	uint32_t max_additional_rewards_percent; // 0x48(0x4)
+	uint8_t Pad_0x4C[0x4]; // 0x4C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActReconnaissanceMapConfTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FActReconnaissanceMapConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t map_id; // 0xC(0x4)
+	struct FString map_name; // 0x10(0x10)
+	struct FString map_desc; // 0x20(0x10)
+	uint32_t min_equip_value; // 0x30(0x4)
+	uint32_t max_equip_value; // 0x34(0x4)
+	uint32_t reconnaissance_time; // 0x38(0x4)
+	uint32_t show_min_item_num; // 0x3C(0x4)
+	uint32_t show_max_item_num; // 0x40(0x4)
+	uint8_t Pad_0x44[0x4]; // 0x44(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActReconnaissanceMailConfTableRow
+// Size: 0x60 (Inherited: 0x8)
+struct FActReconnaissanceMailConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t map_id; // 0xC(0x4)
+	uint32_t partner_type; // 0x10(0x4)
+	uint32_t Result; // 0x14(0x4)
+	uint32_t bonus; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	struct TArray<struct FReconnaissanceMailTextConf> text1; // 0x20(0x10)
+	struct TArray<struct FReconnaissanceMailTextConf> text2; // 0x30(0x10)
+	struct TArray<struct FReconnaissanceMailTextConf> text3; // 0x40(0x10)
+	struct TArray<struct FReconnaissanceMailTextConf> text4; // 0x50(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ReconnaissanceMailTextConf
+// Size: 0x10 (Inherited: 0x0)
+struct FReconnaissanceMailTextConf
+{
+	struct FString Text; // 0x0(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActReconnaissanceConfTableRow
+// Size: 0x70 (Inherited: 0x8)
+struct FActReconnaissanceConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<struct FPartnerEquipItemConf> equip_item_conf; // 0x10(0x10)
+	uint32_t mail_id; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+	struct FString mail_title_prefix; // 0x28(0x10)
+	struct FString mail_title_suffix; // 0x38(0x10)
+	struct FString partner_pic_prefix; // 0x48(0x10)
+	uint32_t partner_limit; // 0x58(0x4)
+	uint32_t reward_item_id; // 0x5C(0x4)
+	struct TArray<struct FContractItemConf> contract_item_conf; // 0x60(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ContractItemConf
+// Size: 0xC (Inherited: 0x0)
+struct FContractItemConf
+{
+	uint32_t contract_id; // 0x0(0x4)
+	uint32_t Quality; // 0x4(0x4)
+	uint32_t rand_name; // 0x8(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.PartnerEquipItemConf
+// Size: 0x18 (Inherited: 0x0)
+struct FPartnerEquipItemConf
+{
+	uint32_t slot_id; // 0x0(0x4)
+	uint8_t Pad_0x4[0x4]; // 0x4(0x4)
+	struct TArray<uint32_t> equip_id_segs; // 0x8(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActRechargeRebateTierConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FActRechargeRebateTierConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t total_tiers; // 0xC(0x4)
+	uint32_t tier_index; // 0x10(0x4)
+	uint32_t recharge_threshold; // 0x14(0x4)
+	struct TArray<struct FRechargeRewardConf> recharge_reward_conf; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.RechargeRewardConf
+// Size: 0x8 (Inherited: 0x0)
+struct FRechargeRewardConf
+{
+	uint32_t item; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActRechargeRebateConfTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FActRechargeRebateConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t rebate_coef; // 0xC(0x4)
+	uint32_t recharge_cap; // 0x10(0x4)
+	uint32_t rebate_item_id; // 0x14(0x4)
+	uint32_t reissue; // 0x18(0x4)
+	uint32_t refresh_type; // 0x1C(0x4)
+	uint32_t recharge_type; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+	struct TArray<uint32_t> include_purchase_ids; // 0x28(0x10)
+	struct TArray<uint32_t> exclude_purchase_ids; // 0x38(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActRecallTaskConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FActRecallTaskConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t act_id; // 0xC(0x4)
+	uint32_t task_type; // 0x10(0x4)
+	uint32_t Count; // 0x14(0x4)
+	struct FString Description; // 0x18(0x10)
+	uint32_t event_id; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+	struct TArray<struct FActRecallRewardConf> reward_vector; // 0x30(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActRecallRewardConf
+// Size: 0x10 (Inherited: 0x0)
+struct FActRecallRewardConf
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+	uint32_t is_black; // 0x8(0x4)
+	uint32_t is_faction; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActRecallInGameConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FActRecallInGameConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t max_regist_time; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActRandomRangeConfTableRow
+// Size: 0x58 (Inherited: 0x8)
+struct FActRandomRangeConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t item_id; // 0xC(0x4)
+	uint32_t min_value; // 0x10(0x4)
+	uint32_t max_value; // 0x14(0x4)
+	struct FString Description; // 0x18(0x10)
+	struct FString Name; // 0x28(0x10)
+	struct FString pic; // 0x38(0x10)
+	struct TArray<uint32_t> weights; // 0x48(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActRandomPriceConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FActRandomPriceConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t guarantee_time; // 0xC(0x4)
+	uint32_t act_team_data_type; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActPushGiftMallConfTableRow
+// Size: 0x70 (Inherited: 0x8)
+struct FActPushGiftMallConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<uint32_t> mall_item_id; // 0x10(0x10)
+	uint32_t rebate_ratio; // 0x20(0x4)
+	uint32_t Priority; // 0x24(0x4)
+	struct FText Desc; // 0x28(0x18)
+	struct FText cdn; // 0x40(0x18)
+	uint32_t r_type; // 0x58(0x4)
+	uint32_t level_type; // 0x5C(0x4)
+	uint32_t value_type; // 0x60(0x4)
+	uint32_t is_season_recharge; // 0x64(0x4)
+	uint32_t mall_class_id; // 0x68(0x4)
+	uint8_t Pad_0x6C[0x4]; // 0x6C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActPushGiftConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FActPushGiftConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t r_small; // 0xC(0x4)
+	uint32_t r_medium; // 0x10(0x4)
+	uint32_t r_large; // 0x14(0x4)
+	uint32_t rookie_level; // 0x18(0x4)
+	uint32_t transition_level; // 0x1C(0x4)
+	uint32_t mild_battles; // 0x20(0x4)
+	uint32_t moderate_battles; // 0x24(0x4)
+	uint32_t severe_battles; // 0x28(0x4)
+	uint32_t value_low; // 0x2C(0x4)
+	uint32_t value_middle; // 0x30(0x4)
+	uint32_t value_high; // 0x34(0x4)
+	uint32_t season_recharge_item_id; // 0x38(0x4)
+	uint8_t Pad_0x3C[0x4]; // 0x3C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActProbShowConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FActProbShowConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t item_id; // 0xC(0x4)
+	uint32_t is_black; // 0x10(0x4)
+	uint32_t item_num; // 0x14(0x4)
+	uint32_t Weight; // 0x18(0x4)
+	uint32_t item_info; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActPopImageConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FActPopImageConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t Type; // 0xC(0x4)
+	uint32_t json_param; // 0x10(0x4)
+	uint32_t Priority; // 0x14(0x4)
+	uint32_t reset_type; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActPlayerDashboardConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FActPlayerDashboardConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	uint64_t gid; // 0x10(0x8)
+	struct FText Name; // 0x18(0x18)
+	struct FString head_pic; // 0x30(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActNewGunEvaluationConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FActNewGunEvaluationConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t task_id; // 0xC(0x4)
+	uint32_t vote_increase_min; // 0x10(0x4)
+	uint32_t vote_increase_max; // 0x14(0x4)
+	uint32_t other_increase_min; // 0x18(0x4)
+	uint32_t other_increase_max; // 0x1C(0x4)
+	struct TArray<struct FEvaluationsConf> evaluations; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.EvaluationsConf
+// Size: 0x20 (Inherited: 0x0)
+struct FEvaluationsConf
+{
+	uint32_t limit_id; // 0x0(0x4)
+	uint8_t Pad_0x4[0x4]; // 0x4(0x4)
+	struct FText Content; // 0x8(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.ActNewGunChallengeConfTableRow
+// Size: 0x70 (Inherited: 0x8)
+struct FActNewGunChallengeConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t challenge_id; // 0xC(0x4)
+	struct FText Name; // 0x10(0x18)
+	struct FString tab_cdn; // 0x28(0x10)
+	struct FString json_param; // 0x38(0x10)
+	struct FString reward_list; // 0x48(0x10)
+	uint32_t cooldown_time; // 0x58(0x4)
+	uint8_t Pad_0x5C[0x4]; // 0x5C(0x4)
+	struct TArray<uint32_t> task_list; // 0x60(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActMonopolyConfTableRow
+// Size: 0x50 (Inherited: 0x8)
+struct FActMonopolyConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t cost_item_id; // 0xC(0x4)
+	uint32_t cost_item_num; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct TArray<struct FRollResultsConf> roll_results; // 0x18(0x10)
+	uint32_t lap_limit; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+	struct TArray<struct FGuaranteedLoopConf> guaranteed_loop; // 0x30(0x10)
+	struct TArray<struct FActMonopolyRewardsConf> rewards; // 0x40(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActMonopolyRewardsConf
+// Size: 0x14 (Inherited: 0x0)
+struct FActMonopolyRewardsConf
+{
+	uint32_t lap_num; // 0x0(0x4)
+	uint32_t item_id; // 0x4(0x4)
+	uint32_t Num; // 0x8(0x4)
+	uint32_t is_black; // 0xC(0x4)
+	uint32_t is_faction; // 0x10(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.GuaranteedLoopConf
+// Size: 0x8 (Inherited: 0x0)
+struct FGuaranteedLoopConf
+{
+	uint32_t roll_num; // 0x0(0x4)
+	uint32_t dice_point; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.RollResultsConf
+// Size: 0x8 (Inherited: 0x0)
+struct FRollResultsConf
+{
+	uint32_t dice_point; // 0x0(0x4)
+	uint32_t Weight; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActMoneyBuyGuideConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FActMoneyBuyGuideConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t battle_count_limit; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActMapExplorationConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FActMapExplorationConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t share_task_id; // 0xC(0x4)
+	uint32_t inner_game_task_id; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct TArray<uint32_t> reward_task_ids; // 0x18(0x10)
+	uint32_t broadcast_interval; // 0x28(0x4)
+	uint32_t progress_cache_size; // 0x2C(0x4)
+	struct TArray<struct FProgressRankConf> progress_ranks; // 0x30(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ProgressRankConf
+// Size: 0x38 (Inherited: 0x0)
+struct FProgressRankConf
+{
+	struct TArray<uint32_t> day_conf; // 0x0(0x10)
+	struct TArray<uint32_t> mins; // 0x10(0x10)
+	struct TArray<uint32_t> maxs; // 0x20(0x10)
+	uint32_t rank_min; // 0x30(0x4)
+	uint32_t rank_max; // 0x34(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActMapExplorationCommentConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FActMapExplorationCommentConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t like_text; // 0xC(0x4)
+	struct TArray<struct FCommentTextConf> comment_texts; // 0x10(0x10)
+	uint32_t rule_type; // 0x20(0x4)
+	uint32_t rule_times; // 0x24(0x4)
+	struct TArray<struct FCommentRewardConf> comment_rewards; // 0x28(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.CommentRewardConf
+// Size: 0x10 (Inherited: 0x0)
+struct FCommentRewardConf
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+	uint32_t is_black; // 0x8(0x4)
+	uint32_t is_faction; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.CommentTextConf
+// Size: 0x18 (Inherited: 0x0)
+struct FCommentTextConf
+{
+	uint32_t ID; // 0x0(0x4)
+	uint8_t Pad_0x4[0x4]; // 0x4(0x4)
+	struct FString Text; // 0x8(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActLotteryTaskRewardPoolConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FActLotteryTaskRewardPoolConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t refresh_item_id; // 0xC(0x4)
+	struct TArray<uint32_t> refresh_tasks; // 0x10(0x10)
+	uint32_t total_draws; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+	struct TArray<struct FRewardConf> reward_list; // 0x28(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.RewardConf
+// Size: 0xC (Inherited: 0x0)
+struct FRewardConf
+{
+	uint32_t reward_id; // 0x0(0x4)
+	uint32_t Weight; // 0x4(0x4)
+	uint32_t Task; // 0x8(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActLotteryTaskRewardConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FActLotteryTaskRewardConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<uint32_t> reward_types; // 0x10(0x10)
+	struct TArray<struct FGuaranteeConf> guarantee_list; // 0x20(0x10)
+	struct TArray<struct FProbConf> prob_list; // 0x30(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ProbConf
+// Size: 0xC (Inherited: 0x0)
+struct FProbConf
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t item_num; // 0x4(0x4)
+	uint32_t Weight; // 0x8(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.GuaranteeConf
+// Size: 0x8 (Inherited: 0x0)
+struct FGuaranteeConf
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t item_num; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActLotteryStepConfTableRow
+// Size: 0x88 (Inherited: 0x8)
+struct FActLotteryStepConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FDateTime history_deadline; // 0x10(0x8)
+	uint32_t ticket_id; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	struct TArray<uint32_t> extend_tickets; // 0x20(0x10)
+	struct TArray<uint32_t> step_price; // 0x30(0x10)
+	uint32_t discount_ticket_id; // 0x40(0x4)
+	uint32_t multi_count; // 0x44(0x4)
+	uint32_t ticket_mall_id; // 0x48(0x4)
+	uint32_t pool_id; // 0x4C(0x4)
+	uint32_t big_prize_id; // 0x50(0x4)
+	uint32_t daily_limit; // 0x54(0x4)
+	uint32_t total_limit; // 0x58(0x4)
+	uint8_t Pad_0x5C[0x4]; // 0x5C(0x4)
+	struct TArray<uint32_t> need_collect_items; // 0x60(0x10)
+	uint32_t collect_type; // 0x70(0x4)
+	uint8_t Pad_0x74[0x4]; // 0x74(0x4)
+	struct TArray<struct FAwardItemConf> collect_rewards; // 0x78(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActLotterySkipPoolConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FActLotterySkipPoolConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t pool_id; // 0xC(0x4)
+	struct FString cdn; // 0x10(0x10)
+	struct FString Desc; // 0x20(0x10)
+	struct TArray<struct FPrizeEffectNode> prize_effect; // 0x30(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.PrizeEffectNode
+// Size: 0x18 (Inherited: 0x0)
+struct FPrizeEffectNode
+{
+	struct TArray<uint32_t> pool_item_id; // 0x0(0x10)
+	uint32_t Effect; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActLotterySkipEffectConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FActLotterySkipEffectConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t effct_type; // 0xC(0x4)
+	struct TArray<struct FSkipPoolComboEffect> combo_effect; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.SkipPoolComboEffect
+// Size: 0x8 (Inherited: 0x0)
+struct FSkipPoolComboEffect
+{
+	uint32_t Count; // 0x0(0x4)
+	uint32_t Weight; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActLotterySeriesBoxPoolConfTableRow
+// Size: 0xC0 (Inherited: 0x8)
+struct FActLotterySeriesBoxPoolConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FDateTime pre_begin_time; // 0x10(0x8)
+	struct FDateTime begin_time; // 0x18(0x8)
+	struct FDateTime end_time; // 0x20(0x8)
+	uint32_t pool_id; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+	struct FString Name; // 0x30(0x10)
+	struct FString json_param; // 0x40(0x10)
+	struct FString bp_path; // 0x50(0x10)
+	uint32_t ticket_id; // 0x60(0x4)
+	uint8_t Pad_0x64[0x4]; // 0x64(0x4)
+	struct TArray<uint32_t> extend_tickets; // 0x68(0x10)
+	uint32_t single_price; // 0x78(0x4)
+	uint32_t multi_count; // 0x7C(0x4)
+	uint32_t discount_price; // 0x80(0x4)
+	uint32_t discount_count; // 0x84(0x4)
+	struct FString discount_desc; // 0x88(0x10)
+	uint32_t ticket_mall_id; // 0x98(0x4)
+	uint32_t shop_id; // 0x9C(0x4)
+	struct TArray<uint32_t> currency_ids; // 0xA0(0x10)
+	struct TArray<uint32_t> goal_list; // 0xB0(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActLotterySeriesBoxConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FActLotterySeriesBoxConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t daily_limit; // 0xC(0x4)
+	uint32_t total_limit; // 0x10(0x4)
+	uint32_t guaranteed_process_index; // 0x14(0x4)
+	struct TArray<uint32_t> box_ids; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActLotteryPermanentConfTableRow
+// Size: 0x80 (Inherited: 0x8)
+struct FActLotteryPermanentConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t ticket_id; // 0xC(0x4)
+	struct TArray<uint32_t> extend_tickets; // 0x10(0x10)
+	uint32_t single_price; // 0x20(0x4)
+	uint32_t multi_count; // 0x24(0x4)
+	uint32_t multi_price; // 0x28(0x4)
+	uint32_t discount_price; // 0x2C(0x4)
+	uint32_t discount_count; // 0x30(0x4)
+	uint8_t Pad_0x34[0x4]; // 0x34(0x4)
+	struct FString discount_desc; // 0x38(0x10)
+	uint32_t ticket_mall_id; // 0x48(0x4)
+	uint32_t daily_limit; // 0x4C(0x4)
+	uint32_t total_limit; // 0x50(0x4)
+	uint32_t shop_id; // 0x54(0x4)
+	uint32_t guaranteed_process_index; // 0x58(0x4)
+	uint8_t Pad_0x5C[0x4]; // 0x5C(0x4)
+	struct TArray<uint32_t> currency_ids; // 0x60(0x10)
+	struct TArray<struct FPermanentPoolNode> pool_ids; // 0x70(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.PermanentPoolNode
+// Size: 0x20 (Inherited: 0x0)
+struct FPermanentPoolNode
+{
+	uint32_t pool_id; // 0x0(0x4)
+	uint8_t Pad_0x4[0x4]; // 0x4(0x4)
+	struct FString cdn; // 0x8(0x10)
+	struct FDateTime end_time; // 0x18(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.ActLotteryOfflineTradeConfTableRow
+// Size: 0xD0 (Inherited: 0x8)
+struct FActLotteryOfflineTradeConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t act_id; // 0xC(0x4)
+	uint32_t tag_id; // 0x10(0x4)
+	uint32_t is_core; // 0x14(0x4)
+	struct FText banner; // 0x18(0x18)
+	struct FText gacha_banner; // 0x30(0x18)
+	uint32_t sort_param; // 0x48(0x4)
+	uint32_t sell_item_id; // 0x4C(0x4)
+	uint32_t sell_num; // 0x50(0x4)
+	uint32_t is_black; // 0x54(0x4)
+	uint32_t is_faction; // 0x58(0x4)
+	uint32_t can_buy_multi; // 0x5C(0x4)
+	uint32_t cost_item_id; // 0x60(0x4)
+	uint32_t cost_item_num; // 0x64(0x4)
+	uint32_t unlock_type; // 0x68(0x4)
+	uint32_t unlock_param; // 0x6C(0x4)
+	struct TArray<int32_t> unlock_list_param; // 0x70(0x10)
+	struct FText unlock_str_param; // 0x80(0x18)
+	uint32_t buy_limit_type; // 0x98(0x4)
+	uint32_t buy_limit_num; // 0x9C(0x4)
+	uint32_t bind_season_begin; // 0xA0(0x4)
+	uint32_t bind_season_end; // 0xA4(0x4)
+	uint32_t preshelf_seconds; // 0xA8(0x4)
+	uint8_t Pad_0xAC[0x4]; // 0xAC(0x4)
+	struct TArray<struct FAShopOnshelfTime> onshelf_time; // 0xB0(0x10)
+	struct TArray<struct FAShopDiscount> discounts; // 0xC0(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.AShopDiscount
+// Size: 0x18 (Inherited: 0x0)
+struct FAShopDiscount
+{
+	struct FDateTime start_time; // 0x0(0x8)
+	struct FDateTime end_time; // 0x8(0x8)
+	uint32_t price; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AShopOnshelfTime
+// Size: 0x10 (Inherited: 0x0)
+struct FAShopOnshelfTime
+{
+	struct FDateTime start_time; // 0x0(0x8)
+	struct FDateTime end_time; // 0x8(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.ActLotteryOfflineOutsideConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FActLotteryOfflineOutsideConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString Name; // 0x10(0x10)
+	struct TArray<struct FModelNode> model_list; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ModelNode
+// Size: 0x30 (Inherited: 0x0)
+struct FModelNode
+{
+	struct FString model_id; // 0x0(0x10)
+	struct FString model_type; // 0x10(0x10)
+	struct FString model_name; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActLotteryOfflineExchangeConfTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FActLotteryOfflineExchangeConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t act_id; // 0xC(0x4)
+	struct FString Desc; // 0x10(0x10)
+	uint32_t limit_num; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+	struct TArray<struct FCommonItemConfItem> cost_items; // 0x28(0x10)
+	struct TArray<struct FAwardItemConf> reward_items; // 0x38(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActLotteryOfflineConfTableRow
+// Size: 0x110 (Inherited: 0x8)
+struct FActLotteryOfflineConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t ticket_id; // 0xC(0x4)
+	struct TArray<uint32_t> extend_tickets; // 0x10(0x10)
+	uint32_t single_price; // 0x20(0x4)
+	uint32_t multi_count; // 0x24(0x4)
+	uint32_t multi_price; // 0x28(0x4)
+	uint32_t discount_price; // 0x2C(0x4)
+	uint32_t discount_count; // 0x30(0x4)
+	uint8_t Pad_0x34[0x4]; // 0x34(0x4)
+	struct FString discount_desc; // 0x38(0x10)
+	uint32_t pool_id; // 0x48(0x4)
+	uint32_t daily_limit; // 0x4C(0x4)
+	uint32_t total_limit; // 0x50(0x4)
+	uint32_t guaranteed_process_index; // 0x54(0x4)
+	struct TArray<struct FActShopGoods> shop_cost_items; // 0x58(0x10)
+	struct TArray<uint32_t> accum_rand_count; // 0x68(0x10)
+	struct TArray<struct FAwardItemConf> accum_rand_reward; // 0x78(0x10)
+	struct FText shop_name; // 0x88(0x18)
+	struct FText page_class_type; // 0xA0(0x18)
+	struct FText page_lua_type; // 0xB8(0x18)
+	struct FText shop_detail; // 0xD0(0x18)
+	struct FText page_cdn; // 0xE8(0x18)
+	struct TArray<struct FTagNodeConf> tag_info; // 0x100(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.TagNodeConf
+// Size: 0x58 (Inherited: 0x0)
+struct FTagNodeConf
+{
+	uint32_t ID; // 0x0(0x4)
+	uint8_t Pad_0x4[0x4]; // 0x4(0x4)
+	struct FText tag_name; // 0x8(0x18)
+	struct FText tag_icon; // 0x20(0x18)
+	uint32_t sort; // 0x38(0x4)
+	uint8_t Pad_0x3C[0x4]; // 0x3C(0x4)
+	struct FText Desc; // 0x40(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.ActShopGoods
+// Size: 0x4 (Inherited: 0x0)
+struct FActShopGoods
+{
+	uint32_t item_id; // 0x0(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActLotteryNormalPointConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FActLotteryNormalPointConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t need_point; // 0xC(0x4)
+	struct TArray<uint32_t> point_prob; // 0x10(0x10)
+	struct TArray<uint32_t> guaranteed_need_count; // 0x20(0x10)
+	uint32_t pool_id; // 0x30(0x4)
+	uint8_t Pad_0x34[0x4]; // 0x34(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActLotteryNormalConfTableRow
+// Size: 0xE0 (Inherited: 0x8)
+struct FActLotteryNormalConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t ticket_id; // 0xC(0x4)
+	struct TArray<uint32_t> extend_tickets; // 0x10(0x10)
+	uint32_t single_price; // 0x20(0x4)
+	uint32_t multi_count; // 0x24(0x4)
+	uint32_t multi_price; // 0x28(0x4)
+	uint32_t discount_price; // 0x2C(0x4)
+	uint32_t discount_count; // 0x30(0x4)
+	uint8_t Pad_0x34[0x4]; // 0x34(0x4)
+	struct FString discount_desc; // 0x38(0x10)
+	uint32_t ext_multi_count; // 0x48(0x4)
+	uint32_t ticket_mall_id; // 0x4C(0x4)
+	uint32_t pool_id; // 0x50(0x4)
+	uint32_t guaranteed_process_index; // 0x54(0x4)
+	uint32_t daily_limit; // 0x58(0x4)
+	uint32_t total_limit; // 0x5C(0x4)
+	uint32_t free_refresh_interval; // 0x60(0x4)
+	uint32_t free_count; // 0x64(0x4)
+	uint32_t free_refresh_count; // 0x68(0x4)
+	uint32_t shop_id; // 0x6C(0x4)
+	struct TArray<uint32_t> currency_ids; // 0x70(0x10)
+	struct TArray<uint32_t> need_collect_items; // 0x80(0x10)
+	uint32_t collect_type; // 0x90(0x4)
+	uint8_t Pad_0x94[0x4]; // 0x94(0x4)
+	struct TArray<struct FAwardItemConf> collect_rewards; // 0x98(0x10)
+	struct TArray<uint32_t> accum_rand_count; // 0xA8(0x10)
+	struct TArray<struct FAwardItemConf> accum_rand_reward; // 0xB8(0x10)
+	uint32_t replace_drop_item_id; // 0xC8(0x4)
+	uint32_t replace_item_id; // 0xCC(0x4)
+	struct TArray<uint32_t> goal_list; // 0xD0(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActLotteryBlindBoxEffectConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FActLotteryBlindBoxEffectConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t item_id; // 0xC(0x4)
+	uint32_t effect_type; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActLotteryBlindBoxConfTableRow
+// Size: 0x58 (Inherited: 0x8)
+struct FActLotteryBlindBoxConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t ticket_id; // 0xC(0x4)
+	uint32_t single_price; // 0x10(0x4)
+	uint32_t multi_price; // 0x14(0x4)
+	uint32_t box_group_size; // 0x18(0x4)
+	uint32_t pool_id; // 0x1C(0x4)
+	uint32_t ticket_mall_id; // 0x20(0x4)
+	uint32_t daily_limit; // 0x24(0x4)
+	uint32_t total_limit; // 0x28(0x4)
+	uint32_t refresh_count; // 0x2C(0x4)
+	struct TArray<uint32_t> effect_cards; // 0x30(0x10)
+	uint32_t shop_id; // 0x40(0x4)
+	uint8_t Pad_0x44[0x4]; // 0x44(0x4)
+	struct TArray<uint32_t> currency_ids; // 0x48(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActLootLotteryConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FActLootLotteryConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t box_id; // 0xC(0x4)
+	uint32_t Weight; // 0x10(0x4)
+	uint32_t prob_show_id; // 0x14(0x4)
+	uint32_t prize_limit; // 0x18(0x4)
+	uint32_t week_clear; // 0x1C(0x4)
+	struct TArray<struct FLootRateIncConf> loot_rate_incs; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.LootRateIncConf
+// Size: 0x28 (Inherited: 0x0)
+struct FLootRateIncConf
+{
+	uint32_t rate_inc; // 0x0(0x4)
+	uint8_t Pad_0x4[0x4]; // 0x4(0x4)
+	struct TArray<uint32_t> map_mode_ids; // 0x8(0x10)
+	struct TArray<uint32_t> multi_modes; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActLiveStreamPlatConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FActLiveStreamPlatConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Name; // 0x10(0x18)
+	struct FText livelinkcode; // 0x28(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.ActLiveStreamConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FActLiveStreamConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<uint32_t> plats; // 0x10(0x10)
+	uint32_t jump_offline; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActLikeLotteryConfTableRow
+// Size: 0x80 (Inherited: 0x8)
+struct FActLikeLotteryConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t initial_point; // 0xC(0x4)
+	uint32_t lottery_limit; // 0x10(0x4)
+	uint32_t send_limit; // 0x14(0x4)
+	uint32_t point_per_send; // 0x18(0x4)
+	uint32_t like_limit; // 0x1C(0x4)
+	uint32_t point_per_like; // 0x20(0x4)
+	uint32_t like_recv_limit; // 0x24(0x4)
+	uint32_t point_per_like_recv; // 0x28(0x4)
+	int32_t like_expansion_record_limit; // 0x2C(0x4)
+	int32_t send_expansion_record_limit; // 0x30(0x4)
+	int32_t lottery_record_limit; // 0x34(0x4)
+	uint32_t min_like_friend_interval; // 0x38(0x4)
+	int32_t tips_id; // 0x3C(0x4)
+	struct FString text_key; // 0x40(0x10)
+	struct FString pic; // 0x50(0x10)
+	uint32_t jump_id; // 0x60(0x4)
+	uint32_t reward_item_id; // 0x64(0x4)
+	uint32_t bonus_lottery_limit; // 0x68(0x4)
+	uint8_t Pad_0x6C[0x4]; // 0x6C(0x4)
+	struct TArray<struct FBonusTimeRangeConf> bonus_time_ranges; // 0x70(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.BonusTimeRangeConf
+// Size: 0x20 (Inherited: 0x0)
+struct FBonusTimeRangeConf
+{
+	struct FDateTime Start; // 0x0(0x8)
+	struct FDateTime End; // 0x8(0x8)
+	struct FString des; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActKVConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FActKVConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	int64_t Val; // 0x10(0x8)
+	struct TArray<int64_t> val_array; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActIllustratedBookConfTableRow
+// Size: 0x78 (Inherited: 0x8)
+struct FActIllustratedBookConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t item_id; // 0xC(0x4)
+	struct FString cdn_locked; // 0x10(0x10)
+	struct FString titile_locked; // 0x20(0x10)
+	struct FString popup_titile_locked; // 0x30(0x10)
+	struct FString popup_text_locked; // 0x40(0x10)
+	uint32_t task_id; // 0x50(0x4)
+	uint8_t Pad_0x54[0x4]; // 0x54(0x4)
+	struct FString cdn_unlocked; // 0x58(0x10)
+	struct TArray<struct FPopupUnlockedConf> popup_unlocked; // 0x68(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.PopupUnlockedConf
+// Size: 0x20 (Inherited: 0x0)
+struct FPopupUnlockedConf
+{
+	struct FString Title; // 0x0(0x10)
+	struct FString Text; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActHandbookTaskConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FActHandbookTaskConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t task_id; // 0xC(0x4)
+	uint32_t reset_type; // 0x10(0x4)
+	uint32_t exp_num; // 0x14(0x4)
+	uint32_t deluxe_unlock; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActHandbookRewardConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FActHandbookRewardConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t reward_id; // 0xC(0x4)
+	struct FText cdn; // 0x10(0x18)
+	uint32_t item_id; // 0x28(0x4)
+	uint32_t Num; // 0x2C(0x4)
+	uint32_t is_black; // 0x30(0x4)
+	uint32_t deluxe; // 0x34(0x4)
+	uint32_t Level; // 0x38(0x4)
+	uint32_t Type; // 0x3C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActHandbookConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FActHandbookConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t buy_exp; // 0xC(0x4)
+	uint32_t buy_level_item; // 0x10(0x4)
+	uint32_t purchase_id; // 0x14(0x4)
+	uint32_t week_limit; // 0x18(0x4)
+	uint32_t exp_coeff; // 0x1C(0x4)
+	uint32_t deluxe_item; // 0x20(0x4)
+	uint32_t level_exp; // 0x24(0x4)
+	uint32_t exp_id; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActGoodCommentConfTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FActGoodCommentConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<uint32_t> trigger_task; // 0x10(0x10)
+	struct TArray<uint32_t> trigger_task2; // 0x20(0x10)
+	uint32_t trigger_interval; // 0x30(0x4)
+	uint32_t max_trigger_count; // 0x34(0x4)
+	struct TArray<struct FChannelInfo> channel_infos; // 0x38(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ChannelInfo
+// Size: 0x18 (Inherited: 0x0)
+struct FChannelInfo
+{
+	uint32_t ID; // 0x0(0x4)
+	uint8_t Pad_0x4[0x4]; // 0x4(0x4)
+	struct FString URL; // 0x8(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActGoldenWeekConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FActGoldenWeekConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t task_id; // 0xC(0x4)
+	struct TArray<struct FGoldenWeekTreasuryConf> treasure_reward_vector; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.GoldenWeekTreasuryConf
+// Size: 0x10 (Inherited: 0x0)
+struct FGoldenWeekTreasuryConf
+{
+	uint32_t treasure_reward_item_id; // 0x0(0x4)
+	uint32_t treasure_reward_item_num; // 0x4(0x4)
+	uint32_t is_black; // 0x8(0x4)
+	uint32_t is_faction; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActGoldenWeekBoxConfTableRow
+// Size: 0x70 (Inherited: 0x8)
+struct FActGoldenWeekBoxConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FDateTime take_time_begin; // 0x10(0x8)
+	struct FDateTime take_time_end; // 0x18(0x8)
+	uint32_t can_only_take_once; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+	struct TArray<uint32_t> task_list; // 0x28(0x10)
+	struct TArray<uint32_t> single_box_limit; // 0x38(0x10)
+	uint32_t score_item_id; // 0x48(0x4)
+	uint32_t pool_id; // 0x4C(0x4)
+	uint32_t lottery_ticket_id; // 0x50(0x4)
+	uint32_t lottery_ticket_num; // 0x54(0x4)
+	uint32_t lottery_ratio; // 0x58(0x4)
+	uint8_t Pad_0x5C[0x4]; // 0x5C(0x4)
+	struct TArray<struct FActGoldenWeekCDNConf> pic_conf; // 0x60(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActGoldenWeekCDNConf
+// Size: 0x18 (Inherited: 0x0)
+struct FActGoldenWeekCDNConf
+{
+	uint32_t score_item_num; // 0x0(0x4)
+	uint8_t Pad_0x4[0x4]; // 0x4(0x4)
+	struct FString treasure_picture_url; // 0x8(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActGoldIdCardConfTableRow
+// Size: 0x50 (Inherited: 0x8)
+struct FActGoldIdCardConfTableRow : FTableRowBase
+{
+	uint64_t NickId; // 0x8(0x8)
+	uint64_t ID; // 0x10(0x8)
+	struct FText NickName; // 0x18(0x18)
+	uint32_t inner_game_act_id; // 0x30(0x4)
+	uint32_t is_close; // 0x34(0x4)
+	struct FText cdn_url; // 0x38(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.ActGeneralOpenBoxConfTableRow
+// Size: 0x90 (Inherited: 0x8)
+struct FActGeneralOpenBoxConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t reset_type; // 0xC(0x4)
+	uint32_t key_reset_type; // 0x10(0x4)
+	uint32_t daily_count; // 0x14(0x4)
+	uint32_t week_limit; // 0x18(0x4)
+	uint32_t total_limit; // 0x1C(0x4)
+	uint32_t box_id; // 0x20(0x4)
+	uint32_t box_num; // 0x24(0x4)
+	uint32_t key_id; // 0x28(0x4)
+	uint32_t key_num; // 0x2C(0x4)
+	uint32_t backup_key_id; // 0x30(0x4)
+	uint32_t backup_key_num; // 0x34(0x4)
+	uint32_t drop_num; // 0x38(0x4)
+	uint32_t normal_pool_id; // 0x3C(0x4)
+	struct TArray<struct FActLuckyPool> lucky_pools; // 0x40(0x10)
+	uint32_t prob_show_id; // 0x50(0x4)
+	uint32_t grid_num; // 0x54(0x4)
+	uint32_t history_count; // 0x58(0x4)
+	uint32_t marquee_id; // 0x5C(0x4)
+	struct TArray<uint32_t> marquee_items; // 0x60(0x10)
+	uint32_t need_pool_list; // 0x70(0x4)
+	uint32_t record_reward; // 0x74(0x4)
+	uint32_t final_reward_need_num; // 0x78(0x4)
+	uint8_t Pad_0x7C[0x4]; // 0x7C(0x4)
+	struct FString final_reward_list; // 0x80(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActLuckyPool
+// Size: 0xC (Inherited: 0x0)
+struct FActLuckyPool
+{
+	uint32_t Offset; // 0x0(0x4)
+	uint32_t Step; // 0x4(0x4)
+	uint32_t pool_id; // 0x8(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActFriNumInviteCodeConfTableRow
+// Size: 0x68 (Inherited: 0x8)
+struct FActFriNumInviteCodeConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t refresh_cd; // 0xC(0x4)
+	struct FText act_reward_list; // 0x10(0x18)
+	struct FText act_reward_pic; // 0x28(0x18)
+	struct FText act_reward_desc; // 0x40(0x18)
+	struct TArray<struct FriNumTaskConf> fri_num_task_conf; // 0x58(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.riNumTaskConf
+// Size: 0x38 (Inherited: 0x0)
+struct FriNumTaskConf
+{
+	uint32_t task_id; // 0x0(0x4)
+	uint32_t invite_num; // 0x4(0x4)
+	struct FText task_desc; // 0x8(0x18)
+	struct FText reward_list; // 0x20(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.ActFriLevelInviteCodeConfTableRow
+// Size: 0x68 (Inherited: 0x8)
+struct FActFriLevelInviteCodeConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t refresh_cd; // 0xC(0x4)
+	struct FText act_reward_list; // 0x10(0x18)
+	struct FText act_reward_pic; // 0x28(0x18)
+	struct FText act_reward_desc; // 0x40(0x18)
+	struct TArray<struct FriLevelTaskConf> fri_level_task_conf; // 0x58(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.riLevelTaskConf
+// Size: 0x40 (Inherited: 0x0)
+struct FriLevelTaskConf
+{
+	uint32_t task_id; // 0x0(0x4)
+	uint32_t complete_num; // 0x4(0x4)
+	uint32_t Level; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText task_desc; // 0x10(0x18)
+	struct FText reward_list; // 0x28(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.ActFollowCommunityConfTableRow
+// Size: 0x50 (Inherited: 0x8)
+struct FActFollowCommunityConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t jump_id; // 0xC(0x4)
+	struct FString jump_desc; // 0x10(0x10)
+	struct FString jump_goto_id; // 0x20(0x10)
+	struct FString reward_list; // 0x30(0x10)
+	struct FString icon_cdn; // 0x40(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActFlashConsumeConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FActFlashConsumeConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t unrecharge_days; // 0xC(0x4)
+	uint32_t consume_progress; // 0x10(0x4)
+	uint32_t duration_days; // 0x14(0x4)
+	uint32_t activate_count; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	struct TArray<struct FString> reward_list_list; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActExchangeGlobalConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FActExchangeGlobalConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t history_count; // 0xC(0x4)
+	uint32_t should_send_email_on_full; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActExchangeConfTableRow
+// Size: 0xC8 (Inherited: 0x8)
+struct FActExchangeConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t pre_exchange_count; // 0xC(0x4)
+	uint32_t total_exchange_limit; // 0x10(0x4)
+	uint32_t daily_exchange_limit; // 0x14(0x4)
+	uint32_t week_exchange_limit; // 0x18(0x4)
+	uint32_t act_daily_limit; // 0x1C(0x4)
+	uint32_t act_week_limit; // 0x20(0x4)
+	uint32_t act_total_limit; // 0x24(0x4)
+	uint32_t cost_upper_limit; // 0x28(0x4)
+	uint32_t cost_lower_limit; // 0x2C(0x4)
+	struct TArray<struct FCostItemNode> cost_list; // 0x30(0x10)
+	struct TArray<struct FSubmitItemNode> submit_cost_list; // 0x40(0x10)
+	uint32_t combine_submit_num; // 0x50(0x4)
+	uint8_t Pad_0x54[0x4]; // 0x54(0x4)
+	struct TArray<uint32_t> combine_item_ids; // 0x58(0x10)
+	struct TArray<uint32_t> combine_item_nums; // 0x68(0x10)
+	struct FString reward_list; // 0x78(0x10)
+	uint32_t is_attention; // 0x88(0x4)
+	uint32_t server_limit_id; // 0x8C(0x4)
+	uint32_t guaranteend_times; // 0x90(0x4)
+	uint8_t Pad_0x94[0x4]; // 0x94(0x4)
+	struct TArray<struct FExchangeRewardConf> exchange_reward_list; // 0x98(0x10)
+	struct FDateTime pre_begin_time; // 0xA8(0x8)
+	struct FDateTime begin_time; // 0xB0(0x8)
+	struct FDateTime pre_end_time; // 0xB8(0x8)
+	struct FDateTime end_time; // 0xC0(0x8)
+};
+
+// Object: ScriptStruct UADataTableModule.ExchangeRewardConf
+// Size: 0x28 (Inherited: 0x0)
+struct FExchangeRewardConf
+{
+	struct FString reward_list; // 0x0(0x10)
+	uint32_t Weight; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct FString Desc; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.SubmitItemNode
+// Size: 0x14 (Inherited: 0x0)
+struct FSubmitItemNode
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+	uint32_t is_black; // 0x8(0x4)
+	uint32_t is_dark; // 0xC(0x4)
+	uint32_t is_full_durability; // 0x10(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.CostItemNode
+// Size: 0x8 (Inherited: 0x0)
+struct FCostItemNode
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActEvaluateMineralConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FActEvaluateMineralConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t key_id; // 0xC(0x4)
+	uint32_t key_num; // 0x10(0x4)
+	uint32_t history_count; // 0x14(0x4)
+	uint32_t backup_key_id; // 0x18(0x4)
+	uint32_t backup_key_num; // 0x1C(0x4)
+	uint32_t daily_open_limit; // 0x20(0x4)
+	uint32_t total_open_limit; // 0x24(0x4)
+	struct TArray<struct FMineralConf> mineral_conf; // 0x28(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.MineralConf
+// Size: 0x14 (Inherited: 0x0)
+struct FMineralConf
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t open_time; // 0x4(0x4)
+	uint32_t guarantee_time; // 0x8(0x4)
+	uint32_t lower_limit; // 0xC(0x4)
+	uint32_t upper_limit; // 0x10(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActEntryConfTableRow
+// Size: 0x120 (Inherited: 0x8)
+struct FActEntryConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t sys_id; // 0xC(0x4)
+	uint32_t parent_id; // 0x10(0x4)
+	uint32_t Group; // 0x14(0x4)
+	struct FDateTime start_time; // 0x18(0x8)
+	struct FDateTime end_time; // 0x20(0x8)
+	uint32_t Type; // 0x28(0x4)
+	uint32_t tab_type; // 0x2C(0x4)
+	uint32_t display_order; // 0x30(0x4)
+	uint8_t Pad_0x34[0x4]; // 0x34(0x4)
+	struct FString Name; // 0x38(0x10)
+	struct FString ICON; // 0x48(0x10)
+	uint32_t countdown_time; // 0x58(0x4)
+	uint8_t Pad_0x5C[0x4]; // 0x5C(0x4)
+	struct FString json_param; // 0x60(0x10)
+	uint32_t disappear; // 0x70(0x4)
+	uint32_t min_level; // 0x74(0x4)
+	struct TArray<uint32_t> dependent_orders; // 0x78(0x10)
+	struct FString client_version_low; // 0x88(0x10)
+	struct FString client_version_up; // 0x98(0x10)
+	struct TArray<uint32_t> forbidden_client_channel; // 0xA8(0x10)
+	struct TArray<uint32_t> forbidden_account_channel; // 0xB8(0x10)
+	struct TArray<uint32_t> forbidden_plat_type; // 0xC8(0x10)
+	uint32_t country_group_id; // 0xD8(0x4)
+	uint32_t is_external_sys; // 0xDC(0x4)
+	uint32_t Collation; // 0xE0(0x4)
+	uint8_t Pad_0xE4[0x4]; // 0xE4(0x4)
+	struct FString bp_path; // 0xE8(0x10)
+	struct FString pic; // 0xF8(0x10)
+	struct FString banner; // 0x108(0x10)
+	uint32_t hide_act_tab; // 0x118(0x4)
+	uint8_t Pad_0x11C[0x4]; // 0x11C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActEntryBannerConfigTableRow
+// Size: 0x78 (Inherited: 0x8)
+struct FActEntryBannerConfigTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t entry_id; // 0xC(0x4)
+	struct FString Jump; // 0x10(0x10)
+	struct FString Name; // 0x20(0x10)
+	struct FString Description; // 0x30(0x10)
+	struct FString pic; // 0x40(0x10)
+	struct FDateTime begin_time; // 0x50(0x8)
+	struct FDateTime end_time; // 0x58(0x8)
+	struct FString json_param; // 0x60(0x10)
+	uint32_t display_order; // 0x70(0x4)
+	uint8_t Pad_0x74[0x4]; // 0x74(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActDynamicDialogTreeConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FActDynamicDialogTreeConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t character_id; // 0xC(0x4)
+	struct TArray<struct FDialogTreeConf> dialog_tree_conf; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.DialogTreeConf
+// Size: 0x28 (Inherited: 0x0)
+struct FDialogTreeConf
+{
+	uint32_t Priority; // 0x0(0x4)
+	uint32_t reset_type; // 0x4(0x4)
+	uint32_t tree_root_index; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString message_text; // 0x10(0x10)
+	uint32_t countin_daliy_limit; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActDynamicDialogConfTableRow
+// Size: 0x58 (Inherited: 0x8)
+struct FActDynamicDialogConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t concurrent_tree_limit; // 0xC(0x4)
+	uint32_t daily_tree_limit; // 0x10(0x4)
+	uint32_t show_root_lock_trees; // 0x14(0x4)
+	uint32_t daily_clear_reset_trees; // 0x18(0x4)
+	uint32_t tree_finish_hide; // 0x1C(0x4)
+	uint32_t upgrade_item_id; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+	struct TArray<uint32_t> upgrade_item_num_list; // 0x28(0x10)
+	struct TArray<uint32_t> award_ratio; // 0x38(0x10)
+	struct TArray<struct FRandomRewardConf> reward_vector; // 0x48(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.RandomRewardConf
+// Size: 0x14 (Inherited: 0x0)
+struct FRandomRewardConf
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t min_num; // 0x4(0x4)
+	uint32_t max_num; // 0x8(0x4)
+	uint32_t is_black; // 0xC(0x4)
+	uint32_t is_faction; // 0x10(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActDoss2ConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FActDoss2ConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t contact_id; // 0xC(0x4)
+	struct FString dialogue; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActDialogConfTableRow
+// Size: 0xA8 (Inherited: 0x8)
+struct FActDialogConfTableRow : FTableRowBase
+{
+	uint32_t dialog_id; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FText Name; // 0x10(0x18)
+	uint32_t content_type; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+	struct FText Content; // 0x30(0x18)
+	struct TArray<uint32_t> Jump; // 0x48(0x10)
+	uint32_t is_selected; // 0x58(0x4)
+	uint8_t Pad_0x5C[0x4]; // 0x5C(0x4)
+	struct FText contact_icon; // 0x60(0x18)
+	struct FText contact_name; // 0x78(0x18)
+	struct FText voice_event; // 0x90(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.ActDailyTreasureConfTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FActDailyTreasureConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t task_id; // 0xC(0x4)
+	uint32_t reset_type; // 0x10(0x4)
+	uint32_t refresh_num; // 0x14(0x4)
+	uint32_t treasure_limit; // 0x18(0x4)
+	uint32_t history_count; // 0x1C(0x4)
+	uint32_t treasure_validity_period; // 0x20(0x4)
+	uint32_t recoup_need_loss; // 0x24(0x4)
+	struct TArray<struct FTreasureRewardConf> preview_treasure; // 0x28(0x10)
+	struct TArray<struct FTreasureLuckyPoolConf> lucky_pools; // 0x38(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.TreasureLuckyPoolConf
+// Size: 0x10 (Inherited: 0x0)
+struct FTreasureLuckyPoolConf
+{
+	uint32_t Offset; // 0x0(0x4)
+	uint32_t Step; // 0x4(0x4)
+	uint32_t rarity; // 0x8(0x4)
+	uint32_t pool_id; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.TreasureRewardConf
+// Size: 0x10 (Inherited: 0x0)
+struct FTreasureRewardConf
+{
+	uint32_t rarity; // 0x0(0x4)
+	uint32_t normal_weight; // 0x4(0x4)
+	uint32_t recoup_weight; // 0x8(0x4)
+	uint32_t pool_id; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActDailyShopItemConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FActDailyShopItemConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t item_id; // 0xC(0x4)
+	uint32_t item_num; // 0x10(0x4)
+	uint32_t money_id; // 0x14(0x4)
+	uint32_t money_num; // 0x18(0x4)
+	uint32_t grade_type; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActDailyShopConfTableRow
+// Size: 0x18 (Inherited: 0x8)
+struct FActDailyShopConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t s_prob; // 0xC(0x4)
+	uint32_t a_prob; // 0x10(0x4)
+	uint32_t b_prob; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActDailyLoginConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FActDailyLoginConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t reset_type; // 0xC(0x4)
+	uint32_t need_reissue; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct TArray<struct FAwardItemConf> reward_list; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActContestConfTableRow
+// Size: 0x70 (Inherited: 0x8)
+struct FActContestConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t inner_game_act_id; // 0xC(0x4)
+	struct FDateTime stage_begin_time; // 0x10(0x8)
+	struct FDateTime stage_end_time; // 0x18(0x8)
+	uint32_t boss_item_score; // 0x20(0x4)
+	uint32_t kill_pmc_score; // 0x24(0x4)
+	uint32_t assist_kill_score; // 0x28(0x4)
+	uint32_t survival_time_score; // 0x2C(0x4)
+	uint32_t bp_level_score; // 0x30(0x4)
+	uint32_t bp_max_level; // 0x34(0x4)
+	uint32_t bp_week_score_limit; // 0x38(0x4)
+	uint8_t Pad_0x3C[0x4]; // 0x3C(0x4)
+	struct FString reward_preview; // 0x40(0x10)
+	struct TArray<struct FRewardSeg> player_reward_segs; // 0x50(0x10)
+	struct TArray<struct FRewardSeg> squad_reward_segs; // 0x60(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.RewardSeg
+// Size: 0x18 (Inherited: 0x0)
+struct FRewardSeg
+{
+	uint32_t start_rank; // 0x0(0x4)
+	uint32_t end_rank; // 0x4(0x4)
+	struct FString reward_list; // 0x8(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActConfigTableRow
+// Size: 0x1F0 (Inherited: 0x8)
+struct FActConfigTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t display_order; // 0xC(0x4)
+	uint32_t Type; // 0x10(0x4)
+	uint32_t icon_sys_id; // 0x14(0x4)
+	struct FText Name; // 0x18(0x18)
+	uint32_t rp_type; // 0x30(0x4)
+	uint32_t is_open; // 0x34(0x4)
+	struct TArray<uint32_t> closed_env_id; // 0x38(0x10)
+	struct TArray<uint32_t> active_condition; // 0x48(0x10)
+	uint32_t active_condi_opr_type; // 0x58(0x4)
+	uint8_t Pad_0x5C[0x4]; // 0x5C(0x4)
+	struct FString tab_name; // 0x60(0x10)
+	uint32_t tab_order; // 0x70(0x4)
+	uint32_t theme_act_id; // 0x74(0x4)
+	struct FString tab_cdn; // 0x78(0x10)
+	uint32_t disappear; // 0x88(0x4)
+	uint32_t min_level; // 0x8C(0x4)
+	uint32_t max_level; // 0x90(0x4)
+	uint32_t parent_id; // 0x94(0x4)
+	uint32_t is_logic; // 0x98(0x4)
+	uint8_t Pad_0x9C[0x4]; // 0x9C(0x4)
+	struct FDateTime begin_time; // 0xA0(0x8)
+	struct FDateTime begin_time_deadline; // 0xA8(0x8)
+	struct FDateTime end_time; // 0xB0(0x8)
+	uint32_t continue_time; // 0xB8(0x4)
+	uint8_t Pad_0xBC[0x4]; // 0xBC(0x4)
+	struct FString des; // 0xC0(0x10)
+	struct FString act_time_des; // 0xD0(0x10)
+	struct FString notice; // 0xE0(0x10)
+	struct FString json_param; // 0xF0(0x10)
+	struct FString reward_list; // 0x100(0x10)
+	struct FString pic; // 0x110(0x10)
+	struct FString Jump; // 0x120(0x10)
+	struct TArray<uint32_t> forbidden_client_channel; // 0x130(0x10)
+	struct TArray<uint32_t> forbidden_account_channel; // 0x140(0x10)
+	struct TArray<uint32_t> forbidden_plat_type; // 0x150(0x10)
+	struct FString bp_path; // 0x160(0x10)
+	struct FString URL; // 0x170(0x10)
+	uint32_t tag_time; // 0x180(0x4)
+	uint32_t countdown_time; // 0x184(0x4)
+	uint32_t country_group_id; // 0x188(0x4)
+	uint32_t through_season; // 0x18C(0x4)
+	uint32_t can_rate; // 0x190(0x4)
+	uint32_t is_share; // 0x194(0x4)
+	struct FString share_reward_list; // 0x198(0x10)
+	struct FString share_cdn; // 0x1A8(0x10)
+	uint32_t open_user_type; // 0x1B8(0x4)
+	uint32_t is_rookie_act; // 0x1BC(0x4)
+	uint32_t check_active; // 0x1C0(0x4)
+	uint8_t Pad_0x1C4[0x4]; // 0x1C4(0x4)
+	struct TArray<uint32_t> need_regist_client_channel; // 0x1C8(0x10)
+	struct FString core_rewards; // 0x1D8(0x10)
+	uint32_t has_completed_state; // 0x1E8(0x4)
+	uint32_t is_client_control_first_rp; // 0x1EC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActCodePacketConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FActCodePacketConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<struct FCodePacketConf> code_packet_list; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.CodePacketConf
+// Size: 0x40 (Inherited: 0x0)
+struct FCodePacketConf
+{
+	uint32_t task_id; // 0x0(0x4)
+	uint8_t Pad_0x4[0x4]; // 0x4(0x4)
+	struct FString ntf_pic; // 0x8(0x10)
+	struct FString Text; // 0x18(0x10)
+	uint32_t finish_count; // 0x28(0x4)
+	uint32_t Reset; // 0x2C(0x4)
+	struct FString Effect; // 0x30(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActChainTaskNodeConfTableRow
+// Size: 0x48 (Inherited: 0x8)
+struct FActChainTaskNodeConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t act_id; // 0xC(0x4)
+	uint32_t Type; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct TArray<uint32_t> parent_id; // 0x18(0x10)
+	struct TArray<uint32_t> task_list; // 0x28(0x10)
+	struct TArray<uint32_t> type_list; // 0x38(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActChainTaskConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FActChainTaskConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t is_multi_chain; // 0xC(0x4)
+	struct TArray<uint32_t> logic_id_list; // 0x10(0x10)
+	uint32_t should_ignore_node; // 0x20(0x4)
+	uint32_t unlock_next_cond; // 0x24(0x4)
+	struct TArray<struct FActChainTaskDetailConf> task_list; // 0x28(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActChainTaskDetailConf
+// Size: 0x20 (Inherited: 0x0)
+struct FActChainTaskDetailConf
+{
+	uint32_t task_id; // 0x0(0x4)
+	uint8_t Pad_0x4[0x4]; // 0x4(0x4)
+	struct TArray<uint32_t> parent_task_ids; // 0x8(0x10)
+	uint32_t Op; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActCdnReplaceConfTableRow
+// Size: 0x38 (Inherited: 0x8)
+struct FActCdnReplaceConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString Key; // 0x10(0x10)
+	struct FDateTime begin_time; // 0x20(0x8)
+	struct FString Value; // 0x28(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActBpTaskConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FActBpTaskConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t task_id; // 0xC(0x4)
+	uint32_t reset_type; // 0x10(0x4)
+	uint32_t exp_num; // 0x14(0x4)
+	uint32_t deluxe_unlock; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActBpConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FActBpConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t buy_exp; // 0xC(0x4)
+	uint32_t buy_level_item; // 0x10(0x4)
+	uint32_t purchase_id; // 0x14(0x4)
+	uint32_t week_limit; // 0x18(0x4)
+	uint32_t exp_coeff; // 0x1C(0x4)
+	uint32_t deluxe_item; // 0x20(0x4)
+	uint32_t level_exp; // 0x24(0x4)
+	uint32_t exp_id; // 0x28(0x4)
+	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActBlindBoxLoginConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FActBlindBoxLoginConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t task_id; // 0xC(0x4)
+	uint32_t reset_type; // 0x10(0x4)
+	uint32_t task_reward_chance; // 0x14(0x4)
+	struct TArray<struct FBlindBoxTypeConf> blindbox_types; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.BlindBoxTypeConf
+// Size: 0x14 (Inherited: 0x0)
+struct FBlindBoxTypeConf
+{
+	uint32_t blindbox_id; // 0x0(0x4)
+	uint32_t pool_id; // 0x4(0x4)
+	uint32_t prob_show_id; // 0x8(0x4)
+	uint32_t drop_num; // 0xC(0x4)
+	uint32_t blindbox_num; // 0x10(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActBingoLotteryConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FActBingoLotteryConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t rand_ticket_id; // 0xC(0x4)
+	uint32_t max_rand_num_once; // 0x10(0x4)
+	uint32_t select_ticket_id; // 0x14(0x4)
+	uint32_t board_id; // 0x18(0x4)
+	uint32_t board_row_num; // 0x1C(0x4)
+	uint32_t board_col_num; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActBingoLotteryBoardPointConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FActBingoLotteryBoardPointConfTableRow : FTableRowBase
+{
+	uint32_t board_id; // 0x8(0x4)
+	uint32_t board_point_id; // 0xC(0x4)
+	uint32_t row_index; // 0x10(0x4)
+	uint32_t col_index; // 0x14(0x4)
+	uint32_t Weight; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	struct TArray<struct FActBingoLotteryBoardPointRewardConf> board_point_reward_list; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActBingoLotteryBoardPointRewardConf
+// Size: 0x10 (Inherited: 0x0)
+struct FActBingoLotteryBoardPointRewardConf
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+	uint32_t is_black; // 0x8(0x4)
+	uint32_t is_faction; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActBingoLotteryBoardLineConfTableRow
+// Size: 0x30 (Inherited: 0x8)
+struct FActBingoLotteryBoardLineConfTableRow : FTableRowBase
+{
+	uint32_t board_id; // 0x8(0x4)
+	uint32_t board_line_id; // 0xC(0x4)
+	uint32_t start_row_index; // 0x10(0x4)
+	uint32_t start_col_index; // 0x14(0x4)
+	uint32_t end_row_index; // 0x18(0x4)
+	uint32_t end_col_index; // 0x1C(0x4)
+	struct TArray<struct FActBingoLotteryBoardLineRewardConf> board_line_reward_list; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActBingoLotteryBoardLineRewardConf
+// Size: 0x10 (Inherited: 0x0)
+struct FActBingoLotteryBoardLineRewardConf
+{
+	uint32_t item_id; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+	uint32_t is_black; // 0x8(0x4)
+	uint32_t is_faction; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActAwardConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FActAwardConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<struct FAwardItemConf> award; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.ActAnchorConfTableRow
+// Size: 0x60 (Inherited: 0x8)
+struct FActAnchorConfTableRow : FTableRowBase
+{
+	uint64_t anchor_id; // 0x8(0x8)
+	uint32_t plat; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct FText anchor_name; // 0x18(0x18)
+	struct FText anchor_icon; // 0x30(0x18)
+	struct FText room_url; // 0x48(0x18)
+};
+
+// Object: ScriptStruct UADataTableModule.ActAccumRechargeRuleConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FActAccumRechargeRuleConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t refresh_cycle; // 0xC(0x4)
+	uint32_t accum_type; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct TArray<uint32_t> include_purchase_ids; // 0x18(0x10)
+	struct TArray<uint32_t> exclude_purchase_ids; // 0x28(0x10)
+	uint32_t include_external_rmb_cost; // 0x38(0x4)
+	uint8_t Pad_0x3C[0x4]; // 0x3C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActAccumRechargeConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FActAccumRechargeConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t total_stage; // 0xC(0x4)
+	uint32_t stage; // 0x10(0x4)
+	uint32_t threshold; // 0x14(0x4)
+	struct TArray<struct FAwardAccumRechargeConf> award_accum_conf; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.AwardAccumRechargeConf
+// Size: 0x8 (Inherited: 0x0)
+struct FAwardAccumRechargeConf
+{
+	uint32_t item; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActAccumConsumeRuleConfTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FActAccumConsumeRuleConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t refresh_cycle; // 0xC(0x4)
+	uint32_t accum_type; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct TArray<uint32_t> include_purchase_ids; // 0x18(0x10)
+	struct TArray<uint32_t> exclude_purchase_ids; // 0x28(0x10)
+	uint32_t include_external_rmb_cost; // 0x38(0x4)
+	uint8_t Pad_0x3C[0x4]; // 0x3C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActAccumConsumeConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FActAccumConsumeConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t total_stage; // 0xC(0x4)
+	uint32_t stage; // 0x10(0x4)
+	uint32_t threshold; // 0x14(0x4)
+	struct TArray<struct FAwardAccumConsumeConf> award_accum_conf; // 0x18(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.AwardAccumConsumeConf
+// Size: 0x8 (Inherited: 0x0)
+struct FAwardAccumConsumeConf
+{
+	uint32_t item; // 0x0(0x4)
+	uint32_t Num; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ActAccountBindConfTableRow
+// Size: 0x90 (Inherited: 0x8)
+struct FActAccountBindConfTableRow : FTableRowBase
+{
+	uint32_t account_channel; // 0x8(0x4)
+	uint32_t ID; // 0xC(0x4)
+	int32_t show_order_global_std; // 0x10(0x4)
+	int32_t show_order_global_lite; // 0x14(0x4)
+	int32_t show_order_global_ios; // 0x18(0x4)
+	int32_t show_order_tw_std; // 0x1C(0x4)
+	int32_t show_order_tw_lite; // 0x20(0x4)
+	int32_t show_order_tw_ios; // 0x24(0x4)
+	int32_t show_order_vng_std; // 0x28(0x4)
+	int32_t show_order_vng_lite; // 0x2C(0x4)
+	int32_t show_order_vng_ios; // 0x30(0x4)
+	int32_t show_order_other_std; // 0x34(0x4)
+	int32_t show_order_other_lite; // 0x38(0x4)
+	int32_t show_order_other_ios; // 0x3C(0x4)
+	struct TArray<struct FString> recommand_cultrue_list; // 0x40(0x10)
+	struct FString icon_asset; // 0x50(0x10)
+	struct FString Desc; // 0x60(0x10)
+	struct TArray<uint32_t> jump_goto_list; // 0x70(0x10)
+	struct TArray<struct FAwardItemConf> rewards; // 0x80(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.AccessoryAvatarSetCfgTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FAccessoryAvatarSetCfgTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<uint32_t> avatar_set; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.AccessRepairDurabilityConfTableRow
+// Size: 0x20 (Inherited: 0x8)
+struct FAccessRepairDurabilityConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct TArray<struct FAccessDurabilityPriceConf> durability_price_conf; // 0x10(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.AccessDurabilityPriceConf
+// Size: 0x8 (Inherited: 0x0)
+struct FAccessDurabilityPriceConf
+{
+	uint32_t armor_level; // 0x0(0x4)
+	uint32_t durability_price; // 0x4(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AccessMatArchIdConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FAccessMatArchIdConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t material_arch_id; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AccessDurabilityArchIdConfTableRow
+// Size: 0x10 (Inherited: 0x8)
+struct FAccessDurabilityArchIdConfTableRow : FTableRowBase
+{
+	uint32_t ID; // 0x8(0x4)
+	uint32_t durability_price_arch_id; // 0xC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AISpawnSupportTableRow
+// Size: 0x70 (Inherited: 0x8)
+struct FAISpawnSupportTableRow : FTableRowBase
+{
+	int32_t ConfigID; // 0x8(0x4)
+	int32_t MapID; // 0xC(0x4)
+	struct TArray<int32_t> AISpawnConfigID; // 0x10(0x10)
+	int32_t EventId; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+	struct TArray<float> weather; // 0x28(0x10)
+	struct FString TriggerEvent; // 0x38(0x10)
+	int32_t MinAINum; // 0x48(0x4)
+	int32_t MaxAINum; // 0x4C(0x4)
+	float SpawnRadius; // 0x50(0x4)
+	float PlayerAroundRadius; // 0x54(0x4)
+	float PlayerLineOfSight; // 0x58(0x4)
+	float PlayerViewAngle; // 0x5C(0x4)
+	int32_t SupportFullCount; // 0x60(0x4)
+	float SupportChargeInterval; // 0x64(0x4)
+	int32_t SupportChargeNum; // 0x68(0x4)
+	int32_t InitChargeNum; // 0x6C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AISpawnScavSpawnControllerTableRow
+// Size: 0xF0 (Inherited: 0x8)
+struct FAISpawnScavSpawnControllerTableRow : FTableRowBase
+{
+	int32_t ConfigID; // 0x8(0x4)
+	int32_t MapID; // 0xC(0x4)
+	struct TArray<int32_t> AISpawnConfigID; // 0x10(0x10)
+	int32_t EventId; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+	struct TArray<float> weather; // 0x28(0x10)
+	int32_t SquadID; // 0x38(0x4)
+	int32_t FatherSquadID; // 0x3C(0x4)
+	int32_t AIRandLimitationMin; // 0x40(0x4)
+	int32_t AIRandLimitationMax; // 0x44(0x4)
+	struct FString SpawnPlanName; // 0x48(0x10)
+	int32_t FactionType; // 0x58(0x4)
+	uint8_t Pad_0x5C[0x4]; // 0x5C(0x4)
+	struct FString SingleAreaID; // 0x60(0x10)
+	struct FString TriggerEvent; // 0x70(0x10)
+	float PlayerAroundRadius; // 0x80(0x4)
+	float PlayerLineOfSight; // 0x84(0x4)
+	float PlayerViewAngle; // 0x88(0x4)
+	int32_t MinActiveNum; // 0x8C(0x4)
+	int32_t MaxActiveNum; // 0x90(0x4)
+	bool Loop; // 0x94(0x1)
+	uint8_t Pad_0x95[0x3]; // 0x95(0x3)
+	float FirstSpawnTime; // 0x98(0x4)
+	float DeathDelay; // 0x9C(0x4)
+	struct FString Function; // 0xA0(0x10)
+	bool IsPatrol; // 0xB0(0x1)
+	bool SingleArea; // 0xB1(0x1)
+	uint8_t Pad_0xB2[0x2]; // 0xB2(0x2)
+	int32_t Priority; // 0xB4(0x4)
+	int32_t GroupType; // 0xB8(0x4)
+	uint8_t Pad_0xBC[0x4]; // 0xBC(0x4)
+	struct TArray<struct FScavWaveInfoArray> ScavWaveInfoArray; // 0xC0(0x10)
+	struct TArray<struct FAreaInfo> AreaInfo; // 0xD0(0x10)
+	struct TArray<struct FAreaInfo> Reinforcement; // 0xE0(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.AreaInfo
+// Size: 0x18 (Inherited: 0x0)
+struct FAreaInfo
+{
+	struct FString AreaID; // 0x0(0x10)
+	int32_t Weight; // 0x10(0x4)
+	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.ScavWaveInfoArray
+// Size: 0x14 (Inherited: 0x0)
+struct FScavWaveInfoArray
+{
+	float Probability; // 0x0(0x4)
+	int32_t Min; // 0x4(0x4)
+	int32_t Max; // 0x8(0x4)
+	float MinInterval; // 0xC(0x4)
+	float MaxInterval; // 0x10(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AISpawnPlayerScavConfigTableRow
+// Size: 0x80 (Inherited: 0x8)
+struct FAISpawnPlayerScavConfigTableRow : FTableRowBase
+{
+	int32_t ConfigID; // 0x8(0x4)
+	int32_t MapID; // 0xC(0x4)
+	struct TArray<int32_t> AISpawnConfigID; // 0x10(0x10)
+	int32_t EventId; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+	struct TArray<float> weather; // 0x28(0x10)
+	int32_t MinPlayerScavAINum; // 0x38(0x4)
+	int32_t MaxPlayerScavAINum; // 0x3C(0x4)
+	float PlayerScavAIDelayTime; // 0x40(0x4)
+	float PlayerScavAIEndTime; // 0x44(0x4)
+	float PlayerScavAISpawnInterval; // 0x48(0x4)
+	uint8_t Pad_0x4C[0x4]; // 0x4C(0x4)
+	struct TArray<int32_t> PlayerScavAIIDPool; // 0x50(0x10)
+	struct TArray<int32_t> PlayerScavAIEquipPool; // 0x60(0x10)
+	float PlayerAroundRadius; // 0x70(0x4)
+	float PlayerLineOfSight; // 0x74(0x4)
+	float PlayerViewAngle; // 0x78(0x4)
+	uint8_t Pad_0x7C[0x4]; // 0x7C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AISpawnPlanConfigTableRow
+// Size: 0x70 (Inherited: 0x8)
+struct FAISpawnPlanConfigTableRow : FTableRowBase
+{
+	int32_t ConfigID; // 0x8(0x4)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FString PlanName; // 0x10(0x10)
+	float PlayerAroundRadius; // 0x20(0x4)
+	float PlayerLineOfSight; // 0x24(0x4)
+	float PlayerViewAngle; // 0x28(0x4)
+	int32_t MinActiveNum; // 0x2C(0x4)
+	int32_t MaxActiveNum; // 0x30(0x4)
+	bool Loop; // 0x34(0x1)
+	uint8_t Pad_0x35[0x3]; // 0x35(0x3)
+	float FirstSpawnTime; // 0x38(0x4)
+	float DeathDelay; // 0x3C(0x4)
+	struct FString Function; // 0x40(0x10)
+	bool IsPatrol; // 0x50(0x1)
+	bool SingleArea; // 0x51(0x1)
+	uint8_t Pad_0x52[0x2]; // 0x52(0x2)
+	int32_t Priority; // 0x54(0x4)
+	int32_t GroupType; // 0x58(0x4)
+	uint8_t Pad_0x5C[0x4]; // 0x5C(0x4)
+	struct TArray<struct FScavWaveInfoArray> ScavWaveInfoArray; // 0x60(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.AISpawnPMCSpawnControllerTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FAISpawnPMCSpawnControllerTableRow : FTableRowBase
+{
+	int32_t ConfigID; // 0x8(0x4)
+	int32_t MapID; // 0xC(0x4)
+	int32_t AISpawnConfigID; // 0x10(0x4)
+	int32_t SquadID; // 0x14(0x4)
+	int32_t MinSquadNum; // 0x18(0x4)
+	int32_t MaxSquadNum; // 0x1C(0x4)
+	float PlayerAroundRadius; // 0x20(0x4)
+	float PlayerLineOfSight; // 0x24(0x4)
+	float PlayerViewAngle; // 0x28(0x4)
+	bool Priority; // 0x2C(0x1)
+	uint8_t Pad_0x2D[0x3]; // 0x2D(0x3)
+	struct TArray<struct FAreaInfo> AreaInfo; // 0x30(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.AISpawnPMCConfigTableRow
+// Size: 0xE0 (Inherited: 0x8)
+struct FAISpawnPMCConfigTableRow : FTableRowBase
+{
+	int32_t ConfigID; // 0x8(0x4)
+	int32_t MapID; // 0xC(0x4)
+	struct TArray<int32_t> AISpawnConfigID; // 0x10(0x10)
+	int32_t EventId; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+	struct TArray<float> weather; // 0x28(0x10)
+	int32_t MinPMCTeamNum; // 0x38(0x4)
+	int32_t MaxPMCTeamNum; // 0x3C(0x4)
+	int32_t Plan1Weight; // 0x40(0x4)
+	float PMCAIDelayTime; // 0x44(0x4)
+	int32_t MinPMCAITeamUpNum; // 0x48(0x4)
+	int32_t MaxPMCAITeamUpNum; // 0x4C(0x4)
+	int32_t PMCAINumLimit; // 0x50(0x4)
+	float PlayerAroundRadius; // 0x54(0x4)
+	float PlayerLineOfSight; // 0x58(0x4)
+	float PlayerViewAngle; // 0x5C(0x4)
+	struct TArray<int32_t> PMCAIIDPool; // 0x60(0x10)
+	struct TArray<int32_t> PMCAIEquipPool; // 0x70(0x10)
+	struct TArray<struct FPMCAIEquipmentLimit> PMCAIEquipmentLimit; // 0x80(0x10)
+	int32_t Plan2Wieght; // 0x90(0x4)
+	float PMCAIDelayTime2; // 0x94(0x4)
+	int32_t MinPMCAITeamUpNum2; // 0x98(0x4)
+	int32_t MaxPMCAITeamUpNum2; // 0x9C(0x4)
+	struct TArray<int32_t> PMCAIIDPool2; // 0xA0(0x10)
+	struct TArray<int32_t> PMCAIEquipPool2; // 0xB0(0x10)
+	float ScanInterval; // 0xC0(0x4)
+	float SpawnInterval; // 0xC4(0x4)
+	float DetectionTime; // 0xC8(0x4)
+	float BattleIntensity; // 0xCC(0x4)
+	int32_t HitNum; // 0xD0(0x4)
+	int32_t KillNum; // 0xD4(0x4)
+	int32_t PMCAIEquipValueMin; // 0xD8(0x4)
+	int32_t PMCAIEquipValueMax; // 0xDC(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.PMCAIEquipmentLimit
+// Size: 0xC (Inherited: 0x0)
+struct FPMCAIEquipmentLimit
+{
+	int32_t EquipId; // 0x0(0x4)
+	int32_t Limit; // 0x4(0x4)
+	int32_t BackupID; // 0x8(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AISpawnByVectorTableRow
+// Size: 0x88 (Inherited: 0x8)
+struct FAISpawnByVectorTableRow : FTableRowBase
+{
+	int32_t ConfigID; // 0x8(0x4)
+	int32_t MapID; // 0xC(0x4)
+	struct TArray<int32_t> AISpawnConfigID; // 0x10(0x10)
+	int32_t EventId; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+	struct TArray<float> weather; // 0x28(0x10)
+	struct FString PlanName; // 0x38(0x10)
+	int32_t SpawnNumMin; // 0x48(0x4)
+	int32_t SpawnNumMax; // 0x4C(0x4)
+	int32_t SpawnLocType; // 0x50(0x4)
+	int32_t TeamUpType; // 0x54(0x4)
+	int32_t FactionType; // 0x58(0x4)
+	int32_t CampID; // 0x5C(0x4)
+	float ForceRefreshTime; // 0x60(0x4)
+	int32_t PoolType; // 0x64(0x4)
+	struct TArray<struct FAIPool> AIPool; // 0x68(0x10)
+	float PlayerAroundRadius; // 0x78(0x4)
+	float PlayerLineOfSight; // 0x7C(0x4)
+	float PlayerViewAngle; // 0x80(0x4)
+	uint8_t Pad_0x84[0x4]; // 0x84(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AIPool
+// Size: 0x18 (Inherited: 0x0)
+struct FAIPool
+{
+	struct FString ID; // 0x0(0x10)
+	int32_t Equip; // 0x10(0x4)
+	int32_t Weight; // 0x14(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AISpawnBossSpawnControllerTableRow
+// Size: 0x88 (Inherited: 0x8)
+struct FAISpawnBossSpawnControllerTableRow : FTableRowBase
+{
+	int32_t ConfigID; // 0x8(0x4)
+	int32_t MapID; // 0xC(0x4)
+	struct TArray<int32_t> AISpawnConfigID; // 0x10(0x10)
+	struct TArray<float> weather; // 0x20(0x10)
+	int32_t EventId; // 0x30(0x4)
+	int32_t SquadID; // 0x34(0x4)
+	int32_t BossID; // 0x38(0x4)
+	float PlayerAroundRadius; // 0x3C(0x4)
+	float PlayerLineOfSight; // 0x40(0x4)
+	float PlayerViewAngle; // 0x44(0x4)
+	float Probability; // 0x48(0x4)
+	int32_t Weight; // 0x4C(0x4)
+	int32_t MaxNumber; // 0x50(0x4)
+	uint8_t Pad_0x54[0x4]; // 0x54(0x4)
+	struct FString Function; // 0x58(0x10)
+	float FirstSpawnTime; // 0x68(0x4)
+	int32_t FactionType; // 0x6C(0x4)
+	int32_t GroupType; // 0x70(0x4)
+	uint8_t Pad_0x74[0x4]; // 0x74(0x4)
+	struct TArray<struct FTriggerArea> BossArea; // 0x78(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.TriggerArea
+// Size: 0x30 (Inherited: 0x0)
+struct FTriggerArea
+{
+	struct FString AreaID; // 0x0(0x10)
+	struct FString TriggerEvent; // 0x10(0x10)
+	struct FString FollowArea; // 0x20(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.AISpawnAreaInfoTableRow
+// Size: 0x68 (Inherited: 0x8)
+struct FAISpawnAreaInfoTableRow : FTableRowBase
+{
+	int32_t ConfigID; // 0x8(0x4)
+	int32_t MapID; // 0xC(0x4)
+	struct TArray<int32_t> AISpawnConfigID; // 0x10(0x10)
+	int32_t EventId; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+	struct TArray<float> weather; // 0x28(0x10)
+	struct FString AreaID; // 0x38(0x10)
+	int32_t CampID; // 0x48(0x4)
+	int32_t MaxAINumber; // 0x4C(0x4)
+	int32_t PoolType; // 0x50(0x4)
+	uint8_t Pad_0x54[0x4]; // 0x54(0x4)
+	struct TArray<struct FAIPool> AIPool; // 0x58(0x10)
+};
+
+// Object: ScriptStruct UADataTableModule.AISpawnAntiCamperTableRow
+// Size: 0x70 (Inherited: 0x8)
+struct FAISpawnAntiCamperTableRow : FTableRowBase
+{
+	int32_t ConfigID; // 0x8(0x4)
+	int32_t MapID; // 0xC(0x4)
+	struct TArray<int32_t> AISpawnConfigID; // 0x10(0x10)
+	int32_t EventId; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
+	struct TArray<float> weather; // 0x28(0x10)
+	int32_t MinAINumNum; // 0x38(0x4)
+	int32_t MaxAINum; // 0x3C(0x4)
+	float SpawnRadius; // 0x40(0x4)
+	int32_t Priority; // 0x44(0x4)
+	int32_t FactionType; // 0x48(0x4)
+	int32_t AIIDPool; // 0x4C(0x4)
+	int32_t AIEquipPool; // 0x50(0x4)
+	int32_t CampID; // 0x54(0x4)
+	float PlayerAroundRadius; // 0x58(0x4)
+	float PlayerLineOfSight; // 0x5C(0x4)
+	float PlayerViewAngle; // 0x60(0x4)
+	int32_t TriggerCamperScore; // 0x64(0x4)
+	float TriggerStayTime; // 0x68(0x4)
+	float SpawnInterval; // 0x6C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AINameOverseaTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FAINameOverseaTableRow : FTableRowBase
+{
+	struct FString Description; // 0x8(0x10)
+	struct FText NameText; // 0x18(0x18)
+	int32_t NamePoolID; // 0x30(0x4)
+	int32_t Level; // 0x34(0x4)
+	int32_t DataID; // 0x38(0x4)
+	uint8_t Pad_0x3C[0x4]; // 0x3C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AINameTableRow
+// Size: 0x40 (Inherited: 0x8)
+struct FAINameTableRow : FTableRowBase
+{
+	struct FString Description; // 0x8(0x10)
+	struct FText NameText; // 0x18(0x18)
+	int32_t NamePoolID; // 0x30(0x4)
+	int32_t Level; // 0x34(0x4)
+	int32_t DataID; // 0x38(0x4)
+	uint8_t Pad_0x3C[0x4]; // 0x3C(0x4)
+};
+
+// Object: ScriptStruct UADataTableModule.AIAvatarSetConfTableRow
+// Size: 0x28 (Inherited: 0x8)
+struct FAIAvatarSetConfTableRow : FTableRowBase
+{
+	struct FString CoreID; // 0x8(0x10)
+	struct FString RefName; // 0x18(0x10)
+};
+
+} // namespace SDK

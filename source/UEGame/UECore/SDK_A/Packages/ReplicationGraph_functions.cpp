@@ -76,15 +76,15 @@ void AReplicationGraphDebugActor::ServerPrintCullDistances()
     this->ProcessEvent(Func, &Parms);
 }
 
-void AReplicationGraphDebugActor::ServerPrintAllActorInfo(struct FString str)
+void AReplicationGraphDebugActor::ServerPrintAllActorInfo(struct FString Str)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("ReplicationGraphDebugActor", "ServerPrintAllActorInfo");
     struct
     {
-        struct FString str;
+        struct FString Str;
     } Parms{};
-    Parms.str = (struct FString)str;
+    Parms.Str = (struct FString)Str;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -92,6 +92,16 @@ void AReplicationGraphDebugActor::ServerCellInfo()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("ReplicationGraphDebugActor", "ServerCellInfo");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+void AReplicationGraphDebugActor::OnRep_DynamicCharacterRepInfos()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ReplicationGraphDebugActor", "OnRep_DynamicCharacterRepInfos");
     struct
     {
     } Parms{};

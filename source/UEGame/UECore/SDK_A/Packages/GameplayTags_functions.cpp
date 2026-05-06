@@ -6,7 +6,7 @@ namespace SDK
 {
 
 // UBlueprintGameplayTagLibrary
-uint8_t UBlueprintGameplayTagLibrary::RemoveGameplayTag(struct FGameplayTagContainer& TagContainer, struct FGameplayTag Tag)
+bool UBlueprintGameplayTagLibrary::RemoveGameplayTag(struct FGameplayTagContainer& TagContainer, struct FGameplayTag Tag)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("BlueprintGameplayTagLibrary", "RemoveGameplayTag");
@@ -14,7 +14,7 @@ uint8_t UBlueprintGameplayTagLibrary::RemoveGameplayTag(struct FGameplayTagConta
     {
         struct FGameplayTagContainer TagContainer;
         struct FGameplayTag Tag;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.Tag = (struct FGameplayTag)Tag;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
@@ -22,7 +22,7 @@ uint8_t UBlueprintGameplayTagLibrary::RemoveGameplayTag(struct FGameplayTagConta
     return Parms.ReturnValue;
 }
 
-uint8_t UBlueprintGameplayTagLibrary::NotEqual_TagTag(struct FGameplayTag A, struct FString B)
+bool UBlueprintGameplayTagLibrary::NotEqual_TagTag(struct FGameplayTag A, struct FString B)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("BlueprintGameplayTagLibrary", "NotEqual_TagTag");
@@ -30,7 +30,7 @@ uint8_t UBlueprintGameplayTagLibrary::NotEqual_TagTag(struct FGameplayTag A, str
     {
         struct FGameplayTag A;
         struct FString B;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.A = (struct FGameplayTag)A;
     Parms.B = (struct FString)B;
@@ -38,7 +38,7 @@ uint8_t UBlueprintGameplayTagLibrary::NotEqual_TagTag(struct FGameplayTag A, str
     return Parms.ReturnValue;
 }
 
-uint8_t UBlueprintGameplayTagLibrary::NotEqual_TagContainerTagContainer(struct FGameplayTagContainer A, struct FString B)
+bool UBlueprintGameplayTagLibrary::NotEqual_TagContainerTagContainer(struct FGameplayTagContainer A, struct FString B)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("BlueprintGameplayTagLibrary", "NotEqual_TagContainerTagContainer");
@@ -46,7 +46,7 @@ uint8_t UBlueprintGameplayTagLibrary::NotEqual_TagContainerTagContainer(struct F
     {
         struct FGameplayTagContainer A;
         struct FString B;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.A = (struct FGameplayTagContainer)A;
     Parms.B = (struct FString)B;
@@ -54,7 +54,7 @@ uint8_t UBlueprintGameplayTagLibrary::NotEqual_TagContainerTagContainer(struct F
     return Parms.ReturnValue;
 }
 
-uint8_t UBlueprintGameplayTagLibrary::NotEqual_GameplayTagContainer(const struct FGameplayTagContainer& A, const struct FGameplayTagContainer& B)
+bool UBlueprintGameplayTagLibrary::NotEqual_GameplayTagContainer(const struct FGameplayTagContainer& A, const struct FGameplayTagContainer& B)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("BlueprintGameplayTagLibrary", "NotEqual_GameplayTagContainer");
@@ -62,7 +62,7 @@ uint8_t UBlueprintGameplayTagLibrary::NotEqual_GameplayTagContainer(const struct
     {
         struct FGameplayTagContainer A;
         struct FGameplayTagContainer B;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.A = (struct FGameplayTagContainer)A;
     Parms.B = (struct FGameplayTagContainer)B;
@@ -70,7 +70,7 @@ uint8_t UBlueprintGameplayTagLibrary::NotEqual_GameplayTagContainer(const struct
     return Parms.ReturnValue;
 }
 
-uint8_t UBlueprintGameplayTagLibrary::NotEqual_GameplayTag(struct FGameplayTag A, struct FGameplayTag B)
+bool UBlueprintGameplayTagLibrary::NotEqual_GameplayTag(struct FGameplayTag A, struct FGameplayTag B)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("BlueprintGameplayTagLibrary", "NotEqual_GameplayTag");
@@ -78,7 +78,7 @@ uint8_t UBlueprintGameplayTagLibrary::NotEqual_GameplayTag(struct FGameplayTag A
     {
         struct FGameplayTag A;
         struct FGameplayTag B;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.A = (struct FGameplayTag)A;
     Parms.B = (struct FGameplayTag)B;
@@ -86,7 +86,7 @@ uint8_t UBlueprintGameplayTagLibrary::NotEqual_GameplayTag(struct FGameplayTag A
     return Parms.ReturnValue;
 }
 
-uint8_t UBlueprintGameplayTagLibrary::MatchesTag(struct FGameplayTag TagOne, struct FGameplayTag TagTwo, uint8_t bExactMatch)
+bool UBlueprintGameplayTagLibrary::MatchesTag(struct FGameplayTag TagOne, struct FGameplayTag TagTwo, bool bExactMatch)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("BlueprintGameplayTagLibrary", "MatchesTag");
@@ -94,17 +94,17 @@ uint8_t UBlueprintGameplayTagLibrary::MatchesTag(struct FGameplayTag TagOne, str
     {
         struct FGameplayTag TagOne;
         struct FGameplayTag TagTwo;
-        uint8_t bExactMatch;
-        uint8_t ReturnValue;
+        bool bExactMatch;
+        bool ReturnValue;
     } Parms{};
     Parms.TagOne = (struct FGameplayTag)TagOne;
     Parms.TagTwo = (struct FGameplayTag)TagTwo;
-    Parms.bExactMatch = (uint8_t)bExactMatch;
+    Parms.bExactMatch = (bool)bExactMatch;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UBlueprintGameplayTagLibrary::MatchesAnyTags(struct FGameplayTag TagOne, const struct FGameplayTagContainer& OtherContainer, uint8_t bExactMatch)
+bool UBlueprintGameplayTagLibrary::MatchesAnyTags(struct FGameplayTag TagOne, const struct FGameplayTagContainer& OtherContainer, bool bExactMatch)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("BlueprintGameplayTagLibrary", "MatchesAnyTags");
@@ -112,12 +112,12 @@ uint8_t UBlueprintGameplayTagLibrary::MatchesAnyTags(struct FGameplayTag TagOne,
     {
         struct FGameplayTag TagOne;
         struct FGameplayTagContainer OtherContainer;
-        uint8_t bExactMatch;
-        uint8_t ReturnValue;
+        bool bExactMatch;
+        bool ReturnValue;
     } Parms{};
     Parms.TagOne = (struct FGameplayTag)TagOne;
     Parms.OtherContainer = (struct FGameplayTagContainer)OtherContainer;
-    Parms.bExactMatch = (uint8_t)bExactMatch;
+    Parms.bExactMatch = (bool)bExactMatch;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
@@ -192,35 +192,35 @@ struct FGameplayTagContainer UBlueprintGameplayTagLibrary::MakeGameplayTagContai
     return Parms.ReturnValue;
 }
 
-uint8_t UBlueprintGameplayTagLibrary::IsTagQueryEmpty(const struct FGameplayTagQuery& TagQuery)
+bool UBlueprintGameplayTagLibrary::IsTagQueryEmpty(const struct FGameplayTagQuery& TagQuery)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("BlueprintGameplayTagLibrary", "IsTagQueryEmpty");
     struct
     {
         struct FGameplayTagQuery TagQuery;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.TagQuery = (struct FGameplayTagQuery)TagQuery;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UBlueprintGameplayTagLibrary::IsGameplayTagValid(struct FGameplayTag GameplayTag)
+bool UBlueprintGameplayTagLibrary::IsGameplayTagValid(struct FGameplayTag GameplayTag)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("BlueprintGameplayTagLibrary", "IsGameplayTagValid");
     struct
     {
         struct FGameplayTag GameplayTag;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.GameplayTag = (struct FGameplayTag)GameplayTag;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UBlueprintGameplayTagLibrary::HasTag(const struct FGameplayTagContainer& TagContainer, struct FGameplayTag Tag, uint8_t bExactMatch)
+bool UBlueprintGameplayTagLibrary::HasTag(const struct FGameplayTagContainer& TagContainer, struct FGameplayTag Tag, bool bExactMatch)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("BlueprintGameplayTagLibrary", "HasTag");
@@ -228,17 +228,17 @@ uint8_t UBlueprintGameplayTagLibrary::HasTag(const struct FGameplayTagContainer&
     {
         struct FGameplayTagContainer TagContainer;
         struct FGameplayTag Tag;
-        uint8_t bExactMatch;
-        uint8_t ReturnValue;
+        bool bExactMatch;
+        bool ReturnValue;
     } Parms{};
     Parms.TagContainer = (struct FGameplayTagContainer)TagContainer;
     Parms.Tag = (struct FGameplayTag)Tag;
-    Parms.bExactMatch = (uint8_t)bExactMatch;
+    Parms.bExactMatch = (bool)bExactMatch;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UBlueprintGameplayTagLibrary::HasAnyTags(const struct FGameplayTagContainer& TagContainer, const struct FGameplayTagContainer& OtherContainer, uint8_t bExactMatch)
+bool UBlueprintGameplayTagLibrary::HasAnyTags(const struct FGameplayTagContainer& TagContainer, const struct FGameplayTagContainer& OtherContainer, bool bExactMatch)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("BlueprintGameplayTagLibrary", "HasAnyTags");
@@ -246,17 +246,17 @@ uint8_t UBlueprintGameplayTagLibrary::HasAnyTags(const struct FGameplayTagContai
     {
         struct FGameplayTagContainer TagContainer;
         struct FGameplayTagContainer OtherContainer;
-        uint8_t bExactMatch;
-        uint8_t ReturnValue;
+        bool bExactMatch;
+        bool ReturnValue;
     } Parms{};
     Parms.TagContainer = (struct FGameplayTagContainer)TagContainer;
     Parms.OtherContainer = (struct FGameplayTagContainer)OtherContainer;
-    Parms.bExactMatch = (uint8_t)bExactMatch;
+    Parms.bExactMatch = (bool)bExactMatch;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UBlueprintGameplayTagLibrary::HasAllTags(const struct FGameplayTagContainer& TagContainer, const struct FGameplayTagContainer& OtherContainer, uint8_t bExactMatch)
+bool UBlueprintGameplayTagLibrary::HasAllTags(const struct FGameplayTagContainer& TagContainer, const struct FGameplayTagContainer& OtherContainer, bool bExactMatch)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("BlueprintGameplayTagLibrary", "HasAllTags");
@@ -264,17 +264,17 @@ uint8_t UBlueprintGameplayTagLibrary::HasAllTags(const struct FGameplayTagContai
     {
         struct FGameplayTagContainer TagContainer;
         struct FGameplayTagContainer OtherContainer;
-        uint8_t bExactMatch;
-        uint8_t ReturnValue;
+        bool bExactMatch;
+        bool ReturnValue;
     } Parms{};
     Parms.TagContainer = (struct FGameplayTagContainer)TagContainer;
     Parms.OtherContainer = (struct FGameplayTagContainer)OtherContainer;
-    Parms.bExactMatch = (uint8_t)bExactMatch;
+    Parms.bExactMatch = (bool)bExactMatch;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UBlueprintGameplayTagLibrary::HasAllMatchingGameplayTags(struct TScriptInterface<IGameplayTagAssetInterface> TagContainerInterface, const struct FGameplayTagContainer& OtherContainer)
+bool UBlueprintGameplayTagLibrary::HasAllMatchingGameplayTags(struct TScriptInterface<IGameplayTagAssetInterface> TagContainerInterface, const struct FGameplayTagContainer& OtherContainer)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("BlueprintGameplayTagLibrary", "HasAllMatchingGameplayTags");
@@ -282,7 +282,7 @@ uint8_t UBlueprintGameplayTagLibrary::HasAllMatchingGameplayTags(struct TScriptI
     {
         struct TScriptInterface<IGameplayTagAssetInterface> TagContainerInterface;
         struct FGameplayTagContainer OtherContainer;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.TagContainerInterface = (struct TScriptInterface<IGameplayTagAssetInterface>)TagContainerInterface;
     Parms.OtherContainer = (struct FGameplayTagContainer)OtherContainer;
@@ -364,7 +364,7 @@ void UBlueprintGameplayTagLibrary::GetAllActorsOfClassMatchingTagQuery(struct UO
     OutActors = Parms.OutActors;
 }
 
-uint8_t UBlueprintGameplayTagLibrary::EqualEqual_GameplayTagContainer(const struct FGameplayTagContainer& A, const struct FGameplayTagContainer& B)
+bool UBlueprintGameplayTagLibrary::EqualEqual_GameplayTagContainer(const struct FGameplayTagContainer& A, const struct FGameplayTagContainer& B)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("BlueprintGameplayTagLibrary", "EqualEqual_GameplayTagContainer");
@@ -372,7 +372,7 @@ uint8_t UBlueprintGameplayTagLibrary::EqualEqual_GameplayTagContainer(const stru
     {
         struct FGameplayTagContainer A;
         struct FGameplayTagContainer B;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.A = (struct FGameplayTagContainer)A;
     Parms.B = (struct FGameplayTagContainer)B;
@@ -380,7 +380,7 @@ uint8_t UBlueprintGameplayTagLibrary::EqualEqual_GameplayTagContainer(const stru
     return Parms.ReturnValue;
 }
 
-uint8_t UBlueprintGameplayTagLibrary::EqualEqual_GameplayTag(struct FGameplayTag A, struct FGameplayTag B)
+bool UBlueprintGameplayTagLibrary::EqualEqual_GameplayTag(struct FGameplayTag A, struct FGameplayTag B)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("BlueprintGameplayTagLibrary", "EqualEqual_GameplayTag");
@@ -388,7 +388,7 @@ uint8_t UBlueprintGameplayTagLibrary::EqualEqual_GameplayTag(struct FGameplayTag
     {
         struct FGameplayTag A;
         struct FGameplayTag B;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.A = (struct FGameplayTag)A;
     Parms.B = (struct FGameplayTag)B;
@@ -396,7 +396,7 @@ uint8_t UBlueprintGameplayTagLibrary::EqualEqual_GameplayTag(struct FGameplayTag
     return Parms.ReturnValue;
 }
 
-uint8_t UBlueprintGameplayTagLibrary::DoesTagAssetInterfaceHaveTag(struct TScriptInterface<IGameplayTagAssetInterface> TagContainerInterface, struct FGameplayTag Tag)
+bool UBlueprintGameplayTagLibrary::DoesTagAssetInterfaceHaveTag(struct TScriptInterface<IGameplayTagAssetInterface> TagContainerInterface, struct FGameplayTag Tag)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("BlueprintGameplayTagLibrary", "DoesTagAssetInterfaceHaveTag");
@@ -404,7 +404,7 @@ uint8_t UBlueprintGameplayTagLibrary::DoesTagAssetInterfaceHaveTag(struct TScrip
     {
         struct TScriptInterface<IGameplayTagAssetInterface> TagContainerInterface;
         struct FGameplayTag Tag;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.TagContainerInterface = (struct TScriptInterface<IGameplayTagAssetInterface>)TagContainerInterface;
     Parms.Tag = (struct FGameplayTag)Tag;
@@ -412,7 +412,7 @@ uint8_t UBlueprintGameplayTagLibrary::DoesTagAssetInterfaceHaveTag(struct TScrip
     return Parms.ReturnValue;
 }
 
-uint8_t UBlueprintGameplayTagLibrary::DoesContainerMatchTagQuery(const struct FGameplayTagContainer& TagContainer, const struct FGameplayTagQuery& TagQuery)
+bool UBlueprintGameplayTagLibrary::DoesContainerMatchTagQuery(const struct FGameplayTagContainer& TagContainer, const struct FGameplayTagQuery& TagQuery)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("BlueprintGameplayTagLibrary", "DoesContainerMatchTagQuery");
@@ -420,7 +420,7 @@ uint8_t UBlueprintGameplayTagLibrary::DoesContainerMatchTagQuery(const struct FG
     {
         struct FGameplayTagContainer TagContainer;
         struct FGameplayTagQuery TagQuery;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.TagContainer = (struct FGameplayTagContainer)TagContainer;
     Parms.TagQuery = (struct FGameplayTagQuery)TagQuery;
@@ -471,42 +471,42 @@ void UBlueprintGameplayTagLibrary::AddGameplayTag(struct FGameplayTagContainer& 
 }
 
 // IGameplayTagAssetInterface
-uint8_t IGameplayTagAssetInterface::HasMatchingGameplayTag(struct FGameplayTag TagToCheck)
+bool IGameplayTagAssetInterface::HasMatchingGameplayTag(struct FGameplayTag TagToCheck)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("GameplayTagAssetInterface", "HasMatchingGameplayTag");
     struct
     {
         struct FGameplayTag TagToCheck;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.TagToCheck = (struct FGameplayTag)TagToCheck;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t IGameplayTagAssetInterface::HasAnyMatchingGameplayTags(const struct FGameplayTagContainer& TagContainer)
+bool IGameplayTagAssetInterface::HasAnyMatchingGameplayTags(const struct FGameplayTagContainer& TagContainer)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("GameplayTagAssetInterface", "HasAnyMatchingGameplayTags");
     struct
     {
         struct FGameplayTagContainer TagContainer;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.TagContainer = (struct FGameplayTagContainer)TagContainer;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t IGameplayTagAssetInterface::HasAllMatchingGameplayTags(const struct FGameplayTagContainer& TagContainer)
+bool IGameplayTagAssetInterface::HasAllMatchingGameplayTags(const struct FGameplayTagContainer& TagContainer)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("GameplayTagAssetInterface", "HasAllMatchingGameplayTags");
     struct
     {
         struct FGameplayTagContainer TagContainer;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.TagContainer = (struct FGameplayTagContainer)TagContainer;
     this->ProcessEvent(Func, &Parms);

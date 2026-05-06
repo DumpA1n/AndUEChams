@@ -5,6 +5,19 @@
 namespace SDK
 {
 
+// ACameraRig_Rail
+struct USplineComponent* ACameraRig_Rail::GetRailSplineComponent()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CameraRig_Rail", "GetRailSplineComponent");
+    struct
+    {
+        struct USplineComponent* ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
 // ACineCameraActor
 struct UCineCameraComponent* ACineCameraActor::GetCineCameraComponent()
 {
@@ -43,7 +56,7 @@ void UCineCameraComponent::SetFilmbackPresetByName(struct FString InPresetName)
     this->ProcessEvent(Func, &Parms);
 }
 
-void UCineCameraComponent::SetCurrentFocalLength(const float& InFocalLength)
+void UCineCameraComponent::SetCurrentFocalLength(float InFocalLength)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("CineCameraComponent", "SetCurrentFocalLength");
@@ -103,6 +116,18 @@ float UCineCameraComponent::GetHorizontalFieldOfView()
     return Parms.ReturnValue;
 }
 
+struct TArray<struct FNamedFilmbackPreset> UCineCameraComponent::GetFilmbackPresetsCopy()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("CineCameraComponent", "GetFilmbackPresetsCopy");
+    struct
+    {
+        struct TArray<struct FNamedFilmbackPreset> ReturnValue;
+    } Parms{};
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
 struct FString UCineCameraComponent::GetFilmbackPresetName()
 {
     static struct UFunction* Func = nullptr;
@@ -122,19 +147,6 @@ struct FString UCineCameraComponent::GetDefaultFilmbackPresetName()
     struct
     {
         struct FString ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-// ACameraRig_Rail
-struct USplineComponent* ACameraRig_Rail::GetRailSplineComponent()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("CameraRig_Rail", "GetRailSplineComponent");
-    struct
-    {
-        struct USplineComponent* ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;

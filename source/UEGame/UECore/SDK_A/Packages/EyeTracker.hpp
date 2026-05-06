@@ -55,33 +55,33 @@ struct UEyeTrackerFunctionLibrary : UBlueprintFunctionLibrary
 
 	// Object: Function EyeTracker.EyeTrackerFunctionLibrary.SetEyeTrackedPlayer
 	// Flags: [Final|Native|Static|Public|BlueprintCallable]
-	// Offset: 0x167a0e08
+	// Offset: 0xb22e528
 	// Params: [ Num(1) Size(0x8) ]
 	static void SetEyeTrackedPlayer(struct APlayerController* PlayerController);
 
 	// Object: Function EyeTracker.EyeTrackerFunctionLibrary.IsStereoGazeDataAvailable
 	// Flags: [Final|Native|Static|Public|BlueprintCallable|BlueprintPure]
-	// Offset: 0x167a0dd0
+	// Offset: 0xb22e740
 	// Params: [ Num(1) Size(0x1) ]
-	static uint8_t IsStereoGazeDataAvailable();
+	static bool IsStereoGazeDataAvailable();
 
 	// Object: Function EyeTracker.EyeTrackerFunctionLibrary.IsEyeTrackerConnected
 	// Flags: [Final|Native|Static|Public|BlueprintCallable|BlueprintPure]
-	// Offset: 0x167a0d98
+	// Offset: 0xb22e778
 	// Params: [ Num(1) Size(0x1) ]
-	static uint8_t IsEyeTrackerConnected();
+	static bool IsEyeTrackerConnected();
 
 	// Object: Function EyeTracker.EyeTrackerFunctionLibrary.GetStereoGazeData
 	// Flags: [Final|Native|Static|Public|HasOutParms|BlueprintCallable]
-	// Offset: 0x167a0cd8
+	// Offset: 0xb22e5c0
 	// Params: [ Num(2) Size(0x41) ]
-	static uint8_t GetStereoGazeData(struct FEyeTrackerStereoGazeData& OutGazeData);
+	static bool GetStereoGazeData(struct FEyeTrackerStereoGazeData& OutGazeData);
 
 	// Object: Function EyeTracker.EyeTrackerFunctionLibrary.GetGazeData
 	// Flags: [Final|Native|Static|Public|HasOutParms|BlueprintCallable]
-	// Offset: 0x167a0c18
+	// Offset: 0xb22e680
 	// Params: [ Num(2) Size(0x29) ]
-	static uint8_t GetGazeData(struct FEyeTrackerGazeData& OutGazeData);
+	static bool GetGazeData(struct FEyeTrackerGazeData& OutGazeData);
 };
 
 } // namespace SDK

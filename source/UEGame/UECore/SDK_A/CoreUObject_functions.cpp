@@ -8,7 +8,7 @@
 namespace SDK
 {
 
-constexpr int kProcessEventIndex = 69;
+constexpr int kProcessEventIndex = 71;
 
 void UObject::ProcessEvent(struct UFunction* Function, void* Parms) const
 {

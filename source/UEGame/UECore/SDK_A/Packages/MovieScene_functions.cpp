@@ -1,5 +1,4 @@
 #include "MovieScene.hpp"
-#include "Engine.hpp"
 #include <cstring> // memcpy for ArrayDim>1 param marshalling
 
 namespace SDK
@@ -54,27 +53,27 @@ void UMovieSceneSection::SetOverlapPriority(int32_t NewPriority)
     this->ProcessEvent(Func, &Parms);
 }
 
-void UMovieSceneSection::SetIsLocked(uint8_t bInIsLocked)
+void UMovieSceneSection::SetIsLocked(bool bInIsLocked)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSection", "SetIsLocked");
     struct
     {
-        uint8_t bInIsLocked;
+        bool bInIsLocked;
     } Parms{};
-    Parms.bInIsLocked = (uint8_t)bInIsLocked;
+    Parms.bInIsLocked = (bool)bInIsLocked;
     this->ProcessEvent(Func, &Parms);
 }
 
-void UMovieSceneSection::SetIsActive(uint8_t bInIsActive)
+void UMovieSceneSection::SetIsActive(bool bInIsActive)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSection", "SetIsActive");
     struct
     {
-        uint8_t bInIsActive;
+        bool bInIsActive;
     } Parms{};
-    Parms.bInIsActive = (uint8_t)bInIsActive;
+    Parms.bInIsActive = (bool)bInIsActive;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -102,25 +101,25 @@ void UMovieSceneSection::SetBlendType(EMovieSceneBlendType InBlendType)
     this->ProcessEvent(Func, &Parms);
 }
 
-uint8_t UMovieSceneSection::IsLocked()
+bool UMovieSceneSection::IsLocked()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSection", "IsLocked");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMovieSceneSection::IsActive()
+bool UMovieSceneSection::IsActive()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSection", "IsActive");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
@@ -199,74 +198,6 @@ struct FOptionalMovieSceneBlendType UMovieSceneSection::GetBlendType()
 }
 
 // UMovieSceneSequence
-void UMovieSceneSequence::UnbindPossessableObjects(const struct FGuid& ObjectId)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequence", "UnbindPossessableObjects");
-    struct
-    {
-        struct FGuid ObjectId;
-    } Parms{};
-    Parms.ObjectId = (struct FGuid)ObjectId;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UMovieSceneSequence::UnbindObjects(const struct FGuid& ObjectId, const struct TArray<struct UObject*>& InObjects, struct UObject* Context)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequence", "UnbindObjects");
-    struct
-    {
-        struct FGuid ObjectId;
-        struct TArray<struct UObject*> InObjects;
-        struct UObject* Context;
-    } Parms{};
-    Parms.ObjectId = (struct FGuid)ObjectId;
-    Parms.InObjects = (struct TArray<struct UObject*>)InObjects;
-    Parms.Context = (struct UObject*)Context;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UMovieSceneSequence::UnbindInvalidObjects(const struct FGuid& ObjectId, struct UObject* Context)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequence", "UnbindInvalidObjects");
-    struct
-    {
-        struct FGuid ObjectId;
-        struct UObject* Context;
-    } Parms{};
-    Parms.ObjectId = (struct FGuid)ObjectId;
-    Parms.Context = (struct UObject*)Context;
-    this->ProcessEvent(Func, &Parms);
-}
-
-struct UObject* UMovieSceneSequence::GetParentObject(struct UObject* Object)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequence", "GetParentObject");
-    struct
-    {
-        struct UObject* Object;
-        struct UObject* ReturnValue;
-    } Parms{};
-    Parms.Object = (struct UObject*)Object;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct UMovieScene* UMovieSceneSequence::GetMovieScene()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequence", "GetMovieScene");
-    struct
-    {
-        struct UMovieScene* ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
 struct TArray<struct FMovieSceneObjectBindingID> UMovieSceneSequence::FindBindingsByTag(struct FName InBindingName)
 {
     static struct UFunction* Func = nullptr;
@@ -295,109 +226,77 @@ struct FMovieSceneObjectBindingID UMovieSceneSequence::FindBindingByTag(struct F
     return Parms.ReturnValue;
 }
 
-struct FGuid UMovieSceneSequence::CreateSpawnable(struct UObject* ObjectToSpawn)
+// IMovieSceneCustomClockSource
+void IMovieSceneCustomClockSource::OnTick(float DeltaSeconds, float InPlayRate)
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequence", "CreateSpawnable");
+    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneCustomClockSource", "OnTick");
     struct
     {
-        struct UObject* ObjectToSpawn;
-        struct FGuid ReturnValue;
+        float DeltaSeconds;
+        float InPlayRate;
     } Parms{};
-    Parms.ObjectToSpawn = (struct UObject*)ObjectToSpawn;
+    Parms.DeltaSeconds = (float)DeltaSeconds;
+    Parms.InPlayRate = (float)InPlayRate;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void IMovieSceneCustomClockSource::OnStopPlaying(const struct FQualifiedFrameTime& InStopTime)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneCustomClockSource", "OnStopPlaying");
+    struct
+    {
+        struct FQualifiedFrameTime InStopTime;
+    } Parms{};
+    Parms.InStopTime = (struct FQualifiedFrameTime)InStopTime;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void IMovieSceneCustomClockSource::OnStartPlaying(const struct FQualifiedFrameTime& InStartTime)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneCustomClockSource", "OnStartPlaying");
+    struct
+    {
+        struct FQualifiedFrameTime InStartTime;
+    } Parms{};
+    Parms.InStartTime = (struct FQualifiedFrameTime)InStartTime;
+    this->ProcessEvent(Func, &Parms);
+}
+
+struct FFrameTime IMovieSceneCustomClockSource::OnRequestCurrentTime(const struct FQualifiedFrameTime& InCurrentTime, float InPlayRate)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneCustomClockSource", "OnRequestCurrentTime");
+    struct
+    {
+        struct FQualifiedFrameTime InCurrentTime;
+        float InPlayRate;
+        struct FFrameTime ReturnValue;
+    } Parms{};
+    Parms.InCurrentTime = (struct FQualifiedFrameTime)InCurrentTime;
+    Parms.InPlayRate = (float)InPlayRate;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-struct FGuid UMovieSceneSequence::CreatePossessable(struct UObject* ObjectToPossess)
+// IMovieSceneEasingFunction
+float IMovieSceneEasingFunction::OnEvaluate(float Interp)
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequence", "CreatePossessable");
+    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneEasingFunction", "OnEvaluate");
     struct
     {
-        struct UObject* ObjectToPossess;
-        struct FGuid ReturnValue;
+        float Interp;
+        float ReturnValue;
     } Parms{};
-    Parms.ObjectToPossess = (struct UObject*)ObjectToPossess;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-uint8_t UMovieSceneSequence::CanRebindPossessable(const struct FMovieScenePossessable& InPossessable)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequence", "CanRebindPossessable");
-    struct
-    {
-        struct FMovieScenePossessable InPossessable;
-        uint8_t ReturnValue;
-    } Parms{};
-    Parms.InPossessable = (struct FMovieScenePossessable)InPossessable;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-uint8_t UMovieSceneSequence::AllowsSpawnableObjects()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequence", "AllowsSpawnableObjects");
-    struct
-    {
-        uint8_t ReturnValue;
-    } Parms{};
+    Parms.Interp = (float)Interp;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
 // UMovieSceneSequencePlayer
-void UMovieSceneSequencePlayer::UpdateTimeCursorPosition(struct FFrameTime NewPosition, EUpdatePositionMethod Method)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequencePlayer", "UpdateTimeCursorPosition");
-    struct
-    {
-        struct FFrameTime NewPosition;
-        enum EUpdatePositionMethod Method;
-    } Parms{};
-    Parms.NewPosition = (struct FFrameTime)NewPosition;
-    Parms.Method = (enum EUpdatePositionMethod)Method;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UMovieSceneSequencePlayer::UpdateMovieSceneInstanceOuter()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequencePlayer", "UpdateMovieSceneInstanceOuter");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UMovieSceneSequencePlayer::Update(float DeltaSeconds)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequencePlayer", "Update");
-    struct
-    {
-        float DeltaSeconds;
-    } Parms{};
-    Parms.DeltaSeconds = (float)DeltaSeconds;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UMovieSceneSequencePlayer::StopInternal(struct FFrameTime TimeToResetTo)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequencePlayer", "StopInternal");
-    struct
-    {
-        struct FFrameTime TimeToResetTo;
-    } Parms{};
-    Parms.TimeToResetTo = (struct FFrameTime)TimeToResetTo;
-    this->ProcessEvent(Func, &Parms);
-}
-
 void UMovieSceneSequencePlayer::StopAtCurrentTime()
 {
     static struct UFunction* Func = nullptr;
@@ -418,30 +317,16 @@ void UMovieSceneSequencePlayer::Stop()
     this->ProcessEvent(Func, &Parms);
 }
 
-uint8_t UMovieSceneSequencePlayer::ShouldStopOrLoop(struct FFrameTime NewPosition)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequencePlayer", "ShouldStopOrLoop");
-    struct
-    {
-        struct FFrameTime NewPosition;
-        uint8_t ReturnValue;
-    } Parms{};
-    Parms.NewPosition = (struct FFrameTime)NewPosition;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-void UMovieSceneSequencePlayer::SetTimeRange(float StartTime, float Duration)
+void UMovieSceneSequencePlayer::SetTimeRange(float startTime, float Duration)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequencePlayer", "SetTimeRange");
     struct
     {
-        float StartTime;
+        float startTime;
         float Duration;
     } Parms{};
-    Parms.StartTime = (float)StartTime;
+    Parms.startTime = (float)startTime;
     Parms.Duration = (float)Duration;
     this->ProcessEvent(Func, &Parms);
 }
@@ -458,53 +343,15 @@ void UMovieSceneSequencePlayer::SetPlayRate(float PlayRate)
     this->ProcessEvent(Func, &Parms);
 }
 
-void UMovieSceneSequencePlayer::SetPlayPosition(uint32_t InFrameTime)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequencePlayer", "SetPlayPosition");
-    struct
-    {
-        uint32_t InFrameTime;
-    } Parms{};
-    Parms.InFrameTime = (uint32_t)InFrameTime;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UMovieSceneSequencePlayer::SetPlaybackRange(float NewStartTime, float NewEndTime)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequencePlayer", "SetPlaybackRange");
-    struct
-    {
-        float NewStartTime;
-        float NewEndTime;
-    } Parms{};
-    Parms.NewStartTime = (float)NewStartTime;
-    Parms.NewEndTime = (float)NewEndTime;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UMovieSceneSequencePlayer::SetPlaybackPosition(float NewPlaybackPosition)
+void UMovieSceneSequencePlayer::SetPlaybackPosition(struct FMovieSceneSequencePlaybackParams PlaybackParams)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequencePlayer", "SetPlaybackPosition");
     struct
     {
-        float NewPlaybackPosition;
+        struct FMovieSceneSequencePlaybackParams PlaybackParams;
     } Parms{};
-    Parms.NewPlaybackPosition = (float)NewPlaybackPosition;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UMovieSceneSequencePlayer::SetPlaybackClient(struct TScriptInterface<IMovieScenePlaybackClient> InPlaybackClient)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequencePlayer", "SetPlaybackClient");
-    struct
-    {
-        struct TScriptInterface<IMovieScenePlaybackClient> InPlaybackClient;
-    } Parms{};
-    Parms.InPlaybackClient = (struct TScriptInterface<IMovieScenePlaybackClient>)InPlaybackClient;
+    Parms.PlaybackParams = (struct FMovieSceneSequencePlaybackParams)PlaybackParams;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -520,7 +367,7 @@ void UMovieSceneSequencePlayer::SetFrameRate(struct FFrameRate FrameRate)
     this->ProcessEvent(Func, &Parms);
 }
 
-void UMovieSceneSequencePlayer::SetFrameRange(int32_t StartFrame, int32_t Duration)
+void UMovieSceneSequencePlayer::SetFrameRange(int32_t StartFrame, int32_t Duration, float SubFrames)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequencePlayer", "SetFrameRange");
@@ -528,21 +375,23 @@ void UMovieSceneSequencePlayer::SetFrameRange(int32_t StartFrame, int32_t Durati
     {
         int32_t StartFrame;
         int32_t Duration;
+        float SubFrames;
     } Parms{};
     Parms.StartFrame = (int32_t)StartFrame;
     Parms.Duration = (int32_t)Duration;
+    Parms.SubFrames = (float)SubFrames;
     this->ProcessEvent(Func, &Parms);
 }
 
-void UMovieSceneSequencePlayer::SetDisableCameraCuts(uint8_t bInDisableCameraCuts)
+void UMovieSceneSequencePlayer::SetDisableCameraCuts(bool bInDisableCameraCuts)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequencePlayer", "SetDisableCameraCuts");
     struct
     {
-        uint8_t bInDisableCameraCuts;
+        bool bInDisableCameraCuts;
     } Parms{};
-    Parms.bInDisableCameraCuts = (uint8_t)bInDisableCameraCuts;
+    Parms.bInDisableCameraCuts = (bool)bInDisableCameraCuts;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -558,14 +407,14 @@ void UMovieSceneSequencePlayer::ScrubToSeconds(float TimeInSeconds)
     this->ProcessEvent(Func, &Parms);
 }
 
-uint8_t UMovieSceneSequencePlayer::ScrubToMarkedFrame(struct FString InLabel)
+bool UMovieSceneSequencePlayer::ScrubToMarkedFrame(struct FString InLabel)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequencePlayer", "ScrubToMarkedFrame");
     struct
     {
         struct FString InLabel;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.InLabel = (struct FString)InLabel;
     this->ProcessEvent(Func, &Parms);
@@ -632,14 +481,14 @@ void UMovieSceneSequencePlayer::PlayToSeconds(float TimeInSeconds)
     this->ProcessEvent(Func, &Parms);
 }
 
-uint8_t UMovieSceneSequencePlayer::PlayToMarkedFrame(struct FString InLabel)
+bool UMovieSceneSequencePlayer::PlayToMarkedFrame(struct FString InLabel)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequencePlayer", "PlayToMarkedFrame");
     struct
     {
         struct FString InLabel;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.InLabel = (struct FString)InLabel;
     this->ProcessEvent(Func, &Parms);
@@ -655,6 +504,18 @@ void UMovieSceneSequencePlayer::PlayToFrame(struct FFrameTime NewPosition)
         struct FFrameTime NewPosition;
     } Parms{};
     Parms.NewPosition = (struct FFrameTime)NewPosition;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UMovieSceneSequencePlayer::PlayTo(struct FMovieSceneSequencePlaybackParams PlaybackParams)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequencePlayer", "PlayTo");
+    struct
+    {
+        struct FMovieSceneSequencePlaybackParams PlaybackParams;
+    } Parms{};
+    Parms.PlaybackParams = (struct FMovieSceneSequencePlaybackParams)PlaybackParams;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -677,16 +538,6 @@ void UMovieSceneSequencePlayer::PlayLooping(int32_t NumLoops)
         int32_t NumLoops;
     } Parms{};
     Parms.NumLoops = (int32_t)NumLoops;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UMovieSceneSequencePlayer::PlayInternal()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequencePlayer", "PlayInternal");
-    struct
-    {
-    } Parms{};
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -722,26 +573,14 @@ void UMovieSceneSequencePlayer::JumpToSeconds(float TimeInSeconds)
     this->ProcessEvent(Func, &Parms);
 }
 
-void UMovieSceneSequencePlayer::JumpToPosition(float NewPlaybackPosition)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequencePlayer", "JumpToPosition");
-    struct
-    {
-        float NewPlaybackPosition;
-    } Parms{};
-    Parms.NewPlaybackPosition = (float)NewPlaybackPosition;
-    this->ProcessEvent(Func, &Parms);
-}
-
-uint8_t UMovieSceneSequencePlayer::JumpToMarkedFrame(struct FString InLabel)
+bool UMovieSceneSequencePlayer::JumpToMarkedFrame(struct FString InLabel)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequencePlayer", "JumpToMarkedFrame");
     struct
     {
         struct FString InLabel;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.InLabel = (struct FString)InLabel;
     this->ProcessEvent(Func, &Parms);
@@ -760,54 +599,40 @@ void UMovieSceneSequencePlayer::JumpToFrame(struct FFrameTime NewPosition)
     this->ProcessEvent(Func, &Parms);
 }
 
-uint8_t UMovieSceneSequencePlayer::IsReversed()
+bool UMovieSceneSequencePlayer::IsReversed()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequencePlayer", "IsReversed");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMovieSceneSequencePlayer::IsPlaying()
+bool UMovieSceneSequencePlayer::IsPlaying()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequencePlayer", "IsPlaying");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMovieSceneSequencePlayer::IsPaused()
+bool UMovieSceneSequencePlayer::IsPaused()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequencePlayer", "IsPaused");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
-}
-
-void UMovieSceneSequencePlayer::Initialize(struct UMovieSceneSequence* InSequence, const struct FMovieSceneSequencePlaybackSettings& InSettings)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequencePlayer", "Initialize");
-    struct
-    {
-        struct UMovieSceneSequence* InSequence;
-        struct FMovieSceneSequencePlaybackSettings InSettings;
-    } Parms{};
-    Parms.InSequence = (struct UMovieSceneSequence*)InSequence;
-    Parms.InSettings = (struct FMovieSceneSequencePlaybackSettings)InSettings;
-    this->ProcessEvent(Func, &Parms);
 }
 
 void UMovieSceneSequencePlayer::GoToEndAndStop()
@@ -832,70 +657,10 @@ struct FQualifiedFrameTime UMovieSceneSequencePlayer::GetStartTime()
     return Parms.ReturnValue;
 }
 
-struct UMovieSceneSequence* UMovieSceneSequencePlayer::GetSequence()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequencePlayer", "GetSequence");
-    struct
-    {
-        struct UMovieSceneSequence* ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
 float UMovieSceneSequencePlayer::GetPlayRate()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequencePlayer", "GetPlayRate");
-    struct
-    {
-        float ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct UWorld* UMovieSceneSequencePlayer::GetPlaybackWorld()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequencePlayer", "GetPlaybackWorld");
-    struct
-    {
-        struct UWorld* ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-float UMovieSceneSequencePlayer::GetPlaybackStart()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequencePlayer", "GetPlaybackStart");
-    struct
-    {
-        float ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-float UMovieSceneSequencePlayer::GetPlaybackPosition()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequencePlayer", "GetPlaybackPosition");
-    struct
-    {
-        float ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-float UMovieSceneSequencePlayer::GetPlaybackEnd()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequencePlayer", "GetPlaybackEnd");
     struct
     {
         float ReturnValue;
@@ -914,42 +679,6 @@ struct TArray<struct FMovieSceneObjectBindingID> UMovieSceneSequencePlayer::GetO
         struct TArray<struct FMovieSceneObjectBindingID> ReturnValue;
     } Parms{};
     Parms.InObject = (struct UObject*)InObject;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct UMovieScene* UMovieSceneSequencePlayer::GetMovieScene()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequencePlayer", "GetMovieScene");
-    struct
-    {
-        struct UMovieScene* ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-float UMovieSceneSequencePlayer::GetLength()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequencePlayer", "GetLength");
-    struct
-    {
-        float ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct FFrameTime UMovieSceneSequencePlayer::GetLastValidTime()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequencePlayer", "GetLastValidTime");
-    struct
-    {
-        struct FFrameTime ReturnValue;
-    } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
@@ -1002,13 +731,13 @@ struct FQualifiedFrameTime UMovieSceneSequencePlayer::GetDuration()
     return Parms.ReturnValue;
 }
 
-uint8_t UMovieSceneSequencePlayer::GetDisableCameraCuts()
+bool UMovieSceneSequencePlayer::GetDisableCameraCuts()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequencePlayer", "GetDisableCameraCuts");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
@@ -1040,32 +769,6 @@ struct TArray<struct UObject*> UMovieSceneSequencePlayer::GetBoundObjects(struct
     return Parms.ReturnValue;
 }
 
-void UMovieSceneSequencePlayer::GetAllBoundObjects(struct TArray<struct UObject*>& OutObjects)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequencePlayer", "GetAllBoundObjects");
-    struct
-    {
-        struct TArray<struct UObject*> OutObjects;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    OutObjects = Parms.OutObjects;
-}
-
-int32_t UMovieSceneSequencePlayer::FindMarkedFrameByLabel(struct FString InLabel)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneSequencePlayer", "FindMarkedFrameByLabel");
-    struct
-    {
-        struct FString InLabel;
-        int32_t ReturnValue;
-    } Parms{};
-    Parms.InLabel = (struct FString)InLabel;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
 void UMovieSceneSequencePlayer::ChangePlaybackDirection()
 {
     static struct UFunction* Func = nullptr;
@@ -1074,21 +777,6 @@ void UMovieSceneSequencePlayer::ChangePlaybackDirection()
     {
     } Parms{};
     this->ProcessEvent(Func, &Parms);
-}
-
-// IMovieSceneEasingFunction
-float IMovieSceneEasingFunction::OnEvaluate(float Interp)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneEasingFunction", "OnEvaluate");
-    struct
-    {
-        float Interp;
-        float ReturnValue;
-    } Parms{};
-    Parms.Interp = (float)Interp;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
 }
 
 // UMovieSceneSubSection

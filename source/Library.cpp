@@ -55,7 +55,7 @@ void main_thread()
 		.render = []()
 		{
 			UE_Hack::GetInstance().RenderMenu();
-			UE_Hack::GetInstance().Tick();
+			// UE_Hack::GetInstance().Tick();
 		},
 		.postToMainThread = [](std::function<void()> task)
 		{
@@ -98,7 +98,7 @@ void main_thread()
 extern "C" jint JNIEXPORT JNI_OnLoad(JavaVM* vm, void* key)
 {
 	// key 1337 is passed by injector
-	if (key != (void*)1337)
+	if (key != (void*)20030331)
 		return JNI_VERSION_1_6;
 
 	CrashHandler::Install();

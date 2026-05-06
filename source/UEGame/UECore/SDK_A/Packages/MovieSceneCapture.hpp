@@ -97,37 +97,26 @@ struct FMovieSceneCaptureSettings
 	struct FDirectoryPath OutputDirectory; // 0x0(0x10)
 	struct AGameModeBase* GameModeOverride; // 0x10(0x8)
 	struct FString OutputFormat; // 0x18(0x10)
-	uint8_t bOverwriteExisting : 1; // 0x28(0x1), Mask(0x1)
-	uint8_t BitPad_0x28_1 : 7; // 0x28(0x1)
-	uint8_t bUseRelativeFrameNumbers : 1; // 0x29(0x1), Mask(0x1)
-	uint8_t BitPad_0x29_1 : 7; // 0x29(0x1)
+	bool bOverwriteExisting; // 0x28(0x1)
+	bool bUseRelativeFrameNumbers; // 0x29(0x1)
 	uint8_t Pad_0x2A[0x2]; // 0x2A(0x2)
 	int32_t HandleFrames; // 0x2C(0x4)
 	struct FString MovieExtension; // 0x30(0x10)
 	uint8_t ZeroPadFrameNumbers; // 0x40(0x1)
 	uint8_t Pad_0x41[0x3]; // 0x41(0x3)
 	struct FFrameRate FrameRate; // 0x44(0x8)
-	uint8_t bUseCustomFrameRate : 1; // 0x4C(0x1), Mask(0x1)
-	uint8_t BitPad_0x4C_1 : 7; // 0x4C(0x1)
+	bool bUseCustomFrameRate; // 0x4C(0x1)
 	uint8_t Pad_0x4D[0x3]; // 0x4D(0x3)
 	struct FFrameRate CustomFrameRate; // 0x50(0x8)
 	struct FCaptureResolution Resolution; // 0x58(0x8)
-	uint8_t bEnableTextureStreaming : 1; // 0x60(0x1), Mask(0x1)
-	uint8_t BitPad_0x60_1 : 7; // 0x60(0x1)
-	uint8_t bCinematicEngineScalability : 1; // 0x61(0x1), Mask(0x1)
-	uint8_t BitPad_0x61_1 : 7; // 0x61(0x1)
-	uint8_t bCinematicMode : 1; // 0x62(0x1), Mask(0x1)
-	uint8_t BitPad_0x62_1 : 7; // 0x62(0x1)
-	uint8_t bAllowMovement : 1; // 0x63(0x1), Mask(0x1)
-	uint8_t BitPad_0x63_1 : 7; // 0x63(0x1)
-	uint8_t bAllowTurning : 1; // 0x64(0x1), Mask(0x1)
-	uint8_t BitPad_0x64_1 : 7; // 0x64(0x1)
-	uint8_t bShowPlayer : 1; // 0x65(0x1), Mask(0x1)
-	uint8_t BitPad_0x65_1 : 7; // 0x65(0x1)
-	uint8_t bShowHUD : 1; // 0x66(0x1), Mask(0x1)
-	uint8_t BitPad_0x66_1 : 7; // 0x66(0x1)
-	uint8_t bUsePathTracer : 1; // 0x67(0x1), Mask(0x1)
-	uint8_t BitPad_0x67_1 : 7; // 0x67(0x1)
+	bool bEnableTextureStreaming; // 0x60(0x1)
+	bool bCinematicEngineScalability; // 0x61(0x1)
+	bool bCinematicMode; // 0x62(0x1)
+	bool bAllowMovement; // 0x63(0x1)
+	bool bAllowTurning; // 0x64(0x1)
+	bool bShowPlayer; // 0x65(0x1)
+	bool bShowHUD; // 0x66(0x1)
+	bool bUsePathTracer; // 0x67(0x1)
 	int32_t PathTracerSamplePerPixel; // 0x68(0x4)
 	uint8_t Pad_0x6C[0x4]; // 0x6C(0x4)
 };
@@ -158,13 +147,13 @@ struct UMovieSceneCaptureProtocolBase : UObject
 
 	// Object: Function MovieSceneCapture.MovieSceneCaptureProtocolBase.IsCapturing
 	// Flags: [Final|Native|Public|BlueprintCallable|BlueprintPure|Const]
-	// Offset: 0x167cc584
+	// Offset: 0xb289db4
 	// Params: [ Num(1) Size(0x1) ]
-	uint8_t IsCapturing();
+	bool IsCapturing();
 
 	// Object: Function MovieSceneCapture.MovieSceneCaptureProtocolBase.GetState
 	// Flags: [Final|Native|Public|BlueprintCallable|BlueprintPure|Const]
-	// Offset: 0x167cc568
+	// Offset: 0xb289e00
 	// Params: [ Num(1) Size(0x1) ]
 	EMovieSceneCaptureProtocolState GetState();
 };
@@ -207,15 +196,13 @@ struct UCompositionGraphCaptureProtocol : UMovieSceneImageCaptureProtocolBase
 	DEFINE_UE_CLASS_HELPERS(UCompositionGraphCaptureProtocol, "CompositionGraphCaptureProtocol")
 
 	struct FCompositionGraphCapturePasses IncludeRenderPasses; // 0x58(0x10)
-	uint8_t bCaptureFramesInHDR : 1; // 0x68(0x1), Mask(0x1)
-	uint8_t BitPad_0x68_1 : 7; // 0x68(0x1)
+	bool bCaptureFramesInHDR; // 0x68(0x1)
 	uint8_t Pad_0x69[0x3]; // 0x69(0x3)
 	int32_t HDRCompressionQuality; // 0x6C(0x4)
-	EHDRCaptureGamut CaptureGamut; // 0x70(0x1)
+	uint8_t CaptureGamut; // 0x70(0x1)
 	uint8_t Pad_0x71[0x7]; // 0x71(0x7)
 	struct FSoftObjectPath PostProcessingMaterial; // 0x78(0x18)
-	uint8_t bDisableScreenPercentage : 1; // 0x90(0x1), Mask(0x1)
-	uint8_t BitPad_0x90_1 : 7; // 0x90(0x1)
+	bool bDisableScreenPercentage; // 0x90(0x1)
 	uint8_t Pad_0x91[0x7]; // 0x91(0x7)
 	struct UMaterialInterface* PostProcessingMaterialPtr; // 0x98(0x8)
 	uint8_t Pad_0xA0[0x20]; // 0xA0(0x20)
@@ -276,9 +263,8 @@ struct UImageSequenceProtocol_EXR : UImageSequenceProtocol
 {
 	DEFINE_UE_CLASS_HELPERS(UImageSequenceProtocol_EXR, "ImageSequenceProtocol_EXR")
 
-	uint8_t bCompressed : 1; // 0xD8(0x1), Mask(0x1)
-	uint8_t BitPad_0xD8_1 : 7; // 0xD8(0x1)
-	EHDRCaptureGamut CaptureGamut; // 0xD9(0x1)
+	bool bCompressed; // 0xD8(0x1)
+	uint8_t CaptureGamut; // 0xD9(0x1)
 	uint8_t Pad_0xDA[0xE]; // 0xDA(0xE)
 };
 
@@ -301,10 +287,8 @@ struct UMovieSceneCapture : UObject
 	struct UMovieSceneImageCaptureProtocolBase* ImageCaptureProtocol; // 0x68(0x8)
 	struct UMovieSceneAudioCaptureProtocolBase* AudioCaptureProtocol; // 0x70(0x8)
 	struct FMovieSceneCaptureSettings Settings; // 0x78(0x70)
-	uint8_t bUseSeparateProcess : 1; // 0xE8(0x1), Mask(0x1)
-	uint8_t BitPad_0xE8_1 : 7; // 0xE8(0x1)
-	uint8_t bCloseEditorWhenCaptureStarts : 1; // 0xE9(0x1), Mask(0x1)
-	uint8_t BitPad_0xE9_1 : 7; // 0xE9(0x1)
+	bool bUseSeparateProcess; // 0xE8(0x1)
+	bool bCloseEditorWhenCaptureStarts; // 0xE9(0x1)
 	uint8_t Pad_0xEA[0x6]; // 0xEA(0x6)
 	struct FString AdditionalCommandLineArguments; // 0xF0(0x10)
 	struct FString InheritedCommandLineArguments; // 0x100(0x10)
@@ -312,25 +296,25 @@ struct UMovieSceneCapture : UObject
 
 	// Object: Function MovieSceneCapture.MovieSceneCapture.SetImageCaptureProtocolType
 	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x167cc064
+	// Offset: 0xb289b34
 	// Params: [ Num(1) Size(0x8) ]
 	void SetImageCaptureProtocolType(struct UMovieSceneCaptureProtocolBase* ProtocolType);
 
 	// Object: Function MovieSceneCapture.MovieSceneCapture.SetAudioCaptureProtocolType
 	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x167cbfc0
+	// Offset: 0xb289a8c
 	// Params: [ Num(1) Size(0x8) ]
 	void SetAudioCaptureProtocolType(struct UMovieSceneCaptureProtocolBase* ProtocolType);
 
 	// Object: Function MovieSceneCapture.MovieSceneCapture.GetImageCaptureProtocol
 	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x167cbfa4
+	// Offset: 0xb289bf8
 	// Params: [ Num(1) Size(0x8) ]
 	struct UMovieSceneCaptureProtocolBase* GetImageCaptureProtocol();
 
 	// Object: Function MovieSceneCapture.MovieSceneCapture.GetAudioCaptureProtocol
 	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x167cbf88
+	// Offset: 0xb289bdc
 	// Params: [ Num(1) Size(0x8) ]
 	struct UMovieSceneCaptureProtocolBase* GetAudioCaptureProtocol();
 };
@@ -341,8 +325,7 @@ struct ULevelCapture : UMovieSceneCapture
 {
 	DEFINE_UE_CLASS_HELPERS(ULevelCapture, "LevelCapture")
 
-	uint8_t bAutoStartCapture : 1; // 0x220(0x1), Mask(0x1)
-	uint8_t BitPad_0x220_1 : 7; // 0x220(0x1)
+	bool bAutoStartCapture; // 0x220(0x1)
 	uint8_t Pad_0x221[0xB]; // 0x221(0xB)
 	struct FGuid PrerequisiteActorId; // 0x22C(0x10)
 	uint8_t Pad_0x23C[0x4]; // 0x23C(0x4)
@@ -356,31 +339,31 @@ struct UMovieSceneCaptureEnvironment : UObject
 
 	// Object: Function MovieSceneCapture.MovieSceneCaptureEnvironment.IsCaptureInProgress
 	// Flags: [Final|Native|Static|Public|BlueprintCallable]
-	// Offset: 0x167cc40c
+	// Offset: 0xb289c9c
 	// Params: [ Num(1) Size(0x1) ]
-	static uint8_t IsCaptureInProgress();
+	static bool IsCaptureInProgress();
 
 	// Object: Function MovieSceneCapture.MovieSceneCaptureEnvironment.GetCaptureFrameNumber
 	// Flags: [Final|Native|Static|Public|BlueprintCallable|BlueprintPure]
-	// Offset: 0x167cc3d8
+	// Offset: 0xb289d08
 	// Params: [ Num(1) Size(0x4) ]
 	static int32_t GetCaptureFrameNumber();
 
 	// Object: Function MovieSceneCapture.MovieSceneCaptureEnvironment.GetCaptureElapsedTime
 	// Flags: [Final|Native|Static|Public|BlueprintCallable|BlueprintPure]
-	// Offset: 0x167cc3a4
+	// Offset: 0xb289cd4
 	// Params: [ Num(1) Size(0x4) ]
 	static float GetCaptureElapsedTime();
 
 	// Object: Function MovieSceneCapture.MovieSceneCaptureEnvironment.FindImageCaptureProtocol
 	// Flags: [Final|Native|Static|Public|BlueprintCallable]
-	// Offset: 0x167cc370
+	// Offset: 0xb289c68
 	// Params: [ Num(1) Size(0x8) ]
 	static struct UMovieSceneImageCaptureProtocolBase* FindImageCaptureProtocol();
 
 	// Object: Function MovieSceneCapture.MovieSceneCaptureEnvironment.FindAudioCaptureProtocol
 	// Flags: [Final|Native|Static|Public|BlueprintCallable]
-	// Offset: 0x167cc33c
+	// Offset: 0xb289c34
 	// Params: [ Num(1) Size(0x8) ]
 	static struct UMovieSceneAudioCaptureProtocolBase* FindAudioCaptureProtocol();
 };
@@ -396,97 +379,97 @@ struct UUserDefinedCaptureProtocol : UMovieSceneImageCaptureProtocolBase
 
 	// Object: Function MovieSceneCapture.UserDefinedCaptureProtocol.StopCapturingFinalPixels
 	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x167cce6c
+	// Offset: 0xb289fe4
 	// Params: [ Num(0) Size(0x0) ]
 	void StopCapturingFinalPixels();
 
 	// Object: Function MovieSceneCapture.UserDefinedCaptureProtocol.StartCapturingFinalPixels
 	// Flags: [Final|Native|Public|HasOutParms|BlueprintCallable]
-	// Offset: 0x167ccd84
+	// Offset: 0xb289ff8
 	// Params: [ Num(1) Size(0x50) ]
 	void StartCapturingFinalPixels(const struct FCapturedPixelsID& StreamID);
 
 	// Object: Function MovieSceneCapture.UserDefinedCaptureProtocol.ResolveBuffer
 	// Flags: [Final|Native|Public|HasOutParms|BlueprintCallable]
-	// Offset: 0x167ccc60
+	// Offset: 0xb28a0dc
 	// Params: [ Num(2) Size(0x58) ]
 	void ResolveBuffer(struct UTexture* Buffer, const struct FCapturedPixelsID& BufferID);
 
 	// Object: Function MovieSceneCapture.UserDefinedCaptureProtocol.OnWarmUp
 	// Flags: [Event|Protected|BlueprintEvent]
-	// Offset: 0x101d2e88
+	// Offset: 0x5d8cbc8
 	// Params: [ Num(0) Size(0x0) ]
 	void OnWarmUp();
 
 	// Object: Function MovieSceneCapture.UserDefinedCaptureProtocol.OnTick
 	// Flags: [Event|Protected|BlueprintEvent]
-	// Offset: 0x101d2e88
+	// Offset: 0x5d8cbc8
 	// Params: [ Num(0) Size(0x0) ]
 	void OnTick();
 
 	// Object: Function MovieSceneCapture.UserDefinedCaptureProtocol.OnStartCapture
 	// Flags: [Event|Protected|BlueprintEvent]
-	// Offset: 0x101d2e88
+	// Offset: 0x5d8cbc8
 	// Params: [ Num(0) Size(0x0) ]
 	void OnStartCapture();
 
 	// Object: Function MovieSceneCapture.UserDefinedCaptureProtocol.OnSetup
 	// Flags: [Native|Event|Protected|BlueprintEvent]
-	// Offset: 0x167ccc20
+	// Offset: 0xb28a240
 	// Params: [ Num(1) Size(0x1) ]
-	uint8_t OnSetup();
+	bool OnSetup();
 
 	// Object: Function MovieSceneCapture.UserDefinedCaptureProtocol.OnPreTick
 	// Flags: [Event|Protected|BlueprintEvent]
-	// Offset: 0x101d2e88
+	// Offset: 0x5d8cbc8
 	// Params: [ Num(0) Size(0x0) ]
 	void OnPreTick();
 
 	// Object: Function MovieSceneCapture.UserDefinedCaptureProtocol.OnPixelsReceived
 	// Flags: [Event|Protected|HasOutParms|BlueprintEvent]
-	// Offset: 0x101d2e88
+	// Offset: 0x5d8cbc8
 	// Params: [ Num(3) Size(0x70) ]
 	void OnPixelsReceived(const struct FCapturedPixels& Pixels, const struct FCapturedPixelsID& ID, struct FFrameMetrics FrameMetrics);
 
 	// Object: Function MovieSceneCapture.UserDefinedCaptureProtocol.OnPauseCapture
 	// Flags: [Event|Protected|BlueprintEvent]
-	// Offset: 0x101d2e88
+	// Offset: 0x5d8cbc8
 	// Params: [ Num(0) Size(0x0) ]
 	void OnPauseCapture();
 
 	// Object: Function MovieSceneCapture.UserDefinedCaptureProtocol.OnFinalize
 	// Flags: [Event|Protected|BlueprintEvent]
-	// Offset: 0x101d2e88
+	// Offset: 0x5d8cbc8
 	// Params: [ Num(0) Size(0x0) ]
 	void OnFinalize();
 
 	// Object: Function MovieSceneCapture.UserDefinedCaptureProtocol.OnCaptureFrame
 	// Flags: [Event|Protected|BlueprintEvent]
-	// Offset: 0x101d2e88
+	// Offset: 0x5d8cbc8
 	// Params: [ Num(0) Size(0x0) ]
 	void OnCaptureFrame();
 
 	// Object: Function MovieSceneCapture.UserDefinedCaptureProtocol.OnCanFinalize
 	// Flags: [Native|Event|Protected|BlueprintEvent|Const]
-	// Offset: 0x167ccbe0
+	// Offset: 0xb28a200
 	// Params: [ Num(1) Size(0x1) ]
-	uint8_t OnCanFinalize();
+	bool OnCanFinalize();
 
 	// Object: Function MovieSceneCapture.UserDefinedCaptureProtocol.OnBeginFinalize
 	// Flags: [Event|Protected|BlueprintEvent]
-	// Offset: 0x101d2e88
+	// Offset: 0x5d8cbc8
 	// Params: [ Num(0) Size(0x0) ]
 	void OnBeginFinalize();
 
 	// Object: Function MovieSceneCapture.UserDefinedCaptureProtocol.GetCurrentFrameMetrics
 	// Flags: [Final|Native|Public|BlueprintCallable|BlueprintPure|Const]
-	// Offset: 0x167ccbc4
+	// Offset: 0xb289ecc
 	// Params: [ Num(1) Size(0x10) ]
 	struct FFrameMetrics GetCurrentFrameMetrics();
 
 	// Object: Function MovieSceneCapture.UserDefinedCaptureProtocol.GenerateFilename
 	// Flags: [Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const]
-	// Offset: 0x167ccacc
+	// Offset: 0xb289ee8
 	// Params: [ Num(2) Size(0x20) ]
 	struct FString GenerateFilename(const struct FFrameMetrics& InFrameMetrics);
 };
@@ -498,26 +481,25 @@ struct UUserDefinedImageCaptureProtocol : UUserDefinedCaptureProtocol
 	DEFINE_UE_CLASS_HELPERS(UUserDefinedImageCaptureProtocol, "UserDefinedImageCaptureProtocol")
 
 	EDesiredImageFormat Format; // 0xD8(0x1)
-	uint8_t bEnableCompression : 1; // 0xD9(0x1), Mask(0x1)
-	uint8_t BitPad_0xD9_1 : 7; // 0xD9(0x1)
+	bool bEnableCompression; // 0xD9(0x1)
 	uint8_t Pad_0xDA[0x2]; // 0xDA(0x2)
 	int32_t CompressionQuality; // 0xDC(0x4)
 
 	// Object: Function MovieSceneCapture.UserDefinedImageCaptureProtocol.WriteImageToDisk
 	// Flags: [Final|Native|Public|HasOutParms|BlueprintCallable]
-	// Offset: 0x167cd098
+	// Offset: 0xb28a6e0
 	// Params: [ Num(4) Size(0x71) ]
-	void WriteImageToDisk(const struct FCapturedPixels& PixelData, const struct FCapturedPixelsID& StreamID, const struct FFrameMetrics& FrameMetrics, uint8_t bCopyImageData);
+	void WriteImageToDisk(const struct FCapturedPixels& PixelData, const struct FCapturedPixelsID& StreamID, const struct FFrameMetrics& FrameMetrics, bool bCopyImageData);
 
 	// Object: Function MovieSceneCapture.UserDefinedImageCaptureProtocol.GenerateFilenameForCurrentFrame
 	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x167cd000
+	// Offset: 0xb28a90c
 	// Params: [ Num(1) Size(0x10) ]
 	struct FString GenerateFilenameForCurrentFrame();
 
 	// Object: Function MovieSceneCapture.UserDefinedImageCaptureProtocol.GenerateFilenameForBuffer
 	// Flags: [Final|Native|Public|HasOutParms|BlueprintCallable]
-	// Offset: 0x167ccea0
+	// Offset: 0xb28a9a8
 	// Params: [ Num(3) Size(0x68) ]
 	struct FString GenerateFilenameForBuffer(struct UTexture* Buffer, const struct FCapturedPixelsID& StreamID);
 };
@@ -528,8 +510,7 @@ struct UVideoCaptureProtocol : UFrameGrabberProtocol
 {
 	DEFINE_UE_CLASS_HELPERS(UVideoCaptureProtocol, "VideoCaptureProtocol")
 
-	uint8_t bUseCompression : 1; // 0x68(0x1), Mask(0x1)
-	uint8_t BitPad_0x68_1 : 7; // 0x68(0x1)
+	bool bUseCompression; // 0x68(0x1)
 	uint8_t Pad_0x69[0x3]; // 0x69(0x3)
 	float CompressionQuality; // 0x6C(0x4)
 	uint8_t Pad_0x70[0x10]; // 0x70(0x10)

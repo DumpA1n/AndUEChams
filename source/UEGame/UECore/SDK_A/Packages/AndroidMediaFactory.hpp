@@ -18,8 +18,7 @@ struct UAndroidMediaSettings : UObject
 {
 	DEFINE_UE_CLASS_HELPERS(UAndroidMediaSettings, "AndroidMediaSettings")
 
-	uint8_t CacheableVideoSampleBuffers : 1; // 0x28(0x1), Mask(0x1)
-	uint8_t BitPad_0x28_1 : 7; // 0x28(0x1)
+	bool CacheableVideoSampleBuffers; // 0x28(0x1)
 	uint8_t Pad_0x29[0x7]; // 0x29(0x7)
 };
 

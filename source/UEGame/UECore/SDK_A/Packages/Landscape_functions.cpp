@@ -5,19 +5,6 @@
 namespace SDK
 {
 
-// UCDLODComponent
-void UCDLODComponent::AddDeformations(const struct TArray<struct FVector4>& InDeformationTasks)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("CDLODComponent", "AddDeformations");
-    struct
-    {
-        struct TArray<struct FVector4> InDeformationTasks;
-    } Parms{};
-    Parms.InDeformationTasks = (struct TArray<struct FVector4>)InDeformationTasks;
-    this->ProcessEvent(Func, &Parms);
-}
-
 // ALandscapeProxy
 void ALandscapeProxy::SetLandscapeMaterialVectorParameterValue(struct FName ParameterName, struct FLinearColor Value)
 {
@@ -61,16 +48,22 @@ void ALandscapeProxy::SetLandscapeMaterialScalarParameterValue(struct FName Para
     this->ProcessEvent(Func, &Parms);
 }
 
-void ALandscapeProxy::EditorSetLandscapeMaxLODLevel(int32_t NewMaxLODLevel)
+bool ALandscapeProxy::LandscapeExportHeightmapToRenderTarget(struct UTextureRenderTarget2D* InRenderTarget, bool InExportHeightIntoRGChannel, bool InExportLandscapeProxies)
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("LandscapeProxy", "EditorSetLandscapeMaxLODLevel");
+    if (!Func) Func = ClassPrivate->GetFunction("LandscapeProxy", "LandscapeExportHeightmapToRenderTarget");
     struct
     {
-        int32_t NewMaxLODLevel;
+        struct UTextureRenderTarget2D* InRenderTarget;
+        bool InExportHeightIntoRGChannel;
+        bool InExportLandscapeProxies;
+        bool ReturnValue;
     } Parms{};
-    Parms.NewMaxLODLevel = (int32_t)NewMaxLODLevel;
+    Parms.InRenderTarget = (struct UTextureRenderTarget2D*)InRenderTarget;
+    Parms.InExportHeightIntoRGChannel = (bool)InExportHeightIntoRGChannel;
+    Parms.InExportLandscapeProxies = (bool)InExportLandscapeProxies;
     this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
 }
 
 void ALandscapeProxy::EditorSetLandscapeMaterial(struct UMaterialInterface* NewLandscapeMaterial)
@@ -85,19 +78,7 @@ void ALandscapeProxy::EditorSetLandscapeMaterial(struct UMaterialInterface* NewL
     this->ProcessEvent(Func, &Parms);
 }
 
-void ALandscapeProxy::EditorSetLandscapeHoleMaterial(struct UMaterialInterface* NewLandscapeHoleMaterial)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("LandscapeProxy", "EditorSetLandscapeHoleMaterial");
-    struct
-    {
-        struct UMaterialInterface* NewLandscapeHoleMaterial;
-    } Parms{};
-    Parms.NewLandscapeHoleMaterial = (struct UMaterialInterface*)NewLandscapeHoleMaterial;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void ALandscapeProxy::EditorApplySpline(struct USplineComponent* InSplineComponent, float StartWidth, float EndWidth, float StartSideFalloff, float EndSideFalloff, float StartRoll, float EndRoll, int32_t NumSubdivisions, uint8_t bRaiseHeights, uint8_t bLowerHeights, struct ULandscapeLayerInfoObject* PaintLayer)
+void ALandscapeProxy::EditorApplySpline(struct USplineComponent* InSplineComponent, float StartWidth, float EndWidth, float StartSideFalloff, float EndSideFalloff, float StartRoll, float EndRoll, int32_t NumSubdivisions, bool bRaiseHeights, bool bLowerHeights, struct ULandscapeLayerInfoObject* PaintLayer, struct FName EditLayerName)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("LandscapeProxy", "EditorApplySpline");
@@ -111,9 +92,10 @@ void ALandscapeProxy::EditorApplySpline(struct USplineComponent* InSplineCompone
         float StartRoll;
         float EndRoll;
         int32_t NumSubdivisions;
-        uint8_t bRaiseHeights;
-        uint8_t bLowerHeights;
+        bool bRaiseHeights;
+        bool bLowerHeights;
         struct ULandscapeLayerInfoObject* PaintLayer;
+        struct FName EditLayerName;
     } Parms{};
     Parms.InSplineComponent = (struct USplineComponent*)InSplineComponent;
     Parms.StartWidth = (float)StartWidth;
@@ -123,21 +105,22 @@ void ALandscapeProxy::EditorApplySpline(struct USplineComponent* InSplineCompone
     Parms.StartRoll = (float)StartRoll;
     Parms.EndRoll = (float)EndRoll;
     Parms.NumSubdivisions = (int32_t)NumSubdivisions;
-    Parms.bRaiseHeights = (uint8_t)bRaiseHeights;
-    Parms.bLowerHeights = (uint8_t)bLowerHeights;
+    Parms.bRaiseHeights = (bool)bRaiseHeights;
+    Parms.bLowerHeights = (bool)bLowerHeights;
     Parms.PaintLayer = (struct ULandscapeLayerInfoObject*)PaintLayer;
+    Parms.EditLayerName = (struct FName)EditLayerName;
     this->ProcessEvent(Func, &Parms);
 }
 
-void ALandscapeProxy::ChangeUseTessellationComponentScreenSizeFalloff(uint8_t InComponentScreenSizeToUseSubSections)
+void ALandscapeProxy::ChangeUseTessellationComponentScreenSizeFalloff(bool InComponentScreenSizeToUseSubSections)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("LandscapeProxy", "ChangeUseTessellationComponentScreenSizeFalloff");
     struct
     {
-        uint8_t InComponentScreenSizeToUseSubSections;
+        bool InComponentScreenSizeToUseSubSections;
     } Parms{};
-    Parms.InComponentScreenSizeToUseSubSections = (uint8_t)InComponentScreenSizeToUseSubSections;
+    Parms.InComponentScreenSizeToUseSubSections = (bool)InComponentScreenSizeToUseSubSections;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -200,18 +183,18 @@ void ALandscapeBlueprintBrushBase::RequestLandscapeUpdate()
     this->ProcessEvent(Func, &Parms);
 }
 
-struct UTextureRenderTarget2D* ALandscapeBlueprintBrushBase::Render(uint8_t InIsHeightmap, struct UTextureRenderTarget2D* InCombinedResult, const struct FName& InWeightmapLayerName)
+struct UTextureRenderTarget2D* ALandscapeBlueprintBrushBase::Render(bool InIsHeightmap, struct UTextureRenderTarget2D* InCombinedResult, const struct FName& InWeightmapLayerName)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("LandscapeBlueprintBrushBase", "Render");
     struct
     {
-        uint8_t InIsHeightmap;
+        bool InIsHeightmap;
         struct UTextureRenderTarget2D* InCombinedResult;
         struct FName InWeightmapLayerName;
         struct UTextureRenderTarget2D* ReturnValue;
     } Parms{};
-    Parms.InIsHeightmap = (uint8_t)InIsHeightmap;
+    Parms.InIsHeightmap = (bool)InIsHeightmap;
     Parms.InCombinedResult = (struct UTextureRenderTarget2D*)InCombinedResult;
     Parms.InWeightmapLayerName = (struct FName)InWeightmapLayerName;
     this->ProcessEvent(Func, &Parms);
@@ -234,13 +217,13 @@ void ALandscapeBlueprintBrushBase::Initialize(const struct FTransform& InLandsca
     this->ProcessEvent(Func, &Parms);
 }
 
-void ALandscapeBlueprintBrushBase::GetBlueprintRenderDependencies(struct TArray<struct UTexture2D*>& OutStreamableAssets)
+void ALandscapeBlueprintBrushBase::GetBlueprintRenderDependencies(struct TArray<struct UObject*>& OutStreamableAssets)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("LandscapeBlueprintBrushBase", "GetBlueprintRenderDependencies");
     struct
     {
-        struct TArray<struct UTexture2D*> OutStreamableAssets;
+        struct TArray<struct UObject*> OutStreamableAssets;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     OutStreamableAssets = Parms.OutStreamableAssets;

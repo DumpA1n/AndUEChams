@@ -1,4 +1,5 @@
 #include "MRMesh.hpp"
+#include "Engine.hpp"
 #include <cstring> // memcpy for ArrayDim>1 param marshalling
 
 namespace SDK
@@ -35,25 +36,25 @@ void UMeshReconstructorBase::PauseReconstruction()
     this->ProcessEvent(Func, &Parms);
 }
 
-uint8_t UMeshReconstructorBase::IsReconstructionStarted()
+bool UMeshReconstructorBase::IsReconstructionStarted()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MeshReconstructorBase", "IsReconstructionStarted");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMeshReconstructorBase::IsReconstructionPaused()
+bool UMeshReconstructorBase::IsReconstructionPaused()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MeshReconstructorBase", "IsReconstructionPaused");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
@@ -127,13 +128,97 @@ void UMockDataMeshTrackerComponent::ConnectMRMesh(struct UMRMeshComponent* InMRM
 }
 
 // UMRMeshComponent
-uint8_t UMRMeshComponent::IsConnected()
+void UMRMeshComponent::SetWireframeMaterial(struct UMaterialInterface* InMaterial)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MRMeshComponent", "SetWireframeMaterial");
+    struct
+    {
+        struct UMaterialInterface* InMaterial;
+    } Parms{};
+    Parms.InMaterial = (struct UMaterialInterface*)InMaterial;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UMRMeshComponent::SetWireframeColor(const struct FLinearColor& InColor)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MRMeshComponent", "SetWireframeColor");
+    struct
+    {
+        struct FLinearColor InColor;
+    } Parms{};
+    Parms.InColor = (struct FLinearColor)InColor;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UMRMeshComponent::SetUseWireframe(bool bUseWireframe)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MRMeshComponent", "SetUseWireframe");
+    struct
+    {
+        bool bUseWireframe;
+    } Parms{};
+    Parms.bUseWireframe = (bool)bUseWireframe;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UMRMeshComponent::SetEnableMeshOcclusion(bool bEnable)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MRMeshComponent", "SetEnableMeshOcclusion");
+    struct
+    {
+        bool bEnable;
+    } Parms{};
+    Parms.bEnable = (bool)bEnable;
+    this->ProcessEvent(Func, &Parms);
+}
+
+bool UMRMeshComponent::IsConnected()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MRMeshComponent", "IsConnected");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct FLinearColor UMRMeshComponent::GetWireframeColor()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MRMeshComponent", "GetWireframeColor");
+    struct
+    {
+        struct FLinearColor ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+bool UMRMeshComponent::GetUseWireframe()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MRMeshComponent", "GetUseWireframe");
+    struct
+    {
+        bool ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+bool UMRMeshComponent::GetEnableMeshOcclusion()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MRMeshComponent", "GetEnableMeshOcclusion");
+    struct
+    {
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;

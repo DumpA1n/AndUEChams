@@ -18,15 +18,15 @@ void USpineBoneDriverComponent::BeforeUpdateWorldTransform(struct USpineSkeleton
 }
 
 // UTrackEntry
-void UTrackEntry::SetTrackTime(float TrackTime)
+void UTrackEntry::SetTrackTime(float trackTime)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("TrackEntry", "SetTrackTime");
     struct
     {
-        float TrackTime;
+        float trackTime;
     } Parms{};
-    Parms.TrackTime = (float)TrackTime;
+    Parms.trackTime = (float)trackTime;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -78,15 +78,15 @@ void UTrackEntry::SetMixDuration(float mixDuration)
     this->ProcessEvent(Func, &Parms);
 }
 
-void UTrackEntry::SetLoop(uint8_t Loop)
+void UTrackEntry::SetLoop(bool Loop)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("TrackEntry", "SetLoop");
     struct
     {
-        uint8_t Loop;
+        bool Loop;
     } Parms{};
-    Parms.Loop = (uint8_t)Loop;
+    Parms.Loop = (bool)Loop;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -186,13 +186,13 @@ void UTrackEntry::SetAlpha(float Alpha)
     this->ProcessEvent(Func, &Parms);
 }
 
-uint8_t UTrackEntry::isValidAnimation()
+bool UTrackEntry::isValidAnimation()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("TrackEntry", "isValidAnimation");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
@@ -270,13 +270,13 @@ float UTrackEntry::GetMixDuration()
     return Parms.ReturnValue;
 }
 
-uint8_t UTrackEntry::GetLoop()
+bool UTrackEntry::GetLoop()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("TrackEntry", "GetLoop");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
@@ -447,28 +447,28 @@ void USpineSkeletonComponent::SetSlotColor(struct FString SlotName, struct FColo
     this->ProcessEvent(Func, &Parms);
 }
 
-uint8_t USpineSkeletonComponent::SetSkins(struct TArray<struct FString>& SkinNames)
+bool USpineSkeletonComponent::SetSkins(struct TArray<struct FString>& SkinNames)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("SpineSkeletonComponent", "SetSkins");
     struct
     {
         struct TArray<struct FString> SkinNames;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     SkinNames = Parms.SkinNames;
     return Parms.ReturnValue;
 }
 
-uint8_t USpineSkeletonComponent::SetSkin(struct FString SkinName)
+bool USpineSkeletonComponent::SetSkin(struct FString SkinName)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("SpineSkeletonComponent", "SetSkin");
     struct
     {
         struct FString SkinName;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.SkinName = (struct FString)SkinName;
     this->ProcessEvent(Func, &Parms);
@@ -499,17 +499,17 @@ void USpineSkeletonComponent::SetScaleX(float ScaleX)
     this->ProcessEvent(Func, &Parms);
 }
 
-void USpineSkeletonComponent::SetBoneWorldPosition(struct FString BoneName, const struct FVector& Position)
+void USpineSkeletonComponent::SetBoneWorldPosition(struct FString BoneName, const struct FVector& position)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("SpineSkeletonComponent", "SetBoneWorldPosition");
     struct
     {
         struct FString BoneName;
-        struct FVector Position;
+        struct FVector position;
     } Parms{};
     Parms.BoneName = (struct FString)BoneName;
-    Parms.Position = (struct FVector)Position;
+    Parms.position = (struct FVector)position;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -523,72 +523,72 @@ void USpineSkeletonComponent::SetBonesToSetupPose()
     this->ProcessEvent(Func, &Parms);
 }
 
-uint8_t USpineSkeletonComponent::SetAttachment(struct FString SlotName, struct FString attachmentName)
+bool USpineSkeletonComponent::SetAttachment(struct FString SlotName, struct FString AttachmentName)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("SpineSkeletonComponent", "SetAttachment");
     struct
     {
         struct FString SlotName;
-        struct FString attachmentName;
-        uint8_t ReturnValue;
+        struct FString AttachmentName;
+        bool ReturnValue;
     } Parms{};
     Parms.SlotName = (struct FString)SlotName;
-    Parms.attachmentName = (struct FString)attachmentName;
+    Parms.AttachmentName = (struct FString)AttachmentName;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t USpineSkeletonComponent::HasSlot(struct FString SlotName)
+bool USpineSkeletonComponent::HasSlot(struct FString SlotName)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("SpineSkeletonComponent", "HasSlot");
     struct
     {
         struct FString SlotName;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.SlotName = (struct FString)SlotName;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t USpineSkeletonComponent::HasSkin(struct FString SkinName)
+bool USpineSkeletonComponent::HasSkin(struct FString SkinName)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("SpineSkeletonComponent", "HasSkin");
     struct
     {
         struct FString SkinName;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.SkinName = (struct FString)SkinName;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t USpineSkeletonComponent::HasBone(struct FString BoneName)
+bool USpineSkeletonComponent::HasBone(struct FString BoneName)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("SpineSkeletonComponent", "HasBone");
     struct
     {
         struct FString BoneName;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.BoneName = (struct FString)BoneName;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t USpineSkeletonComponent::HasAnimation(struct FString AnimationName)
+bool USpineSkeletonComponent::HasAnimation(struct FString AnimationName)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("SpineSkeletonComponent", "HasAnimation");
     struct
     {
         struct FString AnimationName;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.AnimationName = (struct FString)AnimationName;
     this->ProcessEvent(Func, &Parms);
@@ -708,17 +708,17 @@ void USpineSkeletonAnimationComponent::SetTimeScale(float TimeScale)
     this->ProcessEvent(Func, &Parms);
 }
 
-void USpineSkeletonAnimationComponent::SetPlaybackTime(float InPlaybackTime, uint8_t bCallDelegates)
+void USpineSkeletonAnimationComponent::SetPlaybackTime(float InPlaybackTime, bool bCallDelegates)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("SpineSkeletonAnimationComponent", "SetPlaybackTime");
     struct
     {
         float InPlaybackTime;
-        uint8_t bCallDelegates;
+        bool bCallDelegates;
     } Parms{};
     Parms.InPlaybackTime = (float)InPlaybackTime;
-    Parms.bCallDelegates = (uint8_t)bCallDelegates;
+    Parms.bCallDelegates = (bool)bCallDelegates;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -738,19 +738,19 @@ struct UTrackEntry* USpineSkeletonAnimationComponent::SetEmptyAnimation(int32_t 
     return Parms.ReturnValue;
 }
 
-void USpineSkeletonAnimationComponent::SetAutoPlay(uint8_t bInAutoPlays)
+void USpineSkeletonAnimationComponent::SetAutoPlay(bool bInAutoPlays)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("SpineSkeletonAnimationComponent", "SetAutoPlay");
     struct
     {
-        uint8_t bInAutoPlays;
+        bool bInAutoPlays;
     } Parms{};
-    Parms.bInAutoPlays = (uint8_t)bInAutoPlays;
+    Parms.bInAutoPlays = (bool)bInAutoPlays;
     this->ProcessEvent(Func, &Parms);
 }
 
-struct UTrackEntry* USpineSkeletonAnimationComponent::SetAnimation(int32_t TrackIndex, struct FString AnimationName, uint8_t Loop)
+struct UTrackEntry* USpineSkeletonAnimationComponent::SetAnimation(int32_t TrackIndex, struct FString AnimationName, bool Loop)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("SpineSkeletonAnimationComponent", "SetAnimation");
@@ -758,12 +758,12 @@ struct UTrackEntry* USpineSkeletonAnimationComponent::SetAnimation(int32_t Track
     {
         int32_t TrackIndex;
         struct FString AnimationName;
-        uint8_t Loop;
+        bool Loop;
         struct UTrackEntry* ReturnValue;
     } Parms{};
     Parms.TrackIndex = (int32_t)TrackIndex;
     Parms.AnimationName = (struct FString)AnimationName;
-    Parms.Loop = (uint8_t)Loop;
+    Parms.Loop = (bool)Loop;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
@@ -834,7 +834,7 @@ struct UTrackEntry* USpineSkeletonAnimationComponent::AddEmptyAnimation(int32_t 
     return Parms.ReturnValue;
 }
 
-struct UTrackEntry* USpineSkeletonAnimationComponent::AddAnimation(int32_t TrackIndex, struct FString AnimationName, uint8_t Loop, float Delay)
+struct UTrackEntry* USpineSkeletonAnimationComponent::AddAnimation(int32_t TrackIndex, struct FString AnimationName, bool Loop, float Delay)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("SpineSkeletonAnimationComponent", "AddAnimation");
@@ -842,39 +842,16 @@ struct UTrackEntry* USpineSkeletonAnimationComponent::AddAnimation(int32_t Track
     {
         int32_t TrackIndex;
         struct FString AnimationName;
-        uint8_t Loop;
+        bool Loop;
         float Delay;
         struct UTrackEntry* ReturnValue;
     } Parms{};
     Parms.TrackIndex = (int32_t)TrackIndex;
     Parms.AnimationName = (struct FString)AnimationName;
-    Parms.Loop = (uint8_t)Loop;
+    Parms.Loop = (bool)Loop;
     Parms.Delay = (float)Delay;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
-}
-
-// USpineSkeletonRendererComponent
-void USpineSkeletonRendererComponent::UpdateRenderer(struct USpineSkeletonComponent* Skeleton)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("SpineSkeletonRendererComponent", "UpdateRenderer");
-    struct
-    {
-        struct USpineSkeletonComponent* Skeleton;
-    } Parms{};
-    Parms.Skeleton = (struct USpineSkeletonComponent*)Skeleton;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void USpineSkeletonRendererComponent::Clear()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("SpineSkeletonRendererComponent", "Clear");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
 }
 
 // USpineWidget
@@ -888,17 +865,17 @@ void USpineWidget::UpdateWorldTransform()
     this->ProcessEvent(Func, &Parms);
 }
 
-void USpineWidget::Tick(float DeltaTime, uint8_t CallDelegates)
+void USpineWidget::Tick(float DeltaTime, bool CallDelegates)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("SpineWidget", "Tick");
     struct
     {
         float DeltaTime;
-        uint8_t CallDelegates;
+        bool CallDelegates;
     } Parms{};
     Parms.DeltaTime = (float)DeltaTime;
-    Parms.CallDelegates = (uint8_t)CallDelegates;
+    Parms.CallDelegates = (bool)CallDelegates;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -934,28 +911,28 @@ void USpineWidget::SetSlotsToSetupPose()
     this->ProcessEvent(Func, &Parms);
 }
 
-uint8_t USpineWidget::SetSkins(struct TArray<struct FString>& SkinNames)
+bool USpineWidget::SetSkins(struct TArray<struct FString>& SkinNames)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("SpineWidget", "SetSkins");
     struct
     {
         struct TArray<struct FString> SkinNames;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     SkinNames = Parms.SkinNames;
     return Parms.ReturnValue;
 }
 
-uint8_t USpineWidget::SetSkin(struct FString SkinName)
+bool USpineWidget::SetSkin(struct FString SkinName)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("SpineWidget", "SetSkin");
     struct
     {
         struct FString SkinName;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.SkinName = (struct FString)SkinName;
     this->ProcessEvent(Func, &Parms);
@@ -986,17 +963,17 @@ void USpineWidget::SetScaleX(float ScaleX)
     this->ProcessEvent(Func, &Parms);
 }
 
-void USpineWidget::SetPlaybackTime(float InPlaybackTime, uint8_t bCallDelegates)
+void USpineWidget::SetPlaybackTime(float InPlaybackTime, bool bCallDelegates)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("SpineWidget", "SetPlaybackTime");
     struct
     {
         float InPlaybackTime;
-        uint8_t bCallDelegates;
+        bool bCallDelegates;
     } Parms{};
     Parms.InPlaybackTime = (float)InPlaybackTime;
-    Parms.bCallDelegates = (uint8_t)bCallDelegates;
+    Parms.bCallDelegates = (bool)bCallDelegates;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -1026,47 +1003,35 @@ void USpineWidget::SetBonesToSetupPose()
     this->ProcessEvent(Func, &Parms);
 }
 
-void USpineWidget::SetAutoPlay(uint8_t bInAutoPlays)
+void USpineWidget::SetAutoPlay(bool bInAutoPlays)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("SpineWidget", "SetAutoPlay");
     struct
     {
-        uint8_t bInAutoPlays;
+        bool bInAutoPlays;
     } Parms{};
-    Parms.bInAutoPlays = (uint8_t)bInAutoPlays;
+    Parms.bInAutoPlays = (bool)bInAutoPlays;
     this->ProcessEvent(Func, &Parms);
 }
 
-uint8_t USpineWidget::SetAttachment(struct FString SlotName, struct FString attachmentName)
+bool USpineWidget::SetAttachment(struct FString SlotName, struct FString AttachmentName)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("SpineWidget", "SetAttachment");
     struct
     {
         struct FString SlotName;
-        struct FString attachmentName;
-        uint8_t ReturnValue;
+        struct FString AttachmentName;
+        bool ReturnValue;
     } Parms{};
     Parms.SlotName = (struct FString)SlotName;
-    Parms.attachmentName = (struct FString)attachmentName;
+    Parms.AttachmentName = (struct FString)AttachmentName;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-void USpineWidget::SetAsyncLoad(uint8_t Async)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("SpineWidget", "SetAsyncLoad");
-    struct
-    {
-        uint8_t Async;
-    } Parms{};
-    Parms.Async = (uint8_t)Async;
-    this->ProcessEvent(Func, &Parms);
-}
-
-struct UTrackEntry* USpineWidget::SetAnimation(int32_t TrackIndex, struct FString AnimationName, uint8_t Loop)
+struct UTrackEntry* USpineWidget::SetAnimation(int32_t TrackIndex, struct FString AnimationName, bool Loop)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("SpineWidget", "SetAnimation");
@@ -1074,66 +1039,66 @@ struct UTrackEntry* USpineWidget::SetAnimation(int32_t TrackIndex, struct FStrin
     {
         int32_t TrackIndex;
         struct FString AnimationName;
-        uint8_t Loop;
+        bool Loop;
         struct UTrackEntry* ReturnValue;
     } Parms{};
     Parms.TrackIndex = (int32_t)TrackIndex;
     Parms.AnimationName = (struct FString)AnimationName;
-    Parms.Loop = (uint8_t)Loop;
+    Parms.Loop = (bool)Loop;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t USpineWidget::HasSlot(struct FString SlotName)
+bool USpineWidget::HasSlot(struct FString SlotName)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("SpineWidget", "HasSlot");
     struct
     {
         struct FString SlotName;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.SlotName = (struct FString)SlotName;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t USpineWidget::HasSkin(struct FString SkinName)
+bool USpineWidget::HasSkin(struct FString SkinName)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("SpineWidget", "HasSkin");
     struct
     {
         struct FString SkinName;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.SkinName = (struct FString)SkinName;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t USpineWidget::HasBone(struct FString BoneName)
+bool USpineWidget::HasBone(struct FString BoneName)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("SpineWidget", "HasBone");
     struct
     {
         struct FString BoneName;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.BoneName = (struct FString)BoneName;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t USpineWidget::HasAnimation(struct FString AnimationName)
+bool USpineWidget::HasAnimation(struct FString AnimationName)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("SpineWidget", "HasAnimation");
     struct
     {
         struct FString AnimationName;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.AnimationName = (struct FString)AnimationName;
     this->ProcessEvent(Func, &Parms);
@@ -1210,6 +1175,20 @@ struct UTrackEntry* USpineWidget::GetCurrent(int32_t TrackIndex)
         struct UTrackEntry* ReturnValue;
     } Parms{};
     Parms.TrackIndex = (int32_t)TrackIndex;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct FTransform USpineWidget::GetBoneTransform(struct FString BoneName)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("SpineWidget", "GetBoneTransform");
+    struct
+    {
+        struct FString BoneName;
+        struct FTransform ReturnValue;
+    } Parms{};
+    Parms.BoneName = (struct FString)BoneName;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
@@ -1292,7 +1271,7 @@ struct UTrackEntry* USpineWidget::AddEmptyAnimation(int32_t TrackIndex, float mi
     return Parms.ReturnValue;
 }
 
-struct UTrackEntry* USpineWidget::AddAnimation(int32_t TrackIndex, struct FString AnimationName, uint8_t Loop, float Delay)
+struct UTrackEntry* USpineWidget::AddAnimation(int32_t TrackIndex, struct FString AnimationName, bool Loop, float Delay)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("SpineWidget", "AddAnimation");
@@ -1300,13 +1279,13 @@ struct UTrackEntry* USpineWidget::AddAnimation(int32_t TrackIndex, struct FStrin
     {
         int32_t TrackIndex;
         struct FString AnimationName;
-        uint8_t Loop;
+        bool Loop;
         float Delay;
         struct UTrackEntry* ReturnValue;
     } Parms{};
     Parms.TrackIndex = (int32_t)TrackIndex;
     Parms.AnimationName = (struct FString)AnimationName;
-    Parms.Loop = (uint8_t)Loop;
+    Parms.Loop = (bool)Loop;
     Parms.Delay = (float)Delay;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;

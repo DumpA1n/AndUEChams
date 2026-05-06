@@ -5,105 +5,6 @@
 namespace SDK
 {
 
-// UNavigationPath
-uint8_t UNavigationPath::IsValid()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("NavigationPath", "IsValid");
-    struct
-    {
-        uint8_t ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-uint8_t UNavigationPath::IsStringPulled()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("NavigationPath", "IsStringPulled");
-    struct
-    {
-        uint8_t ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-uint8_t UNavigationPath::IsPartial()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("NavigationPath", "IsPartial");
-    struct
-    {
-        uint8_t ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-float UNavigationPath::GetPathLength()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("NavigationPath", "GetPathLength");
-    struct
-    {
-        float ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-float UNavigationPath::GetPathCost()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("NavigationPath", "GetPathCost");
-    struct
-    {
-        float ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct FString UNavigationPath::GetDebugString()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("NavigationPath", "GetDebugString");
-    struct
-    {
-        struct FString ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-void UNavigationPath::EnableRecalculationOnInvalidation(ENavigationOptionFlag DoRecalculation)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("NavigationPath", "EnableRecalculationOnInvalidation");
-    struct
-    {
-        enum ENavigationOptionFlag DoRecalculation;
-    } Parms{};
-    Parms.DoRecalculation = (enum ENavigationOptionFlag)DoRecalculation;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UNavigationPath::EnableDebugDrawing(uint8_t bShouldDrawDebugData, struct FLinearColor PathColor)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("NavigationPath", "EnableDebugDrawing");
-    struct
-    {
-        uint8_t bShouldDrawDebugData;
-        struct FLinearColor PathColor;
-    } Parms{};
-    Parms.bShouldDrawDebugData = (uint8_t)bShouldDrawDebugData;
-    Parms.PathColor = (struct FLinearColor)PathColor;
-    this->ProcessEvent(Func, &Parms);
-}
-
 // UNavigationSystemV1
 void UNavigationSystemV1::UnregisterNavigationInvoker(struct AActor* Invoker)
 {
@@ -229,7 +130,7 @@ void UNavigationSystemV1::OnNavigationBoundsUpdated(struct ANavMeshBoundsVolume*
     this->ProcessEvent(Func, &Parms);
 }
 
-uint8_t UNavigationSystemV1::NavigationRaycast(struct UObject* WorldContextObject, const struct FVector& RayStart, const struct FVector& RayEnd, struct FVector& HitLocation, struct UNavigationQueryFilter* FilterClass, struct AController* Querier)
+bool UNavigationSystemV1::NavigationRaycast(struct UObject* WorldContextObject, const struct FVector& RayStart, const struct FVector& RayEnd, struct FVector& HitLocation, struct UNavigationQueryFilter* FilterClass, struct AController* Querier)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("NavigationSystemV1", "NavigationRaycast");
@@ -241,7 +142,7 @@ uint8_t UNavigationSystemV1::NavigationRaycast(struct UObject* WorldContextObjec
         struct FVector HitLocation;
         struct UNavigationQueryFilter* FilterClass;
         struct AController* Querier;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.WorldContextObject = (struct UObject*)WorldContextObject;
     Parms.RayStart = (struct FVector)RayStart;
@@ -253,7 +154,7 @@ uint8_t UNavigationSystemV1::NavigationRaycast(struct UObject* WorldContextObjec
     return Parms.ReturnValue;
 }
 
-uint8_t UNavigationSystemV1::K2_ReplaceAreaInOctreeData(struct UObject* Object, struct UNavArea* OldArea, struct UNavArea* NewArea)
+bool UNavigationSystemV1::K2_ReplaceAreaInOctreeData(struct UObject* Object, struct UNavArea* OldArea, struct UNavArea* NewArea)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("NavigationSystemV1", "K2_ReplaceAreaInOctreeData");
@@ -262,7 +163,7 @@ uint8_t UNavigationSystemV1::K2_ReplaceAreaInOctreeData(struct UObject* Object, 
         struct UObject* Object;
         struct UNavArea* OldArea;
         struct UNavArea* NewArea;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.Object = (struct UObject*)Object;
     Parms.OldArea = (struct UNavArea*)OldArea;
@@ -271,7 +172,7 @@ uint8_t UNavigationSystemV1::K2_ReplaceAreaInOctreeData(struct UObject* Object, 
     return Parms.ReturnValue;
 }
 
-uint8_t UNavigationSystemV1::K2_ProjectPointToNavigation(struct UObject* WorldContextObject, const struct FVector& Point, struct FVector& ProjectedLocation, struct ANavigationData* NavData, struct UNavigationQueryFilter* FilterClass, struct FVector QueryExtent)
+bool UNavigationSystemV1::K2_ProjectPointToNavigation(struct UObject* WorldContextObject, const struct FVector& Point, struct FVector& ProjectedLocation, struct ANavigationData* NavData, struct UNavigationQueryFilter* FilterClass, struct FVector QueryExtent)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("NavigationSystemV1", "K2_ProjectPointToNavigation");
@@ -283,7 +184,7 @@ uint8_t UNavigationSystemV1::K2_ProjectPointToNavigation(struct UObject* WorldCo
         struct ANavigationData* NavData;
         struct UNavigationQueryFilter* FilterClass;
         struct FVector QueryExtent;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.WorldContextObject = (struct UObject*)WorldContextObject;
     Parms.Point = (struct FVector)Point;
@@ -295,7 +196,7 @@ uint8_t UNavigationSystemV1::K2_ProjectPointToNavigation(struct UObject* WorldCo
     return Parms.ReturnValue;
 }
 
-uint8_t UNavigationSystemV1::K2_GetRandomReachablePointInRadius(struct UObject* WorldContextObject, const struct FVector& Origin, struct FVector& RandomLocation, float radius, struct ANavigationData* NavData, struct UNavigationQueryFilter* FilterClass)
+bool UNavigationSystemV1::K2_GetRandomReachablePointInRadius(struct UObject* WorldContextObject, const struct FVector& Origin, struct FVector& RandomLocation, float Radius, struct ANavigationData* NavData, struct UNavigationQueryFilter* FilterClass)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("NavigationSystemV1", "K2_GetRandomReachablePointInRadius");
@@ -304,14 +205,14 @@ uint8_t UNavigationSystemV1::K2_GetRandomReachablePointInRadius(struct UObject* 
         struct UObject* WorldContextObject;
         struct FVector Origin;
         struct FVector RandomLocation;
-        float radius;
+        float Radius;
         struct ANavigationData* NavData;
         struct UNavigationQueryFilter* FilterClass;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.WorldContextObject = (struct UObject*)WorldContextObject;
     Parms.Origin = (struct FVector)Origin;
-    Parms.radius = (float)radius;
+    Parms.Radius = (float)Radius;
     Parms.NavData = (struct ANavigationData*)NavData;
     Parms.FilterClass = (struct UNavigationQueryFilter*)FilterClass;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
@@ -319,7 +220,7 @@ uint8_t UNavigationSystemV1::K2_GetRandomReachablePointInRadius(struct UObject* 
     return Parms.ReturnValue;
 }
 
-uint8_t UNavigationSystemV1::K2_GetRandomPointInNavigableRadius(struct UObject* WorldContextObject, const struct FVector& Origin, struct FVector& RandomLocation, float radius, struct ANavigationData* NavData, struct UNavigationQueryFilter* FilterClass)
+bool UNavigationSystemV1::K2_GetRandomPointInNavigableRadius(struct UObject* WorldContextObject, const struct FVector& Origin, struct FVector& RandomLocation, float Radius, struct ANavigationData* NavData, struct UNavigationQueryFilter* FilterClass)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("NavigationSystemV1", "K2_GetRandomPointInNavigableRadius");
@@ -328,14 +229,14 @@ uint8_t UNavigationSystemV1::K2_GetRandomPointInNavigableRadius(struct UObject* 
         struct UObject* WorldContextObject;
         struct FVector Origin;
         struct FVector RandomLocation;
-        float radius;
+        float Radius;
         struct ANavigationData* NavData;
         struct UNavigationQueryFilter* FilterClass;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.WorldContextObject = (struct UObject*)WorldContextObject;
     Parms.Origin = (struct FVector)Origin;
-    Parms.radius = (float)radius;
+    Parms.Radius = (float)Radius;
     Parms.NavData = (struct ANavigationData*)NavData;
     Parms.FilterClass = (struct UNavigationQueryFilter*)FilterClass;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
@@ -343,7 +244,7 @@ uint8_t UNavigationSystemV1::K2_GetRandomPointInNavigableRadius(struct UObject* 
     return Parms.ReturnValue;
 }
 
-uint8_t UNavigationSystemV1::K2_GetRandomLocationInNavigableRadius(struct UObject* WorldContextObject, const struct FVector& Origin, struct FVector& RandomLocation, float radius, struct ANavigationData* NavData, struct UNavigationQueryFilter* FilterClass)
+bool UNavigationSystemV1::K2_GetRandomLocationInNavigableRadius(struct UObject* WorldContextObject, const struct FVector& Origin, struct FVector& RandomLocation, float Radius, struct ANavigationData* NavData, struct UNavigationQueryFilter* FilterClass)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("NavigationSystemV1", "K2_GetRandomLocationInNavigableRadius");
@@ -352,14 +253,14 @@ uint8_t UNavigationSystemV1::K2_GetRandomLocationInNavigableRadius(struct UObjec
         struct UObject* WorldContextObject;
         struct FVector Origin;
         struct FVector RandomLocation;
-        float radius;
+        float Radius;
         struct ANavigationData* NavData;
         struct UNavigationQueryFilter* FilterClass;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.WorldContextObject = (struct UObject*)WorldContextObject;
     Parms.Origin = (struct FVector)Origin;
-    Parms.radius = (float)radius;
+    Parms.Radius = (float)Radius;
     Parms.NavData = (struct ANavigationData*)NavData;
     Parms.FilterClass = (struct UNavigationQueryFilter*)FilterClass;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
@@ -367,35 +268,35 @@ uint8_t UNavigationSystemV1::K2_GetRandomLocationInNavigableRadius(struct UObjec
     return Parms.ReturnValue;
 }
 
-uint8_t UNavigationSystemV1::IsNavigationBeingBuiltOrLocked(struct UObject* WorldContextObject)
+bool UNavigationSystemV1::IsNavigationBeingBuiltOrLocked(struct UObject* WorldContextObject)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("NavigationSystemV1", "IsNavigationBeingBuiltOrLocked");
     struct
     {
         struct UObject* WorldContextObject;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.WorldContextObject = (struct UObject*)WorldContextObject;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UNavigationSystemV1::IsNavigationBeingBuilt(struct UObject* WorldContextObject)
+bool UNavigationSystemV1::IsNavigationBeingBuilt(struct UObject* WorldContextObject)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("NavigationSystemV1", "IsNavigationBeingBuilt");
     struct
     {
         struct UObject* WorldContextObject;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.WorldContextObject = (struct UObject*)WorldContextObject;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-struct FVector UNavigationSystemV1::GetRandomReachablePointInRadius(struct UObject* WorldContextObject, const struct FVector& Origin, float radius, struct ANavigationData* NavData, struct UNavigationQueryFilter* FilterClass)
+struct FVector UNavigationSystemV1::GetRandomReachablePointInRadius(struct UObject* WorldContextObject, const struct FVector& Origin, float Radius, struct ANavigationData* NavData, struct UNavigationQueryFilter* FilterClass)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("NavigationSystemV1", "GetRandomReachablePointInRadius");
@@ -403,21 +304,21 @@ struct FVector UNavigationSystemV1::GetRandomReachablePointInRadius(struct UObje
     {
         struct UObject* WorldContextObject;
         struct FVector Origin;
-        float radius;
+        float Radius;
         struct ANavigationData* NavData;
         struct UNavigationQueryFilter* FilterClass;
         struct FVector ReturnValue;
     } Parms{};
     Parms.WorldContextObject = (struct UObject*)WorldContextObject;
     Parms.Origin = (struct FVector)Origin;
-    Parms.radius = (float)radius;
+    Parms.Radius = (float)Radius;
     Parms.NavData = (struct ANavigationData*)NavData;
     Parms.FilterClass = (struct UNavigationQueryFilter*)FilterClass;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-struct FVector UNavigationSystemV1::GetRandomPointInNavigableRadius(struct UObject* WorldContextObject, const struct FVector& Origin, float radius, struct ANavigationData* NavData, struct UNavigationQueryFilter* FilterClass)
+struct FVector UNavigationSystemV1::GetRandomPointInNavigableRadius(struct UObject* WorldContextObject, const struct FVector& Origin, float Radius, struct ANavigationData* NavData, struct UNavigationQueryFilter* FilterClass)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("NavigationSystemV1", "GetRandomPointInNavigableRadius");
@@ -425,21 +326,21 @@ struct FVector UNavigationSystemV1::GetRandomPointInNavigableRadius(struct UObje
     {
         struct UObject* WorldContextObject;
         struct FVector Origin;
-        float radius;
+        float Radius;
         struct ANavigationData* NavData;
         struct UNavigationQueryFilter* FilterClass;
         struct FVector ReturnValue;
     } Parms{};
     Parms.WorldContextObject = (struct UObject*)WorldContextObject;
     Parms.Origin = (struct FVector)Origin;
-    Parms.radius = (float)radius;
+    Parms.Radius = (float)Radius;
     Parms.NavData = (struct ANavigationData*)NavData;
     Parms.FilterClass = (struct UNavigationQueryFilter*)FilterClass;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-ENavigationQueryResult UNavigationSystemV1::GetPathLength(struct UObject* WorldContextObject, const struct FVector& PathStart, const struct FVector& PathEnd, float& PathLength, struct ANavigationData* NavData, struct UNavigationQueryFilter* FilterClass)
+uint8_t UNavigationSystemV1::GetPathLength(struct UObject* WorldContextObject, const struct FVector& PathStart, const struct FVector& PathEnd, float& PathLength, struct ANavigationData* NavData, struct UNavigationQueryFilter* FilterClass)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("NavigationSystemV1", "GetPathLength");
@@ -451,7 +352,7 @@ ENavigationQueryResult UNavigationSystemV1::GetPathLength(struct UObject* WorldC
         float PathLength;
         struct ANavigationData* NavData;
         struct UNavigationQueryFilter* FilterClass;
-        enum ENavigationQueryResult ReturnValue;
+        uint8_t ReturnValue;
     } Parms{};
     Parms.WorldContextObject = (struct UObject*)WorldContextObject;
     Parms.PathStart = (struct FVector)PathStart;
@@ -463,7 +364,7 @@ ENavigationQueryResult UNavigationSystemV1::GetPathLength(struct UObject* WorldC
     return Parms.ReturnValue;
 }
 
-ENavigationQueryResult UNavigationSystemV1::GetPathCost(struct UObject* WorldContextObject, const struct FVector& PathStart, const struct FVector& PathEnd, float& PathCost, struct ANavigationData* NavData, struct UNavigationQueryFilter* FilterClass)
+uint8_t UNavigationSystemV1::GetPathCost(struct UObject* WorldContextObject, const struct FVector& PathStart, const struct FVector& PathEnd, float& PathCost, struct ANavigationData* NavData, struct UNavigationQueryFilter* FilterClass)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("NavigationSystemV1", "GetPathCost");
@@ -475,7 +376,7 @@ ENavigationQueryResult UNavigationSystemV1::GetPathCost(struct UObject* WorldCon
         float PathCost;
         struct ANavigationData* NavData;
         struct UNavigationQueryFilter* FilterClass;
-        enum ENavigationQueryResult ReturnValue;
+        uint8_t ReturnValue;
     } Parms{};
     Parms.WorldContextObject = (struct UObject*)WorldContextObject;
     Parms.PathStart = (struct FVector)PathStart;
@@ -547,32 +448,6 @@ struct UNavigationPath* UNavigationSystemV1::FindPathToActorSynchronously(struct
     return Parms.ReturnValue;
 }
 
-// UNavRelevantComponent
-void UNavRelevantComponent::SetNavigationRelevancy(uint8_t bRelevant)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("NavRelevantComponent", "SetNavigationRelevancy");
-    struct
-    {
-        uint8_t bRelevant;
-    } Parms{};
-    Parms.bRelevant = (uint8_t)bRelevant;
-    this->ProcessEvent(Func, &Parms);
-}
-
-// UNavModifierComponent
-void UNavModifierComponent::SetAreaClass(struct UNavArea* NewAreaClass)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("NavModifierComponent", "SetAreaClass");
-    struct
-    {
-        struct UNavArea* NewAreaClass;
-    } Parms{};
-    Parms.NewAreaClass = (struct UNavArea*)NewAreaClass;
-    this->ProcessEvent(Func, &Parms);
-}
-
 // ANavModifierVolume
 void ANavModifierVolume::SetAreaClass(struct UNavArea* NewAreaClass)
 {
@@ -587,7 +462,7 @@ void ANavModifierVolume::SetAreaClass(struct UNavArea* NewAreaClass)
 }
 
 // ARecastNavMesh
-uint8_t ARecastNavMesh::K2_ReplaceAreaInTileBounds(struct FBox Bounds, struct UNavArea* OldArea, struct UNavArea* NewArea, uint8_t ReplaceLinks)
+bool ARecastNavMesh::K2_ReplaceAreaInTileBounds(struct FBox Bounds, struct UNavArea* OldArea, struct UNavArea* NewArea, bool ReplaceLinks)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("RecastNavMesh", "K2_ReplaceAreaInTileBounds");
@@ -596,15 +471,140 @@ uint8_t ARecastNavMesh::K2_ReplaceAreaInTileBounds(struct FBox Bounds, struct UN
         struct FBox Bounds;
         struct UNavArea* OldArea;
         struct UNavArea* NewArea;
-        uint8_t ReplaceLinks;
-        uint8_t ReturnValue;
+        bool ReplaceLinks;
+        bool ReturnValue;
     } Parms{};
     Parms.Bounds = (struct FBox)Bounds;
     Parms.OldArea = (struct UNavArea*)OldArea;
     Parms.NewArea = (struct UNavArea*)NewArea;
-    Parms.ReplaceLinks = (uint8_t)ReplaceLinks;
+    Parms.ReplaceLinks = (bool)ReplaceLinks;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
+}
+
+// UNavigationPath
+bool UNavigationPath::IsValid()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("NavigationPath", "IsValid");
+    struct
+    {
+        bool ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+bool UNavigationPath::IsStringPulled()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("NavigationPath", "IsStringPulled");
+    struct
+    {
+        bool ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+bool UNavigationPath::IsPartial()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("NavigationPath", "IsPartial");
+    struct
+    {
+        bool ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+float UNavigationPath::GetPathLength()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("NavigationPath", "GetPathLength");
+    struct
+    {
+        float ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+float UNavigationPath::GetPathCost()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("NavigationPath", "GetPathCost");
+    struct
+    {
+        float ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct FString UNavigationPath::GetDebugString()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("NavigationPath", "GetDebugString");
+    struct
+    {
+        struct FString ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+void UNavigationPath::EnableRecalculationOnInvalidation(uint8_t DoRecalculation)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("NavigationPath", "EnableRecalculationOnInvalidation");
+    struct
+    {
+        uint8_t DoRecalculation;
+    } Parms{};
+    Parms.DoRecalculation = (uint8_t)DoRecalculation;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UNavigationPath::EnableDebugDrawing(bool bShouldDrawDebugData, struct FLinearColor PathColor)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("NavigationPath", "EnableDebugDrawing");
+    struct
+    {
+        bool bShouldDrawDebugData;
+        struct FLinearColor PathColor;
+    } Parms{};
+    Parms.bShouldDrawDebugData = (bool)bShouldDrawDebugData;
+    Parms.PathColor = (struct FLinearColor)PathColor;
+    this->ProcessEvent(Func, &Parms);
+}
+
+// UNavRelevantComponent
+void UNavRelevantComponent::SetNavigationRelevancy(bool bRelevant)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("NavRelevantComponent", "SetNavigationRelevancy");
+    struct
+    {
+        bool bRelevant;
+    } Parms{};
+    Parms.bRelevant = (bool)bRelevant;
+    this->ProcessEvent(Func, &Parms);
+}
+
+// UNavModifierComponent
+void UNavModifierComponent::SetAreaClass(struct UNavArea* NewAreaClass)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("NavModifierComponent", "SetAreaClass");
+    struct
+    {
+        struct UNavArea* NewAreaClass;
+    } Parms{};
+    Parms.NewAreaClass = (struct UNavArea*)NewAreaClass;
+    this->ProcessEvent(Func, &Parms);
 }
 
 } // namespace SDK

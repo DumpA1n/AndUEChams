@@ -5,17 +5,17 @@ namespace SDK
 {
 
 // UMeshDescriptionBase
-void UMeshDescriptionBase::SetVertexPosition(struct FVertexID VertexID, const struct FVector& Position)
+void UMeshDescriptionBase::SetVertexPosition(struct FVertexID VertexID, const struct FVector& position)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MeshDescriptionBase", "SetVertexPosition");
     struct
     {
         struct FVertexID VertexID;
-        struct FVector Position;
+        struct FVector position;
     } Parms{};
     Parms.VertexID = (struct FVertexID)VertexID;
-    Parms.Position = (struct FVector)Position;
+    Parms.position = (struct FVector)position;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -133,131 +133,131 @@ void UMeshDescriptionBase::ReserveNewEdges(int32_t NumberOfNewEdges)
     this->ProcessEvent(Func, &Parms);
 }
 
-uint8_t UMeshDescriptionBase::IsVertexValid(struct FVertexID VertexID)
+bool UMeshDescriptionBase::IsVertexValid(struct FVertexID VertexID)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MeshDescriptionBase", "IsVertexValid");
     struct
     {
         struct FVertexID VertexID;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.VertexID = (struct FVertexID)VertexID;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMeshDescriptionBase::IsVertexOrphaned(struct FVertexID VertexID)
+bool UMeshDescriptionBase::IsVertexOrphaned(struct FVertexID VertexID)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MeshDescriptionBase", "IsVertexOrphaned");
     struct
     {
         struct FVertexID VertexID;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.VertexID = (struct FVertexID)VertexID;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMeshDescriptionBase::IsVertexInstanceValid(struct FVertexInstanceID VertexInstanceID)
+bool UMeshDescriptionBase::IsVertexInstanceValid(struct FVertexInstanceID VertexInstanceID)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MeshDescriptionBase", "IsVertexInstanceValid");
     struct
     {
         struct FVertexInstanceID VertexInstanceID;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.VertexInstanceID = (struct FVertexInstanceID)VertexInstanceID;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMeshDescriptionBase::IsTriangleValid(struct FTriangleID TriangleID)
+bool UMeshDescriptionBase::IsTriangleValid(struct FTriangleID TriangleID)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MeshDescriptionBase", "IsTriangleValid");
     struct
     {
         struct FTriangleID TriangleID;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.TriangleID = (struct FTriangleID)TriangleID;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMeshDescriptionBase::IsTrianglePartOfNgon(struct FTriangleID TriangleID)
+bool UMeshDescriptionBase::IsTrianglePartOfNgon(struct FTriangleID TriangleID)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MeshDescriptionBase", "IsTrianglePartOfNgon");
     struct
     {
         struct FTriangleID TriangleID;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.TriangleID = (struct FTriangleID)TriangleID;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMeshDescriptionBase::IsPolygonValid(struct FPolygonID PolygonID)
+bool UMeshDescriptionBase::IsPolygonValid(struct FPolygonID PolygonID)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MeshDescriptionBase", "IsPolygonValid");
     struct
     {
         struct FPolygonID PolygonID;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.PolygonID = (struct FPolygonID)PolygonID;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMeshDescriptionBase::IsPolygonGroupValid(struct FPolygonGroupID PolygonGroupID)
+bool UMeshDescriptionBase::IsPolygonGroupValid(struct FPolygonGroupID PolygonGroupID)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MeshDescriptionBase", "IsPolygonGroupValid");
     struct
     {
         struct FPolygonGroupID PolygonGroupID;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.PolygonGroupID = (struct FPolygonGroupID)PolygonGroupID;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMeshDescriptionBase::IsEmpty()
+bool UMeshDescriptionBase::IsEmpty()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MeshDescriptionBase", "IsEmpty");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMeshDescriptionBase::IsEdgeValid(struct FEdgeID EdgeID)
+bool UMeshDescriptionBase::IsEdgeValid(struct FEdgeID EdgeID)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MeshDescriptionBase", "IsEdgeValid");
     struct
     {
         struct FEdgeID EdgeID;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.EdgeID = (struct FEdgeID)EdgeID;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UMeshDescriptionBase::IsEdgeInternalToPolygon(struct FEdgeID EdgeID, struct FPolygonID PolygonID)
+bool UMeshDescriptionBase::IsEdgeInternalToPolygon(struct FEdgeID EdgeID, struct FPolygonID PolygonID)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MeshDescriptionBase", "IsEdgeInternalToPolygon");
@@ -265,7 +265,7 @@ uint8_t UMeshDescriptionBase::IsEdgeInternalToPolygon(struct FEdgeID EdgeID, str
     {
         struct FEdgeID EdgeID;
         struct FPolygonID PolygonID;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.EdgeID = (struct FEdgeID)EdgeID;
     Parms.PolygonID = (struct FPolygonID)PolygonID;
@@ -273,14 +273,14 @@ uint8_t UMeshDescriptionBase::IsEdgeInternalToPolygon(struct FEdgeID EdgeID, str
     return Parms.ReturnValue;
 }
 
-uint8_t UMeshDescriptionBase::IsEdgeInternal(struct FEdgeID EdgeID)
+bool UMeshDescriptionBase::IsEdgeInternal(struct FEdgeID EdgeID)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MeshDescriptionBase", "IsEdgeInternal");
     struct
     {
         struct FEdgeID EdgeID;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.EdgeID = (struct FEdgeID)EdgeID;
     this->ProcessEvent(Func, &Parms);

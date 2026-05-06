@@ -96,8 +96,7 @@ struct FNamedInterface
 struct FInAppPurchaseProductRequest
 {
 	struct FString ProductIdentifier; // 0x0(0x10)
-	uint8_t bIsConsumable : 1; // 0x10(0x1), Mask(0x1)
-	uint8_t BitPad_0x10_1 : 7; // 0x10(0x1)
+	bool bIsConsumable; // 0x10(0x1)
 	uint8_t Pad_0x11[0x7]; // 0x11(0x7)
 };
 
@@ -120,13 +119,13 @@ struct ITurnBasedMatchInterface : IInterface
 
 	// Object: Function OnlineSubsystem.TurnBasedMatchInterface.OnMatchReceivedTurn
 	// Flags: [Event|Public|BlueprintEvent]
-	// Offset: 0x101d2e88
+	// Offset: 0x5d8cbc8
 	// Params: [ Num(2) Size(0x11) ]
-	void OnMatchReceivedTurn(struct FString Match, uint8_t bDidBecomeActive);
+	void OnMatchReceivedTurn(struct FString Match, bool bDidBecomeActive);
 
 	// Object: Function OnlineSubsystem.TurnBasedMatchInterface.OnMatchEnded
 	// Flags: [Event|Public|BlueprintEvent]
-	// Offset: 0x101d2e88
+	// Offset: 0x5d8cbc8
 	// Params: [ Num(1) Size(0x10) ]
 	void OnMatchEnded(struct FString Match);
 };

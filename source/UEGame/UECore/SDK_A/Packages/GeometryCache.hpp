@@ -71,16 +71,16 @@ struct UGeometryCache : UObject
 };
 
 // Object: Class GeometryCache.GeometryCacheActor
-// Size: 0x378 (Inherited: 0x370)
+// Size: 0x308 (Inherited: 0x300)
 struct AGeometryCacheActor : AActor
 {
 	DEFINE_UE_CLASS_HELPERS(AGeometryCacheActor, "GeometryCacheActor")
 
-	struct UGeometryCacheComponent* GeometryCacheComponent; // 0x370(0x8)
+	struct UGeometryCacheComponent* GeometryCacheComponent; // 0x300(0x8)
 
 	// Object: Function GeometryCache.GeometryCacheActor.GetGeometryCacheComponent
 	// Flags: [Final|Native|Public|BlueprintCallable|BlueprintPure|Const]
-	// Offset: 0x8e2a968
+	// Offset: 0x3f92a88
 	// Params: [ Num(1) Size(0x8) ]
 	struct UGeometryCacheComponent* GetGeometryCacheComponent();
 };
@@ -114,142 +114,140 @@ struct UGeometryCacheCodecV1 : UGeometryCacheCodecBase
 };
 
 // Object: Class GeometryCache.GeometryCacheComponent
-// Size: 0x740 (Inherited: 0x6F0)
+// Size: 0x720 (Inherited: 0x6D0)
 struct UGeometryCacheComponent : UMeshComponent
 {
 	DEFINE_UE_CLASS_HELPERS(UGeometryCacheComponent, "GeometryCacheComponent")
 
-	struct UGeometryCache* GeometryCache; // 0x6E8(0x8)
-	uint8_t bRunning : 1; // 0x6F0(0x1), Mask(0x1)
-	uint8_t bLooping : 1; // 0x6F1(0x1), Mask(0x1)
-	float StartTimeOffset; // 0x6F4(0x4)
-	float PlaybackSpeed; // 0x6F8(0x4)
-	int32_t NumTracks; // 0x6FC(0x4)
-	float ElapsedTime; // 0x700(0x4)
-	uint8_t BitPad_0x708_2 : 6; // 0x708(0x1)
-	uint8_t Pad_0x709[0x2B]; // 0x709(0x2B)
-	float Duration; // 0x734(0x4)
-	uint8_t bManualTick : 1; // 0x738(0x1), Mask(0x1)
-	uint8_t BitPad_0x738_1 : 7; // 0x738(0x1)
-	uint8_t Pad_0x739[0x7]; // 0x739(0x7)
+	struct UGeometryCache* GeometryCache; // 0x6C8(0x8)
+	bool bRunning; // 0x6D0(0x1)
+	bool bLooping; // 0x6D1(0x1)
+	float StartTimeOffset; // 0x6D4(0x4)
+	float PlaybackSpeed; // 0x6D8(0x4)
+	int32_t NumTracks; // 0x6DC(0x4)
+	float ElapsedTime; // 0x6E0(0x4)
+	uint8_t Pad_0x6EA[0x2A]; // 0x6EA(0x2A)
+	float Duration; // 0x714(0x4)
+	bool bManualTick; // 0x718(0x1)
+	uint8_t Pad_0x719[0x7]; // 0x719(0x7)
 
 	// Object: Function GeometryCache.GeometryCacheComponent.TickAtThisTime
 	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x8e2af78
+	// Offset: 0x3f92ae8
 	// Params: [ Num(4) Size(0x7) ]
-	void TickAtThisTime(float Time, uint8_t bInIsRunning, uint8_t bInBackwards, uint8_t bInIsLooping);
+	void TickAtThisTime(float Time, bool bInIsRunning, bool bInBackwards, bool bInIsLooping);
 
 	// Object: Function GeometryCache.GeometryCacheComponent.Stop
 	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x8e2af64
+	// Offset: 0x3f93104
 	// Params: [ Num(0) Size(0x0) ]
 	void Stop();
 
 	// Object: Function GeometryCache.GeometryCacheComponent.SetStartTimeOffset
 	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x8e2aec0
+	// Offset: 0x3f92d40
 	// Params: [ Num(1) Size(0x4) ]
 	void SetStartTimeOffset(float NewStartTimeOffset);
 
 	// Object: Function GeometryCache.GeometryCacheComponent.SetPlaybackSpeed
 	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x8e2ae1c
+	// Offset: 0x3f92ed0
 	// Params: [ Num(1) Size(0x4) ]
 	void SetPlaybackSpeed(float NewPlaybackSpeed);
 
 	// Object: Function GeometryCache.GeometryCacheComponent.SetLooping
 	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x8e2ad70
+	// Offset: 0x3f92fac
 	// Params: [ Num(1) Size(0x1) ]
-	void SetLooping(uint8_t bNewLooping);
+	void SetLooping(bool bNewLooping);
 
 	// Object: Function GeometryCache.GeometryCacheComponent.SetGeometryCache
 	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x8e2acc0
+	// Offset: 0x3f92e1c
 	// Params: [ Num(2) Size(0x9) ]
-	uint8_t SetGeometryCache(struct UGeometryCache* NewGeomCache);
+	bool SetGeometryCache(struct UGeometryCache* NewGeomCache);
 
 	// Object: Function GeometryCache.GeometryCacheComponent.PlayReversedFromEnd
 	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x8e2acac
+	// Offset: 0x3f9312c
 	// Params: [ Num(0) Size(0x0) ]
 	void PlayReversedFromEnd();
 
 	// Object: Function GeometryCache.GeometryCacheComponent.PlayReversed
 	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x8e2ac98
+	// Offset: 0x3f93140
 	// Params: [ Num(0) Size(0x0) ]
 	void PlayReversed();
 
 	// Object: Function GeometryCache.GeometryCacheComponent.PlayFromStart
 	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x8e2ac84
+	// Offset: 0x3f93154
 	// Params: [ Num(0) Size(0x0) ]
 	void PlayFromStart();
 
 	// Object: Function GeometryCache.GeometryCacheComponent.Play
 	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x8e2ac70
+	// Offset: 0x3f93168
 	// Params: [ Num(0) Size(0x0) ]
 	void Play();
 
 	// Object: Function GeometryCache.GeometryCacheComponent.Pause
 	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x8e2ac5c
+	// Offset: 0x3f93118
 	// Params: [ Num(0) Size(0x0) ]
 	void Pause();
 
 	// Object: Function GeometryCache.GeometryCacheComponent.IsPlayingReversed
 	// Flags: [Final|Native|Public|BlueprintCallable|BlueprintPure|Const]
-	// Offset: 0x8e2ac24
+	// Offset: 0x3f93094
 	// Params: [ Num(1) Size(0x1) ]
-	uint8_t IsPlayingReversed();
+	bool IsPlayingReversed();
 
 	// Object: Function GeometryCache.GeometryCacheComponent.IsPlaying
 	// Flags: [Final|Native|Public|BlueprintCallable|BlueprintPure|Const]
-	// Offset: 0x8e2abec
+	// Offset: 0x3f930cc
 	// Params: [ Num(1) Size(0x1) ]
-	uint8_t IsPlaying();
+	bool IsPlaying();
 
 	// Object: Function GeometryCache.GeometryCacheComponent.IsLooping
 	// Flags: [Final|Native|Public|BlueprintCallable|BlueprintPure|Const]
-	// Offset: 0x8e2abb4
+	// Offset: 0x3f9305c
 	// Params: [ Num(1) Size(0x1) ]
-	uint8_t IsLooping();
+	bool IsLooping();
 
 	// Object: Function GeometryCache.GeometryCacheComponent.GetStartTimeOffset
 	// Flags: [Final|Native|Public|BlueprintCallable|BlueprintPure|Const]
-	// Offset: 0x8e2ab80
+	// Offset: 0x3f92de8
 	// Params: [ Num(1) Size(0x4) ]
 	float GetStartTimeOffset();
 
 	// Object: Function GeometryCache.GeometryCacheComponent.GetPlaybackSpeed
 	// Flags: [Final|Native|Public|BlueprintCallable|BlueprintPure|Const]
-	// Offset: 0x8e2ab4c
+	// Offset: 0x3f92f78
 	// Params: [ Num(1) Size(0x4) ]
 	float GetPlaybackSpeed();
 
 	// Object: Function GeometryCache.GeometryCacheComponent.GetPlaybackDirection
 	// Flags: [Final|Native|Public|BlueprintCallable|BlueprintPure|Const]
-	// Offset: 0x8e2ab18
+	// Offset: 0x3f92cd8
 	// Params: [ Num(1) Size(0x4) ]
 	float GetPlaybackDirection();
 
 	// Object: Function GeometryCache.GeometryCacheComponent.GetNumberOfFrames
 	// Flags: [Final|Native|Public|BlueprintCallable|BlueprintPure|Const]
-	// Offset: 0x8e2aae4
+	// Offset: 0x3f92c70
 	// Params: [ Num(1) Size(0x4) ]
 	int32_t GetNumberOfFrames();
 
 	// Object: Function GeometryCache.GeometryCacheComponent.GetDuration
 	// Flags: [Final|Native|Public|BlueprintCallable|BlueprintPure|Const]
-	// Offset: 0x8e2aab0
+	// Offset: 0x3f92ca4
 	// Params: [ Num(1) Size(0x4) ]
 	float GetDuration();
 
 	// Object: Function GeometryCache.GeometryCacheComponent.GetAnimationTime
 	// Flags: [Final|Native|Public|BlueprintCallable|BlueprintPure|Const]
-	// Offset: 0x8e2aa7c
+	// Offset: 0x3f92d0c
 	// Params: [ Num(1) Size(0x4) ]
 	float GetAnimationTime();
 };
@@ -275,21 +273,21 @@ struct UGeometryCacheTrack_FlipbookAnimation : UGeometryCacheTrack
 
 	// Object: Function GeometryCache.GeometryCacheTrack_FlipbookAnimation.AddMeshSample
 	// Flags: [Final|Native|Public|HasOutParms]
-	// Offset: 0x8e2b194
+	// Offset: 0x3f93220
 	// Params: [ Num(2) Size(0xAC) ]
 	void AddMeshSample(const struct FGeometryCacheMeshData& MeshData, float SampleTime);
 };
 
 // Object: Class GeometryCache.GeometryCacheTrackStreamable
-// Size: 0x178 (Inherited: 0x58)
+// Size: 0xD0 (Inherited: 0x58)
 struct UGeometryCacheTrackStreamable : UGeometryCacheTrack
 {
 	DEFINE_UE_CLASS_HELPERS(UGeometryCacheTrackStreamable, "GeometryCacheTrackStreamable")
 
 	struct UGeometryCacheCodecBase* Codec; // 0x58(0x8)
-	uint8_t Pad_0x60[0x110]; // 0x60(0x110)
-	float StartSampleTime; // 0x170(0x4)
-	uint8_t Pad_0x174[0x4]; // 0x174(0x4)
+	uint8_t Pad_0x60[0x68]; // 0x60(0x68)
+	float StartSampleTime; // 0xC8(0x4)
+	uint8_t Pad_0xCC[0x4]; // 0xCC(0x4)
 };
 
 // Object: Class GeometryCache.GeometryCacheTrack_TransformAnimation
@@ -302,7 +300,7 @@ struct UGeometryCacheTrack_TransformAnimation : UGeometryCacheTrack
 
 	// Object: Function GeometryCache.GeometryCacheTrack_TransformAnimation.SetMesh
 	// Flags: [Final|Native|Public|HasOutParms]
-	// Offset: 0x8e2b2c8
+	// Offset: 0x3f93358
 	// Params: [ Num(1) Size(0xA8) ]
 	void SetMesh(const struct FGeometryCacheMeshData& NewMeshData);
 };
@@ -317,7 +315,7 @@ struct UGeometryCacheTrack_TransformGroupAnimation : UGeometryCacheTrack
 
 	// Object: Function GeometryCache.GeometryCacheTrack_TransformGroupAnimation.SetMesh
 	// Flags: [Final|Native|Public|HasOutParms]
-	// Offset: 0x8e2b3a4
+	// Offset: 0x3f93434
 	// Params: [ Num(1) Size(0xA8) ]
 	void SetMesh(const struct FGeometryCacheMeshData& NewMeshData);
 };

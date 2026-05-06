@@ -75,8 +75,8 @@ struct FProfileMatch
 // Size: 0x18 (Inherited: 0x0)
 struct FProfileMatchItem
 {
-	ESourceType SourceType; // 0x0(0x1)
-	ECompareType CompareType; // 0x1(0x1)
+	uint8_t SourceType; // 0x0(0x1)
+	uint8_t CompareType; // 0x1(0x1)
 	uint8_t Pad_0x2[0x6]; // 0x2(0x6)
 	struct FString MatchString; // 0x8(0x10)
 };

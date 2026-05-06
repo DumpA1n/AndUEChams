@@ -2,6 +2,7 @@
 
 #include <atomic>
 #include <chrono>
+#include <cstdint>
 #include <format>
 #include <mutex>
 #include <set>
@@ -135,6 +136,8 @@ static bool EnsureGlobalsInitialized()
     UE_Hack::GetInstance().SetCanvas(CanvasObj);
     UE_Hack::GetInstance().SetEngine(GEngine);
     UE_Hack::GetInstance().SetWorld(GWorld);
+
+    LOGI("[UE] %s", UKismetSystemLibrary::GetEngineVersion().ToString().c_str());
 
     GGlobalsReady.store(true, std::memory_order_release);
     return true;
@@ -311,11 +314,11 @@ static bool DoLineTraceVisible(UWorld* InWorld, FVector Start, FVector End, AAct
     FHitResult Hit{};
     bool       bHit = UKismetSystemLibrary::LineTraceSingle(
         InWorld, Start, End,
-        ETraceTypeQuery::TraceTypeQuery1,
+        (uint8_t)ETraceTypeQuery::TraceTypeQuery1,
         /*bTraceComplex=*/true,
         Ignore,
-        EDrawDebugTrace::None, Hit, /*bIgnoreSelf=*/true,
-        FLinearColor{}, FLinearColor{}, 0.0f);
+        (uint8_t)EDrawDebugTrace::None, Hit, /*bIgnoreSelf=*/true,
+        FLinearColor{}, FLinearColor{}, 0.0f, FString{});
     return !bHit;
 }
 
@@ -347,51 +350,51 @@ bool UE_Hack::IsValidActor(AActor* Actor)
 
 void UE_Hack::Tick()
 {
-    if (!GGlobalsReady.load(std::memory_order_acquire)) return;
+    // if (!GGlobalsReady.load(std::memory_order_acquire)) return;
 
-    SDK::Offsets::EnsureInit();
+    // SDK::Offsets::EnsureInit();
 
-    UWorld* CurWorld = GetWorld();
-    if (!KT::IsValid(CurWorld)) return;
+    // UWorld* CurWorld = GetWorld();
+    // if (!KT::IsValid(CurWorld)) return;
 
-    LocalPlayerController = KT::Read<APlayerController*>(CurWorld, o_OwningGameInstance, o_LocalPlayers, 0x0, o_PlayerController);
-    if (!KT::IsValid(LocalPlayerController)) return;
+    // LocalPlayerController = KT::Read<APlayerController*>(CurWorld, o_OwningGameInstance, o_LocalPlayers, 0x0, o_PlayerController);
+    // if (!KT::IsValid(LocalPlayerController)) return;
 
-    LocalPlayer = KT::Read<APawn*>(LocalPlayerController, o_AcknowledgedPawn);
-    if (!KT::IsValid(LocalPlayer) || !LocalPlayer->IsA(ADFMPlayerCharacter::StaticClass())) return;
+    // LocalPlayer = KT::Read<APawn*>(LocalPlayerController, o_AcknowledgedPawn);
+    // if (!KT::IsValid(LocalPlayer) || !LocalPlayer->IsA(ADFMPlayerCharacter::StaticClass())) return;
 
-    bIsBreakThroughMode = LocalPlayer->IsA(ABreakthroughCharacter::StaticClass());
+    // bIsBreakThroughMode = LocalPlayer->IsA(ABreakthroughCharacter::StaticClass());
 
-    LocalCampID = -1;
-    LocalTeamID = -1;
-    if (auto* LocalTeam = Cast<AGPCharacterBase>(LocalPlayer)->GetTeamComp(); KT::IsValid(LocalTeam))
-    {
-        LocalCampID = LocalTeam->GetCamp();
-        LocalTeamID = LocalTeam->GetTeamID();
-    }
+    // LocalCampID = -1;
+    // LocalTeamID = -1;
+    // if (auto* LocalTeam = Cast<AGPCharacterBase>(LocalPlayer)->GetTeamComp(); KT::IsValid(LocalTeam))
+    // {
+    //     LocalCampID = LocalTeam->GetCamp();
+    //     LocalTeamID = LocalTeam->GetTeamID();
+    // }
 
-    if (!CFG.bMaterialHack) return;
+    // if (!CFG.bMaterialHack) return;
 
-    MaterialManager::GetInstance()->UpdateMaterial();
+    // MaterialManager::GetInstance()->UpdateMaterial();
 
-    auto Actors = KT::Read<TArray<AActor*>>(CurWorld, o_PersistentLevel, o_Actors);
-    if (!Actors.IsValid()) return;
+    // auto Actors = KT::Read<TArray<AActor*>>(CurWorld, o_PersistentLevel, o_Actors);
+    // if (!Actors.IsValid()) return;
 
-    int ActorsSize = Actors.Num();
-    for (int i = 0; i < ActorsSize; ++i)
-    {
-        AActor* Actor = Actors[i];
-        if (!IsValidActor(Actor) || Actor == LocalPlayer) continue;
+    // int ActorsSize = Actors.Num();
+    // for (int i = 0; i < ActorsSize; ++i)
+    // {
+    //     AActor* Actor = Actors[i];
+    //     if (!IsValidActor(Actor) || Actor == LocalPlayer) continue;
 
-        if (Actor->IsA(ACHARACTER::StaticClass()))
-        {
-            ProcessMaterialHack(Actor);
-        }
-        else if (Actor->IsA(AInventoryPickup::StaticClass()))
-        {
-            ProcessItemMaterialHack(Actor);
-        }
-    }
+    //     if (Actor->IsA(ACHARACTER::StaticClass()))
+    //     {
+    //         ProcessMaterialHack(Actor);
+    //     }
+    //     else if (Actor->IsA(AInventoryPickup::StaticClass()))
+    //     {
+    //         ProcessItemMaterialHack(Actor);
+    //     }
+    // }
 }
 
 void UE_Hack::ApplyChamsColor(AActor* Actor, UMeshComponent* Mesh, int Slot,
@@ -426,7 +429,7 @@ void UE_Hack::ApplyChamsColor(AActor* Actor, UMeshComponent* Mesh, int Slot,
         auto XrayMaterial = MaterialManager::GetInstance()->GetXrayMaterial();
         if (!XrayMaterial) return;
 
-        auto* MID = UKismetMaterialLibrary::CreateDynamicMaterialInstance(GetWorld(), XrayMaterial, NAME_None);
+        auto* MID = UKismetMaterialLibrary::CreateDynamicMaterialInstance(GetWorld(), XrayMaterial, NAME_None, EMIDCreationFlags::None);
         MIDCache[Actor].emplace(Slot, MID);
 
         Mesh->SetMaterial(Slot, MID);
@@ -441,86 +444,85 @@ void UE_Hack::ApplyChamsColor(AActor* Actor, UMeshComponent* Mesh, int Slot,
 
 void UE_Hack::ProcessMaterialHack(AActor* Actor)
 {
-    if (!MaterialManager::GetInstance()->GetXrayMaterial()) return;
+    // if (!MaterialManager::GetInstance()->GetXrayMaterial()) return;
 
-    int32_t TeamID = -1;
-    if (auto* TeamComp = Cast<AGPCharacterBase>(Actor)->GetTeamComp(); KT::IsValid(TeamComp))
-    {
-        int32_t CampID = TeamComp->GetCamp();
-                TeamID = TeamComp->GetTeamID();
-        bool bIsTeammate = (bIsBreakThroughMode && CampID == LocalCampID) || (TeamID == LocalTeamID);
-        if (bIsTeammate) return;
-    }
+    // int32_t TeamID = -1;
+    // if (auto* TeamComp = Cast<AGPCharacterBase>(Actor)->GetTeamComp(); KT::IsValid(TeamComp))
+    // {
+    //     int32_t CampID = TeamComp->GetCamp();
+    //             TeamID = TeamComp->GetTeamID();
+    //     bool bIsTeammate = (bIsBreakThroughMode && CampID == LocalCampID) || (TeamID == LocalTeamID);
+    //     if (bIsTeammate) return;
+    // }
 
-    bool bIsBot   = !(Cast<APawn>(Actor)->IsPlayerControlled());
-    bool bVisible = Visible(Actor);
+    // bool bIsBot   = !(Cast<APawn>(Actor)->IsPlayerControlled());
+    // bool bVisible = Visible(Actor);
 
-    auto [VisIt, bVisInserted] = VisibleState.emplace(Actor, !bVisible);
-    bool bStateChanged = (bVisible != VisIt->second);
-    VisIt->second = bVisible;
+    // auto [VisIt, bVisInserted] = VisibleState.emplace(Actor, !bVisible);
+    // bool bStateChanged = (bVisible != VisIt->second);
+    // VisIt->second = bVisible;
 
-    auto Mesh = KT::Read<USkinnedMeshComponent*>(Actor, o_Mesh);
-    if (!KT::IsValid(Mesh)) return;
+    // auto Mesh = KT::Read<USkinnedMeshComponent*>(Actor, o_Mesh);
+    // if (!KT::IsValid(Mesh)) return;
 
-    auto Materials = Mesh->GetMaterials();
-    if (!Materials.IsValid()) return;
+    // auto Materials = Mesh->GetMaterials();
+    // if (!Materials.IsValid()) return;
 
-    FLinearColor InvisColor = (TeamID >= 1 && TeamID <= 20)
-                                  ? ChamsColor::TeamColors[TeamID]
-                                  : ChamsColor::PlayerUnvisible;
-    FLinearColor Color = bIsBot ? ChamsColor::White
-                                : (bVisible ? ChamsColor::PlayerVisible : InvisColor);
-    for (int j = 0; j < Materials.Num(); ++j)
-    {
-        if (!Materials.IsValidIndex(j)) continue;
-        ApplyChamsColor(Actor, Mesh, j, Materials[j], Color, /*bForceColorUpdate=*/bStateChanged);
-    }
+    // FLinearColor InvisColor = (TeamID >= 1 && TeamID <= 20)
+    //                               ? ChamsColor::TeamColors[TeamID]
+    //                               : ChamsColor::PlayerUnvisible;
+    // FLinearColor Color = bIsBot ? ChamsColor::White
+    //                             : (bVisible ? ChamsColor::PlayerVisible : InvisColor);
+    // for (int j = 0; j < Materials.Num(); ++j)
+    // {
+    //     if (!Materials.IsValidIndex(j)) continue;
+    //     ApplyChamsColor(Actor, Mesh, j, Materials[j], Color, /*bForceColorUpdate=*/bStateChanged);
+    // }
 }
-
 
 void UE_Hack::ProcessItemMaterialHack(AActor* Actor)
 {
-    if (!MaterialManager::GetInstance()->GetXrayMaterial()) return;
+    // if (!MaterialManager::GetInstance()->GetXrayMaterial()) return;
 
-    ADFMCharacter* DFMCharacter = Cast<ADFMCharacter>(Actor);
-    if (!KT::IsValid(DFMCharacter)) return;
+    // ADFMCharacter* DFMCharacter = Cast<ADFMCharacter>(Actor);
+    // if (!KT::IsValid(DFMCharacter)) return;
 
-    auto CommonItemRow = KT::Read<FDFMCommonItemRow*>(DFMCharacter, o_FDFMCommonItemRow);
-    if (!KT::IsValid(CommonItemRow)) return;
+    // auto CommonItemRow = KT::Read<FDFMCommonItemRow*>(DFMCharacter, o_FDFMCommonItemRow);
+    // if (!KT::IsValid(CommonItemRow)) return;
 
-    int32_t Price   = CommonItemRow->InitialGuidePrice;
-    int32_t Quality = CommonItemRow->Quality;
+    // int32_t Price   = CommonItemRow->InitialGuidePrice;
+    // int32_t Quality = CommonItemRow->Quality;
 
-    if (Price < CFG.PickupPrice) return;
-    if (Quality < CFG.PickupQuality) return;
+    // if (Price < CFG.PickupPrice) return;
+    // if (Quality < CFG.PickupQuality) return;
 
-    static constexpr FLinearColor QualityColors[7] = {
-        ChamsColor::White,  // 0 / 越界默认
-        ChamsColor::White,  // 1
-        ChamsColor::Green,  // 2
-        ChamsColor::Blue,   // 3
-        ChamsColor::Purple, // 4
-        ChamsColor::Yellow, // 5
-        ChamsColor::Red,    // 6
-    };
-    FLinearColor Color = (Quality >= 0 && Quality < 7) ? QualityColors[Quality] : ChamsColor::White;
+    // static constexpr FLinearColor QualityColors[7] = {
+    //     ChamsColor::White,  // 0 / 越界默认
+    //     ChamsColor::White,  // 1
+    //     ChamsColor::Green,  // 2
+    //     ChamsColor::Blue,   // 3
+    //     ChamsColor::Purple, // 4
+    //     ChamsColor::Yellow, // 5
+    //     ChamsColor::Red,    // 6
+    // };
+    // FLinearColor Color = (Quality >= 0 && Quality < 7) ? QualityColors[Quality] : ChamsColor::White;
 
-    auto MeshArray = DFMCharacter->CachedOutlineMeshComponents;
-    if (!MeshArray.IsValid()) return;
+    // auto MeshArray = DFMCharacter->CachedOutlineMeshComponents;
+    // if (!MeshArray.IsValid()) return;
 
-    for (const auto& Mesh : MeshArray)
-    {
-        if (!KT::IsValid(Mesh)) continue;
+    // for (const auto& Mesh : MeshArray)
+    // {
+    //     if (!KT::IsValid(Mesh)) continue;
 
-        auto Materials = Mesh->GetMaterials();
-        if (!Materials.IsValid()) continue;
+    //     auto Materials = Mesh->GetMaterials();
+    //     if (!Materials.IsValid()) continue;
 
-        for (int j = 0; j < Materials.Num(); ++j)
-        {
-            if (!Materials.IsValidIndex(j)) continue;
-            ApplyChamsColor(DFMCharacter, Mesh, j, Materials[j], Color, /*bForceColorUpdate=*/false);
-        }
-    }
+    //     for (int j = 0; j < Materials.Num(); ++j)
+    //     {
+    //         if (!Materials.IsValidIndex(j)) continue;
+    //         ApplyChamsColor(DFMCharacter, Mesh, j, Materials[j], Color, /*bForceColorUpdate=*/false);
+    //     }
+    // }
 }
 
 void UE_Hack::RenderMenu()

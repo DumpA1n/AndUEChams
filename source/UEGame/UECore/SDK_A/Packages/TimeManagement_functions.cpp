@@ -105,7 +105,7 @@ struct FFrameNumber UTimeManagementBlueprintLibrary::Multiply_FrameNumberInteger
     return Parms.ReturnValue;
 }
 
-uint8_t UTimeManagementBlueprintLibrary::IsValid_MultipleOf(const struct FFrameRate& InFrameRate, const struct FFrameRate& OtherFramerate)
+bool UTimeManagementBlueprintLibrary::IsValid_MultipleOf(const struct FFrameRate& InFrameRate, const struct FFrameRate& OtherFramerate)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("TimeManagementBlueprintLibrary", "IsValid_MultipleOf");
@@ -113,7 +113,7 @@ uint8_t UTimeManagementBlueprintLibrary::IsValid_MultipleOf(const struct FFrameR
     {
         struct FFrameRate InFrameRate;
         struct FFrameRate OtherFramerate;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.InFrameRate = (struct FFrameRate)InFrameRate;
     Parms.OtherFramerate = (struct FFrameRate)OtherFramerate;
@@ -121,14 +121,14 @@ uint8_t UTimeManagementBlueprintLibrary::IsValid_MultipleOf(const struct FFrameR
     return Parms.ReturnValue;
 }
 
-uint8_t UTimeManagementBlueprintLibrary::IsValid_Framerate(const struct FFrameRate& InFrameRate)
+bool UTimeManagementBlueprintLibrary::IsValid_Framerate(const struct FFrameRate& InFrameRate)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("TimeManagementBlueprintLibrary", "IsValid_Framerate");
     struct
     {
         struct FFrameRate InFrameRate;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.InFrameRate = (struct FFrameRate)InFrameRate;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
@@ -175,18 +175,18 @@ struct FFrameNumber UTimeManagementBlueprintLibrary::Divide_FrameNumberInteger(s
     return Parms.ReturnValue;
 }
 
-struct FString UTimeManagementBlueprintLibrary::Conv_TimecodeToString(const struct FTimecode& InTimecode, uint8_t bForceSignDisplay)
+struct FString UTimeManagementBlueprintLibrary::Conv_TimecodeToString(const struct FTimecode& InTimecode, bool bForceSignDisplay)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("TimeManagementBlueprintLibrary", "Conv_TimecodeToString");
     struct
     {
         struct FTimecode InTimecode;
-        uint8_t bForceSignDisplay;
+        bool bForceSignDisplay;
         struct FString ReturnValue;
     } Parms{};
     Parms.InTimecode = (struct FTimecode)InTimecode;
-    Parms.bForceSignDisplay = (uint8_t)bForceSignDisplay;
+    Parms.bForceSignDisplay = (bool)bForceSignDisplay;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }

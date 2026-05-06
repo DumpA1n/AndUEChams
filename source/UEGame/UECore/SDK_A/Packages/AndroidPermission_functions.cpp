@@ -5,16 +5,16 @@ namespace SDK
 {
 
 // UAndroidPermissionFunctionLibrary
-uint8_t UAndroidPermissionFunctionLibrary::CheckPermission(struct FString Permission)
+bool UAndroidPermissionFunctionLibrary::CheckPermission(struct FString permission)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("AndroidPermissionFunctionLibrary", "CheckPermission");
     struct
     {
-        struct FString Permission;
-        uint8_t ReturnValue;
+        struct FString permission;
+        bool ReturnValue;
     } Parms{};
-    Parms.Permission = (struct FString)Permission;
+    Parms.permission = (struct FString)permission;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }

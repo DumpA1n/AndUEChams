@@ -6,7 +6,7 @@ namespace SDK
 {
 
 // UKismetAnimationLibrary
-void UKismetAnimationLibrary::K2_TwoBoneIK(const struct FVector& RootPos, const struct FVector& JointPos, const struct FVector& EndPos, const struct FVector& JointTarget, const struct FVector& Effector, struct FVector& OutJointPos, struct FVector& OutEndPos, uint8_t bAllowStretching, float StartStretchRatio, float MaxStretchScale)
+void UKismetAnimationLibrary::K2_TwoBoneIK(const struct FVector& RootPos, const struct FVector& JointPos, const struct FVector& EndPos, const struct FVector& JointTarget, const struct FVector& Effector, struct FVector& OutJointPos, struct FVector& OutEndPos, bool bAllowStretching, float StartStretchRatio, float MaxStretchScale)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("KismetAnimationLibrary", "K2_TwoBoneIK");
@@ -19,7 +19,7 @@ void UKismetAnimationLibrary::K2_TwoBoneIK(const struct FVector& RootPos, const 
         struct FVector Effector;
         struct FVector OutJointPos;
         struct FVector OutEndPos;
-        uint8_t bAllowStretching;
+        bool bAllowStretching;
         float StartStretchRatio;
         float MaxStretchScale;
     } Parms{};
@@ -28,7 +28,7 @@ void UKismetAnimationLibrary::K2_TwoBoneIK(const struct FVector& RootPos, const 
     Parms.EndPos = (struct FVector)EndPos;
     Parms.JointTarget = (struct FVector)JointTarget;
     Parms.Effector = (struct FVector)Effector;
-    Parms.bAllowStretching = (uint8_t)bAllowStretching;
+    Parms.bAllowStretching = (bool)bAllowStretching;
     Parms.StartStretchRatio = (float)StartStretchRatio;
     Parms.MaxStretchScale = (float)MaxStretchScale;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
@@ -94,7 +94,7 @@ float UKismetAnimationLibrary::K2_MakePerlinNoiseAndRemap(float Value, float Ran
     return Parms.ReturnValue;
 }
 
-struct FTransform UKismetAnimationLibrary::K2_LookAt(const struct FTransform& CurrentTransform, const struct FVector& TargetPosition, struct FVector LookAtVector, uint8_t bUseUpVector, struct FVector UpVector, float ClampConeInDegree)
+struct FTransform UKismetAnimationLibrary::K2_LookAt(const struct FTransform& CurrentTransform, const struct FVector& TargetPosition, struct FVector LookAtVector, bool bUseUpVector, struct FVector UpVector, float ClampConeInDegree)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("KismetAnimationLibrary", "K2_LookAt");
@@ -103,7 +103,7 @@ struct FTransform UKismetAnimationLibrary::K2_LookAt(const struct FTransform& Cu
         struct FTransform CurrentTransform;
         struct FVector TargetPosition;
         struct FVector LookAtVector;
-        uint8_t bUseUpVector;
+        bool bUseUpVector;
         struct FVector UpVector;
         float ClampConeInDegree;
         struct FTransform ReturnValue;
@@ -111,30 +111,30 @@ struct FTransform UKismetAnimationLibrary::K2_LookAt(const struct FTransform& Cu
     Parms.CurrentTransform = (struct FTransform)CurrentTransform;
     Parms.TargetPosition = (struct FVector)TargetPosition;
     Parms.LookAtVector = (struct FVector)LookAtVector;
-    Parms.bUseUpVector = (uint8_t)bUseUpVector;
+    Parms.bUseUpVector = (bool)bUseUpVector;
     Parms.UpVector = (struct FVector)UpVector;
     Parms.ClampConeInDegree = (float)ClampConeInDegree;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-float UKismetAnimationLibrary::K2_EndProfilingTimer(uint8_t bLog, struct FString LogPrefix)
+float UKismetAnimationLibrary::K2_EndProfilingTimer(bool bLog, struct FString LogPrefix)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("KismetAnimationLibrary", "K2_EndProfilingTimer");
     struct
     {
-        uint8_t bLog;
+        bool bLog;
         struct FString LogPrefix;
         float ReturnValue;
     } Parms{};
-    Parms.bLog = (uint8_t)bLog;
+    Parms.bLog = (bool)bLog;
     Parms.LogPrefix = (struct FString)LogPrefix;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-float UKismetAnimationLibrary::K2_DistanceBetweenTwoSocketsAndMapRange(struct USkeletalMeshComponent* Component, struct FName SocketOrBoneNameA, ERelativeTransformSpace SocketSpaceA, struct FName SocketOrBoneNameB, ERelativeTransformSpace SocketSpaceB, uint8_t bRemapRange, float InRangeMin, float InRangeMax, float OutRangeMin, float OutRangeMax)
+float UKismetAnimationLibrary::K2_DistanceBetweenTwoSocketsAndMapRange(struct USkeletalMeshComponent* Component, struct FName SocketOrBoneNameA, uint8_t SocketSpaceA, struct FName SocketOrBoneNameB, uint8_t SocketSpaceB, bool bRemapRange, float InRangeMin, float InRangeMax, float OutRangeMin, float OutRangeMax)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("KismetAnimationLibrary", "K2_DistanceBetweenTwoSocketsAndMapRange");
@@ -142,10 +142,10 @@ float UKismetAnimationLibrary::K2_DistanceBetweenTwoSocketsAndMapRange(struct US
     {
         struct USkeletalMeshComponent* Component;
         struct FName SocketOrBoneNameA;
-        enum ERelativeTransformSpace SocketSpaceA;
+        uint8_t SocketSpaceA;
         struct FName SocketOrBoneNameB;
-        enum ERelativeTransformSpace SocketSpaceB;
-        uint8_t bRemapRange;
+        uint8_t SocketSpaceB;
+        bool bRemapRange;
         float InRangeMin;
         float InRangeMax;
         float OutRangeMin;
@@ -154,10 +154,10 @@ float UKismetAnimationLibrary::K2_DistanceBetweenTwoSocketsAndMapRange(struct US
     } Parms{};
     Parms.Component = (struct USkeletalMeshComponent*)Component;
     Parms.SocketOrBoneNameA = (struct FName)SocketOrBoneNameA;
-    Parms.SocketSpaceA = (enum ERelativeTransformSpace)SocketSpaceA;
+    Parms.SocketSpaceA = (uint8_t)SocketSpaceA;
     Parms.SocketOrBoneNameB = (struct FName)SocketOrBoneNameB;
-    Parms.SocketSpaceB = (enum ERelativeTransformSpace)SocketSpaceB;
-    Parms.bRemapRange = (uint8_t)bRemapRange;
+    Parms.SocketSpaceB = (uint8_t)SocketSpaceB;
+    Parms.bRemapRange = (bool)bRemapRange;
     Parms.InRangeMin = (float)InRangeMin;
     Parms.InRangeMax = (float)InRangeMax;
     Parms.OutRangeMin = (float)OutRangeMin;
@@ -184,7 +184,7 @@ struct FVector UKismetAnimationLibrary::K2_DirectionBetweenSockets(struct USkele
     return Parms.ReturnValue;
 }
 
-float UKismetAnimationLibrary::K2_CalculateVelocityFromSockets(float DeltaSeconds, struct USkeletalMeshComponent* Component, struct FName SocketOrBoneName, struct FName ReferenceSocketOrBone, ERelativeTransformSpace SocketSpace, struct FVector OffsetInBoneSpace, struct FPositionHistory& History, int32_t NumberOfSamples, float VelocityMin, float VelocityMax, EEasingFuncType EasingType, const struct FRuntimeFloatCurve& CustomCurve)
+float UKismetAnimationLibrary::K2_CalculateVelocityFromSockets(float DeltaSeconds, struct USkeletalMeshComponent* Component, struct FName SocketOrBoneName, struct FName ReferenceSocketOrBone, uint8_t SocketSpace, struct FVector OffsetInBoneSpace, struct FPositionHistory& History, int32_t NumberOfSamples, float VelocityMin, float VelocityMax, EEasingFuncType EasingType, const struct FRuntimeFloatCurve& CustomCurve)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("KismetAnimationLibrary", "K2_CalculateVelocityFromSockets");
@@ -194,7 +194,7 @@ float UKismetAnimationLibrary::K2_CalculateVelocityFromSockets(float DeltaSecond
         struct USkeletalMeshComponent* Component;
         struct FName SocketOrBoneName;
         struct FName ReferenceSocketOrBone;
-        enum ERelativeTransformSpace SocketSpace;
+        uint8_t SocketSpace;
         struct FVector OffsetInBoneSpace;
         struct FPositionHistory History;
         int32_t NumberOfSamples;
@@ -208,7 +208,7 @@ float UKismetAnimationLibrary::K2_CalculateVelocityFromSockets(float DeltaSecond
     Parms.Component = (struct USkeletalMeshComponent*)Component;
     Parms.SocketOrBoneName = (struct FName)SocketOrBoneName;
     Parms.ReferenceSocketOrBone = (struct FName)ReferenceSocketOrBone;
-    Parms.SocketSpace = (enum ERelativeTransformSpace)SocketSpace;
+    Parms.SocketSpace = (uint8_t)SocketSpace;
     Parms.OffsetInBoneSpace = (struct FVector)OffsetInBoneSpace;
     Parms.NumberOfSamples = (int32_t)NumberOfSamples;
     Parms.VelocityMin = (float)VelocityMin;
@@ -220,14 +220,14 @@ float UKismetAnimationLibrary::K2_CalculateVelocityFromSockets(float DeltaSecond
     return Parms.ReturnValue;
 }
 
-float UKismetAnimationLibrary::K2_CalculateVelocityFromPositionHistory(float DeltaSeconds, struct FVector Position, struct FPositionHistory& History, int32_t NumberOfSamples, float VelocityMin, float VelocityMax)
+float UKismetAnimationLibrary::K2_CalculateVelocityFromPositionHistory(float DeltaSeconds, struct FVector position, struct FPositionHistory& History, int32_t NumberOfSamples, float VelocityMin, float VelocityMax)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("KismetAnimationLibrary", "K2_CalculateVelocityFromPositionHistory");
     struct
     {
         float DeltaSeconds;
-        struct FVector Position;
+        struct FVector position;
         struct FPositionHistory History;
         int32_t NumberOfSamples;
         float VelocityMin;
@@ -235,7 +235,7 @@ float UKismetAnimationLibrary::K2_CalculateVelocityFromPositionHistory(float Del
         float ReturnValue;
     } Parms{};
     Parms.DeltaSeconds = (float)DeltaSeconds;
-    Parms.Position = (struct FVector)Position;
+    Parms.position = (struct FVector)position;
     Parms.NumberOfSamples = (int32_t)NumberOfSamples;
     Parms.VelocityMin = (float)VelocityMin;
     Parms.VelocityMax = (float)VelocityMax;
@@ -273,49 +273,49 @@ void UPlayMontageCallbackProxy::OnNotifyBeginReceived(struct FName NotifyName, c
     this->ProcessEvent(Func, &Parms);
 }
 
-void UPlayMontageCallbackProxy::OnMontageEnded(struct UAnimMontage* Montage, uint8_t bInterrupted)
+void UPlayMontageCallbackProxy::OnMontageEnded(struct UAnimMontage* Montage, bool bInterrupted)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("PlayMontageCallbackProxy", "OnMontageEnded");
     struct
     {
         struct UAnimMontage* Montage;
-        uint8_t bInterrupted;
+        bool bInterrupted;
     } Parms{};
     Parms.Montage = (struct UAnimMontage*)Montage;
-    Parms.bInterrupted = (uint8_t)bInterrupted;
+    Parms.bInterrupted = (bool)bInterrupted;
     this->ProcessEvent(Func, &Parms);
 }
 
-void UPlayMontageCallbackProxy::OnMontageBlendingOut(struct UAnimMontage* Montage, uint8_t bInterrupted)
+void UPlayMontageCallbackProxy::OnMontageBlendingOut(struct UAnimMontage* Montage, bool bInterrupted)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("PlayMontageCallbackProxy", "OnMontageBlendingOut");
     struct
     {
         struct UAnimMontage* Montage;
-        uint8_t bInterrupted;
+        bool bInterrupted;
     } Parms{};
     Parms.Montage = (struct UAnimMontage*)Montage;
-    Parms.bInterrupted = (uint8_t)bInterrupted;
+    Parms.bInterrupted = (bool)bInterrupted;
     this->ProcessEvent(Func, &Parms);
 }
 
-struct UPlayMontageCallbackProxy* UPlayMontageCallbackProxy::CreateProxyObjectForPlayMontage(struct USkeletalMeshComponent* InSkeletalMeshComponent, struct UAnimMontage* montageToPlay, float PlayRate, float StartingPosition, struct FName StartingSection)
+struct UPlayMontageCallbackProxy* UPlayMontageCallbackProxy::CreateProxyObjectForPlayMontage(struct USkeletalMeshComponent* InSkeletalMeshComponent, struct UAnimMontage* MontageToPlay, float PlayRate, float StartingPosition, struct FName StartingSection)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("PlayMontageCallbackProxy", "CreateProxyObjectForPlayMontage");
     struct
     {
         struct USkeletalMeshComponent* InSkeletalMeshComponent;
-        struct UAnimMontage* montageToPlay;
+        struct UAnimMontage* MontageToPlay;
         float PlayRate;
         float StartingPosition;
         struct FName StartingSection;
         struct UPlayMontageCallbackProxy* ReturnValue;
     } Parms{};
     Parms.InSkeletalMeshComponent = (struct USkeletalMeshComponent*)InSkeletalMeshComponent;
-    Parms.montageToPlay = (struct UAnimMontage*)montageToPlay;
+    Parms.MontageToPlay = (struct UAnimMontage*)MontageToPlay;
     Parms.PlayRate = (float)PlayRate;
     Parms.StartingPosition = (float)StartingPosition;
     Parms.StartingSection = (struct FName)StartingSection;

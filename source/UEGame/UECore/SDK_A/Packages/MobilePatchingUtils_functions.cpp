@@ -5,7 +5,7 @@ namespace SDK
 {
 
 // UMobileInstalledContent
-uint8_t UMobileInstalledContent::Mount(int32_t PakOrder, struct FString MountPoint)
+bool UMobileInstalledContent::Mount(int32_t PakOrder, struct FString MountPoint)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("MobileInstalledContent", "Mount");
@@ -13,7 +13,7 @@ uint8_t UMobileInstalledContent::Mount(int32_t PakOrder, struct FString MountPoi
     {
         int32_t PakOrder;
         struct FString MountPoint;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.PakOrder = (int32_t)PakOrder;
     Parms.MountPoint = (struct FString)MountPoint;
@@ -153,13 +153,13 @@ void UMobilePatchingLibrary::RequestContent(struct FString RemoteManifestURL, st
     GetDefaultObj()->ProcessEvent(Func, &Parms);
 }
 
-uint8_t UMobilePatchingLibrary::HasActiveWiFiConnection()
+bool UMobilePatchingLibrary::HasActiveWiFiConnection()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("MobilePatchingLibrary", "HasActiveWiFiConnection");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;

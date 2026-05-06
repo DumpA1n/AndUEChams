@@ -27,12 +27,9 @@ struct UMoviePlayerSettings : UObject
 {
 	DEFINE_UE_CLASS_HELPERS(UMoviePlayerSettings, "MoviePlayerSettings")
 
-	uint8_t bWaitForMoviesToComplete : 1; // 0x28(0x1), Mask(0x1)
-	uint8_t BitPad_0x28_1 : 7; // 0x28(0x1)
-	uint8_t bMoviesAreSkippable : 1; // 0x29(0x1), Mask(0x1)
-	uint8_t BitPad_0x29_1 : 7; // 0x29(0x1)
-	EMoviePlaybackType MoviePlayBackType; // 0x2A(0x1)
-	uint8_t Pad_0x2B[0x5]; // 0x2B(0x5)
+	bool bWaitForMoviesToComplete; // 0x28(0x1)
+	bool bMoviesAreSkippable; // 0x29(0x1)
+	uint8_t Pad_0x2A[0x6]; // 0x2A(0x6)
 	struct TArray<struct FString> StartupMovies; // 0x30(0x10)
 };
 

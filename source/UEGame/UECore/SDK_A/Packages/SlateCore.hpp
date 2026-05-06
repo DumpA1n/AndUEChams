@@ -6,9 +6,9 @@ namespace SDK
 {
 
 // Package: SlateCore
-// Enums: 45
-// Structs: 51
-// Classes: 8
+// Enums: 37
+// Structs: 48
+// Classes: 7
 
 struct FMargin;
 struct FSlateColor;
@@ -16,7 +16,6 @@ struct FSlateBrush;
 struct FGeometry;
 struct FInputEvent;
 struct FPointerEvent;
-struct FInvalidateWidgetReason;
 struct FCharacterEvent;
 struct FKeyEvent;
 struct FNavigationEvent;
@@ -34,10 +33,8 @@ struct FScrollBarStyle;
 struct FEditableTextBoxStyle;
 struct FTextBlockStyle;
 struct FSpinBoxStyle;
-struct FScrollBoxStyle;
-struct FFocusEvent;
+struct FCheckBoxStyle;
 struct FMotionEvent;
-struct FInlineEditableTextBlockStyle;
 struct FHyperlinkStyle;
 struct FTypeface;
 struct FCompositeFallbackFont;
@@ -46,10 +43,10 @@ struct FFontData;
 struct FTypefaceEntry;
 struct FCompositeSubFont;
 struct FCaptureLostEvent;
-struct FReplyBase;
-struct FReply;
+struct FFocusEvent;
 struct FWindowStyle;
 struct FScrollBorderStyle;
+struct FScrollBoxStyle;
 struct FDockTabStyle;
 struct FSplitterStyle;
 struct FTableColumnHeaderStyle;
@@ -60,14 +57,13 @@ struct FVolumeControlStyle;
 struct FSearchBoxStyle;
 struct FExpandableAreaStyle;
 struct FProgressBarStyle;
-struct FCheckBoxStyle;
-struct USlateWidgetStyleContainerBase;
+struct FInlineEditableTextBlockStyle;
 struct UFontBulkData;
 struct IFontFaceInterface;
 struct IFontProviderInterface;
-struct UReplyHelper;
 struct USlateTypes;
 struct USlateWidgetStyleAsset;
+struct USlateWidgetStyleContainerBase;
 struct ISlateWidgetStyleContainerInterface;
 
 // Object: Enum SlateCore.ESlateBrushImageType
@@ -153,23 +149,6 @@ enum class EWidgetClipping : uint8_t
 	EWidgetClipping_MAX = 5
 };
 
-// Object: Enum SlateCore.EMaterialStrategy
-enum class EMaterialStrategy : uint8_t
-{
-	None = 0,
-	Inherite = 1,
-	EMaterialStrategy_MAX = 2
-};
-
-// Object: Enum SlateCore.EWidgetPixelSnapping
-enum class EWidgetPixelSnapping : uint8_t
-{
-	Inherit = 0,
-	Disabled = 1,
-	SnapToPixel = 2,
-	EWidgetPixelSnapping_MAX = 3
-};
-
 // Object: Enum SlateCore.EUINavigationRule
 enum class EUINavigationRule : uint8_t
 {
@@ -183,15 +162,6 @@ enum class EUINavigationRule : uint8_t
 	EUINavigationRule_MAX = 7
 };
 
-// Object: Enum SlateCore.ESlateGeometryMaskType
-enum class ESlateGeometryMaskType : uint8_t
-{
-	None = 0,
-	Rectangle = 1,
-	Circle = 2,
-	ESlateGeometryMaskType_MAX = 3
-};
-
 // Object: Enum SlateCore.EFlowDirectionPreference
 enum class EFlowDirectionPreference : uint8_t
 {
@@ -200,6 +170,15 @@ enum class EFlowDirectionPreference : uint8_t
 	LeftToRight = 2,
 	RightToLeft = 3,
 	EFlowDirectionPreference_MAX = 4
+};
+
+// Object: Enum SlateCore.EMaskGeometryType
+enum class EMaskGeometryType : uint8_t
+{
+	None = 0,
+	Rectangle = 1,
+	Circle = 2,
+	EMaskGeometryType_MAX = 3
 };
 
 // Object: Enum SlateCore.EColorVisionDeficiency
@@ -241,108 +220,31 @@ enum class ETextShapingMethod : uint8_t
 	ETextShapingMethod_MAX = 3
 };
 
-// Object: Enum SlateCore.ETextOverflowPolicy
-enum class ETextOverflowPolicy : uint8_t
+// Object: Enum SlateCore.EMenuPlacement
+enum class EMenuPlacement : uint8_t
 {
-	Default = 0,
-	Ellipsis = 1,
-	MultilineEllipsis = 2,
-	SingleWordsEllipsis = 3,
-	ETextOverflowPolicy_MAX = 4
+	MenuPlacement_BelowAnchor = 0,
+	MenuPlacement_CenteredBelowAnchor = 1,
+	MenuPlacement_BelowRightAnchor = 2,
+	MenuPlacement_ComboBox = 3,
+	MenuPlacement_ComboBoxRight = 4,
+	MenuPlacement_MenuRight = 5,
+	MenuPlacement_AboveAnchor = 6,
+	MenuPlacement_CenteredAboveAnchor = 7,
+	MenuPlacement_AboveRightAnchor = 8,
+	MenuPlacement_MenuLeft = 9,
+	MenuPlacement_Center = 10,
+	MenuPlacement_RightLeftCenter = 11,
+	MenuPlacement_MatchBottomLeft = 12,
+	MenuPlacement_MAX = 13
 };
 
-// Object: Enum SlateCore.EHorizontalAlignment
-enum class EHorizontalAlignment : uint8_t
+// Object: Enum SlateCore.ESlateCheckBoxType
+enum class ESlateCheckBoxType : uint8_t
 {
-	HAlign_Fill = 0,
-	HAlign_Left = 1,
-	HAlign_Center = 2,
-	HAlign_Right = 3,
-	HAlign_MAX = 4
-};
-
-// Object: Enum SlateCore.EVerticalAlignment
-enum class EVerticalAlignment : uint8_t
-{
-	VAlign_Fill = 0,
-	VAlign_Top = 1,
-	VAlign_Center = 2,
-	VAlign_Bottom = 3,
-	VAlign_MAX = 4
-};
-
-// Object: Enum SlateCore.EDynamicAdaptType
-enum class EDynamicAdaptType : uint8_t
-{
-	Close = 0,
-	AutoResizeHorizontal = 1,
-	AutoResizeAndWrap = 2,
-	EDynamicAdaptType_MAX = 3
-};
-
-// Object: Enum SlateCore.ETextUpperPolicy
-enum class ETextUpperPolicy : uint8_t
-{
-	Default = 0,
-	Upper = 1,
-	ETextUpperPolicy_MAX = 2
-};
-
-// Object: Enum SlateCore.EConsumeMouseWheel
-enum class EConsumeMouseWheel : uint8_t
-{
-	WhenScrollingPossible = 0,
-	Always = 1,
-	Never = 2,
-	EConsumeMouseWheel_MAX = 3
-};
-
-// Object: Enum SlateCore.EOrientation
-enum class EOrientation : uint8_t
-{
-	Orient_Horizontal = 0,
-	Orient_Vertical = 1,
-	Orient_MAX = 2
-};
-
-// Object: Enum SlateCore.EFocusCause
-enum class EFocusCause : uint8_t
-{
-	Mouse = 0,
-	Navigation = 1,
-	SetDirectly = 2,
-	Cleared = 3,
-	OtherWidgetLostFocus = 4,
-	WindowActivate = 5,
-	EFocusCause_MAX = 6
-};
-
-// Object: Enum SlateCore.EButtonClickMethod
-enum class EButtonClickMethod : uint8_t
-{
-	DownAndUp = 0,
-	MouseDown = 1,
-	MouseUp = 2,
-	PreciseClick = 3,
-	EButtonClickMethod_MAX = 4
-};
-
-// Object: Enum SlateCore.EButtonPressMethod
-enum class EButtonPressMethod : uint8_t
-{
-	DownAndUp = 0,
-	ButtonPress = 1,
-	ButtonRelease = 2,
-	EButtonPressMethod_MAX = 3
-};
-
-// Object: Enum SlateCore.EButtonTouchMethod
-enum class EButtonTouchMethod : uint8_t
-{
-	DownAndUp = 0,
-	Down = 1,
-	PreciseTap = 2,
-	EButtonTouchMethod_MAX = 3
+	CheckBox = 0,
+	ToggleButton = 1,
+	ESlateCheckBoxType_MAX = 2
 };
 
 // Object: Enum SlateCore.EFontLayoutMethod
@@ -359,7 +261,8 @@ enum class EFontLoadingPolicy : uint8_t
 	LazyLoad = 0,
 	Stream = 1,
 	Inline = 2,
-	EFontLoadingPolicy_MAX = 3
+	MemoryMapping = 3,
+	EFontLoadingPolicy_MAX = 4
 };
 
 // Object: Enum SlateCore.EFontHinting
@@ -371,6 +274,18 @@ enum class EFontHinting : uint8_t
 	Monochrome = 3,
 	None = 4,
 	EFontHinting_MAX = 5
+};
+
+// Object: Enum SlateCore.EFocusCause
+enum class EFocusCause : uint8_t
+{
+	Mouse = 0,
+	Navigation = 1,
+	SetDirectly = 2,
+	Cleared = 3,
+	OtherWidgetLostFocus = 4,
+	WindowActivate = 5,
+	EFocusCause_MAX = 6
 };
 
 // Object: Enum SlateCore.ESlateDebuggingFocusEvent
@@ -434,14 +349,6 @@ enum class ESlateDebuggingInputEvent : uint8_t
 	MAX = 26
 };
 
-// Object: Enum SlateCore.EFake3DBlurType
-enum class EFake3DBlurType : uint8_t
-{
-	M_Fake3DHUDDistortion = 0,
-	M_Simulate3DUI = 1,
-	M_MAX = 2
-};
-
 // Object: Enum SlateCore.EScrollDirection
 enum class EScrollDirection : uint8_t
 {
@@ -450,23 +357,32 @@ enum class EScrollDirection : uint8_t
 	Scroll_MAX = 2
 };
 
-// Object: Enum SlateCore.EMenuPlacement
-enum class EMenuPlacement : uint8_t
+// Object: Enum SlateCore.EOrientation
+enum class EOrientation : uint8_t
 {
-	MenuPlacement_BelowAnchor = 0,
-	MenuPlacement_CenteredBelowAnchor = 1,
-	MenuPlacement_BelowRightAnchor = 2,
-	MenuPlacement_ComboBox = 3,
-	MenuPlacement_ComboBoxRight = 4,
-	MenuPlacement_MenuRight = 5,
-	MenuPlacement_AboveAnchor = 6,
-	MenuPlacement_CenteredAboveAnchor = 7,
-	MenuPlacement_AboveRightAnchor = 8,
-	MenuPlacement_MenuLeft = 9,
-	MenuPlacement_Center = 10,
-	MenuPlacement_RightLeftCenter = 11,
-	MenuPlacement_MatchBottomLeft = 12,
-	MenuPlacement_MAX = 13
+	Orient_Horizontal = 0,
+	Orient_Vertical = 1,
+	Orient_MAX = 2
+};
+
+// Object: Enum SlateCore.EVerticalAlignment
+enum class EVerticalAlignment : uint8_t
+{
+	VAlign_Fill = 0,
+	VAlign_Top = 1,
+	VAlign_Center = 2,
+	VAlign_Bottom = 3,
+	VAlign_MAX = 4
+};
+
+// Object: Enum SlateCore.EHorizontalAlignment
+enum class EHorizontalAlignment : uint8_t
+{
+	HAlign_Fill = 0,
+	HAlign_Left = 1,
+	HAlign_Center = 2,
+	HAlign_Right = 3,
+	HAlign_MAX = 4
 };
 
 // Object: Enum SlateCore.ENavigationGenesis
@@ -496,12 +412,32 @@ enum class EUINavigationAction : uint8_t
 	EUINavigationAction_MAX = 4
 };
 
-// Object: Enum SlateCore.ESlateCheckBoxType
-enum class ESlateCheckBoxType : uint8_t
+// Object: Enum SlateCore.EButtonPressMethod
+enum class EButtonPressMethod : uint8_t
 {
-	CheckBox = 0,
-	ToggleButton = 1,
-	ESlateCheckBoxType_MAX = 2
+	DownAndUp = 0,
+	ButtonPress = 1,
+	ButtonRelease = 2,
+	EButtonPressMethod_MAX = 3
+};
+
+// Object: Enum SlateCore.EButtonTouchMethod
+enum class EButtonTouchMethod : uint8_t
+{
+	DownAndUp = 0,
+	Down = 1,
+	PreciseTap = 2,
+	EButtonTouchMethod_MAX = 3
+};
+
+// Object: Enum SlateCore.EButtonClickMethod
+enum class EButtonClickMethod : uint8_t
+{
+	DownAndUp = 0,
+	MouseDown = 1,
+	MouseUp = 2,
+	PreciseClick = 3,
+	EButtonClickMethod_MAX = 4
 };
 
 // Object: Enum SlateCore.ESlateParentWindowSearchMethod
@@ -512,21 +448,13 @@ enum class ESlateParentWindowSearchMethod : uint8_t
 	ESlateParentWindowSearchMethod_MAX = 2
 };
 
-// Object: Enum SlateCore.ELineWidgetOrientation
-enum class ELineWidgetOrientation : uint8_t
+// Object: Enum SlateCore.EConsumeMouseWheel
+enum class EConsumeMouseWheel : uint8_t
 {
-	Horizontal = 0,
-	Vertical = 1,
-	ELineWidgetOrientation_MAX = 2
-};
-
-// Object: Enum SlateCore.ERadialImageFillType
-enum class ERadialImageFillType : uint8_t
-{
-	Radial360 = 0,
-	Horizontal = 1,
-	Vertical = 2,
-	ERadialImageFillType_MAX = 3
+	WhenScrollingPossible = 0,
+	Always = 1,
+	Never = 2,
+	EConsumeMouseWheel_MAX = 3
 };
 
 // Object: ScriptStruct SlateCore.Margin
@@ -544,7 +472,7 @@ struct FMargin
 struct FSlateColor
 {
 	struct FLinearColor SpecifiedColor; // 0x0(0x10)
-	ESlateColorStylingMode ColorUseRule; // 0x10(0x1)
+	uint8_t ColorUseRule; // 0x10(0x1)
 	uint8_t Pad_0x11[0x17]; // 0x11(0x17)
 };
 
@@ -553,18 +481,19 @@ struct FSlateColor
 struct FSlateBrush
 {
 	uint8_t Pad_0x0[0x8]; // 0x0(0x8)
-	struct FVector2D imageSize; // 0x8(0x8)
+	struct FVector2D ImageSize; // 0x8(0x8)
 	struct FMargin Margin; // 0x10(0x10)
 	struct FSlateColor TintColor; // 0x20(0x28)
 	struct UObject* ResourceObject; // 0x48(0x8)
 	struct FName ResourceName; // 0x50(0x8)
 	struct FBox2D UVRegion; // 0x58(0x14)
-	ESlateBrushDrawType DrawAs; // 0x6C(0x1)
-	ESlateBrushTileType Tiling; // 0x6D(0x1)
-	ESlateBrushMirrorType Mirroring; // 0x6E(0x1)
-	ESlateBrushImageType ImageType; // 0x6F(0x1)
-	uint8_t bAdaptiveTiling : 1; // 0x70(0x1), Mask(0x1)
-	uint8_t BitPad_0x70_1 : 7; // 0x70(0x1)
+	uint8_t DrawAs; // 0x6C(0x1)
+	uint8_t Tiling; // 0x6D(0x1)
+	uint8_t Mirroring; // 0x6E(0x1)
+	uint8_t ImageType; // 0x6F(0x1)
+	uint8_t UseImageUV : 1; // 0x70(0x1), Mask(0x1)
+	uint8_t IsDrawAsCircle : 1; // 0x70(0x1), Mask(0x2)
+	uint8_t BitPad_0x70_2 : 6; // 0x70(0x1)
 	uint8_t Pad_0x71[0x17]; // 0x71(0x17)
 	uint8_t bIsDynamicallyLoaded : 1; // 0x88(0x1), Mask(0x1)
 	uint8_t bHasUObject : 1; // 0x88(0x1), Mask(0x2)
@@ -573,10 +502,10 @@ struct FSlateBrush
 };
 
 // Object: ScriptStruct SlateCore.Geometry
-// Size: 0x48 (Inherited: 0x0)
+// Size: 0x38 (Inherited: 0x0)
 struct FGeometry
 {
-	uint8_t Pad_0x0[0x48]; // 0x0(0x48)
+	uint8_t Pad_0x0[0x38]; // 0x0(0x38)
 };
 
 // Object: ScriptStruct SlateCore.InputEvent
@@ -591,13 +520,6 @@ struct FInputEvent
 struct FPointerEvent : FInputEvent
 {
 	uint8_t Pad_0x18[0x58]; // 0x18(0x58)
-};
-
-// Object: ScriptStruct SlateCore.InvalidateWidgetReason
-// Size: 0x1 (Inherited: 0x0)
-struct FInvalidateWidgetReason
-{
-	uint8_t Pad_0x0[0x1]; // 0x0(0x1)
 };
 
 // Object: ScriptStruct SlateCore.CharacterEvent
@@ -633,17 +555,15 @@ struct FAnalogInputEvent : FKeyEvent
 struct FFontOutlineSettings
 {
 	int32_t OutlineSize; // 0x0(0x4)
-	uint8_t bSeparateFillAlpha : 1; // 0x4(0x1), Mask(0x1)
-	uint8_t BitPad_0x4_1 : 7; // 0x4(0x1)
-	uint8_t bApplyOutlineToDropShadows : 1; // 0x5(0x1), Mask(0x1)
-	uint8_t BitPad_0x5_1 : 7; // 0x5(0x1)
+	bool bSeparateFillAlpha; // 0x4(0x1)
+	bool bApplyOutlineToDropShadows; // 0x5(0x1)
 	uint8_t Pad_0x6[0x2]; // 0x6(0x2)
 	struct UObject* OutlineMaterial; // 0x8(0x8)
 	struct FLinearColor OutlineColor; // 0x10(0x10)
 };
 
 // Object: ScriptStruct SlateCore.SlateFontInfo
-// Size: 0x58 (Inherited: 0x0)
+// Size: 0x60 (Inherited: 0x0)
 struct FSlateFontInfo
 {
 	struct UObject* FontObject; // 0x0(0x8)
@@ -651,9 +571,11 @@ struct FSlateFontInfo
 	struct FFontOutlineSettings OutlineSettings; // 0x10(0x20)
 	uint8_t Pad_0x30[0x10]; // 0x30(0x10)
 	struct FName TypefaceFontName; // 0x40(0x8)
-	int32_t size; // 0x48(0x4)
-	int32_t LetterSpacing; // 0x4C(0x4)
-	uint8_t Pad_0x50[0x8]; // 0x50(0x8)
+	int32_t Size; // 0x48(0x4)
+	int32_t Size_Oversea; // 0x4C(0x4)
+	int32_t LetterSpacing; // 0x50(0x4)
+	int32_t LetterSpacing_Oversea; // 0x54(0x4)
+	uint8_t Pad_0x58[0x8]; // 0x58(0x8)
 };
 
 // Object: ScriptStruct SlateCore.SlateWidgetStyle
@@ -708,33 +630,35 @@ struct FButtonStyle : FSlateWidgetStyle
 };
 
 // Object: ScriptStruct SlateCore.ComboButtonStyle
-// Size: 0x3D0 (Inherited: 0x8)
+// Size: 0x3E8 (Inherited: 0x8)
 struct FComboButtonStyle : FSlateWidgetStyle
 {
 	struct FButtonStyle ButtonStyle; // 0x8(0x298)
 	struct FSlateBrush DownArrowImage; // 0x2A0(0x90)
-	struct FSlateBrush MenuBorderBrush; // 0x330(0x90)
-	struct FMargin MenuBorderPadding; // 0x3C0(0x10)
+	struct FVector2D ShadowOffset; // 0x330(0x8)
+	struct FLinearColor ShadowColorAndOpacity; // 0x338(0x10)
+	struct FSlateBrush MenuBorderBrush; // 0x348(0x90)
+	struct FMargin MenuBorderPadding; // 0x3D8(0x10)
 };
 
 // Object: ScriptStruct SlateCore.ComboBoxStyle
-// Size: 0x408 (Inherited: 0x8)
+// Size: 0x420 (Inherited: 0x8)
 struct FComboBoxStyle : FSlateWidgetStyle
 {
-	struct FComboButtonStyle ComboButtonStyle; // 0x8(0x3D0)
-	struct FSlateSound PressedSlateSound; // 0x3D8(0x18)
-	struct FSlateSound SelectionChangeSlateSound; // 0x3F0(0x18)
+	struct FComboButtonStyle ComboButtonStyle; // 0x8(0x3E8)
+	struct FSlateSound PressedSlateSound; // 0x3F0(0x18)
+	struct FSlateSound SelectionChangeSlateSound; // 0x408(0x18)
 };
 
 // Object: ScriptStruct SlateCore.EditableTextStyle
-// Size: 0x238 (Inherited: 0x8)
+// Size: 0x240 (Inherited: 0x8)
 struct FEditableTextStyle : FSlateWidgetStyle
 {
-	struct FSlateFontInfo Font; // 0x8(0x58)
-	struct FSlateColor ColorAndOpacity; // 0x60(0x28)
-	struct FSlateBrush BackgroundImageSelected; // 0x88(0x90)
-	struct FSlateBrush BackgroundImageComposing; // 0x118(0x90)
-	struct FSlateBrush CaretImage; // 0x1A8(0x90)
+	struct FSlateFontInfo Font; // 0x8(0x60)
+	struct FSlateColor ColorAndOpacity; // 0x68(0x28)
+	struct FSlateBrush BackgroundImageSelected; // 0x90(0x90)
+	struct FSlateBrush BackgroundImageComposing; // 0x120(0x90)
+	struct FSlateBrush CaretImage; // 0x1B0(0x90)
 };
 
 // Object: ScriptStruct SlateCore.ScrollBarStyle
@@ -753,7 +677,7 @@ struct FScrollBarStyle : FSlateWidgetStyle
 };
 
 // Object: ScriptStruct SlateCore.EditableTextBoxStyle
-// Size: 0x860 (Inherited: 0x8)
+// Size: 0x868 (Inherited: 0x8)
 struct FEditableTextBoxStyle : FSlateWidgetStyle
 {
 	struct FSlateBrush BackgroundImageNormal; // 0x8(0x90)
@@ -761,30 +685,28 @@ struct FEditableTextBoxStyle : FSlateWidgetStyle
 	struct FSlateBrush BackgroundImageFocused; // 0x128(0x90)
 	struct FSlateBrush BackgroundImageReadOnly; // 0x1B8(0x90)
 	struct FMargin Padding; // 0x248(0x10)
-	struct FSlateFontInfo Font; // 0x258(0x58)
-	struct FSlateColor ForegroundColor; // 0x2B0(0x28)
-	struct FSlateColor BackgroundColor; // 0x2D8(0x28)
-	struct FSlateColor ReadOnlyForegroundColor; // 0x300(0x28)
-	struct FMargin HScrollBarPadding; // 0x328(0x10)
-	struct FMargin VScrollBarPadding; // 0x338(0x10)
-	struct FScrollBarStyle ScrollBarStyle; // 0x348(0x518)
+	struct FSlateFontInfo Font; // 0x258(0x60)
+	struct FSlateColor ForegroundColor; // 0x2B8(0x28)
+	struct FSlateColor BackgroundColor; // 0x2E0(0x28)
+	struct FSlateColor ReadOnlyForegroundColor; // 0x308(0x28)
+	struct FMargin HScrollBarPadding; // 0x330(0x10)
+	struct FMargin VScrollBarPadding; // 0x340(0x10)
+	struct FScrollBarStyle ScrollBarStyle; // 0x350(0x518)
 };
 
 // Object: ScriptStruct SlateCore.TextBlockStyle
 // Size: 0x290 (Inherited: 0x8)
 struct FTextBlockStyle : FSlateWidgetStyle
 {
-	struct FSlateFontInfo Font; // 0x8(0x58)
-	struct FSlateColor ColorAndOpacity; // 0x60(0x28)
-	struct FVector2D ShadowOffset; // 0x88(0x8)
-	struct FLinearColor ShadowColorAndOpacity; // 0x90(0x10)
-	struct FSlateColor SelectedBackgroundColor; // 0xA0(0x28)
-	struct FLinearColor HighlightColor; // 0xC8(0x10)
-	struct FSlateBrush HighlightShape; // 0xD8(0x90)
-	struct FSlateBrush StrikeBrush; // 0x168(0x90)
-	struct FSlateBrush UnderlineBrush; // 0x1F8(0x90)
-	ETextOverflowPolicy OverflowPolicy; // 0x288(0x1)
-	uint8_t Pad_0x289[0x7]; // 0x289(0x7)
+	struct FSlateFontInfo Font; // 0x8(0x60)
+	struct FSlateColor ColorAndOpacity; // 0x68(0x28)
+	struct FVector2D ShadowOffset; // 0x90(0x8)
+	struct FLinearColor ShadowColorAndOpacity; // 0x98(0x10)
+	struct FSlateColor SelectedBackgroundColor; // 0xA8(0x28)
+	struct FLinearColor HighlightColor; // 0xD0(0x10)
+	struct FSlateBrush HighlightShape; // 0xE0(0x90)
+	struct FSlateBrush StrikeBrush; // 0x170(0x90)
+	struct FSlateBrush UnderlineBrush; // 0x200(0x90)
 };
 
 // Object: ScriptStruct SlateCore.SpinBoxStyle
@@ -800,21 +722,27 @@ struct FSpinBoxStyle : FSlateWidgetStyle
 	struct FMargin TextPadding; // 0x300(0x10)
 };
 
-// Object: ScriptStruct SlateCore.ScrollBoxStyle
-// Size: 0x248 (Inherited: 0x8)
-struct FScrollBoxStyle : FSlateWidgetStyle
+// Object: ScriptStruct SlateCore.CheckBoxStyle
+// Size: 0x5C8 (Inherited: 0x8)
+struct FCheckBoxStyle : FSlateWidgetStyle
 {
-	struct FSlateBrush TopShadowBrush; // 0x8(0x90)
-	struct FSlateBrush BottomShadowBrush; // 0x98(0x90)
-	struct FSlateBrush LeftShadowBrush; // 0x128(0x90)
-	struct FSlateBrush RightShadowBrush; // 0x1B8(0x90)
-};
-
-// Object: ScriptStruct SlateCore.FocusEvent
-// Size: 0x8 (Inherited: 0x0)
-struct FFocusEvent
-{
-	uint8_t Pad_0x0[0x8]; // 0x0(0x8)
+	uint8_t CheckBoxType; // 0x8(0x1)
+	uint8_t Pad_0x9[0x7]; // 0x9(0x7)
+	struct FSlateBrush UncheckedImage; // 0x10(0x90)
+	struct FSlateBrush UncheckedHoveredImage; // 0xA0(0x90)
+	struct FSlateBrush UncheckedPressedImage; // 0x130(0x90)
+	struct FSlateBrush CheckedImage; // 0x1C0(0x90)
+	struct FSlateBrush CheckedHoveredImage; // 0x250(0x90)
+	struct FSlateBrush CheckedPressedImage; // 0x2E0(0x90)
+	struct FSlateBrush UndeterminedImage; // 0x370(0x90)
+	struct FSlateBrush UndeterminedHoveredImage; // 0x400(0x90)
+	struct FSlateBrush UndeterminedPressedImage; // 0x490(0x90)
+	struct FMargin Padding; // 0x520(0x10)
+	struct FSlateColor ForegroundColor; // 0x530(0x28)
+	struct FSlateColor BorderBackgroundColor; // 0x558(0x28)
+	struct FSlateSound CheckedSlateSound; // 0x580(0x18)
+	struct FSlateSound UncheckedSlateSound; // 0x598(0x18)
+	struct FSlateSound HoveredSlateSound; // 0x5B0(0x18)
 };
 
 // Object: ScriptStruct SlateCore.MotionEvent
@@ -822,14 +750,6 @@ struct FFocusEvent
 struct FMotionEvent : FInputEvent
 {
 	uint8_t Pad_0x18[0x30]; // 0x18(0x30)
-};
-
-// Object: ScriptStruct SlateCore.InlineEditableTextBlockStyle
-// Size: 0xAF8 (Inherited: 0x8)
-struct FInlineEditableTextBlockStyle : FSlateWidgetStyle
-{
-	struct FEditableTextBoxStyle EditableTextBoxStyle; // 0x8(0x860)
-	struct FTextBlockStyle TextStyle; // 0x868(0x290)
 };
 
 // Object: ScriptStruct SlateCore.HyperlinkStyle
@@ -867,23 +787,26 @@ struct FCompositeFont
 };
 
 // Object: ScriptStruct SlateCore.FontData
-// Size: 0x20 (Inherited: 0x0)
+// Size: 0x28 (Inherited: 0x0)
 struct FFontData
 {
 	struct FString FontFilename; // 0x0(0x10)
 	EFontHinting Hinting; // 0x10(0x1)
 	EFontLoadingPolicy LoadingPolicy; // 0x11(0x1)
-	uint8_t Pad_0x12[0x2]; // 0x12(0x2)
-	int32_t SubFaceIndex; // 0x14(0x4)
-	struct UObject* FontFaceAsset; // 0x18(0x8)
+	bool IsKeepInMemory; // 0x12(0x1)
+	uint8_t Pad_0x13[0x1]; // 0x13(0x1)
+	int32_t FontFileIndex; // 0x14(0x4)
+	int32_t SubFaceIndex; // 0x18(0x4)
+	uint8_t Pad_0x1C[0x4]; // 0x1C(0x4)
+	struct UObject* FontFaceAsset; // 0x20(0x8)
 };
 
 // Object: ScriptStruct SlateCore.TypefaceEntry
-// Size: 0x28 (Inherited: 0x0)
+// Size: 0x30 (Inherited: 0x0)
 struct FTypefaceEntry
 {
 	struct FName Name; // 0x0(0x8)
-	struct FFontData Font; // 0x8(0x20)
+	struct FFontData Font; // 0x8(0x28)
 };
 
 // Object: ScriptStruct SlateCore.CompositeSubFont
@@ -901,18 +824,11 @@ struct FCaptureLostEvent
 	uint8_t Pad_0x0[0x8]; // 0x0(0x8)
 };
 
-// Object: ScriptStruct SlateCore.ReplyBase
-// Size: 0x18 (Inherited: 0x0)
-struct FReplyBase
+// Object: ScriptStruct SlateCore.FocusEvent
+// Size: 0x8 (Inherited: 0x0)
+struct FFocusEvent
 {
-	uint8_t Pad_0x0[0x18]; // 0x0(0x18)
-};
-
-// Object: ScriptStruct SlateCore.Reply
-// Size: 0xD0 (Inherited: 0x18)
-struct FReply : FReplyBase
-{
-	uint8_t Pad_0x18[0xB8]; // 0x18(0xB8)
+	uint8_t Pad_0x0[0x8]; // 0x0(0x8)
 };
 
 // Object: ScriptStruct SlateCore.WindowStyle
@@ -941,6 +857,16 @@ struct FScrollBorderStyle : FSlateWidgetStyle
 {
 	struct FSlateBrush TopShadowBrush; // 0x8(0x90)
 	struct FSlateBrush BottomShadowBrush; // 0x98(0x90)
+};
+
+// Object: ScriptStruct SlateCore.ScrollBoxStyle
+// Size: 0x248 (Inherited: 0x8)
+struct FScrollBoxStyle : FSlateWidgetStyle
+{
+	struct FSlateBrush TopShadowBrush; // 0x8(0x90)
+	struct FSlateBrush BottomShadowBrush; // 0x98(0x90)
+	struct FSlateBrush LeftShadowBrush; // 0x128(0x90)
+	struct FSlateBrush RightShadowBrush; // 0x1B8(0x90)
 };
 
 // Object: ScriptStruct SlateCore.DockTabStyle
@@ -1032,19 +958,18 @@ struct FVolumeControlStyle : FSlateWidgetStyle
 };
 
 // Object: ScriptStruct SlateCore.SearchBoxStyle
-// Size: 0xB18 (Inherited: 0x8)
+// Size: 0xB28 (Inherited: 0x8)
 struct FSearchBoxStyle : FSlateWidgetStyle
 {
-	struct FEditableTextBoxStyle TextBoxStyle; // 0x8(0x860)
-	struct FSlateFontInfo ActiveFontInfo; // 0x868(0x58)
-	struct FSlateBrush UpArrowImage; // 0x8C0(0x90)
-	struct FSlateBrush DownArrowImage; // 0x950(0x90)
-	struct FSlateBrush GlassImage; // 0x9E0(0x90)
-	struct FSlateBrush ClearImage; // 0xA70(0x90)
-	struct FMargin ImagePadding; // 0xB00(0x10)
-	uint8_t bLeftAlignButtons : 1; // 0xB10(0x1), Mask(0x1)
-	uint8_t BitPad_0xB10_1 : 7; // 0xB10(0x1)
-	uint8_t Pad_0xB11[0x7]; // 0xB11(0x7)
+	struct FEditableTextBoxStyle TextBoxStyle; // 0x8(0x868)
+	struct FSlateFontInfo ActiveFontInfo; // 0x870(0x60)
+	struct FSlateBrush UpArrowImage; // 0x8D0(0x90)
+	struct FSlateBrush DownArrowImage; // 0x960(0x90)
+	struct FSlateBrush GlassImage; // 0x9F0(0x90)
+	struct FSlateBrush ClearImage; // 0xA80(0x90)
+	struct FMargin ImagePadding; // 0xB10(0x10)
+	bool bLeftAlignButtons; // 0xB20(0x1)
+	uint8_t Pad_0xB21[0x7]; // 0xB21(0x7)
 };
 
 // Object: ScriptStruct SlateCore.ExpandableAreaStyle
@@ -1066,45 +991,21 @@ struct FProgressBarStyle : FSlateWidgetStyle
 	struct FSlateBrush MarqueeImage; // 0x128(0x90)
 };
 
-// Object: ScriptStruct SlateCore.CheckBoxStyle
-// Size: 0x5C8 (Inherited: 0x8)
-struct FCheckBoxStyle : FSlateWidgetStyle
+// Object: ScriptStruct SlateCore.InlineEditableTextBlockStyle
+// Size: 0xB00 (Inherited: 0x8)
+struct FInlineEditableTextBlockStyle : FSlateWidgetStyle
 {
-	ESlateCheckBoxType CheckBoxType; // 0x8(0x1)
-	uint8_t Pad_0x9[0x7]; // 0x9(0x7)
-	struct FSlateBrush UncheckedImage; // 0x10(0x90)
-	struct FSlateBrush UncheckedHoveredImage; // 0xA0(0x90)
-	struct FSlateBrush UncheckedPressedImage; // 0x130(0x90)
-	struct FSlateBrush CheckedImage; // 0x1C0(0x90)
-	struct FSlateBrush CheckedHoveredImage; // 0x250(0x90)
-	struct FSlateBrush CheckedPressedImage; // 0x2E0(0x90)
-	struct FSlateBrush UndeterminedImage; // 0x370(0x90)
-	struct FSlateBrush UndeterminedHoveredImage; // 0x400(0x90)
-	struct FSlateBrush UndeterminedPressedImage; // 0x490(0x90)
-	struct FMargin Padding; // 0x520(0x10)
-	struct FSlateColor ForegroundColor; // 0x530(0x28)
-	struct FSlateColor BorderBackgroundColor; // 0x558(0x28)
-	struct FSlateSound CheckedSlateSound; // 0x580(0x18)
-	struct FSlateSound UncheckedSlateSound; // 0x598(0x18)
-	struct FSlateSound HoveredSlateSound; // 0x5B0(0x18)
-};
-
-// Object: Class SlateCore.SlateWidgetStyleContainerBase
-// Size: 0x30 (Inherited: 0x28)
-struct USlateWidgetStyleContainerBase : UObject
-{
-	DEFINE_UE_CLASS_HELPERS(USlateWidgetStyleContainerBase, "SlateWidgetStyleContainerBase")
-
-	uint8_t Pad_0x28[0x8]; // 0x28(0x8)
+	struct FEditableTextBoxStyle EditableTextBoxStyle; // 0x8(0x868)
+	struct FTextBlockStyle TextStyle; // 0x870(0x290)
 };
 
 // Object: Class SlateCore.FontBulkData
-// Size: 0xE8 (Inherited: 0x28)
+// Size: 0x78 (Inherited: 0x28)
 struct UFontBulkData : UObject
 {
 	DEFINE_UE_CLASS_HELPERS(UFontBulkData, "FontBulkData")
 
-	uint8_t Pad_0x28[0xC0]; // 0x28(0xC0)
+	uint8_t Pad_0x28[0x50]; // 0x28(0x50)
 };
 
 // Object: Class SlateCore.FontFaceInterface
@@ -1121,25 +1022,6 @@ struct IFontProviderInterface : IInterface
 	DEFINE_UE_CLASS_HELPERS(IFontProviderInterface, "FontProviderInterface")
 };
 
-// Object: Class SlateCore.ReplyHelper
-// Size: 0x28 (Inherited: 0x28)
-struct UReplyHelper : UObject
-{
-	DEFINE_UE_CLASS_HELPERS(UReplyHelper, "ReplyHelper")
-
-	// Object: Function SlateCore.ReplyHelper.Unhandled
-	// Flags: [Final|Native|Static|Public]
-	// Offset: 0x159884f0
-	// Params: [ Num(1) Size(0xD0) ]
-	static struct FReply Unhandled();
-
-	// Object: Function SlateCore.ReplyHelper.Handled
-	// Flags: [Final|Native|Static|Public]
-	// Offset: 0x15988448
-	// Params: [ Num(1) Size(0xD0) ]
-	static struct FReply Handled();
-};
-
 // Object: Class SlateCore.SlateTypes
 // Size: 0x28 (Inherited: 0x28)
 struct USlateTypes : UObject
@@ -1154,6 +1036,15 @@ struct USlateWidgetStyleAsset : UObject
 	DEFINE_UE_CLASS_HELPERS(USlateWidgetStyleAsset, "SlateWidgetStyleAsset")
 
 	struct USlateWidgetStyleContainerBase* CustomStyle; // 0x28(0x8)
+};
+
+// Object: Class SlateCore.SlateWidgetStyleContainerBase
+// Size: 0x30 (Inherited: 0x28)
+struct USlateWidgetStyleContainerBase : UObject
+{
+	DEFINE_UE_CLASS_HELPERS(USlateWidgetStyleContainerBase, "SlateWidgetStyleContainerBase")
+
+	uint8_t Pad_0x28[0x8]; // 0x28(0x8)
 };
 
 // Object: Class SlateCore.SlateWidgetStyleContainerInterface

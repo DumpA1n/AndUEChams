@@ -6,6 +6,23 @@
 namespace SDK
 {
 
+// AARActor
+struct UARComponent* AARActor::AddARComponent(struct UARComponent* InComponentClass, const struct FGuid& NativeID)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARActor", "AddARComponent");
+    struct
+    {
+        struct UARComponent* InComponentClass;
+        struct FGuid NativeID;
+        struct UARComponent* ReturnValue;
+    } Parms{};
+    Parms.InComponentClass = (struct UARComponent*)InComponentClass;
+    Parms.NativeID = (struct FGuid)NativeID;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
 // UARBlueprintLibrary
 void UARBlueprintLibrary::UnpinComponent(struct USceneComponent* ComponentToUnpin)
 {
@@ -17,6 +34,22 @@ void UARBlueprintLibrary::UnpinComponent(struct USceneComponent* ComponentToUnpi
     } Parms{};
     Parms.ComponentToUnpin = (struct USceneComponent*)ComponentToUnpin;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
+}
+
+bool UARBlueprintLibrary::ToggleARCapture(bool bOnOff, EARCaptureType CaptureType)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("ARBlueprintLibrary", "ToggleARCapture");
+    struct
+    {
+        bool bOnOff;
+        enum EARCaptureType CaptureType;
+        bool ReturnValue;
+    } Parms{};
+    Parms.bOnOff = (bool)bOnOff;
+    Parms.CaptureType = (enum EARCaptureType)CaptureType;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
 }
 
 void UARBlueprintLibrary::StopARSession()
@@ -41,6 +74,48 @@ void UARBlueprintLibrary::StartARSession(struct UARSessionConfig* SessionConfig)
     GetDefaultObj()->ProcessEvent(Func, &Parms);
 }
 
+void UARBlueprintLibrary::SetEnabledXRCamera(bool bOnOff)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("ARBlueprintLibrary", "SetEnabledXRCamera");
+    struct
+    {
+        bool bOnOff;
+    } Parms{};
+    Parms.bOnOff = (bool)bOnOff;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+}
+
+void UARBlueprintLibrary::SetARWorldScale(float InWorldScale)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("ARBlueprintLibrary", "SetARWorldScale");
+    struct
+    {
+        float InWorldScale;
+    } Parms{};
+    Parms.InWorldScale = (float)InWorldScale;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+}
+
+void UARBlueprintLibrary::SetARWorldOriginLocationAndRotation(struct FVector OriginLocation, struct FRotator OriginRotation, bool bIsTransformInWorldSpace, bool bMaintainUpDirection)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("ARBlueprintLibrary", "SetARWorldOriginLocationAndRotation");
+    struct
+    {
+        struct FVector OriginLocation;
+        struct FRotator OriginRotation;
+        bool bIsTransformInWorldSpace;
+        bool bMaintainUpDirection;
+    } Parms{};
+    Parms.OriginLocation = (struct FVector)OriginLocation;
+    Parms.OriginRotation = (struct FRotator)OriginRotation;
+    Parms.bIsTransformInWorldSpace = (bool)bIsTransformInWorldSpace;
+    Parms.bMaintainUpDirection = (bool)bMaintainUpDirection;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+}
+
 void UARBlueprintLibrary::SetAlignmentTransform(const struct FTransform& InAlignmentTransform)
 {
     static struct UFunction* Func = nullptr;
@@ -53,6 +128,36 @@ void UARBlueprintLibrary::SetAlignmentTransform(const struct FTransform& InAlign
     GetDefaultObj()->ProcessEvent(Func, &Parms);
 }
 
+bool UARBlueprintLibrary::SaveARPinToLocalStore(struct FName InSaveName, struct UARPin* InPin)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("ARBlueprintLibrary", "SaveARPinToLocalStore");
+    struct
+    {
+        struct FName InSaveName;
+        struct UARPin* InPin;
+        bool ReturnValue;
+    } Parms{};
+    Parms.InSaveName = (struct FName)InSaveName;
+    Parms.InPin = (struct UARPin*)InPin;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct FIntPoint UARBlueprintLibrary::ResizeXRCamera(const struct FIntPoint& InSize)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("ARBlueprintLibrary", "ResizeXRCamera");
+    struct
+    {
+        struct FIntPoint InSize;
+        struct FIntPoint ReturnValue;
+    } Parms{};
+    Parms.InSize = (struct FIntPoint)InSize;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
 void UARBlueprintLibrary::RemovePin(struct UARPin* PinToRemove)
 {
     static struct UFunction* Func = nullptr;
@@ -62,6 +167,28 @@ void UARBlueprintLibrary::RemovePin(struct UARPin* PinToRemove)
         struct UARPin* PinToRemove;
     } Parms{};
     Parms.PinToRemove = (struct UARPin*)PinToRemove;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+}
+
+void UARBlueprintLibrary::RemoveARPinFromLocalStore(struct FName InSaveName)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("ARBlueprintLibrary", "RemoveARPinFromLocalStore");
+    struct
+    {
+        struct FName InSaveName;
+    } Parms{};
+    Parms.InSaveName = (struct FName)InSaveName;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+}
+
+void UARBlueprintLibrary::RemoveAllARPinsFromLocalStore()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("ARBlueprintLibrary", "RemoveAllARPinsFromLocalStore");
+    struct
+    {
+    } Parms{};
     GetDefaultObj()->ProcessEvent(Func, &Parms);
 }
 
@@ -79,6 +206,22 @@ struct UARPin* UARBlueprintLibrary::PinComponentToTraceResult(struct USceneCompo
     Parms.ComponentToPin = (struct USceneComponent*)ComponentToPin;
     Parms.TraceResult = (struct FARTraceResult)TraceResult;
     Parms.DebugName = (struct FName)DebugName;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+bool UARBlueprintLibrary::PinComponentToARPin(struct USceneComponent* ComponentToPin, struct UARPin* Pin)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("ARBlueprintLibrary", "PinComponentToARPin");
+    struct
+    {
+        struct USceneComponent* ComponentToPin;
+        struct UARPin* Pin;
+        bool ReturnValue;
+    } Parms{};
+    Parms.ComponentToPin = (struct USceneComponent*)ComponentToPin;
+    Parms.Pin = (struct UARPin*)Pin;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
@@ -113,7 +256,19 @@ void UARBlueprintLibrary::PauseARSession()
     GetDefaultObj()->ProcessEvent(Func, &Parms);
 }
 
-struct TArray<struct FARTraceResult> UARBlueprintLibrary::LineTraceTrackedObjects3D(struct FVector Start, struct FVector End, uint8_t bTestFeaturePoints, uint8_t bTestGroundPlane, uint8_t bTestPlaneExtents, uint8_t bTestPlaneBoundaryPolygon)
+struct TMap<struct FName, struct UARPin*> UARBlueprintLibrary::LoadARPinsFromLocalStore()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("ARBlueprintLibrary", "LoadARPinsFromLocalStore");
+    struct
+    {
+        struct TMap<struct FName, struct UARPin*> ReturnValue;
+    } Parms{};
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct TArray<struct FARTraceResult> UARBlueprintLibrary::LineTraceTrackedObjects3D(struct FVector Start, struct FVector End, bool bTestFeaturePoints, bool bTestGroundPlane, bool bTestPlaneExtents, bool bTestPlaneBoundaryPolygon)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("ARBlueprintLibrary", "LineTraceTrackedObjects3D");
@@ -121,59 +276,59 @@ struct TArray<struct FARTraceResult> UARBlueprintLibrary::LineTraceTrackedObject
     {
         struct FVector Start;
         struct FVector End;
-        uint8_t bTestFeaturePoints;
-        uint8_t bTestGroundPlane;
-        uint8_t bTestPlaneExtents;
-        uint8_t bTestPlaneBoundaryPolygon;
+        bool bTestFeaturePoints;
+        bool bTestGroundPlane;
+        bool bTestPlaneExtents;
+        bool bTestPlaneBoundaryPolygon;
         struct TArray<struct FARTraceResult> ReturnValue;
     } Parms{};
     Parms.Start = (struct FVector)Start;
     Parms.End = (struct FVector)End;
-    Parms.bTestFeaturePoints = (uint8_t)bTestFeaturePoints;
-    Parms.bTestGroundPlane = (uint8_t)bTestGroundPlane;
-    Parms.bTestPlaneExtents = (uint8_t)bTestPlaneExtents;
-    Parms.bTestPlaneBoundaryPolygon = (uint8_t)bTestPlaneBoundaryPolygon;
+    Parms.bTestFeaturePoints = (bool)bTestFeaturePoints;
+    Parms.bTestGroundPlane = (bool)bTestGroundPlane;
+    Parms.bTestPlaneExtents = (bool)bTestPlaneExtents;
+    Parms.bTestPlaneBoundaryPolygon = (bool)bTestPlaneBoundaryPolygon;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-struct TArray<struct FARTraceResult> UARBlueprintLibrary::LineTraceTrackedObjects(struct FVector2D ScreenCoord, uint8_t bTestFeaturePoints, uint8_t bTestGroundPlane, uint8_t bTestPlaneExtents, uint8_t bTestPlaneBoundaryPolygon)
+struct TArray<struct FARTraceResult> UARBlueprintLibrary::LineTraceTrackedObjects(struct FVector2D ScreenCoord, bool bTestFeaturePoints, bool bTestGroundPlane, bool bTestPlaneExtents, bool bTestPlaneBoundaryPolygon)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("ARBlueprintLibrary", "LineTraceTrackedObjects");
     struct
     {
         struct FVector2D ScreenCoord;
-        uint8_t bTestFeaturePoints;
-        uint8_t bTestGroundPlane;
-        uint8_t bTestPlaneExtents;
-        uint8_t bTestPlaneBoundaryPolygon;
+        bool bTestFeaturePoints;
+        bool bTestGroundPlane;
+        bool bTestPlaneExtents;
+        bool bTestPlaneBoundaryPolygon;
         struct TArray<struct FARTraceResult> ReturnValue;
     } Parms{};
     Parms.ScreenCoord = (struct FVector2D)ScreenCoord;
-    Parms.bTestFeaturePoints = (uint8_t)bTestFeaturePoints;
-    Parms.bTestGroundPlane = (uint8_t)bTestGroundPlane;
-    Parms.bTestPlaneExtents = (uint8_t)bTestPlaneExtents;
-    Parms.bTestPlaneBoundaryPolygon = (uint8_t)bTestPlaneBoundaryPolygon;
+    Parms.bTestFeaturePoints = (bool)bTestFeaturePoints;
+    Parms.bTestGroundPlane = (bool)bTestGroundPlane;
+    Parms.bTestPlaneExtents = (bool)bTestPlaneExtents;
+    Parms.bTestPlaneBoundaryPolygon = (bool)bTestPlaneBoundaryPolygon;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UARBlueprintLibrary::IsSessionTypeSupported(EARSessionType SessionType)
+bool UARBlueprintLibrary::IsSessionTypeSupported(EARSessionType SessionType)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("ARBlueprintLibrary", "IsSessionTypeSupported");
     struct
     {
         enum EARSessionType SessionType;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.SessionType = (enum EARSessionType)SessionType;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UARBlueprintLibrary::IsSessionTrackingFeatureSupported(EARSessionType SessionType, EARSessionTrackingFeature SessionTrackingFeature)
+bool UARBlueprintLibrary::IsSessionTrackingFeatureSupported(EARSessionType SessionType, EARSessionTrackingFeature SessionTrackingFeature)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("ARBlueprintLibrary", "IsSessionTrackingFeatureSupported");
@@ -181,7 +336,7 @@ uint8_t UARBlueprintLibrary::IsSessionTrackingFeatureSupported(EARSessionType Se
     {
         enum EARSessionType SessionType;
         enum EARSessionTrackingFeature SessionTrackingFeature;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.SessionType = (enum EARSessionType)SessionType;
     Parms.SessionTrackingFeature = (enum EARSessionTrackingFeature)SessionTrackingFeature;
@@ -189,13 +344,53 @@ uint8_t UARBlueprintLibrary::IsSessionTrackingFeatureSupported(EARSessionType Se
     return Parms.ReturnValue;
 }
 
-uint8_t UARBlueprintLibrary::IsARSupported()
+bool UARBlueprintLibrary::IsSceneReconstructionSupported(EARSessionType SessionType, EARSceneReconstruction SceneReconstructionMethod)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("ARBlueprintLibrary", "IsSceneReconstructionSupported");
+    struct
+    {
+        enum EARSessionType SessionType;
+        enum EARSceneReconstruction SceneReconstructionMethod;
+        bool ReturnValue;
+    } Parms{};
+    Parms.SessionType = (enum EARSessionType)SessionType;
+    Parms.SceneReconstructionMethod = (enum EARSceneReconstruction)SceneReconstructionMethod;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+bool UARBlueprintLibrary::IsARSupported()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("ARBlueprintLibrary", "IsARSupported");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
+    } Parms{};
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+bool UARBlueprintLibrary::IsARPinLocalStoreSupported()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("ARBlueprintLibrary", "IsARPinLocalStoreSupported");
+    struct
+    {
+        bool ReturnValue;
+    } Parms{};
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+bool UARBlueprintLibrary::IsARPinLocalStoreReady()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("ARBlueprintLibrary", "IsARPinLocalStoreReady");
+    struct
+    {
+        bool ReturnValue;
     } Parms{};
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
@@ -275,25 +470,57 @@ struct TArray<struct FVector> UARBlueprintLibrary::GetPointCloud()
     return Parms.ReturnValue;
 }
 
-struct UARTextureCameraImage* UARBlueprintLibrary::GetPersonSegmentationImage()
+struct UARTexture* UARBlueprintLibrary::GetPersonSegmentationImage()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("ARBlueprintLibrary", "GetPersonSegmentationImage");
     struct
     {
-        struct UARTextureCameraImage* ReturnValue;
+        struct UARTexture* ReturnValue;
     } Parms{};
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-struct UARTextureCameraImage* UARBlueprintLibrary::GetPersonSegmentationDepthImage()
+struct UARTexture* UARBlueprintLibrary::GetPersonSegmentationDepthImage()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("ARBlueprintLibrary", "GetPersonSegmentationDepthImage");
     struct
     {
-        struct UARTextureCameraImage* ReturnValue;
+        struct UARTexture* ReturnValue;
+    } Parms{};
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+bool UARBlueprintLibrary::GetObjectClassificationAtLocation(const struct FVector& InWorldLocation, EARObjectClassification& OutClassification, struct FVector& OutClassificationLocation, float MaxLocationDiff)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("ARBlueprintLibrary", "GetObjectClassificationAtLocation");
+    struct
+    {
+        struct FVector InWorldLocation;
+        enum EARObjectClassification OutClassification;
+        struct FVector OutClassificationLocation;
+        float MaxLocationDiff;
+        bool ReturnValue;
+    } Parms{};
+    Parms.InWorldLocation = (struct FVector)InWorldLocation;
+    Parms.MaxLocationDiff = (float)MaxLocationDiff;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    OutClassification = Parms.OutClassification;
+    OutClassificationLocation = Parms.OutClassificationLocation;
+    return Parms.ReturnValue;
+}
+
+int32_t UARBlueprintLibrary::GetNumberOfTrackedFacesSupported()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("ARBlueprintLibrary", "GetNumberOfTrackedFacesSupported");
+    struct
+    {
+        int32_t ReturnValue;
     } Parms{};
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
@@ -308,6 +535,20 @@ struct UARLightEstimate* UARBlueprintLibrary::GetCurrentLightEstimate()
         struct UARLightEstimate* ReturnValue;
     } Parms{};
     GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+bool UARBlueprintLibrary::GetCameraIntrinsics(struct FARCameraIntrinsics& OutCameraIntrinsics)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("ARBlueprintLibrary", "GetCameraIntrinsics");
+    struct
+    {
+        struct FARCameraIntrinsics OutCameraIntrinsics;
+        bool ReturnValue;
+    } Parms{};
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    OutCameraIntrinsics = Parms.OutCameraIntrinsics;
     return Parms.ReturnValue;
 }
 
@@ -331,6 +572,32 @@ struct UARTextureCameraDepth* UARBlueprintLibrary::GetCameraDepth()
     {
         struct UARTextureCameraDepth* ReturnValue;
     } Parms{};
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+float UARBlueprintLibrary::GetARWorldScale()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("ARBlueprintLibrary", "GetARWorldScale");
+    struct
+    {
+        float ReturnValue;
+    } Parms{};
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct UARTexture* UARBlueprintLibrary::GetARTexture(EARTextureType TextureType)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("ARBlueprintLibrary", "GetARTexture");
+    struct
+    {
+        enum EARTextureType TextureType;
+        struct UARTexture* ReturnValue;
+    } Parms{};
+    Parms.TextureType = (enum EARTextureType)TextureType;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
@@ -431,6 +698,20 @@ struct TArray<struct UARPin*> UARBlueprintLibrary::GetAllPins()
     return Parms.ReturnValue;
 }
 
+struct TArray<struct UARTrackedGeometry*> UARBlueprintLibrary::GetAllGeometriesByClass(struct UARTrackedGeometry* GeometryClass)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("ARBlueprintLibrary", "GetAllGeometriesByClass");
+    struct
+    {
+        struct UARTrackedGeometry* GeometryClass;
+        struct TArray<struct UARTrackedGeometry*> ReturnValue;
+    } Parms{};
+    Parms.GeometryClass = (struct UARTrackedGeometry*)GeometryClass;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
 struct TArray<struct UARTrackedGeometry*> UARBlueprintLibrary::GetAllGeometries()
 {
     static struct UFunction* Func = nullptr;
@@ -439,6 +720,32 @@ struct TArray<struct UARTrackedGeometry*> UARBlueprintLibrary::GetAllGeometries(
     {
         struct TArray<struct UARTrackedGeometry*> ReturnValue;
     } Parms{};
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct FTransform UARBlueprintLibrary::GetAlignmentTransform()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("ARBlueprintLibrary", "GetAlignmentTransform");
+    struct
+    {
+        struct FTransform ReturnValue;
+    } Parms{};
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct TArray<struct UARTrackedPoint*> UARBlueprintLibrary::FindTrackedPointsByName(struct FString PointName)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("ARBlueprintLibrary", "FindTrackedPointsByName");
+    struct
+    {
+        struct FString PointName;
+        struct TArray<struct UARTrackedPoint*> ReturnValue;
+    } Parms{};
+    Parms.PointName = (struct FString)PointName;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
@@ -483,6 +790,56 @@ void UARBlueprintLibrary::DebugDrawPin(struct UARPin* ARPin, struct UObject* Wor
     GetDefaultObj()->ProcessEvent(Func, &Parms);
 }
 
+void UARBlueprintLibrary::CalculateClosestIntersection(const struct TArray<struct FVector>& StartPoints, const struct TArray<struct FVector>& EndPoints, struct FVector& ClosestIntersection)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("ARBlueprintLibrary", "CalculateClosestIntersection");
+    struct
+    {
+        struct TArray<struct FVector> StartPoints;
+        struct TArray<struct FVector> EndPoints;
+        struct FVector ClosestIntersection;
+    } Parms{};
+    Parms.StartPoints = (struct TArray<struct FVector>)StartPoints;
+    Parms.EndPoints = (struct TArray<struct FVector>)EndPoints;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    ClosestIntersection = Parms.ClosestIntersection;
+}
+
+void UARBlueprintLibrary::CalculateAlignmentTransform(const struct FTransform& TransformInFirstCoordinateSystem, const struct FTransform& TransformInSecondCoordinateSystem, struct FTransform& AlignmentTransform)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("ARBlueprintLibrary", "CalculateAlignmentTransform");
+    struct
+    {
+        struct FTransform TransformInFirstCoordinateSystem;
+        struct FTransform TransformInSecondCoordinateSystem;
+        struct FTransform AlignmentTransform;
+    } Parms{};
+    Parms.TransformInFirstCoordinateSystem = (struct FTransform)TransformInFirstCoordinateSystem;
+    Parms.TransformInSecondCoordinateSystem = (struct FTransform)TransformInSecondCoordinateSystem;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    AlignmentTransform = Parms.AlignmentTransform;
+}
+
+bool UARBlueprintLibrary::AddTrackedPointWithName(const struct FTransform& WorldTransform, struct FString PointName, bool bDeletePointsWithSameName)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("ARBlueprintLibrary", "AddTrackedPointWithName");
+    struct
+    {
+        struct FTransform WorldTransform;
+        struct FString PointName;
+        bool bDeletePointsWithSameName;
+        bool ReturnValue;
+    } Parms{};
+    Parms.WorldTransform = (struct FTransform)WorldTransform;
+    Parms.PointName = (struct FString)PointName;
+    Parms.bDeletePointsWithSameName = (bool)bDeletePointsWithSameName;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
 struct UARCandidateImage* UARBlueprintLibrary::AddRuntimeCandidateImage(struct UARSessionConfig* SessionConfig, struct UTexture2D* CandidateTexture, struct FString FriendlyName, float PhysicalWidth)
 {
     static struct UFunction* Func = nullptr;
@@ -503,7 +860,7 @@ struct UARCandidateImage* UARBlueprintLibrary::AddRuntimeCandidateImage(struct U
     return Parms.ReturnValue;
 }
 
-uint8_t UARBlueprintLibrary::AddManualEnvironmentCaptureProbe(struct FVector Location, struct FVector Extent)
+bool UARBlueprintLibrary::AddManualEnvironmentCaptureProbe(struct FVector Location, struct FVector Extent)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("ARBlueprintLibrary", "AddManualEnvironmentCaptureProbe");
@@ -511,7 +868,7 @@ uint8_t UARBlueprintLibrary::AddManualEnvironmentCaptureProbe(struct FVector Loc
     {
         struct FVector Location;
         struct FVector Extent;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.Location = (struct FVector)Location;
     Parms.Extent = (struct FVector)Extent;
@@ -542,6 +899,20 @@ EARLineTraceChannels UARTraceResultLibrary::GetTraceChannel(const struct FARTrac
     {
         struct FARTraceResult TraceResult;
         enum EARLineTraceChannels ReturnValue;
+    } Parms{};
+    Parms.TraceResult = (struct FARTraceResult)TraceResult;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct FTransform UARTraceResultLibrary::GetLocalTransform(const struct FARTraceResult& TraceResult)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("ARTraceResultLibrary", "GetLocalTransform");
+    struct
+    {
+        struct FARTraceResult TraceResult;
+        struct FTransform ReturnValue;
     } Parms{};
     Parms.TraceResult = (struct FARTraceResult)TraceResult;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
@@ -622,6 +993,830 @@ struct UARGetCandidateObjectAsyncTaskBlueprintProxy* UARGetCandidateObjectAsyncT
     Parms.Extent = (struct FVector)Extent;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
+}
+
+// UARComponent
+void UARComponent::UpdateVisualization()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARComponent", "UpdateVisualization");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UARComponent::SetNativeID(struct FGuid NativeID)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARComponent", "SetNativeID");
+    struct
+    {
+        struct FGuid NativeID;
+    } Parms{};
+    Parms.NativeID = (struct FGuid)NativeID;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UARComponent::ReceiveRemove()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARComponent", "ReceiveRemove");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UARComponent::OnRep_Payload()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARComponent", "OnRep_Payload");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+struct UMRMeshComponent* UARComponent::GetMRMesh()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARComponent", "GetMRMesh");
+    struct
+    {
+        struct UMRMeshComponent* ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// UARPlaneComponent
+void UARPlaneComponent::SetPlaneComponentDebugMode(EPlaneComponentDebugMode NewDebugMode)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("ARPlaneComponent", "SetPlaneComponentDebugMode");
+    struct
+    {
+        enum EPlaneComponentDebugMode NewDebugMode;
+    } Parms{};
+    Parms.NewDebugMode = (enum EPlaneComponentDebugMode)NewDebugMode;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+}
+
+void UARPlaneComponent::SetObjectClassificationDebugColors(const struct TMap<EARObjectClassification, struct FLinearColor>& InColors)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("ARPlaneComponent", "SetObjectClassificationDebugColors");
+    struct
+    {
+        struct TMap<EARObjectClassification, struct FLinearColor> InColors;
+    } Parms{};
+    Parms.InColors = (struct TMap<EARObjectClassification, struct FLinearColor>)InColors;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+}
+
+void UARPlaneComponent::ServerUpdatePayload(struct FARPlaneUpdatePayload NewPayload)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARPlaneComponent", "ServerUpdatePayload");
+    struct
+    {
+        struct FARPlaneUpdatePayload NewPayload;
+    } Parms{};
+    Parms.NewPayload = (struct FARPlaneUpdatePayload)NewPayload;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UARPlaneComponent::ReceiveUpdate(const struct FARPlaneUpdatePayload& Payload)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARPlaneComponent", "ReceiveUpdate");
+    struct
+    {
+        struct FARPlaneUpdatePayload Payload;
+    } Parms{};
+    Parms.Payload = (struct FARPlaneUpdatePayload)Payload;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UARPlaneComponent::ReceiveAdd(const struct FARPlaneUpdatePayload& Payload)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARPlaneComponent", "ReceiveAdd");
+    struct
+    {
+        struct FARPlaneUpdatePayload Payload;
+    } Parms{};
+    Parms.Payload = (struct FARPlaneUpdatePayload)Payload;
+    this->ProcessEvent(Func, &Parms);
+}
+
+struct TMap<EARObjectClassification, struct FLinearColor> UARPlaneComponent::GetObjectClassificationDebugColors()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("ARPlaneComponent", "GetObjectClassificationDebugColors");
+    struct
+    {
+        struct TMap<EARObjectClassification, struct FLinearColor> ReturnValue;
+    } Parms{};
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// UARPointComponent
+void UARPointComponent::ServerUpdatePayload(struct FARPointUpdatePayload NewPayload)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARPointComponent", "ServerUpdatePayload");
+    struct
+    {
+        struct FARPointUpdatePayload NewPayload;
+    } Parms{};
+    Parms.NewPayload = (struct FARPointUpdatePayload)NewPayload;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UARPointComponent::ReceiveUpdate(const struct FARPointUpdatePayload& Payload)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARPointComponent", "ReceiveUpdate");
+    struct
+    {
+        struct FARPointUpdatePayload Payload;
+    } Parms{};
+    Parms.Payload = (struct FARPointUpdatePayload)Payload;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UARPointComponent::ReceiveAdd(const struct FARPointUpdatePayload& Payload)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARPointComponent", "ReceiveAdd");
+    struct
+    {
+        struct FARPointUpdatePayload Payload;
+    } Parms{};
+    Parms.Payload = (struct FARPointUpdatePayload)Payload;
+    this->ProcessEvent(Func, &Parms);
+}
+
+// UARFaceComponent
+void UARFaceComponent::SetFaceComponentDebugMode(EFaceComponentDebugMode NewDebugMode)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("ARFaceComponent", "SetFaceComponentDebugMode");
+    struct
+    {
+        enum EFaceComponentDebugMode NewDebugMode;
+    } Parms{};
+    Parms.NewDebugMode = (enum EFaceComponentDebugMode)NewDebugMode;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+}
+
+void UARFaceComponent::ServerUpdatePayload(struct FARFaceUpdatePayload NewPayload)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARFaceComponent", "ServerUpdatePayload");
+    struct
+    {
+        struct FARFaceUpdatePayload NewPayload;
+    } Parms{};
+    Parms.NewPayload = (struct FARFaceUpdatePayload)NewPayload;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UARFaceComponent::ReceiveUpdate(const struct FARFaceUpdatePayload& Payload)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARFaceComponent", "ReceiveUpdate");
+    struct
+    {
+        struct FARFaceUpdatePayload Payload;
+    } Parms{};
+    Parms.Payload = (struct FARFaceUpdatePayload)Payload;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UARFaceComponent::ReceiveAdd(const struct FARFaceUpdatePayload& Payload)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARFaceComponent", "ReceiveAdd");
+    struct
+    {
+        struct FARFaceUpdatePayload Payload;
+    } Parms{};
+    Parms.Payload = (struct FARFaceUpdatePayload)Payload;
+    this->ProcessEvent(Func, &Parms);
+}
+
+// UARImageComponent
+void UARImageComponent::SetImageComponentDebugMode(EImageComponentDebugMode NewDebugMode)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("ARImageComponent", "SetImageComponentDebugMode");
+    struct
+    {
+        enum EImageComponentDebugMode NewDebugMode;
+    } Parms{};
+    Parms.NewDebugMode = (enum EImageComponentDebugMode)NewDebugMode;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+}
+
+void UARImageComponent::ServerUpdatePayload(struct FARImageUpdatePayload NewPayload)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARImageComponent", "ServerUpdatePayload");
+    struct
+    {
+        struct FARImageUpdatePayload NewPayload;
+    } Parms{};
+    Parms.NewPayload = (struct FARImageUpdatePayload)NewPayload;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UARImageComponent::ReceiveUpdate(const struct FARImageUpdatePayload& Payload)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARImageComponent", "ReceiveUpdate");
+    struct
+    {
+        struct FARImageUpdatePayload Payload;
+    } Parms{};
+    Parms.Payload = (struct FARImageUpdatePayload)Payload;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UARImageComponent::ReceiveAdd(const struct FARImageUpdatePayload& Payload)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARImageComponent", "ReceiveAdd");
+    struct
+    {
+        struct FARImageUpdatePayload Payload;
+    } Parms{};
+    Parms.Payload = (struct FARImageUpdatePayload)Payload;
+    this->ProcessEvent(Func, &Parms);
+}
+
+// UARQRCodeComponent
+void UARQRCodeComponent::SetQRCodeComponentDebugMode(EQRCodeComponentDebugMode NewDebugMode)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("ARQRCodeComponent", "SetQRCodeComponentDebugMode");
+    struct
+    {
+        enum EQRCodeComponentDebugMode NewDebugMode;
+    } Parms{};
+    Parms.NewDebugMode = (enum EQRCodeComponentDebugMode)NewDebugMode;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+}
+
+void UARQRCodeComponent::ServerUpdatePayload(struct FARQRCodeUpdatePayload NewPayload)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARQRCodeComponent", "ServerUpdatePayload");
+    struct
+    {
+        struct FARQRCodeUpdatePayload NewPayload;
+    } Parms{};
+    Parms.NewPayload = (struct FARQRCodeUpdatePayload)NewPayload;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UARQRCodeComponent::ReceiveUpdate(const struct FARQRCodeUpdatePayload& Payload)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARQRCodeComponent", "ReceiveUpdate");
+    struct
+    {
+        struct FARQRCodeUpdatePayload Payload;
+    } Parms{};
+    Parms.Payload = (struct FARQRCodeUpdatePayload)Payload;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UARQRCodeComponent::ReceiveAdd(const struct FARQRCodeUpdatePayload& Payload)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARQRCodeComponent", "ReceiveAdd");
+    struct
+    {
+        struct FARQRCodeUpdatePayload Payload;
+    } Parms{};
+    Parms.Payload = (struct FARQRCodeUpdatePayload)Payload;
+    this->ProcessEvent(Func, &Parms);
+}
+
+// UARPoseComponent
+void UARPoseComponent::SetPoseComponentDebugMode(EPoseComponentDebugMode NewDebugMode)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("ARPoseComponent", "SetPoseComponentDebugMode");
+    struct
+    {
+        enum EPoseComponentDebugMode NewDebugMode;
+    } Parms{};
+    Parms.NewDebugMode = (enum EPoseComponentDebugMode)NewDebugMode;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+}
+
+void UARPoseComponent::ServerUpdatePayload(struct FARPoseUpdatePayload NewPayload)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARPoseComponent", "ServerUpdatePayload");
+    struct
+    {
+        struct FARPoseUpdatePayload NewPayload;
+    } Parms{};
+    Parms.NewPayload = (struct FARPoseUpdatePayload)NewPayload;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UARPoseComponent::ReceiveUpdate(const struct FARPoseUpdatePayload& Payload)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARPoseComponent", "ReceiveUpdate");
+    struct
+    {
+        struct FARPoseUpdatePayload Payload;
+    } Parms{};
+    Parms.Payload = (struct FARPoseUpdatePayload)Payload;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UARPoseComponent::ReceiveAdd(const struct FARPoseUpdatePayload& Payload)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARPoseComponent", "ReceiveAdd");
+    struct
+    {
+        struct FARPoseUpdatePayload Payload;
+    } Parms{};
+    Parms.Payload = (struct FARPoseUpdatePayload)Payload;
+    this->ProcessEvent(Func, &Parms);
+}
+
+// UAREnvironmentProbeComponent
+void UAREnvironmentProbeComponent::ServerUpdatePayload(struct FAREnvironmentProbeUpdatePayload NewPayload)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("AREnvironmentProbeComponent", "ServerUpdatePayload");
+    struct
+    {
+        struct FAREnvironmentProbeUpdatePayload NewPayload;
+    } Parms{};
+    Parms.NewPayload = (struct FAREnvironmentProbeUpdatePayload)NewPayload;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UAREnvironmentProbeComponent::ReceiveUpdate(const struct FAREnvironmentProbeUpdatePayload& Payload)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("AREnvironmentProbeComponent", "ReceiveUpdate");
+    struct
+    {
+        struct FAREnvironmentProbeUpdatePayload Payload;
+    } Parms{};
+    Parms.Payload = (struct FAREnvironmentProbeUpdatePayload)Payload;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UAREnvironmentProbeComponent::ReceiveAdd(const struct FAREnvironmentProbeUpdatePayload& Payload)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("AREnvironmentProbeComponent", "ReceiveAdd");
+    struct
+    {
+        struct FAREnvironmentProbeUpdatePayload Payload;
+    } Parms{};
+    Parms.Payload = (struct FAREnvironmentProbeUpdatePayload)Payload;
+    this->ProcessEvent(Func, &Parms);
+}
+
+// UARObjectComponent
+void UARObjectComponent::ServerUpdatePayload(struct FARObjectUpdatePayload NewPayload)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARObjectComponent", "ServerUpdatePayload");
+    struct
+    {
+        struct FARObjectUpdatePayload NewPayload;
+    } Parms{};
+    Parms.NewPayload = (struct FARObjectUpdatePayload)NewPayload;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UARObjectComponent::ReceiveUpdate(const struct FARObjectUpdatePayload& Payload)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARObjectComponent", "ReceiveUpdate");
+    struct
+    {
+        struct FARObjectUpdatePayload Payload;
+    } Parms{};
+    Parms.Payload = (struct FARObjectUpdatePayload)Payload;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UARObjectComponent::ReceiveAdd(const struct FARObjectUpdatePayload& Payload)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARObjectComponent", "ReceiveAdd");
+    struct
+    {
+        struct FARObjectUpdatePayload Payload;
+    } Parms{};
+    Parms.Payload = (struct FARObjectUpdatePayload)Payload;
+    this->ProcessEvent(Func, &Parms);
+}
+
+// UARMeshComponent
+void UARMeshComponent::ServerUpdatePayload(struct FARMeshUpdatePayload NewPayload)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARMeshComponent", "ServerUpdatePayload");
+    struct
+    {
+        struct FARMeshUpdatePayload NewPayload;
+    } Parms{};
+    Parms.NewPayload = (struct FARMeshUpdatePayload)NewPayload;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UARMeshComponent::ReceiveUpdate(const struct FARMeshUpdatePayload& Payload)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARMeshComponent", "ReceiveUpdate");
+    struct
+    {
+        struct FARMeshUpdatePayload Payload;
+    } Parms{};
+    Parms.Payload = (struct FARMeshUpdatePayload)Payload;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UARMeshComponent::ReceiveAdd(const struct FARMeshUpdatePayload& Payload)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARMeshComponent", "ReceiveAdd");
+    struct
+    {
+        struct FARMeshUpdatePayload Payload;
+    } Parms{};
+    Parms.Payload = (struct FARMeshUpdatePayload)Payload;
+    this->ProcessEvent(Func, &Parms);
+}
+
+// UARGeoAnchorComponent
+void UARGeoAnchorComponent::SetGeoAnchorComponentDebugMode(EGeoAnchorComponentDebugMode NewDebugMode)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("ARGeoAnchorComponent", "SetGeoAnchorComponentDebugMode");
+    struct
+    {
+        enum EGeoAnchorComponentDebugMode NewDebugMode;
+    } Parms{};
+    Parms.NewDebugMode = (enum EGeoAnchorComponentDebugMode)NewDebugMode;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+}
+
+void UARGeoAnchorComponent::ServerUpdatePayload(struct FARGeoAnchorUpdatePayload NewPayload)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARGeoAnchorComponent", "ServerUpdatePayload");
+    struct
+    {
+        struct FARGeoAnchorUpdatePayload NewPayload;
+    } Parms{};
+    Parms.NewPayload = (struct FARGeoAnchorUpdatePayload)NewPayload;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UARGeoAnchorComponent::ReceiveUpdate(const struct FARGeoAnchorUpdatePayload& Payload)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARGeoAnchorComponent", "ReceiveUpdate");
+    struct
+    {
+        struct FARGeoAnchorUpdatePayload Payload;
+    } Parms{};
+    Parms.Payload = (struct FARGeoAnchorUpdatePayload)Payload;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UARGeoAnchorComponent::ReceiveAdd(const struct FARGeoAnchorUpdatePayload& Payload)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARGeoAnchorComponent", "ReceiveAdd");
+    struct
+    {
+        struct FARGeoAnchorUpdatePayload Payload;
+    } Parms{};
+    Parms.Payload = (struct FARGeoAnchorUpdatePayload)Payload;
+    this->ProcessEvent(Func, &Parms);
+}
+
+// UARDependencyHandler
+void UARDependencyHandler::StartARSessionLatent(struct UObject* WorldContextObject, struct UARSessionConfig* SessionConfig, struct FLatentActionInfo LatentInfo)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARDependencyHandler", "StartARSessionLatent");
+    struct
+    {
+        struct UObject* WorldContextObject;
+        struct UARSessionConfig* SessionConfig;
+        struct FLatentActionInfo LatentInfo;
+    } Parms{};
+    Parms.WorldContextObject = (struct UObject*)WorldContextObject;
+    Parms.SessionConfig = (struct UARSessionConfig*)SessionConfig;
+    Parms.LatentInfo = (struct FLatentActionInfo)LatentInfo;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UARDependencyHandler::RequestARSessionPermission(struct UObject* WorldContextObject, struct UARSessionConfig* SessionConfig, struct FLatentActionInfo LatentInfo, EARServicePermissionRequestResult& OutPermissionResult)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARDependencyHandler", "RequestARSessionPermission");
+    struct
+    {
+        struct UObject* WorldContextObject;
+        struct UARSessionConfig* SessionConfig;
+        struct FLatentActionInfo LatentInfo;
+        enum EARServicePermissionRequestResult OutPermissionResult;
+    } Parms{};
+    Parms.WorldContextObject = (struct UObject*)WorldContextObject;
+    Parms.SessionConfig = (struct UARSessionConfig*)SessionConfig;
+    Parms.LatentInfo = (struct FLatentActionInfo)LatentInfo;
+    this->ProcessEvent(Func, &Parms);
+    OutPermissionResult = Parms.OutPermissionResult;
+}
+
+void UARDependencyHandler::InstallARService(struct UObject* WorldContextObject, struct FLatentActionInfo LatentInfo, EARServiceInstallRequestResult& OutInstallResult)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARDependencyHandler", "InstallARService");
+    struct
+    {
+        struct UObject* WorldContextObject;
+        struct FLatentActionInfo LatentInfo;
+        enum EARServiceInstallRequestResult OutInstallResult;
+    } Parms{};
+    Parms.WorldContextObject = (struct UObject*)WorldContextObject;
+    Parms.LatentInfo = (struct FLatentActionInfo)LatentInfo;
+    this->ProcessEvent(Func, &Parms);
+    OutInstallResult = Parms.OutInstallResult;
+}
+
+struct UARDependencyHandler* UARDependencyHandler::GetARDependencyHandler()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("ARDependencyHandler", "GetARDependencyHandler");
+    struct
+    {
+        struct UARDependencyHandler* ReturnValue;
+    } Parms{};
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+void UARDependencyHandler::CheckARServiceAvailability(struct UObject* WorldContextObject, struct FLatentActionInfo LatentInfo, EARServiceAvailability& OutAvailability)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARDependencyHandler", "CheckARServiceAvailability");
+    struct
+    {
+        struct UObject* WorldContextObject;
+        struct FLatentActionInfo LatentInfo;
+        enum EARServiceAvailability OutAvailability;
+    } Parms{};
+    Parms.WorldContextObject = (struct UObject*)WorldContextObject;
+    Parms.LatentInfo = (struct FLatentActionInfo)LatentInfo;
+    this->ProcessEvent(Func, &Parms);
+    OutAvailability = Parms.OutAvailability;
+}
+
+// UARGeoTrackingSupport
+struct UARGeoTrackingSupport* UARGeoTrackingSupport::GetGeoTrackingSupport()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("ARGeoTrackingSupport", "GetGeoTrackingSupport");
+    struct
+    {
+        struct UARGeoTrackingSupport* ReturnValue;
+    } Parms{};
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+EARGeoTrackingStateReason UARGeoTrackingSupport::GetGeoTrackingStateReason()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARGeoTrackingSupport", "GetGeoTrackingStateReason");
+    struct
+    {
+        enum EARGeoTrackingStateReason ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+EARGeoTrackingState UARGeoTrackingSupport::GetGeoTrackingState()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARGeoTrackingSupport", "GetGeoTrackingState");
+    struct
+    {
+        enum EARGeoTrackingState ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+EARGeoTrackingAccuracy UARGeoTrackingSupport::GetGeoTrackingAccuracy()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARGeoTrackingSupport", "GetGeoTrackingAccuracy");
+    struct
+    {
+        enum EARGeoTrackingAccuracy ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+bool UARGeoTrackingSupport::AddGeoAnchorAtLocationWithAltitude(float Longitude, float Latitude, float AltitudeMeters, struct FString OptionalAnchorName)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARGeoTrackingSupport", "AddGeoAnchorAtLocationWithAltitude");
+    struct
+    {
+        float Longitude;
+        float Latitude;
+        float AltitudeMeters;
+        struct FString OptionalAnchorName;
+        bool ReturnValue;
+    } Parms{};
+    Parms.Longitude = (float)Longitude;
+    Parms.Latitude = (float)Latitude;
+    Parms.AltitudeMeters = (float)AltitudeMeters;
+    Parms.OptionalAnchorName = (struct FString)OptionalAnchorName;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+bool UARGeoTrackingSupport::AddGeoAnchorAtLocation(float Longitude, float Latitude, struct FString OptionalAnchorName)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARGeoTrackingSupport", "AddGeoAnchorAtLocation");
+    struct
+    {
+        float Longitude;
+        float Latitude;
+        struct FString OptionalAnchorName;
+        bool ReturnValue;
+    } Parms{};
+    Parms.Longitude = (float)Longitude;
+    Parms.Latitude = (float)Latitude;
+    Parms.OptionalAnchorName = (struct FString)OptionalAnchorName;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// UCheckGeoTrackingAvailabilityAsyncTaskBlueprintProxy
+void UCheckGeoTrackingAvailabilityAsyncTaskBlueprintProxy::GeoTrackingAvailabilityDelegate__DelegateSignature(bool bIsAvailable, struct FString Error)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CheckGeoTrackingAvailabilityAsyncTaskBlueprintProxy", "GeoTrackingAvailabilityDelegate__DelegateSignature");
+    struct
+    {
+        bool bIsAvailable;
+        struct FString Error;
+    } Parms{};
+    Parms.bIsAvailable = (bool)bIsAvailable;
+    Parms.Error = (struct FString)Error;
+    this->ProcessEvent(Func, &Parms);
+}
+
+struct UCheckGeoTrackingAvailabilityAsyncTaskBlueprintProxy* UCheckGeoTrackingAvailabilityAsyncTaskBlueprintProxy::CheckGeoTrackingAvailabilityAtLocation(struct UObject* WorldContextObject, float Longitude, float Latitude)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("CheckGeoTrackingAvailabilityAsyncTaskBlueprintProxy", "CheckGeoTrackingAvailabilityAtLocation");
+    struct
+    {
+        struct UObject* WorldContextObject;
+        float Longitude;
+        float Latitude;
+        struct UCheckGeoTrackingAvailabilityAsyncTaskBlueprintProxy* ReturnValue;
+    } Parms{};
+    Parms.WorldContextObject = (struct UObject*)WorldContextObject;
+    Parms.Longitude = (float)Longitude;
+    Parms.Latitude = (float)Latitude;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct UCheckGeoTrackingAvailabilityAsyncTaskBlueprintProxy* UCheckGeoTrackingAvailabilityAsyncTaskBlueprintProxy::CheckGeoTrackingAvailability(struct UObject* WorldContextObject)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("CheckGeoTrackingAvailabilityAsyncTaskBlueprintProxy", "CheckGeoTrackingAvailability");
+    struct
+    {
+        struct UObject* WorldContextObject;
+        struct UCheckGeoTrackingAvailabilityAsyncTaskBlueprintProxy* ReturnValue;
+    } Parms{};
+    Parms.WorldContextObject = (struct UObject*)WorldContextObject;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// UGetGeoLocationAsyncTaskBlueprintProxy
+void UGetGeoLocationAsyncTaskBlueprintProxy::GetGeoLocationDelegate__DelegateSignature(float Longitude, float Latitude, float Altitude, struct FString Error)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("GetGeoLocationAsyncTaskBlueprintProxy", "GetGeoLocationDelegate__DelegateSignature");
+    struct
+    {
+        float Longitude;
+        float Latitude;
+        float Altitude;
+        struct FString Error;
+    } Parms{};
+    Parms.Longitude = (float)Longitude;
+    Parms.Latitude = (float)Latitude;
+    Parms.Altitude = (float)Altitude;
+    Parms.Error = (struct FString)Error;
+    this->ProcessEvent(Func, &Parms);
+}
+
+struct UGetGeoLocationAsyncTaskBlueprintProxy* UGetGeoLocationAsyncTaskBlueprintProxy::GetGeoLocationAtWorldPosition(struct UObject* WorldContextObject, const struct FVector& WorldPosition)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("GetGeoLocationAsyncTaskBlueprintProxy", "GetGeoLocationAtWorldPosition");
+    struct
+    {
+        struct UObject* WorldContextObject;
+        struct FVector WorldPosition;
+        struct UGetGeoLocationAsyncTaskBlueprintProxy* ReturnValue;
+    } Parms{};
+    Parms.WorldContextObject = (struct UObject*)WorldContextObject;
+    Parms.WorldPosition = (struct FVector)WorldPosition;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// UARLifeCycleComponent
+void UARLifeCycleComponent::ServerSpawnARActor(struct UObject* ComponentClass, struct FGuid NativeID)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARLifeCycleComponent", "ServerSpawnARActor");
+    struct
+    {
+        struct UObject* ComponentClass;
+        struct FGuid NativeID;
+    } Parms{};
+    Parms.ComponentClass = (struct UObject*)ComponentClass;
+    Parms.NativeID = (struct FGuid)NativeID;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UARLifeCycleComponent::ServerDestroyARActor(struct AARActor* Actor)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARLifeCycleComponent", "ServerDestroyARActor");
+    struct
+    {
+        struct AARActor* Actor;
+    } Parms{};
+    Parms.Actor = (struct AARActor*)Actor;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UARLifeCycleComponent::InstanceARActorToBeDestroyedDelegate__DelegateSignature(struct AARActor* Actor)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARLifeCycleComponent", "InstanceARActorToBeDestroyedDelegate__DelegateSignature");
+    struct
+    {
+        struct AARActor* Actor;
+    } Parms{};
+    Parms.Actor = (struct AARActor*)Actor;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UARLifeCycleComponent::InstanceARActorSpawnedDelegate__DelegateSignature(struct UObject* ComponentClass, struct FGuid NativeID, struct AARActor* SpawnedActor)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARLifeCycleComponent", "InstanceARActorSpawnedDelegate__DelegateSignature");
+    struct
+    {
+        struct UObject* ComponentClass;
+        struct FGuid NativeID;
+        struct AARActor* SpawnedActor;
+    } Parms{};
+    Parms.ComponentClass = (struct UObject*)ComponentClass;
+    Parms.NativeID = (struct FGuid)NativeID;
+    Parms.SpawnedActor = (struct AARActor*)SpawnedActor;
+    this->ProcessEvent(Func, &Parms);
 }
 
 // UARBasicLightEstimate
@@ -753,61 +1948,61 @@ void UARPin::DebugDraw(struct UWorld* World, const struct FLinearColor& Color, f
 }
 
 // UARSessionConfig
-uint8_t UARSessionConfig::ShouldResetTrackedObjects()
+bool UARSessionConfig::ShouldResetTrackedObjects()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("ARSessionConfig", "ShouldResetTrackedObjects");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UARSessionConfig::ShouldResetCameraTracking()
+bool UARSessionConfig::ShouldResetCameraTracking()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("ARSessionConfig", "ShouldResetCameraTracking");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UARSessionConfig::ShouldRenderCameraOverlay()
+bool UARSessionConfig::ShouldRenderCameraOverlay()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("ARSessionConfig", "ShouldRenderCameraOverlay");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UARSessionConfig::ShouldEnableCameraTracking()
+bool UARSessionConfig::ShouldEnableCameraTracking()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("ARSessionConfig", "ShouldEnableCameraTracking");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UARSessionConfig::ShouldEnableAutoFocus()
+bool UARSessionConfig::ShouldEnableAutoFocus()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("ARSessionConfig", "ShouldEnableAutoFocus");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
@@ -837,27 +2032,39 @@ void UARSessionConfig::SetSessionTrackingFeatureToEnable(EARSessionTrackingFeatu
     this->ProcessEvent(Func, &Parms);
 }
 
-void UARSessionConfig::SetResetTrackedObjects(uint8_t bNewValue)
+void UARSessionConfig::SetSceneReconstructionMethod(EARSceneReconstruction InSceneReconstructionMethod)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARSessionConfig", "SetSceneReconstructionMethod");
+    struct
+    {
+        enum EARSceneReconstruction InSceneReconstructionMethod;
+    } Parms{};
+    Parms.InSceneReconstructionMethod = (enum EARSceneReconstruction)InSceneReconstructionMethod;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UARSessionConfig::SetResetTrackedObjects(bool bNewValue)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("ARSessionConfig", "SetResetTrackedObjects");
     struct
     {
-        uint8_t bNewValue;
+        bool bNewValue;
     } Parms{};
-    Parms.bNewValue = (uint8_t)bNewValue;
+    Parms.bNewValue = (bool)bNewValue;
     this->ProcessEvent(Func, &Parms);
 }
 
-void UARSessionConfig::SetResetCameraTracking(uint8_t bNewValue)
+void UARSessionConfig::SetResetCameraTracking(bool bNewValue)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("ARSessionConfig", "SetResetCameraTracking");
     struct
     {
-        uint8_t bNewValue;
+        bool bNewValue;
     } Parms{};
-    Parms.bNewValue = (uint8_t)bNewValue;
+    Parms.bNewValue = (bool)bNewValue;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -885,15 +2092,15 @@ void UARSessionConfig::SetFaceTrackingDirection(EARFaceTrackingDirection InDirec
     this->ProcessEvent(Func, &Parms);
 }
 
-void UARSessionConfig::SetEnableAutoFocus(uint8_t bNewValue)
+void UARSessionConfig::SetEnableAutoFocus(bool bNewValue)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("ARSessionConfig", "SetEnableAutoFocus");
     struct
     {
-        uint8_t bNewValue;
+        bool bNewValue;
     } Parms{};
-    Parms.bNewValue = (uint8_t)bNewValue;
+    Parms.bNewValue = (bool)bNewValue;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -952,6 +2159,18 @@ EARSessionType UARSessionConfig::GetSessionType()
     struct
     {
         enum EARSessionType ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+EARSceneReconstruction UARSessionConfig::GetSceneReconstructionMethod()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARSessionConfig", "GetSceneReconstructionMethod");
+    struct
+    {
+        enum EARSceneReconstruction ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
@@ -1182,30 +2401,30 @@ void AARSharedWorldPlayerController::ServerMarkReadyForReceiving()
     this->ProcessEvent(Func, &Parms);
 }
 
-void AARSharedWorldPlayerController::ClientUpdatePreviewImageData(int32_t offset, struct TArray<uint8_t> Buffer)
+void AARSharedWorldPlayerController::ClientUpdatePreviewImageData(int32_t Offset, struct TArray<uint8_t> Buffer)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("ARSharedWorldPlayerController", "ClientUpdatePreviewImageData");
     struct
     {
-        int32_t offset;
+        int32_t Offset;
         struct TArray<uint8_t> Buffer;
     } Parms{};
-    Parms.offset = (int32_t)offset;
+    Parms.Offset = (int32_t)Offset;
     Parms.Buffer = (struct TArray<uint8_t>)Buffer;
     this->ProcessEvent(Func, &Parms);
 }
 
-void AARSharedWorldPlayerController::ClientUpdateARWorldData(int32_t offset, struct TArray<uint8_t> Buffer)
+void AARSharedWorldPlayerController::ClientUpdateARWorldData(int32_t Offset, struct TArray<uint8_t> Buffer)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("ARSharedWorldPlayerController", "ClientUpdateARWorldData");
     struct
     {
-        int32_t offset;
+        int32_t Offset;
         struct TArray<uint8_t> Buffer;
     } Parms{};
-    Parms.offset = (int32_t)offset;
+    Parms.Offset = (int32_t)Offset;
     Parms.Buffer = (struct TArray<uint8_t>)Buffer;
     this->ProcessEvent(Func, &Parms);
 }
@@ -1238,13 +2457,13 @@ void AARSkyLight::SetEnvironmentCaptureProbe(struct UAREnvironmentCaptureProbe* 
 }
 
 // UARTrackedGeometry
-uint8_t UARTrackedGeometry::IsTracked()
+bool UARTrackedGeometry::IsTracked()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("ARTrackedGeometry", "IsTracked");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
@@ -1281,6 +2500,18 @@ EARObjectClassification UARTrackedGeometry::GetObjectClassification()
     struct
     {
         enum EARObjectClassification ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct FString UARTrackedGeometry::GetName()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARTrackedGeometry", "GetName");
+    struct
+    {
+        struct FString ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
@@ -1533,6 +2764,76 @@ struct FARPose3D UARTrackedPose::GetTrackedPoseData()
     struct
     {
         struct FARPose3D ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// UARMeshGeometry
+bool UARMeshGeometry::GetObjectClassificationAtLocation(const struct FVector& InWorldLocation, EARObjectClassification& OutClassification, struct FVector& OutClassificationLocation, float MaxLocationDiff)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARMeshGeometry", "GetObjectClassificationAtLocation");
+    struct
+    {
+        struct FVector InWorldLocation;
+        enum EARObjectClassification OutClassification;
+        struct FVector OutClassificationLocation;
+        float MaxLocationDiff;
+        bool ReturnValue;
+    } Parms{};
+    Parms.InWorldLocation = (struct FVector)InWorldLocation;
+    Parms.MaxLocationDiff = (float)MaxLocationDiff;
+    this->ProcessEvent(Func, &Parms);
+    OutClassification = Parms.OutClassification;
+    OutClassificationLocation = Parms.OutClassificationLocation;
+    return Parms.ReturnValue;
+}
+
+// UARGeoAnchor
+float UARGeoAnchor::GetLongitude()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARGeoAnchor", "GetLongitude");
+    struct
+    {
+        float ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+float UARGeoAnchor::GetLatitude()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARGeoAnchor", "GetLatitude");
+    struct
+    {
+        float ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+EARAltitudeSource UARGeoAnchor::GetAltitudeSource()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARGeoAnchor", "GetAltitudeSource");
+    struct
+    {
+        enum EARAltitudeSource ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+float UARGeoAnchor::GetAltitudeMeters()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ARGeoAnchor", "GetAltitudeMeters");
+    struct
+    {
+        float ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;

@@ -13,8 +13,8 @@ namespace SDK
 
 struct AActor;
 struct FGameplayResourceSet;
-struct UGameplayTask;
 struct UGameplayTasksComponent;
+struct UGameplayTask;
 struct UGameplayTask_ClaimResource;
 struct UGameplayTask_SpawnActor;
 struct UGameplayTask_TimeLimitedExecution;
@@ -59,6 +59,37 @@ struct FGameplayResourceSet
 	uint8_t Pad_0x0[0x2]; // 0x0(0x2)
 };
 
+// Object: Class GameplayTasks.GameplayTasksComponent
+// Size: 0x150 (Inherited: 0xE0)
+struct UGameplayTasksComponent : UActorComponent
+{
+	DEFINE_UE_CLASS_HELPERS(UGameplayTasksComponent, "GameplayTasksComponent")
+
+	uint8_t Pad_0xE0[0xC]; // 0xE0(0xC)
+	uint8_t BitPad_0xEC_0 : 1; // 0xEC(0x1)
+	uint8_t bIsNetDirty : 1; // 0xEC(0x1), Mask(0x2)
+	uint8_t BitPad_0xEC_2 : 6; // 0xEC(0x1)
+	uint8_t Pad_0xED[0x3]; // 0xED(0x3)
+	struct TArray<struct UGameplayTask*> SimulatedTasks; // 0xF0(0x10)
+	struct TArray<struct UGameplayTask*> TaskPriorityQueue; // 0x100(0x10)
+	uint8_t Pad_0x110[0x10]; // 0x110(0x10)
+	struct TArray<struct UGameplayTask*> TickingTasks; // 0x120(0x10)
+	struct TArray<struct UGameplayTask*> KnownTasks; // 0x130(0x10)
+	struct FMulticastInlineDelegate OnClaimedResourcesChange; // 0x140(0x10)
+
+	// Object: Function GameplayTasks.GameplayTasksComponent.OnRep_SimulatedTasks
+	// Flags: [Final|Native|Public]
+	// Offset: 0xbdecf64
+	// Params: [ Num(0) Size(0x0) ]
+	void OnRep_SimulatedTasks();
+
+	// Object: Function GameplayTasks.GameplayTasksComponent.K2_RunGameplayTask
+	// Flags: [Final|Native|Static|Public|BlueprintCallable]
+	// Offset: 0xbdeccf0
+	// Params: [ Num(6) Size(0x41) ]
+	static EGameplayTaskRunResult K2_RunGameplayTask(struct TScriptInterface<IGameplayTaskOwnerInterface> TaskOwner, struct UGameplayTask* Task, uint8_t Priority, struct TArray<struct UGameplayTaskResource*> AdditionalRequiredResources, struct TArray<struct UGameplayTaskResource*> AdditionalClaimedResources);
+};
+
 // Object: Class GameplayTasks.GameplayTask
 // Size: 0x60 (Inherited: 0x28)
 struct UGameplayTask : UObject
@@ -74,52 +105,21 @@ struct UGameplayTask : UObject
 
 	// Object: Function GameplayTasks.GameplayTask.ReadyForActivation
 	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x17698cc4
+	// Offset: 0x8b44980
 	// Params: [ Num(0) Size(0x0) ]
 	void ReadyForActivation();
 
 	// Object: DelegateFunction GameplayTasks.GameplayTask.GenericGameplayTaskDelegate__DelegateSignature
 	// Flags: [MulticastDelegate|Public|Delegate]
-	// Offset: 0x101d2e88
+	// Offset: 0x5d8cbc8
 	// Params: [ Num(0) Size(0x0) ]
 	void GenericGameplayTaskDelegate__DelegateSignature();
 
 	// Object: Function GameplayTasks.GameplayTask.EndTask
 	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x17698cb0
+	// Offset: 0xbdec3d8
 	// Params: [ Num(0) Size(0x0) ]
 	void EndTask();
-};
-
-// Object: Class GameplayTasks.GameplayTasksComponent
-// Size: 0x168 (Inherited: 0xF8)
-struct UGameplayTasksComponent : UActorComponent
-{
-	DEFINE_UE_CLASS_HELPERS(UGameplayTasksComponent, "GameplayTasksComponent")
-
-	uint8_t Pad_0xF8[0xC]; // 0xF8(0xC)
-	uint8_t BitPad_0x104_0 : 1; // 0x104(0x1)
-	uint8_t bIsNetDirty : 1; // 0x104(0x1), Mask(0x2)
-	uint8_t BitPad_0x104_2 : 6; // 0x104(0x1)
-	uint8_t Pad_0x105[0x3]; // 0x105(0x3)
-	struct TArray<struct UGameplayTask*> SimulatedTasks; // 0x108(0x10)
-	struct TArray<struct UGameplayTask*> TaskPriorityQueue; // 0x118(0x10)
-	uint8_t Pad_0x128[0x10]; // 0x128(0x10)
-	struct TArray<struct UGameplayTask*> TickingTasks; // 0x138(0x10)
-	struct TArray<struct UGameplayTask*> KnownTasks; // 0x148(0x10)
-	struct FMulticastInlineDelegate OnClaimedResourcesChange; // 0x158(0x10)
-
-	// Object: Function GameplayTasks.GameplayTasksComponent.OnRep_SimulatedTasks
-	// Flags: [Final|Native|Public]
-	// Offset: 0x17699a7c
-	// Params: [ Num(0) Size(0x0) ]
-	void OnRep_SimulatedTasks();
-
-	// Object: Function GameplayTasks.GameplayTasksComponent.K2_RunGameplayTask
-	// Flags: [Final|Native|Static|Public|BlueprintCallable]
-	// Offset: 0x17699838
-	// Params: [ Num(6) Size(0x41) ]
-	static EGameplayTaskRunResult K2_RunGameplayTask(struct TScriptInterface<IGameplayTaskOwnerInterface> TaskOwner, struct UGameplayTask* Task, uint8_t Priority, struct TArray<struct UGameplayTaskResource*> AdditionalRequiredResources, struct TArray<struct UGameplayTaskResource*> AdditionalClaimedResources);
 };
 
 // Object: Class GameplayTasks.GameplayTask_ClaimResource
@@ -130,13 +130,13 @@ struct UGameplayTask_ClaimResource : UGameplayTask
 
 	// Object: Function GameplayTasks.GameplayTask_ClaimResource.ClaimResources
 	// Flags: [Final|Native|Static|Public|BlueprintCallable]
-	// Offset: 0x17698ef4
+	// Offset: 0xbdec3f4
 	// Params: [ Num(5) Size(0x38) ]
 	static struct UGameplayTask_ClaimResource* ClaimResources(struct TScriptInterface<IGameplayTaskOwnerInterface> InTaskOwner, struct TArray<struct UGameplayTaskResource*> ResourceClasses, uint8_t Priority, struct FName TaskInstanceName);
 
 	// Object: Function GameplayTasks.GameplayTask_ClaimResource.ClaimResource
 	// Flags: [Final|Native|Static|Public|BlueprintCallable]
-	// Offset: 0x17698d8c
+	// Offset: 0xbdec5c4
 	// Params: [ Num(5) Size(0x30) ]
 	static struct UGameplayTask_ClaimResource* ClaimResource(struct TScriptInterface<IGameplayTaskOwnerInterface> InTaskOwner, struct UGameplayTaskResource* ResourceClass, uint8_t Priority, struct FName TaskInstanceName);
 };
@@ -154,21 +154,21 @@ struct UGameplayTask_SpawnActor : UGameplayTask
 
 	// Object: Function GameplayTasks.GameplayTask_SpawnActor.SpawnActor
 	// Flags: [Final|Native|Static|Public|HasDefaults|BlueprintCallable]
-	// Offset: 0x176993f4
+	// Offset: 0xbdec938
 	// Params: [ Num(6) Size(0x40) ]
-	static struct UGameplayTask_SpawnActor* SpawnActor(struct TScriptInterface<IGameplayTaskOwnerInterface> TaskOwner, struct FVector SpawnLocation, struct FRotator SpawnRotation, struct AActor* Class, uint8_t bSpawnOnlyOnAuthority);
+	static struct UGameplayTask_SpawnActor* SpawnActor(struct TScriptInterface<IGameplayTaskOwnerInterface> TaskOwner, struct FVector SpawnLocation, struct FRotator SpawnRotation, struct AActor* Class, bool bSpawnOnlyOnAuthority);
 
 	// Object: Function GameplayTasks.GameplayTask_SpawnActor.FinishSpawningActor
 	// Flags: [Native|Public|BlueprintCallable]
-	// Offset: 0x17699310
+	// Offset: 0xbdec744
 	// Params: [ Num(2) Size(0x10) ]
 	void FinishSpawningActor(struct UObject* WorldContextObject, struct AActor* SpawnedActor);
 
 	// Object: Function GameplayTasks.GameplayTask_SpawnActor.BeginSpawningActor
 	// Flags: [Native|Public|HasOutParms|BlueprintCallable]
-	// Offset: 0x1769920c
+	// Offset: 0xbdec830
 	// Params: [ Num(3) Size(0x11) ]
-	uint8_t BeginSpawningActor(struct UObject* WorldContextObject, struct AActor*& SpawnedActor);
+	bool BeginSpawningActor(struct UObject* WorldContextObject, struct AActor*& SpawnedActor);
 };
 
 // Object: Class GameplayTasks.GameplayTask_TimeLimitedExecution
@@ -193,13 +193,13 @@ struct UGameplayTask_WaitDelay : UGameplayTask
 
 	// Object: Function GameplayTasks.GameplayTask_WaitDelay.TaskWaitDelay
 	// Flags: [Final|Native|Static|Public|BlueprintCallable]
-	// Offset: 0x176995cc
+	// Offset: 0xbdecb24
 	// Params: [ Num(4) Size(0x20) ]
 	static struct UGameplayTask_WaitDelay* TaskWaitDelay(struct TScriptInterface<IGameplayTaskOwnerInterface> TaskOwner, float Time, uint8_t Priority);
 
 	// Object: DelegateFunction GameplayTasks.GameplayTask_WaitDelay.TaskDelayDelegate__DelegateSignature
 	// Flags: [MulticastDelegate|Public|Delegate]
-	// Offset: 0x101d2e88
+	// Offset: 0x5d8cbc8
 	// Params: [ Num(0) Size(0x0) ]
 	void TaskDelayDelegate__DelegateSignature();
 };

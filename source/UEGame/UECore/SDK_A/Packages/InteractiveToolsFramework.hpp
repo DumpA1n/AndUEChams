@@ -7,7 +7,7 @@ namespace SDK
 {
 
 // Package: InteractiveToolsFramework
-// Enums: 13
+// Enums: 14
 // Structs: 6
 // Classes: 88
 
@@ -200,6 +200,15 @@ enum class EToolSide : uint8_t
 	EToolSide_MAX = 3
 };
 
+// Object: Enum InteractiveToolsFramework.EViewInteractionState
+enum class EViewInteractionState : uint8_t
+{
+	None = 0,
+	Hovered = 1,
+	Focused = 2,
+	EViewInteractionState_MAX = 3
+};
+
 // Object: Enum InteractiveToolsFramework.ESelectedObjectsModificationType
 enum class ESelectedObjectsModificationType : uint8_t
 {
@@ -251,14 +260,15 @@ enum class ESceneSnapQueryTargetType : uint8_t
 enum class ESceneSnapQueryType : uint8_t
 {
 	Position = 1,
-	ESceneSnapQueryType_MAX = 2
+	Rotation = 2,
+	ESceneSnapQueryType_MAX = 3
 };
 
 // Object: ScriptStruct InteractiveToolsFramework.BrushStampData
-// Size: 0xA8 (Inherited: 0x0)
+// Size: 0xC0 (Inherited: 0x0)
 struct FBrushStampData
 {
-	uint8_t Pad_0x0[0xA8]; // 0x0(0xA8)
+	uint8_t Pad_0x0[0xC0]; // 0x0(0xC0)
 };
 
 // Object: ScriptStruct InteractiveToolsFramework.BehaviorInfo
@@ -352,8 +362,7 @@ struct UAxisAngleGizmo : UInteractiveGizmo
 	struct TScriptInterface<IGizmoFloatParameterSource> AngleSource; // 0x58(0x10)
 	struct TScriptInterface<IGizmoClickTarget> HitTarget; // 0x68(0x10)
 	struct TScriptInterface<IGizmoStateTarget> StateTarget; // 0x78(0x10)
-	uint8_t bInInteraction : 1; // 0x88(0x1), Mask(0x1)
-	uint8_t BitPad_0x88_1 : 7; // 0x88(0x1)
+	bool bInInteraction; // 0x88(0x1)
 	uint8_t Pad_0x89[0x3]; // 0x89(0x3)
 	struct FVector RotationOrigin; // 0x8C(0xC)
 	struct FVector RotationAxis; // 0x98(0xC)
@@ -384,10 +393,8 @@ struct UAxisPositionGizmo : UInteractiveGizmo
 	struct TScriptInterface<IGizmoFloatParameterSource> ParameterSource; // 0x58(0x10)
 	struct TScriptInterface<IGizmoClickTarget> HitTarget; // 0x68(0x10)
 	struct TScriptInterface<IGizmoStateTarget> StateTarget; // 0x78(0x10)
-	uint8_t bEnableSignedAxis : 1; // 0x88(0x1), Mask(0x1)
-	uint8_t BitPad_0x88_1 : 7; // 0x88(0x1)
-	uint8_t bInInteraction : 1; // 0x89(0x1), Mask(0x1)
-	uint8_t BitPad_0x89_1 : 7; // 0x89(0x1)
+	bool bEnableSignedAxis; // 0x88(0x1)
+	bool bInInteraction; // 0x89(0x1)
 	uint8_t Pad_0x8A[0x2]; // 0x8A(0x2)
 	struct FVector InteractionOrigin; // 0x8C(0xC)
 	struct FVector InteractionAxis; // 0x98(0xC)
@@ -443,40 +450,37 @@ struct UGizmoComponentAxisSource : UObject
 	uint8_t Pad_0x28[0x8]; // 0x28(0x8)
 	struct USceneComponent* Component; // 0x30(0x8)
 	int32_t AxisIndex; // 0x38(0x4)
-	uint8_t bLocalAxes : 1; // 0x3C(0x1), Mask(0x1)
-	uint8_t BitPad_0x3C_1 : 7; // 0x3C(0x1)
+	bool bLocalAxes; // 0x3C(0x1)
 	uint8_t Pad_0x3D[0x3]; // 0x3D(0x3)
 };
 
 // Object: Class InteractiveToolsFramework.InteractiveToolPropertySet
-// Size: 0x50 (Inherited: 0x28)
+// Size: 0x60 (Inherited: 0x28)
 struct UInteractiveToolPropertySet : UObject
 {
 	DEFINE_UE_CLASS_HELPERS(UInteractiveToolPropertySet, "InteractiveToolPropertySet")
 
-	uint8_t Pad_0x28[0x18]; // 0x28(0x18)
-	struct UObject* CachedProperties; // 0x40(0x8)
-	uint8_t bIsPropertySetEnabled : 1; // 0x48(0x1), Mask(0x1)
-	uint8_t BitPad_0x48_1 : 7; // 0x48(0x1)
-	uint8_t Pad_0x49[0x7]; // 0x49(0x7)
+	uint8_t Pad_0x28[0x10]; // 0x28(0x10)
+	struct UInteractiveToolPropertySet* CachedProperties; // 0x38(0x8)
+	bool bIsPropertySetEnabled; // 0x40(0x1)
+	uint8_t Pad_0x41[0x1F]; // 0x41(0x1F)
 };
 
 // Object: Class InteractiveToolsFramework.BrushBaseProperties
-// Size: 0x68 (Inherited: 0x50)
+// Size: 0x78 (Inherited: 0x60)
 struct UBrushBaseProperties : UInteractiveToolPropertySet
 {
 	DEFINE_UE_CLASS_HELPERS(UBrushBaseProperties, "BrushBaseProperties")
 
-	float BrushSize; // 0x4C(0x4)
-	uint8_t bSpecifyRadius : 1; // 0x50(0x1), Mask(0x1)
-	float BrushRadius; // 0x54(0x4)
-	float BrushStrength; // 0x58(0x4)
-	float BrushFalloffAmount; // 0x5C(0x4)
-	uint8_t bShowStrength : 1; // 0x60(0x1), Mask(0x1)
-	uint8_t BitPad_0x60_2 : 6; // 0x60(0x1)
-	uint8_t bShowFalloff : 1; // 0x61(0x1), Mask(0x1)
-	uint8_t BitPad_0x61_1 : 7; // 0x61(0x1)
-	uint8_t Pad_0x62[0x6]; // 0x62(0x6)
+	float BrushSize; // 0x60(0x4)
+	bool bSpecifyRadius; // 0x64(0x1)
+	uint8_t Pad_0x65[0x3]; // 0x65(0x3)
+	float BrushRadius; // 0x68(0x4)
+	float BrushStrength; // 0x6C(0x4)
+	float BrushFalloffAmount; // 0x70(0x4)
+	bool bShowStrength; // 0x74(0x1)
+	bool bShowFalloff; // 0x75(0x1)
+	uint8_t Pad_0x76[0x2]; // 0x76(0x2)
 };
 
 // Object: Class InteractiveToolsFramework.InteractiveTool
@@ -510,19 +514,19 @@ struct UMeshSurfacePointTool : USingleSelectionTool
 };
 
 // Object: Class InteractiveToolsFramework.BaseBrushTool
-// Size: 0x1B8 (Inherited: 0xC0)
+// Size: 0x1D0 (Inherited: 0xC0)
 struct UBaseBrushTool : UMeshSurfacePointTool
 {
 	DEFINE_UE_CLASS_HELPERS(UBaseBrushTool, "BaseBrushTool")
 
 	struct UBrushBaseProperties* BrushProperties; // 0xC0(0x8)
-	uint8_t bInBrushStroke : 1; // 0xC8(0x1), Mask(0x1)
-	uint8_t BitPad_0xC8_1 : 7; // 0xC8(0x1)
+	bool bInBrushStroke; // 0xC8(0x1)
 	uint8_t Pad_0xC9[0x3]; // 0xC9(0x3)
-	struct FBrushStampData LastBrushStamp; // 0xCC(0xA8)
-	uint8_t Pad_0x174[0x14]; // 0x174(0x14)
-	struct TSoftClassPtr<struct UBrushBaseProperties*> PropertyClass; // 0x188(0x28)
-	struct UBrushStampIndicator* BrushStampIndicator; // 0x1B0(0x8)
+	float WorldToLocalScale; // 0xCC(0x4)
+	struct FBrushStampData LastBrushStamp; // 0xD0(0xC0)
+	uint8_t Pad_0x190[0x10]; // 0x190(0x10)
+	struct TSoftClassPtr<struct UBrushBaseProperties*> PropertyClass; // 0x1A0(0x28)
+	struct UBrushStampIndicator* BrushStampIndicator; // 0x1C8(0x8)
 };
 
 // Object: Class InteractiveToolsFramework.BrushStampIndicatorBuilder
@@ -542,20 +546,14 @@ struct UBrushStampIndicator : UInteractiveGizmo
 	float BrushFalloff; // 0x3C(0x4)
 	struct FVector BrushPosition; // 0x40(0xC)
 	struct FVector BrushNormal; // 0x4C(0xC)
-	uint8_t bDrawIndicatorLines : 1; // 0x58(0x1), Mask(0x1)
-	uint8_t BitPad_0x58_1 : 7; // 0x58(0x1)
-	uint8_t bDrawRadiusCircle : 1; // 0x59(0x1), Mask(0x1)
-	uint8_t BitPad_0x59_1 : 7; // 0x59(0x1)
-	uint8_t bDrawFalloffCircle : 1; // 0x5A(0x1), Mask(0x1)
-	uint8_t BitPad_0x5A_1 : 7; // 0x5A(0x1)
-	uint8_t Pad_0x5B[0x1]; // 0x5B(0x1)
+	bool bDrawIndicatorLines; // 0x58(0x1)
+	bool bDrawRadiusCircle; // 0x59(0x1)
+	uint8_t Pad_0x5A[0x2]; // 0x5A(0x2)
 	int32_t SampleStepCount; // 0x5C(0x4)
 	struct FLinearColor LineColor; // 0x60(0x10)
 	float LineThickness; // 0x70(0x4)
-	uint8_t bDepthTested : 1; // 0x74(0x1), Mask(0x1)
-	uint8_t BitPad_0x74_1 : 7; // 0x74(0x1)
-	uint8_t bDrawSecondaryLines : 1; // 0x75(0x1), Mask(0x1)
-	uint8_t BitPad_0x75_1 : 7; // 0x75(0x1)
+	bool bDepthTested; // 0x74(0x1)
+	bool bDrawSecondaryLines; // 0x75(0x1)
 	uint8_t Pad_0x76[0x2]; // 0x76(0x2)
 	float SecondaryLineThickness; // 0x78(0x4)
 	struct FLinearColor SecondaryLineColor; // 0x7C(0x10)
@@ -571,8 +569,7 @@ struct UClickDragInputBehavior : UAnyButtonInputBehavior
 	DEFINE_UE_CLASS_HELPERS(UClickDragInputBehavior, "ClickDragInputBehavior")
 
 	uint8_t Pad_0x70[0xA0]; // 0x70(0xA0)
-	uint8_t bUpdateModifiersDuringDrag : 1; // 0x110(0x1), Mask(0x1)
-	uint8_t BitPad_0x110_1 : 7; // 0x110(0x1)
+	bool bUpdateModifiersDuringDrag; // 0x110(0x1)
 	uint8_t Pad_0x111[0x1F]; // 0x111(0x1F)
 };
 
@@ -609,88 +606,85 @@ struct UClickDragTool : UInteractiveTool
 };
 
 // Object: Class InteractiveToolsFramework.InternalToolFrameworkActor
-// Size: 0x370 (Inherited: 0x370)
+// Size: 0x300 (Inherited: 0x300)
 struct AInternalToolFrameworkActor : AActor
 {
 	DEFINE_UE_CLASS_HELPERS(AInternalToolFrameworkActor, "InternalToolFrameworkActor")
 };
 
 // Object: Class InteractiveToolsFramework.GizmoActor
-// Size: 0x370 (Inherited: 0x370)
+// Size: 0x300 (Inherited: 0x300)
 struct AGizmoActor : AInternalToolFrameworkActor
 {
 	DEFINE_UE_CLASS_HELPERS(AGizmoActor, "GizmoActor")
 };
 
 // Object: Class InteractiveToolsFramework.GizmoBaseComponent
-// Size: 0x5A0 (Inherited: 0x580)
+// Size: 0x6A0 (Inherited: 0x680)
 struct UGizmoBaseComponent : UPrimitiveComponent
 {
 	DEFINE_UE_CLASS_HELPERS(UGizmoBaseComponent, "GizmoBaseComponent")
 
-	struct FLinearColor Color; // 0x578(0x10)
-	float HoverSizeMultiplier; // 0x588(0x4)
-	float PixelHitDistanceThreshold; // 0x58C(0x4)
-	uint8_t Pad_0x598[0x8]; // 0x598(0x8)
+	struct FLinearColor Color; // 0x678(0x10)
+	float HoverSizeMultiplier; // 0x688(0x4)
+	float PixelHitDistanceThreshold; // 0x68C(0x4)
+	uint8_t Pad_0x698[0x8]; // 0x698(0x8)
 
 	// Object: Function InteractiveToolsFramework.GizmoBaseComponent.UpdateWorldLocalState
 	// Flags: [Final|Native|Public]
-	// Offset: 0x17863b50
+	// Offset: 0xbd9a740
 	// Params: [ Num(1) Size(0x1) ]
-	void UpdateWorldLocalState(uint8_t bWorldIn);
+	void UpdateWorldLocalState(bool bWorldIn);
 
 	// Object: Function InteractiveToolsFramework.GizmoBaseComponent.UpdateHoverState
 	// Flags: [Final|Native|Public]
-	// Offset: 0x17863a9c
+	// Offset: 0xbd9a7f8
 	// Params: [ Num(1) Size(0x1) ]
-	void UpdateHoverState(uint8_t bHoveringIn);
+	void UpdateHoverState(bool bHoveringIn);
 };
 
 // Object: Class InteractiveToolsFramework.GizmoArrowComponent
-// Size: 0x5C0 (Inherited: 0x5A0)
+// Size: 0x6C0 (Inherited: 0x6A0)
 struct UGizmoArrowComponent : UGizmoBaseComponent
 {
 	DEFINE_UE_CLASS_HELPERS(UGizmoArrowComponent, "GizmoArrowComponent")
 
-	struct FVector Direction; // 0x598(0xC)
-	float gap; // 0x5A4(0x4)
-	float Length; // 0x5A8(0x4)
-	float Thickness; // 0x5AC(0x4)
-	uint8_t Pad_0x5B8[0x8]; // 0x5B8(0x8)
+	struct FVector Direction; // 0x698(0xC)
+	float Gap; // 0x6A4(0x4)
+	float Length; // 0x6A8(0x4)
+	float Thickness; // 0x6AC(0x4)
+	uint8_t Pad_0x6B8[0x8]; // 0x6B8(0x8)
 };
 
 // Object: Class InteractiveToolsFramework.GizmoBoxComponent
-// Size: 0x5E0 (Inherited: 0x5A0)
+// Size: 0x6E0 (Inherited: 0x6A0)
 struct UGizmoBoxComponent : UGizmoBaseComponent
 {
 	DEFINE_UE_CLASS_HELPERS(UGizmoBoxComponent, "GizmoBoxComponent")
 
-	struct FVector Origin; // 0x598(0xC)
-	uint8_t Pad_0x5AC[0x4]; // 0x5AC(0x4)
-	struct FQuat Rotation; // 0x5B0(0x10)
-	struct FVector Dimensions; // 0x5C0(0xC)
-	float LineThickness; // 0x5CC(0x4)
-	uint8_t bRemoveHiddenLines : 1; // 0x5D0(0x1), Mask(0x1)
-	uint8_t BitPad_0x5D0_1 : 7; // 0x5D0(0x1)
-	uint8_t bEnableAxisFlip : 1; // 0x5D1(0x1), Mask(0x1)
-	uint8_t BitPad_0x5D1_1 : 7; // 0x5D1(0x1)
-	uint8_t Pad_0x5D2[0xE]; // 0x5D2(0xE)
+	struct FVector Origin; // 0x698(0xC)
+	uint8_t Pad_0x6AC[0x4]; // 0x6AC(0x4)
+	struct FQuat Rotation; // 0x6B0(0x10)
+	struct FVector Dimensions; // 0x6C0(0xC)
+	float LineThickness; // 0x6CC(0x4)
+	bool bRemoveHiddenLines; // 0x6D0(0x1)
+	bool bEnableAxisFlip; // 0x6D1(0x1)
+	uint8_t Pad_0x6D2[0xE]; // 0x6D2(0xE)
 };
 
 // Object: Class InteractiveToolsFramework.GizmoCircleComponent
-// Size: 0x5C0 (Inherited: 0x5A0)
+// Size: 0x6C0 (Inherited: 0x6A0)
 struct UGizmoCircleComponent : UGizmoBaseComponent
 {
 	DEFINE_UE_CLASS_HELPERS(UGizmoCircleComponent, "GizmoCircleComponent")
 
-	struct FVector Normal; // 0x598(0xC)
-	float radius; // 0x5A4(0x4)
-	float Thickness; // 0x5A8(0x4)
-	int32_t NumSides; // 0x5AC(0x4)
-	uint8_t bViewAligned : 1; // 0x5B0(0x1), Mask(0x1)
-	uint8_t bOnlyAllowFrontFacingHits : 1; // 0x5B1(0x1), Mask(0x1)
-	uint8_t BitPad_0x5B8_2 : 6; // 0x5B8(0x1)
-	uint8_t Pad_0x5B9[0x7]; // 0x5B9(0x7)
+	struct FVector Normal; // 0x698(0xC)
+	float Radius; // 0x6A4(0x4)
+	float Thickness; // 0x6A8(0x4)
+	int32_t NumSides; // 0x6AC(0x4)
+	bool bViewAligned; // 0x6B0(0x1)
+	bool bOnlyAllowFrontFacingHits; // 0x6B1(0x1)
+	uint8_t Pad_0x6BA[0x6]; // 0x6BA(0x6)
 };
 
 // Object: Class InteractiveToolsFramework.GizmoTransformSource
@@ -701,13 +695,13 @@ struct IGizmoTransformSource : IInterface
 
 	// Object: Function InteractiveToolsFramework.GizmoTransformSource.SetTransform
 	// Flags: [Native|Public|HasOutParms|HasDefaults]
-	// Offset: 0x17863ce0
+	// Offset: 0xbd9a918
 	// Params: [ Num(1) Size(0x30) ]
 	void SetTransform(const struct FTransform& NewTransform);
 
 	// Object: Function InteractiveToolsFramework.GizmoTransformSource.GetTransform
 	// Flags: [Native|Public|HasDefaults|Const]
-	// Offset: 0x17863c6c
+	// Offset: 0xbd9a9fc
 	// Params: [ Num(1) Size(0x30) ]
 	struct FTransform GetTransform();
 };
@@ -720,25 +714,25 @@ struct IGizmoAxisSource : IInterface
 
 	// Object: Function InteractiveToolsFramework.GizmoAxisSource.HasTangentVectors
 	// Flags: [Native|Public|Const]
-	// Offset: 0x17863f4c
+	// Offset: 0xbd9ab78
 	// Params: [ Num(1) Size(0x1) ]
-	uint8_t HasTangentVectors();
+	bool HasTangentVectors();
 
 	// Object: Function InteractiveToolsFramework.GizmoAxisSource.GetTangentVectors
 	// Flags: [Native|Public|HasOutParms|HasDefaults|Const]
-	// Offset: 0x17863e4c
+	// Offset: 0xbd9aa78
 	// Params: [ Num(2) Size(0x18) ]
 	void GetTangentVectors(struct FVector& TangentXOut, struct FVector& TangentYOut);
 
 	// Object: Function InteractiveToolsFramework.GizmoAxisSource.GetOrigin
 	// Flags: [Native|Public|HasDefaults|Const]
-	// Offset: 0x17863e0c
+	// Offset: 0xbd9abfc
 	// Params: [ Num(1) Size(0xC) ]
 	struct FVector GetOrigin();
 
 	// Object: Function InteractiveToolsFramework.GizmoAxisSource.GetDirection
 	// Flags: [Native|Public|HasDefaults|Const]
-	// Offset: 0x17863dcc
+	// Offset: 0xbd9abb8
 	// Params: [ Num(1) Size(0xC) ]
 	struct FVector GetDirection();
 };
@@ -751,9 +745,9 @@ struct IGizmoClickTarget : IInterface
 
 	// Object: Function InteractiveToolsFramework.GizmoClickTarget.UpdateHoverState
 	// Flags: [Native|Public|Const]
-	// Offset: 0x17863fa0
+	// Offset: 0xbd9ac54
 	// Params: [ Num(1) Size(0x1) ]
-	void UpdateHoverState(uint8_t bHovering);
+	void UpdateHoverState(bool bHovering);
 };
 
 // Object: Class InteractiveToolsFramework.GizmoStateTarget
@@ -764,13 +758,13 @@ struct IGizmoStateTarget : IInterface
 
 	// Object: Function InteractiveToolsFramework.GizmoStateTarget.EndUpdate
 	// Flags: [Native|Public]
-	// Offset: 0x17864084
+	// Offset: 0xbd9ad20
 	// Params: [ Num(0) Size(0x0) ]
 	void EndUpdate();
 
 	// Object: Function InteractiveToolsFramework.GizmoStateTarget.BeginUpdate
 	// Flags: [Native|Public]
-	// Offset: 0x17864068
+	// Offset: 0xbd9ad3c
 	// Params: [ Num(0) Size(0x0) ]
 	void BeginUpdate();
 };
@@ -783,25 +777,25 @@ struct IGizmoFloatParameterSource : IInterface
 
 	// Object: Function InteractiveToolsFramework.GizmoFloatParameterSource.SetParameter
 	// Flags: [Native|Public]
-	// Offset: 0x1786411c
+	// Offset: 0xbd9ad7c
 	// Params: [ Num(1) Size(0x4) ]
 	void SetParameter(float NewValue);
 
 	// Object: Function InteractiveToolsFramework.GizmoFloatParameterSource.GetParameter
 	// Flags: [Native|Public|Const]
-	// Offset: 0x178640e0
+	// Offset: 0xbd9ae48
 	// Params: [ Num(1) Size(0x4) ]
 	float GetParameter();
 
 	// Object: Function InteractiveToolsFramework.GizmoFloatParameterSource.EndModify
 	// Flags: [Native|Public]
-	// Offset: 0x178640c4
+	// Offset: 0xbd9ad60
 	// Params: [ Num(0) Size(0x0) ]
 	void EndModify();
 
 	// Object: Function InteractiveToolsFramework.GizmoFloatParameterSource.BeginModify
 	// Flags: [Native|Public]
-	// Offset: 0x178640a8
+	// Offset: 0xbd9ae2c
 	// Params: [ Num(0) Size(0x0) ]
 	void BeginModify();
 };
@@ -814,58 +808,58 @@ struct IGizmoVec2ParameterSource : IInterface
 
 	// Object: Function InteractiveToolsFramework.GizmoVec2ParameterSource.SetParameter
 	// Flags: [Native|Public|HasOutParms|HasDefaults]
-	// Offset: 0x17864244
+	// Offset: 0xbd9aea8
 	// Params: [ Num(1) Size(0x8) ]
 	void SetParameter(const struct FVector2D& NewValue);
 
 	// Object: Function InteractiveToolsFramework.GizmoVec2ParameterSource.GetParameter
 	// Flags: [Native|Public|HasDefaults|Const]
-	// Offset: 0x17864208
+	// Offset: 0xbd9af7c
 	// Params: [ Num(1) Size(0x8) ]
 	struct FVector2D GetParameter();
 
 	// Object: Function InteractiveToolsFramework.GizmoVec2ParameterSource.EndModify
 	// Flags: [Native|Public]
-	// Offset: 0x178641ec
+	// Offset: 0xbd9ae8c
 	// Params: [ Num(0) Size(0x0) ]
 	void EndModify();
 
 	// Object: Function InteractiveToolsFramework.GizmoVec2ParameterSource.BeginModify
 	// Flags: [Native|Public]
-	// Offset: 0x178641d0
+	// Offset: 0xbd9af60
 	// Params: [ Num(0) Size(0x0) ]
 	void BeginModify();
 };
 
 // Object: Class InteractiveToolsFramework.GizmoLineHandleComponent
-// Size: 0x5C0 (Inherited: 0x5A0)
+// Size: 0x6C0 (Inherited: 0x6A0)
 struct UGizmoLineHandleComponent : UGizmoBaseComponent
 {
 	DEFINE_UE_CLASS_HELPERS(UGizmoLineHandleComponent, "GizmoLineHandleComponent")
 
-	struct FVector Normal; // 0x598(0xC)
-	float HandleSize; // 0x5A4(0x4)
-	float Thickness; // 0x5A8(0x4)
-	struct FVector Direction; // 0x5AC(0xC)
-	float Length; // 0x5B8(0x4)
-	uint8_t bImageScale : 1; // 0x5BC(0x1), Mask(0x1)
+	struct FVector Normal; // 0x698(0xC)
+	float HandleSize; // 0x6A4(0x4)
+	float Thickness; // 0x6A8(0x4)
+	struct FVector Direction; // 0x6AC(0xC)
+	float Length; // 0x6B8(0x4)
+	bool bImageScale; // 0x6BC(0x1)
 };
 
 // Object: Class InteractiveToolsFramework.GizmoRectangleComponent
-// Size: 0x5D0 (Inherited: 0x5A0)
+// Size: 0x6D0 (Inherited: 0x6A0)
 struct UGizmoRectangleComponent : UGizmoBaseComponent
 {
 	DEFINE_UE_CLASS_HELPERS(UGizmoRectangleComponent, "GizmoRectangleComponent")
 
-	struct FVector DirectionX; // 0x598(0xC)
-	struct FVector DirectionY; // 0x5A4(0xC)
-	float OffsetX; // 0x5B0(0x4)
-	float OffsetY; // 0x5B4(0x4)
-	float LengthX; // 0x5B8(0x4)
-	float LengthY; // 0x5BC(0x4)
-	float Thickness; // 0x5C0(0x4)
-	uint8_t SegmentFlags; // 0x5C4(0x1)
-	uint8_t Pad_0x5CD[0x3]; // 0x5CD(0x3)
+	struct FVector DirectionX; // 0x698(0xC)
+	struct FVector DirectionY; // 0x6A4(0xC)
+	float offsetX; // 0x6B0(0x4)
+	float offsetY; // 0x6B4(0x4)
+	float LengthX; // 0x6B8(0x4)
+	float LengthY; // 0x6BC(0x4)
+	float Thickness; // 0x6C0(0x4)
+	uint8_t SegmentFlags; // 0x6C4(0x1)
+	uint8_t Pad_0x6CD[0x3]; // 0x6CD(0x3)
 };
 
 // Object: Class InteractiveToolsFramework.GizmoLambdaHitTarget
@@ -910,10 +904,8 @@ struct UInputRouter : UObject
 {
 	DEFINE_UE_CLASS_HELPERS(UInputRouter, "InputRouter")
 
-	uint8_t bAutoInvalidateOnHover : 1; // 0x28(0x1), Mask(0x1)
-	uint8_t BitPad_0x28_1 : 7; // 0x28(0x1)
-	uint8_t bAutoInvalidateOnCapture : 1; // 0x29(0x1), Mask(0x1)
-	uint8_t BitPad_0x29_1 : 7; // 0x29(0x1)
+	bool bAutoInvalidateOnHover; // 0x28(0x1)
+	bool bAutoInvalidateOnCapture; // 0x29(0x1)
 	uint8_t Pad_0x2A[0xE]; // 0x2A(0xE)
 	struct UInputBehaviorSet* ActiveInputBehaviors; // 0x38(0x8)
 	uint8_t Pad_0x40[0x70]; // 0x40(0x70)
@@ -983,14 +975,14 @@ struct UInteractiveToolsContext : UObject
 };
 
 // Object: Class InteractiveToolsFramework.IntervalGizmoActor
-// Size: 0x388 (Inherited: 0x370)
+// Size: 0x318 (Inherited: 0x300)
 struct AIntervalGizmoActor : AGizmoActor
 {
 	DEFINE_UE_CLASS_HELPERS(AIntervalGizmoActor, "IntervalGizmoActor")
 
-	struct UGizmoLineHandleComponent* UpIntervalComponent; // 0x370(0x8)
-	struct UGizmoLineHandleComponent* DownIntervalComponent; // 0x378(0x8)
-	struct UGizmoLineHandleComponent* ForwardIntervalComponent; // 0x380(0x8)
+	struct UGizmoLineHandleComponent* UpIntervalComponent; // 0x300(0x8)
+	struct UGizmoLineHandleComponent* DownIntervalComponent; // 0x308(0x8)
+	struct UGizmoLineHandleComponent* ForwardIntervalComponent; // 0x310(0x8)
 };
 
 // Object: Class InteractiveToolsFramework.IntervalGizmoBuilder
@@ -1151,19 +1143,20 @@ struct UGizmoPlaneTranslationParameterSource : UGizmoBaseVec2ParameterSource
 };
 
 // Object: Class InteractiveToolsFramework.GizmoAxisRotationParameterSource
-// Size: 0xC0 (Inherited: 0x48)
+// Size: 0x110 (Inherited: 0x48)
 struct UGizmoAxisRotationParameterSource : UGizmoBaseFloatParameterSource
 {
 	DEFINE_UE_CLASS_HELPERS(UGizmoAxisRotationParameterSource, "GizmoAxisRotationParameterSource")
 
-	struct TScriptInterface<IGizmoAxisSource> AxisSource; // 0x48(0x10)
-	struct TScriptInterface<IGizmoTransformSource> TransformSource; // 0x58(0x10)
-	float Angle; // 0x68(0x4)
-	struct FGizmoFloatParameterChange LastChange; // 0x6C(0x8)
-	struct FVector CurRotationAxis; // 0x74(0xC)
-	struct FVector CurRotationOrigin; // 0x80(0xC)
-	uint8_t Pad_0x8C[0x4]; // 0x8C(0x4)
-	struct FTransform InitialTransform; // 0x90(0x30)
+	uint8_t Pad_0x48[0x48]; // 0x48(0x48)
+	struct TScriptInterface<IGizmoAxisSource> AxisSource; // 0x90(0x10)
+	struct TScriptInterface<IGizmoTransformSource> TransformSource; // 0xA0(0x10)
+	float Angle; // 0xB0(0x4)
+	struct FGizmoFloatParameterChange LastChange; // 0xB4(0x8)
+	struct FVector CurRotationAxis; // 0xBC(0xC)
+	struct FVector CurRotationOrigin; // 0xC8(0xC)
+	uint8_t Pad_0xD4[0xC]; // 0xD4(0xC)
+	struct FTransform InitialTransform; // 0xE0(0x30)
 };
 
 // Object: Class InteractiveToolsFramework.GizmoUniformScaleParameterSource
@@ -1239,14 +1232,10 @@ struct UPlanePositionGizmo : UInteractiveGizmo
 	struct TScriptInterface<IGizmoVec2ParameterSource> ParameterSource; // 0x58(0x10)
 	struct TScriptInterface<IGizmoClickTarget> HitTarget; // 0x68(0x10)
 	struct TScriptInterface<IGizmoStateTarget> StateTarget; // 0x78(0x10)
-	uint8_t bEnableSignedAxis : 1; // 0x88(0x1), Mask(0x1)
-	uint8_t BitPad_0x88_1 : 7; // 0x88(0x1)
-	uint8_t bFlipX : 1; // 0x89(0x1), Mask(0x1)
-	uint8_t BitPad_0x89_1 : 7; // 0x89(0x1)
-	uint8_t bFlipY : 1; // 0x8A(0x1), Mask(0x1)
-	uint8_t BitPad_0x8A_1 : 7; // 0x8A(0x1)
-	uint8_t bInInteraction : 1; // 0x8B(0x1), Mask(0x1)
-	uint8_t BitPad_0x8B_1 : 7; // 0x8B(0x1)
+	bool bEnableSignedAxis; // 0x88(0x1)
+	bool bFlipX; // 0x89(0x1)
+	bool bFlipY; // 0x8A(0x1)
+	bool bInInteraction; // 0x8B(0x1)
 	struct FVector InteractionOrigin; // 0x8C(0xC)
 	struct FVector InteractionNormal; // 0x98(0xC)
 	struct FVector InteractionAxisX; // 0xA4(0xC)
@@ -1287,8 +1276,7 @@ struct USingleClickInputBehavior : UAnyButtonInputBehavior
 	DEFINE_UE_CLASS_HELPERS(USingleClickInputBehavior, "SingleClickInputBehavior")
 
 	uint8_t Pad_0x70[0x40]; // 0x70(0x40)
-	uint8_t HitTestOnRelease : 1; // 0xB0(0x1), Mask(0x1)
-	uint8_t BitPad_0xB0_1 : 7; // 0xB0(0x1)
+	bool HitTestOnRelease; // 0xB0(0x1)
 	uint8_t Pad_0xB1[0x6F]; // 0xB1(0x6F)
 };
 
@@ -1347,27 +1335,27 @@ struct UGizmoTransformChangeStateTarget : UObject
 };
 
 // Object: Class InteractiveToolsFramework.TransformGizmoActor
-// Size: 0x3F0 (Inherited: 0x370)
+// Size: 0x380 (Inherited: 0x300)
 struct ATransformGizmoActor : AGizmoActor
 {
 	DEFINE_UE_CLASS_HELPERS(ATransformGizmoActor, "TransformGizmoActor")
 
-	struct UPrimitiveComponent* TranslateX; // 0x370(0x8)
-	struct UPrimitiveComponent* TranslateY; // 0x378(0x8)
-	struct UPrimitiveComponent* TranslateZ; // 0x380(0x8)
-	struct UPrimitiveComponent* TranslateYZ; // 0x388(0x8)
-	struct UPrimitiveComponent* TranslateXZ; // 0x390(0x8)
-	struct UPrimitiveComponent* TranslateXY; // 0x398(0x8)
-	struct UPrimitiveComponent* RotateX; // 0x3A0(0x8)
-	struct UPrimitiveComponent* RotateY; // 0x3A8(0x8)
-	struct UPrimitiveComponent* RotateZ; // 0x3B0(0x8)
-	struct UPrimitiveComponent* UniformScale; // 0x3B8(0x8)
-	struct UPrimitiveComponent* AxisScaleX; // 0x3C0(0x8)
-	struct UPrimitiveComponent* AxisScaleY; // 0x3C8(0x8)
-	struct UPrimitiveComponent* AxisScaleZ; // 0x3D0(0x8)
-	struct UPrimitiveComponent* PlaneScaleYZ; // 0x3D8(0x8)
-	struct UPrimitiveComponent* PlaneScaleXZ; // 0x3E0(0x8)
-	struct UPrimitiveComponent* PlaneScaleXY; // 0x3E8(0x8)
+	struct UPrimitiveComponent* TranslateX; // 0x300(0x8)
+	struct UPrimitiveComponent* TranslateY; // 0x308(0x8)
+	struct UPrimitiveComponent* TranslateZ; // 0x310(0x8)
+	struct UPrimitiveComponent* TranslateYZ; // 0x318(0x8)
+	struct UPrimitiveComponent* TranslateXZ; // 0x320(0x8)
+	struct UPrimitiveComponent* TranslateXY; // 0x328(0x8)
+	struct UPrimitiveComponent* RotateX; // 0x330(0x8)
+	struct UPrimitiveComponent* RotateY; // 0x338(0x8)
+	struct UPrimitiveComponent* RotateZ; // 0x340(0x8)
+	struct UPrimitiveComponent* UniformScale; // 0x348(0x8)
+	struct UPrimitiveComponent* AxisScaleX; // 0x350(0x8)
+	struct UPrimitiveComponent* AxisScaleY; // 0x358(0x8)
+	struct UPrimitiveComponent* AxisScaleZ; // 0x360(0x8)
+	struct UPrimitiveComponent* PlaneScaleYZ; // 0x368(0x8)
+	struct UPrimitiveComponent* PlaneScaleXZ; // 0x370(0x8)
+	struct UPrimitiveComponent* PlaneScaleXY; // 0x378(0x8)
 };
 
 // Object: Class InteractiveToolsFramework.TransformGizmoBuilder
@@ -1380,34 +1368,39 @@ struct UTransformGizmoBuilder : UInteractiveGizmoBuilder
 };
 
 // Object: Class InteractiveToolsFramework.TransformGizmo
-// Size: 0x180 (Inherited: 0x38)
+// Size: 0x1A0 (Inherited: 0x38)
 struct UTransformGizmo : UInteractiveGizmo
 {
 	DEFINE_UE_CLASS_HELPERS(UTransformGizmo, "TransformGizmo")
 
 	uint8_t Pad_0x38[0x8]; // 0x38(0x8)
 	struct UTransformProxy* ActiveTarget; // 0x40(0x8)
-	uint8_t bSnapToWorldGrid : 1; // 0x48(0x1), Mask(0x1)
-	uint8_t BitPad_0x48_1 : 7; // 0x48(0x1)
-	uint8_t bUseContextCoordinateSystem : 1; // 0x49(0x1), Mask(0x1)
-	uint8_t BitPad_0x49_1 : 7; // 0x49(0x1)
+	bool bSnapToWorldGrid; // 0x48(0x1)
+	bool bGridSizeIsExplicit; // 0x49(0x1)
 	uint8_t Pad_0x4A[0x2]; // 0x4A(0x2)
-	EToolContextCoordinateSystem CurrentCoordinateSystem; // 0x4C(0x4)
-	uint8_t Pad_0x50[0x90]; // 0x50(0x90)
-	struct TArray<struct UPrimitiveComponent*> ActiveComponents; // 0xE0(0x10)
-	struct TArray<struct UPrimitiveComponent*> NonuniformScaleComponents; // 0xF0(0x10)
-	struct TArray<struct UInteractiveGizmo*> ActiveGizmos; // 0x100(0x10)
-	uint8_t Pad_0x110[0x10]; // 0x110(0x10)
-	struct UGizmoConstantFrameAxisSource* CameraAxisSource; // 0x120(0x8)
-	struct UGizmoComponentAxisSource* AxisXSource; // 0x128(0x8)
-	struct UGizmoComponentAxisSource* AxisYSource; // 0x130(0x8)
-	struct UGizmoComponentAxisSource* AxisZSource; // 0x138(0x8)
-	struct UGizmoComponentAxisSource* UnitAxisXSource; // 0x140(0x8)
-	struct UGizmoComponentAxisSource* UnitAxisYSource; // 0x148(0x8)
-	struct UGizmoComponentAxisSource* UnitAxisZSource; // 0x150(0x8)
-	struct UGizmoTransformChangeStateTarget* StateTarget; // 0x158(0x8)
-	struct UGizmoScaledTransformSource* ScaledTransformSource; // 0x160(0x8)
-	uint8_t Pad_0x168[0x18]; // 0x168(0x18)
+	struct FVector ExplicitGridSize; // 0x4C(0xC)
+	bool bRotationGridSizeIsExplicit; // 0x58(0x1)
+	uint8_t Pad_0x59[0x3]; // 0x59(0x3)
+	struct FRotator ExplicitRotationGridSize; // 0x5C(0xC)
+	bool bSnapToWorldRotGrid; // 0x68(0x1)
+	bool bUseContextCoordinateSystem; // 0x69(0x1)
+	uint8_t Pad_0x6A[0x2]; // 0x6A(0x2)
+	EToolContextCoordinateSystem CurrentCoordinateSystem; // 0x6C(0x4)
+	uint8_t Pad_0x70[0x90]; // 0x70(0x90)
+	struct TArray<struct UPrimitiveComponent*> ActiveComponents; // 0x100(0x10)
+	struct TArray<struct UPrimitiveComponent*> NonuniformScaleComponents; // 0x110(0x10)
+	struct TArray<struct UInteractiveGizmo*> ActiveGizmos; // 0x120(0x10)
+	uint8_t Pad_0x130[0x10]; // 0x130(0x10)
+	struct UGizmoConstantFrameAxisSource* CameraAxisSource; // 0x140(0x8)
+	struct UGizmoComponentAxisSource* AxisXSource; // 0x148(0x8)
+	struct UGizmoComponentAxisSource* AxisYSource; // 0x150(0x8)
+	struct UGizmoComponentAxisSource* AxisZSource; // 0x158(0x8)
+	struct UGizmoComponentAxisSource* UnitAxisXSource; // 0x160(0x8)
+	struct UGizmoComponentAxisSource* UnitAxisYSource; // 0x168(0x8)
+	struct UGizmoComponentAxisSource* UnitAxisZSource; // 0x170(0x8)
+	struct UGizmoTransformChangeStateTarget* StateTarget; // 0x178(0x8)
+	struct UGizmoScaledTransformSource* ScaledTransformSource; // 0x180(0x8)
+	uint8_t Pad_0x188[0x18]; // 0x188(0x18)
 };
 
 // Object: Class InteractiveToolsFramework.TransformProxy
@@ -1417,10 +1410,8 @@ struct UTransformProxy : UObject
 	DEFINE_UE_CLASS_HELPERS(UTransformProxy, "TransformProxy")
 
 	uint8_t Pad_0x28[0x48]; // 0x28(0x48)
-	uint8_t bRotatePerObject : 1; // 0x70(0x1), Mask(0x1)
-	uint8_t BitPad_0x70_1 : 7; // 0x70(0x1)
-	uint8_t bSetPivotMode : 1; // 0x71(0x1), Mask(0x1)
-	uint8_t BitPad_0x71_1 : 7; // 0x71(0x1)
+	bool bRotatePerObject; // 0x70(0x1)
+	bool bSetPivotMode; // 0x71(0x1)
 	uint8_t Pad_0x72[0x1E]; // 0x72(0x1E)
 	struct FTransform SharedTransform; // 0x90(0x30)
 	struct FTransform InitialSharedTransform; // 0xC0(0x30)
@@ -1442,8 +1433,7 @@ struct UGizmoComponentWorldTransformSource : UGizmoBaseTransformSource
 	DEFINE_UE_CLASS_HELPERS(UGizmoComponentWorldTransformSource, "GizmoComponentWorldTransformSource")
 
 	struct USceneComponent* Component; // 0x48(0x8)
-	uint8_t bModifyComponentOnTransform : 1; // 0x50(0x1), Mask(0x1)
-	uint8_t BitPad_0x50_1 : 7; // 0x50(0x1)
+	bool bModifyComponentOnTransform; // 0x50(0x1)
 	uint8_t Pad_0x51[0x7]; // 0x51(0x7)
 };
 

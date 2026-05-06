@@ -1,10 +1,66 @@
 #include "LevelSequence.hpp"
 #include "Engine.hpp"
+#include "MediaAssets.hpp"
 #include "MovieScene.hpp"
 #include <cstring> // memcpy for ArrayDim>1 param marshalling
 
 namespace SDK
 {
+
+// ULevelSequence
+void ULevelSequence::RemoveMetaDataByClass(struct UObject* InClass)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("LevelSequence", "RemoveMetaDataByClass");
+    struct
+    {
+        struct UObject* InClass;
+    } Parms{};
+    Parms.InClass = (struct UObject*)InClass;
+    this->ProcessEvent(Func, &Parms);
+}
+
+struct UObject* ULevelSequence::FindOrAddMetaDataByClass(struct UObject* InClass)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("LevelSequence", "FindOrAddMetaDataByClass");
+    struct
+    {
+        struct UObject* InClass;
+        struct UObject* ReturnValue;
+    } Parms{};
+    Parms.InClass = (struct UObject*)InClass;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct UObject* ULevelSequence::FindMetaDataByClass(struct UObject* InClass)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("LevelSequence", "FindMetaDataByClass");
+    struct
+    {
+        struct UObject* InClass;
+        struct UObject* ReturnValue;
+    } Parms{};
+    Parms.InClass = (struct UObject*)InClass;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct UObject* ULevelSequence::CopyMetaData(struct UObject* InMetaData)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("LevelSequence", "CopyMetaData");
+    struct
+    {
+        struct UObject* InMetaData;
+        struct UObject* ReturnValue;
+    } Parms{};
+    Parms.InMetaData = (struct UObject*)InMetaData;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
 
 // ALevelSequenceActor
 void ALevelSequenceActor::ShowBurnin()
@@ -14,20 +70,6 @@ void ALevelSequenceActor::ShowBurnin()
     struct
     {
     } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-void ALevelSequenceActor::SetSubSequenceCombination(const struct TSet<struct FString>& InState, uint8_t bImmediate)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("LevelSequenceActor", "SetSubSequenceCombination");
-    struct
-    {
-        struct TSet<struct FString> InState;
-        uint8_t bImmediate;
-    } Parms{};
-    Parms.InState = (struct TSet<struct FString>)InState;
-    Parms.bImmediate = (uint8_t)bImmediate;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -43,43 +85,19 @@ void ALevelSequenceActor::SetSequence(struct ULevelSequence* InSequence)
     this->ProcessEvent(Func, &Parms);
 }
 
-void ALevelSequenceActor::SetReplicatePlayback(uint8_t ReplicatePlayback)
+void ALevelSequenceActor::SetReplicatePlayback(bool ReplicatePlayback)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("LevelSequenceActor", "SetReplicatePlayback");
     struct
     {
-        uint8_t ReplicatePlayback;
+        bool ReplicatePlayback;
     } Parms{};
-    Parms.ReplicatePlayback = (uint8_t)ReplicatePlayback;
+    Parms.ReplicatePlayback = (bool)ReplicatePlayback;
     this->ProcessEvent(Func, &Parms);
 }
 
-void ALevelSequenceActor::SetPriority(uint8_t InPriority)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("LevelSequenceActor", "SetPriority");
-    struct
-    {
-        uint8_t InPriority;
-    } Parms{};
-    Parms.InPriority = (uint8_t)InPriority;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void ALevelSequenceActor::SetEventReceivers(struct TArray<struct AActor*> AdditionalReceivers)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("LevelSequenceActor", "SetEventReceivers");
-    struct
-    {
-        struct TArray<struct AActor*> AdditionalReceivers;
-    } Parms{};
-    Parms.AdditionalReceivers = (struct TArray<struct AActor*>)AdditionalReceivers;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void ALevelSequenceActor::SetBindingByTag(struct FName BindingTag, const struct TArray<struct AActor*>& Actors, uint8_t bAllowBindingsFromAsset)
+void ALevelSequenceActor::SetBindingByTag(struct FName BindingTag, const struct TArray<struct AActor*>& Actors, bool bAllowBindingsFromAsset)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("LevelSequenceActor", "SetBindingByTag");
@@ -87,15 +105,15 @@ void ALevelSequenceActor::SetBindingByTag(struct FName BindingTag, const struct 
     {
         struct FName BindingTag;
         struct TArray<struct AActor*> Actors;
-        uint8_t bAllowBindingsFromAsset;
+        bool bAllowBindingsFromAsset;
     } Parms{};
     Parms.BindingTag = (struct FName)BindingTag;
     Parms.Actors = (struct TArray<struct AActor*>)Actors;
-    Parms.bAllowBindingsFromAsset = (uint8_t)bAllowBindingsFromAsset;
+    Parms.bAllowBindingsFromAsset = (bool)bAllowBindingsFromAsset;
     this->ProcessEvent(Func, &Parms);
 }
 
-void ALevelSequenceActor::SetBinding(struct FMovieSceneObjectBindingID Binding, const struct TArray<struct AActor*>& Actors, uint8_t bAllowBindingsFromAsset)
+void ALevelSequenceActor::SetBinding(struct FMovieSceneObjectBindingID Binding, const struct TArray<struct AActor*>& Actors, bool bAllowBindingsFromAsset)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("LevelSequenceActor", "SetBinding");
@@ -103,11 +121,11 @@ void ALevelSequenceActor::SetBinding(struct FMovieSceneObjectBindingID Binding, 
     {
         struct FMovieSceneObjectBindingID Binding;
         struct TArray<struct AActor*> Actors;
-        uint8_t bAllowBindingsFromAsset;
+        bool bAllowBindingsFromAsset;
     } Parms{};
     Parms.Binding = (struct FMovieSceneObjectBindingID)Binding;
     Parms.Actors = (struct TArray<struct AActor*>)Actors;
-    Parms.bAllowBindingsFromAsset = (uint8_t)bAllowBindingsFromAsset;
+    Parms.bAllowBindingsFromAsset = (bool)bAllowBindingsFromAsset;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -217,30 +235,6 @@ struct ULevelSequence* ALevelSequenceActor::GetSequence()
     return Parms.ReturnValue;
 }
 
-struct TMap<struct FString, struct FSoftObjectPath> ALevelSequenceActor::GetPCSequencesUsedForSublevelSequenceVolume()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("LevelSequenceActor", "GetPCSequencesUsedForSublevelSequenceVolume");
-    struct
-    {
-        struct TMap<struct FString, struct FSoftObjectPath> ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct TMap<struct FString, struct FSoftObjectPath> ALevelSequenceActor::GetMobileSequencesUsedForSublevelSequenceVolume()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("LevelSequenceActor", "GetMobileSequencesUsedForSublevelSequenceVolume");
-    struct
-    {
-        struct TMap<struct FString, struct FSoftObjectPath> ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
 struct TArray<struct FMovieSceneObjectBindingID> ALevelSequenceActor::FindNamedBindings(struct FName Tag)
 {
     static struct UFunction* Func = nullptr;
@@ -269,23 +263,7 @@ struct FMovieSceneObjectBindingID ALevelSequenceActor::FindNamedBinding(struct F
     return Parms.ReturnValue;
 }
 
-void ALevelSequenceActor::ApplySubSequenceCombination(const struct TSet<struct FString>& InState, float InSeconds, const struct TArray<struct FString>& VolumeSequenceStates)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("LevelSequenceActor", "ApplySubSequenceCombination");
-    struct
-    {
-        struct TSet<struct FString> InState;
-        float InSeconds;
-        struct TArray<struct FString> VolumeSequenceStates;
-    } Parms{};
-    Parms.InState = (struct TSet<struct FString>)InState;
-    Parms.InSeconds = (float)InSeconds;
-    Parms.VolumeSequenceStates = (struct TArray<struct FString>)VolumeSequenceStates;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void ALevelSequenceActor::AddBindingByTag(struct FName BindingTag, struct AActor* Actor, uint8_t bAllowBindingsFromAsset)
+void ALevelSequenceActor::AddBindingByTag(struct FName BindingTag, struct AActor* Actor, bool bAllowBindingsFromAsset)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("LevelSequenceActor", "AddBindingByTag");
@@ -293,15 +271,15 @@ void ALevelSequenceActor::AddBindingByTag(struct FName BindingTag, struct AActor
     {
         struct FName BindingTag;
         struct AActor* Actor;
-        uint8_t bAllowBindingsFromAsset;
+        bool bAllowBindingsFromAsset;
     } Parms{};
     Parms.BindingTag = (struct FName)BindingTag;
     Parms.Actor = (struct AActor*)Actor;
-    Parms.bAllowBindingsFromAsset = (uint8_t)bAllowBindingsFromAsset;
+    Parms.bAllowBindingsFromAsset = (bool)bAllowBindingsFromAsset;
     this->ProcessEvent(Func, &Parms);
 }
 
-void ALevelSequenceActor::AddBinding(struct FMovieSceneObjectBindingID Binding, struct AActor* Actor, uint8_t bAllowBindingsFromAsset)
+void ALevelSequenceActor::AddBinding(struct FMovieSceneObjectBindingID Binding, struct AActor* Actor, bool bAllowBindingsFromAsset)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("LevelSequenceActor", "AddBinding");
@@ -309,139 +287,12 @@ void ALevelSequenceActor::AddBinding(struct FMovieSceneObjectBindingID Binding, 
     {
         struct FMovieSceneObjectBindingID Binding;
         struct AActor* Actor;
-        uint8_t bAllowBindingsFromAsset;
+        bool bAllowBindingsFromAsset;
     } Parms{};
     Parms.Binding = (struct FMovieSceneObjectBindingID)Binding;
     Parms.Actor = (struct AActor*)Actor;
-    Parms.bAllowBindingsFromAsset = (uint8_t)bAllowBindingsFromAsset;
+    Parms.bAllowBindingsFromAsset = (bool)bAllowBindingsFromAsset;
     this->ProcessEvent(Func, &Parms);
-}
-
-// ULevelSequenceDirector
-void ULevelSequenceDirector::OnCreated()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("LevelSequenceDirector", "OnCreated");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-// UInteriorFogComponent
-void UInteriorFogComponent::SetExtinctionScale(float NewExtinctionScale)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("InteriorFogComponent", "SetExtinctionScale");
-    struct
-    {
-        float NewExtinctionScale;
-    } Parms{};
-    Parms.NewExtinctionScale = (float)NewExtinctionScale;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UInteriorFogComponent::SetExtendVisibleDistance(float NewFadeDistance)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("InteriorFogComponent", "SetExtendVisibleDistance");
-    struct
-    {
-        float NewFadeDistance;
-    } Parms{};
-    Parms.NewFadeDistance = (float)NewFadeDistance;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UInteriorFogComponent::SetExcludeRange(float NewExcludeRange)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("InteriorFogComponent", "SetExcludeRange");
-    struct
-    {
-        float NewExcludeRange;
-    } Parms{};
-    Parms.NewExcludeRange = (float)NewExcludeRange;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UInteriorFogComponent::SetExcludeOpacity(float NewExcludeOpacity)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("InteriorFogComponent", "SetExcludeOpacity");
-    struct
-    {
-        float NewExcludeOpacity;
-    } Parms{};
-    Parms.NewExcludeOpacity = (float)NewExcludeOpacity;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UInteriorFogComponent::SetAlbedo(struct FLinearColor NewAlbedo)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("InteriorFogComponent", "SetAlbedo");
-    struct
-    {
-        struct FLinearColor NewAlbedo;
-    } Parms{};
-    Parms.NewAlbedo = (struct FLinearColor)NewAlbedo;
-    this->ProcessEvent(Func, &Parms);
-}
-
-// ULevelSequence
-void ULevelSequence::RemoveMetaDataByClass(struct UObject* InClass)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("LevelSequence", "RemoveMetaDataByClass");
-    struct
-    {
-        struct UObject* InClass;
-    } Parms{};
-    Parms.InClass = (struct UObject*)InClass;
-    this->ProcessEvent(Func, &Parms);
-}
-
-struct UObject* ULevelSequence::FindOrAddMetaDataByClass(struct UObject* InClass)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("LevelSequence", "FindOrAddMetaDataByClass");
-    struct
-    {
-        struct UObject* InClass;
-        struct UObject* ReturnValue;
-    } Parms{};
-    Parms.InClass = (struct UObject*)InClass;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct UObject* ULevelSequence::FindMetaDataByClass(struct UObject* InClass)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("LevelSequence", "FindMetaDataByClass");
-    struct
-    {
-        struct UObject* InClass;
-        struct UObject* ReturnValue;
-    } Parms{};
-    Parms.InClass = (struct UObject*)InClass;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct UObject* ULevelSequence::CopyMetaData(struct UObject* InMetadata)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("LevelSequence", "CopyMetaData");
-    struct
-    {
-        struct UObject* InMetadata;
-        struct UObject* ReturnValue;
-    } Parms{};
-    Parms.InMetadata = (struct UObject*)InMetadata;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
 }
 
 // ULevelSequenceBurnInOptions
@@ -482,6 +333,17 @@ struct ULevelSequenceBurnInInitSettings* ULevelSequenceBurnIn::GetSettingsClass(
     return Parms.ReturnValue;
 }
 
+// ULevelSequenceDirector
+void ULevelSequenceDirector::OnCreated()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("LevelSequenceDirector", "OnCreated");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
 // ULevelSequencePlayer
 struct UCameraComponent* ULevelSequencePlayer::GetActiveCameraComponent()
 {
@@ -515,33 +377,61 @@ struct ULevelSequencePlayer* ULevelSequencePlayer::CreateLevelSequencePlayer(str
     return Parms.ReturnValue;
 }
 
-// USubLevelSequenceVolume
-void USubLevelSequenceVolume::SetVolumeSequence(struct FString SequenceNameInManager, struct FSoftObjectPath Path, int32_t Priority)
+// ALevelSequenceMediaController
+void ALevelSequenceMediaController::SynchronizeToServer(float DesyncThresholdSeconds)
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("SubLevelSequenceVolume", "SetVolumeSequence");
+    if (!Func) Func = ClassPrivate->GetFunction("LevelSequenceMediaController", "SynchronizeToServer");
     struct
     {
-        struct FString SequenceNameInManager;
-        struct FSoftObjectPath Path;
-        int32_t Priority;
+        float DesyncThresholdSeconds;
     } Parms{};
-    Parms.SequenceNameInManager = (struct FString)SequenceNameInManager;
-    Parms.Path = (struct FSoftObjectPath)Path;
-    Parms.Priority = (int32_t)Priority;
+    Parms.DesyncThresholdSeconds = (float)DesyncThresholdSeconds;
     this->ProcessEvent(Func, &Parms);
 }
 
-void USubLevelSequenceVolume::SetGroupName(struct FString InGroupName)
+void ALevelSequenceMediaController::Play()
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("SubLevelSequenceVolume", "SetGroupName");
+    if (!Func) Func = ClassPrivate->GetFunction("LevelSequenceMediaController", "Play");
     struct
     {
-        struct FString InGroupName;
     } Parms{};
-    Parms.InGroupName = (struct FString)InGroupName;
     this->ProcessEvent(Func, &Parms);
+}
+
+void ALevelSequenceMediaController::OnRep_ServerStartTimeSeconds()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("LevelSequenceMediaController", "OnRep_ServerStartTimeSeconds");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+struct ALevelSequenceActor* ALevelSequenceMediaController::GetSequence()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("LevelSequenceMediaController", "GetSequence");
+    struct
+    {
+        struct ALevelSequenceActor* ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct UMediaComponent* ALevelSequenceMediaController::GetMediaComponent()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("LevelSequenceMediaController", "GetMediaComponent");
+    struct
+    {
+        struct UMediaComponent* ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
 }
 
 } // namespace SDK

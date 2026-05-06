@@ -53,21 +53,22 @@ struct FMovieSceneGeometryCacheSectionTemplate : FMovieSceneEvalTemplate
 };
 
 // Object: Class GeometryCacheTracks.MovieSceneGeometryCacheSection
-// Size: 0x128 (Inherited: 0xE8)
+// Size: 0x120 (Inherited: 0xE0)
 struct UMovieSceneGeometryCacheSection : UMovieSceneSection
 {
 	DEFINE_UE_CLASS_HELPERS(UMovieSceneGeometryCacheSection, "MovieSceneGeometryCacheSection")
 
-	struct FMovieSceneGeometryCacheParams Params; // 0xE8(0x40)
+	struct FMovieSceneGeometryCacheParams Params; // 0xE0(0x40)
 };
 
 // Object: Class GeometryCacheTracks.MovieSceneGeometryCacheTrack
-// Size: 0x68 (Inherited: 0x58)
+// Size: 0x90 (Inherited: 0x78)
 struct UMovieSceneGeometryCacheTrack : UMovieSceneNameableTrack
 {
 	DEFINE_UE_CLASS_HELPERS(UMovieSceneGeometryCacheTrack, "MovieSceneGeometryCacheTrack")
 
-	struct TArray<struct UMovieSceneSection*> AnimationSections; // 0x58(0x10)
+	uint8_t Pad_0x78[0x8]; // 0x78(0x8)
+	struct TArray<struct UMovieSceneSection*> AnimationSections; // 0x80(0x10)
 };
 
 } // namespace SDK

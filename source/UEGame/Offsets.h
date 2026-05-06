@@ -37,11 +37,11 @@ inline uintptr_t o_bActorIsBeingDestroyed = 0x0;  // Actor::bActorIsBeingDestroy
 inline uintptr_t o_Mesh = 0x0; // Character::Mesh
 
 // === Item ===
-inline uintptr_t o_ModularWeaponDesc = 0x0; // InventoryPickup::ModularWeaponDesc
-inline uintptr_t o_FDFMCommonItemRow = o_ModularWeaponDesc + 0x10;
+// inline uintptr_t o_ModularWeaponDesc = 0x0; // InventoryPickup::ModularWeaponDesc
+// inline uintptr_t o_FDFMCommonItemRow = o_ModularWeaponDesc + 0x10;
 
 // === Item Material ===
-inline uintptr_t o_CachedOutlineMeshComponents = 0x0; // InteractorBase::CachedOutlineMeshComponents
+// inline uintptr_t o_CachedOutlineMeshComponents = 0x0; // InteractorBase::CachedOutlineMeshComponents
 
 // === Material 位域 ===
 inline uintptr_t o_bDisableDepthTest = 0x0; // Material::bDisableDepthTest

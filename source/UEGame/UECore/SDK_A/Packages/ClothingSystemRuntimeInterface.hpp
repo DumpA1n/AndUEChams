@@ -7,8 +7,8 @@ namespace SDK
 
 // Package: ClothingSystemRuntimeInterface
 // Enums: 0
-// Structs: 7
-// Classes: 5
+// Structs: 6
+// Classes: 6
 
 struct FClothCollisionData;
 struct FClothCollisionPrim_Box;
@@ -16,12 +16,12 @@ struct FClothCollisionPrim_Convex;
 struct FClothCollisionPrim_SphereConnection;
 struct FClothCollisionPrim_Sphere;
 struct FClothVertBoneData;
-struct FPointWeightMap;
 struct UClothConfigBase;
+struct UClothSharedSimConfigBase;
 struct UClothingAssetBase;
 struct UClothingSimulationFactory;
 struct UClothingSimulationInteractor;
-struct UClothPhysicalMeshDataBase;
+struct UClothPhysicalMeshDataBase_Legacy;
 
 // Object: ScriptStruct ClothingSystemRuntimeInterface.ClothCollisionData
 // Size: 0x40 (Inherited: 0x0)
@@ -34,21 +34,24 @@ struct FClothCollisionData
 };
 
 // Object: ScriptStruct ClothingSystemRuntimeInterface.ClothCollisionPrim_Box
-// Size: 0x1C (Inherited: 0x0)
+// Size: 0x30 (Inherited: 0x0)
 struct FClothCollisionPrim_Box
 {
-	int32_t BoneIndex; // 0x0(0x4)
-	struct FVector LocalMin; // 0x4(0xC)
-	struct FVector LocalMax; // 0x10(0xC)
+	struct FVector LocalPosition; // 0x0(0xC)
+	uint8_t Pad_0xC[0x4]; // 0xC(0x4)
+	struct FQuat LocalRotation; // 0x10(0x10)
+	struct FVector HalfExtents; // 0x20(0xC)
+	int32_t BoneIndex; // 0x2C(0x4)
 };
 
 // Object: ScriptStruct ClothingSystemRuntimeInterface.ClothCollisionPrim_Convex
-// Size: 0x18 (Inherited: 0x0)
+// Size: 0x28 (Inherited: 0x0)
 struct FClothCollisionPrim_Convex
 {
 	struct TArray<struct FPlane> Planes; // 0x0(0x10)
-	int32_t BoneIndex; // 0x10(0x4)
-	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct TArray<struct FVector> SurfacePoints; // 0x10(0x10)
+	int32_t BoneIndex; // 0x20(0x4)
+	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
 };
 
 // Object: ScriptStruct ClothingSystemRuntimeInterface.ClothCollisionPrim_SphereConnection
@@ -63,30 +66,17 @@ struct FClothCollisionPrim_SphereConnection
 struct FClothCollisionPrim_Sphere
 {
 	int32_t BoneIndex; // 0x0(0x4)
-	float radius; // 0x4(0x4)
+	float Radius; // 0x4(0x4)
 	struct FVector LocalPosition; // 0x8(0xC)
 };
 
 // Object: ScriptStruct ClothingSystemRuntimeInterface.ClothVertBoneData
-// Size: 0x34 (Inherited: 0x0)
+// Size: 0x4C (Inherited: 0x0)
 struct FClothVertBoneData
 {
 	int32_t NumInfluences; // 0x0(0x4)
-	uint16_t BoneIndices[0x8]; // 0x4(0x10)
-	float BoneWeights[0x8]; // 0x14(0x20)
-};
-
-// Object: ScriptStruct ClothingSystemRuntimeInterface.PointWeightMap
-// Size: 0x28 (Inherited: 0x0)
-struct FPointWeightMap
-{
-	struct FName Name; // 0x0(0x8)
-	uint8_t CurrentTarget; // 0x8(0x1)
-	uint8_t Pad_0x9[0x7]; // 0x9(0x7)
-	struct TArray<float> Values; // 0x10(0x10)
-	uint8_t bEnabled : 1; // 0x20(0x1), Mask(0x1)
-	uint8_t BitPad_0x20_1 : 7; // 0x20(0x1)
-	uint8_t Pad_0x21[0x7]; // 0x21(0x7)
+	uint16_t BoneIndices[0xC]; // 0x4(0x18)
+	float BoneWeights[0xC]; // 0x1C(0x30)
 };
 
 // Object: Class ClothingSystemRuntimeInterface.ClothConfigBase
@@ -94,6 +84,13 @@ struct FPointWeightMap
 struct UClothConfigBase : UObject
 {
 	DEFINE_UE_CLASS_HELPERS(UClothConfigBase, "ClothConfigBase")
+};
+
+// Object: Class ClothingSystemRuntimeInterface.ClothSharedSimConfigBase
+// Size: 0x28 (Inherited: 0x28)
+struct UClothSharedSimConfigBase : UObject
+{
+	DEFINE_UE_CLASS_HELPERS(UClothSharedSimConfigBase, "ClothSharedSimConfigBase")
 };
 
 // Object: Class ClothingSystemRuntimeInterface.ClothingAssetBase
@@ -121,24 +118,78 @@ struct UClothingSimulationInteractor : UObject
 
 	uint8_t Pad_0x28[0x8]; // 0x28(0x8)
 
+	// Object: Function ClothingSystemRuntimeInterface.ClothingSimulationInteractor.SetAnimDriveSpringStiffness
+	// Flags: [Native|Public|BlueprintCallable]
+	// Offset: 0xb229084
+	// Params: [ Num(1) Size(0x4) ]
+	void SetAnimDriveSpringStiffness(float InStiffness);
+
 	// Object: Function ClothingSystemRuntimeInterface.ClothingSimulationInteractor.PhysicsAssetUpdated
 	// Flags: [Native|Public|BlueprintCallable]
-	// Offset: 0x1679e488
+	// Offset: 0xb229150
 	// Params: [ Num(0) Size(0x0) ]
 	void PhysicsAssetUpdated();
 
+	// Object: Function ClothingSystemRuntimeInterface.ClothingSimulationInteractor.GetSimulationTime
+	// Flags: [Native|Public|BlueprintCallable|BlueprintPure|Const]
+	// Offset: 0xb228e48
+	// Params: [ Num(1) Size(0x4) ]
+	float GetSimulationTime();
+
+	// Object: Function ClothingSystemRuntimeInterface.ClothingSimulationInteractor.GetNumSubsteps
+	// Flags: [Native|Public|BlueprintCallable|BlueprintPure|Const]
+	// Offset: 0xb228e84
+	// Params: [ Num(1) Size(0x4) ]
+	int32_t GetNumSubsteps();
+
+	// Object: Function ClothingSystemRuntimeInterface.ClothingSimulationInteractor.GetNumKinematicParticles
+	// Flags: [Native|Public|BlueprintCallable|BlueprintPure|Const]
+	// Offset: 0xb228f38
+	// Params: [ Num(1) Size(0x4) ]
+	int32_t GetNumKinematicParticles();
+
+	// Object: Function ClothingSystemRuntimeInterface.ClothingSimulationInteractor.GetNumIterations
+	// Flags: [Native|Public|BlueprintCallable|BlueprintPure|Const]
+	// Offset: 0xb228ec0
+	// Params: [ Num(1) Size(0x4) ]
+	int32_t GetNumIterations();
+
+	// Object: Function ClothingSystemRuntimeInterface.ClothingSimulationInteractor.GetNumDynamicParticles
+	// Flags: [Native|Public|BlueprintCallable|BlueprintPure|Const]
+	// Offset: 0xb228efc
+	// Params: [ Num(1) Size(0x4) ]
+	int32_t GetNumDynamicParticles();
+
+	// Object: Function ClothingSystemRuntimeInterface.ClothingSimulationInteractor.GetNumCloths
+	// Flags: [Native|Public|BlueprintCallable|BlueprintPure|Const]
+	// Offset: 0xb228f74
+	// Params: [ Num(1) Size(0x4) ]
+	int32_t GetNumCloths();
+
+	// Object: Function ClothingSystemRuntimeInterface.ClothingSimulationInteractor.EnableGravityOverride
+	// Flags: [Native|Public|HasOutParms|HasDefaults|BlueprintCallable]
+	// Offset: 0xb228fcc
+	// Params: [ Num(1) Size(0xC) ]
+	void EnableGravityOverride(const struct FVector& InVector);
+
+	// Object: Function ClothingSystemRuntimeInterface.ClothingSimulationInteractor.DisableGravityOverride
+	// Flags: [Native|Public|BlueprintCallable]
+	// Offset: 0xb228fb0
+	// Params: [ Num(0) Size(0x0) ]
+	void DisableGravityOverride();
+
 	// Object: Function ClothingSystemRuntimeInterface.ClothingSimulationInteractor.ClothConfigUpdated
 	// Flags: [Native|Public|BlueprintCallable]
-	// Offset: 0x1679e46c
+	// Offset: 0xb229134
 	// Params: [ Num(0) Size(0x0) ]
 	void ClothConfigUpdated();
 };
 
-// Object: Class ClothingSystemRuntimeInterface.ClothPhysicalMeshDataBase
+// Object: Class ClothingSystemRuntimeInterface.ClothPhysicalMeshDataBase_Legacy
 // Size: 0xE0 (Inherited: 0x28)
-struct UClothPhysicalMeshDataBase : UObject
+struct UClothPhysicalMeshDataBase_Legacy : UObject
 {
-	DEFINE_UE_CLASS_HELPERS(UClothPhysicalMeshDataBase, "ClothPhysicalMeshDataBase")
+	DEFINE_UE_CLASS_HELPERS(UClothPhysicalMeshDataBase_Legacy, "ClothPhysicalMeshDataBase_Legacy")
 
 	struct TArray<struct FVector> Vertices; // 0x28(0x10)
 	struct TArray<struct FVector> Normals; // 0x38(0x10)

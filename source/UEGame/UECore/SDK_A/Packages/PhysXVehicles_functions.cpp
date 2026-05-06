@@ -6,15 +6,15 @@ namespace SDK
 {
 
 // UWheeledVehicleMovementComponent
-void UWheeledVehicleMovementComponent::SetUseAutoGears(uint8_t bUseAuto)
+void UWheeledVehicleMovementComponent::SetUseAutoGears(bool bUseAuto)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("WheeledVehicleMovementComponent", "SetUseAutoGears");
     struct
     {
-        uint8_t bUseAuto;
+        bool bUseAuto;
     } Parms{};
-    Parms.bUseAuto = (uint8_t)bUseAuto;
+    Parms.bUseAuto = (bool)bUseAuto;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -30,17 +30,17 @@ void UWheeledVehicleMovementComponent::SetThrottleInput(float Throttle)
     this->ProcessEvent(Func, &Parms);
 }
 
-void UWheeledVehicleMovementComponent::SetTargetGear(int32_t GearNum, uint8_t bImmediate)
+void UWheeledVehicleMovementComponent::SetTargetGear(int32_t GearNum, bool bImmediate)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("WheeledVehicleMovementComponent", "SetTargetGear");
     struct
     {
         int32_t GearNum;
-        uint8_t bImmediate;
+        bool bImmediate;
     } Parms{};
     Parms.GearNum = (int32_t)GearNum;
-    Parms.bImmediate = (uint8_t)bImmediate;
+    Parms.bImmediate = (bool)bImmediate;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -56,15 +56,15 @@ void UWheeledVehicleMovementComponent::SetSteeringInput(float Steering)
     this->ProcessEvent(Func, &Parms);
 }
 
-void UWheeledVehicleMovementComponent::SetHandbrakeInput(uint8_t bNewHandbrake)
+void UWheeledVehicleMovementComponent::SetHandbrakeInput(bool bNewHandbrake)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("WheeledVehicleMovementComponent", "SetHandbrakeInput");
     struct
     {
-        uint8_t bNewHandbrake;
+        bool bNewHandbrake;
     } Parms{};
-    Parms.bNewHandbrake = (uint8_t)bNewHandbrake;
+    Parms.bNewHandbrake = (bool)bNewHandbrake;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -116,27 +116,27 @@ void UWheeledVehicleMovementComponent::SetGroupsToAvoid(int32_t GroupFlags)
     this->ProcessEvent(Func, &Parms);
 }
 
-void UWheeledVehicleMovementComponent::SetGearUp(uint8_t bNewGearUp)
+void UWheeledVehicleMovementComponent::SetGearUp(bool bNewGearUp)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("WheeledVehicleMovementComponent", "SetGearUp");
     struct
     {
-        uint8_t bNewGearUp;
+        bool bNewGearUp;
     } Parms{};
-    Parms.bNewGearUp = (uint8_t)bNewGearUp;
+    Parms.bNewGearUp = (bool)bNewGearUp;
     this->ProcessEvent(Func, &Parms);
 }
 
-void UWheeledVehicleMovementComponent::SetGearDown(uint8_t bNewGearDown)
+void UWheeledVehicleMovementComponent::SetGearDown(bool bNewGearDown)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("WheeledVehicleMovementComponent", "SetGearDown");
     struct
     {
-        uint8_t bNewGearDown;
+        bool bNewGearDown;
     } Parms{};
-    Parms.bNewGearDown = (uint8_t)bNewGearDown;
+    Parms.bNewGearDown = (bool)bNewGearDown;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -176,19 +176,19 @@ void UWheeledVehicleMovementComponent::SetAvoidanceGroup(int32_t GroupFlags)
     this->ProcessEvent(Func, &Parms);
 }
 
-void UWheeledVehicleMovementComponent::SetAvoidanceEnabled(uint8_t bEnable)
+void UWheeledVehicleMovementComponent::SetAvoidanceEnabled(bool bEnable)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("WheeledVehicleMovementComponent", "SetAvoidanceEnabled");
     struct
     {
-        uint8_t bEnable;
+        bool bEnable;
     } Parms{};
-    Parms.bEnable = (uint8_t)bEnable;
+    Parms.bEnable = (bool)bEnable;
     this->ProcessEvent(Func, &Parms);
 }
 
-void UWheeledVehicleMovementComponent::ServerUpdateState(float InSteeringInput, float InThrottleInput, float InBrakeInput, float InHandbrakeInput, int32_t CurrentGear, struct FRigidBodyState ClientRBState)
+void UWheeledVehicleMovementComponent::ServerUpdateState(float InSteeringInput, float InThrottleInput, float InBrakeInput, float InHandbrakeInput, int32_t CurrentGear, struct FRigidBodyState InPhysicState)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("WheeledVehicleMovementComponent", "ServerUpdateState");
@@ -199,24 +199,24 @@ void UWheeledVehicleMovementComponent::ServerUpdateState(float InSteeringInput, 
         float InBrakeInput;
         float InHandbrakeInput;
         int32_t CurrentGear;
-        struct FRigidBodyState ClientRBState;
+        struct FRigidBodyState InPhysicState;
     } Parms{};
     Parms.InSteeringInput = (float)InSteeringInput;
     Parms.InThrottleInput = (float)InThrottleInput;
     Parms.InBrakeInput = (float)InBrakeInput;
     Parms.InHandbrakeInput = (float)InHandbrakeInput;
     Parms.CurrentGear = (int32_t)CurrentGear;
-    Parms.ClientRBState = (struct FRigidBodyState)ClientRBState;
+    Parms.InPhysicState = (struct FRigidBodyState)InPhysicState;
     this->ProcessEvent(Func, &Parms);
 }
 
-uint8_t UWheeledVehicleMovementComponent::GetUseAutoGears()
+bool UWheeledVehicleMovementComponent::GetUseAutoGears()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("WheeledVehicleMovementComponent", "GetUseAutoGears");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
@@ -339,25 +339,13 @@ struct AWheeledVehicle* UVehicleAnimInstance::GetVehicle()
 }
 
 // UVehicleWheel
-uint8_t UVehicleWheel::IsInAir()
+bool UVehicleWheel::IsInAir()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("VehicleWheel", "IsInAir");
     struct
     {
-        uint8_t ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-float UVehicleWheel::GetSuspensionSpringForce()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("VehicleWheel", "GetSuspensionSpringForce");
-    struct
-    {
-        float ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;

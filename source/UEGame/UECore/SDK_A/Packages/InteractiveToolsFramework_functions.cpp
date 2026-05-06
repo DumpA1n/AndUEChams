@@ -5,27 +5,27 @@ namespace SDK
 {
 
 // UGizmoBaseComponent
-void UGizmoBaseComponent::UpdateWorldLocalState(uint8_t bWorldIn)
+void UGizmoBaseComponent::UpdateWorldLocalState(bool bWorldIn)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("GizmoBaseComponent", "UpdateWorldLocalState");
     struct
     {
-        uint8_t bWorldIn;
+        bool bWorldIn;
     } Parms{};
-    Parms.bWorldIn = (uint8_t)bWorldIn;
+    Parms.bWorldIn = (bool)bWorldIn;
     this->ProcessEvent(Func, &Parms);
 }
 
-void UGizmoBaseComponent::UpdateHoverState(uint8_t bHoveringIn)
+void UGizmoBaseComponent::UpdateHoverState(bool bHoveringIn)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("GizmoBaseComponent", "UpdateHoverState");
     struct
     {
-        uint8_t bHoveringIn;
+        bool bHoveringIn;
     } Parms{};
-    Parms.bHoveringIn = (uint8_t)bHoveringIn;
+    Parms.bHoveringIn = (bool)bHoveringIn;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -55,13 +55,13 @@ struct FTransform IGizmoTransformSource::GetTransform()
 }
 
 // IGizmoAxisSource
-uint8_t IGizmoAxisSource::HasTangentVectors()
+bool IGizmoAxisSource::HasTangentVectors()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("GizmoAxisSource", "HasTangentVectors");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
@@ -106,15 +106,15 @@ struct FVector IGizmoAxisSource::GetDirection()
 }
 
 // IGizmoClickTarget
-void IGizmoClickTarget::UpdateHoverState(uint8_t bHovering)
+void IGizmoClickTarget::UpdateHoverState(bool bHovering)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("GizmoClickTarget", "UpdateHoverState");
     struct
     {
-        uint8_t bHovering;
+        bool bHovering;
     } Parms{};
-    Parms.bHovering = (uint8_t)bHovering;
+    Parms.bHovering = (bool)bHovering;
     this->ProcessEvent(Func, &Parms);
 }
 

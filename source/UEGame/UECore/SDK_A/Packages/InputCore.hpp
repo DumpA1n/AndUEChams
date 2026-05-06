@@ -44,15 +44,6 @@ enum class ETouchType : uint8_t
 	ETouchType_MAX = 7
 };
 
-// Object: Enum InputCore.EConsoleForGamepadLabels
-enum class EConsoleForGamepadLabels : uint8_t
-{
-	None = 0,
-	XBoxOne = 1,
-	PS4 = 2,
-	EConsoleForGamepadLabels_MAX = 3
-};
-
 // Object: Enum InputCore.EControllerHand
 enum class EControllerHand : uint8_t
 {
@@ -75,6 +66,15 @@ enum class EControllerHand : uint8_t
 	Special_11 = 16,
 	ControllerHand_Count = 17,
 	EControllerHand_MAX = 18
+};
+
+// Object: Enum InputCore.EConsoleForGamepadLabels
+enum class EConsoleForGamepadLabels : uint8_t
+{
+	None = 0,
+	XBoxOne = 1,
+	PS4 = 2,
+	EConsoleForGamepadLabels_MAX = 3
 };
 
 // Object: ScriptStruct InputCore.Key

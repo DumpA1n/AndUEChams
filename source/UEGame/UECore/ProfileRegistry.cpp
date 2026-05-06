@@ -4,6 +4,7 @@
 #include <unistd.h>
 
 #include "Logger.h"
+#include "Profiles/ArenaBreakout.h"
 #include "Profiles/DeltaForce.h"
 
 namespace SDK::Profiles
@@ -14,6 +15,7 @@ namespace
 std::vector<IGameProfile*>& Registry()
 {
     static std::vector<IGameProfile*> profiles = {
+        new ArenaBreakoutProfile(),
         new DeltaForceProfile(),
     };
     return profiles;

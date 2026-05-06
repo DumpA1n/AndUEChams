@@ -8,18 +8,305 @@
 namespace SDK
 {
 
+// UEnvQueryGenerator_BlueprintBase
+struct UObject* UEnvQueryGenerator_BlueprintBase::GetQuerier()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("EnvQueryGenerator_BlueprintBase", "GetQuerier");
+    struct
+    {
+        struct UObject* ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+void UEnvQueryGenerator_BlueprintBase::DoItemGeneration(const struct TArray<struct FVector>& ContextLocations)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("EnvQueryGenerator_BlueprintBase", "DoItemGeneration");
+    struct
+    {
+        struct TArray<struct FVector> ContextLocations;
+    } Parms{};
+    Parms.ContextLocations = (struct TArray<struct FVector>)ContextLocations;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UEnvQueryGenerator_BlueprintBase::AddGeneratedVector(struct FVector GeneratedVector)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("EnvQueryGenerator_BlueprintBase", "AddGeneratedVector");
+    struct
+    {
+        struct FVector GeneratedVector;
+    } Parms{};
+    Parms.GeneratedVector = (struct FVector)GeneratedVector;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UEnvQueryGenerator_BlueprintBase::AddGeneratedActor(struct AActor* GeneratedActor)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("EnvQueryGenerator_BlueprintBase", "AddGeneratedActor");
+    struct
+    {
+        struct AActor* GeneratedActor;
+    } Parms{};
+    Parms.GeneratedActor = (struct AActor*)GeneratedActor;
+    this->ProcessEvent(Func, &Parms);
+}
+
+// UEnvQueryInstanceBlueprintWrapper
+void UEnvQueryInstanceBlueprintWrapper::SetNamedParam(struct FName ParamName, float Value)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("EnvQueryInstanceBlueprintWrapper", "SetNamedParam");
+    struct
+    {
+        struct FName ParamName;
+        float Value;
+    } Parms{};
+    Parms.ParamName = (struct FName)ParamName;
+    Parms.Value = (float)Value;
+    this->ProcessEvent(Func, &Parms);
+}
+
+struct TArray<struct FVector> UEnvQueryInstanceBlueprintWrapper::GetResultsAsLocations()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("EnvQueryInstanceBlueprintWrapper", "GetResultsAsLocations");
+    struct
+    {
+        struct TArray<struct FVector> ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct TArray<struct AActor*> UEnvQueryInstanceBlueprintWrapper::GetResultsAsActors()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("EnvQueryInstanceBlueprintWrapper", "GetResultsAsActors");
+    struct
+    {
+        struct TArray<struct AActor*> ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+bool UEnvQueryInstanceBlueprintWrapper::GetQueryResultsAsLocations(struct TArray<struct FVector>& ResultLocations)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("EnvQueryInstanceBlueprintWrapper", "GetQueryResultsAsLocations");
+    struct
+    {
+        struct TArray<struct FVector> ResultLocations;
+        bool ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    ResultLocations = Parms.ResultLocations;
+    return Parms.ReturnValue;
+}
+
+bool UEnvQueryInstanceBlueprintWrapper::GetQueryResultsAsActors(struct TArray<struct AActor*>& ResultActors)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("EnvQueryInstanceBlueprintWrapper", "GetQueryResultsAsActors");
+    struct
+    {
+        struct TArray<struct AActor*> ResultActors;
+        bool ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    ResultActors = Parms.ResultActors;
+    return Parms.ReturnValue;
+}
+
+float UEnvQueryInstanceBlueprintWrapper::GetItemScore(int32_t ItemIndex)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("EnvQueryInstanceBlueprintWrapper", "GetItemScore");
+    struct
+    {
+        int32_t ItemIndex;
+        float ReturnValue;
+    } Parms{};
+    Parms.ItemIndex = (int32_t)ItemIndex;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+void UEnvQueryInstanceBlueprintWrapper::EQSQueryDoneSignature__DelegateSignature(struct UEnvQueryInstanceBlueprintWrapper* QueryInstance, uint8_t QueryStatus)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("EnvQueryInstanceBlueprintWrapper", "EQSQueryDoneSignature__DelegateSignature");
+    struct
+    {
+        struct UEnvQueryInstanceBlueprintWrapper* QueryInstance;
+        uint8_t QueryStatus;
+    } Parms{};
+    Parms.QueryInstance = (struct UEnvQueryInstanceBlueprintWrapper*)QueryInstance;
+    Parms.QueryStatus = (uint8_t)QueryStatus;
+    this->ProcessEvent(Func, &Parms);
+}
+
+// UEnvQueryManager
+struct UEnvQueryInstanceBlueprintWrapper* UEnvQueryManager::RunEQSQuery(struct UObject* WorldContextObject, struct UEnvQuery* QueryTemplate, struct UObject* Querier, uint8_t RunMode, struct UEnvQueryInstanceBlueprintWrapper* WrapperClass, uint8_t QueryPriority)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("EnvQueryManager", "RunEQSQuery");
+    struct
+    {
+        struct UObject* WorldContextObject;
+        struct UEnvQuery* QueryTemplate;
+        struct UObject* Querier;
+        uint8_t RunMode;
+        struct UEnvQueryInstanceBlueprintWrapper* WrapperClass;
+        uint8_t QueryPriority;
+        struct UEnvQueryInstanceBlueprintWrapper* ReturnValue;
+    } Parms{};
+    Parms.WorldContextObject = (struct UObject*)WorldContextObject;
+    Parms.QueryTemplate = (struct UEnvQuery*)QueryTemplate;
+    Parms.Querier = (struct UObject*)Querier;
+    Parms.RunMode = (uint8_t)RunMode;
+    Parms.WrapperClass = (struct UEnvQueryInstanceBlueprintWrapper*)WrapperClass;
+    Parms.QueryPriority = (uint8_t)QueryPriority;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// ANavLinkProxy
+void ANavLinkProxy::SetSmartLinkEnabled(bool bEnabled)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("NavLinkProxy", "SetSmartLinkEnabled");
+    struct
+    {
+        bool bEnabled;
+    } Parms{};
+    Parms.bEnabled = (bool)bEnabled;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void ANavLinkProxy::ResumePathFollowing(struct AActor* Agent)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("NavLinkProxy", "ResumePathFollowing");
+    struct
+    {
+        struct AActor* Agent;
+    } Parms{};
+    Parms.Agent = (struct AActor*)Agent;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void ANavLinkProxy::ReceiveSmartLinkReached(struct AActor* Agent, const struct FVector& Destination)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("NavLinkProxy", "ReceiveSmartLinkReached");
+    struct
+    {
+        struct AActor* Agent;
+        struct FVector Destination;
+    } Parms{};
+    Parms.Agent = (struct AActor*)Agent;
+    Parms.Destination = (struct FVector)Destination;
+    this->ProcessEvent(Func, &Parms);
+}
+
+bool ANavLinkProxy::IsSmartLinkEnabled()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("NavLinkProxy", "IsSmartLinkEnabled");
+    struct
+    {
+        bool ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+bool ANavLinkProxy::HasMovingAgents()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("NavLinkProxy", "HasMovingAgents");
+    struct
+    {
+        bool ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// UPathFollowingComponent
+void UPathFollowingComponent::OnNavDataRegistered(struct ANavigationData* NavData)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("PathFollowingComponent", "OnNavDataRegistered");
+    struct
+    {
+        struct ANavigationData* NavData;
+    } Parms{};
+    Parms.NavData = (struct ANavigationData*)NavData;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UPathFollowingComponent::OnActorBump(struct AActor* SelfActor, struct AActor* OtherActor, struct FVector NormalImpulse, const struct FHitResult& Hit)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("PathFollowingComponent", "OnActorBump");
+    struct
+    {
+        struct AActor* SelfActor;
+        struct AActor* OtherActor;
+        struct FVector NormalImpulse;
+        struct FHitResult Hit;
+    } Parms{};
+    Parms.SelfActor = (struct AActor*)SelfActor;
+    Parms.OtherActor = (struct AActor*)OtherActor;
+    Parms.NormalImpulse = (struct FVector)NormalImpulse;
+    Parms.Hit = (struct FHitResult)Hit;
+    this->ProcessEvent(Func, &Parms);
+}
+
+struct FVector UPathFollowingComponent::GetPathDestination()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("PathFollowingComponent", "GetPathDestination");
+    struct
+    {
+        struct FVector ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+uint8_t UPathFollowingComponent::GetPathActionType()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("PathFollowingComponent", "GetPathActionType");
+    struct
+    {
+        uint8_t ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
 // UAIPerceptionComponent
-void UAIPerceptionComponent::SetSenseEnabled(struct UAISense* SenseClass, uint8_t bEnable)
+void UAIPerceptionComponent::SetSenseEnabled(struct UAISense* SenseClass, bool bEnable)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("AIPerceptionComponent", "SetSenseEnabled");
     struct
     {
         struct UAISense* SenseClass;
-        uint8_t bEnable;
+        bool bEnable;
     } Parms{};
     Parms.SenseClass = (struct UAISense*)SenseClass;
-    Parms.bEnable = (uint8_t)bEnable;
+    Parms.bEnable = (bool)bEnable;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -33,18 +320,32 @@ void UAIPerceptionComponent::RequestStimuliListenerUpdate()
     this->ProcessEvent(Func, &Parms);
 }
 
-void UAIPerceptionComponent::OnOwnerEndPlay(struct AActor* Actor, EEndPlayReason EndPlayReason)
+void UAIPerceptionComponent::OnOwnerEndPlay(struct AActor* Actor, uint8_t EndPlayReason)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("AIPerceptionComponent", "OnOwnerEndPlay");
     struct
     {
         struct AActor* Actor;
-        enum EEndPlayReason EndPlayReason;
+        uint8_t EndPlayReason;
     } Parms{};
     Parms.Actor = (struct AActor*)Actor;
-    Parms.EndPlayReason = (enum EEndPlayReason)EndPlayReason;
+    Parms.EndPlayReason = (uint8_t)EndPlayReason;
     this->ProcessEvent(Func, &Parms);
+}
+
+void UAIPerceptionComponent::GetPerceivedHostileActorsBySense(struct UAISense* SenseToUse, struct TArray<struct AActor*>& OutActors)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("AIPerceptionComponent", "GetPerceivedHostileActorsBySense");
+    struct
+    {
+        struct UAISense* SenseToUse;
+        struct TArray<struct AActor*> OutActors;
+    } Parms{};
+    Parms.SenseToUse = (struct UAISense*)SenseToUse;
+    this->ProcessEvent(Func, &Parms);
+    OutActors = Parms.OutActors;
 }
 
 void UAIPerceptionComponent::GetPerceivedHostileActors(struct TArray<struct AActor*>& OutActors)
@@ -101,7 +402,7 @@ void UAIPerceptionComponent::GetCurrentlyPerceivedActors(struct UAISense* SenseT
     OutActors = Parms.OutActors;
 }
 
-uint8_t UAIPerceptionComponent::GetActorsPerception(struct AActor* Actor, struct FActorPerceptionBlueprintInfo& Info)
+bool UAIPerceptionComponent::GetActorsPerception(struct AActor* Actor, struct FActorPerceptionBlueprintInfo& Info)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("AIPerceptionComponent", "GetActorsPerception");
@@ -109,7 +410,7 @@ uint8_t UAIPerceptionComponent::GetActorsPerception(struct AActor* Actor, struct
     {
         struct AActor* Actor;
         struct FActorPerceptionBlueprintInfo Info;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.Actor = (struct AActor*)Actor;
     this->ProcessEvent(Func, &Parms);
@@ -117,567 +418,152 @@ uint8_t UAIPerceptionComponent::GetActorsPerception(struct AActor* Actor, struct
     return Parms.ReturnValue;
 }
 
-// UBlackboardComponent
-void UBlackboardComponent::SetValueAsVector(const struct FName& KeyName, struct FVector VectorValue)
+void UAIPerceptionComponent::ForgetAll()
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "SetValueAsVector");
-    struct
-    {
-        struct FName KeyName;
-        struct FVector VectorValue;
-    } Parms{};
-    Parms.KeyName = (struct FName)KeyName;
-    Parms.VectorValue = (struct FVector)VectorValue;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UBlackboardComponent::SetValueAsString(const struct FName& KeyName, struct FString StringValue)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "SetValueAsString");
-    struct
-    {
-        struct FName KeyName;
-        struct FString StringValue;
-    } Parms{};
-    Parms.KeyName = (struct FName)KeyName;
-    Parms.StringValue = (struct FString)StringValue;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UBlackboardComponent::SetValueAsRotator(const struct FName& KeyName, struct FRotator VectorValue)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "SetValueAsRotator");
-    struct
-    {
-        struct FName KeyName;
-        struct FRotator VectorValue;
-    } Parms{};
-    Parms.KeyName = (struct FName)KeyName;
-    Parms.VectorValue = (struct FRotator)VectorValue;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UBlackboardComponent::SetValueAsObject(const struct FName& KeyName, struct UObject* ObjectValue)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "SetValueAsObject");
-    struct
-    {
-        struct FName KeyName;
-        struct UObject* ObjectValue;
-    } Parms{};
-    Parms.KeyName = (struct FName)KeyName;
-    Parms.ObjectValue = (struct UObject*)ObjectValue;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UBlackboardComponent::SetValueAsName(const struct FName& KeyName, struct FName NameValue)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "SetValueAsName");
-    struct
-    {
-        struct FName KeyName;
-        struct FName NameValue;
-    } Parms{};
-    Parms.KeyName = (struct FName)KeyName;
-    Parms.NameValue = (struct FName)NameValue;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UBlackboardComponent::SetValueAsInt(const struct FName& KeyName, int32_t IntValue)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "SetValueAsInt");
-    struct
-    {
-        struct FName KeyName;
-        int32_t IntValue;
-    } Parms{};
-    Parms.KeyName = (struct FName)KeyName;
-    Parms.IntValue = (int32_t)IntValue;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UBlackboardComponent::SetValueAsFloat(const struct FName& KeyName, float FloatValue)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "SetValueAsFloat");
-    struct
-    {
-        struct FName KeyName;
-        float FloatValue;
-    } Parms{};
-    Parms.KeyName = (struct FName)KeyName;
-    Parms.FloatValue = (float)FloatValue;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UBlackboardComponent::SetValueAsEnum(const struct FName& KeyName, uint8_t EnumValue)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "SetValueAsEnum");
-    struct
-    {
-        struct FName KeyName;
-        uint8_t EnumValue;
-    } Parms{};
-    Parms.KeyName = (struct FName)KeyName;
-    Parms.EnumValue = (uint8_t)EnumValue;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UBlackboardComponent::SetValueAsClass(const struct FName& KeyName, struct UObject* ClassValue)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "SetValueAsClass");
-    struct
-    {
-        struct FName KeyName;
-        struct UObject* ClassValue;
-    } Parms{};
-    Parms.KeyName = (struct FName)KeyName;
-    Parms.ClassValue = (struct UObject*)ClassValue;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UBlackboardComponent::SetValueAsBool(const struct FName& KeyName, uint8_t BoolValue)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "SetValueAsBool");
-    struct
-    {
-        struct FName KeyName;
-        uint8_t BoolValue;
-    } Parms{};
-    Parms.KeyName = (struct FName)KeyName;
-    Parms.BoolValue = (uint8_t)BoolValue;
-    this->ProcessEvent(Func, &Parms);
-}
-
-uint8_t UBlackboardComponent::IsVectorValueSet(const struct FName& KeyName)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "IsVectorValueSet");
-    struct
-    {
-        struct FName KeyName;
-        uint8_t ReturnValue;
-    } Parms{};
-    Parms.KeyName = (struct FName)KeyName;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct FVector UBlackboardComponent::GetValueAsVector(const struct FName& KeyName)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "GetValueAsVector");
-    struct
-    {
-        struct FName KeyName;
-        struct FVector ReturnValue;
-    } Parms{};
-    Parms.KeyName = (struct FName)KeyName;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct FString UBlackboardComponent::GetValueAsString(const struct FName& KeyName)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "GetValueAsString");
-    struct
-    {
-        struct FName KeyName;
-        struct FString ReturnValue;
-    } Parms{};
-    Parms.KeyName = (struct FName)KeyName;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct FRotator UBlackboardComponent::GetValueAsRotator(const struct FName& KeyName)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "GetValueAsRotator");
-    struct
-    {
-        struct FName KeyName;
-        struct FRotator ReturnValue;
-    } Parms{};
-    Parms.KeyName = (struct FName)KeyName;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct UObject* UBlackboardComponent::GetValueAsObject(const struct FName& KeyName)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "GetValueAsObject");
-    struct
-    {
-        struct FName KeyName;
-        struct UObject* ReturnValue;
-    } Parms{};
-    Parms.KeyName = (struct FName)KeyName;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct FName UBlackboardComponent::GetValueAsName(const struct FName& KeyName)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "GetValueAsName");
-    struct
-    {
-        struct FName KeyName;
-        struct FName ReturnValue;
-    } Parms{};
-    Parms.KeyName = (struct FName)KeyName;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-int32_t UBlackboardComponent::GetValueAsInt(const struct FName& KeyName)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "GetValueAsInt");
-    struct
-    {
-        struct FName KeyName;
-        int32_t ReturnValue;
-    } Parms{};
-    Parms.KeyName = (struct FName)KeyName;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-float UBlackboardComponent::GetValueAsFloat(const struct FName& KeyName)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "GetValueAsFloat");
-    struct
-    {
-        struct FName KeyName;
-        float ReturnValue;
-    } Parms{};
-    Parms.KeyName = (struct FName)KeyName;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-uint8_t UBlackboardComponent::GetValueAsEnum(const struct FName& KeyName)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "GetValueAsEnum");
-    struct
-    {
-        struct FName KeyName;
-        uint8_t ReturnValue;
-    } Parms{};
-    Parms.KeyName = (struct FName)KeyName;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct UObject* UBlackboardComponent::GetValueAsClass(const struct FName& KeyName)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "GetValueAsClass");
-    struct
-    {
-        struct FName KeyName;
-        struct UObject* ReturnValue;
-    } Parms{};
-    Parms.KeyName = (struct FName)KeyName;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-uint8_t UBlackboardComponent::GetValueAsBool(const struct FName& KeyName)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "GetValueAsBool");
-    struct
-    {
-        struct FName KeyName;
-        uint8_t ReturnValue;
-    } Parms{};
-    Parms.KeyName = (struct FName)KeyName;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-uint8_t UBlackboardComponent::GetRotationFromEntry(const struct FName& KeyName, struct FRotator& ResultRotation)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "GetRotationFromEntry");
-    struct
-    {
-        struct FName KeyName;
-        struct FRotator ResultRotation;
-        uint8_t ReturnValue;
-    } Parms{};
-    Parms.KeyName = (struct FName)KeyName;
-    this->ProcessEvent(Func, &Parms);
-    ResultRotation = Parms.ResultRotation;
-    return Parms.ReturnValue;
-}
-
-uint8_t UBlackboardComponent::GetLocationFromEntry(const struct FName& KeyName, struct FVector& ResultLocation)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "GetLocationFromEntry");
-    struct
-    {
-        struct FName KeyName;
-        struct FVector ResultLocation;
-        uint8_t ReturnValue;
-    } Parms{};
-    Parms.KeyName = (struct FName)KeyName;
-    this->ProcessEvent(Func, &Parms);
-    ResultLocation = Parms.ResultLocation;
-    return Parms.ReturnValue;
-}
-
-void UBlackboardComponent::ClearValue(const struct FName& KeyName)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "ClearValue");
-    struct
-    {
-        struct FName KeyName;
-    } Parms{};
-    Parms.KeyName = (struct FName)KeyName;
-    this->ProcessEvent(Func, &Parms);
-}
-
-// UBrainComponent
-void UBrainComponent::StopLogic(struct FString Reason)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BrainComponent", "StopLogic");
-    struct
-    {
-        struct FString Reason;
-    } Parms{};
-    Parms.Reason = (struct FString)Reason;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UBrainComponent::RestartLogic()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BrainComponent", "RestartLogic");
+    if (!Func) Func = ClassPrivate->GetFunction("AIPerceptionComponent", "ForgetAll");
     struct
     {
     } Parms{};
     this->ProcessEvent(Func, &Parms);
 }
 
-uint8_t UBrainComponent::IsRunning()
+// UAIPerceptionSystem
+void UAIPerceptionSystem::ReportPerceptionEvent(struct UObject* WorldContextObject, struct UAISenseEvent* PerceptionEvent)
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BrainComponent", "IsRunning");
+    if (!Func) Func = StaticClass()->GetFunction("AIPerceptionSystem", "ReportPerceptionEvent");
     struct
     {
-        uint8_t ReturnValue;
+        struct UObject* WorldContextObject;
+        struct UAISenseEvent* PerceptionEvent;
     } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
+    Parms.WorldContextObject = (struct UObject*)WorldContextObject;
+    Parms.PerceptionEvent = (struct UAISenseEvent*)PerceptionEvent;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
 }
 
-uint8_t UBrainComponent::IsPaused()
+void UAIPerceptionSystem::ReportEvent(struct UAISenseEvent* PerceptionEvent)
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BrainComponent", "IsPaused");
+    if (!Func) Func = ClassPrivate->GetFunction("AIPerceptionSystem", "ReportEvent");
     struct
     {
-        uint8_t ReturnValue;
+        struct UAISenseEvent* PerceptionEvent;
     } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-// UBehaviorTreeComponent
-void UBehaviorTreeComponent::SetDynamicSubtree(struct FGameplayTag InjectTag, struct UBehaviorTree* BehaviorAsset)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BehaviorTreeComponent", "SetDynamicSubtree");
-    struct
-    {
-        struct FGameplayTag InjectTag;
-        struct UBehaviorTree* BehaviorAsset;
-    } Parms{};
-    Parms.InjectTag = (struct FGameplayTag)InjectTag;
-    Parms.BehaviorAsset = (struct UBehaviorTree*)BehaviorAsset;
+    Parms.PerceptionEvent = (struct UAISenseEvent*)PerceptionEvent;
     this->ProcessEvent(Func, &Parms);
 }
 
-float UBehaviorTreeComponent::GetTagCooldownEndTime(struct FGameplayTag CooldownTag)
+bool UAIPerceptionSystem::RegisterPerceptionStimuliSource(struct UObject* WorldContextObject, struct UAISense* Sense, struct AActor* Target)
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BehaviorTreeComponent", "GetTagCooldownEndTime");
+    if (!Func) Func = StaticClass()->GetFunction("AIPerceptionSystem", "RegisterPerceptionStimuliSource");
     struct
     {
-        struct FGameplayTag CooldownTag;
-        float ReturnValue;
+        struct UObject* WorldContextObject;
+        struct UAISense* Sense;
+        struct AActor* Target;
+        bool ReturnValue;
     } Parms{};
-    Parms.CooldownTag = (struct FGameplayTag)CooldownTag;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-void UBehaviorTreeComponent::AddCooldownTagDuration(struct FGameplayTag CooldownTag, float CooldownDuration, uint8_t bAddToExistingDuration)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BehaviorTreeComponent", "AddCooldownTagDuration");
-    struct
-    {
-        struct FGameplayTag CooldownTag;
-        float CooldownDuration;
-        uint8_t bAddToExistingDuration;
-    } Parms{};
-    Parms.CooldownTag = (struct FGameplayTag)CooldownTag;
-    Parms.CooldownDuration = (float)CooldownDuration;
-    Parms.bAddToExistingDuration = (uint8_t)bAddToExistingDuration;
-    this->ProcessEvent(Func, &Parms);
-}
-
-// UEnvQueryInstanceBlueprintWrapper
-void UEnvQueryInstanceBlueprintWrapper::SetNamedParam(struct FName ParamName, float Value)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("EnvQueryInstanceBlueprintWrapper", "SetNamedParam");
-    struct
-    {
-        struct FName ParamName;
-        float Value;
-    } Parms{};
-    Parms.ParamName = (struct FName)ParamName;
-    Parms.Value = (float)Value;
-    this->ProcessEvent(Func, &Parms);
-}
-
-struct TArray<struct FVector> UEnvQueryInstanceBlueprintWrapper::GetResultsAsLocations()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("EnvQueryInstanceBlueprintWrapper", "GetResultsAsLocations");
-    struct
-    {
-        struct TArray<struct FVector> ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct TArray<struct AActor*> UEnvQueryInstanceBlueprintWrapper::GetResultsAsActors()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("EnvQueryInstanceBlueprintWrapper", "GetResultsAsActors");
-    struct
-    {
-        struct TArray<struct AActor*> ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-uint8_t UEnvQueryInstanceBlueprintWrapper::GetQueryResultsAsLocations(struct TArray<struct FVector>& ResultLocations)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("EnvQueryInstanceBlueprintWrapper", "GetQueryResultsAsLocations");
-    struct
-    {
-        struct TArray<struct FVector> ResultLocations;
-        uint8_t ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    ResultLocations = Parms.ResultLocations;
-    return Parms.ReturnValue;
-}
-
-uint8_t UEnvQueryInstanceBlueprintWrapper::GetQueryResultsAsActors(struct TArray<struct AActor*>& ResultActors)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("EnvQueryInstanceBlueprintWrapper", "GetQueryResultsAsActors");
-    struct
-    {
-        struct TArray<struct AActor*> ResultActors;
-        uint8_t ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    ResultActors = Parms.ResultActors;
-    return Parms.ReturnValue;
-}
-
-float UEnvQueryInstanceBlueprintWrapper::GetItemScore(int32_t ItemIndex)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("EnvQueryInstanceBlueprintWrapper", "GetItemScore");
-    struct
-    {
-        int32_t ItemIndex;
-        float ReturnValue;
-    } Parms{};
-    Parms.ItemIndex = (int32_t)ItemIndex;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-void UEnvQueryInstanceBlueprintWrapper::EQSQueryDoneSignature__DelegateSignature(struct UEnvQueryInstanceBlueprintWrapper* QueryInstance, EEnvQueryStatus QueryStatus)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("EnvQueryInstanceBlueprintWrapper", "EQSQueryDoneSignature__DelegateSignature");
-    struct
-    {
-        struct UEnvQueryInstanceBlueprintWrapper* QueryInstance;
-        enum EEnvQueryStatus QueryStatus;
-    } Parms{};
-    Parms.QueryInstance = (struct UEnvQueryInstanceBlueprintWrapper*)QueryInstance;
-    Parms.QueryStatus = (enum EEnvQueryStatus)QueryStatus;
-    this->ProcessEvent(Func, &Parms);
-}
-
-// UAITask_MoveTo
-struct UAITask_MoveTo* UAITask_MoveTo::AIMoveTo(struct AAIController* Controller, struct FVector GoalLocation, struct AActor* GoalActor, float AcceptanceRadius, EAIOptionFlag StopOnOverlap, EAIOptionFlag AcceptPartialPath, uint8_t bUsePathfinding, uint8_t bLockAILogic, uint8_t bUseContinuosGoalTracking, EAIOptionFlag ProjectGoalOnNavigation)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = StaticClass()->GetFunction("AITask_MoveTo", "AIMoveTo");
-    struct
-    {
-        struct AAIController* Controller;
-        struct FVector GoalLocation;
-        struct AActor* GoalActor;
-        float AcceptanceRadius;
-        enum EAIOptionFlag StopOnOverlap;
-        enum EAIOptionFlag AcceptPartialPath;
-        uint8_t bUsePathfinding;
-        uint8_t bLockAILogic;
-        uint8_t bUseContinuosGoalTracking;
-        enum EAIOptionFlag ProjectGoalOnNavigation;
-        struct UAITask_MoveTo* ReturnValue;
-    } Parms{};
-    Parms.Controller = (struct AAIController*)Controller;
-    Parms.GoalLocation = (struct FVector)GoalLocation;
-    Parms.GoalActor = (struct AActor*)GoalActor;
-    Parms.AcceptanceRadius = (float)AcceptanceRadius;
-    Parms.StopOnOverlap = (enum EAIOptionFlag)StopOnOverlap;
-    Parms.AcceptPartialPath = (enum EAIOptionFlag)AcceptPartialPath;
-    Parms.bUsePathfinding = (uint8_t)bUsePathfinding;
-    Parms.bLockAILogic = (uint8_t)bLockAILogic;
-    Parms.bUseContinuosGoalTracking = (uint8_t)bUseContinuosGoalTracking;
-    Parms.ProjectGoalOnNavigation = (enum EAIOptionFlag)ProjectGoalOnNavigation;
+    Parms.WorldContextObject = (struct UObject*)WorldContextObject;
+    Parms.Sense = (struct UAISense*)Sense;
+    Parms.Target = (struct AActor*)Target;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
+void UAIPerceptionSystem::OnPerceptionStimuliSourceEndPlay(struct AActor* Actor, uint8_t EndPlayReason)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("AIPerceptionSystem", "OnPerceptionStimuliSourceEndPlay");
+    struct
+    {
+        struct AActor* Actor;
+        uint8_t EndPlayReason;
+    } Parms{};
+    Parms.Actor = (struct AActor*)Actor;
+    Parms.EndPlayReason = (uint8_t)EndPlayReason;
+    this->ProcessEvent(Func, &Parms);
+}
+
+struct UAISense* UAIPerceptionSystem::GetSenseClassForStimulus(struct UObject* WorldContextObject, const struct FAIStimulus& Stimulus)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("AIPerceptionSystem", "GetSenseClassForStimulus");
+    struct
+    {
+        struct UObject* WorldContextObject;
+        struct FAIStimulus Stimulus;
+        struct UAISense* ReturnValue;
+    } Parms{};
+    Parms.WorldContextObject = (struct UObject*)WorldContextObject;
+    Parms.Stimulus = (struct FAIStimulus)Stimulus;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// UAISense_Hearing
+void UAISense_Hearing::ReportNoiseEvent(struct UObject* WorldContextObject, struct FVector NoiseLocation, float Loudness, struct AActor* Instigator, float MaxRange, struct FName Tag)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("AISense_Hearing", "ReportNoiseEvent");
+    struct
+    {
+        struct UObject* WorldContextObject;
+        struct FVector NoiseLocation;
+        float Loudness;
+        struct AActor* Instigator;
+        float MaxRange;
+        struct FName Tag;
+    } Parms{};
+    Parms.WorldContextObject = (struct UObject*)WorldContextObject;
+    Parms.NoiseLocation = (struct FVector)NoiseLocation;
+    Parms.Loudness = (float)Loudness;
+    Parms.Instigator = (struct AActor*)Instigator;
+    Parms.MaxRange = (float)MaxRange;
+    Parms.Tag = (struct FName)Tag;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+}
+
+// UAISystem
+void UAISystem::AILoggingVerbose()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("AISystem", "AILoggingVerbose");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UAISystem::AIIgnorePlayers()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("AISystem", "AIIgnorePlayers");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+// UBTService
+void UBTService::SetTickInterval(float TickInterval, float TickRandomDeviation)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BTService", "SetTickInterval");
+    struct
+    {
+        float TickInterval;
+        float TickRandomDeviation;
+    } Parms{};
+    Parms.TickInterval = (float)TickInterval;
+    Parms.TickRandomDeviation = (float)TickRandomDeviation;
+    this->ProcessEvent(Func, &Parms);
+}
+
 // AAIController
-uint8_t AAIController::UseBlackboard(struct UBlackboardData* BlackboardAsset, struct UBlackboardComponent*& BlackboardComponent)
+bool AAIController::UseBlackboard(struct UBlackboardData* BlackboardAsset, struct UBlackboardComponent*& BlackboardComponent)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("AIController", "UseBlackboard");
@@ -685,7 +571,7 @@ uint8_t AAIController::UseBlackboard(struct UBlackboardData* BlackboardAsset, st
     {
         struct UBlackboardData* BlackboardAsset;
         struct UBlackboardComponent* BlackboardComponent;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.BlackboardAsset = (struct UBlackboardData*)BlackboardAsset;
     this->ProcessEvent(Func, &Parms);
@@ -717,26 +603,26 @@ void AAIController::SetPathFollowingComponent(struct UPathFollowingComponent* Ne
     this->ProcessEvent(Func, &Parms);
 }
 
-void AAIController::SetMoveBlockDetection(uint8_t bEnable)
+void AAIController::SetMoveBlockDetection(bool bEnable)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("AIController", "SetMoveBlockDetection");
     struct
     {
-        uint8_t bEnable;
+        bool bEnable;
     } Parms{};
-    Parms.bEnable = (uint8_t)bEnable;
+    Parms.bEnable = (bool)bEnable;
     this->ProcessEvent(Func, &Parms);
 }
 
-uint8_t AAIController::RunBehaviorTree(struct UBehaviorTree* BTAsset)
+bool AAIController::RunBehaviorTree(struct UBehaviorTree* BTAsset)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("AIController", "RunBehaviorTree");
     struct
     {
         struct UBehaviorTree* BTAsset;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.BTAsset = (struct UBehaviorTree*)BTAsset;
     this->ProcessEvent(Func, &Parms);
@@ -771,7 +657,7 @@ void AAIController::OnGameplayTaskResourcesClaimed(struct FGameplayResourceSet N
     this->ProcessEvent(Func, &Parms);
 }
 
-EPathFollowingRequestResult AAIController::MoveToLocation(const struct FVector& Dest, float AcceptanceRadius, uint8_t bStopOnOverlap, uint8_t bUsePathfinding, uint8_t bProjectDestinationToNavigation, uint8_t bCanStrafe, struct UNavigationQueryFilter* FilterClass, uint8_t bAllowPartialPath)
+uint8_t AAIController::MoveToLocation(const struct FVector& Dest, float AcceptanceRadius, bool bStopOnOverlap, bool bUsePathfinding, bool bProjectDestinationToNavigation, bool bCanStrafe, struct UNavigationQueryFilter* FilterClass, bool bAllowPartialPath)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("AIController", "MoveToLocation");
@@ -779,27 +665,27 @@ EPathFollowingRequestResult AAIController::MoveToLocation(const struct FVector& 
     {
         struct FVector Dest;
         float AcceptanceRadius;
-        uint8_t bStopOnOverlap;
-        uint8_t bUsePathfinding;
-        uint8_t bProjectDestinationToNavigation;
-        uint8_t bCanStrafe;
+        bool bStopOnOverlap;
+        bool bUsePathfinding;
+        bool bProjectDestinationToNavigation;
+        bool bCanStrafe;
         struct UNavigationQueryFilter* FilterClass;
-        uint8_t bAllowPartialPath;
-        enum EPathFollowingRequestResult ReturnValue;
+        bool bAllowPartialPath;
+        uint8_t ReturnValue;
     } Parms{};
     Parms.Dest = (struct FVector)Dest;
     Parms.AcceptanceRadius = (float)AcceptanceRadius;
-    Parms.bStopOnOverlap = (uint8_t)bStopOnOverlap;
-    Parms.bUsePathfinding = (uint8_t)bUsePathfinding;
-    Parms.bProjectDestinationToNavigation = (uint8_t)bProjectDestinationToNavigation;
-    Parms.bCanStrafe = (uint8_t)bCanStrafe;
+    Parms.bStopOnOverlap = (bool)bStopOnOverlap;
+    Parms.bUsePathfinding = (bool)bUsePathfinding;
+    Parms.bProjectDestinationToNavigation = (bool)bProjectDestinationToNavigation;
+    Parms.bCanStrafe = (bool)bCanStrafe;
     Parms.FilterClass = (struct UNavigationQueryFilter*)FilterClass;
-    Parms.bAllowPartialPath = (uint8_t)bAllowPartialPath;
+    Parms.bAllowPartialPath = (bool)bAllowPartialPath;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-EPathFollowingRequestResult AAIController::MoveToActor(struct AActor* Goal, float AcceptanceRadius, uint8_t bStopOnOverlap, uint8_t bUsePathfinding, uint8_t bCanStrafe, struct UNavigationQueryFilter* FilterClass, uint8_t bAllowPartialPath)
+uint8_t AAIController::MoveToActor(struct AActor* Goal, float AcceptanceRadius, bool bStopOnOverlap, bool bUsePathfinding, bool bCanStrafe, struct UNavigationQueryFilter* FilterClass, bool bAllowPartialPath)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("AIController", "MoveToActor");
@@ -807,20 +693,20 @@ EPathFollowingRequestResult AAIController::MoveToActor(struct AActor* Goal, floa
     {
         struct AActor* Goal;
         float AcceptanceRadius;
-        uint8_t bStopOnOverlap;
-        uint8_t bUsePathfinding;
-        uint8_t bCanStrafe;
+        bool bStopOnOverlap;
+        bool bUsePathfinding;
+        bool bCanStrafe;
         struct UNavigationQueryFilter* FilterClass;
-        uint8_t bAllowPartialPath;
-        enum EPathFollowingRequestResult ReturnValue;
+        bool bAllowPartialPath;
+        uint8_t ReturnValue;
     } Parms{};
     Parms.Goal = (struct AActor*)Goal;
     Parms.AcceptanceRadius = (float)AcceptanceRadius;
-    Parms.bStopOnOverlap = (uint8_t)bStopOnOverlap;
-    Parms.bUsePathfinding = (uint8_t)bUsePathfinding;
-    Parms.bCanStrafe = (uint8_t)bCanStrafe;
+    Parms.bStopOnOverlap = (bool)bStopOnOverlap;
+    Parms.bUsePathfinding = (bool)bUsePathfinding;
+    Parms.bCanStrafe = (bool)bCanStrafe;
     Parms.FilterClass = (struct UNavigationQueryFilter*)FilterClass;
-    Parms.bAllowPartialPath = (uint8_t)bAllowPartialPath;
+    Parms.bAllowPartialPath = (bool)bAllowPartialPath;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
@@ -859,13 +745,13 @@ void AAIController::K2_ClearFocus()
     this->ProcessEvent(Func, &Parms);
 }
 
-uint8_t AAIController::HasPartialPath()
+bool AAIController::HasPartialPath()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("AIController", "HasPartialPath");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
@@ -883,13 +769,13 @@ struct UPathFollowingComponent* AAIController::GetPathFollowingComponent()
     return Parms.ReturnValue;
 }
 
-EPathFollowingStatus AAIController::GetMoveStatus()
+uint8_t AAIController::GetMoveStatus()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("AIController", "GetMoveStatus");
     struct
     {
-        enum EPathFollowingStatus ReturnValue;
+        uint8_t ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
@@ -969,348 +855,141 @@ void AAIController::ClaimTaskResource(struct UGameplayTaskResource* ResourceClas
     this->ProcessEvent(Func, &Parms);
 }
 
-// UAISense_Hearing
-void UAISense_Hearing::ReportNoiseEvent(struct UObject* WorldContextObject, struct FVector NoiseLocation, float Loudness, struct AActor* Instigator, float MaxRange, struct FName Tag)
+// UBrainComponent
+void UBrainComponent::StopLogic(struct FString reason)
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = StaticClass()->GetFunction("AISense_Hearing", "ReportNoiseEvent");
+    if (!Func) Func = ClassPrivate->GetFunction("BrainComponent", "StopLogic");
     struct
     {
-        struct UObject* WorldContextObject;
-        struct FVector NoiseLocation;
-        float Loudness;
-        struct AActor* Instigator;
-        float MaxRange;
-        struct FName Tag;
+        struct FString reason;
     } Parms{};
-    Parms.WorldContextObject = (struct UObject*)WorldContextObject;
-    Parms.NoiseLocation = (struct FVector)NoiseLocation;
-    Parms.Loudness = (float)Loudness;
-    Parms.Instigator = (struct AActor*)Instigator;
-    Parms.MaxRange = (float)MaxRange;
-    Parms.Tag = (struct FName)Tag;
-    GetDefaultObj()->ProcessEvent(Func, &Parms);
-}
-
-// UPathFollowingComponent
-void UPathFollowingComponent::OnNavDataRegistered(struct ANavigationData* NavData)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("PathFollowingComponent", "OnNavDataRegistered");
-    struct
-    {
-        struct ANavigationData* NavData;
-    } Parms{};
-    Parms.NavData = (struct ANavigationData*)NavData;
+    Parms.reason = (struct FString)reason;
     this->ProcessEvent(Func, &Parms);
 }
 
-void UPathFollowingComponent::OnActorBump(struct AActor* SelfActor, struct AActor* OtherActor, struct FVector NormalImpulse, const struct FHitResult& Hit)
+void UBrainComponent::StartLogic()
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("PathFollowingComponent", "OnActorBump");
+    if (!Func) Func = ClassPrivate->GetFunction("BrainComponent", "StartLogic");
     struct
     {
-        struct AActor* SelfActor;
-        struct AActor* OtherActor;
-        struct FVector NormalImpulse;
-        struct FHitResult Hit;
     } Parms{};
-    Parms.SelfActor = (struct AActor*)SelfActor;
-    Parms.OtherActor = (struct AActor*)OtherActor;
-    Parms.NormalImpulse = (struct FVector)NormalImpulse;
-    Parms.Hit = (struct FHitResult)Hit;
     this->ProcessEvent(Func, &Parms);
 }
 
-struct FVector UPathFollowingComponent::GetPathDestination()
+void UBrainComponent::RestartLogic()
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("PathFollowingComponent", "GetPathDestination");
+    if (!Func) Func = ClassPrivate->GetFunction("BrainComponent", "RestartLogic");
     struct
     {
-        struct FVector ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+bool UBrainComponent::IsRunning()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BrainComponent", "IsRunning");
+    struct
+    {
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-EPathFollowingAction UPathFollowingComponent::GetPathActionType()
+bool UBrainComponent::IsPaused()
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("PathFollowingComponent", "GetPathActionType");
+    if (!Func) Func = ClassPrivate->GetFunction("BrainComponent", "IsPaused");
     struct
     {
-        enum EPathFollowingAction ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-// UCrowdFollowingComponent
-void UCrowdFollowingComponent::SuspendCrowdSteering(uint8_t bSuspend)
+// UBehaviorTreeComponent
+void UBehaviorTreeComponent::SetDynamicSubtree(struct FGameplayTag InjectTag, struct UBehaviorTree* BehaviorAsset)
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("CrowdFollowingComponent", "SuspendCrowdSteering");
+    if (!Func) Func = ClassPrivate->GetFunction("BehaviorTreeComponent", "SetDynamicSubtree");
     struct
     {
-        uint8_t bSuspend;
+        struct FGameplayTag InjectTag;
+        struct UBehaviorTree* BehaviorAsset;
     } Parms{};
-    Parms.bSuspend = (uint8_t)bSuspend;
+    Parms.InjectTag = (struct FGameplayTag)InjectTag;
+    Parms.BehaviorAsset = (struct UBehaviorTree*)BehaviorAsset;
     this->ProcessEvent(Func, &Parms);
 }
 
-// UBTTask_BlueprintBase
-void UBTTask_BlueprintBase::SetFinishOnMessageWithId(struct FName MessageName, int32_t requestId)
+float UBehaviorTreeComponent::GetTagCooldownEndTime(struct FGameplayTag CooldownTag)
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BTTask_BlueprintBase", "SetFinishOnMessageWithId");
+    if (!Func) Func = ClassPrivate->GetFunction("BehaviorTreeComponent", "GetTagCooldownEndTime");
     struct
     {
-        struct FName MessageName;
-        int32_t requestId;
+        struct FGameplayTag CooldownTag;
+        float ReturnValue;
     } Parms{};
-    Parms.MessageName = (struct FName)MessageName;
-    Parms.requestId = (int32_t)requestId;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UBTTask_BlueprintBase::SetFinishOnMessage(struct FName MessageName)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BTTask_BlueprintBase", "SetFinishOnMessage");
-    struct
-    {
-        struct FName MessageName;
-    } Parms{};
-    Parms.MessageName = (struct FName)MessageName;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UBTTask_BlueprintBase::ReceiveTickAI(struct AAIController* OwnerController, struct APawn* ControlledPawn, float DeltaSeconds)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BTTask_BlueprintBase", "ReceiveTickAI");
-    struct
-    {
-        struct AAIController* OwnerController;
-        struct APawn* ControlledPawn;
-        float DeltaSeconds;
-    } Parms{};
-    Parms.OwnerController = (struct AAIController*)OwnerController;
-    Parms.ControlledPawn = (struct APawn*)ControlledPawn;
-    Parms.DeltaSeconds = (float)DeltaSeconds;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UBTTask_BlueprintBase::ReceiveTick(struct AActor* OwnerActor, float DeltaSeconds)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BTTask_BlueprintBase", "ReceiveTick");
-    struct
-    {
-        struct AActor* OwnerActor;
-        float DeltaSeconds;
-    } Parms{};
-    Parms.OwnerActor = (struct AActor*)OwnerActor;
-    Parms.DeltaSeconds = (float)DeltaSeconds;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UBTTask_BlueprintBase::ReceiveExecuteAI(struct AAIController* OwnerController, struct APawn* ControlledPawn)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BTTask_BlueprintBase", "ReceiveExecuteAI");
-    struct
-    {
-        struct AAIController* OwnerController;
-        struct APawn* ControlledPawn;
-    } Parms{};
-    Parms.OwnerController = (struct AAIController*)OwnerController;
-    Parms.ControlledPawn = (struct APawn*)ControlledPawn;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UBTTask_BlueprintBase::ReceiveExecute(struct AActor* OwnerActor)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BTTask_BlueprintBase", "ReceiveExecute");
-    struct
-    {
-        struct AActor* OwnerActor;
-    } Parms{};
-    Parms.OwnerActor = (struct AActor*)OwnerActor;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UBTTask_BlueprintBase::ReceiveAbortAI(struct AAIController* OwnerController, struct APawn* ControlledPawn)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BTTask_BlueprintBase", "ReceiveAbortAI");
-    struct
-    {
-        struct AAIController* OwnerController;
-        struct APawn* ControlledPawn;
-    } Parms{};
-    Parms.OwnerController = (struct AAIController*)OwnerController;
-    Parms.ControlledPawn = (struct APawn*)ControlledPawn;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UBTTask_BlueprintBase::ReceiveAbort(struct AActor* OwnerActor)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BTTask_BlueprintBase", "ReceiveAbort");
-    struct
-    {
-        struct AActor* OwnerActor;
-    } Parms{};
-    Parms.OwnerActor = (struct AActor*)OwnerActor;
-    this->ProcessEvent(Func, &Parms);
-}
-
-uint8_t UBTTask_BlueprintBase::IsTaskExecuting()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BTTask_BlueprintBase", "IsTaskExecuting");
-    struct
-    {
-        uint8_t ReturnValue;
-    } Parms{};
+    Parms.CooldownTag = (struct FGameplayTag)CooldownTag;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UBTTask_BlueprintBase::IsTaskAborting()
+void UBehaviorTreeComponent::AddCooldownTagDuration(struct FGameplayTag CooldownTag, float CoolDownDuration, bool bAddToExistingDuration)
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BTTask_BlueprintBase", "IsTaskAborting");
+    if (!Func) Func = ClassPrivate->GetFunction("BehaviorTreeComponent", "AddCooldownTagDuration");
     struct
     {
-        uint8_t ReturnValue;
+        struct FGameplayTag CooldownTag;
+        float CoolDownDuration;
+        bool bAddToExistingDuration;
     } Parms{};
+    Parms.CooldownTag = (struct FGameplayTag)CooldownTag;
+    Parms.CoolDownDuration = (float)CoolDownDuration;
+    Parms.bAddToExistingDuration = (bool)bAddToExistingDuration;
     this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-void UBTTask_BlueprintBase::FinishExecute(uint8_t bSuccess)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BTTask_BlueprintBase", "FinishExecute");
-    struct
-    {
-        uint8_t bSuccess;
-    } Parms{};
-    Parms.bSuccess = (uint8_t)bSuccess;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UBTTask_BlueprintBase::FinishAbort()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BTTask_BlueprintBase", "FinishAbort");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-// ANavLinkProxy
-void ANavLinkProxy::SetSmartLinkEnabled(uint8_t bEnabled)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("NavLinkProxy", "SetSmartLinkEnabled");
-    struct
-    {
-        uint8_t bEnabled;
-    } Parms{};
-    Parms.bEnabled = (uint8_t)bEnabled;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void ANavLinkProxy::ResumePathFollowing(struct AActor* Agent)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("NavLinkProxy", "ResumePathFollowing");
-    struct
-    {
-        struct AActor* Agent;
-    } Parms{};
-    Parms.Agent = (struct AActor*)Agent;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void ANavLinkProxy::ReceiveSmartLinkReached(struct AActor* Agent, const struct FVector& Destination)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("NavLinkProxy", "ReceiveSmartLinkReached");
-    struct
-    {
-        struct AActor* Agent;
-        struct FVector Destination;
-    } Parms{};
-    Parms.Agent = (struct AActor*)Agent;
-    Parms.Destination = (struct FVector)Destination;
-    this->ProcessEvent(Func, &Parms);
-}
-
-uint8_t ANavLinkProxy::IsSmartLinkEnabled()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("NavLinkProxy", "IsSmartLinkEnabled");
-    struct
-    {
-        uint8_t ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-uint8_t ANavLinkProxy::HasMovingAgents()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("NavLinkProxy", "HasMovingAgents");
-    struct
-    {
-        uint8_t ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
 }
 
 // UAIAsyncTaskBlueprintProxy
-void UAIAsyncTaskBlueprintProxy::OnMoveCompleted(struct FAIRequestID requestId, EPathFollowingResult MovementResult)
+void UAIAsyncTaskBlueprintProxy::OnMoveCompleted(struct FAIRequestID RequestID, uint8_t MovementResult)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("AIAsyncTaskBlueprintProxy", "OnMoveCompleted");
     struct
     {
-        struct FAIRequestID requestId;
-        enum EPathFollowingResult MovementResult;
+        struct FAIRequestID RequestID;
+        uint8_t MovementResult;
     } Parms{};
-    Parms.requestId = (struct FAIRequestID)requestId;
-    Parms.MovementResult = (enum EPathFollowingResult)MovementResult;
+    Parms.RequestID = (struct FAIRequestID)RequestID;
+    Parms.MovementResult = (uint8_t)MovementResult;
     this->ProcessEvent(Func, &Parms);
 }
 
 // UAIBlueprintHelperLibrary
-void UAIBlueprintHelperLibrary::UnlockAIResourcesWithAnimation(struct UAnimInstance* AnimInstance, uint8_t bUnlockMovement, uint8_t UnlockAILogic)
+void UAIBlueprintHelperLibrary::UnlockAIResourcesWithAnimation(struct UAnimInstance* AnimInstance, bool bUnlockMovement, bool UnlockAILogic)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("AIBlueprintHelperLibrary", "UnlockAIResourcesWithAnimation");
     struct
     {
         struct UAnimInstance* AnimInstance;
-        uint8_t bUnlockMovement;
-        uint8_t UnlockAILogic;
+        bool bUnlockMovement;
+        bool UnlockAILogic;
     } Parms{};
     Parms.AnimInstance = (struct UAnimInstance*)AnimInstance;
-    Parms.bUnlockMovement = (uint8_t)bUnlockMovement;
-    Parms.UnlockAILogic = (uint8_t)UnlockAILogic;
+    Parms.bUnlockMovement = (bool)bUnlockMovement;
+    Parms.UnlockAILogic = (bool)UnlockAILogic;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
 }
 
-struct APawn* UAIBlueprintHelperLibrary::SpawnAIFromClass(struct UObject* WorldContextObject, struct APawn* PawnClass, struct UBehaviorTree* BehaviorTree, struct FVector Location, struct FRotator Rotation, uint8_t bNoCollisionFail, struct UObject* ArchtypeClass)
+struct APawn* UAIBlueprintHelperLibrary::SpawnAIFromClass(struct UObject* WorldContextObject, struct APawn* PawnClass, struct UBehaviorTree* BehaviorTree, struct FVector Location, struct FRotator Rotation, bool bNoCollisionFail, struct AActor* Owner)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("AIBlueprintHelperLibrary", "SpawnAIFromClass");
@@ -1321,8 +1000,8 @@ struct APawn* UAIBlueprintHelperLibrary::SpawnAIFromClass(struct UObject* WorldC
         struct UBehaviorTree* BehaviorTree;
         struct FVector Location;
         struct FRotator Rotation;
-        uint8_t bNoCollisionFail;
-        struct UObject* ArchtypeClass;
+        bool bNoCollisionFail;
+        struct AActor* Owner;
         struct APawn* ReturnValue;
     } Parms{};
     Parms.WorldContextObject = (struct UObject*)WorldContextObject;
@@ -1330,8 +1009,8 @@ struct APawn* UAIBlueprintHelperLibrary::SpawnAIFromClass(struct UObject* WorldC
     Parms.BehaviorTree = (struct UBehaviorTree*)BehaviorTree;
     Parms.Location = (struct FVector)Location;
     Parms.Rotation = (struct FRotator)Rotation;
-    Parms.bNoCollisionFail = (uint8_t)bNoCollisionFail;
-    Parms.ArchtypeClass = (struct UObject*)ArchtypeClass;
+    Parms.bNoCollisionFail = (bool)bNoCollisionFail;
+    Parms.Owner = (struct AActor*)Owner;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
@@ -1364,7 +1043,7 @@ void UAIBlueprintHelperLibrary::SimpleMoveToActor(struct AController* Controller
     GetDefaultObj()->ProcessEvent(Func, &Parms);
 }
 
-void UAIBlueprintHelperLibrary::SendAIMessage(struct APawn* Target, struct FName Message, struct UObject* MessageSource, uint8_t bSuccess)
+void UAIBlueprintHelperLibrary::SendAIMessage(struct APawn* Target, struct FName Message, struct UObject* MessageSource, bool bSuccess)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("AIBlueprintHelperLibrary", "SendAIMessage");
@@ -1373,69 +1052,111 @@ void UAIBlueprintHelperLibrary::SendAIMessage(struct APawn* Target, struct FName
         struct APawn* Target;
         struct FName Message;
         struct UObject* MessageSource;
-        uint8_t bSuccess;
+        bool bSuccess;
     } Parms{};
     Parms.Target = (struct APawn*)Target;
     Parms.Message = (struct FName)Message;
     Parms.MessageSource = (struct UObject*)MessageSource;
-    Parms.bSuccess = (uint8_t)bSuccess;
+    Parms.bSuccess = (bool)bSuccess;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
 }
 
-void UAIBlueprintHelperLibrary::LockAIResourcesWithAnimation(struct UAnimInstance* AnimInstance, uint8_t bLockMovement, uint8_t LockAILogic)
+void UAIBlueprintHelperLibrary::LockAIResourcesWithAnimation(struct UAnimInstance* AnimInstance, bool bLockMovement, bool LockAILogic)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("AIBlueprintHelperLibrary", "LockAIResourcesWithAnimation");
     struct
     {
         struct UAnimInstance* AnimInstance;
-        uint8_t bLockMovement;
-        uint8_t LockAILogic;
+        bool bLockMovement;
+        bool LockAILogic;
     } Parms{};
     Parms.AnimInstance = (struct UAnimInstance*)AnimInstance;
-    Parms.bLockMovement = (uint8_t)bLockMovement;
-    Parms.LockAILogic = (uint8_t)LockAILogic;
+    Parms.bLockMovement = (bool)bLockMovement;
+    Parms.LockAILogic = (bool)LockAILogic;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
 }
 
-uint8_t UAIBlueprintHelperLibrary::IsValidAIRotation(struct FRotator Rotation)
+bool UAIBlueprintHelperLibrary::IsValidAIRotation(struct FRotator Rotation)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("AIBlueprintHelperLibrary", "IsValidAIRotation");
     struct
     {
         struct FRotator Rotation;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.Rotation = (struct FRotator)Rotation;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UAIBlueprintHelperLibrary::IsValidAILocation(struct FVector Location)
+bool UAIBlueprintHelperLibrary::IsValidAILocation(struct FVector Location)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("AIBlueprintHelperLibrary", "IsValidAILocation");
     struct
     {
         struct FVector Location;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.Location = (struct FVector)Location;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UAIBlueprintHelperLibrary::IsValidAIDirection(struct FVector DirectionVector)
+bool UAIBlueprintHelperLibrary::IsValidAIDirection(struct FVector DirectionVector)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("AIBlueprintHelperLibrary", "IsValidAIDirection");
     struct
     {
         struct FVector DirectionVector;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.DirectionVector = (struct FVector)DirectionVector;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+int32_t UAIBlueprintHelperLibrary::GetNextNavLinkIndex(struct AController* Controller)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("AIBlueprintHelperLibrary", "GetNextNavLinkIndex");
+    struct
+    {
+        struct AController* Controller;
+        int32_t ReturnValue;
+    } Parms{};
+    Parms.Controller = (struct AController*)Controller;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct TArray<struct FVector> UAIBlueprintHelperLibrary::GetCurrentPathPoints(struct AController* Controller)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("AIBlueprintHelperLibrary", "GetCurrentPathPoints");
+    struct
+    {
+        struct AController* Controller;
+        struct TArray<struct FVector> ReturnValue;
+    } Parms{};
+    Parms.Controller = (struct AController*)Controller;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+int32_t UAIBlueprintHelperLibrary::GetCurrentPathIndex(struct AController* Controller)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("AIBlueprintHelperLibrary", "GetCurrentPathIndex");
+    struct
+    {
+        struct AController* Controller;
+        int32_t ReturnValue;
+    } Parms{};
+    Parms.Controller = (struct AController*)Controller;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
@@ -1482,7 +1203,7 @@ struct AAIController* UAIBlueprintHelperLibrary::GetAIController(struct AActor* 
     return Parms.ReturnValue;
 }
 
-struct UAIAsyncTaskBlueprintProxy* UAIBlueprintHelperLibrary::CreateMoveToProxyObject(struct UObject* WorldContextObject, struct APawn* Pawn, struct FVector Destination, struct AActor* TargetActor, float AcceptanceRadius, uint8_t bStopOnOverlap)
+struct UAIAsyncTaskBlueprintProxy* UAIBlueprintHelperLibrary::CreateMoveToProxyObject(struct UObject* WorldContextObject, struct APawn* Pawn, struct FVector Destination, struct AActor* TargetActor, float AcceptanceRadius, bool bStopOnOverlap)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("AIBlueprintHelperLibrary", "CreateMoveToProxyObject");
@@ -1493,7 +1214,7 @@ struct UAIAsyncTaskBlueprintProxy* UAIBlueprintHelperLibrary::CreateMoveToProxyO
         struct FVector Destination;
         struct AActor* TargetActor;
         float AcceptanceRadius;
-        uint8_t bStopOnOverlap;
+        bool bStopOnOverlap;
         struct UAIAsyncTaskBlueprintProxy* ReturnValue;
     } Parms{};
     Parms.WorldContextObject = (struct UObject*)WorldContextObject;
@@ -1501,7 +1222,7 @@ struct UAIAsyncTaskBlueprintProxy* UAIBlueprintHelperLibrary::CreateMoveToProxyO
     Parms.Destination = (struct FVector)Destination;
     Parms.TargetActor = (struct AActor*)TargetActor;
     Parms.AcceptanceRadius = (float)AcceptanceRadius;
-    Parms.bStopOnOverlap = (uint8_t)bStopOnOverlap;
+    Parms.bStopOnOverlap = (bool)bStopOnOverlap;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
@@ -1549,81 +1270,6 @@ void UAIPerceptionStimuliSourceComponent::RegisterForSense(struct UAISense* Sens
     } Parms{};
     Parms.SenseClass = (struct UAISense*)SenseClass;
     this->ProcessEvent(Func, &Parms);
-}
-
-// UAIPerceptionSystem
-void UAIPerceptionSystem::ReportPerceptionEvent(struct UObject* WorldContextObject, struct UAISenseEvent* PerceptionEvent)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = StaticClass()->GetFunction("AIPerceptionSystem", "ReportPerceptionEvent");
-    struct
-    {
-        struct UObject* WorldContextObject;
-        struct UAISenseEvent* PerceptionEvent;
-    } Parms{};
-    Parms.WorldContextObject = (struct UObject*)WorldContextObject;
-    Parms.PerceptionEvent = (struct UAISenseEvent*)PerceptionEvent;
-    GetDefaultObj()->ProcessEvent(Func, &Parms);
-}
-
-void UAIPerceptionSystem::ReportEvent(struct UAISenseEvent* PerceptionEvent)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("AIPerceptionSystem", "ReportEvent");
-    struct
-    {
-        struct UAISenseEvent* PerceptionEvent;
-    } Parms{};
-    Parms.PerceptionEvent = (struct UAISenseEvent*)PerceptionEvent;
-    this->ProcessEvent(Func, &Parms);
-}
-
-uint8_t UAIPerceptionSystem::RegisterPerceptionStimuliSource(struct UObject* WorldContextObject, struct UAISense* Sense, struct AActor* Target)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = StaticClass()->GetFunction("AIPerceptionSystem", "RegisterPerceptionStimuliSource");
-    struct
-    {
-        struct UObject* WorldContextObject;
-        struct UAISense* Sense;
-        struct AActor* Target;
-        uint8_t ReturnValue;
-    } Parms{};
-    Parms.WorldContextObject = (struct UObject*)WorldContextObject;
-    Parms.Sense = (struct UAISense*)Sense;
-    Parms.Target = (struct AActor*)Target;
-    GetDefaultObj()->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-void UAIPerceptionSystem::OnPerceptionStimuliSourceEndPlay(struct AActor* Actor, EEndPlayReason EndPlayReason)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("AIPerceptionSystem", "OnPerceptionStimuliSourceEndPlay");
-    struct
-    {
-        struct AActor* Actor;
-        enum EEndPlayReason EndPlayReason;
-    } Parms{};
-    Parms.Actor = (struct AActor*)Actor;
-    Parms.EndPlayReason = (enum EEndPlayReason)EndPlayReason;
-    this->ProcessEvent(Func, &Parms);
-}
-
-struct TArray<struct UAISense*> UAIPerceptionSystem::GetSenseClassForStimulus(struct UObject* WorldContextObject, const struct FAIStimulus& Stimulus)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = StaticClass()->GetFunction("AIPerceptionSystem", "GetSenseClassForStimulus");
-    struct
-    {
-        struct UObject* WorldContextObject;
-        struct FAIStimulus Stimulus;
-        struct TArray<struct UAISense*> ReturnValue;
-    } Parms{};
-    Parms.WorldContextObject = (struct UObject*)WorldContextObject;
-    Parms.Stimulus = (struct FAIStimulus)Stimulus;
-    GetDefaultObj()->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
 }
 
 // UAISense_Blueprint
@@ -1775,25 +1421,37 @@ void UAISense_Prediction::RequestControllerPredictionEvent(struct AAIController*
     GetDefaultObj()->ProcessEvent(Func, &Parms);
 }
 
-// UAISystem
-void UAISystem::AILoggingVerbose()
+// UAITask_MoveTo
+struct UAITask_MoveTo* UAITask_MoveTo::AIMoveTo(struct AAIController* Controller, struct FVector GoalLocation, struct AActor* GoalActor, float AcceptanceRadius, uint8_t StopOnOverlap, uint8_t AcceptPartialPath, bool bUsePathfinding, bool bLockAILogic, bool bUseContinuosGoalTracking, uint8_t ProjectGoalOnNavigation)
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("AISystem", "AILoggingVerbose");
+    if (!Func) Func = StaticClass()->GetFunction("AITask_MoveTo", "AIMoveTo");
     struct
     {
+        struct AAIController* Controller;
+        struct FVector GoalLocation;
+        struct AActor* GoalActor;
+        float AcceptanceRadius;
+        uint8_t StopOnOverlap;
+        uint8_t AcceptPartialPath;
+        bool bUsePathfinding;
+        bool bLockAILogic;
+        bool bUseContinuosGoalTracking;
+        uint8_t ProjectGoalOnNavigation;
+        struct UAITask_MoveTo* ReturnValue;
     } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UAISystem::AIIgnorePlayers()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("AISystem", "AIIgnorePlayers");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
+    Parms.Controller = (struct AAIController*)Controller;
+    Parms.GoalLocation = (struct FVector)GoalLocation;
+    Parms.GoalActor = (struct AActor*)GoalActor;
+    Parms.AcceptanceRadius = (float)AcceptanceRadius;
+    Parms.StopOnOverlap = (uint8_t)StopOnOverlap;
+    Parms.AcceptPartialPath = (uint8_t)AcceptPartialPath;
+    Parms.bUsePathfinding = (bool)bUsePathfinding;
+    Parms.bLockAILogic = (bool)bLockAILogic;
+    Parms.bUseContinuosGoalTracking = (bool)bUseContinuosGoalTracking;
+    Parms.ProjectGoalOnNavigation = (uint8_t)ProjectGoalOnNavigation;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
 }
 
 // UAITask_RunEQS
@@ -1811,6 +1469,358 @@ struct UAITask_RunEQS* UAITask_RunEQS::RunEQS(struct AAIController* Controller, 
     Parms.QueryTemplate = (struct UEnvQuery*)QueryTemplate;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
+}
+
+// IBlackboardAssetProvider
+struct UBlackboardData* IBlackboardAssetProvider::GetBlackboardAsset()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BlackboardAssetProvider", "GetBlackboardAsset");
+    struct
+    {
+        struct UBlackboardData* ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// UBlackboardComponent
+void UBlackboardComponent::SetValueAsVector(const struct FName& KeyName, struct FVector VectorValue)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "SetValueAsVector");
+    struct
+    {
+        struct FName KeyName;
+        struct FVector VectorValue;
+    } Parms{};
+    Parms.KeyName = (struct FName)KeyName;
+    Parms.VectorValue = (struct FVector)VectorValue;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UBlackboardComponent::SetValueAsString(const struct FName& KeyName, struct FString StringValue)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "SetValueAsString");
+    struct
+    {
+        struct FName KeyName;
+        struct FString StringValue;
+    } Parms{};
+    Parms.KeyName = (struct FName)KeyName;
+    Parms.StringValue = (struct FString)StringValue;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UBlackboardComponent::SetValueAsRotator(const struct FName& KeyName, struct FRotator VectorValue)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "SetValueAsRotator");
+    struct
+    {
+        struct FName KeyName;
+        struct FRotator VectorValue;
+    } Parms{};
+    Parms.KeyName = (struct FName)KeyName;
+    Parms.VectorValue = (struct FRotator)VectorValue;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UBlackboardComponent::SetValueAsObject(const struct FName& KeyName, struct UObject* ObjectValue)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "SetValueAsObject");
+    struct
+    {
+        struct FName KeyName;
+        struct UObject* ObjectValue;
+    } Parms{};
+    Parms.KeyName = (struct FName)KeyName;
+    Parms.ObjectValue = (struct UObject*)ObjectValue;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UBlackboardComponent::SetValueAsName(const struct FName& KeyName, struct FName NameValue)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "SetValueAsName");
+    struct
+    {
+        struct FName KeyName;
+        struct FName NameValue;
+    } Parms{};
+    Parms.KeyName = (struct FName)KeyName;
+    Parms.NameValue = (struct FName)NameValue;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UBlackboardComponent::SetValueAsInt(const struct FName& KeyName, int32_t IntValue)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "SetValueAsInt");
+    struct
+    {
+        struct FName KeyName;
+        int32_t IntValue;
+    } Parms{};
+    Parms.KeyName = (struct FName)KeyName;
+    Parms.IntValue = (int32_t)IntValue;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UBlackboardComponent::SetValueAsFloat(const struct FName& KeyName, float FloatValue)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "SetValueAsFloat");
+    struct
+    {
+        struct FName KeyName;
+        float FloatValue;
+    } Parms{};
+    Parms.KeyName = (struct FName)KeyName;
+    Parms.FloatValue = (float)FloatValue;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UBlackboardComponent::SetValueAsEnum(const struct FName& KeyName, uint8_t EnumValue)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "SetValueAsEnum");
+    struct
+    {
+        struct FName KeyName;
+        uint8_t EnumValue;
+    } Parms{};
+    Parms.KeyName = (struct FName)KeyName;
+    Parms.EnumValue = (uint8_t)EnumValue;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UBlackboardComponent::SetValueAsClass(const struct FName& KeyName, struct UObject* ClassValue)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "SetValueAsClass");
+    struct
+    {
+        struct FName KeyName;
+        struct UObject* ClassValue;
+    } Parms{};
+    Parms.KeyName = (struct FName)KeyName;
+    Parms.ClassValue = (struct UObject*)ClassValue;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UBlackboardComponent::SetValueAsBool(const struct FName& KeyName, bool BoolValue)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "SetValueAsBool");
+    struct
+    {
+        struct FName KeyName;
+        bool BoolValue;
+    } Parms{};
+    Parms.KeyName = (struct FName)KeyName;
+    Parms.BoolValue = (bool)BoolValue;
+    this->ProcessEvent(Func, &Parms);
+}
+
+bool UBlackboardComponent::IsVectorValueSet(const struct FName& KeyName)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "IsVectorValueSet");
+    struct
+    {
+        struct FName KeyName;
+        bool ReturnValue;
+    } Parms{};
+    Parms.KeyName = (struct FName)KeyName;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct FVector UBlackboardComponent::GetValueAsVector(const struct FName& KeyName)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "GetValueAsVector");
+    struct
+    {
+        struct FName KeyName;
+        struct FVector ReturnValue;
+    } Parms{};
+    Parms.KeyName = (struct FName)KeyName;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct FString UBlackboardComponent::GetValueAsString(const struct FName& KeyName)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "GetValueAsString");
+    struct
+    {
+        struct FName KeyName;
+        struct FString ReturnValue;
+    } Parms{};
+    Parms.KeyName = (struct FName)KeyName;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct FRotator UBlackboardComponent::GetValueAsRotator(const struct FName& KeyName)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "GetValueAsRotator");
+    struct
+    {
+        struct FName KeyName;
+        struct FRotator ReturnValue;
+    } Parms{};
+    Parms.KeyName = (struct FName)KeyName;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct UObject* UBlackboardComponent::GetValueAsObject(const struct FName& KeyName)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "GetValueAsObject");
+    struct
+    {
+        struct FName KeyName;
+        struct UObject* ReturnValue;
+    } Parms{};
+    Parms.KeyName = (struct FName)KeyName;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct FName UBlackboardComponent::GetValueAsName(const struct FName& KeyName)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "GetValueAsName");
+    struct
+    {
+        struct FName KeyName;
+        struct FName ReturnValue;
+    } Parms{};
+    Parms.KeyName = (struct FName)KeyName;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+int32_t UBlackboardComponent::GetValueAsInt(const struct FName& KeyName)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "GetValueAsInt");
+    struct
+    {
+        struct FName KeyName;
+        int32_t ReturnValue;
+    } Parms{};
+    Parms.KeyName = (struct FName)KeyName;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+float UBlackboardComponent::GetValueAsFloat(const struct FName& KeyName)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "GetValueAsFloat");
+    struct
+    {
+        struct FName KeyName;
+        float ReturnValue;
+    } Parms{};
+    Parms.KeyName = (struct FName)KeyName;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+uint8_t UBlackboardComponent::GetValueAsEnum(const struct FName& KeyName)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "GetValueAsEnum");
+    struct
+    {
+        struct FName KeyName;
+        uint8_t ReturnValue;
+    } Parms{};
+    Parms.KeyName = (struct FName)KeyName;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct UObject* UBlackboardComponent::GetValueAsClass(const struct FName& KeyName)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "GetValueAsClass");
+    struct
+    {
+        struct FName KeyName;
+        struct UObject* ReturnValue;
+    } Parms{};
+    Parms.KeyName = (struct FName)KeyName;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+bool UBlackboardComponent::GetValueAsBool(const struct FName& KeyName)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "GetValueAsBool");
+    struct
+    {
+        struct FName KeyName;
+        bool ReturnValue;
+    } Parms{};
+    Parms.KeyName = (struct FName)KeyName;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+bool UBlackboardComponent::GetRotationFromEntry(const struct FName& KeyName, struct FRotator& ResultRotation)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "GetRotationFromEntry");
+    struct
+    {
+        struct FName KeyName;
+        struct FRotator ResultRotation;
+        bool ReturnValue;
+    } Parms{};
+    Parms.KeyName = (struct FName)KeyName;
+    this->ProcessEvent(Func, &Parms);
+    ResultRotation = Parms.ResultRotation;
+    return Parms.ReturnValue;
+}
+
+bool UBlackboardComponent::GetLocationFromEntry(const struct FName& KeyName, struct FVector& ResultLocation)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "GetLocationFromEntry");
+    struct
+    {
+        struct FName KeyName;
+        struct FVector ResultLocation;
+        bool ReturnValue;
+    } Parms{};
+    Parms.KeyName = (struct FName)KeyName;
+    this->ProcessEvent(Func, &Parms);
+    ResultLocation = Parms.ResultLocation;
+    return Parms.ReturnValue;
+}
+
+void UBlackboardComponent::ClearValue(const struct FName& KeyName)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BlackboardComponent", "ClearValue");
+    struct
+    {
+        struct FName KeyName;
+    } Parms{};
+    Parms.KeyName = (struct FName)KeyName;
+    this->ProcessEvent(Func, &Parms);
 }
 
 // UBTDecorator_BlueprintBase
@@ -1922,7 +1932,7 @@ void UBTDecorator_BlueprintBase::ReceiveExecutionStart(struct AActor* OwnerActor
     this->ProcessEvent(Func, &Parms);
 }
 
-void UBTDecorator_BlueprintBase::ReceiveExecutionFinishAI(struct AAIController* OwnerController, struct APawn* ControlledPawn, EBTNodeResult NodeResult)
+void UBTDecorator_BlueprintBase::ReceiveExecutionFinishAI(struct AAIController* OwnerController, struct APawn* ControlledPawn, uint8_t NodeResult)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("BTDecorator_BlueprintBase", "ReceiveExecutionFinishAI");
@@ -1930,29 +1940,29 @@ void UBTDecorator_BlueprintBase::ReceiveExecutionFinishAI(struct AAIController* 
     {
         struct AAIController* OwnerController;
         struct APawn* ControlledPawn;
-        enum EBTNodeResult NodeResult;
+        uint8_t NodeResult;
     } Parms{};
     Parms.OwnerController = (struct AAIController*)OwnerController;
     Parms.ControlledPawn = (struct APawn*)ControlledPawn;
-    Parms.NodeResult = (enum EBTNodeResult)NodeResult;
+    Parms.NodeResult = (uint8_t)NodeResult;
     this->ProcessEvent(Func, &Parms);
 }
 
-void UBTDecorator_BlueprintBase::ReceiveExecutionFinish(struct AActor* OwnerActor, EBTNodeResult NodeResult)
+void UBTDecorator_BlueprintBase::ReceiveExecutionFinish(struct AActor* OwnerActor, uint8_t NodeResult)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("BTDecorator_BlueprintBase", "ReceiveExecutionFinish");
     struct
     {
         struct AActor* OwnerActor;
-        enum EBTNodeResult NodeResult;
+        uint8_t NodeResult;
     } Parms{};
     Parms.OwnerActor = (struct AActor*)OwnerActor;
-    Parms.NodeResult = (enum EBTNodeResult)NodeResult;
+    Parms.NodeResult = (uint8_t)NodeResult;
     this->ProcessEvent(Func, &Parms);
 }
 
-uint8_t UBTDecorator_BlueprintBase::PerformConditionCheckAI(struct AAIController* OwnerController, struct APawn* ControlledPawn)
+bool UBTDecorator_BlueprintBase::PerformConditionCheckAI(struct AAIController* OwnerController, struct APawn* ControlledPawn)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("BTDecorator_BlueprintBase", "PerformConditionCheckAI");
@@ -1960,7 +1970,7 @@ uint8_t UBTDecorator_BlueprintBase::PerformConditionCheckAI(struct AAIController
     {
         struct AAIController* OwnerController;
         struct APawn* ControlledPawn;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.OwnerController = (struct AAIController*)OwnerController;
     Parms.ControlledPawn = (struct APawn*)ControlledPawn;
@@ -1968,39 +1978,39 @@ uint8_t UBTDecorator_BlueprintBase::PerformConditionCheckAI(struct AAIController
     return Parms.ReturnValue;
 }
 
-uint8_t UBTDecorator_BlueprintBase::PerformConditionCheck(struct AActor* OwnerActor)
+bool UBTDecorator_BlueprintBase::PerformConditionCheck(struct AActor* OwnerActor)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("BTDecorator_BlueprintBase", "PerformConditionCheck");
     struct
     {
         struct AActor* OwnerActor;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.OwnerActor = (struct AActor*)OwnerActor;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UBTDecorator_BlueprintBase::IsDecoratorObserverActive()
+bool UBTDecorator_BlueprintBase::IsDecoratorObserverActive()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("BTDecorator_BlueprintBase", "IsDecoratorObserverActive");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UBTDecorator_BlueprintBase::IsDecoratorExecutionActive()
+bool UBTDecorator_BlueprintBase::IsDecoratorExecutionActive()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("BTDecorator_BlueprintBase", "IsDecoratorExecutionActive");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
@@ -2177,7 +2187,7 @@ void UBTFunctionLibrary::SetBlackboardValueAsClass(struct UBTNode* NodeOwner, co
     GetDefaultObj()->ProcessEvent(Func, &Parms);
 }
 
-void UBTFunctionLibrary::SetBlackboardValueAsBool(struct UBTNode* NodeOwner, const struct FBlackboardKeySelector& Key, uint8_t Value)
+void UBTFunctionLibrary::SetBlackboardValueAsBool(struct UBTNode* NodeOwner, const struct FBlackboardKeySelector& Key, bool Value)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("BTFunctionLibrary", "SetBlackboardValueAsBool");
@@ -2185,11 +2195,11 @@ void UBTFunctionLibrary::SetBlackboardValueAsBool(struct UBTNode* NodeOwner, con
     {
         struct UBTNode* NodeOwner;
         struct FBlackboardKeySelector Key;
-        uint8_t Value;
+        bool Value;
     } Parms{};
     Parms.NodeOwner = (struct UBTNode*)NodeOwner;
     Parms.Key = (struct FBlackboardKeySelector)Key;
-    Parms.Value = (uint8_t)Value;
+    Parms.Value = (bool)Value;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
 }
 
@@ -2365,7 +2375,7 @@ struct UObject* UBTFunctionLibrary::GetBlackboardValueAsClass(struct UBTNode* No
     return Parms.ReturnValue;
 }
 
-uint8_t UBTFunctionLibrary::GetBlackboardValueAsBool(struct UBTNode* NodeOwner, const struct FBlackboardKeySelector& Key)
+bool UBTFunctionLibrary::GetBlackboardValueAsBool(struct UBTNode* NodeOwner, const struct FBlackboardKeySelector& Key)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("BTFunctionLibrary", "GetBlackboardValueAsBool");
@@ -2373,7 +2383,7 @@ uint8_t UBTFunctionLibrary::GetBlackboardValueAsBool(struct UBTNode* NodeOwner, 
     {
         struct UBTNode* NodeOwner;
         struct FBlackboardKeySelector Key;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.NodeOwner = (struct UBTNode*)NodeOwner;
     Parms.Key = (struct FBlackboardKeySelector)Key;
@@ -2534,16 +2544,184 @@ void UBTService_BlueprintBase::ReceiveActivation(struct AActor* OwnerActor)
     this->ProcessEvent(Func, &Parms);
 }
 
-uint8_t UBTService_BlueprintBase::IsServiceActive()
+bool UBTService_BlueprintBase::IsServiceActive()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("BTService_BlueprintBase", "IsServiceActive");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
+}
+
+// UBTTask_BlueprintBase
+void UBTTask_BlueprintBase::SetFinishOnMessageWithId(struct FName MessageName, int32_t RequestID)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BTTask_BlueprintBase", "SetFinishOnMessageWithId");
+    struct
+    {
+        struct FName MessageName;
+        int32_t RequestID;
+    } Parms{};
+    Parms.MessageName = (struct FName)MessageName;
+    Parms.RequestID = (int32_t)RequestID;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UBTTask_BlueprintBase::SetFinishOnMessage(struct FName MessageName)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BTTask_BlueprintBase", "SetFinishOnMessage");
+    struct
+    {
+        struct FName MessageName;
+    } Parms{};
+    Parms.MessageName = (struct FName)MessageName;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UBTTask_BlueprintBase::ReceiveTickAI(struct AAIController* OwnerController, struct APawn* ControlledPawn, float DeltaSeconds)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BTTask_BlueprintBase", "ReceiveTickAI");
+    struct
+    {
+        struct AAIController* OwnerController;
+        struct APawn* ControlledPawn;
+        float DeltaSeconds;
+    } Parms{};
+    Parms.OwnerController = (struct AAIController*)OwnerController;
+    Parms.ControlledPawn = (struct APawn*)ControlledPawn;
+    Parms.DeltaSeconds = (float)DeltaSeconds;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UBTTask_BlueprintBase::ReceiveTick(struct AActor* OwnerActor, float DeltaSeconds)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BTTask_BlueprintBase", "ReceiveTick");
+    struct
+    {
+        struct AActor* OwnerActor;
+        float DeltaSeconds;
+    } Parms{};
+    Parms.OwnerActor = (struct AActor*)OwnerActor;
+    Parms.DeltaSeconds = (float)DeltaSeconds;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UBTTask_BlueprintBase::ReceiveExecuteAI(struct AAIController* OwnerController, struct APawn* ControlledPawn)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BTTask_BlueprintBase", "ReceiveExecuteAI");
+    struct
+    {
+        struct AAIController* OwnerController;
+        struct APawn* ControlledPawn;
+    } Parms{};
+    Parms.OwnerController = (struct AAIController*)OwnerController;
+    Parms.ControlledPawn = (struct APawn*)ControlledPawn;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UBTTask_BlueprintBase::ReceiveExecute(struct AActor* OwnerActor)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BTTask_BlueprintBase", "ReceiveExecute");
+    struct
+    {
+        struct AActor* OwnerActor;
+    } Parms{};
+    Parms.OwnerActor = (struct AActor*)OwnerActor;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UBTTask_BlueprintBase::ReceiveAbortAI(struct AAIController* OwnerController, struct APawn* ControlledPawn)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BTTask_BlueprintBase", "ReceiveAbortAI");
+    struct
+    {
+        struct AAIController* OwnerController;
+        struct APawn* ControlledPawn;
+    } Parms{};
+    Parms.OwnerController = (struct AAIController*)OwnerController;
+    Parms.ControlledPawn = (struct APawn*)ControlledPawn;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UBTTask_BlueprintBase::ReceiveAbort(struct AActor* OwnerActor)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BTTask_BlueprintBase", "ReceiveAbort");
+    struct
+    {
+        struct AActor* OwnerActor;
+    } Parms{};
+    Parms.OwnerActor = (struct AActor*)OwnerActor;
+    this->ProcessEvent(Func, &Parms);
+}
+
+bool UBTTask_BlueprintBase::IsTaskExecuting()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BTTask_BlueprintBase", "IsTaskExecuting");
+    struct
+    {
+        bool ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+bool UBTTask_BlueprintBase::IsTaskAborting()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BTTask_BlueprintBase", "IsTaskAborting");
+    struct
+    {
+        bool ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+void UBTTask_BlueprintBase::FinishExecute(bool bSuccess)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BTTask_BlueprintBase", "FinishExecute");
+    struct
+    {
+        bool bSuccess;
+    } Parms{};
+    Parms.bSuccess = (bool)bSuccess;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UBTTask_BlueprintBase::FinishAbort()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BTTask_BlueprintBase", "FinishAbort");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+// UCrowdFollowingComponent
+void UCrowdFollowingComponent::SuspendCrowdSteering(bool bSuspend)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CrowdFollowingComponent", "SuspendCrowdSteering");
+    struct
+    {
+        bool bSuspend;
+    } Parms{};
+    Parms.bSuspend = (bool)bSuspend;
+    this->ProcessEvent(Func, &Parms);
 }
 
 // UEnvQueryContext_BlueprintBase
@@ -2611,80 +2789,8 @@ void UEnvQueryContext_BlueprintBase::ProvideActorsSet(struct UObject* QuerierObj
     ResultingActorsSet = Parms.ResultingActorsSet;
 }
 
-// UEnvQueryGenerator_BlueprintBase
-struct UObject* UEnvQueryGenerator_BlueprintBase::GetQuerier()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("EnvQueryGenerator_BlueprintBase", "GetQuerier");
-    struct
-    {
-        struct UObject* ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-void UEnvQueryGenerator_BlueprintBase::DoItemGeneration(const struct TArray<struct FVector>& ContextLocations)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("EnvQueryGenerator_BlueprintBase", "DoItemGeneration");
-    struct
-    {
-        struct TArray<struct FVector> ContextLocations;
-    } Parms{};
-    Parms.ContextLocations = (struct TArray<struct FVector>)ContextLocations;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UEnvQueryGenerator_BlueprintBase::AddGeneratedVector(struct FVector GeneratedVector)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("EnvQueryGenerator_BlueprintBase", "AddGeneratedVector");
-    struct
-    {
-        struct FVector GeneratedVector;
-    } Parms{};
-    Parms.GeneratedVector = (struct FVector)GeneratedVector;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UEnvQueryGenerator_BlueprintBase::AddGeneratedActor(struct AActor* GeneratedActor)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("EnvQueryGenerator_BlueprintBase", "AddGeneratedActor");
-    struct
-    {
-        struct AActor* GeneratedActor;
-    } Parms{};
-    Parms.GeneratedActor = (struct AActor*)GeneratedActor;
-    this->ProcessEvent(Func, &Parms);
-}
-
-// UEnvQueryManager
-struct UEnvQueryInstanceBlueprintWrapper* UEnvQueryManager::RunEQSQuery(struct UObject* WorldContextObject, struct UEnvQuery* QueryTemplate, struct UObject* Querier, EEnvQueryRunMode RunMode, struct UEnvQueryInstanceBlueprintWrapper* WrapperClass)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = StaticClass()->GetFunction("EnvQueryManager", "RunEQSQuery");
-    struct
-    {
-        struct UObject* WorldContextObject;
-        struct UEnvQuery* QueryTemplate;
-        struct UObject* Querier;
-        enum EEnvQueryRunMode RunMode;
-        struct UEnvQueryInstanceBlueprintWrapper* WrapperClass;
-        struct UEnvQueryInstanceBlueprintWrapper* ReturnValue;
-    } Parms{};
-    Parms.WorldContextObject = (struct UObject*)WorldContextObject;
-    Parms.QueryTemplate = (struct UEnvQuery*)QueryTemplate;
-    Parms.Querier = (struct UObject*)Querier;
-    Parms.RunMode = (enum EEnvQueryRunMode)RunMode;
-    Parms.WrapperClass = (struct UEnvQueryInstanceBlueprintWrapper*)WrapperClass;
-    GetDefaultObj()->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
 // UNavLocalGridManager
-uint8_t UNavLocalGridManager::SetLocalNavigationGridDensity(struct UObject* WorldContextObject, float CellSize)
+bool UNavLocalGridManager::SetLocalNavigationGridDensity(struct UObject* WorldContextObject, float CellSize)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("NavLocalGridManager", "SetLocalNavigationGridDensity");
@@ -2692,7 +2798,7 @@ uint8_t UNavLocalGridManager::SetLocalNavigationGridDensity(struct UObject* Worl
     {
         struct UObject* WorldContextObject;
         float CellSize;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.WorldContextObject = (struct UObject*)WorldContextObject;
     Parms.CellSize = (float)CellSize;
@@ -2700,23 +2806,23 @@ uint8_t UNavLocalGridManager::SetLocalNavigationGridDensity(struct UObject* Worl
     return Parms.ReturnValue;
 }
 
-void UNavLocalGridManager::RemoveLocalNavigationGrid(struct UObject* WorldContextObject, int32_t GridID, uint8_t bRebuildGrids)
+void UNavLocalGridManager::RemoveLocalNavigationGrid(struct UObject* WorldContextObject, int32_t GridId, bool bRebuildGrids)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("NavLocalGridManager", "RemoveLocalNavigationGrid");
     struct
     {
         struct UObject* WorldContextObject;
-        int32_t GridID;
-        uint8_t bRebuildGrids;
+        int32_t GridId;
+        bool bRebuildGrids;
     } Parms{};
     Parms.WorldContextObject = (struct UObject*)WorldContextObject;
-    Parms.GridID = (int32_t)GridID;
-    Parms.bRebuildGrids = (uint8_t)bRebuildGrids;
+    Parms.GridId = (int32_t)GridId;
+    Parms.bRebuildGrids = (bool)bRebuildGrids;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
 }
 
-uint8_t UNavLocalGridManager::FindLocalNavigationGridPath(struct UObject* WorldContextObject, const struct FVector& Start, const struct FVector& End, struct TArray<struct FVector>& PathPoints)
+bool UNavLocalGridManager::FindLocalNavigationGridPath(struct UObject* WorldContextObject, const struct FVector& Start, const struct FVector& End, struct TArray<struct FVector>& PathPoints)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("NavLocalGridManager", "FindLocalNavigationGridPath");
@@ -2726,7 +2832,7 @@ uint8_t UNavLocalGridManager::FindLocalNavigationGridPath(struct UObject* WorldC
         struct FVector Start;
         struct FVector End;
         struct TArray<struct FVector> PathPoints;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.WorldContextObject = (struct UObject*)WorldContextObject;
     Parms.Start = (struct FVector)Start;
@@ -2736,7 +2842,7 @@ uint8_t UNavLocalGridManager::FindLocalNavigationGridPath(struct UObject* WorldC
     return Parms.ReturnValue;
 }
 
-int32_t UNavLocalGridManager::AddLocalNavigationGridForPoints(struct UObject* WorldContextObject, const struct TArray<struct FVector>& Locations, int32_t Radius2D, float Height, uint8_t bRebuildGrids)
+int32_t UNavLocalGridManager::AddLocalNavigationGridForPoints(struct UObject* WorldContextObject, const struct TArray<struct FVector>& Locations, int32_t Radius2D, float Height, bool bRebuildGrids)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("NavLocalGridManager", "AddLocalNavigationGridForPoints");
@@ -2746,19 +2852,19 @@ int32_t UNavLocalGridManager::AddLocalNavigationGridForPoints(struct UObject* Wo
         struct TArray<struct FVector> Locations;
         int32_t Radius2D;
         float Height;
-        uint8_t bRebuildGrids;
+        bool bRebuildGrids;
         int32_t ReturnValue;
     } Parms{};
     Parms.WorldContextObject = (struct UObject*)WorldContextObject;
     Parms.Locations = (struct TArray<struct FVector>)Locations;
     Parms.Radius2D = (int32_t)Radius2D;
     Parms.Height = (float)Height;
-    Parms.bRebuildGrids = (uint8_t)bRebuildGrids;
+    Parms.bRebuildGrids = (bool)bRebuildGrids;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-int32_t UNavLocalGridManager::AddLocalNavigationGridForPoint(struct UObject* WorldContextObject, const struct FVector& Location, int32_t Radius2D, float Height, uint8_t bRebuildGrids)
+int32_t UNavLocalGridManager::AddLocalNavigationGridForPoint(struct UObject* WorldContextObject, const struct FVector& Location, int32_t Radius2D, float Height, bool bRebuildGrids)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("NavLocalGridManager", "AddLocalNavigationGridForPoint");
@@ -2768,19 +2874,19 @@ int32_t UNavLocalGridManager::AddLocalNavigationGridForPoint(struct UObject* Wor
         struct FVector Location;
         int32_t Radius2D;
         float Height;
-        uint8_t bRebuildGrids;
+        bool bRebuildGrids;
         int32_t ReturnValue;
     } Parms{};
     Parms.WorldContextObject = (struct UObject*)WorldContextObject;
     Parms.Location = (struct FVector)Location;
     Parms.Radius2D = (int32_t)Radius2D;
     Parms.Height = (float)Height;
-    Parms.bRebuildGrids = (uint8_t)bRebuildGrids;
+    Parms.bRebuildGrids = (bool)bRebuildGrids;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-int32_t UNavLocalGridManager::AddLocalNavigationGridForCapsule(struct UObject* WorldContextObject, const struct FVector& Location, float CapsuleRadius, float CapsuleHalfHeight, int32_t Radius2D, float Height, uint8_t bRebuildGrids)
+int32_t UNavLocalGridManager::AddLocalNavigationGridForCapsule(struct UObject* WorldContextObject, const struct FVector& Location, float CapsuleRadius, float CapsuleHalfHeight, int32_t Radius2D, float Height, bool bRebuildGrids)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("NavLocalGridManager", "AddLocalNavigationGridForCapsule");
@@ -2792,7 +2898,7 @@ int32_t UNavLocalGridManager::AddLocalNavigationGridForCapsule(struct UObject* W
         float CapsuleHalfHeight;
         int32_t Radius2D;
         float Height;
-        uint8_t bRebuildGrids;
+        bool bRebuildGrids;
         int32_t ReturnValue;
     } Parms{};
     Parms.WorldContextObject = (struct UObject*)WorldContextObject;
@@ -2801,12 +2907,12 @@ int32_t UNavLocalGridManager::AddLocalNavigationGridForCapsule(struct UObject* W
     Parms.CapsuleHalfHeight = (float)CapsuleHalfHeight;
     Parms.Radius2D = (int32_t)Radius2D;
     Parms.Height = (float)Height;
-    Parms.bRebuildGrids = (uint8_t)bRebuildGrids;
+    Parms.bRebuildGrids = (bool)bRebuildGrids;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-int32_t UNavLocalGridManager::AddLocalNavigationGridForBox(struct UObject* WorldContextObject, const struct FVector& Location, struct FVector Extent, struct FRotator Rotation, int32_t Radius2D, float Height, uint8_t bRebuildGrids)
+int32_t UNavLocalGridManager::AddLocalNavigationGridForBox(struct UObject* WorldContextObject, const struct FVector& Location, struct FVector Extent, struct FRotator Rotation, int32_t Radius2D, float Height, bool bRebuildGrids)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("NavLocalGridManager", "AddLocalNavigationGridForBox");
@@ -2818,7 +2924,7 @@ int32_t UNavLocalGridManager::AddLocalNavigationGridForBox(struct UObject* World
         struct FRotator Rotation;
         int32_t Radius2D;
         float Height;
-        uint8_t bRebuildGrids;
+        bool bRebuildGrids;
         int32_t ReturnValue;
     } Parms{};
     Parms.WorldContextObject = (struct UObject*)WorldContextObject;
@@ -2827,33 +2933,33 @@ int32_t UNavLocalGridManager::AddLocalNavigationGridForBox(struct UObject* World
     Parms.Rotation = (struct FRotator)Rotation;
     Parms.Radius2D = (int32_t)Radius2D;
     Parms.Height = (float)Height;
-    Parms.bRebuildGrids = (uint8_t)bRebuildGrids;
+    Parms.bRebuildGrids = (bool)bRebuildGrids;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
 // UPawnAction
-EAIRequestPriority UPawnAction::GetActionPriority()
+uint8_t UPawnAction::GetActionPriority()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("PawnAction", "GetActionPriority");
     struct
     {
-        enum EAIRequestPriority ReturnValue;
+        uint8_t ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-void UPawnAction::Finish(EPawnActionResult WithResult)
+void UPawnAction::Finish(uint8_t WithResult)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("PawnAction", "Finish");
     struct
     {
-        enum EPawnActionResult WithResult;
+        uint8_t WithResult;
     } Parms{};
-    Parms.WithResult = (enum EPawnActionResult)WithResult;
+    Parms.WithResult = (uint8_t)WithResult;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -2924,40 +3030,40 @@ void UPawnAction_BlueprintBase::ActionPause(struct APawn* ControlledPawn)
     this->ProcessEvent(Func, &Parms);
 }
 
-void UPawnAction_BlueprintBase::ActionFinished(struct APawn* ControlledPawn, EPawnActionResult WithResult)
+void UPawnAction_BlueprintBase::ActionFinished(struct APawn* ControlledPawn, uint8_t WithResult)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("PawnAction_BlueprintBase", "ActionFinished");
     struct
     {
         struct APawn* ControlledPawn;
-        enum EPawnActionResult WithResult;
+        uint8_t WithResult;
     } Parms{};
     Parms.ControlledPawn = (struct APawn*)ControlledPawn;
-    Parms.WithResult = (enum EPawnActionResult)WithResult;
+    Parms.WithResult = (uint8_t)WithResult;
     this->ProcessEvent(Func, &Parms);
 }
 
 // UPawnActionsComponent
-uint8_t UPawnActionsComponent::K2_PushAction(struct UPawnAction* NewAction, EAIRequestPriority Priority, struct UObject* Instigator)
+bool UPawnActionsComponent::K2_PushAction(struct UPawnAction* NewAction, uint8_t Priority, struct UObject* Instigator)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("PawnActionsComponent", "K2_PushAction");
     struct
     {
         struct UPawnAction* NewAction;
-        enum EAIRequestPriority Priority;
+        uint8_t Priority;
         struct UObject* Instigator;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.NewAction = (struct UPawnAction*)NewAction;
-    Parms.Priority = (enum EAIRequestPriority)Priority;
+    Parms.Priority = (uint8_t)Priority;
     Parms.Instigator = (struct UObject*)Instigator;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UPawnActionsComponent::K2_PerformAction(struct APawn* Pawn, struct UPawnAction* Action, EAIRequestPriority Priority)
+bool UPawnActionsComponent::K2_PerformAction(struct APawn* Pawn, struct UPawnAction* Action, uint8_t Priority)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("PawnActionsComponent", "K2_PerformAction");
@@ -2965,38 +3071,38 @@ uint8_t UPawnActionsComponent::K2_PerformAction(struct APawn* Pawn, struct UPawn
     {
         struct APawn* Pawn;
         struct UPawnAction* Action;
-        enum EAIRequestPriority Priority;
-        uint8_t ReturnValue;
+        uint8_t Priority;
+        bool ReturnValue;
     } Parms{};
     Parms.Pawn = (struct APawn*)Pawn;
     Parms.Action = (struct UPawnAction*)Action;
-    Parms.Priority = (enum EAIRequestPriority)Priority;
+    Parms.Priority = (uint8_t)Priority;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-EPawnActionAbortState UPawnActionsComponent::K2_ForceAbortAction(struct UPawnAction* ActionToAbort)
+uint8_t UPawnActionsComponent::K2_ForceAbortAction(struct UPawnAction* ActionToAbort)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("PawnActionsComponent", "K2_ForceAbortAction");
     struct
     {
         struct UPawnAction* ActionToAbort;
-        enum EPawnActionAbortState ReturnValue;
+        uint8_t ReturnValue;
     } Parms{};
     Parms.ActionToAbort = (struct UPawnAction*)ActionToAbort;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-EPawnActionAbortState UPawnActionsComponent::K2_AbortAction(struct UPawnAction* ActionToAbort)
+uint8_t UPawnActionsComponent::K2_AbortAction(struct UPawnAction* ActionToAbort)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("PawnActionsComponent", "K2_AbortAction");
     struct
     {
         struct UPawnAction* ActionToAbort;
-        enum EPawnActionAbortState ReturnValue;
+        uint8_t ReturnValue;
     } Parms{};
     Parms.ActionToAbort = (struct UPawnAction*)ActionToAbort;
     this->ProcessEvent(Func, &Parms);
@@ -3004,15 +3110,15 @@ EPawnActionAbortState UPawnActionsComponent::K2_AbortAction(struct UPawnAction* 
 }
 
 // UPawnSensingComponent
-void UPawnSensingComponent::SetSensingUpdatesEnabled(uint8_t bEnabled)
+void UPawnSensingComponent::SetSensingUpdatesEnabled(bool bEnabled)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("PawnSensingComponent", "SetSensingUpdatesEnabled");
     struct
     {
-        uint8_t bEnabled;
+        bool bEnabled;
     } Parms{};
-    Parms.bEnabled = (uint8_t)bEnabled;
+    Parms.bEnabled = (bool)bEnabled;
     this->ProcessEvent(Func, &Parms);
 }
 

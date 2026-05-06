@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../CoreUObject_classes.hpp"
+#include "DeveloperSettings.hpp"
 #include "Engine.hpp"
 
 namespace SDK
@@ -8,16 +9,13 @@ namespace SDK
 
 // Package: Landscape
 // Enums: 14
-// Structs: 32
-// Classes: 36
+// Structs: 26
+// Classes: 35
 
-struct AClipmapActor;
 enum class ENavDataGatheringMode : uint8_t;
-enum class ERuntimeVirtualTextureLayerType : uint8_t;
+enum class ERendererStencilMask : uint8_t;
 enum class ERuntimeVirtualTextureMainPassType : uint8_t;
-enum class ESplineMeshAxis : uint8_t;
-struct UBinaryAsset;
-struct UDynamicTexture2DArray;
+enum class EShadowCaptureLayer : uint8_t;
 struct UHierarchicalInstancedStaticMeshComponent;
 struct UMaterialInstanceConstant;
 struct UMaterialInstanceDynamic;
@@ -30,15 +28,9 @@ struct USplineMeshComponent;
 struct UStaticMesh;
 struct UTexture;
 struct UTexture2D;
-struct UTexture2DArray;
 struct UTextureRenderTarget2D;
-struct FCDLODMaterial;
-struct FLandscapeLayerParameter;
-struct FDTAPatchTextureIndices;
 struct FLandscapeLayer;
 struct FLandscapeLayerBrush;
-struct FLandscapeCustomMaskDataProperties;
-struct FLandscapeCustomMaskData;
 struct FHeightmapData;
 struct FWeightmapData;
 struct FLandscapeLayerComponentData;
@@ -48,13 +40,11 @@ struct FLandscapeEditToolRenderData;
 struct FGizmoSelectData;
 struct FGrassVariety;
 struct FLandscapeInfoLayerSettings;
-struct FLandscapeCustomMaskDataLayer;
+struct FLandscapeMaterialTextureStreamingInfo;
 struct FLandscapeProxyMaterialOverride;
 struct FLandscapeImportLayerInfo;
 struct FLandscapeLayerStruct;
-struct FLandscapeCustomMaskDataLayerSettings;
 struct FLandscapeEditorLayerSettings;
-struct FEditorLayerInfo;
 struct FLandscapeSplineConnection;
 struct FForeignWorldSplineData;
 struct FForeignSplineSegmentData;
@@ -64,15 +54,15 @@ struct FLandscapeSplineSegmentConnection;
 struct FLandscapeSplineInterpPoint;
 struct FGrassInput;
 struct FLayerBlendInput;
-struct UCDLODComponent;
+struct FPhysicalMaterialInput;
 struct AControlPointMeshActor;
 struct UControlPointMeshComponent;
-struct UDTAComponent;
+struct UGPUDrivenLandscapeBatchingComponent;
 struct ALandscapeProxy;
 struct ALandscape;
 struct ALandscapeBlueprintBrushBase;
+struct ULandscapeLODStreamingProxy;
 struct ULandscapeComponent;
-struct ULandscapeComponentPatch;
 struct ALandscapeGizmoActor;
 struct ALandscapeGizmoActiveActor;
 struct ULandscapeGizmoRenderComponent;
@@ -85,13 +75,12 @@ struct ULandscapeMaterialInstanceConstant;
 struct ULandscapeMeshCollisionComponent;
 struct ALandscapeMeshProxyActor;
 struct ULandscapeMeshProxyComponent;
-struct ULandscapeCustomMaskDataLayersObject;
-struct ULandscapeProxyPatch;
 struct ULandscapeSettings;
 struct ULandscapeSplinesComponent;
 struct ULandscapeSplineControlPoint;
 struct ULandscapeSplineSegment;
 struct ALandscapeStreamingProxy;
+struct ULandscapeSubsystem;
 struct ULandscapeWeightmapUsage;
 struct UMaterialExpressionLandscapeGrassOutput;
 struct UMaterialExpressionLandscapeLayerBlend;
@@ -99,6 +88,7 @@ struct UMaterialExpressionLandscapeLayerCoords;
 struct UMaterialExpressionLandscapeLayerSample;
 struct UMaterialExpressionLandscapeLayerSwitch;
 struct UMaterialExpressionLandscapeLayerWeight;
+struct UMaterialExpressionLandscapePhysicalMaterialOutput;
 struct UMaterialExpressionLandscapeVisibilityMask;
 
 // Object: Enum Landscape.ELandscapeBlendMode
@@ -229,57 +219,21 @@ enum class ETerrainCoordMappingType : uint8_t
 	TCMT_MAX = 4
 };
 
-// Object: ScriptStruct Landscape.CDLODMaterial
-// Size: 0x28 (Inherited: 0x0)
-struct FCDLODMaterial
-{
-	struct UMaterialInterface* Material; // 0x0(0x8)
-	struct UMaterialInstanceConstant* MaterialInterface; // 0x8(0x8)
-	struct UMaterialInstanceConstant* MaterialInterfaceNoVT; // 0x10(0x8)
-	struct UMaterialInstanceDynamic* MaterialInstanceDynamic; // 0x18(0x8)
-	float StartDistance; // 0x20(0x4)
-	uint8_t Pad_0x24[0x4]; // 0x24(0x4)
-};
-
-// Object: ScriptStruct Landscape.LandscapeLayerParameter
-// Size: 0x20 (Inherited: 0x0)
-struct FLandscapeLayerParameter
-{
-	struct FVector4 TextureHeightScaleOffsetParameters; // 0x0(0x10)
-	float TillingParameter; // 0x10(0x4)
-	uint32_t TextureArrayIndexAndTillingStarEnd; // 0x14(0x4)
-	float FarTillingScale; // 0x18(0x4)
-	float SpecularParameter; // 0x1C(0x4)
-};
-
-// Object: ScriptStruct Landscape.DTAPatchTextureIndices
-// Size: 0x18 (Inherited: 0x0)
-struct FDTAPatchTextureIndices
-{
-	struct TArray<int32_t> TextureIndices; // 0x0(0x10)
-	uint8_t Pad_0x10[0x8]; // 0x10(0x8)
-};
-
 // Object: ScriptStruct Landscape.LandscapeLayer
 // Size: 0x88 (Inherited: 0x0)
 struct FLandscapeLayer
 {
 	struct FGuid Guid; // 0x0(0x10)
 	struct FName Name; // 0x10(0x8)
-	uint8_t bVisible : 1; // 0x18(0x1), Mask(0x1)
-	uint8_t BitPad_0x18_1 : 7; // 0x18(0x1)
-	uint8_t bIsAdditiveLayer : 1; // 0x19(0x1), Mask(0x1)
-	uint8_t BitPad_0x19_1 : 7; // 0x19(0x1)
-	uint8_t bStoreInPatch : 1; // 0x1A(0x1), Mask(0x1)
-	uint8_t BitPad_0x1A_1 : 7; // 0x1A(0x1)
-	uint8_t bLocked : 1; // 0x1B(0x1), Mask(0x1)
-	uint8_t BitPad_0x1B_1 : 7; // 0x1B(0x1)
+	bool bVisible; // 0x18(0x1)
+	bool bLocked; // 0x19(0x1)
+	uint8_t Pad_0x1A[0x2]; // 0x1A(0x2)
 	float HeightmapAlpha; // 0x1C(0x4)
 	float WeightmapAlpha; // 0x20(0x4)
-	ELandscapeBlendMode BlendMode; // 0x24(0x1)
+	uint8_t BlendMode; // 0x24(0x1)
 	uint8_t Pad_0x25[0x3]; // 0x25(0x3)
 	struct TArray<struct FLandscapeLayerBrush> Brushes; // 0x28(0x10)
-	struct TMap<struct ULandscapeLayerInfoObject*, uint8_t> WeightmapLayerAllocationBlend; // 0x38(0x50)
+	struct TMap<struct ULandscapeLayerInfoObject*, bool> WeightmapLayerAllocationBlend; // 0x38(0x50)
 };
 
 // Object: ScriptStruct Landscape.LandscapeLayerBrush
@@ -287,28 +241,6 @@ struct FLandscapeLayer
 struct FLandscapeLayerBrush
 {
 	uint8_t Pad_0x0[0x1]; // 0x0(0x1)
-};
-
-// Object: ScriptStruct Landscape.LandscapeCustomMaskDataProperties
-// Size: 0x10 (Inherited: 0x0)
-struct FLandscapeCustomMaskDataProperties
-{
-	struct FLinearColor HighlightColor; // 0x0(0x10)
-};
-
-// Object: ScriptStruct Landscape.LandscapeCustomMaskData
-// Size: 0x30 (Inherited: 0x0)
-struct FLandscapeCustomMaskData
-{
-	struct FGuid Guid; // 0x0(0x10)
-	struct UTexture2D* DataTexture; // 0x10(0x8)
-	uint8_t bVisible : 1; // 0x18(0x1), Mask(0x1)
-	uint8_t BitPad_0x18_1 : 7; // 0x18(0x1)
-	uint8_t Pad_0x19[0x3]; // 0x19(0x3)
-	struct FLandscapeCustomMaskDataProperties Properties; // 0x1C(0x10)
-	uint8_t bUnused : 1; // 0x2C(0x1), Mask(0x1)
-	uint8_t BitPad_0x2C_1 : 7; // 0x2C(0x1)
-	uint8_t Pad_0x2D[0x3]; // 0x2D(0x3)
 };
 
 // Object: ScriptStruct Landscape.HeightmapData
@@ -349,8 +281,7 @@ struct FWeightmapLayerAllocationInfo
 // Size: 0x10 (Inherited: 0x0)
 struct FLandscapeComponentMaterialOverride
 {
-	struct FPerPlatformInt LodIndex; // 0x0(0x4)
-	uint8_t Pad_0x4[0x4]; // 0x4(0x4)
+	struct FPerPlatformInt LODIndex; // 0x0(0x8)
 	struct UMaterialInterface* Material; // 0x8(0x8)
 };
 
@@ -377,37 +308,35 @@ struct FGizmoSelectData
 };
 
 // Object: ScriptStruct Landscape.GrassVariety
-// Size: 0x48 (Inherited: 0x0)
+// Size: 0x60 (Inherited: 0x0)
 struct FGrassVariety
 {
 	struct UStaticMesh* GrassMesh; // 0x0(0x8)
-	struct FPerPlatformFloat GrassDensity; // 0x8(0x4)
-	uint8_t bUseGrid : 1; // 0xC(0x1), Mask(0x1)
-	uint8_t BitPad_0xC_1 : 7; // 0xC(0x1)
-	uint8_t Pad_0xD[0x3]; // 0xD(0x3)
-	float PlacementJitter; // 0x10(0x4)
-	struct FPerPlatformInt StartCullDistance; // 0x14(0x4)
-	struct FPerPlatformInt EndCullDistance; // 0x18(0x4)
-	int32_t MinLOD; // 0x1C(0x4)
-	EGrassScaling Scaling; // 0x20(0x1)
-	uint8_t Pad_0x21[0x3]; // 0x21(0x3)
-	struct FFloatInterval ScaleX; // 0x24(0x8)
-	struct FFloatInterval ScaleY; // 0x2C(0x8)
-	struct FFloatInterval ScaleZ; // 0x34(0x8)
-	uint8_t RandomRotation : 1; // 0x3C(0x1), Mask(0x1)
-	uint8_t BitPad_0x3C_1 : 7; // 0x3C(0x1)
-	uint8_t AlignToSurface : 1; // 0x3D(0x1), Mask(0x1)
-	uint8_t BitPad_0x3D_1 : 7; // 0x3D(0x1)
-	uint8_t bUseLandscapeLightmap : 1; // 0x3E(0x1), Mask(0x1)
-	uint8_t BitPad_0x3E_1 : 7; // 0x3E(0x1)
-	struct FLightingChannels LightingChannels; // 0x3F(0x1)
-	uint8_t bReceivesDecals : 1; // 0x40(0x1), Mask(0x1)
-	uint8_t BitPad_0x40_1 : 7; // 0x40(0x1)
-	uint8_t bCastDynamicShadow : 1; // 0x41(0x1), Mask(0x1)
-	uint8_t BitPad_0x41_1 : 7; // 0x41(0x1)
-	uint8_t bKeepInstanceBufferCPUCopy : 1; // 0x42(0x1), Mask(0x1)
-	uint8_t BitPad_0x42_1 : 7; // 0x42(0x1)
-	uint8_t Pad_0x43[0x5]; // 0x43(0x5)
+	struct TArray<struct UMaterialInterface*> OverrideMaterials; // 0x8(0x10)
+	struct FPerPlatformFloat GrassDensity; // 0x18(0x4)
+	bool bUseGrid; // 0x1C(0x1)
+	uint8_t Pad_0x1D[0x3]; // 0x1D(0x3)
+	float PlacementJitter; // 0x20(0x4)
+	struct FPerPlatformInt StartCullDistance; // 0x24(0x8)
+	struct FPerPlatformInt EndCullDistance; // 0x2C(0x8)
+	int32_t MinLOD; // 0x34(0x4)
+	EGrassScaling Scaling; // 0x38(0x1)
+	uint8_t Pad_0x39[0x3]; // 0x39(0x3)
+	struct FFloatInterval ScaleX; // 0x3C(0x8)
+	struct FFloatInterval ScaleY; // 0x44(0x8)
+	struct FFloatInterval ScaleZ; // 0x4C(0x8)
+	bool RandomRotation; // 0x54(0x1)
+	bool AlignToSurface; // 0x55(0x1)
+	bool bUseLandscapeLightmap; // 0x56(0x1)
+	struct FLightingChannels LightingChannels; // 0x57(0x1)
+	bool bReceivesDecals; // 0x58(0x1)
+	bool bCastDynamicShadow; // 0x59(0x1)
+	bool bKeepInstanceBufferCPUCopy; // 0x5A(0x1)
+	bool bForceUseSkyLightAsDiffuseGI; // 0x5B(0x1)
+	uint8_t IndirectLightingCacheQuality; // 0x5C(0x1)
+	bool bReMergeInstancing; // 0x5D(0x1)
+	bool bHiddenShadowOnShadowCapture; // 0x5E(0x1)
+	EShadowCaptureLayer ShadowCaptureLayer; // 0x5F(0x1)
 };
 
 // Object: ScriptStruct Landscape.LandscapeInfoLayerSettings
@@ -418,36 +347,19 @@ struct FLandscapeInfoLayerSettings
 	struct FName LayerName; // 0x8(0x8)
 };
 
-// Object: ScriptStruct Landscape.LandscapeCustomMaskDataLayer
-// Size: 0x44 (Inherited: 0x0)
-struct FLandscapeCustomMaskDataLayer
+// Object: ScriptStruct Landscape.LandscapeMaterialTextureStreamingInfo
+// Size: 0xC (Inherited: 0x0)
+struct FLandscapeMaterialTextureStreamingInfo
 {
-	struct FGuid Guid; // 0x0(0x10)
-	struct FName Name; // 0x10(0x8)
-	int32_t MaterialID; // 0x18(0x4)
-	struct FGuid ParentGuid; // 0x1C(0x10)
-	struct FLandscapeCustomMaskDataProperties Properties; // 0x2C(0x10)
-	uint8_t bLocked : 1; // 0x3C(0x1), Mask(0x1)
-	uint8_t BitPad_0x3C_1 : 7; // 0x3C(0x1)
-	uint8_t bEnableGroupMask : 1; // 0x3D(0x1), Mask(0x1)
-	uint8_t BitPad_0x3D_1 : 7; // 0x3D(0x1)
-	uint8_t bMutualExclusive : 1; // 0x3E(0x1), Mask(0x1)
-	uint8_t BitPad_0x3E_1 : 7; // 0x3E(0x1)
-	uint8_t bEnableErase : 1; // 0x3F(0x1), Mask(0x1)
-	uint8_t BitPad_0x3F_1 : 7; // 0x3F(0x1)
-	uint8_t bDisableFalloff : 1; // 0x40(0x1), Mask(0x1)
-	uint8_t BitPad_0x40_1 : 7; // 0x40(0x1)
-	uint8_t bVisible : 1; // 0x41(0x1), Mask(0x1)
-	uint8_t BitPad_0x41_1 : 7; // 0x41(0x1)
-	uint8_t Pad_0x42[0x2]; // 0x42(0x2)
+	struct FName TextureName; // 0x0(0x8)
+	float TexelFactor; // 0x8(0x4)
 };
 
 // Object: ScriptStruct Landscape.LandscapeProxyMaterialOverride
 // Size: 0x10 (Inherited: 0x0)
 struct FLandscapeProxyMaterialOverride
 {
-	struct FPerPlatformInt LodIndex; // 0x0(0x4)
-	uint8_t Pad_0x4[0x4]; // 0x4(0x4)
+	struct FPerPlatformInt LODIndex; // 0x0(0x8)
 	struct UMaterialInterface* Material; // 0x8(0x8)
 };
 
@@ -465,26 +377,11 @@ struct FLandscapeLayerStruct
 	struct ULandscapeLayerInfoObject* LayerInfoObj; // 0x0(0x8)
 };
 
-// Object: ScriptStruct Landscape.LandscapeCustomMaskDataLayerSettings
-// Size: 0x1 (Inherited: 0x0)
-struct FLandscapeCustomMaskDataLayerSettings
-{
-	uint8_t Pad_0x0[0x1]; // 0x0(0x1)
-};
-
 // Object: ScriptStruct Landscape.LandscapeEditorLayerSettings
 // Size: 0x1 (Inherited: 0x0)
 struct FLandscapeEditorLayerSettings
 {
 	uint8_t Pad_0x0[0x1]; // 0x0(0x1)
-};
-
-// Object: ScriptStruct Landscape.EditorLayerInfo
-// Size: 0x20 (Inherited: 0x0)
-struct FEditorLayerInfo
-{
-	struct FString Name; // 0x0(0x10)
-	struct FGuid Guid; // 0x10(0x10)
 };
 
 // Object: ScriptStruct Landscape.LandscapeSplineConnection
@@ -532,9 +429,9 @@ struct FLandscapeSplineMeshEntry
 	uint8_t BitPad_0x24_1 : 7; // 0x24(0x1)
 	uint8_t Pad_0x25[0x3]; // 0x25(0x3)
 	struct FVector Scale; // 0x28(0xC)
-	ELandscapeSplineMeshOrientation Orientation; // 0x34(0x1)
-	ESplineMeshAxis ForwardAxis; // 0x35(0x1)
-	ESplineMeshAxis UpAxis; // 0x36(0x1)
+	uint8_t Orientation; // 0x34(0x1)
+	uint8_t ForwardAxis; // 0x35(0x1)
+	uint8_t UpAxis; // 0x36(0x1)
 	uint8_t Pad_0x37[0x1]; // 0x37(0x1)
 };
 
@@ -579,7 +476,7 @@ struct FGrassInput
 struct FLayerBlendInput
 {
 	struct FName LayerName; // 0x0(0x8)
-	ELandscapeLayerBlendType BlendType; // 0x8(0x1)
+	uint8_t BlendType; // 0x8(0x1)
 	uint8_t Pad_0x9[0x3]; // 0x9(0x3)
 	struct FExpressionInput LayerInput; // 0xC(0xC)
 	uint8_t Pad_0x18[0x8]; // 0x18(0x8)
@@ -590,405 +487,362 @@ struct FLayerBlendInput
 	float ConstHeightInput; // 0x44(0x4)
 };
 
-// Object: Class Landscape.CDLODComponent
-// Size: 0x7C0 (Inherited: 0x580)
-struct UCDLODComponent : UPrimitiveComponent
+// Object: ScriptStruct Landscape.PhysicalMaterialInput
+// Size: 0x20 (Inherited: 0x0)
+struct FPhysicalMaterialInput
 {
-	DEFINE_UE_CLASS_HELPERS(UCDLODComponent, "CDLODComponent")
-
-	int32_t CDLODPatchSize; // 0x578(0x4)
-	int32_t HeightmapAssetCoarseLod; // 0x57C(0x4)
-	int32_t HeightmapAssetPatchSize; // 0x580(0x4)
-	int32_t ValidPatchSize; // 0x584(0x4)
-	struct FIntPoint PhysicalTextureSize; // 0x588(0x8)
-	struct UTextureRenderTarget2D* HeightmapPhysicalTexture; // 0x590(0x8)
-	struct UTextureRenderTarget2D* DeformationPhysicalTexture; // 0x598(0x8)
-	struct TArray<struct FCDLODMaterial> CDLODMaterials; // 0x5A0(0x10)
-	struct UMaterialInstanceDynamic* CDLODVTMaterial_DTA; // 0x5B0(0x8)
-	struct UMaterialInstanceDynamic* CDLODVTMaterial_LowRes; // 0x5B8(0x8)
-	struct UTexture2D* LandscapeShadowmask; // 0x5C0(0x8)
-	struct FVector4 LandscapePositionAndSize; // 0x5D0(0x10)
-	struct FBoxSphereBounds CachedLocalBounds; // 0x5E0(0x1C)
-	struct FGuid MapBuildDataId; // 0x5FC(0x10)
-	uint8_t Pad_0x60C[0x4]; // 0x60C(0x4)
-	struct UBinaryAsset* HeaderAsset; // 0x610(0x8)
-	struct UBinaryAsset* CoarseHeightmapAsset; // 0x618(0x8)
-	struct FIntPoint HeightmapAssetMaxIndex; // 0x620(0x8)
-	int32_t WeightmapClipmapPatchCount; // 0x628(0x4)
-	uint32_t WeightmapClipmapPatchSize; // 0x62C(0x4)
-	struct AClipmapActor* WeightmapClipmapActor; // 0x630(0x8)
-	struct TArray<struct FString> TexArrayParamName; // 0x638(0x10)
-	uint32_t DTASlotCount; // 0x648(0x4)
-	uint32_t LODBias; // 0x64C(0x4)
-	float HeightBiasInLocalSpace; // 0x650(0x4)
-	float HeightScaleInLocalSpace; // 0x654(0x4)
-	struct UDTAComponent* DTAComponent; // 0x658(0x8)
-	struct TMap<struct FString, struct TSoftObjectPtr<UTexture2D>> LowQualityTexture; // 0x660(0x50)
-	uint8_t Pad_0x6B0[0x28]; // 0x6B0(0x28)
-	struct TMap<struct FIntPoint, struct UBinaryAsset*> HeightmapAssets; // 0x6D8(0x50)
-	struct TArray<struct FBoxSphereBounds> LocalClipRectBounds; // 0x728(0x10)
-	uint8_t Pad_0x738[0x8]; // 0x738(0x8)
-	struct FVector4 DeformationCenterPositionAndRadiusScale; // 0x740(0x10)
-	uint8_t Pad_0x750[0x70]; // 0x750(0x70)
-
-	// Object: Function Landscape.CDLODComponent.AddDeformations
-	// Flags: [Final|RequiredAPI|Native|Public|HasOutParms|BlueprintCallable]
-	// Offset: 0x16433b88
-	// Params: [ Num(1) Size(0x10) ]
-	void AddDeformations(const struct TArray<struct FVector4>& InDeformationTasks);
+	struct UPhysicalMaterial* PhysicalMaterial; // 0x0(0x8)
+	struct FExpressionInput Input; // 0x8(0xC)
+	uint8_t Pad_0x14[0xC]; // 0x14(0xC)
 };
 
 // Object: Class Landscape.ControlPointMeshActor
-// Size: 0x378 (Inherited: 0x370)
+// Size: 0x308 (Inherited: 0x300)
 struct AControlPointMeshActor : AActor
 {
 	DEFINE_UE_CLASS_HELPERS(AControlPointMeshActor, "ControlPointMeshActor")
 
-	struct UControlPointMeshComponent* ControlPointMeshComponent; // 0x370(0x8)
+	struct UControlPointMeshComponent* ControlPointMeshComponent; // 0x300(0x8)
 };
 
 // Object: Class Landscape.ControlPointMeshComponent
-// Size: 0x840 (Inherited: 0x830)
+// Size: 0x790 (Inherited: 0x790)
 struct UControlPointMeshComponent : UStaticMeshComponent
 {
 	DEFINE_UE_CLASS_HELPERS(UControlPointMeshComponent, "ControlPointMeshComponent")
 
-	float VirtualTextureMainPassMaxDrawDistance; // 0x830(0x4)
-	uint8_t Pad_0x834[0xC]; // 0x834(0xC)
+	float VirtualTextureMainPassMaxDrawDistance; // 0x78C(0x4)
 };
 
-// Object: Class Landscape.DTAComponent
-// Size: 0x398 (Inherited: 0xF8)
-struct UDTAComponent : UActorComponent
+// Object: Class Landscape.GPUDrivenLandscapeBatchingComponent
+// Size: 0x720 (Inherited: 0x680)
+struct UGPUDrivenLandscapeBatchingComponent : UPrimitiveComponent
 {
-	DEFINE_UE_CLASS_HELPERS(UDTAComponent, "DTAComponent")
+	DEFINE_UE_CLASS_HELPERS(UGPUDrivenLandscapeBatchingComponent, "GPUDrivenLandscapeBatchingComponent")
 
-	struct TArray<struct FString> TexArrayParamName; // 0xF8(0x10)
-	struct TArray<struct UDynamicTexture2DArray*> DynamicTextureArrays; // 0x108(0x10)
-	struct TArray<struct UTexture2DArray*> LowResTextureArrays; // 0x118(0x10)
-	struct TArray<struct FLandscapeLayerParameter> LayerParameters; // 0x128(0x10)
-	struct TArray<struct UDynamicTexture2DArray*> ResizeDynamicTextureArrays; // 0x138(0x10)
-	struct AClipmapActor* WeightmapClipmapActor; // 0x148(0x8)
-	struct TWeakObjectPtr<struct UCDLODComponent> CDLODComponent; // 0x150(0x8)
-	uint32_t DTASlotCount; // 0x158(0x4)
-	uint32_t LODBias; // 0x15C(0x4)
-	uint8_t Pad_0x160[0x1D0]; // 0x160(0x1D0)
-	struct TMap<struct FIntPoint, struct FDTAPatchTextureIndices> DTAPatchTextureIndices; // 0x330(0x50)
-	uint8_t Pad_0x380[0x18]; // 0x380(0x18)
+	struct FVector MasterLocation; // 0x678(0xC)
+	struct FVector MasterScale; // 0x684(0xC)
+	struct FVector4 LandscapeBound; // 0x690(0x10)
+	struct UMaterialInterface* LandscapeMaterial; // 0x6A0(0x8)
+	struct UMaterialInstanceConstant* MaterialInstance; // 0x6A8(0x8)
+	struct UMaterialInstanceConstant* MaterialInstanceMobile; // 0x6B0(0x8)
+	struct FGuid LandscapeGuid; // 0x6B8(0x10)
+	bool bIsEnableGPUDriven; // 0x6C8(0x1)
+	int32_t SubsectionSizeQuads; // 0x6CC(0x4)
+	int32_t NumSubsections; // 0x6D0(0x4)
+	bool bIsUseBuildConfig; // 0x6D4(0x1)
+	struct FVector2D ComponentBaseMin; // 0x6D8(0x8)
+	struct FVector2D ComponentBaseSize; // 0x6E0(0x8)
+	int32_t LastLOD; // 0x6E8(0x4)
+	struct FVector2D HeightmapUVScale; // 0x6EC(0x8)
+	uint8_t Pad_0x6F6[0xA]; // 0x6F6(0xA)
+	struct FVector4 WeightmapUVScaleBias; // 0x700(0x10)
+	struct FVector4 SubsectionOffsetParams; // 0x710(0x10)
 };
 
 // Object: Class Landscape.LandscapeProxy
-// Size: 0x6B0 (Inherited: 0x370)
+// Size: 0x678 (Inherited: 0x300)
 struct ALandscapeProxy : AActor
 {
 	DEFINE_UE_CLASS_HELPERS(ALandscapeProxy, "LandscapeProxy")
 
-	struct ULandscapeSplinesComponent* SplineComponent; // 0x370(0x8)
-	struct FGuid LandscapeGuid; // 0x378(0x10)
-	struct FIntPoint LandscapeSectionOffset; // 0x388(0x8)
-	int32_t MaxLODLevel; // 0x390(0x4)
-	float LODDistanceFactor; // 0x394(0x4)
-	ELandscapeLODFalloff LODFalloff; // 0x398(0x1)
-	uint8_t Pad_0x399[0x3]; // 0x399(0x3)
-	float ComponentScreenSizeToUseSubSections; // 0x39C(0x4)
-	float LOD0ScreenSize; // 0x3A0(0x4)
-	float LOD0DistributionSetting; // 0x3A4(0x4)
-	float LODDistributionSetting; // 0x3A8(0x4)
-	float TessellationComponentScreenSize; // 0x3AC(0x4)
-	uint8_t UseTessellationComponentScreenSizeFalloff : 1; // 0x3B0(0x1), Mask(0x1)
-	uint8_t BitPad_0x3B0_1 : 7; // 0x3B0(0x1)
-	uint8_t Pad_0x3B1[0x3]; // 0x3B1(0x3)
-	float TessellationComponentScreenSizeFalloff; // 0x3B4(0x4)
-	int32_t OccluderGeometryLOD; // 0x3B8(0x4)
-	int32_t StaticLightingLOD; // 0x3BC(0x4)
-	struct UPhysicalMaterial* DefaultPhysMaterial; // 0x3C0(0x8)
-	float StreamingDistanceMultiplier; // 0x3C8(0x4)
-	uint8_t Pad_0x3CC[0x4]; // 0x3CC(0x4)
-	struct UMaterialInterface* LandscapeMaterial; // 0x3D0(0x8)
-	struct UMaterialInterface* LandscapeHoleMaterial; // 0x3D8(0x8)
-	struct UTexture2D* LandscapeShadowmask; // 0x3E0(0x8)
-	uint8_t Pad_0x3E8[0x8]; // 0x3E8(0x8)
-	struct FVector4 LandscapePositionAndSize; // 0x3F0(0x10)
-	struct FVector4 LandscapeHeightInfo; // 0x400(0x10)
-	struct TArray<struct FLandscapeProxyMaterialOverride> LandscapeMaterialsOverride; // 0x410(0x10)
-	struct TArray<struct URuntimeVirtualTexture*> RuntimeVirtualTextures; // 0x420(0x10)
-	int32_t VirtualTextureNumLods; // 0x430(0x4)
-	int32_t VirtualTextureLodBias; // 0x434(0x4)
-	ERuntimeVirtualTextureMainPassType VirtualTextureRenderPassType; // 0x438(0x1)
-	ERuntimeVirtualTextureLayerType VirtualTextureRenderLayerType; // 0x439(0x1)
-	uint8_t VirtualTextureRenderPriority; // 0x43A(0x1)
-	uint8_t Pad_0x43B[0x1]; // 0x43B(0x1)
-	float NegativeZBoundsExtension; // 0x43C(0x4)
-	float PositiveZBoundsExtension; // 0x440(0x4)
-	uint8_t Pad_0x444[0x4]; // 0x444(0x4)
-	struct TArray<struct ULandscapeComponent*> LandscapeComponents; // 0x448(0x10)
-	struct TArray<struct ULandscapeHeightfieldCollisionComponent*> CollisionComponents; // 0x458(0x10)
-	struct TArray<struct UHierarchicalInstancedStaticMeshComponent*> FoliageComponents; // 0x468(0x10)
-	uint8_t Pad_0x478[0x64]; // 0x478(0x64)
-	uint8_t bHasLandscapeGrass : 1; // 0x4DC(0x1), Mask(0x1)
-	uint8_t BitPad_0x4DC_1 : 7; // 0x4DC(0x1)
-	uint8_t Pad_0x4DD[0x3]; // 0x4DD(0x3)
-	float StaticLightingResolution; // 0x4E0(0x4)
-	uint8_t bCastStaticShadow : 1; // 0x4E4(0x1), Mask(0x1)
-	uint8_t bCastShadowAsTwoSided : 1; // 0x4E4(0x1), Mask(0x2)
-	uint8_t bCastFarShadow : 1; // 0x4E4(0x1), Mask(0x4)
-	uint8_t bAffectDistanceFieldLighting : 1; // 0x4E4(0x1), Mask(0x8)
-	uint8_t BitPad_0x4E4_4 : 4; // 0x4E4(0x1)
-	struct FLightingChannels LightingChannels; // 0x4E5(0x1)
-	uint8_t bUseMaterialPositionOffsetInStaticLighting : 1; // 0x4E6(0x1), Mask(0x1)
-	uint8_t bRenderCustomDepth : 1; // 0x4E6(0x1), Mask(0x2)
-	uint8_t BitPad_0x4E6_2 : 6; // 0x4E6(0x1)
-	uint8_t Pad_0x4E7[0x1]; // 0x4E7(0x1)
-	int32_t CustomDepthStencilValue; // 0x4E8(0x4)
-	float LDMaxDrawDistance; // 0x4EC(0x4)
-	struct FLightmassPrimitiveSettings LightmassSettings; // 0x4F0(0x20)
-	int32_t CollisionMipLevel; // 0x510(0x4)
-	int32_t SimpleCollisionMipLevel; // 0x514(0x4)
-	float CollisionThickness; // 0x518(0x4)
-	uint8_t Pad_0x51C[0x4]; // 0x51C(0x4)
-	struct FBodyInstance BodyInstance; // 0x520(0x120)
-	uint8_t bGenerateOverlapEvents : 1; // 0x640(0x1), Mask(0x1)
-	uint8_t bBakeMaterialPositionOffsetIntoCollision : 1; // 0x640(0x1), Mask(0x2)
-	uint8_t BitPad_0x640_2 : 6; // 0x640(0x1)
-	uint8_t Pad_0x641[0x3]; // 0x641(0x3)
-	int32_t ComponentSizeQuads; // 0x644(0x4)
-	int32_t SubsectionSizeQuads; // 0x648(0x4)
-	int32_t NumSubsections; // 0x64C(0x4)
-	uint8_t bUsedForNavigation : 1; // 0x650(0x1), Mask(0x1)
-	uint8_t BitPad_0x650_1 : 7; // 0x650(0x1)
-	uint8_t bUseDynamicMaterialInstance : 1; // 0x651(0x1), Mask(0x1)
-	uint8_t BitPad_0x651_1 : 7; // 0x651(0x1)
-	ENavDataGatheringMode NavigationGeometryGatheringMode; // 0x652(0x1)
-	uint8_t bUseLandscapeForCullingInvisibleHLODVertices : 1; // 0x653(0x1), Mask(0x1)
-	uint8_t BitPad_0x653_1 : 7; // 0x653(0x1)
-	uint8_t bHasLayersContent : 1; // 0x654(0x1), Mask(0x1)
-	uint8_t BitPad_0x654_1 : 7; // 0x654(0x1)
-	uint8_t Pad_0x655[0x3]; // 0x655(0x3)
-	struct TMap<struct UTexture2D*, struct ULandscapeWeightmapUsage*> WeightmapUsageMap; // 0x658(0x50)
-	int32_t ExtraDetailForRender; // 0x6A8(0x4)
-	uint8_t Pad_0x6AC[0x4]; // 0x6AC(0x4)
+	struct ULandscapeSplinesComponent* SplineComponent; // 0x300(0x8)
+	bool bIsEnableGPUDriven; // 0x308(0x1)
+	uint8_t Pad_0x309[0x3]; // 0x309(0x3)
+	struct FVector2D ComponentBaseSize; // 0x30C(0x8)
+	struct FVector2D ComponentBaseMin; // 0x314(0x8)
+	struct FGuid LandscapeGuid; // 0x31C(0x10)
+	struct FIntPoint LandscapeSectionOffset; // 0x32C(0x8)
+	int32_t MaxLODLevel; // 0x334(0x4)
+	float LODDistanceFactor; // 0x338(0x4)
+	uint8_t LODFalloff; // 0x33C(0x1)
+	uint8_t Pad_0x33D[0x3]; // 0x33D(0x3)
+	float ComponentScreenSizeToUseSubSections; // 0x340(0x4)
+	float LOD0ScreenSize; // 0x344(0x4)
+	float LOD0DistributionSetting; // 0x348(0x4)
+	float LODDistributionSetting; // 0x34C(0x4)
+	float TessellationComponentScreenSize; // 0x350(0x4)
+	bool UseTessellationComponentScreenSizeFalloff; // 0x354(0x1)
+	uint8_t Pad_0x355[0x3]; // 0x355(0x3)
+	float TessellationComponentScreenSizeFalloff; // 0x358(0x4)
+	int32_t OccluderGeometryLOD; // 0x35C(0x4)
+	bool bUseAsOccluder; // 0x360(0x1)
+	uint8_t Pad_0x361[0x3]; // 0x361(0x3)
+	int32_t StaticLightingLOD; // 0x364(0x4)
+	struct UPhysicalMaterial* DefaultPhysMaterial; // 0x368(0x8)
+	float StreamingDistanceMultiplier; // 0x370(0x4)
+	uint8_t Pad_0x374[0x4]; // 0x374(0x4)
+	struct UMaterialInterface* LandscapeMaterial; // 0x378(0x8)
+	uint8_t Pad_0x380[0x20]; // 0x380(0x20)
+	struct UMaterialInterface* LandscapeHoleMaterial; // 0x3A0(0x8)
+	struct TArray<struct FLandscapeProxyMaterialOverride> LandscapeMaterialsOverride; // 0x3A8(0x10)
+	bool bMeshHoles; // 0x3B8(0x1)
+	uint8_t MeshHolesMaxLod; // 0x3B9(0x1)
+	uint8_t Pad_0x3BA[0x6]; // 0x3BA(0x6)
+	struct TArray<struct URuntimeVirtualTexture*> RuntimeVirtualTextures; // 0x3C0(0x10)
+	int32_t VirtualTextureNumLods; // 0x3D0(0x4)
+	int32_t VirtualTextureLodBias; // 0x3D4(0x4)
+	int32_t RVTTranslucencySortPriority; // 0x3D8(0x4)
+	ERuntimeVirtualTextureMainPassType VirtualTextureRenderPassType; // 0x3DC(0x1)
+	uint8_t Pad_0x3DD[0x3]; // 0x3DD(0x3)
+	float NegativeZBoundsExtension; // 0x3E0(0x4)
+	float PositiveZBoundsExtension; // 0x3E4(0x4)
+	struct TArray<struct ULandscapeComponent*> LandscapeComponents; // 0x3E8(0x10)
+	struct TArray<struct ULandscapeHeightfieldCollisionComponent*> CollisionComponents; // 0x3F8(0x10)
+	struct TArray<struct UHierarchicalInstancedStaticMeshComponent*> FoliageComponents; // 0x408(0x10)
+	uint8_t Pad_0x418[0x64]; // 0x418(0x64)
+	bool bHasLandscapeGrass; // 0x47C(0x1)
+	uint8_t Pad_0x47D[0x3]; // 0x47D(0x3)
+	float StaticLightingResolution; // 0x480(0x4)
+	uint8_t CastShadow : 1; // 0x484(0x1), Mask(0x1)
+	uint8_t bCastDynamicShadow : 1; // 0x484(0x1), Mask(0x2)
+	uint8_t bCastStaticShadow : 1; // 0x484(0x1), Mask(0x4)
+	uint8_t bCastFarShadow : 1; // 0x484(0x1), Mask(0x8)
+	uint8_t bCastHiddenShadow : 1; // 0x484(0x1), Mask(0x10)
+	uint8_t bHiddenShadowOnShadowCapture : 1; // 0x484(0x1), Mask(0x20)
+	uint8_t BitPad_0x484_6 : 2; // 0x484(0x1)
+	EShadowCaptureLayer ShadowCaptureLayer; // 0x485(0x1)
+	uint8_t bCastShadowAsTwoSided : 1; // 0x486(0x1), Mask(0x1)
+	uint8_t bAffectDistanceFieldLighting : 1; // 0x486(0x1), Mask(0x2)
+	uint8_t BitPad_0x486_2 : 6; // 0x486(0x1)
+	struct FLightingChannels LightingChannels; // 0x487(0x1)
+	uint8_t bUseMaterialPositionOffsetInStaticLighting : 1; // 0x488(0x1), Mask(0x1)
+	uint8_t bStaticShadowMaskOnly : 1; // 0x488(0x1), Mask(0x2)
+	uint8_t bForceUseSkyLightAsDiffuseGI : 1; // 0x488(0x1), Mask(0x4)
+	uint8_t bRenderCustomDepth : 1; // 0x488(0x1), Mask(0x8)
+	uint8_t BitPad_0x488_4 : 4; // 0x488(0x1)
+	ERendererStencilMask CustomDepthStencilWriteMask; // 0x489(0x1)
+	uint8_t Pad_0x48A[0x2]; // 0x48A(0x2)
+	int32_t CustomDepthStencilValue; // 0x48C(0x4)
+	float LDMaxDrawDistance; // 0x490(0x4)
+	uint8_t bForceUseSkyReflectionCaptureOnly : 1; // 0x494(0x1), Mask(0x1)
+	uint8_t BitPad_0x494_1 : 7; // 0x494(0x1)
+	uint8_t Pad_0x495[0x3]; // 0x495(0x3)
+	struct FLightmassPrimitiveSettings LightmassSettings; // 0x498(0x18)
+	int32_t CollisionMipLevel; // 0x4B0(0x4)
+	int32_t SimpleCollisionMipLevel; // 0x4B4(0x4)
+	float CollisionThickness; // 0x4B8(0x4)
+	uint8_t Pad_0x4BC[0x4]; // 0x4BC(0x4)
+	struct FBodyInstance BodyInstance; // 0x4C0(0x150)
+	uint8_t bGenerateOverlapEvents : 1; // 0x610(0x1), Mask(0x1)
+	uint8_t bBakeMaterialPositionOffsetIntoCollision : 1; // 0x610(0x1), Mask(0x2)
+	uint8_t BitPad_0x610_2 : 6; // 0x610(0x1)
+	uint8_t Pad_0x611[0x3]; // 0x611(0x3)
+	int32_t ComponentSizeQuads; // 0x614(0x4)
+	int32_t SubsectionSizeQuads; // 0x618(0x4)
+	int32_t NumSubsections; // 0x61C(0x4)
+	uint8_t bUsedForNavigation : 1; // 0x620(0x1), Mask(0x1)
+	uint8_t bFillCollisionUnderLandscapeForNavmesh : 1; // 0x620(0x1), Mask(0x2)
+	uint8_t BitPad_0x620_2 : 6; // 0x620(0x1)
+	bool bUseDynamicMaterialInstance; // 0x621(0x1)
+	ENavDataGatheringMode NavigationGeometryGatheringMode; // 0x622(0x1)
+	bool bUseLandscapeForCullingInvisibleHLODVertices; // 0x623(0x1)
+	bool bHasLayersContent; // 0x624(0x1)
+	uint8_t Pad_0x625[0x3]; // 0x625(0x3)
+	struct TMap<struct UTexture2D*, struct ULandscapeWeightmapUsage*> WeightmapUsageMap; // 0x628(0x50)
 
 	// Object: Function Landscape.LandscapeProxy.SetLandscapeMaterialVectorParameterValue
 	// Flags: [Final|RequiredAPI|Native|Public|HasDefaults|BlueprintCallable]
-	// Offset: 0x16437db0
+	// Offset: 0xae59e58
 	// Params: [ Num(2) Size(0x18) ]
 	void SetLandscapeMaterialVectorParameterValue(struct FName ParameterName, struct FLinearColor Value);
 
 	// Object: Function Landscape.LandscapeProxy.SetLandscapeMaterialTextureParameterValue
 	// Flags: [Final|RequiredAPI|Native|Public|BlueprintCallable]
-	// Offset: 0x16437cd4
+	// Offset: 0xae59f40
 	// Params: [ Num(2) Size(0x10) ]
 	void SetLandscapeMaterialTextureParameterValue(struct FName ParameterName, struct UTexture* Value);
 
 	// Object: Function Landscape.LandscapeProxy.SetLandscapeMaterialScalarParameterValue
 	// Flags: [Final|RequiredAPI|Native|Public|BlueprintCallable]
-	// Offset: 0x16437bf4
+	// Offset: 0xae59d70
 	// Params: [ Num(2) Size(0xC) ]
 	void SetLandscapeMaterialScalarParameterValue(struct FName ParameterName, float Value);
 
-	// Object: Function Landscape.LandscapeProxy.EditorSetLandscapeMaxLODLevel
+	// Object: Function Landscape.LandscapeProxy.LandscapeExportHeightmapToRenderTarget
 	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x16437b50
-	// Params: [ Num(1) Size(0x4) ]
-	void EditorSetLandscapeMaxLODLevel(int32_t NewMaxLODLevel);
+	// Offset: 0xae59c24
+	// Params: [ Num(4) Size(0xB) ]
+	bool LandscapeExportHeightmapToRenderTarget(struct UTextureRenderTarget2D* InRenderTarget, bool InExportHeightIntoRGChannel, bool InExportLandscapeProxies);
 
 	// Object: Function Landscape.LandscapeProxy.EditorSetLandscapeMaterial
 	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x16437aac
+	// Offset: 0xae5a398
 	// Params: [ Num(1) Size(0x8) ]
 	void EditorSetLandscapeMaterial(struct UMaterialInterface* NewLandscapeMaterial);
 
-	// Object: Function Landscape.LandscapeProxy.EditorSetLandscapeHoleMaterial
-	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x16437a08
-	// Params: [ Num(1) Size(0x8) ]
-	void EditorSetLandscapeHoleMaterial(struct UMaterialInterface* NewLandscapeHoleMaterial);
-
 	// Object: Function Landscape.LandscapeProxy.EditorApplySpline
 	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x164376fc
-	// Params: [ Num(11) Size(0x30) ]
-	void EditorApplySpline(struct USplineComponent* InSplineComponent, float StartWidth, float EndWidth, float StartSideFalloff, float EndSideFalloff, float StartRoll, float EndRoll, int32_t NumSubdivisions, uint8_t bRaiseHeights, uint8_t bLowerHeights, struct ULandscapeLayerInfoObject* PaintLayer);
+	// Offset: 0xae5a024
+	// Params: [ Num(12) Size(0x38) ]
+	void EditorApplySpline(struct USplineComponent* InSplineComponent, float StartWidth, float EndWidth, float StartSideFalloff, float EndSideFalloff, float StartRoll, float EndRoll, int32_t NumSubdivisions, bool bRaiseHeights, bool bLowerHeights, struct ULandscapeLayerInfoObject* PaintLayer, struct FName EditLayerName);
 
 	// Object: Function Landscape.LandscapeProxy.ChangeUseTessellationComponentScreenSizeFalloff
 	// Flags: [Native|Public|BlueprintCallable]
-	// Offset: 0x16437648
+	// Offset: 0xae5a4f0
 	// Params: [ Num(1) Size(0x1) ]
-	void ChangeUseTessellationComponentScreenSizeFalloff(uint8_t InComponentScreenSizeToUseSubSections);
+	void ChangeUseTessellationComponentScreenSizeFalloff(bool InComponentScreenSizeToUseSubSections);
 
 	// Object: Function Landscape.LandscapeProxy.ChangeTessellationComponentScreenSizeFalloff
 	// Flags: [Native|Public|BlueprintCallable]
-	// Offset: 0x1643759c
+	// Offset: 0xae5a440
 	// Params: [ Num(1) Size(0x4) ]
 	void ChangeTessellationComponentScreenSizeFalloff(float InUseTessellationComponentScreenSizeFalloff);
 
 	// Object: Function Landscape.LandscapeProxy.ChangeTessellationComponentScreenSize
 	// Flags: [Native|Public|BlueprintCallable]
-	// Offset: 0x164374f0
+	// Offset: 0xae5a658
 	// Params: [ Num(1) Size(0x4) ]
 	void ChangeTessellationComponentScreenSize(float InTessellationComponentScreenSize);
 
 	// Object: Function Landscape.LandscapeProxy.ChangeLODDistanceFactor
 	// Flags: [Native|Public|BlueprintCallable]
-	// Offset: 0x16437444
+	// Offset: 0xae5a708
 	// Params: [ Num(1) Size(0x4) ]
 	void ChangeLODDistanceFactor(float InLODDistanceFactor);
 
 	// Object: Function Landscape.LandscapeProxy.ChangeComponentScreenSizeToUseSubSections
 	// Flags: [Native|Public|BlueprintCallable]
-	// Offset: 0x16437398
+	// Offset: 0xae5a5a8
 	// Params: [ Num(1) Size(0x4) ]
 	void ChangeComponentScreenSizeToUseSubSections(float InComponentScreenSizeToUseSubSections);
 };
 
 // Object: Class Landscape.Landscape
-// Size: 0x6C0 (Inherited: 0x6B0)
+// Size: 0x678 (Inherited: 0x678)
 struct ALandscape : ALandscapeProxy
 {
 	DEFINE_UE_CLASS_HELPERS(ALandscape, "Landscape")
-
-	uint8_t bEditingLayerPatchEnabled : 1; // 0x6AC(0x1), Mask(0x1)
-	uint8_t bSyncPatchCustomMaskData : 1; // 0x6AD(0x1), Mask(0x1)
-	uint8_t bTriggerMerge : 1; // 0x6AE(0x1), Mask(0x1)
-	uint8_t bTriggerSplit : 1; // 0x6AF(0x1), Mask(0x1)
-	struct UTextureRenderTarget2D* LocalHeightmap; // 0x6B0(0x8)
-	uint8_t BitPad_0x6B8_4 : 4; // 0x6B8(0x1)
-	uint8_t Pad_0x6B9[0x7]; // 0x6B9(0x7)
 };
 
 // Object: Class Landscape.LandscapeBlueprintBrushBase
-// Size: 0x370 (Inherited: 0x370)
+// Size: 0x300 (Inherited: 0x300)
 struct ALandscapeBlueprintBrushBase : AActor
 {
 	DEFINE_UE_CLASS_HELPERS(ALandscapeBlueprintBrushBase, "LandscapeBlueprintBrushBase")
 
 	// Object: Function Landscape.LandscapeBlueprintBrushBase.RequestLandscapeUpdate
 	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x16433f90
+	// Offset: 0xae55514
 	// Params: [ Num(0) Size(0x0) ]
 	void RequestLandscapeUpdate();
 
 	// Object: Function Landscape.LandscapeBlueprintBrushBase.Render
-	// Flags: [Event|Public|HasOutParms|BlueprintEvent]
-	// Offset: 0x101d2e88
+	// Flags: [Native|Event|Public|HasOutParms|BlueprintEvent]
+	// Offset: 0xae556a4
 	// Params: [ Num(4) Size(0x20) ]
-	struct UTextureRenderTarget2D* Render(uint8_t InIsHeightmap, struct UTextureRenderTarget2D* InCombinedResult, const struct FName& InWeightmapLayerName);
+	struct UTextureRenderTarget2D* Render(bool InIsHeightmap, struct UTextureRenderTarget2D* InCombinedResult, const struct FName& InWeightmapLayerName);
 
 	// Object: Function Landscape.LandscapeBlueprintBrushBase.Initialize
-	// Flags: [Event|Public|HasOutParms|HasDefaults|BlueprintEvent]
-	// Offset: 0x101d2e88
+	// Flags: [Native|Event|Public|HasOutParms|HasDefaults|BlueprintEvent]
+	// Offset: 0xae55528
 	// Params: [ Num(3) Size(0x40) ]
 	void Initialize(const struct FTransform& InLandscapeTransform, const struct FIntPoint& InLandscapeSize, const struct FIntPoint& InLandscapeRenderTargetSize);
 
 	// Object: Function Landscape.LandscapeBlueprintBrushBase.GetBlueprintRenderDependencies
 	// Flags: [Event|Public|HasOutParms|BlueprintEvent]
-	// Offset: 0x101d2e88
+	// Offset: 0x5d8cbc8
 	// Params: [ Num(1) Size(0x10) ]
-	void GetBlueprintRenderDependencies(struct TArray<struct UTexture2D*>& OutStreamableAssets);
+	void GetBlueprintRenderDependencies(struct TArray<struct UObject*>& OutStreamableAssets);
+};
+
+// Object: Class Landscape.LandscapeLODStreamingProxy
+// Size: 0x70 (Inherited: 0x68)
+struct ULandscapeLODStreamingProxy : UStreamableRenderAsset
+{
+	DEFINE_UE_CLASS_HELPERS(ULandscapeLODStreamingProxy, "LandscapeLODStreamingProxy")
+
+	uint8_t Pad_0x68[0x8]; // 0x68(0x8)
 };
 
 // Object: Class Landscape.LandscapeComponent
-// Size: 0x7C0 (Inherited: 0x580)
+// Size: 0x8A0 (Inherited: 0x680)
 struct ULandscapeComponent : UPrimitiveComponent
 {
 	DEFINE_UE_CLASS_HELPERS(ULandscapeComponent, "LandscapeComponent")
 
-	int32_t SectionBaseX; // 0x578(0x4)
-	int32_t SectionBaseY; // 0x57C(0x4)
-	int32_t ComponentSizeQuads; // 0x580(0x4)
-	int32_t SubsectionSizeQuads; // 0x584(0x4)
-	int32_t NumSubsections; // 0x588(0x4)
-	struct UMaterialInterface* OverrideMaterial; // 0x590(0x8)
-	struct UMaterialInterface* OverrideHoleMaterial; // 0x598(0x8)
-	struct TArray<struct FLandscapeComponentMaterialOverride> OverrideMaterials; // 0x5A0(0x10)
-	struct TArray<struct UMaterialInstanceConstant*> MaterialInstances; // 0x5B0(0x10)
-	struct TArray<struct UMaterialInstanceDynamic*> MaterialInstancesDynamic; // 0x5C0(0x10)
-	struct TArray<int8_t> LODIndexToMaterialIndex; // 0x5D0(0x10)
-	struct TArray<int8_t> MaterialIndexToDisabledTessellationMaterial; // 0x5E0(0x10)
-	struct UTexture2D* XYOffsetmapTexture; // 0x5F0(0x8)
-	uint8_t Pad_0x5FC[0x4]; // 0x5FC(0x4)
-	struct FVector4 WeightmapScaleBias; // 0x600(0x10)
-	float WeightmapSubsectionOffset; // 0x610(0x4)
-	uint8_t Pad_0x614[0xC]; // 0x614(0xC)
-	struct FVector4 HeightmapScaleBias; // 0x620(0x10)
-	struct FBox CachedLocalBox; // 0x630(0x1C)
-	struct TLazyObjectPtr<struct ULandscapeHeightfieldCollisionComponent> CollisionComponent; // 0x64C(0x1C)
-	struct TMap<struct FGuid, struct FLandscapeLayerComponentData> LayersData; // 0x668(0x50)
-	struct UTexture2D* HeightmapTexture; // 0x6B8(0x8)
-	struct TArray<struct FWeightmapLayerAllocationInfo> WeightmapLayerAllocations; // 0x6C0(0x10)
-	struct TArray<struct UTexture2D*> WeightmapTextures; // 0x6D0(0x10)
-	struct FGuid MapBuildDataId; // 0x6E0(0x10)
-	struct TArray<struct FGuid> IrrelevantLights; // 0x6F0(0x10)
-	int32_t CollisionMipLevel; // 0x700(0x4)
-	int32_t SimpleCollisionMipLevel; // 0x704(0x4)
-	float NegativeZBoundsExtension; // 0x708(0x4)
-	float PositiveZBoundsExtension; // 0x70C(0x4)
-	float StaticLightingResolution; // 0x710(0x4)
-	int32_t ForcedLOD; // 0x714(0x4)
-	int32_t LODBias; // 0x718(0x4)
-	struct FGuid StateId; // 0x71C(0x10)
-	struct FGuid BakedTextureMaterialGuid; // 0x72C(0x10)
-	uint8_t Pad_0x73C[0x4]; // 0x73C(0x4)
-	struct UTexture2D* GIBakedBaseColorTexture; // 0x740(0x8)
-	uint8_t MobileBlendableLayerMask; // 0x748(0x1)
-	uint8_t Pad_0x749[0x7]; // 0x749(0x7)
-	struct UMaterialInterface* MobileMaterialInterface; // 0x750(0x8)
-	struct TArray<struct UMaterialInterface*> MobileMaterialInterfaces; // 0x758(0x10)
-	struct TArray<struct UTexture2D*> MobileWeightmapTextures; // 0x768(0x10)
-	uint8_t Pad_0x778[0x48]; // 0x778(0x48)
+	int32_t SectionBaseX; // 0x678(0x4)
+	int32_t SectionBaseY; // 0x67C(0x4)
+	int32_t ComponentSizeQuads; // 0x680(0x4)
+	int32_t SubsectionSizeQuads; // 0x684(0x4)
+	int32_t NumSubsections; // 0x688(0x4)
+	struct UMaterialInterface* OverrideMaterial; // 0x690(0x8)
+	struct UMaterialInterface* OverrideHoleMaterial; // 0x698(0x8)
+	struct TArray<struct FLandscapeComponentMaterialOverride> OverrideMaterials; // 0x6A0(0x10)
+	bool bRemoveMobileWeightmap; // 0x6B0(0x1)
+	uint8_t Pad_0x6B5[0x3]; // 0x6B5(0x3)
+	struct TArray<struct UMaterialInstanceConstant*> MaterialInstances; // 0x6B8(0x10)
+	struct TArray<struct UMaterialInstanceDynamic*> MaterialInstancesDynamic; // 0x6C8(0x10)
+	struct TArray<int8_t> LODIndexToMaterialIndex; // 0x6D8(0x10)
+	struct TArray<int8_t> MaterialIndexToDisabledTessellationMaterial; // 0x6E8(0x10)
+	struct UTexture2D* XYOffsetmapTexture; // 0x6F8(0x8)
+	struct FVector4 WeightmapScaleBias; // 0x700(0x10)
+	float WeightmapSubsectionOffset; // 0x710(0x4)
+	uint8_t Pad_0x714[0xC]; // 0x714(0xC)
+	struct FVector4 HeightmapScaleBias; // 0x720(0x10)
+	struct FBox CachedLocalBox; // 0x730(0x1C)
+	struct TLazyObjectPtr<struct ULandscapeHeightfieldCollisionComponent> CollisionComponent; // 0x74C(0x1C)
+	struct UTexture2D* HeightmapTexture; // 0x768(0x8)
+	struct TArray<struct FWeightmapLayerAllocationInfo> WeightmapLayerAllocations; // 0x770(0x10)
+	struct TArray<struct UTexture2D*> WeightmapTextures; // 0x780(0x10)
+	struct ULandscapeLODStreamingProxy* LODStreamingProxy; // 0x790(0x8)
+	struct FGuid MapBuildDataId; // 0x798(0x10)
+	struct TArray<struct FGuid> IrrelevantLights; // 0x7A8(0x10)
+	int32_t CollisionMipLevel; // 0x7B8(0x4)
+	int32_t SimpleCollisionMipLevel; // 0x7BC(0x4)
+	float NegativeZBoundsExtension; // 0x7C0(0x4)
+	float PositiveZBoundsExtension; // 0x7C4(0x4)
+	float StaticLightingResolution; // 0x7C8(0x4)
+	int32_t ForcedLOD; // 0x7CC(0x4)
+	int32_t LODBias; // 0x7D0(0x4)
+	struct FGuid StateId; // 0x7D4(0x10)
+	struct FGuid BakedTextureMaterialGuid; // 0x7E4(0x10)
+	uint8_t Pad_0x7F4[0x4]; // 0x7F4(0x4)
+	struct UTexture2D* GIBakedBaseColorTexture; // 0x7F8(0x8)
+	uint8_t MobileBlendableLayerMask; // 0x800(0x1)
+	uint8_t Pad_0x801[0x7]; // 0x801(0x7)
+	struct UMaterialInterface* MobileMaterialInterface; // 0x808(0x8)
+	struct TArray<struct UMaterialInterface*> MobileMaterialInterfaces; // 0x810(0x10)
+	struct TArray<struct UTexture2D*> MobileWeightmapTextures; // 0x820(0x10)
+	uint8_t Pad_0x830[0x70]; // 0x830(0x70)
 
 	// Object: Function Landscape.LandscapeComponent.GetMaterialInstanceDynamic
 	// Flags: [Final|Native|Public|BlueprintCallable|BlueprintPure|Const]
-	// Offset: 0x1643422c
+	// Offset: 0xae55a7c
 	// Params: [ Num(2) Size(0x10) ]
 	struct UMaterialInstanceDynamic* GetMaterialInstanceDynamic(int32_t InIndex);
 
 	// Object: Function Landscape.LandscapeComponent.EditorGetPaintLayerWeightByNameAtLocation
 	// Flags: [Final|RequiredAPI|Native|Public|HasOutParms|HasDefaults|BlueprintCallable]
-	// Offset: 0x16434130
+	// Offset: 0xae5587c
 	// Params: [ Num(3) Size(0x18) ]
 	float EditorGetPaintLayerWeightByNameAtLocation(const struct FVector& InLocation, struct FName InPaintLayerName);
 
 	// Object: Function Landscape.LandscapeComponent.EditorGetPaintLayerWeightAtLocation
 	// Flags: [Final|RequiredAPI|Native|Public|HasOutParms|HasDefaults|BlueprintCallable]
-	// Offset: 0x16434034
+	// Offset: 0xae5597c
 	// Params: [ Num(3) Size(0x1C) ]
 	float EditorGetPaintLayerWeightAtLocation(const struct FVector& InLocation, struct ULandscapeLayerInfoObject* PaintLayer);
 };
 
-// Object: Class Landscape.LandscapeComponentPatch
-// Size: 0xC8 (Inherited: 0x28)
-struct ULandscapeComponentPatch : UObject
-{
-	DEFINE_UE_CLASS_HELPERS(ULandscapeComponentPatch, "LandscapeComponentPatch")
-
-	struct TMap<struct FGuid, struct FLandscapeLayerComponentData> EditorLayersData; // 0x28(0x50)
-	struct UTexture2D* HeightmapTexture; // 0x78(0x8)
-	uint8_t Pad_0x80[0x10]; // 0x80(0x10)
-	struct TArray<struct FWeightmapLayerAllocationInfo> WeightmapLayerAllocations; // 0x90(0x10)
-	struct TArray<struct UTexture2D*> WeightmapTextures; // 0xA0(0x10)
-	struct FIntPoint ComponentXYPos; // 0xB0(0x8)
-	struct TArray<struct FLandscapeCustomMaskData> CustomMaskData; // 0xB8(0x10)
-};
-
 // Object: Class Landscape.LandscapeGizmoActor
-// Size: 0x370 (Inherited: 0x370)
+// Size: 0x300 (Inherited: 0x300)
 struct ALandscapeGizmoActor : AActor
 {
 	DEFINE_UE_CLASS_HELPERS(ALandscapeGizmoActor, "LandscapeGizmoActor")
 };
 
 // Object: Class Landscape.LandscapeGizmoActiveActor
-// Size: 0x3C0 (Inherited: 0x370)
+// Size: 0x350 (Inherited: 0x300)
 struct ALandscapeGizmoActiveActor : ALandscapeGizmoActor
 {
 	DEFINE_UE_CLASS_HELPERS(ALandscapeGizmoActiveActor, "LandscapeGizmoActiveActor")
 
-	uint8_t Pad_0x370[0x50]; // 0x370(0x50)
+	uint8_t Pad_0x300[0x50]; // 0x300(0x50)
 };
 
 // Object: Class Landscape.LandscapeGizmoRenderComponent
-// Size: 0x580 (Inherited: 0x580)
+// Size: 0x680 (Inherited: 0x680)
 struct ULandscapeGizmoRenderComponent : UPrimitiveComponent
 {
 	DEFINE_UE_CLASS_HELPERS(ULandscapeGizmoRenderComponent, "LandscapeGizmoRenderComponent")
@@ -1009,36 +863,34 @@ struct ULandscapeGrassType : UObject
 	float PlacementJitter; // 0x4C(0x4)
 	int32_t StartCullDistance; // 0x50(0x4)
 	int32_t EndCullDistance; // 0x54(0x4)
-	uint8_t RandomRotation : 1; // 0x58(0x1), Mask(0x1)
-	uint8_t BitPad_0x58_1 : 7; // 0x58(0x1)
-	uint8_t AlignToSurface : 1; // 0x59(0x1), Mask(0x1)
-	uint8_t BitPad_0x59_1 : 7; // 0x59(0x1)
+	bool RandomRotation; // 0x58(0x1)
+	bool AlignToSurface; // 0x59(0x1)
 	uint8_t Pad_0x5A[0x6]; // 0x5A(0x6)
 };
 
 // Object: Class Landscape.LandscapeHeightfieldCollisionComponent
-// Size: 0x660 (Inherited: 0x580)
+// Size: 0x760 (Inherited: 0x680)
 struct ULandscapeHeightfieldCollisionComponent : UPrimitiveComponent
 {
 	DEFINE_UE_CLASS_HELPERS(ULandscapeHeightfieldCollisionComponent, "LandscapeHeightfieldCollisionComponent")
 
-	struct TArray<struct ULandscapeLayerInfoObject*> ComponentLayerInfos; // 0x578(0x10)
-	int32_t SectionBaseX; // 0x588(0x4)
-	int32_t SectionBaseY; // 0x58C(0x4)
-	int32_t CollisionSizeQuads; // 0x590(0x4)
-	float CollisionScale; // 0x594(0x4)
-	int32_t SimpleCollisionSizeQuads; // 0x598(0x4)
-	struct TArray<uint8_t> CollisionQuadFlags; // 0x5A0(0x10)
-	struct FGuid HeightfieldGuid; // 0x5B0(0x10)
-	struct FBox CachedLocalBox; // 0x5C0(0x1C)
-	struct TLazyObjectPtr<struct ULandscapeComponent> RenderComponent; // 0x5DC(0x1C)
-	uint8_t Pad_0x5FC[0xC]; // 0x5FC(0xC)
-	struct TArray<struct UPhysicalMaterial*> CookedPhysicalMaterials; // 0x608(0x10)
-	uint8_t Pad_0x618[0x48]; // 0x618(0x48)
+	struct TArray<struct ULandscapeLayerInfoObject*> ComponentLayerInfos; // 0x678(0x10)
+	int32_t SectionBaseX; // 0x688(0x4)
+	int32_t SectionBaseY; // 0x68C(0x4)
+	int32_t CollisionSizeQuads; // 0x690(0x4)
+	float CollisionScale; // 0x694(0x4)
+	int32_t SimpleCollisionSizeQuads; // 0x698(0x4)
+	struct TArray<uint8_t> CollisionQuadFlags; // 0x6A0(0x10)
+	struct FGuid HeightfieldGuid; // 0x6B0(0x10)
+	struct FBox CachedLocalBox; // 0x6C0(0x1C)
+	struct TLazyObjectPtr<struct ULandscapeComponent> RenderComponent; // 0x6DC(0x1C)
+	uint8_t Pad_0x6FC[0xC]; // 0x6FC(0xC)
+	struct TArray<struct UPhysicalMaterial*> CookedPhysicalMaterials; // 0x708(0x10)
+	uint8_t Pad_0x718[0x48]; // 0x718(0x48)
 
 	// Object: Function Landscape.LandscapeHeightfieldCollisionComponent.GetRenderComponent
 	// Flags: [Final|Native|Public|BlueprintCallable|BlueprintPure|Const]
-	// Offset: 0x16436f44
+	// Offset: 0xae55d98
 	// Params: [ Num(1) Size(0x8) ]
 	struct ULandscapeComponent* GetRenderComponent();
 };
@@ -1070,7 +922,7 @@ struct ULandscapeInfoMap : UObject
 };
 
 // Object: Class Landscape.LandscapeLayerInfoObject
-// Size: 0x90 (Inherited: 0x28)
+// Size: 0x50 (Inherited: 0x28)
 struct ULandscapeLayerInfoObject : UObject
 {
 	DEFINE_UE_CLASS_HELPERS(ULandscapeLayerInfoObject, "LandscapeLayerInfoObject")
@@ -1078,114 +930,79 @@ struct ULandscapeLayerInfoObject : UObject
 	struct FName LayerName; // 0x28(0x8)
 	struct UPhysicalMaterial* PhysMaterial; // 0x30(0x8)
 	float Hardness; // 0x38(0x4)
-	float LayerTilling; // 0x3C(0x4)
-	float LayerSpecular; // 0x40(0x4)
-	uint8_t Pad_0x44[0xC]; // 0x44(0xC)
-	struct FVector4 LayerHeightScaleOffset; // 0x50(0x10)
-	uint32_t TextureArrayIndex; // 0x60(0x4)
-	float FarTillingScale; // 0x64(0x4)
-	uint8_t bOverride_FarTillingStart : 1; // 0x68(0x1), Mask(0x1)
-	uint8_t BitPad_0x68_1 : 7; // 0x68(0x1)
-	uint8_t Pad_0x69[0x3]; // 0x69(0x3)
-	uint32_t FarTillingStart; // 0x6C(0x4)
-	uint8_t bOverride_NearTillingEnd : 1; // 0x70(0x1), Mask(0x1)
-	uint8_t BitPad_0x70_1 : 7; // 0x70(0x1)
-	uint8_t Pad_0x71[0x3]; // 0x71(0x3)
-	uint32_t NearTillingEnd; // 0x74(0x4)
-	struct FLinearColor LayerUsageDebugColor; // 0x78(0x10)
-	uint8_t Pad_0x88[0x8]; // 0x88(0x8)
+	struct FLinearColor LayerUsageDebugColor; // 0x3C(0x10)
+	uint8_t Pad_0x4C[0x4]; // 0x4C(0x4)
 };
 
 // Object: Class Landscape.LandscapeMaterialInstanceConstant
-// Size: 0x320 (Inherited: 0x318)
+// Size: 0x3C8 (Inherited: 0x3B0)
 struct ULandscapeMaterialInstanceConstant : UMaterialInstanceConstant
 {
 	DEFINE_UE_CLASS_HELPERS(ULandscapeMaterialInstanceConstant, "LandscapeMaterialInstanceConstant")
 
-	uint8_t bIsLayerThumbnail : 1; // 0x318(0x1), Mask(0x1)
-	uint8_t bDisableTessellation : 1; // 0x318(0x1), Mask(0x2)
-	uint8_t bMobile : 1; // 0x318(0x1), Mask(0x4)
-	uint8_t bEditorToolUsage : 1; // 0x318(0x1), Mask(0x8)
-	uint8_t bIsUsedWithCDLOD : 1; // 0x318(0x1), Mask(0x10)
-	uint8_t BitPad_0x318_5 : 3; // 0x318(0x1)
-	uint8_t Pad_0x319[0x7]; // 0x319(0x7)
+	struct TArray<struct FLandscapeMaterialTextureStreamingInfo> TextureStreamingInfo; // 0x3B0(0x10)
+	uint8_t bIsLayerThumbnail : 1; // 0x3C0(0x1), Mask(0x1)
+	uint8_t bDisableTessellation : 1; // 0x3C0(0x1), Mask(0x2)
+	uint8_t bMobile : 1; // 0x3C0(0x1), Mask(0x4)
+	uint8_t bEditorToolUsage : 1; // 0x3C0(0x1), Mask(0x8)
+	uint8_t BitPad_0x3C0_4 : 4; // 0x3C0(0x1)
+	uint8_t Pad_0x3C1[0x7]; // 0x3C1(0x7)
 };
 
 // Object: Class Landscape.LandscapeMeshCollisionComponent
-// Size: 0x670 (Inherited: 0x660)
+// Size: 0x780 (Inherited: 0x760)
 struct ULandscapeMeshCollisionComponent : ULandscapeHeightfieldCollisionComponent
 {
 	DEFINE_UE_CLASS_HELPERS(ULandscapeMeshCollisionComponent, "LandscapeMeshCollisionComponent")
 
-	struct FGuid MeshGuid; // 0x658(0x10)
+	struct FGuid MeshGuid; // 0x75C(0x10)
+	uint8_t Pad_0x770[0x10]; // 0x770(0x10)
 };
 
 // Object: Class Landscape.LandscapeMeshProxyActor
-// Size: 0x378 (Inherited: 0x370)
+// Size: 0x308 (Inherited: 0x300)
 struct ALandscapeMeshProxyActor : AActor
 {
 	DEFINE_UE_CLASS_HELPERS(ALandscapeMeshProxyActor, "LandscapeMeshProxyActor")
 
-	struct ULandscapeMeshProxyComponent* LandscapeMeshProxyComponent; // 0x370(0x8)
+	struct ULandscapeMeshProxyComponent* LandscapeMeshProxyComponent; // 0x300(0x8)
 };
 
 // Object: Class Landscape.LandscapeMeshProxyComponent
-// Size: 0x860 (Inherited: 0x830)
+// Size: 0x7C0 (Inherited: 0x790)
 struct ULandscapeMeshProxyComponent : UStaticMeshComponent
 {
 	DEFINE_UE_CLASS_HELPERS(ULandscapeMeshProxyComponent, "LandscapeMeshProxyComponent")
 
-	struct FGuid LandscapeGuid; // 0x830(0x10)
-	struct TArray<struct FIntPoint> ProxyComponentBases; // 0x840(0x10)
-	int8_t ProxyLOD; // 0x850(0x1)
-	uint8_t Pad_0x851[0xF]; // 0x851(0xF)
-};
-
-// Object: Class Landscape.LandscapeCustomMaskDataLayersObject
-// Size: 0x28 (Inherited: 0x28)
-struct ULandscapeCustomMaskDataLayersObject : UObject
-{
-	DEFINE_UE_CLASS_HELPERS(ULandscapeCustomMaskDataLayersObject, "LandscapeCustomMaskDataLayersObject")
-};
-
-// Object: Class Landscape.LandscapeProxyPatch
-// Size: 0x118 (Inherited: 0x28)
-struct ULandscapeProxyPatch : UObject
-{
-	DEFINE_UE_CLASS_HELPERS(ULandscapeProxyPatch, "LandscapeProxyPatch")
-
-	struct TArray<struct ULandscapeComponentPatch*> LandscapeComponentPatchs; // 0x28(0x10)
-	struct TMap<struct FString, struct FGuid> PatchLayerGuid; // 0x38(0x50)
-	struct FGuid PatchGuid; // 0x88(0x10)
-	struct FName LandscapeName; // 0x98(0x8)
-	struct TSoftObjectPtr<ALandscape> LandscapePtr; // 0xA0(0x28)
-	uint8_t Pad_0xC8[0x50]; // 0xC8(0x50)
+	struct FGuid LandscapeGuid; // 0x78C(0x10)
+	struct TArray<struct FIntPoint> ProxyComponentBases; // 0x7A0(0x10)
+	int8_t ProxyLOD; // 0x7B0(0x1)
+	uint8_t Pad_0x7B1[0xF]; // 0x7B1(0xF)
 };
 
 // Object: Class Landscape.LandscapeSettings
-// Size: 0x50 (Inherited: 0x38)
+// Size: 0x40 (Inherited: 0x38)
 struct ULandscapeSettings : UDeveloperSettings
 {
 	DEFINE_UE_CLASS_HELPERS(ULandscapeSettings, "LandscapeSettings")
 
 	int32_t MaxNumberOfLayers; // 0x38(0x4)
 	uint8_t Pad_0x3C[0x4]; // 0x3C(0x4)
-	struct TArray<struct FString> MapsToLockToolModePaint; // 0x40(0x10)
 };
 
 // Object: Class Landscape.LandscapeSplinesComponent
-// Size: 0x5B0 (Inherited: 0x580)
+// Size: 0x6B0 (Inherited: 0x680)
 struct ULandscapeSplinesComponent : UPrimitiveComponent
 {
 	DEFINE_UE_CLASS_HELPERS(ULandscapeSplinesComponent, "LandscapeSplinesComponent")
 
-	struct TArray<struct ULandscapeSplineControlPoint*> ControlPoints; // 0x578(0x10)
-	struct TArray<struct ULandscapeSplineSegment*> Segments; // 0x588(0x10)
-	struct TArray<struct UMeshComponent*> CookedForeignMeshComponents; // 0x598(0x10)
+	struct TArray<struct ULandscapeSplineControlPoint*> ControlPoints; // 0x678(0x10)
+	struct TArray<struct ULandscapeSplineSegment*> Segments; // 0x688(0x10)
+	struct TArray<struct UMeshComponent*> CookedForeignMeshComponents; // 0x698(0x10)
 
 	// Object: Function Landscape.LandscapeSplinesComponent.GetSplineMeshComponents
 	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x1643a00c
+	// Offset: 0xae5d9b8
 	// Params: [ Num(1) Size(0x10) ]
 	struct TArray<struct USplineMeshComponent*> GetSplineMeshComponents();
 };
@@ -1228,15 +1045,22 @@ struct ULandscapeSplineSegment : UObject
 };
 
 // Object: Class Landscape.LandscapeStreamingProxy
-// Size: 0x6D0 (Inherited: 0x6B0)
+// Size: 0x698 (Inherited: 0x678)
 struct ALandscapeStreamingProxy : ALandscapeProxy
 {
 	DEFINE_UE_CLASS_HELPERS(ALandscapeStreamingProxy, "LandscapeStreamingProxy")
 
-	struct TLazyObjectPtr<struct ALandscape> LandscapeActor; // 0x6AC(0x1C)
-	uint8_t IsGenerateOccluder : 1; // 0x6C8(0x1), Mask(0x1)
-	uint8_t BitPad_0x6CC_1 : 7; // 0x6CC(0x1)
-	uint8_t Pad_0x6CD[0x3]; // 0x6CD(0x3)
+	struct TLazyObjectPtr<struct ALandscape> LandscapeActor; // 0x678(0x1C)
+	uint8_t Pad_0x694[0x4]; // 0x694(0x4)
+};
+
+// Object: Class Landscape.LandscapeSubsystem
+// Size: 0xF0 (Inherited: 0x30)
+struct ULandscapeSubsystem : UWorldSubsystem
+{
+	DEFINE_UE_CLASS_HELPERS(ULandscapeSubsystem, "LandscapeSubsystem")
+
+	uint8_t Pad_0x30[0xC0]; // 0x30(0xC0)
 };
 
 // Object: Class Landscape.LandscapeWeightmapUsage
@@ -1274,8 +1098,8 @@ struct UMaterialExpressionLandscapeLayerCoords : UMaterialExpression
 {
 	DEFINE_UE_CLASS_HELPERS(UMaterialExpressionLandscapeLayerCoords, "MaterialExpressionLandscapeLayerCoords")
 
-	ETerrainCoordMappingType MappingType; // 0x39(0x1)
-	ELandscapeCustomizedCoordType CustomUVType; // 0x3A(0x1)
+	uint8_t MappingType; // 0x39(0x1)
+	uint8_t CustomUVType; // 0x3A(0x1)
 	float MappingScale; // 0x3C(0x4)
 	float MappingRotation; // 0x40(0x4)
 	float MappingPanU; // 0x44(0x4)
@@ -1311,7 +1135,7 @@ struct UMaterialExpressionLandscapeLayerSwitch : UMaterialExpression
 };
 
 // Object: Class Landscape.MaterialExpressionLandscapeLayerWeight
-// Size: 0x98 (Inherited: 0x40)
+// Size: 0x90 (Inherited: 0x40)
 struct UMaterialExpressionLandscapeLayerWeight : UMaterialExpression
 {
 	DEFINE_UE_CLASS_HELPERS(UMaterialExpressionLandscapeLayerWeight, "MaterialExpressionLandscapeLayerWeight")
@@ -1320,13 +1144,20 @@ struct UMaterialExpressionLandscapeLayerWeight : UMaterialExpression
 	uint8_t Pad_0x4C[0x4]; // 0x4C(0x4)
 	struct FExpressionInput Layer; // 0x50(0xC)
 	uint8_t Pad_0x5C[0x8]; // 0x5C(0x8)
-	int32_t SampleBlockOffsetIndex; // 0x64(0x4)
-	int32_t SampleTextureSize; // 0x68(0x4)
-	struct FName ParameterName; // 0x6C(0x8)
-	float PreviewWeight; // 0x74(0x4)
-	struct FVector ConstBase; // 0x78(0xC)
-	struct FGuid ExpressionGUID; // 0x84(0x10)
-	uint8_t Pad_0x94[0x4]; // 0x94(0x4)
+	struct FName ParameterName; // 0x64(0x8)
+	float PreviewWeight; // 0x6C(0x4)
+	struct FVector ConstBase; // 0x70(0xC)
+	struct FGuid ExpressionGUID; // 0x7C(0x10)
+	uint8_t Pad_0x8C[0x4]; // 0x8C(0x4)
+};
+
+// Object: Class Landscape.MaterialExpressionLandscapePhysicalMaterialOutput
+// Size: 0x50 (Inherited: 0x40)
+struct UMaterialExpressionLandscapePhysicalMaterialOutput : UMaterialExpressionCustomOutput
+{
+	DEFINE_UE_CLASS_HELPERS(UMaterialExpressionLandscapePhysicalMaterialOutput, "MaterialExpressionLandscapePhysicalMaterialOutput")
+
+	struct TArray<struct FPhysicalMaterialInput> Inputs; // 0x40(0x10)
 };
 
 // Object: Class Landscape.MaterialExpressionLandscapeVisibilityMask

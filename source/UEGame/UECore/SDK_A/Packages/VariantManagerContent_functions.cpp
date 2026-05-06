@@ -47,7 +47,7 @@ int32_t ULevelVariantSets::GetNumVariantSets()
 }
 
 // ALevelVariantSetsActor
-uint8_t ALevelVariantSetsActor::SwitchOnVariantByName(struct FString VariantSetName, struct FString VariantName)
+bool ALevelVariantSetsActor::SwitchOnVariantByName(struct FString VariantSetName, struct FString VariantName)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("LevelVariantSetsActor", "SwitchOnVariantByName");
@@ -55,7 +55,7 @@ uint8_t ALevelVariantSetsActor::SwitchOnVariantByName(struct FString VariantSetN
     {
         struct FString VariantSetName;
         struct FString VariantName;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.VariantSetName = (struct FString)VariantSetName;
     Parms.VariantName = (struct FString)VariantName;
@@ -63,7 +63,7 @@ uint8_t ALevelVariantSetsActor::SwitchOnVariantByName(struct FString VariantSetN
     return Parms.ReturnValue;
 }
 
-uint8_t ALevelVariantSetsActor::SwitchOnVariantByIndex(int32_t VariantSetIndex, int32_t VariantIndex)
+bool ALevelVariantSetsActor::SwitchOnVariantByIndex(int32_t VariantSetIndex, int32_t VariantIndex)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("LevelVariantSetsActor", "SwitchOnVariantByIndex");
@@ -71,7 +71,7 @@ uint8_t ALevelVariantSetsActor::SwitchOnVariantByIndex(int32_t VariantSetIndex, 
     {
         int32_t VariantSetIndex;
         int32_t VariantIndex;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.VariantSetIndex = (int32_t)VariantSetIndex;
     Parms.VariantIndex = (int32_t)VariantIndex;
@@ -91,28 +91,28 @@ void ALevelVariantSetsActor::SetLevelVariantSets(struct ULevelVariantSets* InVar
     this->ProcessEvent(Func, &Parms);
 }
 
-struct ULevelVariantSets* ALevelVariantSetsActor::GetLevelVariantSets(uint8_t bLoad)
+struct ULevelVariantSets* ALevelVariantSetsActor::GetLevelVariantSets(bool bLoad)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("LevelVariantSetsActor", "GetLevelVariantSets");
     struct
     {
-        uint8_t bLoad;
+        bool bLoad;
         struct ULevelVariantSets* ReturnValue;
     } Parms{};
-    Parms.bLoad = (uint8_t)bLoad;
+    Parms.bLoad = (bool)bLoad;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
 // UPropertyValue
-uint8_t UPropertyValue::HasRecordedData()
+bool UPropertyValue::HasRecordedData()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("PropertyValue", "HasRecordedData");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
@@ -190,6 +190,60 @@ void UVariant::SwitchOn()
     this->ProcessEvent(Func, &Parms);
 }
 
+void UVariant::SetThumbnailFromTexture(struct UTexture2D* NewThumbnail)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("Variant", "SetThumbnailFromTexture");
+    struct
+    {
+        struct UTexture2D* NewThumbnail;
+    } Parms{};
+    Parms.NewThumbnail = (struct UTexture2D*)NewThumbnail;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UVariant::SetThumbnailFromFile(struct FString FilePath)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("Variant", "SetThumbnailFromFile");
+    struct
+    {
+        struct FString FilePath;
+    } Parms{};
+    Parms.FilePath = (struct FString)FilePath;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UVariant::SetThumbnailFromEditorViewport()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("Variant", "SetThumbnailFromEditorViewport");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UVariant::SetThumbnailFromCamera(struct UObject* WorldContextObject, const struct FTransform& CameraTransform, float FOVDegrees, float MinZ, float Gamma)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("Variant", "SetThumbnailFromCamera");
+    struct
+    {
+        struct UObject* WorldContextObject;
+        struct FTransform CameraTransform;
+        float FOVDegrees;
+        float MinZ;
+        float Gamma;
+    } Parms{};
+    Parms.WorldContextObject = (struct UObject*)WorldContextObject;
+    Parms.CameraTransform = (struct FTransform)CameraTransform;
+    Parms.FOVDegrees = (float)FOVDegrees;
+    Parms.MinZ = (float)MinZ;
+    Parms.Gamma = (float)Gamma;
+    this->ProcessEvent(Func, &Parms);
+}
+
 void UVariant::SetDisplayText(const struct FText& NewDisplayText)
 {
     static struct UFunction* Func = nullptr;
@@ -200,6 +254,68 @@ void UVariant::SetDisplayText(const struct FText& NewDisplayText)
     } Parms{};
     Parms.NewDisplayText = (struct FText)NewDisplayText;
     this->ProcessEvent(Func, &Parms);
+}
+
+void UVariant::SetDependency(int32_t Index, struct FVariantDependency& Dependency)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("Variant", "SetDependency");
+    struct
+    {
+        int32_t Index;
+        struct FVariantDependency Dependency;
+    } Parms{};
+    Parms.Index = (int32_t)Index;
+    this->ProcessEvent(Func, &Parms);
+    Dependency = Parms.Dependency;
+}
+
+bool UVariant::IsActive()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("Variant", "IsActive");
+    struct
+    {
+        bool ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct UTexture2D* UVariant::GetThumbnail()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("Variant", "GetThumbnail");
+    struct
+    {
+        struct UTexture2D* ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct UVariantSet* UVariant::GetParent()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("Variant", "GetParent");
+    struct
+    {
+        struct UVariantSet* ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+int32_t UVariant::GetNumDependencies()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("Variant", "GetNumDependencies");
+    struct
+    {
+        int32_t ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
 }
 
 int32_t UVariant::GetNumActors()
@@ -226,6 +342,36 @@ struct FText UVariant::GetDisplayText()
     return Parms.ReturnValue;
 }
 
+struct TArray<struct UVariant*> UVariant::GetDependents(struct ULevelVariantSets* LevelVariantSets, bool bOnlyEnabledDependencies)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("Variant", "GetDependents");
+    struct
+    {
+        struct ULevelVariantSets* LevelVariantSets;
+        bool bOnlyEnabledDependencies;
+        struct TArray<struct UVariant*> ReturnValue;
+    } Parms{};
+    Parms.LevelVariantSets = (struct ULevelVariantSets*)LevelVariantSets;
+    Parms.bOnlyEnabledDependencies = (bool)bOnlyEnabledDependencies;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct FVariantDependency UVariant::GetDependency(int32_t Index)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("Variant", "GetDependency");
+    struct
+    {
+        int32_t Index;
+        struct FVariantDependency ReturnValue;
+    } Parms{};
+    Parms.Index = (int32_t)Index;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
 struct AActor* UVariant::GetActor(int32_t ActorIndex)
 {
     static struct UFunction* Func = nullptr;
@@ -240,7 +386,87 @@ struct AActor* UVariant::GetActor(int32_t ActorIndex)
     return Parms.ReturnValue;
 }
 
+void UVariant::DeleteDependency(int32_t Index)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("Variant", "DeleteDependency");
+    struct
+    {
+        int32_t Index;
+    } Parms{};
+    Parms.Index = (int32_t)Index;
+    this->ProcessEvent(Func, &Parms);
+}
+
+int32_t UVariant::AddDependency(struct FVariantDependency& Dependency)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("Variant", "AddDependency");
+    struct
+    {
+        struct FVariantDependency Dependency;
+        int32_t ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    Dependency = Parms.Dependency;
+    return Parms.ReturnValue;
+}
+
 // UVariantSet
+void UVariantSet::SetThumbnailFromTexture(struct UTexture2D* NewThumbnail)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("VariantSet", "SetThumbnailFromTexture");
+    struct
+    {
+        struct UTexture2D* NewThumbnail;
+    } Parms{};
+    Parms.NewThumbnail = (struct UTexture2D*)NewThumbnail;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UVariantSet::SetThumbnailFromFile(struct FString FilePath)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("VariantSet", "SetThumbnailFromFile");
+    struct
+    {
+        struct FString FilePath;
+    } Parms{};
+    Parms.FilePath = (struct FString)FilePath;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UVariantSet::SetThumbnailFromEditorViewport()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("VariantSet", "SetThumbnailFromEditorViewport");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UVariantSet::SetThumbnailFromCamera(struct UObject* WorldContextObject, const struct FTransform& CameraTransform, float FOVDegrees, float MinZ, float Gamma)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("VariantSet", "SetThumbnailFromCamera");
+    struct
+    {
+        struct UObject* WorldContextObject;
+        struct FTransform CameraTransform;
+        float FOVDegrees;
+        float MinZ;
+        float Gamma;
+    } Parms{};
+    Parms.WorldContextObject = (struct UObject*)WorldContextObject;
+    Parms.CameraTransform = (struct FTransform)CameraTransform;
+    Parms.FOVDegrees = (float)FOVDegrees;
+    Parms.MinZ = (float)MinZ;
+    Parms.Gamma = (float)Gamma;
+    this->ProcessEvent(Func, &Parms);
+}
+
 void UVariantSet::SetDisplayText(const struct FText& NewDisplayText)
 {
     static struct UFunction* Func = nullptr;
@@ -277,6 +503,30 @@ struct UVariant* UVariantSet::GetVariant(int32_t VariantIndex)
         struct UVariant* ReturnValue;
     } Parms{};
     Parms.VariantIndex = (int32_t)VariantIndex;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct UTexture2D* UVariantSet::GetThumbnail()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("VariantSet", "GetThumbnail");
+    struct
+    {
+        struct UTexture2D* ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct ULevelVariantSets* UVariantSet::GetParent()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("VariantSet", "GetParent");
+    struct
+    {
+        struct ULevelVariantSets* ReturnValue;
+    } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }

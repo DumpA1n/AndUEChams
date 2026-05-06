@@ -8,16 +8,18 @@ namespace SDK
 
 // Package: ReplicationGraph
 // Enums: 0
-// Structs: 4
+// Structs: 6
 // Classes: 15
 
 struct AActor;
 struct UNetConnection;
 struct UNetDriver;
 struct FConnectionAlwaysRelevantNodePair;
+struct FDynamicCharacterRepInfo;
 struct FLastLocationGatherInfo;
 struct FTearOffActorInfo;
 struct FAlwaysRelevantActorInfo;
+struct FClassReplicationInfo;
 struct UReplicationGraph;
 struct UBasicReplicationGraph;
 struct UReplicationGraphNode;
@@ -42,13 +44,28 @@ struct FConnectionAlwaysRelevantNodePair
 	struct UReplicationGraphNode_AlwaysRelevant_ForConnection* Node; // 0x8(0x8)
 };
 
+// Object: ScriptStruct ReplicationGraph.DynamicCharacterRepInfo
+// Size: 0x28 (Inherited: 0x0)
+struct FDynamicCharacterRepInfo
+{
+	struct AActor* Actor; // 0x0(0x8)
+	uint32_t ReplicationPeriodFrame; // 0x8(0x4)
+	uint32_t FastPath_ReplicationPeriodFrame; // 0xC(0x4)
+	uint32_t FastShare_ReplicationIndex; // 0x10(0x4)
+	uint32_t Default_ReplicationIndex; // 0x14(0x4)
+	float NetPriority; // 0x18(0x4)
+	float ExtraNetPriority; // 0x1C(0x4)
+	bool bReplicate_FastShare; // 0x20(0x1)
+	uint8_t Pad_0x21[0x7]; // 0x21(0x7)
+};
+
 // Object: ScriptStruct ReplicationGraph.LastLocationGatherInfo
-// Size: 0x18 (Inherited: 0x0)
+// Size: 0x20 (Inherited: 0x0)
 struct FLastLocationGatherInfo
 {
 	struct UNetConnection* Connection; // 0x0(0x8)
 	struct FVector LastLocation; // 0x8(0xC)
-	uint8_t Pad_0x14[0x4]; // 0x14(0x4)
+	struct FVector LastOutOfRangeLocationCheck; // 0x14(0xC)
 };
 
 // Object: ScriptStruct ReplicationGraph.TearOffActorInfo
@@ -69,37 +86,48 @@ struct FAlwaysRelevantActorInfo
 	struct AActor* LastViewTarget; // 0x10(0x8)
 };
 
+// Object: ScriptStruct ReplicationGraph.ClassReplicationInfo
+// Size: 0x70 (Inherited: 0x0)
+struct FClassReplicationInfo
+{
+	float DistancePriorityScale; // 0x0(0x4)
+	float StarvationPriorityScale; // 0x4(0x4)
+	float AccumulatedNetPriorityBias; // 0x8(0x4)
+	uint16_t ReplicationPeriodFrame; // 0xC(0x2)
+	uint16_t FastPath_ReplicationPeriodFrame; // 0xE(0x2)
+	uint16_t ActorChannelFrameTimeout; // 0x10(0x2)
+	uint8_t EnableGlobalChannelPriorityAndPriorityValue; // 0x12(0x1)
+	uint8_t Pad_0x13[0x55]; // 0x13(0x55)
+	float CullDistance; // 0x68(0x4)
+	float CullDistanceSquared; // 0x6C(0x4)
+};
+
 // Object: Class ReplicationGraph.ReplicationGraph
-// Size: 0x4E0 (Inherited: 0x28)
+// Size: 0x520 (Inherited: 0x28)
 struct UReplicationGraph : UReplicationDriver
 {
 	DEFINE_UE_CLASS_HELPERS(UReplicationGraph, "ReplicationGraph")
 
 	struct UNetReplicationGraphConnection* ReplicationConnectionManagerClass; // 0x28(0x8)
-	uint8_t bEnableNetDirtySystem : 1; // 0x30(0x1), Mask(0x1)
-	uint8_t BitPad_0x30_1 : 7; // 0x30(0x1)
-	uint8_t bEnableSubobjectDirtyOptimize : 1; // 0x31(0x1), Mask(0x1)
-	uint8_t BitPad_0x31_1 : 7; // 0x31(0x1)
-	uint8_t Pad_0x32[0x6]; // 0x32(0x6)
-	struct UNetDriver* NetDriver; // 0x38(0x8)
-	struct TArray<struct UNetReplicationGraphConnection*> Connections; // 0x40(0x10)
-	struct TArray<struct UNetReplicationGraphConnection*> PendingConnections; // 0x50(0x10)
-	uint8_t Pad_0x60[0x40]; // 0x60(0x40)
-	struct TArray<struct UReplicationGraphNode*> GlobalGraphNodes; // 0xA0(0x10)
-	struct TArray<struct UReplicationGraphNode*> PrepareForReplicationNodes; // 0xB0(0x10)
-	uint8_t Pad_0xC0[0x420]; // 0xC0(0x420)
+	struct UNetDriver* NetDriver; // 0x30(0x8)
+	struct TArray<struct UNetReplicationGraphConnection*> Connections; // 0x38(0x10)
+	struct TArray<struct UNetReplicationGraphConnection*> PendingConnections; // 0x48(0x10)
+	uint8_t Pad_0x58[0x80]; // 0x58(0x80)
+	struct TArray<struct UReplicationGraphNode*> GlobalGraphNodes; // 0xD8(0x10)
+	struct TArray<struct UReplicationGraphNode*> PrepareForReplicationNodes; // 0xE8(0x10)
+	uint8_t Pad_0xF8[0x428]; // 0xF8(0x428)
 };
 
 // Object: Class ReplicationGraph.BasicReplicationGraph
-// Size: 0x510 (Inherited: 0x4E0)
+// Size: 0x550 (Inherited: 0x520)
 struct UBasicReplicationGraph : UReplicationGraph
 {
 	DEFINE_UE_CLASS_HELPERS(UBasicReplicationGraph, "BasicReplicationGraph")
 
-	struct UReplicationGraphNode_GridSpatialization2D* GridNode; // 0x4D8(0x8)
-	struct UReplicationGraphNode_ActorList* AlwaysRelevantNode; // 0x4E0(0x8)
-	struct TArray<struct FConnectionAlwaysRelevantNodePair> AlwaysRelevantForConnectionList; // 0x4E8(0x10)
-	struct TArray<struct AActor*> ActorsWithoutNetConnection; // 0x4F8(0x10)
+	struct UReplicationGraphNode_GridSpatialization2D* GridNode; // 0x520(0x8)
+	struct UReplicationGraphNode_ActorList* AlwaysRelevantNode; // 0x528(0x8)
+	struct TArray<struct FConnectionAlwaysRelevantNodePair> AlwaysRelevantForConnectionList; // 0x530(0x10)
+	struct TArray<struct AActor*> ActorsWithoutNetConnection; // 0x540(0x10)
 };
 
 // Object: Class ReplicationGraph.ReplicationGraphNode
@@ -149,32 +177,32 @@ struct UReplicationGraphNode_ConnectionDormancyNode : UReplicationGraphNode_Acto
 };
 
 // Object: Class ReplicationGraph.ReplicationGraphNode_DormancyNode
-// Size: 0x148 (Inherited: 0xF8)
+// Size: 0x150 (Inherited: 0xF8)
 struct UReplicationGraphNode_DormancyNode : UReplicationGraphNode_ActorList
 {
 	DEFINE_UE_CLASS_HELPERS(UReplicationGraphNode_DormancyNode, "ReplicationGraphNode_DormancyNode")
 
-	uint8_t Pad_0xF8[0x50]; // 0xF8(0x50)
+	uint8_t Pad_0xF8[0x58]; // 0xF8(0x58)
 };
 
 // Object: Class ReplicationGraph.ReplicationGraphNode_GridCell
-// Size: 0x150 (Inherited: 0xF8)
+// Size: 0x190 (Inherited: 0xF8)
 struct UReplicationGraphNode_GridCell : UReplicationGraphNode_ActorList
 {
 	DEFINE_UE_CLASS_HELPERS(UReplicationGraphNode_GridCell, "ReplicationGraphNode_GridCell")
 
-	uint8_t Pad_0xF8[0x48]; // 0xF8(0x48)
-	struct UReplicationGraphNode* DynamicNode; // 0x140(0x8)
-	struct UReplicationGraphNode_DormancyNode* DormancyNode; // 0x148(0x8)
+	uint8_t Pad_0xF8[0x88]; // 0xF8(0x88)
+	struct UReplicationGraphNode* DynamicNode; // 0x180(0x8)
+	struct UReplicationGraphNode_DormancyNode* DormancyNode; // 0x188(0x8)
 };
 
 // Object: Class ReplicationGraph.ReplicationGraphNode_GridSpatialization2D
-// Size: 0x230 (Inherited: 0x50)
+// Size: 0x2F0 (Inherited: 0x50)
 struct UReplicationGraphNode_GridSpatialization2D : UReplicationGraphNode
 {
 	DEFINE_UE_CLASS_HELPERS(UReplicationGraphNode_GridSpatialization2D, "ReplicationGraphNode_GridSpatialization2D")
 
-	uint8_t Pad_0x50[0x1E0]; // 0x50(0x1E0)
+	uint8_t Pad_0x50[0x2A0]; // 0x50(0x2A0)
 };
 
 // Object: Class ReplicationGraph.ReplicationGraphNode_AlwaysRelevant
@@ -188,15 +216,13 @@ struct UReplicationGraphNode_AlwaysRelevant : UReplicationGraphNode
 };
 
 // Object: Class ReplicationGraph.ReplicationGraphNode_AlwaysRelevant_ForConnection
-// Size: 0x130 (Inherited: 0xF8)
+// Size: 0x120 (Inherited: 0xF8)
 struct UReplicationGraphNode_AlwaysRelevant_ForConnection : UReplicationGraphNode_ActorList
 {
 	DEFINE_UE_CLASS_HELPERS(UReplicationGraphNode_AlwaysRelevant_ForConnection, "ReplicationGraphNode_AlwaysRelevant_ForConnection")
 
 	uint8_t Pad_0xF8[0x18]; // 0xF8(0x18)
 	struct TArray<struct FAlwaysRelevantActorInfo> PastRelevantActors; // 0x110(0x10)
-	struct AActor* LastViewer; // 0x120(0x8)
-	struct AActor* LastViewTarget; // 0x128(0x8)
 };
 
 // Object: Class ReplicationGraph.ReplicationGraphNode_TearOff_ForConnection
@@ -210,7 +236,7 @@ struct UReplicationGraphNode_TearOff_ForConnection : UReplicationGraphNode
 };
 
 // Object: Class ReplicationGraph.NetReplicationGraphConnection
-// Size: 0x240 (Inherited: 0x28)
+// Size: 0x288 (Inherited: 0x28)
 struct UNetReplicationGraphConnection : UReplicationConnectionDriver
 {
 	DEFINE_UE_CLASS_HELPERS(UNetReplicationGraphConnection, "NetReplicationGraphConnection")
@@ -218,74 +244,83 @@ struct UNetReplicationGraphConnection : UReplicationConnectionDriver
 	struct UNetConnection* NetConnection; // 0x28(0x8)
 	uint8_t Pad_0x30[0x140]; // 0x30(0x140)
 	struct AReplicationGraphDebugActor* DebugActor; // 0x170(0x8)
-	uint8_t Pad_0x178[0x18]; // 0x178(0x18)
-	struct TArray<struct FLastLocationGatherInfo> LastGatherLocations; // 0x190(0x10)
-	uint8_t Pad_0x1A0[0x8]; // 0x1A0(0x8)
-	struct TArray<struct UReplicationGraphNode*> ConnectionGraphNodes; // 0x1A8(0x10)
-	struct UReplicationGraphNode_TearOff_ForConnection* TearOffNode; // 0x1B8(0x8)
-	uint8_t Pad_0x1C0[0x80]; // 0x1C0(0x80)
+	uint8_t Pad_0x178[0x10]; // 0x178(0x10)
+	struct TArray<struct FLastLocationGatherInfo> LastGatherLocations; // 0x188(0x10)
+	uint8_t Pad_0x198[0x8]; // 0x198(0x8)
+	struct TArray<struct UReplicationGraphNode*> ConnectionGraphNodes; // 0x1A0(0x10)
+	struct UReplicationGraphNode_TearOff_ForConnection* TearOffNode; // 0x1B0(0x8)
+	uint8_t Pad_0x1B8[0xA0]; // 0x1B8(0xA0)
+	struct UReplicationGraph* OwnerReplicationGraph; // 0x258(0x8)
+	uint8_t Pad_0x260[0x28]; // 0x260(0x28)
 };
 
 // Object: Class ReplicationGraph.ReplicationGraphDebugActor
-// Size: 0x380 (Inherited: 0x370)
+// Size: 0x320 (Inherited: 0x300)
 struct AReplicationGraphDebugActor : AActor
 {
 	DEFINE_UE_CLASS_HELPERS(AReplicationGraphDebugActor, "ReplicationGraphDebugActor")
 
-	struct UReplicationGraph* ReplicationGraph; // 0x370(0x8)
-	struct UNetReplicationGraphConnection* ConnectionManager; // 0x378(0x8)
+	struct UReplicationGraph* ReplicationGraph; // 0x300(0x8)
+	struct UNetReplicationGraphConnection* ConnectionManager; // 0x308(0x8)
+	struct TArray<struct FDynamicCharacterRepInfo> DynamicCharacterRepInfos; // 0x310(0x10)
 
 	// Object: Function ReplicationGraph.ReplicationGraphDebugActor.ServerStopDebugging
 	// Flags: [Net|NetReliableNative|Event|Public|NetServer]
-	// Offset: 0x78de320
+	// Offset: 0x342dca8
 	// Params: [ Num(0) Size(0x0) ]
 	void ServerStopDebugging();
 
 	// Object: Function ReplicationGraph.ReplicationGraphDebugActor.ServerStartDebugging
 	// Flags: [Net|NetReliableNative|Event|Public|NetServer]
-	// Offset: 0x78de304
+	// Offset: 0x342dcc4
 	// Params: [ Num(0) Size(0x0) ]
 	void ServerStartDebugging();
 
 	// Object: Function ReplicationGraph.ReplicationGraphDebugActor.ServerSetPeriodFrameForClass
 	// Flags: [Net|NetReliableNative|Event|Public|NetServer]
-	// Offset: 0x78de21c
+	// Offset: 0x342d9f0
 	// Params: [ Num(2) Size(0xC) ]
 	void ServerSetPeriodFrameForClass(struct UObject* Class, int32_t PeriodFrame);
 
 	// Object: Function ReplicationGraph.ReplicationGraphDebugActor.ServerSetCullDistanceForClass
 	// Flags: [Net|NetReliableNative|Event|Public|NetServer]
-	// Offset: 0x78de134
+	// Offset: 0x342dae0
 	// Params: [ Num(2) Size(0xC) ]
 	void ServerSetCullDistanceForClass(struct UObject* Class, float CullDistance);
 
 	// Object: Function ReplicationGraph.ReplicationGraphDebugActor.ServerSetConditionalActorBreakpoint
 	// Flags: [Net|NetReliableNative|Event|Public|NetServer]
-	// Offset: 0x78de088
+	// Offset: 0x342d940
 	// Params: [ Num(1) Size(0x8) ]
 	void ServerSetConditionalActorBreakpoint(struct AActor* Actor);
 
 	// Object: Function ReplicationGraph.ReplicationGraphDebugActor.ServerPrintCullDistances
 	// Flags: [Net|NetReliableNative|Event|Public|NetServer]
-	// Offset: 0x78de06c
+	// Offset: 0x342d924
 	// Params: [ Num(0) Size(0x0) ]
 	void ServerPrintCullDistances();
 
 	// Object: Function ReplicationGraph.ReplicationGraphDebugActor.ServerPrintAllActorInfo
 	// Flags: [Net|NetReliableNative|Event|Public|NetServer]
-	// Offset: 0x78ddfb8
+	// Offset: 0x342dbd0
 	// Params: [ Num(1) Size(0x10) ]
-	void ServerPrintAllActorInfo(struct FString str);
+	void ServerPrintAllActorInfo(struct FString Str);
 
 	// Object: Function ReplicationGraph.ReplicationGraphDebugActor.ServerCellInfo
 	// Flags: [Net|NetReliableNative|Event|Public|NetServer]
-	// Offset: 0x78ddf9c
+	// Offset: 0x342dc8c
 	// Params: [ Num(0) Size(0x0) ]
 	void ServerCellInfo();
 
+	// Object: Function ReplicationGraph.ReplicationGraphDebugActor.OnRep_DynamicCharacterRepInfos
+	// Flags: [Final|Native|Protected]
+	// Offset: 0x342d7d0
+	// Params: [ Num(0) Size(0x0) ]
+	void OnRep_DynamicCharacterRepInfos();
+
 	// Object: Function ReplicationGraph.ReplicationGraphDebugActor.ClientCellInfo
 	// Flags: [Net|NetReliableNative|Event|Public|HasDefaults|NetClient]
-	// Offset: 0x78dde70
+	// Offset: 0x342d7e4
 	// Params: [ Num(3) Size(0x28) ]
 	void ClientCellInfo(struct FVector CellLocation, struct FVector CellExtent, struct TArray<struct AActor*> Actors);
 };

@@ -5,17 +5,17 @@ namespace SDK
 {
 
 // ITurnBasedMatchInterface
-void ITurnBasedMatchInterface::OnMatchReceivedTurn(struct FString Match, uint8_t bDidBecomeActive)
+void ITurnBasedMatchInterface::OnMatchReceivedTurn(struct FString Match, bool bDidBecomeActive)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("TurnBasedMatchInterface", "OnMatchReceivedTurn");
     struct
     {
         struct FString Match;
-        uint8_t bDidBecomeActive;
+        bool bDidBecomeActive;
     } Parms{};
     Parms.Match = (struct FString)Match;
-    Parms.bDidBecomeActive = (uint8_t)bDidBecomeActive;
+    Parms.bDidBecomeActive = (bool)bDidBecomeActive;
     this->ProcessEvent(Func, &Parms);
 }
 

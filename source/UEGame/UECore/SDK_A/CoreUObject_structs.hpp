@@ -14,7 +14,7 @@
 namespace SDK
 {
 
-// Package: CoreUObject - Enums(14) + Structs(65)
+// Package: CoreUObject - Enums(16) + Structs(64)
 
 // Object: Enum CoreUObject.EInterpCurveMode
 enum class EInterpCurveMode : uint8_t
@@ -72,102 +72,7 @@ enum class EMouseCursor : uint8_t
 	GrabHandClosed = 11,
 	SlashedCircle = 12,
 	EyeDropper = 13,
-	Menu = 14,
-	Custom1 = 15,
-	Custom2 = 16,
-	Custom3 = 17,
-	Custom4 = 18,
-	Custom5 = 19,
-	Custom6 = 20,
-	Custom7 = 21,
-	Custom8 = 22,
-	Custom9 = 23,
-	Custom10 = 24,
-	EMouseCursor_MAX = 25
-};
-
-// Object: Enum CoreUObject.EPixelFormat
-enum class EPixelFormat : uint8_t
-{
-	PF_Unknown = 0,
-	PF_A32B32G32R32F = 1,
-	PF_B8G8R8A8 = 2,
-	PF_G8 = 3,
-	PF_G16 = 4,
-	PF_DXT1 = 5,
-	PF_DXT3 = 6,
-	PF_DXT5 = 7,
-	PF_UYVY = 8,
-	PF_FloatRGB = 9,
-	PF_FloatRGBA = 10,
-	PF_DepthStencil = 11,
-	PF_ShadowDepth = 12,
-	PF_R32_FLOAT = 13,
-	PF_G16R16 = 14,
-	PF_G16R16F = 15,
-	PF_G16R16F_FILTER = 16,
-	PF_G32R32F = 17,
-	PF_A2B10G10R10 = 18,
-	PF_A16B16G16R16 = 19,
-	PF_D24 = 20,
-	PF_R16F = 21,
-	PF_R16F_FILTER = 22,
-	PF_BC5 = 23,
-	PF_V8U8 = 24,
-	PF_A1 = 25,
-	PF_FloatR11G11B10 = 26,
-	PF_A8 = 27,
-	PF_R32_UINT = 28,
-	PF_R32_SINT = 29,
-	PF_PVRTC2 = 30,
-	PF_PVRTC4 = 31,
-	PF_R16_UINT = 32,
-	PF_R16_SINT = 33,
-	PF_R16G16B16A16_UINT = 34,
-	PF_R16G16B16A16_SINT = 35,
-	PF_R5G6B5_UNORM = 36,
-	PF_R8G8B8A8 = 37,
-	PF_A8R8G8B8 = 38,
-	PF_BC4 = 39,
-	PF_R8G8 = 40,
-	PF_ATC_RGB = 41,
-	PF_ATC_RGBA_E = 42,
-	PF_ATC_RGBA_I = 43,
-	PF_X24_G8 = 44,
-	PF_ETC1 = 45,
-	PF_ETC2_RGB = 46,
-	PF_ETC2_RGBA = 47,
-	PF_R32G32B32A32_UINT = 48,
-	PF_R16G16_UINT = 49,
-	PF_ASTC_4x4 = 50,
-	PF_ASTC_5x5 = 51,
-	PF_ASTC_6x6 = 52,
-	PF_ASTC_8x8 = 53,
-	PF_ASTC_10x10 = 54,
-	PF_ASTC_12x12 = 55,
-	PF_BC6H = 56,
-	PF_BC7 = 57,
-	PF_R8_UINT = 58,
-	PF_L8 = 59,
-	PF_XGXR8 = 60,
-	PF_R8G8B8A8_UINT = 61,
-	PF_R8G8B8A8_SNORM = 62,
-	PF_R16G16B16A16_UNORM = 63,
-	PF_R16G16B16A16_SNORM = 64,
-	PF_PLATFORM_HDR_0 = 65,
-	PF_PLATFORM_HDR_1 = 66,
-	PF_PLATFORM_HDR_2 = 67,
-	PF_NV12 = 68,
-	PF_R32G32_UINT = 69,
-	PF_ASTC_5x4 = 70,
-	PF_ASTC_6x5 = 71,
-	PF_ASTC_8x5 = 72,
-	PF_ASTC_8x6 = 73,
-	PF_ASTC_10x5 = 74,
-	PF_ASTC_10x6 = 75,
-	PF_ASTC_10x8 = 76,
-	PF_ASTC_12x10 = 77,
-	PF_MAX = 78
+	EMouseCursor_MAX = 14
 };
 
 // Object: Enum CoreUObject.ELifetimeCondition
@@ -187,12 +92,10 @@ enum class ELifetimeCondition : uint8_t
 	COND_SimulatedOnlyNoReplay = 11,
 	COND_SimulatedOrPhysicsNoReplay = 12,
 	COND_SkipReplay = 13,
-	COND_InitialOrSkipOwner = 14,
-	COND_OwnerOrFocusTarget = 15,
-	COND_FocusTargetSkipOwner = 16,
-	COND_VisibleOnly = 17,
-	COND_Never = 31,
-	COND_Max = 32
+	COND_ViewTarget = 14,
+	COND_ViewTargetSkipOwner = 15,
+	COND_Never = 17,
+	COND_Max = 18
 };
 
 // Object: Enum CoreUObject.EDataValidationResult
@@ -202,6 +105,34 @@ enum class EDataValidationResult : uint8_t
 	Valid = 1,
 	NotValidated = 2,
 	EDataValidationResult_MAX = 3
+};
+
+// Object: Enum CoreUObject.EAppMsgType
+enum class EAppMsgType : uint8_t
+{
+	Ok = 0,
+	YesNo = 1,
+	OkCancel = 2,
+	YesNoCancel = 3,
+	CancelRetryContinue = 4,
+	YesNoYesAllNoAll = 5,
+	YesNoYesAllNoAllCancel = 6,
+	YesNoYesAll = 7,
+	EAppMsgType_MAX = 8
+};
+
+// Object: Enum CoreUObject.EAppReturnType
+enum class EAppReturnType : uint8_t
+{
+	No = 0,
+	Yes = 1,
+	YesAll = 2,
+	NoAll = 3,
+	Cancel = 4,
+	Ok = 5,
+	Retry = 6,
+	Continue = 7,
+	EAppReturnType_MAX = 8
 };
 
 // Object: Enum CoreUObject.EPropertyAccessChangeNotifyMode
@@ -269,6 +200,89 @@ enum class EUnit : uint8_t
 	EUnit_MAX = 50
 };
 
+// Object: Enum CoreUObject.EPixelFormat
+enum class EPixelFormat : uint8_t
+{
+	PF_Unknown = 0,
+	PF_A32B32G32R32F = 1,
+	PF_B8G8R8A8 = 2,
+	PF_G8 = 3,
+	PF_G16 = 4,
+	PF_DXT1 = 5,
+	PF_DXT3 = 6,
+	PF_DXT5 = 7,
+	PF_UYVY = 8,
+	PF_FloatRGB = 9,
+	PF_FloatRGBA = 10,
+	PF_DepthStencil = 11,
+	PF_ShadowDepth = 12,
+	PF_R32_FLOAT = 13,
+	PF_G16R16 = 14,
+	PF_G16R16F = 15,
+	PF_G16R16F_FILTER = 16,
+	PF_G32R32F = 17,
+	PF_A2B10G10R10 = 18,
+	PF_A16B16G16R16 = 19,
+	PF_D24 = 20,
+	PF_R16F = 21,
+	PF_R16F_FILTER = 22,
+	PF_BC5 = 23,
+	PF_V8U8 = 24,
+	PF_A1 = 25,
+	PF_FloatR11G11B10 = 26,
+	PF_A8 = 27,
+	PF_R32_UINT = 28,
+	PF_R32_SINT = 29,
+	PF_PVRTC2 = 30,
+	PF_PVRTC4 = 31,
+	PF_R16_UINT = 32,
+	PF_R16_SINT = 33,
+	PF_R16G16B16A16_UINT = 34,
+	PF_R16G16B16A16_SINT = 35,
+	PF_R5G6B5_UNORM = 36,
+	PF_R8G8B8A8 = 37,
+	PF_A8R8G8B8 = 38,
+	PF_BC4 = 39,
+	PF_R8G8 = 40,
+	PF_ATC_RGB = 41,
+	PF_ATC_RGBA_E = 42,
+	PF_ATC_RGBA_I = 43,
+	PF_X24_G8 = 44,
+	PF_ETC1 = 45,
+	PF_ETC2_RGB = 46,
+	PF_ETC2_RGBA = 47,
+	PF_R32G32B32A32_UINT = 48,
+	PF_R16G16_UINT = 49,
+	PF_ASTC_4x4 = 50,
+	PF_ASTC_5x4 = 51,
+	PF_ASTC_5x5 = 52,
+	PF_ASTC_6x6 = 53,
+	PF_ASTC_8x5 = 54,
+	PF_ASTC_8x6 = 55,
+	PF_ASTC_8x8 = 56,
+	PF_ASTC_10x8 = 57,
+	PF_ASTC_10x10 = 58,
+	PF_ASTC_12x12 = 59,
+	PF_BC6H = 60,
+	PF_BC7 = 61,
+	PF_R8_UINT = 62,
+	PF_L8 = 63,
+	PF_XGXR8 = 64,
+	PF_R8G8B8A8_UINT = 65,
+	PF_R8G8B8A8_SNORM = 66,
+	PF_R16G16B16A16_UNORM = 67,
+	PF_R16G16B16A16_SNORM = 68,
+	PF_PLATFORM_HDR_0 = 69,
+	PF_PLATFORM_HDR_1 = 70,
+	PF_PLATFORM_HDR_2 = 71,
+	PF_NV12 = 72,
+	PF_R32G32_UINT = 73,
+	PF_ETC2_R11_EAC = 74,
+	PF_ETC2_RG11_EAC = 75,
+	PF_R4G4B4A4 = 76,
+	PF_MAX = 77
+};
+
 // Object: Enum CoreUObject.EAxis
 enum class EAxis : uint8_t
 {
@@ -310,14 +324,10 @@ enum class ESearchCase : uint8_t
 struct FJoinabilitySettings
 {
 	struct FName SessionName; // 0x0(0x8)
-	uint8_t bPublicSearchable : 1; // 0x8(0x1), Mask(0x1)
-	uint8_t BitPad_0x8_1 : 7; // 0x8(0x1)
-	uint8_t bAllowInvites : 1; // 0x9(0x1), Mask(0x1)
-	uint8_t BitPad_0x9_1 : 7; // 0x9(0x1)
-	uint8_t bJoinViaPresence : 1; // 0xA(0x1), Mask(0x1)
-	uint8_t BitPad_0xA_1 : 7; // 0xA(0x1)
-	uint8_t bJoinViaPresenceFriendsOnly : 1; // 0xB(0x1), Mask(0x1)
-	uint8_t BitPad_0xB_1 : 7; // 0xB(0x1)
+	bool bPublicSearchable; // 0x8(0x1)
+	bool bAllowInvites; // 0x9(0x1)
+	bool bJoinViaPresence; // 0xA(0x1)
+	bool bJoinViaPresenceFriendsOnly; // 0xB(0x1)
 	int32_t MaxPlayers; // 0xC(0x4)
 	int32_t MaxPartySize; // 0x10(0x4)
 };
@@ -377,28 +387,6 @@ struct FVector
 	bool     IsNearlyZero(float t = 1e-4f) const { return std::abs(X) <= t && std::abs(Y) <= t && std::abs(Z) <= t; }
 	FVector  GetSafeNormal(float t = 1e-4f) const { float l = Length(); return l > t ? FVector{X/l, Y/l, Z/l} : FVector{0,0,0}; }
 	std::string ToString() const { char b[64]; std::snprintf(b, sizeof(b), "X=%.3f Y=%.3f Z=%.3f", X, Y, Z); return std::string(b); }
-};
-
-// Object: ScriptStruct CoreUObject.EncHandler
-// Size: 0x4 (Inherited: 0x0)
-struct FEncHandler
-{
-	uint16_t Index; // 0x0(0x2)
-	int8_t bEncrypted; // 0x2(0x1)
-	uint8_t bDynamic : 1; // 0x3(0x1), Mask(0x1)
-	uint8_t bShareKey : 1; // 0x3(0x1), Mask(0x2)
-	uint8_t bBitwiseCopyable : 1; // 0x3(0x1), Mask(0x4)
-	uint8_t BitPad_0x3_3 : 5; // 0x3(0x1)
-};
-
-// Object: ScriptStruct CoreUObject.EncVector
-// Size: 0x10 (Inherited: 0x0)
-struct FEncVector
-{
-	float X; // 0x0(0x4)
-	float Y; // 0x4(0x4)
-	float Z; // 0x8(0x4)
-	struct FEncHandler EncHandler; // 0xC(0x4)
 };
 
 // Object: ScriptStruct CoreUObject.Vector4
@@ -622,15 +610,6 @@ struct FBoxSphereBounds
 	float SphereRadius; // 0x18(0x4)
 };
 
-// Object: ScriptStruct CoreUObject.EncBoxSphereBounds
-// Size: 0x20 (Inherited: 0x0)
-struct FEncBoxSphereBounds
-{
-	struct FEncVector Origin; // 0x0(0x10)
-	struct FVector BoxExtent; // 0x10(0xC)
-	float SphereRadius; // 0x1C(0x4)
-};
-
 // Object: ScriptStruct CoreUObject.OrientedBox
 // Size: 0x3C (Inherited: 0x0)
 struct FOrientedBox
@@ -662,7 +641,7 @@ struct FInterpCurvePointFloat
 	float OutVal; // 0x4(0x4)
 	float ArriveTangent; // 0x8(0x4)
 	float LeaveTangent; // 0xC(0x4)
-	EInterpCurveMode InterpMode; // 0x10(0x1)
+	uint8_t InterpMode; // 0x10(0x1)
 	uint8_t Pad_0x11[0x3]; // 0x11(0x3)
 };
 
@@ -671,8 +650,7 @@ struct FInterpCurvePointFloat
 struct FInterpCurveFloat
 {
 	struct TArray<struct FInterpCurvePointFloat> Points; // 0x0(0x10)
-	uint8_t bIsLooped : 1; // 0x10(0x1), Mask(0x1)
-	uint8_t BitPad_0x10_1 : 7; // 0x10(0x1)
+	bool bIsLooped; // 0x10(0x1)
 	uint8_t Pad_0x11[0x3]; // 0x11(0x3)
 	float LoopKeyOffset; // 0x14(0x4)
 };
@@ -685,7 +663,7 @@ struct FInterpCurvePointVector2D
 	struct FVector2D OutVal; // 0x4(0x8)
 	struct FVector2D ArriveTangent; // 0xC(0x8)
 	struct FVector2D LeaveTangent; // 0x14(0x8)
-	EInterpCurveMode InterpMode; // 0x1C(0x1)
+	uint8_t InterpMode; // 0x1C(0x1)
 	uint8_t Pad_0x1D[0x3]; // 0x1D(0x3)
 };
 
@@ -694,8 +672,7 @@ struct FInterpCurvePointVector2D
 struct FInterpCurveVector2D
 {
 	struct TArray<struct FInterpCurvePointVector2D> Points; // 0x0(0x10)
-	uint8_t bIsLooped : 1; // 0x10(0x1), Mask(0x1)
-	uint8_t BitPad_0x10_1 : 7; // 0x10(0x1)
+	bool bIsLooped; // 0x10(0x1)
 	uint8_t Pad_0x11[0x3]; // 0x11(0x3)
 	float LoopKeyOffset; // 0x14(0x4)
 };
@@ -708,7 +685,7 @@ struct FInterpCurvePointVector
 	struct FVector OutVal; // 0x4(0xC)
 	struct FVector ArriveTangent; // 0x10(0xC)
 	struct FVector LeaveTangent; // 0x1C(0xC)
-	EInterpCurveMode InterpMode; // 0x28(0x1)
+	uint8_t InterpMode; // 0x28(0x1)
 	uint8_t Pad_0x29[0x3]; // 0x29(0x3)
 };
 
@@ -717,8 +694,7 @@ struct FInterpCurvePointVector
 struct FInterpCurveVector
 {
 	struct TArray<struct FInterpCurvePointVector> Points; // 0x0(0x10)
-	uint8_t bIsLooped : 1; // 0x10(0x1), Mask(0x1)
-	uint8_t BitPad_0x10_1 : 7; // 0x10(0x1)
+	bool bIsLooped; // 0x10(0x1)
 	uint8_t Pad_0x11[0x3]; // 0x11(0x3)
 	float LoopKeyOffset; // 0x14(0x4)
 };
@@ -732,7 +708,7 @@ struct FInterpCurvePointQuat
 	struct FQuat OutVal; // 0x10(0x10)
 	struct FQuat ArriveTangent; // 0x20(0x10)
 	struct FQuat LeaveTangent; // 0x30(0x10)
-	EInterpCurveMode InterpMode; // 0x40(0x1)
+	uint8_t InterpMode; // 0x40(0x1)
 	uint8_t Pad_0x41[0xF]; // 0x41(0xF)
 };
 
@@ -741,8 +717,7 @@ struct FInterpCurvePointQuat
 struct FInterpCurveQuat
 {
 	struct TArray<struct FInterpCurvePointQuat> Points; // 0x0(0x10)
-	uint8_t bIsLooped : 1; // 0x10(0x1), Mask(0x1)
-	uint8_t BitPad_0x10_1 : 7; // 0x10(0x1)
+	bool bIsLooped; // 0x10(0x1)
 	uint8_t Pad_0x11[0x3]; // 0x11(0x3)
 	float LoopKeyOffset; // 0x14(0x4)
 };
@@ -755,7 +730,7 @@ struct FInterpCurvePointTwoVectors
 	struct FTwoVectors OutVal; // 0x4(0x18)
 	struct FTwoVectors ArriveTangent; // 0x1C(0x18)
 	struct FTwoVectors LeaveTangent; // 0x34(0x18)
-	EInterpCurveMode InterpMode; // 0x4C(0x1)
+	uint8_t InterpMode; // 0x4C(0x1)
 	uint8_t Pad_0x4D[0x3]; // 0x4D(0x3)
 };
 
@@ -764,8 +739,7 @@ struct FInterpCurvePointTwoVectors
 struct FInterpCurveTwoVectors
 {
 	struct TArray<struct FInterpCurvePointTwoVectors> Points; // 0x0(0x10)
-	uint8_t bIsLooped : 1; // 0x10(0x1), Mask(0x1)
-	uint8_t BitPad_0x10_1 : 7; // 0x10(0x1)
+	bool bIsLooped; // 0x10(0x1)
 	uint8_t Pad_0x11[0x3]; // 0x11(0x3)
 	float LoopKeyOffset; // 0x14(0x4)
 };
@@ -778,7 +752,7 @@ struct FInterpCurvePointLinearColor
 	struct FLinearColor OutVal; // 0x4(0x10)
 	struct FLinearColor ArriveTangent; // 0x14(0x10)
 	struct FLinearColor LeaveTangent; // 0x24(0x10)
-	EInterpCurveMode InterpMode; // 0x34(0x1)
+	uint8_t InterpMode; // 0x34(0x1)
 	uint8_t Pad_0x35[0x3]; // 0x35(0x3)
 };
 
@@ -787,8 +761,7 @@ struct FInterpCurvePointLinearColor
 struct FInterpCurveLinearColor
 {
 	struct TArray<struct FInterpCurvePointLinearColor> Points; // 0x0(0x10)
-	uint8_t bIsLooped : 1; // 0x10(0x1), Mask(0x1)
-	uint8_t BitPad_0x10_1 : 7; // 0x10(0x1)
+	bool bIsLooped; // 0x10(0x1)
 	uint8_t Pad_0x11[0x3]; // 0x11(0x3)
 	float LoopKeyOffset; // 0x14(0x4)
 };
@@ -798,20 +771,9 @@ struct FInterpCurveLinearColor
 struct FTransform
 {
 	struct FQuat Rotation; // 0x0(0x10)
-	struct FVector translation; // 0x10(0xC)
+	struct FVector Translation; // 0x10(0xC)
 	struct FVector Scale3D; // 0x1C(0xC)
 	uint8_t Pad_0x28[0x8]; // 0x28(0x8)
-};
-
-// Object: ScriptStruct CoreUObject.EncTransform
-// Size: 0x30 (Inherited: 0x0)
-struct FEncTransform
-{
-	struct FQuat Rotation; // 0x0(0x10)
-	struct FVector translation; // 0x10(0xC)
-	struct FVector Scale3D; // 0x1C(0xC)
-	struct FEncHandler EncHandler; // 0x28(0x4)
-	uint8_t Pad_0x2C[0x4]; // 0x2C(0x4)
 };
 
 // Object: ScriptStruct CoreUObject.RandomStream
@@ -868,8 +830,7 @@ struct FTimecode
 	int32_t Minutes; // 0x4(0x4)
 	int32_t Seconds; // 0x8(0x4)
 	int32_t Frames; // 0xC(0x4)
-	uint8_t bDropFrameFormat : 1; // 0x10(0x1), Mask(0x1)
-	uint8_t BitPad_0x10_1 : 7; // 0x10(0x1)
+	bool bDropFrameFormat; // 0x10(0x1)
 	uint8_t Pad_0x11[0x3]; // 0x11(0x3)
 };
 
@@ -920,7 +881,7 @@ struct FFallbackStruct
 // Size: 0x8 (Inherited: 0x0)
 struct FFloatRangeBound
 {
-	ERangeBoundTypes Type; // 0x0(0x1)
+	uint8_t Type; // 0x0(0x1)
 	uint8_t Pad_0x1[0x3]; // 0x1(0x3)
 	float Value; // 0x4(0x4)
 };
@@ -937,7 +898,7 @@ struct FFloatRange
 // Size: 0x8 (Inherited: 0x0)
 struct FInt32RangeBound
 {
-	ERangeBoundTypes Type; // 0x0(0x1)
+	uint8_t Type; // 0x0(0x1)
 	uint8_t Pad_0x1[0x3]; // 0x1(0x3)
 	int32_t Value; // 0x4(0x4)
 };
@@ -948,6 +909,23 @@ struct FInt32Range
 {
 	struct FInt32RangeBound LowerBound; // 0x0(0x8)
 	struct FInt32RangeBound UpperBound; // 0x8(0x8)
+};
+
+// Object: ScriptStruct CoreUObject.FrameNumberRangeBound
+// Size: 0x8 (Inherited: 0x0)
+struct FFrameNumberRangeBound
+{
+	uint8_t Type; // 0x0(0x1)
+	uint8_t Pad_0x1[0x3]; // 0x1(0x3)
+	struct FFrameNumber Value; // 0x4(0x4)
+};
+
+// Object: ScriptStruct CoreUObject.FrameNumberRange
+// Size: 0x10 (Inherited: 0x0)
+struct FFrameNumberRange
+{
+	struct FFrameNumberRangeBound LowerBound; // 0x0(0x8)
+	struct FFrameNumberRangeBound UpperBound; // 0x8(0x8)
 };
 
 // Object: ScriptStruct CoreUObject.FloatInterval
@@ -977,8 +955,7 @@ struct FPolyglotTextData
 	struct FString Key; // 0x28(0x10)
 	struct FString NativeString; // 0x38(0x10)
 	struct TMap<struct FString, struct FString> LocalizedStrings; // 0x48(0x50)
-	uint8_t bIsMinimalPatch : 1; // 0x98(0x1), Mask(0x1)
-	uint8_t BitPad_0x98_1 : 7; // 0x98(0x1)
+	bool bIsMinimalPatch; // 0x98(0x1)
 	uint8_t Pad_0x99[0x7]; // 0x99(0x7)
 	struct FText CachedText; // 0xA0(0x18)
 };
@@ -1005,30 +982,48 @@ struct FAutomationExecutionEntry
 	struct FDateTime Timestamp; // 0x50(0x8)
 };
 
-// Object: ScriptStruct CoreUObject.Ray
-// Size: 0x18 (Inherited: 0x0)
-struct FRay
+// Object: ScriptStruct CoreUObject.ARFilter
+// Size: 0xF0 (Inherited: 0x0)
+struct FARFilter
 {
-	struct FVector Origin; // 0x0(0xC)
-	struct FVector Direction; // 0xC(0xC)
+	struct TArray<struct FName> PackageNames; // 0x0(0x10)
+	struct TArray<struct FName> PackagePaths; // 0x10(0x10)
+	struct TArray<struct FName> ObjectPaths; // 0x20(0x10)
+	struct TArray<struct FName> ClassNames; // 0x30(0x10)
+	uint8_t Pad_0x40[0x50]; // 0x40(0x50)
+	struct TSet<struct FName> RecursiveClassesExclusionSet; // 0x90(0x50)
+	bool bRecursivePaths; // 0xE0(0x1)
+	bool bRecursiveClasses; // 0xE1(0x1)
+	bool bIncludeOnlyOnDiskAssets; // 0xE2(0x1)
+	uint8_t Pad_0xE3[0xD]; // 0xE3(0xD)
 };
 
-// Object: ScriptStruct CoreUObject.Sphere
+// Object: ScriptStruct CoreUObject.AssetBundleEntry
+// Size: 0x28 (Inherited: 0x0)
+struct FAssetBundleEntry
+{
+	struct FPrimaryAssetId BundleScope; // 0x0(0x10)
+	struct FName BundleName; // 0x10(0x8)
+	struct TArray<struct FSoftObjectPath> BundleAssets; // 0x18(0x10)
+};
+
+// Object: ScriptStruct CoreUObject.AssetBundleData
 // Size: 0x10 (Inherited: 0x0)
-struct FSphere
+struct FAssetBundleData
 {
-	struct FVector Center; // 0x0(0xC)
-	float W; // 0xC(0x4)
+	struct TArray<struct FAssetBundleEntry> Bundles; // 0x0(0x10)
 };
 
-// Object: ScriptStruct CoreUObject.CapsuleShape
-// Size: 0x20 (Inherited: 0x0)
-struct FCapsuleShape
+// Object: ScriptStruct CoreUObject.AssetData
+// Size: 0x50 (Inherited: 0x0)
+struct FAssetData
 {
-	struct FVector Center; // 0x0(0xC)
-	float radius; // 0xC(0x4)
-	struct FVector Orientation; // 0x10(0xC)
-	float Length; // 0x1C(0x4)
+	struct FName ObjectPath; // 0x0(0x8)
+	struct FName PackageName; // 0x8(0x8)
+	struct FName PackagePath; // 0x10(0x8)
+	struct FName AssetName; // 0x18(0x8)
+	struct FName AssetClass; // 0x20(0x8)
+	uint8_t Pad_0x28[0x28]; // 0x28(0x28)
 };
 
 } // namespace SDK

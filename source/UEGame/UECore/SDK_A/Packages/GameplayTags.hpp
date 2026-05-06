@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../CoreUObject_classes.hpp"
+#include "DeveloperSettings.hpp"
 #include "Engine.hpp"
 
 namespace SDK
@@ -13,8 +14,8 @@ namespace SDK
 
 struct AActor;
 struct UDataTable;
-struct FGameplayTagContainer;
 struct FGameplayTag;
+struct FGameplayTagContainer;
 struct FGameplayTagQuery;
 struct FGameplayTagCreationWidgetHelper;
 struct FGameplayTagReferenceHelper;
@@ -92,19 +93,19 @@ enum class EGameplayTagSourceType : uint8_t
 	EGameplayTagSourceType_MAX = 6
 };
 
+// Object: ScriptStruct GameplayTags.GameplayTag
+// Size: 0x8 (Inherited: 0x0)
+struct FGameplayTag
+{
+	struct FName TagName; // 0x0(0x8)
+};
+
 // Object: ScriptStruct GameplayTags.GameplayTagContainer
 // Size: 0x20 (Inherited: 0x0)
 struct FGameplayTagContainer
 {
 	struct TArray<struct FGameplayTag> GameplayTags; // 0x0(0x10)
 	struct TArray<struct FGameplayTag> ParentTags; // 0x10(0x10)
-};
-
-// Object: ScriptStruct GameplayTags.GameplayTag
-// Size: 0x8 (Inherited: 0x0)
-struct FGameplayTag
-{
-	struct FName TagName; // 0x0(0x8)
 };
 
 // Object: ScriptStruct GameplayTags.GameplayTagQuery
@@ -163,8 +164,7 @@ struct FGameplayTagTableRow : FTableRowBase
 // Size: 0x28 (Inherited: 0x20)
 struct FRestrictedGameplayTagTableRow : FGameplayTagTableRow
 {
-	uint8_t bAllowNonRestrictedChildren : 1; // 0x20(0x1), Mask(0x1)
-	uint8_t BitPad_0x20_1 : 7; // 0x20(0x1)
+	bool bAllowNonRestrictedChildren; // 0x20(0x1)
 	uint8_t Pad_0x21[0x7]; // 0x21(0x7)
 };
 
@@ -200,181 +200,181 @@ struct UBlueprintGameplayTagLibrary : UBlueprintFunctionLibrary
 
 	// Object: Function GameplayTags.BlueprintGameplayTagLibrary.RemoveGameplayTag
 	// Flags: [Final|Native|Static|Public|HasOutParms|BlueprintCallable]
-	// Offset: 0xf90c9d4
+	// Offset: 0xb19cb8c
 	// Params: [ Num(3) Size(0x29) ]
-	static uint8_t RemoveGameplayTag(struct FGameplayTagContainer& TagContainer, struct FGameplayTag Tag);
+	static bool RemoveGameplayTag(struct FGameplayTagContainer& TagContainer, struct FGameplayTag Tag);
 
 	// Object: Function GameplayTags.BlueprintGameplayTagLibrary.NotEqual_TagTag
 	// Flags: [Final|Native|Static|Public|BlueprintCallable|BlueprintPure]
-	// Offset: 0xf5874a8
+	// Offset: 0xb19bf20
 	// Params: [ Num(3) Size(0x19) ]
-	static uint8_t NotEqual_TagTag(struct FGameplayTag A, struct FString B);
+	static bool NotEqual_TagTag(struct FGameplayTag A, struct FString B);
 
 	// Object: Function GameplayTags.BlueprintGameplayTagLibrary.NotEqual_TagContainerTagContainer
 	// Flags: [Final|Native|Static|Public|BlueprintCallable|BlueprintPure]
-	// Offset: 0x167288a0
+	// Offset: 0xb19bd94
 	// Params: [ Num(3) Size(0x31) ]
-	static uint8_t NotEqual_TagContainerTagContainer(struct FGameplayTagContainer A, struct FString B);
+	static bool NotEqual_TagContainerTagContainer(struct FGameplayTagContainer A, struct FString B);
 
 	// Object: Function GameplayTags.BlueprintGameplayTagLibrary.NotEqual_GameplayTagContainer
 	// Flags: [Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure]
-	// Offset: 0x1672876c
+	// Offset: 0xb19c7d0
 	// Params: [ Num(3) Size(0x41) ]
-	static uint8_t NotEqual_GameplayTagContainer(const struct FGameplayTagContainer& A, const struct FGameplayTagContainer& B);
+	static bool NotEqual_GameplayTagContainer(const struct FGameplayTagContainer& A, const struct FGameplayTagContainer& B);
 
 	// Object: Function GameplayTags.BlueprintGameplayTagLibrary.NotEqual_GameplayTag
 	// Flags: [Final|Native|Static|Public|BlueprintCallable|BlueprintPure]
-	// Offset: 0x1672868c
+	// Offset: 0xb19d92c
 	// Params: [ Num(3) Size(0x11) ]
-	static uint8_t NotEqual_GameplayTag(struct FGameplayTag A, struct FGameplayTag B);
+	static bool NotEqual_GameplayTag(struct FGameplayTag A, struct FGameplayTag B);
 
 	// Object: Function GameplayTags.BlueprintGameplayTagLibrary.MatchesTag
 	// Flags: [Final|Native|Static|Public|BlueprintCallable|BlueprintPure]
-	// Offset: 0x16728568
+	// Offset: 0xb19dc60
 	// Params: [ Num(4) Size(0x12) ]
-	static uint8_t MatchesTag(struct FGameplayTag TagOne, struct FGameplayTag TagTwo, uint8_t bExactMatch);
+	static bool MatchesTag(struct FGameplayTag TagOne, struct FGameplayTag TagTwo, bool bExactMatch);
 
 	// Object: Function GameplayTags.BlueprintGameplayTagLibrary.MatchesAnyTags
 	// Flags: [Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure]
-	// Offset: 0x16728414
+	// Offset: 0xb19dafc
 	// Params: [ Num(4) Size(0x2A) ]
-	static uint8_t MatchesAnyTags(struct FGameplayTag TagOne, const struct FGameplayTagContainer& OtherContainer, uint8_t bExactMatch);
+	static bool MatchesAnyTags(struct FGameplayTag TagOne, const struct FGameplayTagContainer& OtherContainer, bool bExactMatch);
 
 	// Object: Function GameplayTags.BlueprintGameplayTagLibrary.MakeLiteralGameplayTagContainer
 	// Flags: [Final|Native|Static|Public|BlueprintCallable|BlueprintPure]
-	// Offset: 0x16728308
+	// Offset: 0xb19c6bc
 	// Params: [ Num(2) Size(0x40) ]
 	static struct FGameplayTagContainer MakeLiteralGameplayTagContainer(struct FGameplayTagContainer Value);
 
 	// Object: Function GameplayTags.BlueprintGameplayTagLibrary.MakeLiteralGameplayTag
 	// Flags: [Final|Native|Static|Public|BlueprintCallable|BlueprintPure]
-	// Offset: 0x16728264
+	// Offset: 0xb19d724
 	// Params: [ Num(2) Size(0x10) ]
 	static struct FGameplayTag MakeLiteralGameplayTag(struct FGameplayTag Value);
 
 	// Object: Function GameplayTags.BlueprintGameplayTagLibrary.MakeGameplayTagQuery
 	// Flags: [Final|Native|Static|Public|BlueprintCallable|BlueprintPure]
-	// Offset: 0x16728130
+	// Offset: 0xb19c294
 	// Params: [ Num(2) Size(0x90) ]
 	static struct FGameplayTagQuery MakeGameplayTagQuery(struct FGameplayTagQuery TagQuery);
 
 	// Object: Function GameplayTags.BlueprintGameplayTagLibrary.MakeGameplayTagContainerFromTag
 	// Flags: [Final|Native|Static|Public|BlueprintCallable|BlueprintPure]
-	// Offset: 0x1672806c
+	// Offset: 0xb19c50c
 	// Params: [ Num(2) Size(0x28) ]
 	static struct FGameplayTagContainer MakeGameplayTagContainerFromTag(struct FGameplayTag SingleTag);
 
 	// Object: Function GameplayTags.BlueprintGameplayTagLibrary.MakeGameplayTagContainerFromArray
 	// Flags: [Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure]
-	// Offset: 0x16727f90
+	// Offset: 0xb19c5d8
 	// Params: [ Num(2) Size(0x30) ]
 	static struct FGameplayTagContainer MakeGameplayTagContainerFromArray(const struct TArray<struct FGameplayTag>& GameplayTags);
 
 	// Object: Function GameplayTags.BlueprintGameplayTagLibrary.IsTagQueryEmpty
 	// Flags: [Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure]
-	// Offset: 0x16727eb4
+	// Offset: 0xb19d0cc
 	// Params: [ Num(2) Size(0x49) ]
-	static uint8_t IsTagQueryEmpty(const struct FGameplayTagQuery& TagQuery);
+	static bool IsTagQueryEmpty(const struct FGameplayTagQuery& TagQuery);
 
 	// Object: Function GameplayTags.BlueprintGameplayTagLibrary.IsGameplayTagValid
 	// Flags: [Final|Native|Static|Public|BlueprintCallable|BlueprintPure]
-	// Offset: 0x16727e0c
+	// Offset: 0xb19d880
 	// Params: [ Num(2) Size(0x9) ]
-	static uint8_t IsGameplayTagValid(struct FGameplayTag GameplayTag);
+	static bool IsGameplayTagValid(struct FGameplayTag GameplayTag);
 
 	// Object: Function GameplayTags.BlueprintGameplayTagLibrary.HasTag
 	// Flags: [Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure]
-	// Offset: 0x16727cb8
+	// Offset: 0xb19d4ec
 	// Params: [ Num(4) Size(0x2A) ]
-	static uint8_t HasTag(const struct FGameplayTagContainer& TagContainer, struct FGameplayTag Tag, uint8_t bExactMatch);
+	static bool HasTag(const struct FGameplayTagContainer& TagContainer, struct FGameplayTag Tag, bool bExactMatch);
 
 	// Object: Function GameplayTags.BlueprintGameplayTagLibrary.HasAnyTags
 	// Flags: [Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure]
-	// Offset: 0x16727b38
+	// Offset: 0xb19d354
 	// Params: [ Num(4) Size(0x42) ]
-	static uint8_t HasAnyTags(const struct FGameplayTagContainer& TagContainer, const struct FGameplayTagContainer& OtherContainer, uint8_t bExactMatch);
+	static bool HasAnyTags(const struct FGameplayTagContainer& TagContainer, const struct FGameplayTagContainer& OtherContainer, bool bExactMatch);
 
 	// Object: Function GameplayTags.BlueprintGameplayTagLibrary.HasAllTags
 	// Flags: [Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure]
-	// Offset: 0x167279b8
+	// Offset: 0xb19d1bc
 	// Params: [ Num(4) Size(0x42) ]
-	static uint8_t HasAllTags(const struct FGameplayTagContainer& TagContainer, const struct FGameplayTagContainer& OtherContainer, uint8_t bExactMatch);
+	static bool HasAllTags(const struct FGameplayTagContainer& TagContainer, const struct FGameplayTagContainer& OtherContainer, bool bExactMatch);
 
 	// Object: Function GameplayTags.BlueprintGameplayTagLibrary.HasAllMatchingGameplayTags
 	// Flags: [Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure]
-	// Offset: 0x167278a0
+	// Offset: 0xb19c16c
 	// Params: [ Num(3) Size(0x31) ]
-	static uint8_t HasAllMatchingGameplayTags(struct TScriptInterface<IGameplayTagAssetInterface> TagContainerInterface, const struct FGameplayTagContainer& OtherContainer);
+	static bool HasAllMatchingGameplayTags(struct TScriptInterface<IGameplayTagAssetInterface> TagContainerInterface, const struct FGameplayTagContainer& OtherContainer);
 
 	// Object: Function GameplayTags.BlueprintGameplayTagLibrary.GetTagName
 	// Flags: [Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure]
-	// Offset: 0x167277ec
+	// Offset: 0xb19d7cc
 	// Params: [ Num(2) Size(0x10) ]
 	static struct FName GetTagName(const struct FGameplayTag& GameplayTag);
 
 	// Object: Function GameplayTags.BlueprintGameplayTagLibrary.GetNumGameplayTagsInContainer
 	// Flags: [Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure]
-	// Offset: 0x16727724
+	// Offset: 0xb19d650
 	// Params: [ Num(2) Size(0x24) ]
 	static int32_t GetNumGameplayTagsInContainer(const struct FGameplayTagContainer& TagContainer);
 
 	// Object: Function GameplayTags.BlueprintGameplayTagLibrary.GetDebugStringFromGameplayTagContainer
 	// Flags: [Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure]
-	// Offset: 0x16727628
+	// Offset: 0xb19bc8c
 	// Params: [ Num(2) Size(0x30) ]
 	static struct FString GetDebugStringFromGameplayTagContainer(const struct FGameplayTagContainer& TagContainer);
 
 	// Object: Function GameplayTags.BlueprintGameplayTagLibrary.GetDebugStringFromGameplayTag
 	// Flags: [Final|Native|Static|Public|BlueprintCallable|BlueprintPure]
-	// Offset: 0x16727550
+	// Offset: 0xb19bbac
 	// Params: [ Num(2) Size(0x18) ]
 	static struct FString GetDebugStringFromGameplayTag(struct FGameplayTag GameplayTag);
 
 	// Object: Function GameplayTags.BlueprintGameplayTagLibrary.GetAllActorsOfClassMatchingTagQuery
 	// Flags: [Final|Native|Static|Public|HasOutParms|BlueprintCallable]
-	// Offset: 0x167273b8
+	// Offset: 0xb19cdb4
 	// Params: [ Num(4) Size(0x68) ]
 	static void GetAllActorsOfClassMatchingTagQuery(struct UObject* WorldContextObject, struct AActor* ActorClass, const struct FGameplayTagQuery& GameplayTagQuery, struct TArray<struct AActor*>& OutActors);
 
 	// Object: Function GameplayTags.BlueprintGameplayTagLibrary.EqualEqual_GameplayTagContainer
 	// Flags: [Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure]
-	// Offset: 0x16727284
+	// Offset: 0xb19c914
 	// Params: [ Num(3) Size(0x41) ]
-	static uint8_t EqualEqual_GameplayTagContainer(const struct FGameplayTagContainer& A, const struct FGameplayTagContainer& B);
+	static bool EqualEqual_GameplayTagContainer(const struct FGameplayTagContainer& A, const struct FGameplayTagContainer& B);
 
 	// Object: Function GameplayTags.BlueprintGameplayTagLibrary.EqualEqual_GameplayTag
 	// Flags: [Final|Native|Static|Public|BlueprintCallable|BlueprintPure]
-	// Offset: 0xf7022e0
+	// Offset: 0xb19da14
 	// Params: [ Num(3) Size(0x11) ]
-	static uint8_t EqualEqual_GameplayTag(struct FGameplayTag A, struct FGameplayTag B);
+	static bool EqualEqual_GameplayTag(struct FGameplayTag A, struct FGameplayTag B);
 
 	// Object: Function GameplayTags.BlueprintGameplayTagLibrary.DoesTagAssetInterfaceHaveTag
 	// Flags: [Final|Native|Static|Public|BlueprintCallable|BlueprintPure]
-	// Offset: 0x16727190
+	// Offset: 0xb19c070
 	// Params: [ Num(3) Size(0x19) ]
-	static uint8_t DoesTagAssetInterfaceHaveTag(struct TScriptInterface<IGameplayTagAssetInterface> TagContainerInterface, struct FGameplayTag Tag);
+	static bool DoesTagAssetInterfaceHaveTag(struct TScriptInterface<IGameplayTagAssetInterface> TagContainerInterface, struct FGameplayTag Tag);
 
 	// Object: Function GameplayTags.BlueprintGameplayTagLibrary.DoesContainerMatchTagQuery
 	// Flags: [Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure]
-	// Offset: 0x1672704c
+	// Offset: 0xb19cf70
 	// Params: [ Num(3) Size(0x69) ]
-	static uint8_t DoesContainerMatchTagQuery(const struct FGameplayTagContainer& TagContainer, const struct FGameplayTagQuery& TagQuery);
+	static bool DoesContainerMatchTagQuery(const struct FGameplayTagContainer& TagContainer, const struct FGameplayTagQuery& TagQuery);
 
 	// Object: Function GameplayTags.BlueprintGameplayTagLibrary.BreakGameplayTagContainer
 	// Flags: [Final|Native|Static|Public|HasOutParms|BlueprintCallable|BlueprintPure]
-	// Offset: 0x16726f38
+	// Offset: 0xb19c3e8
 	// Params: [ Num(2) Size(0x30) ]
 	static void BreakGameplayTagContainer(const struct FGameplayTagContainer& GameplayTagContainer, struct TArray<struct FGameplayTag>& GameplayTags);
 
 	// Object: Function GameplayTags.BlueprintGameplayTagLibrary.AppendGameplayTagContainers
 	// Flags: [Final|Native|Static|Public|HasOutParms|BlueprintCallable]
-	// Offset: 0x16726e10
+	// Offset: 0xb19ca58
 	// Params: [ Num(2) Size(0x40) ]
 	static void AppendGameplayTagContainers(struct FGameplayTagContainer& InOutTagContainer, const struct FGameplayTagContainer& InTagContainer);
 
 	// Object: Function GameplayTags.BlueprintGameplayTagLibrary.AddGameplayTag
 	// Flags: [Final|Native|Static|Public|HasOutParms|BlueprintCallable]
-	// Offset: 0x16726d14
+	// Offset: 0xb19cca8
 	// Params: [ Num(2) Size(0x28) ]
 	static void AddGameplayTag(struct FGameplayTagContainer& TagContainer, struct FGameplayTag Tag);
 };
@@ -387,25 +387,25 @@ struct IGameplayTagAssetInterface : IInterface
 
 	// Object: Function GameplayTags.GameplayTagAssetInterface.HasMatchingGameplayTag
 	// Flags: [Native|Public|BlueprintCallable|BlueprintPure|Const]
-	// Offset: 0x16728db8
+	// Offset: 0xb19e070
 	// Params: [ Num(2) Size(0x9) ]
-	uint8_t HasMatchingGameplayTag(struct FGameplayTag TagToCheck);
+	bool HasMatchingGameplayTag(struct FGameplayTag TagToCheck);
 
 	// Object: Function GameplayTags.GameplayTagAssetInterface.HasAnyMatchingGameplayTags
 	// Flags: [Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const]
-	// Offset: 0x16728cd4
+	// Offset: 0xb19dea0
 	// Params: [ Num(2) Size(0x21) ]
-	uint8_t HasAnyMatchingGameplayTags(const struct FGameplayTagContainer& TagContainer);
+	bool HasAnyMatchingGameplayTags(const struct FGameplayTagContainer& TagContainer);
 
 	// Object: Function GameplayTags.GameplayTagAssetInterface.HasAllMatchingGameplayTags
 	// Flags: [Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const]
-	// Offset: 0x16728bf0
+	// Offset: 0xb19df88
 	// Params: [ Num(2) Size(0x21) ]
-	uint8_t HasAllMatchingGameplayTags(const struct FGameplayTagContainer& TagContainer);
+	bool HasAllMatchingGameplayTags(const struct FGameplayTagContainer& TagContainer);
 
 	// Object: Function GameplayTags.GameplayTagAssetInterface.GetOwnedGameplayTags
 	// Flags: [Native|Public|HasOutParms|BlueprintCallable|BlueprintPure|Const]
-	// Offset: 0x16728b20
+	// Offset: 0x9dd2ec4
 	// Params: [ Num(1) Size(0x20) ]
 	void GetOwnedGameplayTags(struct FGameplayTagContainer& TagContainer);
 };
@@ -522,12 +522,9 @@ struct UGameplayTagsSettings : UGameplayTagsList
 {
 	DEFINE_UE_CLASS_HELPERS(UGameplayTagsSettings, "GameplayTagsSettings")
 
-	uint8_t ImportTagsFromConfig : 1; // 0x48(0x1), Mask(0x1)
-	uint8_t BitPad_0x48_1 : 7; // 0x48(0x1)
-	uint8_t WarnOnInvalidTags : 1; // 0x49(0x1), Mask(0x1)
-	uint8_t BitPad_0x49_1 : 7; // 0x49(0x1)
-	uint8_t FastReplication : 1; // 0x4A(0x1), Mask(0x1)
-	uint8_t BitPad_0x4A_1 : 7; // 0x4A(0x1)
+	bool ImportTagsFromConfig; // 0x48(0x1)
+	bool WarnOnInvalidTags; // 0x49(0x1)
+	bool FastReplication; // 0x4A(0x1)
 	uint8_t Pad_0x4B[0x5]; // 0x4B(0x5)
 	struct FString InvalidTagCharacters; // 0x50(0x10)
 	struct TArray<struct FGameplayTagCategoryRemap> CategoryRemapping; // 0x60(0x10)
@@ -540,12 +537,13 @@ struct UGameplayTagsSettings : UGameplayTagsList
 };
 
 // Object: Class GameplayTags.GameplayTagsDeveloperSettings
-// Size: 0x38 (Inherited: 0x28)
-struct UGameplayTagsDeveloperSettings : UObject
+// Size: 0x50 (Inherited: 0x38)
+struct UGameplayTagsDeveloperSettings : UDeveloperSettings
 {
 	DEFINE_UE_CLASS_HELPERS(UGameplayTagsDeveloperSettings, "GameplayTagsDeveloperSettings")
 
-	struct FString DeveloperConfigName; // 0x28(0x10)
+	struct FString DeveloperConfigName; // 0x38(0x10)
+	struct FName FavoriteTagSource; // 0x48(0x8)
 };
 
 } // namespace SDK

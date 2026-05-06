@@ -5,25 +5,25 @@ namespace SDK
 {
 
 // UGameMapsSettings
-void UGameMapsSettings::SetSkipAssigningGamepadToPlayer1(uint8_t bSkipFirstPlayer)
+void UGameMapsSettings::SetSkipAssigningGamepadToPlayer1(bool bSkipFirstPlayer)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("GameMapsSettings", "SetSkipAssigningGamepadToPlayer1");
     struct
     {
-        uint8_t bSkipFirstPlayer;
+        bool bSkipFirstPlayer;
     } Parms{};
-    Parms.bSkipFirstPlayer = (uint8_t)bSkipFirstPlayer;
+    Parms.bSkipFirstPlayer = (bool)bSkipFirstPlayer;
     this->ProcessEvent(Func, &Parms);
 }
 
-uint8_t UGameMapsSettings::GetSkipAssigningGamepadToPlayer1()
+bool UGameMapsSettings::GetSkipAssigningGamepadToPlayer1()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("GameMapsSettings", "GetSkipAssigningGamepadToPlayer1");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;

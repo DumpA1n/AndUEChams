@@ -57,15 +57,29 @@ void UWidget::SetToolTip(struct UWidget* Widget)
     this->ProcessEvent(Func, &Parms);
 }
 
-void UWidget::SetRenderTranslation(struct FVector2D translation)
+void UWidget::SetRenderTranslationXY(float X, float Y)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("Widget", "SetRenderTranslationXY");
+    struct
+    {
+        float X;
+        float Y;
+    } Parms{};
+    Parms.X = (float)X;
+    Parms.Y = (float)Y;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UWidget::SetRenderTranslation(struct FVector2D Translation)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("Widget", "SetRenderTranslation");
     struct
     {
-        struct FVector2D translation;
+        struct FVector2D Translation;
     } Parms{};
-    Parms.translation = (struct FVector2D)translation;
+    Parms.Translation = (struct FVector2D)Translation;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -117,6 +131,20 @@ void UWidget::SetRenderShear(struct FVector2D Shear)
     this->ProcessEvent(Func, &Parms);
 }
 
+void UWidget::SetRenderScaleXY(float X, float Y)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("Widget", "SetRenderScaleXY");
+    struct
+    {
+        float X;
+        float Y;
+    } Parms{};
+    Parms.X = (float)X;
+    Parms.Y = (float)Y;
+    this->ProcessEvent(Func, &Parms);
+}
+
 void UWidget::SetRenderScale(struct FVector2D Scale)
 {
     static struct UFunction* Func = nullptr;
@@ -141,39 +169,15 @@ void UWidget::SetRenderOpacity(float InOpacity)
     this->ProcessEvent(Func, &Parms);
 }
 
-void UWidget::SetPositionZ(float InPositionZ)
+void UWidget::SetPaintOffsetFlag(int32_t InPaintOffset)
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Widget", "SetPositionZ");
+    if (!Func) Func = ClassPrivate->GetFunction("Widget", "SetPaintOffsetFlag");
     struct
     {
-        float InPositionZ;
+        int32_t InPaintOffset;
     } Parms{};
-    Parms.InPositionZ = (float)InPositionZ;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UWidget::SetPixelSnapping(EWidgetPixelSnapping InPixelSnapping)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Widget", "SetPixelSnapping");
-    struct
-    {
-        enum EWidgetPixelSnapping InPixelSnapping;
-    } Parms{};
-    Parms.InPixelSnapping = (enum EWidgetPixelSnapping)InPixelSnapping;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UWidget::SetOverrideMaterial(struct UMaterialInterface* InMaterial)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Widget", "SetOverrideMaterial");
-    struct
-    {
-        struct UMaterialInterface* InMaterial;
-    } Parms{};
-    Parms.InMaterial = (struct UMaterialInterface*)InMaterial;
+    Parms.InPaintOffset = (int32_t)InPaintOffset;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -249,18 +253,6 @@ void UWidget::SetNavigationRule(EUINavigation Direction, EUINavigationRule Rule,
     this->ProcessEvent(Func, &Parms);
 }
 
-void UWidget::SetMaterialStrategy(EMaterialStrategy InStrategy)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Widget", "SetMaterialStrategy");
-    struct
-    {
-        enum EMaterialStrategy InStrategy;
-    } Parms{};
-    Parms.InStrategy = (enum EMaterialStrategy)InStrategy;
-    this->ProcessEvent(Func, &Parms);
-}
-
 void UWidget::SetKeyboardFocus()
 {
     static struct UFunction* Func = nullptr;
@@ -271,15 +263,15 @@ void UWidget::SetKeyboardFocus()
     this->ProcessEvent(Func, &Parms);
 }
 
-void UWidget::SetIsEnabled(uint8_t bInIsEnabled)
+void UWidget::SetIsEnabled(bool bInIsEnabled)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("Widget", "SetIsEnabled");
     struct
     {
-        uint8_t bInIsEnabled;
+        bool bInIsEnabled;
     } Parms{};
-    Parms.bInIsEnabled = (uint8_t)bInIsEnabled;
+    Parms.bInIsEnabled = (bool)bInIsEnabled;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -293,33 +285,15 @@ void UWidget::SetFocus()
     this->ProcessEvent(Func, &Parms);
 }
 
-void UWidget::SetExtendHitMargin(float Left, float Top, float Right, float Bottom)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Widget", "SetExtendHitMargin");
-    struct
-    {
-        float Left;
-        float Top;
-        float Right;
-        float Bottom;
-    } Parms{};
-    Parms.Left = (float)Left;
-    Parms.Top = (float)Top;
-    Parms.Right = (float)Right;
-    Parms.Bottom = (float)Bottom;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UWidget::SetCursor(EMouseCursor InCursor)
+void UWidget::SetCursor(uint8_t InCursor)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("Widget", "SetCursor");
     struct
     {
-        enum EMouseCursor InCursor;
+        uint8_t InCursor;
     } Parms{};
-    Parms.InCursor = (enum EMouseCursor)InCursor;
+    Parms.InCursor = (uint8_t)InCursor;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -369,16 +343,16 @@ void UWidget::RemoveFromParent()
     this->ProcessEvent(Func, &Parms);
 }
 
-void UWidget::OnWidgetInvalidated__DelegateSignature(struct FInvalidateWidgetReason InvalidatedReason)
+bool UWidget::RecursiveIsVisible()
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Widget", "OnWidgetInvalidated__DelegateSignature");
+    if (!Func) Func = ClassPrivate->GetFunction("Widget", "RecursiveIsVisible");
     struct
     {
-        struct FInvalidateWidgetReason InvalidatedReason;
+        bool ReturnValue;
     } Parms{};
-    Parms.InvalidatedReason = (struct FInvalidateWidgetReason)InvalidatedReason;
     this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
 }
 
 struct FEventReply UWidget::OnReply__DelegateSignature()
@@ -409,25 +383,25 @@ struct FEventReply UWidget::OnPointerEvent__DelegateSignature(struct FGeometry M
     return Parms.ReturnValue;
 }
 
-uint8_t UWidget::IsVisible()
+bool UWidget::IsVisible()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("Widget", "IsVisible");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UWidget::IsHovered()
+bool UWidget::IsHovered()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("Widget", "IsHovered");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
@@ -443,35 +417,35 @@ void UWidget::InvalidateLayoutAndVolatility()
     this->ProcessEvent(Func, &Parms);
 }
 
-uint8_t UWidget::HasUserFocusedDescendants(struct APlayerController* PlayerController)
+bool UWidget::HasUserFocusedDescendants(struct APlayerController* PlayerController)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("Widget", "HasUserFocusedDescendants");
     struct
     {
         struct APlayerController* PlayerController;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.PlayerController = (struct APlayerController*)PlayerController;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UWidget::HasUserFocus(struct APlayerController* PlayerController)
+bool UWidget::HasUserFocus(struct APlayerController* PlayerController)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("Widget", "HasUserFocus");
     struct
     {
         struct APlayerController* PlayerController;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.PlayerController = (struct APlayerController*)PlayerController;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UWidget::HasMouseCaptureByUser(int32_t UserIndex, int32_t PointerIndex)
+bool UWidget::HasMouseCaptureByUser(int32_t UserIndex, int32_t PointerIndex)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("Widget", "HasMouseCaptureByUser");
@@ -479,7 +453,7 @@ uint8_t UWidget::HasMouseCaptureByUser(int32_t UserIndex, int32_t PointerIndex)
     {
         int32_t UserIndex;
         int32_t PointerIndex;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.UserIndex = (int32_t)UserIndex;
     Parms.PointerIndex = (int32_t)PointerIndex;
@@ -487,49 +461,49 @@ uint8_t UWidget::HasMouseCaptureByUser(int32_t UserIndex, int32_t PointerIndex)
     return Parms.ReturnValue;
 }
 
-uint8_t UWidget::HasMouseCapture()
+bool UWidget::HasMouseCapture()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("Widget", "HasMouseCapture");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UWidget::HasKeyboardFocus()
+bool UWidget::HasKeyboardFocus()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("Widget", "HasKeyboardFocus");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UWidget::HasFocusedDescendants()
+bool UWidget::HasFocusedDescendants()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("Widget", "HasFocusedDescendants");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UWidget::HasAnyUserFocus()
+bool UWidget::HasAnyUserFocus()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("Widget", "HasAnyUserFocus");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
@@ -643,30 +617,6 @@ float UWidget::GetRenderOpacity()
     return Parms.ReturnValue;
 }
 
-float UWidget::GetPositionZ()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Widget", "GetPositionZ");
-    struct
-    {
-        float ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-EWidgetPixelSnapping UWidget::GetPixelSnapping()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Widget", "GetPixelSnapping");
-    struct
-    {
-        enum EWidgetPixelSnapping ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
 struct UPanelWidget* UWidget::GetParent()
 {
     static struct UFunction* Func = nullptr;
@@ -715,37 +665,13 @@ struct ULocalPlayer* UWidget::GetOwningLocalPlayer()
     return Parms.ReturnValue;
 }
 
-struct UMaterialInterface* UWidget::GetOverrideMaterial()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Widget", "GetOverrideMaterial");
-    struct
-    {
-        struct UMaterialInterface* ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-EMouseCursor UWidget::GetMouseCursor__DelegateSignature()
+uint8_t UWidget::GetMouseCursor__DelegateSignature()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("Widget", "GetMouseCursor__DelegateSignature");
     struct
     {
-        enum EMouseCursor ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-EMaterialStrategy UWidget::GetMaterialStrategy()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Widget", "GetMaterialStrategy");
-    struct
-    {
-        enum EMaterialStrategy ReturnValue;
+        uint8_t ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
@@ -763,13 +689,13 @@ struct FLinearColor UWidget::GetLinearColor__DelegateSignature()
     return Parms.ReturnValue;
 }
 
-uint8_t UWidget::GetIsEnabled()
+bool UWidget::GetIsEnabled()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("Widget", "GetIsEnabled");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
@@ -859,55 +785,79 @@ struct FGeometry UWidget::GetCachedGeometry()
     return Parms.ReturnValue;
 }
 
-uint8_t UWidget::GetBool__DelegateSignature()
+bool UWidget::GetBool__DelegateSignature()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("Widget", "GetBool__DelegateSignature");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-struct UWidget* UWidget::GenerateWidgetForString__DelegateSignature(struct FString Item)
+struct FText UWidget::GetAccessibleText()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("Widget", "GetAccessibleText");
+    struct
+    {
+        struct FText ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct FText UWidget::GetAccessibleSummaryText()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("Widget", "GetAccessibleSummaryText");
+    struct
+    {
+        struct FText ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct UWidget* UWidget::GenerateWidgetForString__DelegateSignature(struct FString item)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("Widget", "GenerateWidgetForString__DelegateSignature");
     struct
     {
-        struct FString Item;
+        struct FString item;
         struct UWidget* ReturnValue;
     } Parms{};
-    Parms.Item = (struct FString)Item;
+    Parms.item = (struct FString)item;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-struct UWidget* UWidget::GenerateWidgetForObject__DelegateSignature(struct UObject* Item)
+struct UWidget* UWidget::GenerateWidgetForObject__DelegateSignature(struct UObject* item)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("Widget", "GenerateWidgetForObject__DelegateSignature");
     struct
     {
-        struct UObject* Item;
+        struct UObject* item;
         struct UWidget* ReturnValue;
     } Parms{};
-    Parms.Item = (struct UObject*)Item;
+    Parms.item = (struct UObject*)item;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-void UWidget::ForceVolatile(uint8_t bForce)
+void UWidget::ForceVolatile(bool bForce)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("Widget", "ForceVolatile");
     struct
     {
-        uint8_t bForce;
+        bool bForce;
     } Parms{};
-    Parms.bForce = (uint8_t)bForce;
+    Parms.bForce = (bool)bForce;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -919,6 +869,190 @@ void UWidget::ForceLayoutPrepass()
     {
     } Parms{};
     this->ProcessEvent(Func, &Parms);
+}
+
+// UPanelWidget
+bool UPanelWidget::RemoveChildAt(int32_t Index)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("PanelWidget", "RemoveChildAt");
+    struct
+    {
+        int32_t Index;
+        bool ReturnValue;
+    } Parms{};
+    Parms.Index = (int32_t)Index;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+bool UPanelWidget::RemoveChild(struct UWidget* Content)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("PanelWidget", "RemoveChild");
+    struct
+    {
+        struct UWidget* Content;
+        bool ReturnValue;
+    } Parms{};
+    Parms.Content = (struct UWidget*)Content;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+void UPanelWidget::OnLazyChildCreated(struct UPanelSlot* PanelSlot, struct UWidget* Widget)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("PanelWidget", "OnLazyChildCreated");
+    struct
+    {
+        struct UPanelSlot* PanelSlot;
+        struct UWidget* Widget;
+    } Parms{};
+    Parms.PanelSlot = (struct UPanelSlot*)PanelSlot;
+    Parms.Widget = (struct UWidget*)Widget;
+    this->ProcessEvent(Func, &Parms);
+}
+
+bool UPanelWidget::HasChild(struct UWidget* Content)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("PanelWidget", "HasChild");
+    struct
+    {
+        struct UWidget* Content;
+        bool ReturnValue;
+    } Parms{};
+    Parms.Content = (struct UWidget*)Content;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+bool UPanelWidget::HasAnyChildren()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("PanelWidget", "HasAnyChildren");
+    struct
+    {
+        bool ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+int32_t UPanelWidget::GetChildrenCount()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("PanelWidget", "GetChildrenCount");
+    struct
+    {
+        int32_t ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+int32_t UPanelWidget::GetChildIndex(struct UWidget* Content)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("PanelWidget", "GetChildIndex");
+    struct
+    {
+        struct UWidget* Content;
+        int32_t ReturnValue;
+    } Parms{};
+    Parms.Content = (struct UWidget*)Content;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct UWidget* UPanelWidget::GetChildAt(int32_t Index)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("PanelWidget", "GetChildAt");
+    struct
+    {
+        int32_t Index;
+        struct UWidget* ReturnValue;
+    } Parms{};
+    Parms.Index = (int32_t)Index;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct TArray<struct UWidget*> UPanelWidget::GetAllChildren()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("PanelWidget", "GetAllChildren");
+    struct
+    {
+        struct TArray<struct UWidget*> ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+void UPanelWidget::ClearChildren()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("PanelWidget", "ClearChildren");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+struct UPanelSlot* UPanelWidget::AddChild(struct UWidget* Content)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("PanelWidget", "AddChild");
+    struct
+    {
+        struct UWidget* Content;
+        struct UPanelSlot* ReturnValue;
+    } Parms{};
+    Parms.Content = (struct UWidget*)Content;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// UContentWidget
+struct UPanelSlot* UContentWidget::SetContent(struct UWidget* Content)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ContentWidget", "SetContent");
+    struct
+    {
+        struct UWidget* Content;
+        struct UPanelSlot* ReturnValue;
+    } Parms{};
+    Parms.Content = (struct UWidget*)Content;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct UPanelSlot* UContentWidget::GetContentSlot()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ContentWidget", "GetContentSlot");
+    struct
+    {
+        struct UPanelSlot* ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct UWidget* UContentWidget::GetContent()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ContentWidget", "GetContent");
+    struct
+    {
+        struct UWidget* ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
 }
 
 // UUserWidget
@@ -998,17 +1132,17 @@ void UUserWidget::Tick(struct FGeometry MyGeometry, float InDeltaTime)
     this->ProcessEvent(Func, &Parms);
 }
 
-void UUserWidget::StopListeningForInputAction(struct FName ActionName, EInputEvent EventType)
+void UUserWidget::StopListeningForInputAction(struct FName ActionName, uint8_t EventType)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("UserWidget", "StopListeningForInputAction");
     struct
     {
         struct FName ActionName;
-        enum EInputEvent EventType;
+        uint8_t EventType;
     } Parms{};
     Parms.ActionName = (struct FName)ActionName;
-    Parms.EventType = (enum EInputEvent)EventType;
+    Parms.EventType = (uint8_t)EventType;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -1029,18 +1163,6 @@ void UUserWidget::StopAnimationsAndLatentActions()
     struct
     {
     } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UUserWidget::StopAnimationByName(struct FName InAnimationName)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("UserWidget", "StopAnimationByName");
-    struct
-    {
-        struct FName InAnimationName;
-    } Parms{};
-    Parms.InAnimationName = (struct FName)InAnimationName;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -1066,17 +1188,17 @@ void UUserWidget::StopAllAnimations()
     this->ProcessEvent(Func, &Parms);
 }
 
-void UUserWidget::SetPositionInViewport(struct FVector2D Position, uint8_t bRemoveDPIScale)
+void UUserWidget::SetPositionInViewport(struct FVector2D position, bool bRemoveDPIScale)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("UserWidget", "SetPositionInViewport");
     struct
     {
-        struct FVector2D Position;
-        uint8_t bRemoveDPIScale;
+        struct FVector2D position;
+        bool bRemoveDPIScale;
     } Parms{};
-    Parms.Position = (struct FVector2D)Position;
-    Parms.bRemoveDPIScale = (uint8_t)bRemoveDPIScale;
+    Parms.position = (struct FVector2D)position;
+    Parms.bRemoveDPIScale = (bool)bRemoveDPIScale;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -1144,15 +1266,15 @@ void UUserWidget::SetInputActionPriority(int32_t NewPriority)
     this->ProcessEvent(Func, &Parms);
 }
 
-void UUserWidget::SetInputActionBlocking(uint8_t bShouldBlock)
+void UUserWidget::SetInputActionBlocking(bool bShouldBlock)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("UserWidget", "SetInputActionBlocking");
     struct
     {
-        uint8_t bShouldBlock;
+        bool bShouldBlock;
     } Parms{};
-    Parms.bShouldBlock = (uint8_t)bShouldBlock;
+    Parms.bShouldBlock = (bool)bShouldBlock;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -1168,15 +1290,15 @@ void UUserWidget::SetForegroundColor(struct FSlateColor InForegroundColor)
     this->ProcessEvent(Func, &Parms);
 }
 
-void UUserWidget::SetDesiredSizeInViewport(struct FVector2D size)
+void UUserWidget::SetDesiredSizeInViewport(struct FVector2D Size)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("UserWidget", "SetDesiredSizeInViewport");
     struct
     {
-        struct FVector2D size;
+        struct FVector2D Size;
     } Parms{};
-    Parms.size = (struct FVector2D)size;
+    Parms.Size = (struct FVector2D)Size;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -1189,6 +1311,44 @@ void UUserWidget::SetColorAndOpacity(struct FLinearColor InColorAndOpacity)
         struct FLinearColor InColorAndOpacity;
     } Parms{};
     Parms.InColorAndOpacity = (struct FLinearColor)InColorAndOpacity;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UUserWidget::SetBlueprintTickEnable(bool bTickEnable)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("UserWidget", "SetBlueprintTickEnable");
+    struct
+    {
+        bool bTickEnable;
+    } Parms{};
+    Parms.bTickEnable = (bool)bTickEnable;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UUserWidget::SetAnimationForceLastEnable(bool Enable)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("UserWidget", "SetAnimationForceLastEnable");
+    struct
+    {
+        bool Enable;
+    } Parms{};
+    Parms.Enable = (bool)Enable;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UUserWidget::SetAnimationCurrentTime(struct UWidgetAnimation* InAnimation, float InTime)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("UserWidget", "SetAnimationCurrentTime");
+    struct
+    {
+        struct UWidgetAnimation* InAnimation;
+        float InTime;
+    } Parms{};
+    Parms.InAnimation = (struct UWidgetAnimation*)InAnimation;
+    Parms.InTime = (float)InTime;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -1248,15 +1408,15 @@ void UUserWidget::RegisterInputComponent()
     this->ProcessEvent(Func, &Parms);
 }
 
-void UUserWidget::PreConstruct(uint8_t IsDesignTime)
+void UUserWidget::PreConstruct(bool IsDesignTime)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("UserWidget", "PreConstruct");
     struct
     {
-        uint8_t IsDesignTime;
+        bool IsDesignTime;
     } Parms{};
-    Parms.IsDesignTime = (uint8_t)IsDesignTime;
+    Parms.IsDesignTime = (bool)IsDesignTime;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -1272,7 +1432,7 @@ void UUserWidget::PlaySound(struct USoundBase* SoundToPlay)
     this->ProcessEvent(Func, &Parms);
 }
 
-struct UUMGSequencePlayer* UUserWidget::PlayAnimationTimeRange(struct UWidgetAnimation* InAnimation, float StartAtTime, float EndAtTime, int32_t NumLoopsToPlay, EUMGSequencePlayMode PlayMode, float PlaybackSpeed, uint8_t bRestoreState)
+struct UUMGSequencePlayer* UUserWidget::PlayAnimationTimeRange(struct UWidgetAnimation* InAnimation, float StartAtTime, float EndAtTime, int32_t NumLoopsToPlay, uint8_t PlayMode, float PlaybackSpeed, bool bRestoreState)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("UserWidget", "PlayAnimationTimeRange");
@@ -1282,23 +1442,23 @@ struct UUMGSequencePlayer* UUserWidget::PlayAnimationTimeRange(struct UWidgetAni
         float StartAtTime;
         float EndAtTime;
         int32_t NumLoopsToPlay;
-        enum EUMGSequencePlayMode PlayMode;
+        uint8_t PlayMode;
         float PlaybackSpeed;
-        uint8_t bRestoreState;
+        bool bRestoreState;
         struct UUMGSequencePlayer* ReturnValue;
     } Parms{};
     Parms.InAnimation = (struct UWidgetAnimation*)InAnimation;
     Parms.StartAtTime = (float)StartAtTime;
     Parms.EndAtTime = (float)EndAtTime;
     Parms.NumLoopsToPlay = (int32_t)NumLoopsToPlay;
-    Parms.PlayMode = (enum EUMGSequencePlayMode)PlayMode;
+    Parms.PlayMode = (uint8_t)PlayMode;
     Parms.PlaybackSpeed = (float)PlaybackSpeed;
-    Parms.bRestoreState = (uint8_t)bRestoreState;
+    Parms.bRestoreState = (bool)bRestoreState;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-struct UUMGSequencePlayer* UUserWidget::PlayAnimationReverse(struct UWidgetAnimation* InAnimation, float PlaybackSpeed, uint8_t bRestoreState)
+struct UUMGSequencePlayer* UUserWidget::PlayAnimationReverse(struct UWidgetAnimation* InAnimation, float PlaybackSpeed, bool bRestoreState)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("UserWidget", "PlayAnimationReverse");
@@ -1306,17 +1466,17 @@ struct UUMGSequencePlayer* UUserWidget::PlayAnimationReverse(struct UWidgetAnima
     {
         struct UWidgetAnimation* InAnimation;
         float PlaybackSpeed;
-        uint8_t bRestoreState;
+        bool bRestoreState;
         struct UUMGSequencePlayer* ReturnValue;
     } Parms{};
     Parms.InAnimation = (struct UWidgetAnimation*)InAnimation;
     Parms.PlaybackSpeed = (float)PlaybackSpeed;
-    Parms.bRestoreState = (uint8_t)bRestoreState;
+    Parms.bRestoreState = (bool)bRestoreState;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-struct UUMGSequencePlayer* UUserWidget::PlayAnimationForward(struct UWidgetAnimation* InAnimation, float PlaybackSpeed, uint8_t bRestoreState)
+struct UUMGSequencePlayer* UUserWidget::PlayAnimationForward(struct UWidgetAnimation* InAnimation, float PlaybackSpeed, bool bRestoreState)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("UserWidget", "PlayAnimationForward");
@@ -1324,39 +1484,17 @@ struct UUMGSequencePlayer* UUserWidget::PlayAnimationForward(struct UWidgetAnima
     {
         struct UWidgetAnimation* InAnimation;
         float PlaybackSpeed;
-        uint8_t bRestoreState;
+        bool bRestoreState;
         struct UUMGSequencePlayer* ReturnValue;
     } Parms{};
     Parms.InAnimation = (struct UWidgetAnimation*)InAnimation;
     Parms.PlaybackSpeed = (float)PlaybackSpeed;
-    Parms.bRestoreState = (uint8_t)bRestoreState;
+    Parms.bRestoreState = (bool)bRestoreState;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-void UUserWidget::PlayAnimationByName(struct FName InAnimationName, float StartAtTime, int32_t NumLoopsToPlay, EUMGSequencePlayMode PlayMode, float PlaybackSpeed, uint8_t bRestoreState)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("UserWidget", "PlayAnimationByName");
-    struct
-    {
-        struct FName InAnimationName;
-        float StartAtTime;
-        int32_t NumLoopsToPlay;
-        enum EUMGSequencePlayMode PlayMode;
-        float PlaybackSpeed;
-        uint8_t bRestoreState;
-    } Parms{};
-    Parms.InAnimationName = (struct FName)InAnimationName;
-    Parms.StartAtTime = (float)StartAtTime;
-    Parms.NumLoopsToPlay = (int32_t)NumLoopsToPlay;
-    Parms.PlayMode = (enum EUMGSequencePlayMode)PlayMode;
-    Parms.PlaybackSpeed = (float)PlaybackSpeed;
-    Parms.bRestoreState = (uint8_t)bRestoreState;
-    this->ProcessEvent(Func, &Parms);
-}
-
-struct UUMGSequencePlayer* UUserWidget::PlayAnimation(struct UWidgetAnimation* InAnimation, float StartAtTime, int32_t NumLoopsToPlay, EUMGSequencePlayMode PlayMode, float PlaybackSpeed, uint8_t bRestoreState)
+struct UUMGSequencePlayer* UUserWidget::PlayAnimation(struct UWidgetAnimation* InAnimation, float StartAtTime, int32_t NumLoopsToPlay, uint8_t PlayMode, float PlaybackSpeed, bool bRestoreState)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("UserWidget", "PlayAnimation");
@@ -1365,31 +1503,17 @@ struct UUMGSequencePlayer* UUserWidget::PlayAnimation(struct UWidgetAnimation* I
         struct UWidgetAnimation* InAnimation;
         float StartAtTime;
         int32_t NumLoopsToPlay;
-        enum EUMGSequencePlayMode PlayMode;
+        uint8_t PlayMode;
         float PlaybackSpeed;
-        uint8_t bRestoreState;
+        bool bRestoreState;
         struct UUMGSequencePlayer* ReturnValue;
     } Parms{};
     Parms.InAnimation = (struct UWidgetAnimation*)InAnimation;
     Parms.StartAtTime = (float)StartAtTime;
     Parms.NumLoopsToPlay = (int32_t)NumLoopsToPlay;
-    Parms.PlayMode = (enum EUMGSequencePlayMode)PlayMode;
+    Parms.PlayMode = (uint8_t)PlayMode;
     Parms.PlaybackSpeed = (float)PlaybackSpeed;
-    Parms.bRestoreState = (uint8_t)bRestoreState;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-float UUserWidget::PauseAnimationByName(struct FName InAnimationName)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("UserWidget", "PauseAnimationByName");
-    struct
-    {
-        struct FName InAnimationName;
-        float ReturnValue;
-    } Parms{};
-    Parms.InAnimationName = (struct FName)InAnimationName;
+    Parms.bRestoreState = (bool)bRestoreState;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
@@ -1762,7 +1886,7 @@ void UUserWidget::OnFocusLost(struct FFocusEvent InFocusEvent)
     this->ProcessEvent(Func, &Parms);
 }
 
-uint8_t UUserWidget::OnDrop(struct FGeometry MyGeometry, struct FPointerEvent PointerEvent, struct UDragDropOperation* Operation)
+bool UUserWidget::OnDrop(struct FGeometry MyGeometry, struct FPointerEvent PointerEvent, struct UDragDropOperation* Operation)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("UserWidget", "OnDrop");
@@ -1771,7 +1895,7 @@ uint8_t UUserWidget::OnDrop(struct FGeometry MyGeometry, struct FPointerEvent Po
         struct FGeometry MyGeometry;
         struct FPointerEvent PointerEvent;
         struct UDragDropOperation* Operation;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.MyGeometry = (struct FGeometry)MyGeometry;
     Parms.PointerEvent = (struct FPointerEvent)PointerEvent;
@@ -1780,7 +1904,7 @@ uint8_t UUserWidget::OnDrop(struct FGeometry MyGeometry, struct FPointerEvent Po
     return Parms.ReturnValue;
 }
 
-uint8_t UUserWidget::OnDragOver(struct FGeometry MyGeometry, struct FPointerEvent PointerEvent, struct UDragDropOperation* Operation)
+bool UUserWidget::OnDragOver(struct FGeometry MyGeometry, struct FPointerEvent PointerEvent, struct UDragDropOperation* Operation)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("UserWidget", "OnDragOver");
@@ -1789,7 +1913,7 @@ uint8_t UUserWidget::OnDragOver(struct FGeometry MyGeometry, struct FPointerEven
         struct FGeometry MyGeometry;
         struct FPointerEvent PointerEvent;
         struct UDragDropOperation* Operation;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.MyGeometry = (struct FGeometry)MyGeometry;
     Parms.PointerEvent = (struct FPointerEvent)PointerEvent;
@@ -1910,112 +2034,134 @@ void UUserWidget::OnAddedToFocusPath(struct FFocusEvent InFocusEvent)
     this->ProcessEvent(Func, &Parms);
 }
 
-void UUserWidget::ListenForInputAction(struct FName ActionName, EInputEvent EventType, uint8_t bConsume, struct FDelegate callback)
+void UUserWidget::ListenForInputAction(struct FName ActionName, uint8_t EventType, bool bConsume, struct FDelegate Callback)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("UserWidget", "ListenForInputAction");
     struct
     {
         struct FName ActionName;
-        enum EInputEvent EventType;
-        uint8_t bConsume;
-        struct FDelegate callback;
+        uint8_t EventType;
+        bool bConsume;
+        struct FDelegate Callback;
     } Parms{};
     Parms.ActionName = (struct FName)ActionName;
-    Parms.EventType = (enum EInputEvent)EventType;
-    Parms.bConsume = (uint8_t)bConsume;
-    Parms.callback = (struct FDelegate)callback;
+    Parms.EventType = (uint8_t)EventType;
+    Parms.bConsume = (bool)bConsume;
+    Parms.Callback = (struct FDelegate)Callback;
     this->ProcessEvent(Func, &Parms);
 }
 
-uint8_t UUserWidget::IsPlayingAnimation()
+bool UUserWidget::IsPlayingAnimation()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("UserWidget", "IsPlayingAnimation");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UUserWidget::IsListeningForInputAction(struct FName ActionName)
+bool UUserWidget::IsListeningForInputAction(struct FName ActionName)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("UserWidget", "IsListeningForInputAction");
     struct
     {
         struct FName ActionName;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.ActionName = (struct FName)ActionName;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UUserWidget::IsInViewport()
+bool UUserWidget::IsInViewport()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("UserWidget", "IsInViewport");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UUserWidget::IsInteractable()
+bool UUserWidget::IsInteractable()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("UserWidget", "IsInteractable");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UUserWidget::IsAnyAnimationPlaying()
+bool UUserWidget::IsBlueprintTickEnable()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("UserWidget", "IsBlueprintTickEnable");
+    struct
+    {
+        bool ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+bool UUserWidget::IsAnyAnimationPlaying()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("UserWidget", "IsAnyAnimationPlaying");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UUserWidget::IsAnimationPlayingForward(struct UWidgetAnimation* InAnimation)
+bool UUserWidget::IsAnimationPlayingForward(struct UWidgetAnimation* InAnimation)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("UserWidget", "IsAnimationPlayingForward");
     struct
     {
         struct UWidgetAnimation* InAnimation;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.InAnimation = (struct UWidgetAnimation*)InAnimation;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UUserWidget::IsAnimationPlaying(struct UWidgetAnimation* InAnimation)
+bool UUserWidget::IsAnimationPlaying(struct UWidgetAnimation* InAnimation)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("UserWidget", "IsAnimationPlaying");
     struct
     {
         struct UWidgetAnimation* InAnimation;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.InAnimation = (struct UWidgetAnimation*)InAnimation;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
+}
+
+void UUserWidget::InvalidateParent()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("UserWidget", "InvalidateParent");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
 }
 
 struct APawn* UUserWidget::GetOwningPlayerPawn()
@@ -2030,13 +2176,39 @@ struct APawn* UUserWidget::GetOwningPlayerPawn()
     return Parms.ReturnValue;
 }
 
-uint8_t UUserWidget::GetIsVisible()
+struct APlayerCameraManager* UUserWidget::GetOwningPlayerCameraManager()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("UserWidget", "GetOwningPlayerCameraManager");
+    struct
+    {
+        struct APlayerCameraManager* ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct UWidget* UUserWidget::GetOrCreateLazyChild(struct FString Name)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("UserWidget", "GetOrCreateLazyChild");
+    struct
+    {
+        struct FString Name;
+        struct UWidget* ReturnValue;
+    } Parms{};
+    Parms.Name = (struct FString)Name;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+bool UUserWidget::GetIsVisible()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("UserWidget", "GetIsVisible");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
@@ -2078,6 +2250,30 @@ struct FVector2D UUserWidget::GetAlignmentInViewport()
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
+}
+
+void UUserWidget::FlushAnimations()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("UserWidget", "FlushAnimations");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UUserWidget::FinishAnimation(struct UWidgetAnimation* InAnimation, bool isForceLastFrame)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("UserWidget", "FinishAnimation");
+    struct
+    {
+        struct UWidgetAnimation* InAnimation;
+        bool isForceLastFrame;
+    } Parms{};
+    Parms.InAnimation = (struct UWidgetAnimation*)InAnimation;
+    Parms.isForceLastFrame = (bool)isForceLastFrame;
+    this->ProcessEvent(Func, &Parms);
 }
 
 void UUserWidget::Destruct()
@@ -2168,189 +2364,595 @@ void UUserWidget::AddToViewport(int32_t ZOrder)
     this->ProcessEvent(Func, &Parms);
 }
 
-uint8_t UUserWidget::AddToPlayerScreen(int32_t ZOrder)
+bool UUserWidget::AddToPlayerScreen(int32_t ZOrder)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("UserWidget", "AddToPlayerScreen");
     struct
     {
         int32_t ZOrder;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.ZOrder = (int32_t)ZOrder;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-// UPanelWidget
-uint8_t UPanelWidget::ReplaceChildAt(int32_t Index, struct UWidget* Content)
+// UTextLayoutWidget
+void UTextLayoutWidget::SetJustification(uint8_t InJustification)
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("PanelWidget", "ReplaceChildAt");
+    if (!Func) Func = ClassPrivate->GetFunction("TextLayoutWidget", "SetJustification");
     struct
     {
-        int32_t Index;
-        struct UWidget* Content;
-        uint8_t ReturnValue;
+        uint8_t InJustification;
     } Parms{};
-    Parms.Index = (int32_t)Index;
+    Parms.InJustification = (uint8_t)InJustification;
+    this->ProcessEvent(Func, &Parms);
+}
+
+// UButton
+void UButton::TransSizeToOutlineMaterial()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("Button", "TransSizeToOutlineMaterial");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UButton::ShowButtonOutlineMaterial(struct UMaterialInstanceDynamic* matDynamic, struct FSlateBrush& OriginalBrush, float& OriginalAlpha)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("Button", "ShowButtonOutlineMaterial");
+    struct
+    {
+        struct UMaterialInstanceDynamic* matDynamic;
+        struct FSlateBrush OriginalBrush;
+        float OriginalAlpha;
+    } Parms{};
+    Parms.matDynamic = (struct UMaterialInstanceDynamic*)matDynamic;
+    this->ProcessEvent(Func, &Parms);
+    OriginalBrush = Parms.OriginalBrush;
+    OriginalAlpha = Parms.OriginalAlpha;
+}
+
+void UButton::SetTouchMethod(uint8_t InTouchMethod)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("Button", "SetTouchMethod");
+    struct
+    {
+        uint8_t InTouchMethod;
+    } Parms{};
+    Parms.InTouchMethod = (uint8_t)InTouchMethod;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UButton::SetStyle(const struct FButtonStyle& InStyle)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("Button", "SetStyle");
+    struct
+    {
+        struct FButtonStyle InStyle;
+    } Parms{};
+    Parms.InStyle = (struct FButtonStyle)InStyle;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UButton::SetPressMethod(uint8_t InPressMethod)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("Button", "SetPressMethod");
+    struct
+    {
+        uint8_t InPressMethod;
+    } Parms{};
+    Parms.InPressMethod = (uint8_t)InPressMethod;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UButton::SetGray(bool gray)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("Button", "SetGray");
+    struct
+    {
+        bool gray;
+    } Parms{};
+    Parms.gray = (bool)gray;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UButton::SetColorAndOpacity(struct FLinearColor InColorAndOpacity)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("Button", "SetColorAndOpacity");
+    struct
+    {
+        struct FLinearColor InColorAndOpacity;
+    } Parms{};
+    Parms.InColorAndOpacity = (struct FLinearColor)InColorAndOpacity;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UButton::SetClickMethod(uint8_t InClickMethod)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("Button", "SetClickMethod");
+    struct
+    {
+        uint8_t InClickMethod;
+    } Parms{};
+    Parms.InClickMethod = (uint8_t)InClickMethod;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UButton::SetBackgroundColor(struct FLinearColor InBackgroundColor)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("Button", "SetBackgroundColor");
+    struct
+    {
+        struct FLinearColor InBackgroundColor;
+    } Parms{};
+    Parms.InBackgroundColor = (struct FLinearColor)InBackgroundColor;
+    this->ProcessEvent(Func, &Parms);
+}
+
+bool UButton::IsPressed()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("Button", "IsPressed");
+    struct
+    {
+        bool ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+void UButton::HideButtonOutlineMaterial(struct FSlateBrush& OriginalBrush, float OriginalAlpha)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("Button", "HideButtonOutlineMaterial");
+    struct
+    {
+        struct FSlateBrush OriginalBrush;
+        float OriginalAlpha;
+    } Parms{};
+    Parms.OriginalAlpha = (float)OriginalAlpha;
+    this->ProcessEvent(Func, &Parms);
+    OriginalBrush = Parms.OriginalBrush;
+}
+
+struct FVector2D UButton::GetPressedScreenSpacePosition()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("Button", "GetPressedScreenSpacePosition");
+    struct
+    {
+        struct FVector2D ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// UCanvasPanel
+struct UCanvasPanelSlot* UCanvasPanel::AddChildToCanvas(struct UWidget* Content)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanel", "AddChildToCanvas");
+    struct
+    {
+        struct UWidget* Content;
+        struct UCanvasPanelSlot* ReturnValue;
+    } Parms{};
     Parms.Content = (struct UWidget*)Content;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UPanelWidget::RemoveChildAt(int32_t Index)
+// UListViewBase
+void UListViewBase::SetWheelScrollMultiplier(float NewWheelScrollMultiplier)
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("PanelWidget", "RemoveChildAt");
+    if (!Func) Func = ClassPrivate->GetFunction("ListViewBase", "SetWheelScrollMultiplier");
+    struct
+    {
+        float NewWheelScrollMultiplier;
+    } Parms{};
+    Parms.NewWheelScrollMultiplier = (float)NewWheelScrollMultiplier;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UListViewBase::SetScrollOffset(float InScrollOffset)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ListViewBase", "SetScrollOffset");
+    struct
+    {
+        float InScrollOffset;
+    } Parms{};
+    Parms.InScrollOffset = (float)InScrollOffset;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UListViewBase::SetScrollbarVisibility(ESlateVisibility InVisibility)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ListViewBase", "SetScrollbarVisibility");
+    struct
+    {
+        enum ESlateVisibility InVisibility;
+    } Parms{};
+    Parms.InVisibility = (enum ESlateVisibility)InVisibility;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UListViewBase::SetAllowOverscroll(bool NewAllowOverscroll)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ListViewBase", "SetAllowOverscroll");
+    struct
+    {
+        bool NewAllowOverscroll;
+    } Parms{};
+    Parms.NewAllowOverscroll = (bool)NewAllowOverscroll;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UListViewBase::ScrollToTop()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ListViewBase", "ScrollToTop");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UListViewBase::ScrollToBottom()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ListViewBase", "ScrollToBottom");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UListViewBase::RequestRefresh()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ListViewBase", "RequestRefresh");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UListViewBase::RegenerateAllEntries(bool bPreserveOrder)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ListViewBase", "RegenerateAllEntries");
+    struct
+    {
+        bool bPreserveOrder;
+    } Parms{};
+    Parms.bPreserveOrder = (bool)bPreserveOrder;
+    this->ProcessEvent(Func, &Parms);
+}
+
+bool UListViewBase::IsUserScrolling()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ListViewBase", "IsUserScrolling");
+    struct
+    {
+        bool ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+float UListViewBase::GetScrollOffset()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ListViewBase", "GetScrollOffset");
+    struct
+    {
+        float ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct TArray<struct UUserWidget*> UListViewBase::GetDisplayedEntryWidgets()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ListViewBase", "GetDisplayedEntryWidgets");
+    struct
+    {
+        struct TArray<struct UUserWidget*> ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// UListView
+void UListView::SetSelectionMode(uint8_t SelectionMode)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ListView", "SetSelectionMode");
+    struct
+    {
+        uint8_t SelectionMode;
+    } Parms{};
+    Parms.SelectionMode = (uint8_t)SelectionMode;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UListView::SetSelectedIndex(int32_t Index)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ListView", "SetSelectedIndex");
     struct
     {
         int32_t Index;
-        uint8_t ReturnValue;
+    } Parms{};
+    Parms.Index = (int32_t)Index;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UListView::SetLength(int32_t Len, bool bPreserveOrder)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ListView", "SetLength");
+    struct
+    {
+        int32_t Len;
+        bool bPreserveOrder;
+    } Parms{};
+    Parms.Len = (int32_t)Len;
+    Parms.bPreserveOrder = (bool)bPreserveOrder;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UListView::ScrollIndexIntoView(int32_t Index)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ListView", "ScrollIndexIntoView");
+    struct
+    {
+        int32_t Index;
+    } Parms{};
+    Parms.Index = (int32_t)Index;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UListView::RemoveItem(struct UObject* item)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ListView", "RemoveItem");
+    struct
+    {
+        struct UObject* item;
+    } Parms{};
+    Parms.item = (struct UObject*)item;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UListView::NavigateToIndex(int32_t Index)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ListView", "NavigateToIndex");
+    struct
+    {
+        int32_t Index;
+    } Parms{};
+    Parms.Index = (int32_t)Index;
+    this->ProcessEvent(Func, &Parms);
+}
+
+bool UListView::IsRefreshPending()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ListView", "IsRefreshPending");
+    struct
+    {
+        bool ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+int32_t UListView::GetNumItems()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ListView", "GetNumItems");
+    struct
+    {
+        int32_t ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct TArray<struct UObject*> UListView::GetListItems()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ListView", "GetListItems");
+    struct
+    {
+        struct TArray<struct UObject*> ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct UObject* UListView::GetItemAt(int32_t Index)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ListView", "GetItemAt");
+    struct
+    {
+        int32_t Index;
+        struct UObject* ReturnValue;
     } Parms{};
     Parms.Index = (int32_t)Index;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UPanelWidget::RemoveChild(struct UWidget* Content)
+int32_t UListView::GetIndexForItem(struct UObject* item)
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("PanelWidget", "RemoveChild");
+    if (!Func) Func = ClassPrivate->GetFunction("ListView", "GetIndexForItem");
     struct
     {
-        struct UWidget* Content;
-        uint8_t ReturnValue;
+        struct UObject* item;
+        int32_t ReturnValue;
     } Parms{};
-    Parms.Content = (struct UWidget*)Content;
+    Parms.item = (struct UObject*)item;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-void UPanelWidget::ReleaseSlateResources(uint8_t bReleaseChildren)
+struct UUserWidget* UListView::GetEntryWidgetByIndex(int32_t item)
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("PanelWidget", "ReleaseSlateResources");
+    if (!Func) Func = ClassPrivate->GetFunction("ListView", "GetEntryWidgetByIndex");
     struct
     {
-        uint8_t bReleaseChildren;
+        int32_t item;
+        struct UUserWidget* ReturnValue;
     } Parms{};
-    Parms.bReleaseChildren = (uint8_t)bReleaseChildren;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UPanelWidget::OnSlotRemoved(struct UPanelSlot* InSlot)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("PanelWidget", "OnSlotRemoved");
-    struct
-    {
-        struct UPanelSlot* InSlot;
-    } Parms{};
-    Parms.InSlot = (struct UPanelSlot*)InSlot;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UPanelWidget::OnSlotInserted(struct UPanelSlot* InSlot, int32_t Index)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("PanelWidget", "OnSlotInserted");
-    struct
-    {
-        struct UPanelSlot* InSlot;
-        int32_t Index;
-    } Parms{};
-    Parms.InSlot = (struct UPanelSlot*)InSlot;
-    Parms.Index = (int32_t)Index;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UPanelWidget::OnSlotAdded(struct UPanelSlot* InSlot)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("PanelWidget", "OnSlotAdded");
-    struct
-    {
-        struct UPanelSlot* InSlot;
-    } Parms{};
-    Parms.InSlot = (struct UPanelSlot*)InSlot;
-    this->ProcessEvent(Func, &Parms);
-}
-
-struct UPanelSlot* UPanelWidget::InternalInsertChildAt(int32_t Index, struct UWidget* Content)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("PanelWidget", "InternalInsertChildAt");
-    struct
-    {
-        int32_t Index;
-        struct UWidget* Content;
-        struct UPanelSlot* ReturnValue;
-    } Parms{};
-    Parms.Index = (int32_t)Index;
-    Parms.Content = (struct UWidget*)Content;
+    Parms.item = (int32_t)item;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-struct UPanelSlot* UPanelWidget::InsertChildAt(int32_t Index, struct UWidget* Content)
+struct UUserWidget* UListView::GetEntryWidget(struct UObject* item)
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("PanelWidget", "InsertChildAt");
+    if (!Func) Func = ClassPrivate->GetFunction("ListView", "GetEntryWidget");
     struct
     {
-        int32_t Index;
-        struct UWidget* Content;
-        struct UPanelSlot* ReturnValue;
+        struct UObject* item;
+        struct UUserWidget* ReturnValue;
     } Parms{};
-    Parms.Index = (int32_t)Index;
-    Parms.Content = (struct UWidget*)Content;
+    Parms.item = (struct UObject*)item;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UPanelWidget::HasChild(struct UWidget* Content)
+void UListView::ClearListItems()
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("PanelWidget", "HasChild");
+    if (!Func) Func = ClassPrivate->GetFunction("ListView", "ClearListItems");
     struct
     {
-        struct UWidget* Content;
-        uint8_t ReturnValue;
     } Parms{};
-    Parms.Content = (struct UWidget*)Content;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UListView::BP_SetSelectedItem(struct UObject* item)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ListView", "BP_SetSelectedItem");
+    struct
+    {
+        struct UObject* item;
+    } Parms{};
+    Parms.item = (struct UObject*)item;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UListView::BP_SetListItems(const struct TArray<struct UObject*>& InListItems)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ListView", "BP_SetListItems");
+    struct
+    {
+        struct TArray<struct UObject*> InListItems;
+    } Parms{};
+    Parms.InListItems = (struct TArray<struct UObject*>)InListItems;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UListView::BP_SetItemSelection(struct UObject* item, bool bSelected)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ListView", "BP_SetItemSelection");
+    struct
+    {
+        struct UObject* item;
+        bool bSelected;
+    } Parms{};
+    Parms.item = (struct UObject*)item;
+    Parms.bSelected = (bool)bSelected;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UListView::BP_ScrollItemIntoView(struct UObject* item)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ListView", "BP_ScrollItemIntoView");
+    struct
+    {
+        struct UObject* item;
+    } Parms{};
+    Parms.item = (struct UObject*)item;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UListView::BP_NavigateToItem(struct UObject* item)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ListView", "BP_NavigateToItem");
+    struct
+    {
+        struct UObject* item;
+    } Parms{};
+    Parms.item = (struct UObject*)item;
+    this->ProcessEvent(Func, &Parms);
+}
+
+bool UListView::BP_IsItemVisible(struct UObject* item)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ListView", "BP_IsItemVisible");
+    struct
+    {
+        struct UObject* item;
+        bool ReturnValue;
+    } Parms{};
+    Parms.item = (struct UObject*)item;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UPanelWidget::HasAnyChildren()
+bool UListView::BP_GetSelectedItems(struct TArray<struct UObject*>& Items)
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("PanelWidget", "HasAnyChildren");
+    if (!Func) Func = ClassPrivate->GetFunction("ListView", "BP_GetSelectedItems");
     struct
     {
-        uint8_t ReturnValue;
+        struct TArray<struct UObject*> Items;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
+    Items = Parms.Items;
     return Parms.ReturnValue;
 }
 
-struct TArray<struct UPanelSlot*> UPanelWidget::GetSlots()
+struct UObject* UListView::BP_GetSelectedItem()
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("PanelWidget", "GetSlots");
-    struct
-    {
-        struct TArray<struct UPanelSlot*> ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct UObject* UPanelWidget::GetSlotClass()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("PanelWidget", "GetSlotClass");
+    if (!Func) Func = ClassPrivate->GetFunction("ListView", "BP_GetSelectedItem");
     struct
     {
         struct UObject* ReturnValue;
@@ -2359,10 +2961,10 @@ struct UObject* UPanelWidget::GetSlotClass()
     return Parms.ReturnValue;
 }
 
-int32_t UPanelWidget::GetChildrenCount()
+int32_t UListView::BP_GetNumItemsSelected()
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("PanelWidget", "GetChildrenCount");
+    if (!Func) Func = ClassPrivate->GetFunction("ListView", "BP_GetNumItemsSelected");
     struct
     {
         int32_t ReturnValue;
@@ -2371,218 +2973,587 @@ int32_t UPanelWidget::GetChildrenCount()
     return Parms.ReturnValue;
 }
 
-int32_t UPanelWidget::GetChildIndex(struct UWidget* Content)
+void UListView::BP_ClearSelection()
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("PanelWidget", "GetChildIndex");
+    if (!Func) Func = ClassPrivate->GetFunction("ListView", "BP_ClearSelection");
     struct
     {
-        struct UWidget* Content;
-        int32_t ReturnValue;
     } Parms{};
-    Parms.Content = (struct UWidget*)Content;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UListView::BP_CancelScrollIntoView()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ListView", "BP_CancelScrollIntoView");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UListView::AddItem(struct UObject* item)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ListView", "AddItem");
+    struct
+    {
+        struct UObject* item;
+    } Parms{};
+    Parms.item = (struct UObject*)item;
+    this->ProcessEvent(Func, &Parms);
+}
+
+// UTreeView
+void UTreeView::SetItemExpansion(struct UObject* item, bool bExpandItem)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("TreeView", "SetItemExpansion");
+    struct
+    {
+        struct UObject* item;
+        bool bExpandItem;
+    } Parms{};
+    Parms.item = (struct UObject*)item;
+    Parms.bExpandItem = (bool)bExpandItem;
+    this->ProcessEvent(Func, &Parms);
+}
+
+bool UTreeView::IsItemExpanded(struct UObject* item)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("TreeView", "IsItemExpanded");
+    struct
+    {
+        struct UObject* item;
+        bool ReturnValue;
+    } Parms{};
+    Parms.item = (struct UObject*)item;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-struct UWidget* UPanelWidget::GetChildAt(int32_t Index)
+void UTreeView::ExpandAll()
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("PanelWidget", "GetChildAt");
+    if (!Func) Func = ClassPrivate->GetFunction("TreeView", "ExpandAll");
     struct
     {
-        int32_t Index;
-        struct UWidget* ReturnValue;
     } Parms{};
-    Parms.Index = (int32_t)Index;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UTreeView::CollapseAll()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("TreeView", "CollapseAll");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+// UWidgetComponent
+void UWidgetComponent::SetWindowVisibility(EWindowVisibility InVisibility)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "SetWindowVisibility");
+    struct
+    {
+        enum EWindowVisibility InVisibility;
+    } Parms{};
+    Parms.InVisibility = (enum EWindowVisibility)InVisibility;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UWidgetComponent::SetWindowFocusable(bool bInWindowFocusable)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "SetWindowFocusable");
+    struct
+    {
+        bool bInWindowFocusable;
+    } Parms{};
+    Parms.bInWindowFocusable = (bool)bInWindowFocusable;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UWidgetComponent::SetWidgetSpace(EWidgetSpace NewSpace)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "SetWidgetSpace");
+    struct
+    {
+        enum EWidgetSpace NewSpace;
+    } Parms{};
+    Parms.NewSpace = (enum EWidgetSpace)NewSpace;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UWidgetComponent::SetWidget(struct UUserWidget* Widget)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "SetWidget");
+    struct
+    {
+        struct UUserWidget* Widget;
+    } Parms{};
+    Parms.Widget = (struct UUserWidget*)Widget;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UWidgetComponent::SetTwoSided(bool bWantTwoSided)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "SetTwoSided");
+    struct
+    {
+        bool bWantTwoSided;
+    } Parms{};
+    Parms.bWantTwoSided = (bool)bWantTwoSided;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UWidgetComponent::SetTintColorAndOpacity(struct FLinearColor NewTintColorAndOpacity)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "SetTintColorAndOpacity");
+    struct
+    {
+        struct FLinearColor NewTintColorAndOpacity;
+    } Parms{};
+    Parms.NewTintColorAndOpacity = (struct FLinearColor)NewTintColorAndOpacity;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UWidgetComponent::SetTickWhenOffscreen(bool bWantTickWhenOffscreen)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "SetTickWhenOffscreen");
+    struct
+    {
+        bool bWantTickWhenOffscreen;
+    } Parms{};
+    Parms.bWantTickWhenOffscreen = (bool)bWantTickWhenOffscreen;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UWidgetComponent::SetTickMode(ETickMode InTickMode)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "SetTickMode");
+    struct
+    {
+        enum ETickMode InTickMode;
+    } Parms{};
+    Parms.InTickMode = (enum ETickMode)InTickMode;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UWidgetComponent::SetRedrawTime(float InRedrawTime)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "SetRedrawTime");
+    struct
+    {
+        float InRedrawTime;
+    } Parms{};
+    Parms.InRedrawTime = (float)InRedrawTime;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UWidgetComponent::SetPivot(const struct FVector2D& InPivot)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "SetPivot");
+    struct
+    {
+        struct FVector2D InPivot;
+    } Parms{};
+    Parms.InPivot = (struct FVector2D)InPivot;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UWidgetComponent::SetOwnerPlayer(struct ULocalPlayer* LocalPlayer)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "SetOwnerPlayer");
+    struct
+    {
+        struct ULocalPlayer* LocalPlayer;
+    } Parms{};
+    Parms.LocalPlayer = (struct ULocalPlayer*)LocalPlayer;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UWidgetComponent::SetManuallyRedraw(bool bUseManualRedraw)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "SetManuallyRedraw");
+    struct
+    {
+        bool bUseManualRedraw;
+    } Parms{};
+    Parms.bUseManualRedraw = (bool)bUseManualRedraw;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UWidgetComponent::SetGeometryMode(EWidgetGeometryMode InGeometryMode)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "SetGeometryMode");
+    struct
+    {
+        enum EWidgetGeometryMode InGeometryMode;
+    } Parms{};
+    Parms.InGeometryMode = (enum EWidgetGeometryMode)InGeometryMode;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UWidgetComponent::SetDrawSize(struct FVector2D Size)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "SetDrawSize");
+    struct
+    {
+        struct FVector2D Size;
+    } Parms{};
+    Parms.Size = (struct FVector2D)Size;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UWidgetComponent::SetDrawAtDesiredSize(bool bInDrawAtDesiredSize)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "SetDrawAtDesiredSize");
+    struct
+    {
+        bool bInDrawAtDesiredSize;
+    } Parms{};
+    Parms.bInDrawAtDesiredSize = (bool)bInDrawAtDesiredSize;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UWidgetComponent::SetCylinderArcAngle(float InCylinderArcAngle)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "SetCylinderArcAngle");
+    struct
+    {
+        float InCylinderArcAngle;
+    } Parms{};
+    Parms.InCylinderArcAngle = (float)InCylinderArcAngle;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UWidgetComponent::SetBackgroundColor(struct FLinearColor NewBackgroundColor)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "SetBackgroundColor");
+    struct
+    {
+        struct FLinearColor NewBackgroundColor;
+    } Parms{};
+    Parms.NewBackgroundColor = (struct FLinearColor)NewBackgroundColor;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UWidgetComponent::RequestRedraw()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "RequestRedraw");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+bool UWidgetComponent::IsWidgetVisible()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "IsWidgetVisible");
+    struct
+    {
+        bool ReturnValue;
+    } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-struct TArray<struct UWidget*> UPanelWidget::GetAllChildren()
+EWindowVisibility UWidgetComponent::GetWindowVisiblility()
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("PanelWidget", "GetAllChildren");
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "GetWindowVisiblility");
     struct
     {
-        struct TArray<struct UWidget*> ReturnValue;
+        enum EWindowVisibility ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-void UPanelWidget::ClearChildren()
+bool UWidgetComponent::GetWindowFocusable()
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("PanelWidget", "ClearChildren");
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "GetWindowFocusable");
     struct
     {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-uint8_t UPanelWidget::CanHaveMultipleChildren()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("PanelWidget", "CanHaveMultipleChildren");
-    struct
-    {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UPanelWidget::CanAddMoreChildren()
+EWidgetSpace UWidgetComponent::GetWidgetSpace()
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("PanelWidget", "CanAddMoreChildren");
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "GetWidgetSpace");
     struct
     {
-        uint8_t ReturnValue;
+        enum EWidgetSpace ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-struct UPanelSlot* UPanelWidget::AddChild(struct UWidget* Content)
+struct UUserWidget* UWidgetComponent::GetWidget()
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("PanelWidget", "AddChild");
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "GetWidget");
     struct
     {
-        struct UWidget* Content;
-        struct UPanelSlot* ReturnValue;
-    } Parms{};
-    Parms.Content = (struct UWidget*)Content;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-// UWidgetSwitcher
-void UWidgetSwitcher::SetActiveWidgetIndex(int32_t Index)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetSwitcher", "SetActiveWidgetIndex");
-    struct
-    {
-        int32_t Index;
-    } Parms{};
-    Parms.Index = (int32_t)Index;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UWidgetSwitcher::SetActiveWidget(struct UWidget* Widget)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetSwitcher", "SetActiveWidget");
-    struct
-    {
-        struct UWidget* Widget;
-    } Parms{};
-    Parms.Widget = (struct UWidget*)Widget;
-    this->ProcessEvent(Func, &Parms);
-}
-
-struct UWidget* UWidgetSwitcher::GetWidgetAtIndex(int32_t Index)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetSwitcher", "GetWidgetAtIndex");
-    struct
-    {
-        int32_t Index;
-        struct UWidget* ReturnValue;
-    } Parms{};
-    Parms.Index = (int32_t)Index;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-int32_t UWidgetSwitcher::GetNumWidgets()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetSwitcher", "GetNumWidgets");
-    struct
-    {
-        int32_t ReturnValue;
+        struct UUserWidget* ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-int32_t UWidgetSwitcher::GetActiveWidgetIndex()
+struct UUserWidget* UWidgetComponent::GetUserWidgetObject()
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetSwitcher", "GetActiveWidgetIndex");
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "GetUserWidgetObject");
     struct
     {
-        int32_t ReturnValue;
+        struct UUserWidget* ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-struct UWidget* UWidgetSwitcher::GetActiveWidget()
+bool UWidgetComponent::GetTwoSided()
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetSwitcher", "GetActiveWidget");
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "GetTwoSided");
     struct
     {
-        struct UWidget* ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-// UContentWidget
-struct UPanelSlot* UContentWidget::SetContent(struct UWidget* Content)
+bool UWidgetComponent::GetTickWhenOffscreen()
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ContentWidget", "SetContent");
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "GetTickWhenOffscreen");
     struct
     {
-        struct UWidget* Content;
-        struct UPanelSlot* ReturnValue;
-    } Parms{};
-    Parms.Content = (struct UWidget*)Content;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct UPanelSlot* UContentWidget::GetContentSlot()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ContentWidget", "GetContentSlot");
-    struct
-    {
-        struct UPanelSlot* ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-struct UWidget* UContentWidget::GetContent()
+struct UTextureRenderTarget2D* UWidgetComponent::GetRenderTarget()
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ContentWidget", "GetContent");
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "GetRenderTarget");
     struct
     {
-        struct UWidget* ReturnValue;
+        struct UTextureRenderTarget2D* ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+float UWidgetComponent::GetRedrawTime()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "GetRedrawTime");
+    struct
+    {
+        float ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct FVector2D UWidgetComponent::GetPivot()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "GetPivot");
+    struct
+    {
+        struct FVector2D ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct ULocalPlayer* UWidgetComponent::GetOwnerPlayer()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "GetOwnerPlayer");
+    struct
+    {
+        struct ULocalPlayer* ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct UMaterialInstanceDynamic* UWidgetComponent::GetMaterialInstance()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "GetMaterialInstance");
+    struct
+    {
+        struct UMaterialInstanceDynamic* ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+bool UWidgetComponent::GetManuallyRedraw()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "GetManuallyRedraw");
+    struct
+    {
+        bool ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+EWidgetGeometryMode UWidgetComponent::GetGeometryMode()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "GetGeometryMode");
+    struct
+    {
+        enum EWidgetGeometryMode ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct FVector2D UWidgetComponent::GetDrawSize()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "GetDrawSize");
+    struct
+    {
+        struct FVector2D ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+bool UWidgetComponent::GetDrawAtDesiredSize()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "GetDrawAtDesiredSize");
+    struct
+    {
+        bool ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+float UWidgetComponent::GetCylinderArcAngle()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "GetCylinderArcAngle");
+    struct
+    {
+        float ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct FVector2D UWidgetComponent::GetCurrentDrawSize()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "GetCurrentDrawSize");
+    struct
+    {
+        struct FVector2D ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// UWidgetToRenderTargetComponent
+void UWidgetToRenderTargetComponent::Update()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetToRenderTargetComponent", "Update");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UWidgetToRenderTargetComponent::SetWidget(struct UUserWidget* InWidgetClass)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetToRenderTargetComponent", "SetWidget");
+    struct
+    {
+        struct UUserWidget* InWidgetClass;
+    } Parms{};
+    Parms.InWidgetClass = (struct UUserWidget*)InWidgetClass;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UWidgetToRenderTargetComponent::SetRenderTarget(struct UTextureRenderTarget2D* InRenderTarget)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetToRenderTargetComponent", "SetRenderTarget");
+    struct
+    {
+        struct UTextureRenderTarget2D* InRenderTarget;
+    } Parms{};
+    Parms.InRenderTarget = (struct UTextureRenderTarget2D*)InRenderTarget;
+    this->ProcessEvent(Func, &Parms);
+}
+
+struct UUserWidget* UWidgetToRenderTargetComponent::GetWidget()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetToRenderTargetComponent", "GetWidget");
+    struct
+    {
+        struct UUserWidget* ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
 // UBorder
-void UBorder::SetVerticalAlignment(EVerticalAlignment InVerticalAlignment)
+void UBorder::SetVerticalAlignment(uint8_t InVerticalAlignment)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("Border", "SetVerticalAlignment");
     struct
     {
-        enum EVerticalAlignment InVerticalAlignment;
+        uint8_t InVerticalAlignment;
     } Parms{};
-    Parms.InVerticalAlignment = (enum EVerticalAlignment)InVerticalAlignment;
+    Parms.InVerticalAlignment = (uint8_t)InVerticalAlignment;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -2598,15 +3569,15 @@ void UBorder::SetPadding(struct FMargin InPadding)
     this->ProcessEvent(Func, &Parms);
 }
 
-void UBorder::SetHorizontalAlignment(EHorizontalAlignment InHorizontalAlignment)
+void UBorder::SetHorizontalAlignment(uint8_t InHorizontalAlignment)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("Border", "SetHorizontalAlignment");
     struct
     {
-        enum EHorizontalAlignment InHorizontalAlignment;
+        uint8_t InHorizontalAlignment;
     } Parms{};
-    Parms.InHorizontalAlignment = (enum EHorizontalAlignment)InHorizontalAlignment;
+    Parms.InHorizontalAlignment = (uint8_t)InHorizontalAlignment;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -2706,228 +3677,107 @@ struct UMaterialInstanceDynamic* UBorder::GetDynamicMaterial()
     return Parms.ReturnValue;
 }
 
-// UTextLayoutWidget
-void UTextLayoutWidget::SetVerticalJustification(ETextVerticalJustify VJustification)
+// USlider
+void USlider::SetValue(float InValue)
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("TextLayoutWidget", "SetVerticalJustification");
+    if (!Func) Func = ClassPrivate->GetFunction("Slider", "SetValue");
     struct
     {
-        enum ETextVerticalJustify VJustification;
+        float InValue;
     } Parms{};
-    Parms.VJustification = (enum ETextVerticalJustify)VJustification;
+    Parms.InValue = (float)InValue;
     this->ProcessEvent(Func, &Parms);
 }
 
-void UTextLayoutWidget::SetJustification(ETextJustify InJustification)
+void USlider::SetStepSize(float InValue)
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("TextLayoutWidget", "SetJustification");
+    if (!Func) Func = ClassPrivate->GetFunction("Slider", "SetStepSize");
     struct
     {
-        enum ETextJustify InJustification;
+        float InValue;
     } Parms{};
-    Parms.InJustification = (enum ETextJustify)InJustification;
+    Parms.InValue = (float)InValue;
     this->ProcessEvent(Func, &Parms);
 }
 
-// UTextBlock
-void UTextBlock::SetTextUpperPolicy(ETextUpperPolicy InTextUpperPolicy)
+void USlider::SetSliderHandleColor(struct FLinearColor InValue)
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "SetTextUpperPolicy");
+    if (!Func) Func = ClassPrivate->GetFunction("Slider", "SetSliderHandleColor");
     struct
     {
-        enum ETextUpperPolicy InTextUpperPolicy;
+        struct FLinearColor InValue;
     } Parms{};
-    Parms.InTextUpperPolicy = (enum ETextUpperPolicy)InTextUpperPolicy;
+    Parms.InValue = (struct FLinearColor)InValue;
     this->ProcessEvent(Func, &Parms);
 }
 
-void UTextBlock::SetTextOverflowAutoEllipse(ETextOverflowPolicy InOverflowAutoEllipse)
+void USlider::SetSliderBarColor(struct FLinearColor InValue)
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "SetTextOverflowAutoEllipse");
+    if (!Func) Func = ClassPrivate->GetFunction("Slider", "SetSliderBarColor");
     struct
     {
-        enum ETextOverflowPolicy InOverflowAutoEllipse;
+        struct FLinearColor InValue;
     } Parms{};
-    Parms.InOverflowAutoEllipse = (enum ETextOverflowPolicy)InOverflowAutoEllipse;
+    Parms.InValue = (struct FLinearColor)InValue;
     this->ProcessEvent(Func, &Parms);
 }
 
-void UTextBlock::SetText(struct FText InText)
+void USlider::SetMinValue(float InValue)
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "SetText");
+    if (!Func) Func = ClassPrivate->GetFunction("Slider", "SetMinValue");
     struct
     {
-        struct FText InText;
+        float InValue;
     } Parms{};
-    Parms.InText = (struct FText)InText;
+    Parms.InValue = (float)InValue;
     this->ProcessEvent(Func, &Parms);
 }
 
-void UTextBlock::SetStrikeBrush(struct FSlateBrush InStrikeBrush)
+void USlider::SetMaxValue(float InValue)
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "SetStrikeBrush");
+    if (!Func) Func = ClassPrivate->GetFunction("Slider", "SetMaxValue");
     struct
     {
-        struct FSlateBrush InStrikeBrush;
+        float InValue;
     } Parms{};
-    Parms.InStrikeBrush = (struct FSlateBrush)InStrikeBrush;
+    Parms.InValue = (float)InValue;
     this->ProcessEvent(Func, &Parms);
 }
 
-void UTextBlock::SetShadowOffset(struct FVector2D InShadowOffset)
+void USlider::SetLocked(bool InValue)
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "SetShadowOffset");
+    if (!Func) Func = ClassPrivate->GetFunction("Slider", "SetLocked");
     struct
     {
-        struct FVector2D InShadowOffset;
+        bool InValue;
     } Parms{};
-    Parms.InShadowOffset = (struct FVector2D)InShadowOffset;
+    Parms.InValue = (bool)InValue;
     this->ProcessEvent(Func, &Parms);
 }
 
-void UTextBlock::SetShadowColorAndOpacity(struct FLinearColor InShadowColorAndOpacity)
+void USlider::SetIndentHandle(bool InValue)
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "SetShadowColorAndOpacity");
+    if (!Func) Func = ClassPrivate->GetFunction("Slider", "SetIndentHandle");
     struct
     {
-        struct FLinearColor InShadowColorAndOpacity;
+        bool InValue;
     } Parms{};
-    Parms.InShadowColorAndOpacity = (struct FLinearColor)InShadowColorAndOpacity;
+    Parms.InValue = (bool)InValue;
     this->ProcessEvent(Func, &Parms);
 }
 
-void UTextBlock::SetOpacity(float InOpacity)
+float USlider::GetValue()
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "SetOpacity");
-    struct
-    {
-        float InOpacity;
-    } Parms{};
-    Parms.InOpacity = (float)InOpacity;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UTextBlock::SetMinDesiredWidth(float InMinDesiredWidth)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "SetMinDesiredWidth");
-    struct
-    {
-        float InMinDesiredWidth;
-    } Parms{};
-    Parms.InMinDesiredWidth = (float)InMinDesiredWidth;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UTextBlock::SetMaxSize(struct FVector2D InSize)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "SetMaxSize");
-    struct
-    {
-        struct FVector2D InSize;
-    } Parms{};
-    Parms.InSize = (struct FVector2D)InSize;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UTextBlock::SetFontStyleID(const struct FName& InNewFontStyleID)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "SetFontStyleID");
-    struct
-    {
-        struct FName InNewFontStyleID;
-    } Parms{};
-    Parms.InNewFontStyleID = (struct FName)InNewFontStyleID;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UTextBlock::SetFont(struct FSlateFontInfo InFontInfo)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "SetFont");
-    struct
-    {
-        struct FSlateFontInfo InFontInfo;
-    } Parms{};
-    Parms.InFontInfo = (struct FSlateFontInfo)InFontInfo;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UTextBlock::SetDynamicAdaptType(EDynamicAdaptType InType)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "SetDynamicAdaptType");
-    struct
-    {
-        enum EDynamicAdaptType InType;
-    } Parms{};
-    Parms.InType = (enum EDynamicAdaptType)InType;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UTextBlock::SetCustomTextFlowPolicy(ECustomTextFlowPolicy InCustomTextFlowPolicy)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "SetCustomTextFlowPolicy");
-    struct
-    {
-        enum ECustomTextFlowPolicy InCustomTextFlowPolicy;
-    } Parms{};
-    Parms.InCustomTextFlowPolicy = (enum ECustomTextFlowPolicy)InCustomTextFlowPolicy;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UTextBlock::SetColorAndOpacity(struct FSlateColor InColorAndOpacity)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "SetColorAndOpacity");
-    struct
-    {
-        struct FSlateColor InColorAndOpacity;
-    } Parms{};
-    Parms.InColorAndOpacity = (struct FSlateColor)InColorAndOpacity;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UTextBlock::SetAutoWrapText(uint8_t InAutoTextWrap)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "SetAutoWrapText");
-    struct
-    {
-        uint8_t InAutoTextWrap;
-    } Parms{};
-    Parms.InAutoTextWrap = (uint8_t)InAutoTextWrap;
-    this->ProcessEvent(Func, &Parms);
-}
-
-struct FText UTextBlock::GetText()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "GetText");
-    struct
-    {
-        struct FText ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-float UTextBlock::GetRealTextBlockWidth()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "GetRealTextBlockWidth");
+    if (!Func) Func = ClassPrivate->GetFunction("Slider", "GetValue");
     struct
     {
         float ReturnValue;
@@ -2936,373 +3786,28 @@ float UTextBlock::GetRealTextBlockWidth()
     return Parms.ReturnValue;
 }
 
-struct FVector2D UTextBlock::GetMaxSize()
+float USlider::GetNormalizedValue()
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "GetMaxSize");
-    struct
-    {
-        struct FVector2D ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct FName UTextBlock::GetFontStyleID()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "GetFontStyleID");
-    struct
-    {
-        struct FName ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct UMaterialInstanceDynamic* UTextBlock::GetDynamicOutlineMaterial()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "GetDynamicOutlineMaterial");
-    struct
-    {
-        struct UMaterialInstanceDynamic* ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct UMaterialInstanceDynamic* UTextBlock::GetDynamicFontMaterial()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "GetDynamicFontMaterial");
-    struct
-    {
-        struct UMaterialInstanceDynamic* ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-EDynamicAdaptType UTextBlock::GetDynamicAdaptType()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "GetDynamicAdaptType");
-    struct
-    {
-        enum EDynamicAdaptType ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-void UTextBlock::BP_SetWrapTextAt(float TextAt)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "BP_SetWrapTextAt");
-    struct
-    {
-        float TextAt;
-    } Parms{};
-    Parms.TextAt = (float)TextAt;
-    this->ProcessEvent(Func, &Parms);
-}
-
-// UScrollBox
-void UScrollBox::SetWheelScrollMultiplier(float NewWheelScrollMultiplier)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "SetWheelScrollMultiplier");
-    struct
-    {
-        float NewWheelScrollMultiplier;
-    } Parms{};
-    Parms.NewWheelScrollMultiplier = (float)NewWheelScrollMultiplier;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UScrollBox::SetScrollOffset(float NewScrollOffset)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "SetScrollOffset");
-    struct
-    {
-        float NewScrollOffset;
-    } Parms{};
-    Parms.NewScrollOffset = (float)NewScrollOffset;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UScrollBox::SetScrollBarVisibility(ESlateVisibility NewScrollBarVisibility)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "SetScrollBarVisibility");
-    struct
-    {
-        enum ESlateVisibility NewScrollBarVisibility;
-    } Parms{};
-    Parms.NewScrollBarVisibility = (enum ESlateVisibility)NewScrollBarVisibility;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UScrollBox::SetScrollbarThickness(const struct FVector2D& NewScrollbarThickness)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "SetScrollbarThickness");
-    struct
-    {
-        struct FVector2D NewScrollbarThickness;
-    } Parms{};
-    Parms.NewScrollbarThickness = (struct FVector2D)NewScrollbarThickness;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UScrollBox::SetScrollbarPadding(const struct FMargin& NewScrollbarPadding)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "SetScrollbarPadding");
-    struct
-    {
-        struct FMargin NewScrollbarPadding;
-    } Parms{};
-    Parms.NewScrollbarPadding = (struct FMargin)NewScrollbarPadding;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UScrollBox::SetOverrideDragTriggerDistance(float InOverrideDragTriggerDistance)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "SetOverrideDragTriggerDistance");
-    struct
-    {
-        float InOverrideDragTriggerDistance;
-    } Parms{};
-    Parms.InOverrideDragTriggerDistance = (float)InOverrideDragTriggerDistance;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UScrollBox::SetOrientation(EOrientation NewOrientation)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "SetOrientation");
-    struct
-    {
-        enum EOrientation NewOrientation;
-    } Parms{};
-    Parms.NewOrientation = (enum EOrientation)NewOrientation;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UScrollBox::SetItemVisibility(ESlateVisibility InItemVisibility)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "SetItemVisibility");
-    struct
-    {
-        enum ESlateVisibility InItemVisibility;
-    } Parms{};
-    Parms.InItemVisibility = (enum ESlateVisibility)InItemVisibility;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UScrollBox::SetConsumeMouseWheel(EConsumeMouseWheel NewConsumeMouseWheel)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "SetConsumeMouseWheel");
-    struct
-    {
-        enum EConsumeMouseWheel NewConsumeMouseWheel;
-    } Parms{};
-    Parms.NewConsumeMouseWheel = (enum EConsumeMouseWheel)NewConsumeMouseWheel;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UScrollBox::SetAnimateWheelScrolling(uint8_t bShouldAnimateWheelScrolling)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "SetAnimateWheelScrolling");
-    struct
-    {
-        uint8_t bShouldAnimateWheelScrolling;
-    } Parms{};
-    Parms.bShouldAnimateWheelScrolling = (uint8_t)bShouldAnimateWheelScrolling;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UScrollBox::SetAlwaysShowScrollbar(uint8_t NewAlwaysShowScrollbar)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "SetAlwaysShowScrollbar");
-    struct
-    {
-        uint8_t NewAlwaysShowScrollbar;
-    } Parms{};
-    Parms.NewAlwaysShowScrollbar = (uint8_t)NewAlwaysShowScrollbar;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UScrollBox::SetAllowOverscroll(uint8_t NewAllowOverscroll)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "SetAllowOverscroll");
-    struct
-    {
-        uint8_t NewAllowOverscroll;
-    } Parms{};
-    Parms.NewAllowOverscroll = (uint8_t)NewAllowOverscroll;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UScrollBox::ScrollWidgetIntoView(struct UWidget* WidgetToFind, uint8_t AnimateScroll, EDescendantScrollDestination ScrollDestination)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "ScrollWidgetIntoView");
-    struct
-    {
-        struct UWidget* WidgetToFind;
-        uint8_t AnimateScroll;
-        enum EDescendantScrollDestination ScrollDestination;
-    } Parms{};
-    Parms.WidgetToFind = (struct UWidget*)WidgetToFind;
-    Parms.AnimateScroll = (uint8_t)AnimateScroll;
-    Parms.ScrollDestination = (enum EDescendantScrollDestination)ScrollDestination;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UScrollBox::ScrollToStart()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "ScrollToStart");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UScrollBox::ScrollToEnd()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "ScrollToEnd");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UScrollBox::RefreshItem(int32_t ItemIndex)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "RefreshItem");
-    struct
-    {
-        int32_t ItemIndex;
-    } Parms{};
-    Parms.ItemIndex = (int32_t)ItemIndex;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UScrollBox::RefreshAllItems()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "RefreshAllItems");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-float UScrollBox::GetViewOffsetFraction()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "GetViewOffsetFraction");
+    if (!Func) Func = ClassPrivate->GetFunction("Slider", "GetNormalizedValue");
     struct
     {
         float ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
-}
-
-float UScrollBox::GetScrollOffsetOfEnd()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "GetScrollOffsetOfEnd");
-    struct
-    {
-        float ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-float UScrollBox::GetScrollOffset()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "GetScrollOffset");
-    struct
-    {
-        float ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-int32_t UScrollBox::GetItemCount()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "GetItemCount");
-    struct
-    {
-        int32_t ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct UWidget* UScrollBox::GetItemByIndex(int32_t ItemIndex)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "GetItemByIndex");
-    struct
-    {
-        int32_t ItemIndex;
-        struct UWidget* ReturnValue;
-    } Parms{};
-    Parms.ItemIndex = (int32_t)ItemIndex;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-void UScrollBox::EndInertialScrolling()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "EndInertialScrolling");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UScrollBox::CheckAllowDynamicCreateItem()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "CheckAllowDynamicCreateItem");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
 }
 
 // UImage
-void UImage::SetRotateUV(uint8_t bInRotateUV)
+void UImage::SetUseTransparentAsDefault(bool bUseTransAsDefault)
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Image", "SetRotateUV");
+    if (!Func) Func = ClassPrivate->GetFunction("Image", "SetUseTransparentAsDefault");
     struct
     {
-        uint8_t bInRotateUV;
+        bool bUseTransAsDefault;
     } Parms{};
-    Parms.bInRotateUV = (uint8_t)bInRotateUV;
+    Parms.bUseTransAsDefault = (bool)bUseTransAsDefault;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -3315,6 +3820,36 @@ void UImage::SetOpacity(float InOpacity)
         float InOpacity;
     } Parms{};
     Parms.InOpacity = (float)InOpacity;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UImage::SetForceUiLayerId(int32_t InLayerId)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("Image", "SetForceUiLayerId");
+    struct
+    {
+        int32_t InLayerId;
+    } Parms{};
+    Parms.InLayerId = (int32_t)InLayerId;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UImage::SetColorAndOpacityRBGA(float R, float B, float G, float A)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("Image", "SetColorAndOpacityRBGA");
+    struct
+    {
+        float R;
+        float B;
+        float G;
+        float A;
+    } Parms{};
+    Parms.R = (float)R;
+    Parms.B = (float)B;
+    Parms.G = (float)G;
+    Parms.A = (float)A;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -3342,6 +3877,20 @@ void UImage::SetBrushTintColor(struct FSlateColor TintColor)
     this->ProcessEvent(Func, &Parms);
 }
 
+void UImage::SetBrushSizeXY(float X, float Y)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("Image", "SetBrushSizeXY");
+    struct
+    {
+        float X;
+        float Y;
+    } Parms{};
+    Parms.X = (float)X;
+    Parms.Y = (float)Y;
+    this->ProcessEvent(Func, &Parms);
+}
+
 void UImage::SetBrushSize(struct FVector2D DesiredSize)
 {
     static struct UFunction* Func = nullptr;
@@ -3366,45 +3915,45 @@ void UImage::SetBrushResourceObject(struct UObject* ResourceObject)
     this->ProcessEvent(Func, &Parms);
 }
 
-void UImage::SetBrushFromTextureDynamic(struct UTexture2DDynamic* Texture, uint8_t bMatchSize)
+void UImage::SetBrushFromTextureDynamic(struct UTexture2DDynamic* Texture, bool bMatchSize)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("Image", "SetBrushFromTextureDynamic");
     struct
     {
         struct UTexture2DDynamic* Texture;
-        uint8_t bMatchSize;
+        bool bMatchSize;
     } Parms{};
     Parms.Texture = (struct UTexture2DDynamic*)Texture;
-    Parms.bMatchSize = (uint8_t)bMatchSize;
+    Parms.bMatchSize = (bool)bMatchSize;
     this->ProcessEvent(Func, &Parms);
 }
 
-void UImage::SetBrushFromTexture(struct UTexture2D* Texture, uint8_t bMatchSize)
+void UImage::SetBrushFromTexture(struct UTexture2D* Texture, bool bMatchSize)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("Image", "SetBrushFromTexture");
     struct
     {
         struct UTexture2D* Texture;
-        uint8_t bMatchSize;
+        bool bMatchSize;
     } Parms{};
     Parms.Texture = (struct UTexture2D*)Texture;
-    Parms.bMatchSize = (uint8_t)bMatchSize;
+    Parms.bMatchSize = (bool)bMatchSize;
     this->ProcessEvent(Func, &Parms);
 }
 
-void UImage::SetBrushFromSoftTexture(struct TSoftObjectPtr<UTexture2D> SoftTexture, uint8_t bMatchSize)
+void UImage::SetBrushFromSoftTexture(struct TSoftObjectPtr<UTexture2D> SoftTexture, bool bMatchSize)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("Image", "SetBrushFromSoftTexture");
     struct
     {
         struct TSoftObjectPtr<UTexture2D> SoftTexture;
-        uint8_t bMatchSize;
+        bool bMatchSize;
     } Parms{};
     Parms.SoftTexture = (struct TSoftObjectPtr<UTexture2D>)SoftTexture;
-    Parms.bMatchSize = (uint8_t)bMatchSize;
+    Parms.bMatchSize = (bool)bMatchSize;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -3420,36 +3969,6 @@ void UImage::SetBrushFromSoftMaterial(struct TSoftObjectPtr<UMaterialInterface> 
     this->ProcessEvent(Func, &Parms);
 }
 
-void UImage::SetBrushFromSoftAtlasInterfaceWithAmplifiedRate(struct TSoftObjectPtr<UObject> SoftTexture, uint8_t bMatchSize, uint8_t bMatchAmplifiedRate)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Image", "SetBrushFromSoftAtlasInterfaceWithAmplifiedRate");
-    struct
-    {
-        struct TSoftObjectPtr<UObject> SoftTexture;
-        uint8_t bMatchSize;
-        uint8_t bMatchAmplifiedRate;
-    } Parms{};
-    Parms.SoftTexture = (struct TSoftObjectPtr<UObject>)SoftTexture;
-    Parms.bMatchSize = (uint8_t)bMatchSize;
-    Parms.bMatchAmplifiedRate = (uint8_t)bMatchAmplifiedRate;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UImage::SetBrushFromSoftAtlasInterface(struct TSoftObjectPtr<UObject> SoftTexture, uint8_t bMatchSize)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Image", "SetBrushFromSoftAtlasInterface");
-    struct
-    {
-        struct TSoftObjectPtr<UObject> SoftTexture;
-        uint8_t bMatchSize;
-    } Parms{};
-    Parms.SoftTexture = (struct TSoftObjectPtr<UObject>)SoftTexture;
-    Parms.bMatchSize = (uint8_t)bMatchSize;
-    this->ProcessEvent(Func, &Parms);
-}
-
 void UImage::SetBrushFromMaterial(struct UMaterialInterface* Material)
 {
     static struct UFunction* Func = nullptr;
@@ -3462,33 +3981,17 @@ void UImage::SetBrushFromMaterial(struct UMaterialInterface* Material)
     this->ProcessEvent(Func, &Parms);
 }
 
-void UImage::SetBrushFromAtlasInterfaceWithAmplifiedRate(struct TScriptInterface<ISlateTextureAtlasInterface> AtlasRegion, uint8_t bMatchSize, uint8_t bMatchAmplifiedRate)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Image", "SetBrushFromAtlasInterfaceWithAmplifiedRate");
-    struct
-    {
-        struct TScriptInterface<ISlateTextureAtlasInterface> AtlasRegion;
-        uint8_t bMatchSize;
-        uint8_t bMatchAmplifiedRate;
-    } Parms{};
-    Parms.AtlasRegion = (struct TScriptInterface<ISlateTextureAtlasInterface>)AtlasRegion;
-    Parms.bMatchSize = (uint8_t)bMatchSize;
-    Parms.bMatchAmplifiedRate = (uint8_t)bMatchAmplifiedRate;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UImage::SetBrushFromAtlasInterface(struct TScriptInterface<ISlateTextureAtlasInterface> AtlasRegion, uint8_t bMatchSize)
+void UImage::SetBrushFromAtlasInterface(struct TScriptInterface<ISlateTextureAtlasInterface> AtlasRegion, bool bMatchSize)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("Image", "SetBrushFromAtlasInterface");
     struct
     {
         struct TScriptInterface<ISlateTextureAtlasInterface> AtlasRegion;
-        uint8_t bMatchSize;
+        bool bMatchSize;
     } Parms{};
     Parms.AtlasRegion = (struct TScriptInterface<ISlateTextureAtlasInterface>)AtlasRegion;
-    Parms.bMatchSize = (uint8_t)bMatchSize;
+    Parms.bMatchSize = (bool)bMatchSize;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -3529,15 +4032,15 @@ struct UMaterialInstanceDynamic* UImage::GetDynamicMaterial()
 }
 
 // URichTextBlock
-void URichTextBlock::SetTextUpperPolicy(ETextUpperPolicy InTextUpperPolicy)
+void URichTextBlock::SetTextTransformPolicy(ETextTransformPolicy InTransformPolicy)
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("RichTextBlock", "SetTextUpperPolicy");
+    if (!Func) Func = ClassPrivate->GetFunction("RichTextBlock", "SetTextTransformPolicy");
     struct
     {
-        enum ETextUpperPolicy InTextUpperPolicy;
+        enum ETextTransformPolicy InTransformPolicy;
     } Parms{};
-    Parms.InTextUpperPolicy = (enum ETextUpperPolicy)InTextUpperPolicy;
+    Parms.InTransformPolicy = (enum ETextTransformPolicy)InTransformPolicy;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -3550,18 +4053,6 @@ void URichTextBlock::SetTextStyleSet(struct UDataTable* NewTextStyleSet)
         struct UDataTable* NewTextStyleSet;
     } Parms{};
     Parms.NewTextStyleSet = (struct UDataTable*)NewTextStyleSet;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void URichTextBlock::SetTextOverflowAutoEllipse(ETextOverflowPolicy InAutoOverflowEllipse)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("RichTextBlock", "SetTextOverflowAutoEllipse");
-    struct
-    {
-        enum ETextOverflowPolicy InAutoOverflowEllipse;
-    } Parms{};
-    Parms.InAutoOverflowEllipse = (enum ETextOverflowPolicy)InAutoOverflowEllipse;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -3589,15 +4080,15 @@ void URichTextBlock::SetMinDesiredWidth(float InMinDesiredWidth)
     this->ProcessEvent(Func, &Parms);
 }
 
-void URichTextBlock::SetFontStyleID(const struct FName& InNewFontStyleID)
+void URichTextBlock::SetEnableAutoTruncate(bool InAutoTextWrap)
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("RichTextBlock", "SetFontStyleID");
+    if (!Func) Func = ClassPrivate->GetFunction("RichTextBlock", "SetEnableAutoTruncate");
     struct
     {
-        struct FName InNewFontStyleID;
+        bool InAutoTextWrap;
     } Parms{};
-    Parms.InNewFontStyleID = (struct FName)InNewFontStyleID;
+    Parms.InAutoTextWrap = (bool)InAutoTextWrap;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -3673,28 +4164,30 @@ void URichTextBlock::SetDefaultColorAndOpacity(struct FSlateColor InColorAndOpac
     this->ProcessEvent(Func, &Parms);
 }
 
-void URichTextBlock::SetCustomTextFlowPolicy(ECustomTextFlowPolicy InCustomTextFlowPolicy)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("RichTextBlock", "SetCustomTextFlowPolicy");
-    struct
-    {
-        enum ECustomTextFlowPolicy InCustomTextFlowPolicy;
-    } Parms{};
-    Parms.InCustomTextFlowPolicy = (enum ECustomTextFlowPolicy)InCustomTextFlowPolicy;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void URichTextBlock::SetAutoWrapText(uint8_t InAutoTextWrap)
+void URichTextBlock::SetAutoWrapText(bool InAutoTextWrap)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("RichTextBlock", "SetAutoWrapText");
     struct
     {
-        uint8_t InAutoTextWrap;
+        bool InAutoTextWrap;
     } Parms{};
-    Parms.InAutoTextWrap = (uint8_t)InAutoTextWrap;
+    Parms.InAutoTextWrap = (bool)InAutoTextWrap;
     this->ProcessEvent(Func, &Parms);
+}
+
+struct FText URichTextBlock::PreprocessText(const struct FText& InputText)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("RichTextBlock", "PreprocessText");
+    struct
+    {
+        struct FText InputText;
+        struct FText ReturnValue;
+    } Parms{};
+    Parms.InputText = (struct FText)InputText;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
 }
 
 struct FText URichTextBlock::GetText()
@@ -3704,30 +4197,6 @@ struct FText URichTextBlock::GetText()
     struct
     {
         struct FText ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-uint8_t URichTextBlock::GetIsOverrideDefaultStyle()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("RichTextBlock", "GetIsOverrideDefaultStyle");
-    struct
-    {
-        uint8_t ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct FName URichTextBlock::GetFontStyleID()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("RichTextBlock", "GetFontStyleID");
-    struct
-    {
-        struct FName ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
@@ -3757,15 +4226,2944 @@ void URichTextBlock::ClearAllDefaultStyleOverrides()
     this->ProcessEvent(Func, &Parms);
 }
 
-void URichTextBlock::BP_SetWrapTextAt(float TextAt)
+// UScrollBox
+void UScrollBox::SetWheelScrollMultiplier(float NewWheelScrollMultiplier)
 {
     static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("RichTextBlock", "BP_SetWrapTextAt");
+    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "SetWheelScrollMultiplier");
     struct
     {
-        float TextAt;
+        float NewWheelScrollMultiplier;
     } Parms{};
-    Parms.TextAt = (float)TextAt;
+    Parms.NewWheelScrollMultiplier = (float)NewWheelScrollMultiplier;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UScrollBox::SetScrollOffset(float NewScrollOffset)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "SetScrollOffset");
+    struct
+    {
+        float NewScrollOffset;
+    } Parms{};
+    Parms.NewScrollOffset = (float)NewScrollOffset;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UScrollBox::SetScrollbarVisibility(ESlateVisibility NewScrollBarVisibility)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "SetScrollbarVisibility");
+    struct
+    {
+        enum ESlateVisibility NewScrollBarVisibility;
+    } Parms{};
+    Parms.NewScrollBarVisibility = (enum ESlateVisibility)NewScrollBarVisibility;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UScrollBox::SetScrollbarThickness(const struct FVector2D& NewScrollbarThickness)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "SetScrollbarThickness");
+    struct
+    {
+        struct FVector2D NewScrollbarThickness;
+    } Parms{};
+    Parms.NewScrollbarThickness = (struct FVector2D)NewScrollbarThickness;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UScrollBox::SetScrollbarPadding(const struct FMargin& NewScrollbarPadding)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "SetScrollbarPadding");
+    struct
+    {
+        struct FMargin NewScrollbarPadding;
+    } Parms{};
+    Parms.NewScrollbarPadding = (struct FMargin)NewScrollbarPadding;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UScrollBox::SetOrientation(uint8_t NewOrientation)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "SetOrientation");
+    struct
+    {
+        uint8_t NewOrientation;
+    } Parms{};
+    Parms.NewOrientation = (uint8_t)NewOrientation;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UScrollBox::SetEnableScrolling(bool bShouldEnableScrolling)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "SetEnableScrolling");
+    struct
+    {
+        bool bShouldEnableScrolling;
+    } Parms{};
+    Parms.bShouldEnableScrolling = (bool)bShouldEnableScrolling;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UScrollBox::SetEnableMovingAccumulation(bool bShouldEnableMovingAccumulation)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "SetEnableMovingAccumulation");
+    struct
+    {
+        bool bShouldEnableMovingAccumulation;
+    } Parms{};
+    Parms.bShouldEnableMovingAccumulation = (bool)bShouldEnableMovingAccumulation;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UScrollBox::SetConsumeMouseWheel(EConsumeMouseWheel NewConsumeMouseWheel)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "SetConsumeMouseWheel");
+    struct
+    {
+        enum EConsumeMouseWheel NewConsumeMouseWheel;
+    } Parms{};
+    Parms.NewConsumeMouseWheel = (enum EConsumeMouseWheel)NewConsumeMouseWheel;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UScrollBox::SetAnimateWheelScrolling(bool bShouldAnimateWheelScrolling)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "SetAnimateWheelScrolling");
+    struct
+    {
+        bool bShouldAnimateWheelScrolling;
+    } Parms{};
+    Parms.bShouldAnimateWheelScrolling = (bool)bShouldAnimateWheelScrolling;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UScrollBox::SetAlwaysShowScrollbar(bool NewAlwaysShowScrollbar)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "SetAlwaysShowScrollbar");
+    struct
+    {
+        bool NewAlwaysShowScrollbar;
+    } Parms{};
+    Parms.NewAlwaysShowScrollbar = (bool)NewAlwaysShowScrollbar;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UScrollBox::SetAllowOverscroll(bool NewAllowOverscroll)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "SetAllowOverscroll");
+    struct
+    {
+        bool NewAllowOverscroll;
+    } Parms{};
+    Parms.NewAllowOverscroll = (bool)NewAllowOverscroll;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UScrollBox::ScrollWidgetIntoView(struct UWidget* WidgetToFind, bool AnimateScroll, EDescendantScrollDestination ScrollDestination, float Padding)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "ScrollWidgetIntoView");
+    struct
+    {
+        struct UWidget* WidgetToFind;
+        bool AnimateScroll;
+        enum EDescendantScrollDestination ScrollDestination;
+        float Padding;
+    } Parms{};
+    Parms.WidgetToFind = (struct UWidget*)WidgetToFind;
+    Parms.AnimateScroll = (bool)AnimateScroll;
+    Parms.ScrollDestination = (enum EDescendantScrollDestination)ScrollDestination;
+    Parms.Padding = (float)Padding;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UScrollBox::ScrollToStart()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "ScrollToStart");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UScrollBox::ScrollToEnd()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "ScrollToEnd");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+float UScrollBox::GetViewOffsetFraction()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "GetViewOffsetFraction");
+    struct
+    {
+        float ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+float UScrollBox::GetScrollOffsetOfEnd()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "GetScrollOffsetOfEnd");
+    struct
+    {
+        float ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+float UScrollBox::GetScrollOffset()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "GetScrollOffset");
+    struct
+    {
+        float ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+float UScrollBox::GetScrollBoxDragTriggerDistance()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "GetScrollBoxDragTriggerDistance");
+    struct
+    {
+        float ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+bool UScrollBox::GetFingerTouch()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "GetFingerTouch");
+    struct
+    {
+        bool ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+void UScrollBox::EndInertialScrolling()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ScrollBox", "EndInertialScrolling");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+// UOverlay
+struct UOverlaySlot* UOverlay::AddChildToOverlay(struct UWidget* Content)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("Overlay", "AddChildToOverlay");
+    struct
+    {
+        struct UWidget* Content;
+        struct UOverlaySlot* ReturnValue;
+    } Parms{};
+    Parms.Content = (struct UWidget*)Content;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// UOverlaySlot
+void UOverlaySlot::SetVerticalAlignment(uint8_t InVerticalAlignment)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("OverlaySlot", "SetVerticalAlignment");
+    struct
+    {
+        uint8_t InVerticalAlignment;
+    } Parms{};
+    Parms.InVerticalAlignment = (uint8_t)InVerticalAlignment;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UOverlaySlot::SetPadding(struct FMargin InPadding)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("OverlaySlot", "SetPadding");
+    struct
+    {
+        struct FMargin InPadding;
+    } Parms{};
+    Parms.InPadding = (struct FMargin)InPadding;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UOverlaySlot::SetHorizontalAlignment(uint8_t InHorizontalAlignment)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("OverlaySlot", "SetHorizontalAlignment");
+    struct
+    {
+        uint8_t InHorizontalAlignment;
+    } Parms{};
+    Parms.InHorizontalAlignment = (uint8_t)InHorizontalAlignment;
+    this->ProcessEvent(Func, &Parms);
+}
+
+// UTileView
+void UTileView::SetEntryWidth(float NewWidth)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("TileView", "SetEntryWidth");
+    struct
+    {
+        float NewWidth;
+    } Parms{};
+    Parms.NewWidth = (float)NewWidth;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UTileView::SetEntryHeight(float NewHeight)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("TileView", "SetEntryHeight");
+    struct
+    {
+        float NewHeight;
+    } Parms{};
+    Parms.NewHeight = (float)NewHeight;
+    this->ProcessEvent(Func, &Parms);
+}
+
+float UTileView::GetEntryWidth()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("TileView", "GetEntryWidth");
+    struct
+    {
+        float ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+float UTileView::GetEntryHeight()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("TileView", "GetEntryHeight");
+    struct
+    {
+        float ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// UAsyncTaskDownloadImage
+struct UAsyncTaskDownloadImage* UAsyncTaskDownloadImage::DownloadImageWithSavePath(struct FString URL, struct FString SavePath)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("AsyncTaskDownloadImage", "DownloadImageWithSavePath");
+    struct
+    {
+        struct FString URL;
+        struct FString SavePath;
+        struct UAsyncTaskDownloadImage* ReturnValue;
+    } Parms{};
+    Parms.URL = (struct FString)URL;
+    Parms.SavePath = (struct FString)SavePath;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct UAsyncTaskDownloadImage* UAsyncTaskDownloadImage::DownloadImage(struct FString URL)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("AsyncTaskDownloadImage", "DownloadImage");
+    struct
+    {
+        struct FString URL;
+        struct UAsyncTaskDownloadImage* ReturnValue;
+    } Parms{};
+    Parms.URL = (struct FString)URL;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// UBackgroundBlur
+void UBackgroundBlur::SetVerticalAlignment(uint8_t InVerticalAlignment)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BackgroundBlur", "SetVerticalAlignment");
+    struct
+    {
+        uint8_t InVerticalAlignment;
+    } Parms{};
+    Parms.InVerticalAlignment = (uint8_t)InVerticalAlignment;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UBackgroundBlur::SetPadding(struct FMargin InPadding)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BackgroundBlur", "SetPadding");
+    struct
+    {
+        struct FMargin InPadding;
+    } Parms{};
+    Parms.InPadding = (struct FMargin)InPadding;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UBackgroundBlur::SetLowQualityFallbackBrush(const struct FSlateBrush& InBrush)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BackgroundBlur", "SetLowQualityFallbackBrush");
+    struct
+    {
+        struct FSlateBrush InBrush;
+    } Parms{};
+    Parms.InBrush = (struct FSlateBrush)InBrush;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UBackgroundBlur::SetHorizontalAlignment(uint8_t InHorizontalAlignment)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BackgroundBlur", "SetHorizontalAlignment");
+    struct
+    {
+        uint8_t InHorizontalAlignment;
+    } Parms{};
+    Parms.InHorizontalAlignment = (uint8_t)InHorizontalAlignment;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UBackgroundBlur::SetBlurStrength(float InStrength)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BackgroundBlur", "SetBlurStrength");
+    struct
+    {
+        float InStrength;
+    } Parms{};
+    Parms.InStrength = (float)InStrength;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UBackgroundBlur::SetBlurRadius(int32_t InBlurRadius)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BackgroundBlur", "SetBlurRadius");
+    struct
+    {
+        int32_t InBlurRadius;
+    } Parms{};
+    Parms.InBlurRadius = (int32_t)InBlurRadius;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UBackgroundBlur::SetApplyAlphaToBlur(bool bInApplyAlphaToBlur)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BackgroundBlur", "SetApplyAlphaToBlur");
+    struct
+    {
+        bool bInApplyAlphaToBlur;
+    } Parms{};
+    Parms.bInApplyAlphaToBlur = (bool)bInApplyAlphaToBlur;
+    this->ProcessEvent(Func, &Parms);
+}
+
+// UBackgroundBlurSlot
+void UBackgroundBlurSlot::SetVerticalAlignment(uint8_t InVerticalAlignment)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BackgroundBlurSlot", "SetVerticalAlignment");
+    struct
+    {
+        uint8_t InVerticalAlignment;
+    } Parms{};
+    Parms.InVerticalAlignment = (uint8_t)InVerticalAlignment;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UBackgroundBlurSlot::SetPadding(struct FMargin InPadding)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BackgroundBlurSlot", "SetPadding");
+    struct
+    {
+        struct FMargin InPadding;
+    } Parms{};
+    Parms.InPadding = (struct FMargin)InPadding;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UBackgroundBlurSlot::SetHorizontalAlignment(uint8_t InHorizontalAlignment)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BackgroundBlurSlot", "SetHorizontalAlignment");
+    struct
+    {
+        uint8_t InHorizontalAlignment;
+    } Parms{};
+    Parms.InHorizontalAlignment = (uint8_t)InHorizontalAlignment;
+    this->ProcessEvent(Func, &Parms);
+}
+
+// UBoolBinding
+bool UBoolBinding::GetValue()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BoolBinding", "GetValue");
+    struct
+    {
+        bool ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// UBorderSlot
+void UBorderSlot::SetVerticalAlignment(uint8_t InVerticalAlignment)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BorderSlot", "SetVerticalAlignment");
+    struct
+    {
+        uint8_t InVerticalAlignment;
+    } Parms{};
+    Parms.InVerticalAlignment = (uint8_t)InVerticalAlignment;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UBorderSlot::SetPadding(struct FMargin InPadding)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BorderSlot", "SetPadding");
+    struct
+    {
+        struct FMargin InPadding;
+    } Parms{};
+    Parms.InPadding = (struct FMargin)InPadding;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UBorderSlot::SetHorizontalAlignment(uint8_t InHorizontalAlignment)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BorderSlot", "SetHorizontalAlignment");
+    struct
+    {
+        uint8_t InHorizontalAlignment;
+    } Parms{};
+    Parms.InHorizontalAlignment = (uint8_t)InHorizontalAlignment;
+    this->ProcessEvent(Func, &Parms);
+}
+
+// UBrushBinding
+struct FSlateBrush UBrushBinding::GetValue()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("BrushBinding", "GetValue");
+    struct
+    {
+        struct FSlateBrush ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// UButtonSlot
+void UButtonSlot::SetVerticalAlignment(uint8_t InVerticalAlignment)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ButtonSlot", "SetVerticalAlignment");
+    struct
+    {
+        uint8_t InVerticalAlignment;
+    } Parms{};
+    Parms.InVerticalAlignment = (uint8_t)InVerticalAlignment;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UButtonSlot::SetPadding(struct FMargin InPadding)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ButtonSlot", "SetPadding");
+    struct
+    {
+        struct FMargin InPadding;
+    } Parms{};
+    Parms.InPadding = (struct FMargin)InPadding;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UButtonSlot::SetHorizontalAlignment(uint8_t InHorizontalAlignment)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ButtonSlot", "SetHorizontalAlignment");
+    struct
+    {
+        uint8_t InHorizontalAlignment;
+    } Parms{};
+    Parms.InHorizontalAlignment = (uint8_t)InHorizontalAlignment;
+    this->ProcessEvent(Func, &Parms);
+}
+
+// UCanvasPanelSlot
+void UCanvasPanelSlot::SetZOrder(int32_t InZOrder)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "SetZOrder");
+    struct
+    {
+        int32_t InZOrder;
+    } Parms{};
+    Parms.InZOrder = (int32_t)InZOrder;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UCanvasPanelSlot::SetSizeXY(float InLeft, float InBottom)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "SetSizeXY");
+    struct
+    {
+        float InLeft;
+        float InBottom;
+    } Parms{};
+    Parms.InLeft = (float)InLeft;
+    Parms.InBottom = (float)InBottom;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UCanvasPanelSlot::SetSize(struct FVector2D InSize)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "SetSize");
+    struct
+    {
+        struct FVector2D InSize;
+    } Parms{};
+    Parms.InSize = (struct FVector2D)InSize;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UCanvasPanelSlot::SetPositionXY(float X, float Y)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "SetPositionXY");
+    struct
+    {
+        float X;
+        float Y;
+    } Parms{};
+    Parms.X = (float)X;
+    Parms.Y = (float)Y;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UCanvasPanelSlot::SetPosition(struct FVector2D InPosition)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "SetPosition");
+    struct
+    {
+        struct FVector2D InPosition;
+    } Parms{};
+    Parms.InPosition = (struct FVector2D)InPosition;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UCanvasPanelSlot::SetOffsets(struct FMargin InOffset)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "SetOffsets");
+    struct
+    {
+        struct FMargin InOffset;
+    } Parms{};
+    Parms.InOffset = (struct FMargin)InOffset;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UCanvasPanelSlot::SetMinimum(struct FVector2D InMinimumAnchors)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "SetMinimum");
+    struct
+    {
+        struct FVector2D InMinimumAnchors;
+    } Parms{};
+    Parms.InMinimumAnchors = (struct FVector2D)InMinimumAnchors;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UCanvasPanelSlot::SetMaximum(struct FVector2D InMaximumAnchors)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "SetMaximum");
+    struct
+    {
+        struct FVector2D InMaximumAnchors;
+    } Parms{};
+    Parms.InMaximumAnchors = (struct FVector2D)InMaximumAnchors;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UCanvasPanelSlot::SetLayout(const struct FAnchorData& InLayoutData)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "SetLayout");
+    struct
+    {
+        struct FAnchorData InLayoutData;
+    } Parms{};
+    Parms.InLayoutData = (struct FAnchorData)InLayoutData;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UCanvasPanelSlot::SetAutoSize(bool InbAutoSize)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "SetAutoSize");
+    struct
+    {
+        bool InbAutoSize;
+    } Parms{};
+    Parms.InbAutoSize = (bool)InbAutoSize;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UCanvasPanelSlot::SetAnchorsXYZW(float X, float Y, float Z, float W)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "SetAnchorsXYZW");
+    struct
+    {
+        float X;
+        float Y;
+        float Z;
+        float W;
+    } Parms{};
+    Parms.X = (float)X;
+    Parms.Y = (float)Y;
+    Parms.Z = (float)Z;
+    Parms.W = (float)W;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UCanvasPanelSlot::SetAnchors(struct FAnchors InAnchors)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "SetAnchors");
+    struct
+    {
+        struct FAnchors InAnchors;
+    } Parms{};
+    Parms.InAnchors = (struct FAnchors)InAnchors;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UCanvasPanelSlot::SetAlignmentXY(float X, float Y)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "SetAlignmentXY");
+    struct
+    {
+        float X;
+        float Y;
+    } Parms{};
+    Parms.X = (float)X;
+    Parms.Y = (float)Y;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UCanvasPanelSlot::SetAlignment(struct FVector2D InAlignment)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "SetAlignment");
+    struct
+    {
+        struct FVector2D InAlignment;
+    } Parms{};
+    Parms.InAlignment = (struct FVector2D)InAlignment;
+    this->ProcessEvent(Func, &Parms);
+}
+
+int32_t UCanvasPanelSlot::GetZOrder()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "GetZOrder");
+    struct
+    {
+        int32_t ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+float UCanvasPanelSlot::GetSizeY()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "GetSizeY");
+    struct
+    {
+        float ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+float UCanvasPanelSlot::GetSizeX()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "GetSizeX");
+    struct
+    {
+        float ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct FVector2D UCanvasPanelSlot::GetSize()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "GetSize");
+    struct
+    {
+        struct FVector2D ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+void UCanvasPanelSlot::GetRefSize(struct FVector2D& OutSize)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "GetRefSize");
+    struct
+    {
+        struct FVector2D OutSize;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    OutSize = Parms.OutSize;
+}
+
+void UCanvasPanelSlot::GetRefPosition(struct FVector2D& OutPosition)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "GetRefPosition");
+    struct
+    {
+        struct FVector2D OutPosition;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    OutPosition = Parms.OutPosition;
+}
+
+float UCanvasPanelSlot::GetPositionY()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "GetPositionY");
+    struct
+    {
+        float ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+float UCanvasPanelSlot::GetPositionX()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "GetPositionX");
+    struct
+    {
+        float ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct FVector2D UCanvasPanelSlot::GetPosition()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "GetPosition");
+    struct
+    {
+        struct FVector2D ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct FMargin UCanvasPanelSlot::GetOffsets()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "GetOffsets");
+    struct
+    {
+        struct FMargin ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct FAnchorData UCanvasPanelSlot::GetLayout()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "GetLayout");
+    struct
+    {
+        struct FAnchorData ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+bool UCanvasPanelSlot::GetAutoSize()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "GetAutoSize");
+    struct
+    {
+        bool ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct FAnchors UCanvasPanelSlot::GetAnchors()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "GetAnchors");
+    struct
+    {
+        struct FAnchors ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct FVector2D UCanvasPanelSlot::GetAlignment()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "GetAlignment");
+    struct
+    {
+        struct FVector2D ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// UCheckBox
+void UCheckBox::SetTouchMethod(uint8_t InTouchMethod)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CheckBox", "SetTouchMethod");
+    struct
+    {
+        uint8_t InTouchMethod;
+    } Parms{};
+    Parms.InTouchMethod = (uint8_t)InTouchMethod;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UCheckBox::SetPressMethod(uint8_t InPressMethod)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CheckBox", "SetPressMethod");
+    struct
+    {
+        uint8_t InPressMethod;
+    } Parms{};
+    Parms.InPressMethod = (uint8_t)InPressMethod;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UCheckBox::SetIsChecked(bool InIsChecked)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CheckBox", "SetIsChecked");
+    struct
+    {
+        bool InIsChecked;
+    } Parms{};
+    Parms.InIsChecked = (bool)InIsChecked;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UCheckBox::SetClickMethod(uint8_t InClickMethod)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CheckBox", "SetClickMethod");
+    struct
+    {
+        uint8_t InClickMethod;
+    } Parms{};
+    Parms.InClickMethod = (uint8_t)InClickMethod;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UCheckBox::SetCheckedState(ECheckBoxState InCheckedState)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CheckBox", "SetCheckedState");
+    struct
+    {
+        enum ECheckBoxState InCheckedState;
+    } Parms{};
+    Parms.InCheckedState = (enum ECheckBoxState)InCheckedState;
+    this->ProcessEvent(Func, &Parms);
+}
+
+bool UCheckBox::IsPressed()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CheckBox", "IsPressed");
+    struct
+    {
+        bool ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+bool UCheckBox::IsChecked()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CheckBox", "IsChecked");
+    struct
+    {
+        bool ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+ECheckBoxState UCheckBox::GetCheckedState()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CheckBox", "GetCheckedState");
+    struct
+    {
+        enum ECheckBoxState ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// UCheckedStateBinding
+ECheckBoxState UCheckedStateBinding::GetValue()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CheckedStateBinding", "GetValue");
+    struct
+    {
+        enum ECheckBoxState ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// UCircularThrobber
+void UCircularThrobber::SetRadius(float InRadius)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CircularThrobber", "SetRadius");
+    struct
+    {
+        float InRadius;
+    } Parms{};
+    Parms.InRadius = (float)InRadius;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UCircularThrobber::SetPeriod(float InPeriod)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CircularThrobber", "SetPeriod");
+    struct
+    {
+        float InPeriod;
+    } Parms{};
+    Parms.InPeriod = (float)InPeriod;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UCircularThrobber::SetNumberOfPieces(int32_t InNumberOfPieces)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("CircularThrobber", "SetNumberOfPieces");
+    struct
+    {
+        int32_t InNumberOfPieces;
+    } Parms{};
+    Parms.InNumberOfPieces = (int32_t)InNumberOfPieces;
+    this->ProcessEvent(Func, &Parms);
+}
+
+// UColorBinding
+struct FSlateColor UColorBinding::GetSlateValue()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ColorBinding", "GetSlateValue");
+    struct
+    {
+        struct FSlateColor ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct FLinearColor UColorBinding::GetLinearValue()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ColorBinding", "GetLinearValue");
+    struct
+    {
+        struct FLinearColor ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// UComboBoxString
+void UComboBoxString::SetSelectedOption(struct FString Option)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ComboBoxString", "SetSelectedOption");
+    struct
+    {
+        struct FString Option;
+    } Parms{};
+    Parms.Option = (struct FString)Option;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UComboBoxString::SetSelectedIndex(int32_t Index)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ComboBoxString", "SetSelectedIndex");
+    struct
+    {
+        int32_t Index;
+    } Parms{};
+    Parms.Index = (int32_t)Index;
+    this->ProcessEvent(Func, &Parms);
+}
+
+bool UComboBoxString::RemoveOption(struct FString Option)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ComboBoxString", "RemoveOption");
+    struct
+    {
+        struct FString Option;
+        bool ReturnValue;
+    } Parms{};
+    Parms.Option = (struct FString)Option;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+void UComboBoxString::RefreshOptions()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ComboBoxString", "RefreshOptions");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UComboBoxString::OnSelectionChangedEvent__DelegateSignature(struct FString SelectedItem, uint8_t SelectionType)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ComboBoxString", "OnSelectionChangedEvent__DelegateSignature");
+    struct
+    {
+        struct FString SelectedItem;
+        uint8_t SelectionType;
+    } Parms{};
+    Parms.SelectedItem = (struct FString)SelectedItem;
+    Parms.SelectionType = (uint8_t)SelectionType;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UComboBoxString::OnOpeningEvent__DelegateSignature()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ComboBoxString", "OnOpeningEvent__DelegateSignature");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+bool UComboBoxString::IsOpen()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ComboBoxString", "IsOpen");
+    struct
+    {
+        bool ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct FString UComboBoxString::GetSelectedOption()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ComboBoxString", "GetSelectedOption");
+    struct
+    {
+        struct FString ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+int32_t UComboBoxString::GetSelectedIndex()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ComboBoxString", "GetSelectedIndex");
+    struct
+    {
+        int32_t ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+int32_t UComboBoxString::GetOptionCount()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ComboBoxString", "GetOptionCount");
+    struct
+    {
+        int32_t ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct FString UComboBoxString::GetOptionAtIndex(int32_t Index)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ComboBoxString", "GetOptionAtIndex");
+    struct
+    {
+        int32_t Index;
+        struct FString ReturnValue;
+    } Parms{};
+    Parms.Index = (int32_t)Index;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+int32_t UComboBoxString::FindOptionIndex(struct FString Option)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ComboBoxString", "FindOptionIndex");
+    struct
+    {
+        struct FString Option;
+        int32_t ReturnValue;
+    } Parms{};
+    Parms.Option = (struct FString)Option;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+void UComboBoxString::ClearSelection()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ComboBoxString", "ClearSelection");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UComboBoxString::ClearOptions()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ComboBoxString", "ClearOptions");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UComboBoxString::AddOption(struct FString Option)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ComboBoxString", "AddOption");
+    struct
+    {
+        struct FString Option;
+    } Parms{};
+    Parms.Option = (struct FString)Option;
+    this->ProcessEvent(Func, &Parms);
+}
+
+// UDragDropOperation
+void UDragDropOperation::Drop(const struct FPointerEvent& PointerEvent)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("DragDropOperation", "Drop");
+    struct
+    {
+        struct FPointerEvent PointerEvent;
+    } Parms{};
+    Parms.PointerEvent = (struct FPointerEvent)PointerEvent;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UDragDropOperation::Dragged(const struct FPointerEvent& PointerEvent)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("DragDropOperation", "Dragged");
+    struct
+    {
+        struct FPointerEvent PointerEvent;
+    } Parms{};
+    Parms.PointerEvent = (struct FPointerEvent)PointerEvent;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UDragDropOperation::DragCancelled(const struct FPointerEvent& PointerEvent)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("DragDropOperation", "DragCancelled");
+    struct
+    {
+        struct FPointerEvent PointerEvent;
+    } Parms{};
+    Parms.PointerEvent = (struct FPointerEvent)PointerEvent;
+    this->ProcessEvent(Func, &Parms);
+}
+
+// UDynamicEntryBoxBase
+void UDynamicEntryBoxBase::SetRadialSettings(const struct FRadialBoxSettings& InSettings)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("DynamicEntryBoxBase", "SetRadialSettings");
+    struct
+    {
+        struct FRadialBoxSettings InSettings;
+    } Parms{};
+    Parms.InSettings = (struct FRadialBoxSettings)InSettings;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UDynamicEntryBoxBase::SetEntrySpacing(const struct FVector2D& InEntrySpacing)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("DynamicEntryBoxBase", "SetEntrySpacing");
+    struct
+    {
+        struct FVector2D InEntrySpacing;
+    } Parms{};
+    Parms.InEntrySpacing = (struct FVector2D)InEntrySpacing;
+    this->ProcessEvent(Func, &Parms);
+}
+
+int32_t UDynamicEntryBoxBase::GetNumEntries()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("DynamicEntryBoxBase", "GetNumEntries");
+    struct
+    {
+        int32_t ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct TArray<struct UUserWidget*> UDynamicEntryBoxBase::GetAllEntries()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("DynamicEntryBoxBase", "GetAllEntries");
+    struct
+    {
+        struct TArray<struct UUserWidget*> ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// UDynamicEntryBox
+void UDynamicEntryBox::Reset(bool bDeleteWidgets)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("DynamicEntryBox", "Reset");
+    struct
+    {
+        bool bDeleteWidgets;
+    } Parms{};
+    Parms.bDeleteWidgets = (bool)bDeleteWidgets;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UDynamicEntryBox::RemoveEntry(struct UUserWidget* EntryWidget)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("DynamicEntryBox", "RemoveEntry");
+    struct
+    {
+        struct UUserWidget* EntryWidget;
+    } Parms{};
+    Parms.EntryWidget = (struct UUserWidget*)EntryWidget;
+    this->ProcessEvent(Func, &Parms);
+}
+
+struct UUserWidget* UDynamicEntryBox::BP_CreateEntryOfClass(struct UUserWidget* EntryClass)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("DynamicEntryBox", "BP_CreateEntryOfClass");
+    struct
+    {
+        struct UUserWidget* EntryClass;
+        struct UUserWidget* ReturnValue;
+    } Parms{};
+    Parms.EntryClass = (struct UUserWidget*)EntryClass;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct UUserWidget* UDynamicEntryBox::BP_CreateEntry()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("DynamicEntryBox", "BP_CreateEntry");
+    struct
+    {
+        struct UUserWidget* ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// UEditableText
+void UEditableText::SetText(struct FText InText)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("EditableText", "SetText");
+    struct
+    {
+        struct FText InText;
+    } Parms{};
+    Parms.InText = (struct FText)InText;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UEditableText::SetJustification(uint8_t InJustification)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("EditableText", "SetJustification");
+    struct
+    {
+        uint8_t InJustification;
+    } Parms{};
+    Parms.InJustification = (uint8_t)InJustification;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UEditableText::SetIsReadOnly(bool InbIsReadyOnly)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("EditableText", "SetIsReadOnly");
+    struct
+    {
+        bool InbIsReadyOnly;
+    } Parms{};
+    Parms.InbIsReadyOnly = (bool)InbIsReadyOnly;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UEditableText::SetIsPassword(bool InbIsPassword)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("EditableText", "SetIsPassword");
+    struct
+    {
+        bool InbIsPassword;
+    } Parms{};
+    Parms.InbIsPassword = (bool)InbIsPassword;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UEditableText::SetHintText(struct FText InHintText)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("EditableText", "SetHintText");
+    struct
+    {
+        struct FText InHintText;
+    } Parms{};
+    Parms.InHintText = (struct FText)InHintText;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UEditableText::OnEditableTextCommittedEvent__DelegateSignature(const struct FText& Text, uint8_t CommitMethod)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("EditableText", "OnEditableTextCommittedEvent__DelegateSignature");
+    struct
+    {
+        struct FText Text;
+        uint8_t CommitMethod;
+    } Parms{};
+    Parms.Text = (struct FText)Text;
+    Parms.CommitMethod = (uint8_t)CommitMethod;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UEditableText::OnEditableTextChangedEvent__DelegateSignature(const struct FText& Text)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("EditableText", "OnEditableTextChangedEvent__DelegateSignature");
+    struct
+    {
+        struct FText Text;
+    } Parms{};
+    Parms.Text = (struct FText)Text;
+    this->ProcessEvent(Func, &Parms);
+}
+
+bool UEditableText::JudgInFontLibrary()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("EditableText", "JudgInFontLibrary");
+    struct
+    {
+        bool ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct FText UEditableText::GetText()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("EditableText", "GetText");
+    struct
+    {
+        struct FText ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// UEditableTextBox
+void UEditableTextBox::SetText(struct FText InText)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("EditableTextBox", "SetText");
+    struct
+    {
+        struct FText InText;
+    } Parms{};
+    Parms.InText = (struct FText)InText;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UEditableTextBox::SetJustification(uint8_t InJustification)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("EditableTextBox", "SetJustification");
+    struct
+    {
+        uint8_t InJustification;
+    } Parms{};
+    Parms.InJustification = (uint8_t)InJustification;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UEditableTextBox::SetIsReadOnly(bool bReadOnly)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("EditableTextBox", "SetIsReadOnly");
+    struct
+    {
+        bool bReadOnly;
+    } Parms{};
+    Parms.bReadOnly = (bool)bReadOnly;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UEditableTextBox::SetIsPassword(bool bIsPassword)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("EditableTextBox", "SetIsPassword");
+    struct
+    {
+        bool bIsPassword;
+    } Parms{};
+    Parms.bIsPassword = (bool)bIsPassword;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UEditableTextBox::SetHintText(struct FText InText)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("EditableTextBox", "SetHintText");
+    struct
+    {
+        struct FText InText;
+    } Parms{};
+    Parms.InText = (struct FText)InText;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UEditableTextBox::SetError(struct FText InError)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("EditableTextBox", "SetError");
+    struct
+    {
+        struct FText InError;
+    } Parms{};
+    Parms.InError = (struct FText)InError;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UEditableTextBox::OnEditableTextBoxCommittedEvent__DelegateSignature(const struct FText& Text, uint8_t CommitMethod)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("EditableTextBox", "OnEditableTextBoxCommittedEvent__DelegateSignature");
+    struct
+    {
+        struct FText Text;
+        uint8_t CommitMethod;
+    } Parms{};
+    Parms.Text = (struct FText)Text;
+    Parms.CommitMethod = (uint8_t)CommitMethod;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UEditableTextBox::OnEditableTextBoxChangedEvent__DelegateSignature(const struct FText& Text)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("EditableTextBox", "OnEditableTextBoxChangedEvent__DelegateSignature");
+    struct
+    {
+        struct FText Text;
+    } Parms{};
+    Parms.Text = (struct FText)Text;
+    this->ProcessEvent(Func, &Parms);
+}
+
+bool UEditableTextBox::JudgInFontLibrary()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("EditableTextBox", "JudgInFontLibrary");
+    struct
+    {
+        bool ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+bool UEditableTextBox::HasError()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("EditableTextBox", "HasError");
+    struct
+    {
+        bool ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct FText UEditableTextBox::GetText()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("EditableTextBox", "GetText");
+    struct
+    {
+        struct FText ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+void UEditableTextBox::ClearError()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("EditableTextBox", "ClearError");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+// UExpandableArea
+void UExpandableArea::SetIsExpanded_Animated(bool IsExpanded)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ExpandableArea", "SetIsExpanded_Animated");
+    struct
+    {
+        bool IsExpanded;
+    } Parms{};
+    Parms.IsExpanded = (bool)IsExpanded;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UExpandableArea::SetIsExpanded(bool IsExpanded)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ExpandableArea", "SetIsExpanded");
+    struct
+    {
+        bool IsExpanded;
+    } Parms{};
+    Parms.IsExpanded = (bool)IsExpanded;
+    this->ProcessEvent(Func, &Parms);
+}
+
+bool UExpandableArea::GetIsExpanded()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ExpandableArea", "GetIsExpanded");
+    struct
+    {
+        bool ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// UFloatBinding
+float UFloatBinding::GetValue()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("FloatBinding", "GetValue");
+    struct
+    {
+        float ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// UGridPanel
+void UGridPanel::SetRowFill(int32_t ColumnIndex, float Coefficient)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("GridPanel", "SetRowFill");
+    struct
+    {
+        int32_t ColumnIndex;
+        float Coefficient;
+    } Parms{};
+    Parms.ColumnIndex = (int32_t)ColumnIndex;
+    Parms.Coefficient = (float)Coefficient;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UGridPanel::SetColumnFill(int32_t ColumnIndex, float Coefficient)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("GridPanel", "SetColumnFill");
+    struct
+    {
+        int32_t ColumnIndex;
+        float Coefficient;
+    } Parms{};
+    Parms.ColumnIndex = (int32_t)ColumnIndex;
+    Parms.Coefficient = (float)Coefficient;
+    this->ProcessEvent(Func, &Parms);
+}
+
+struct UGridSlot* UGridPanel::AddChildToGrid(struct UWidget* Content, int32_t InRow, int32_t InColumn)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("GridPanel", "AddChildToGrid");
+    struct
+    {
+        struct UWidget* Content;
+        int32_t InRow;
+        int32_t InColumn;
+        struct UGridSlot* ReturnValue;
+    } Parms{};
+    Parms.Content = (struct UWidget*)Content;
+    Parms.InRow = (int32_t)InRow;
+    Parms.InColumn = (int32_t)InColumn;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// UGridSlot
+void UGridSlot::SetVerticalAlignment(uint8_t InVerticalAlignment)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("GridSlot", "SetVerticalAlignment");
+    struct
+    {
+        uint8_t InVerticalAlignment;
+    } Parms{};
+    Parms.InVerticalAlignment = (uint8_t)InVerticalAlignment;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UGridSlot::SetRowSpan(int32_t InRowSpan)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("GridSlot", "SetRowSpan");
+    struct
+    {
+        int32_t InRowSpan;
+    } Parms{};
+    Parms.InRowSpan = (int32_t)InRowSpan;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UGridSlot::SetRow(int32_t InRow)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("GridSlot", "SetRow");
+    struct
+    {
+        int32_t InRow;
+    } Parms{};
+    Parms.InRow = (int32_t)InRow;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UGridSlot::SetPadding(struct FMargin InPadding)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("GridSlot", "SetPadding");
+    struct
+    {
+        struct FMargin InPadding;
+    } Parms{};
+    Parms.InPadding = (struct FMargin)InPadding;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UGridSlot::SetNudge(struct FVector2D InNudge)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("GridSlot", "SetNudge");
+    struct
+    {
+        struct FVector2D InNudge;
+    } Parms{};
+    Parms.InNudge = (struct FVector2D)InNudge;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UGridSlot::SetLayer(int32_t InLayer)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("GridSlot", "SetLayer");
+    struct
+    {
+        int32_t InLayer;
+    } Parms{};
+    Parms.InLayer = (int32_t)InLayer;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UGridSlot::SetHorizontalAlignment(uint8_t InHorizontalAlignment)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("GridSlot", "SetHorizontalAlignment");
+    struct
+    {
+        uint8_t InHorizontalAlignment;
+    } Parms{};
+    Parms.InHorizontalAlignment = (uint8_t)InHorizontalAlignment;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UGridSlot::SetColumnSpan(int32_t InColumnSpan)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("GridSlot", "SetColumnSpan");
+    struct
+    {
+        int32_t InColumnSpan;
+    } Parms{};
+    Parms.InColumnSpan = (int32_t)InColumnSpan;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UGridSlot::SetColumn(int32_t InColumn)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("GridSlot", "SetColumn");
+    struct
+    {
+        int32_t InColumn;
+    } Parms{};
+    Parms.InColumn = (int32_t)InColumn;
+    this->ProcessEvent(Func, &Parms);
+}
+
+// UHorizontalBox
+struct UHorizontalBoxSlot* UHorizontalBox::AddChildToHorizontalBox(struct UWidget* Content)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("HorizontalBox", "AddChildToHorizontalBox");
+    struct
+    {
+        struct UWidget* Content;
+        struct UHorizontalBoxSlot* ReturnValue;
+    } Parms{};
+    Parms.Content = (struct UWidget*)Content;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// UHorizontalBoxSlot
+void UHorizontalBoxSlot::SetVerticalAlignment(uint8_t InVerticalAlignment)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("HorizontalBoxSlot", "SetVerticalAlignment");
+    struct
+    {
+        uint8_t InVerticalAlignment;
+    } Parms{};
+    Parms.InVerticalAlignment = (uint8_t)InVerticalAlignment;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UHorizontalBoxSlot::SetSize(struct FSlateChildSize InSize)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("HorizontalBoxSlot", "SetSize");
+    struct
+    {
+        struct FSlateChildSize InSize;
+    } Parms{};
+    Parms.InSize = (struct FSlateChildSize)InSize;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UHorizontalBoxSlot::SetPadding(struct FMargin InPadding)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("HorizontalBoxSlot", "SetPadding");
+    struct
+    {
+        struct FMargin InPadding;
+    } Parms{};
+    Parms.InPadding = (struct FMargin)InPadding;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UHorizontalBoxSlot::SetHorizontalAlignment(uint8_t InHorizontalAlignment)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("HorizontalBoxSlot", "SetHorizontalAlignment");
+    struct
+    {
+        uint8_t InHorizontalAlignment;
+    } Parms{};
+    Parms.InHorizontalAlignment = (uint8_t)InHorizontalAlignment;
+    this->ProcessEvent(Func, &Parms);
+}
+
+// UInputKeySelector
+void UInputKeySelector::SetTextBlockVisibility(ESlateVisibility InVisibility)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("InputKeySelector", "SetTextBlockVisibility");
+    struct
+    {
+        enum ESlateVisibility InVisibility;
+    } Parms{};
+    Parms.InVisibility = (enum ESlateVisibility)InVisibility;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UInputKeySelector::SetSelectedKey(const struct FInputChord& InSelectedKey)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("InputKeySelector", "SetSelectedKey");
+    struct
+    {
+        struct FInputChord InSelectedKey;
+    } Parms{};
+    Parms.InSelectedKey = (struct FInputChord)InSelectedKey;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UInputKeySelector::SetNoKeySpecifiedText(struct FText InNoKeySpecifiedText)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("InputKeySelector", "SetNoKeySpecifiedText");
+    struct
+    {
+        struct FText InNoKeySpecifiedText;
+    } Parms{};
+    Parms.InNoKeySpecifiedText = (struct FText)InNoKeySpecifiedText;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UInputKeySelector::SetKeySelectionText(struct FText InKeySelectionText)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("InputKeySelector", "SetKeySelectionText");
+    struct
+    {
+        struct FText InKeySelectionText;
+    } Parms{};
+    Parms.InKeySelectionText = (struct FText)InKeySelectionText;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UInputKeySelector::SetEscapeKeys(const struct TArray<struct FKey>& InKeys)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("InputKeySelector", "SetEscapeKeys");
+    struct
+    {
+        struct TArray<struct FKey> InKeys;
+    } Parms{};
+    Parms.InKeys = (struct TArray<struct FKey>)InKeys;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UInputKeySelector::SetAllowModifierKeys(bool bInAllowModifierKeys)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("InputKeySelector", "SetAllowModifierKeys");
+    struct
+    {
+        bool bInAllowModifierKeys;
+    } Parms{};
+    Parms.bInAllowModifierKeys = (bool)bInAllowModifierKeys;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UInputKeySelector::SetAllowGamepadKeys(bool bInAllowGamepadKeys)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("InputKeySelector", "SetAllowGamepadKeys");
+    struct
+    {
+        bool bInAllowGamepadKeys;
+    } Parms{};
+    Parms.bInAllowGamepadKeys = (bool)bInAllowGamepadKeys;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UInputKeySelector::OnKeySelected__DelegateSignature(struct FInputChord SelectedKey)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("InputKeySelector", "OnKeySelected__DelegateSignature");
+    struct
+    {
+        struct FInputChord SelectedKey;
+    } Parms{};
+    Parms.SelectedKey = (struct FInputChord)SelectedKey;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UInputKeySelector::OnIsSelectingKeyChanged__DelegateSignature()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("InputKeySelector", "OnIsSelectingKeyChanged__DelegateSignature");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+bool UInputKeySelector::GetIsSelectingKey()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("InputKeySelector", "GetIsSelectingKey");
+    struct
+    {
+        bool ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// UInt32Binding
+int32_t UInt32Binding::GetValue()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("Int32Binding", "GetValue");
+    struct
+    {
+        int32_t ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// UInvalidationBox
+void UInvalidationBox::SetCanCache(bool CanCache)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("InvalidationBox", "SetCanCache");
+    struct
+    {
+        bool CanCache;
+    } Parms{};
+    Parms.CanCache = (bool)CanCache;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UInvalidationBox::InvalidateCache()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("InvalidationBox", "InvalidateCache");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+bool UInvalidationBox::GetCanCache()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("InvalidationBox", "GetCanCache");
+    struct
+    {
+        bool ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// IUserListEntry
+void IUserListEntry::BP_OnItemSelectionChanged(bool bIsSelected)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("UserListEntry", "BP_OnItemSelectionChanged");
+    struct
+    {
+        bool bIsSelected;
+    } Parms{};
+    Parms.bIsSelected = (bool)bIsSelected;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void IUserListEntry::BP_OnItemExpansionChanged(bool bIsExpanded)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("UserListEntry", "BP_OnItemExpansionChanged");
+    struct
+    {
+        bool bIsExpanded;
+    } Parms{};
+    Parms.bIsExpanded = (bool)bIsExpanded;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void IUserListEntry::BP_OnEntryReleased()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("UserListEntry", "BP_OnEntryReleased");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+// UUserListEntryLibrary
+bool UUserListEntryLibrary::IsListItemSelected(struct TScriptInterface<IUserListEntry> UserListEntry)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("UserListEntryLibrary", "IsListItemSelected");
+    struct
+    {
+        struct TScriptInterface<IUserListEntry> UserListEntry;
+        bool ReturnValue;
+    } Parms{};
+    Parms.UserListEntry = (struct TScriptInterface<IUserListEntry>)UserListEntry;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+bool UUserListEntryLibrary::IsListItemExpanded(struct TScriptInterface<IUserListEntry> UserListEntry)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("UserListEntryLibrary", "IsListItemExpanded");
+    struct
+    {
+        struct TScriptInterface<IUserListEntry> UserListEntry;
+        bool ReturnValue;
+    } Parms{};
+    Parms.UserListEntry = (struct TScriptInterface<IUserListEntry>)UserListEntry;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct UListViewBase* UUserListEntryLibrary::GetOwningListView(struct TScriptInterface<IUserListEntry> UserListEntry)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("UserListEntryLibrary", "GetOwningListView");
+    struct
+    {
+        struct TScriptInterface<IUserListEntry> UserListEntry;
+        struct UListViewBase* ReturnValue;
+    } Parms{};
+    Parms.UserListEntry = (struct TScriptInterface<IUserListEntry>)UserListEntry;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// IUserObjectListEntry
+void IUserObjectListEntry::OnListItemObjectSet(struct UObject* ListItemObject)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("UserObjectListEntry", "OnListItemObjectSet");
+    struct
+    {
+        struct UObject* ListItemObject;
+    } Parms{};
+    Parms.ListItemObject = (struct UObject*)ListItemObject;
+    this->ProcessEvent(Func, &Parms);
+}
+
+// UUserObjectListEntryLibrary
+struct UObject* UUserObjectListEntryLibrary::GetListItemObject(struct TScriptInterface<IUserObjectListEntry> UserObjectListEntry)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = StaticClass()->GetFunction("UserObjectListEntryLibrary", "GetListItemObject");
+    struct
+    {
+        struct TScriptInterface<IUserObjectListEntry> UserObjectListEntry;
+        struct UObject* ReturnValue;
+    } Parms{};
+    Parms.UserObjectListEntry = (struct TScriptInterface<IUserObjectListEntry>)UserObjectListEntry;
+    GetDefaultObj()->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// UListItemData
+void UListItemData::SetIndex(const int32_t& idx)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ListItemData", "SetIndex");
+    struct
+    {
+        int32_t idx;
+    } Parms{};
+    Parms.idx = (int32_t)idx;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UListItemData::SetContent(const struct FText& Msg)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ListItemData", "SetContent");
+    struct
+    {
+        struct FText Msg;
+    } Parms{};
+    Parms.Msg = (struct FText)Msg;
+    this->ProcessEvent(Func, &Parms);
+}
+
+// UMenuAnchor
+void UMenuAnchor::ToggleOpen(bool bFocusOnOpen)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MenuAnchor", "ToggleOpen");
+    struct
+    {
+        bool bFocusOnOpen;
+    } Parms{};
+    Parms.bFocusOnOpen = (bool)bFocusOnOpen;
+    this->ProcessEvent(Func, &Parms);
+}
+
+bool UMenuAnchor::ShouldOpenDueToClick()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MenuAnchor", "ShouldOpenDueToClick");
+    struct
+    {
+        bool ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+void UMenuAnchor::SetPlacement(uint8_t InPlacement)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MenuAnchor", "SetPlacement");
+    struct
+    {
+        uint8_t InPlacement;
+    } Parms{};
+    Parms.InPlacement = (uint8_t)InPlacement;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UMenuAnchor::Open(bool bFocusMenu)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MenuAnchor", "Open");
+    struct
+    {
+        bool bFocusMenu;
+    } Parms{};
+    Parms.bFocusMenu = (bool)bFocusMenu;
+    this->ProcessEvent(Func, &Parms);
+}
+
+bool UMenuAnchor::IsOpen()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MenuAnchor", "IsOpen");
+    struct
+    {
+        bool ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+bool UMenuAnchor::HasOpenSubMenus()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MenuAnchor", "HasOpenSubMenus");
+    struct
+    {
+        bool ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct UUserWidget* UMenuAnchor::GetUserWidget__DelegateSignature()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MenuAnchor", "GetUserWidget__DelegateSignature");
+    struct
+    {
+        struct UUserWidget* ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct FVector2D UMenuAnchor::GetMenuPosition()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MenuAnchor", "GetMenuPosition");
+    struct
+    {
+        struct FVector2D ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+void UMenuAnchor::FitInWindow(bool bFit)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MenuAnchor", "FitInWindow");
+    struct
+    {
+        bool bFit;
+    } Parms{};
+    Parms.bFit = (bool)bFit;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UMenuAnchor::Close()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MenuAnchor", "Close");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+// UMouseCursorBinding
+uint8_t UMouseCursorBinding::GetValue()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MouseCursorBinding", "GetValue");
+    struct
+    {
+        uint8_t ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// UMultiLineEditableText
+void UMultiLineEditableText::SetWidgetStyle(const struct FTextBlockStyle& InWidgetStyle)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MultiLineEditableText", "SetWidgetStyle");
+    struct
+    {
+        struct FTextBlockStyle InWidgetStyle;
+    } Parms{};
+    Parms.InWidgetStyle = (struct FTextBlockStyle)InWidgetStyle;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UMultiLineEditableText::SetText(struct FText InText)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MultiLineEditableText", "SetText");
+    struct
+    {
+        struct FText InText;
+    } Parms{};
+    Parms.InText = (struct FText)InText;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UMultiLineEditableText::SetIsReadOnly(bool bReadOnly)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MultiLineEditableText", "SetIsReadOnly");
+    struct
+    {
+        bool bReadOnly;
+    } Parms{};
+    Parms.bReadOnly = (bool)bReadOnly;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UMultiLineEditableText::SetHintText(struct FText InHintText)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MultiLineEditableText", "SetHintText");
+    struct
+    {
+        struct FText InHintText;
+    } Parms{};
+    Parms.InHintText = (struct FText)InHintText;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UMultiLineEditableText::OnMultiLineEditableTextCommittedEvent__DelegateSignature(const struct FText& Text, uint8_t CommitMethod)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MultiLineEditableText", "OnMultiLineEditableTextCommittedEvent__DelegateSignature");
+    struct
+    {
+        struct FText Text;
+        uint8_t CommitMethod;
+    } Parms{};
+    Parms.Text = (struct FText)Text;
+    Parms.CommitMethod = (uint8_t)CommitMethod;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UMultiLineEditableText::OnMultiLineEditableTextChangedEvent__DelegateSignature(const struct FText& Text)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MultiLineEditableText", "OnMultiLineEditableTextChangedEvent__DelegateSignature");
+    struct
+    {
+        struct FText Text;
+    } Parms{};
+    Parms.Text = (struct FText)Text;
+    this->ProcessEvent(Func, &Parms);
+}
+
+bool UMultiLineEditableText::JudgInFontLibraryBaseInput(struct FString InputText)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MultiLineEditableText", "JudgInFontLibraryBaseInput");
+    struct
+    {
+        struct FString InputText;
+        bool ReturnValue;
+    } Parms{};
+    Parms.InputText = (struct FString)InputText;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+bool UMultiLineEditableText::JudgInFontLibrary()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MultiLineEditableText", "JudgInFontLibrary");
+    struct
+    {
+        bool ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct FText UMultiLineEditableText::GetText()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MultiLineEditableText", "GetText");
+    struct
+    {
+        struct FText ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct FText UMultiLineEditableText::GetHintText()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MultiLineEditableText", "GetHintText");
+    struct
+    {
+        struct FText ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// UMultiLineEditableTextBox
+void UMultiLineEditableTextBox::SetTextStyle(const struct FTextBlockStyle& InTextStyle)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MultiLineEditableTextBox", "SetTextStyle");
+    struct
+    {
+        struct FTextBlockStyle InTextStyle;
+    } Parms{};
+    Parms.InTextStyle = (struct FTextBlockStyle)InTextStyle;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UMultiLineEditableTextBox::SetText(struct FText InText)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MultiLineEditableTextBox", "SetText");
+    struct
+    {
+        struct FText InText;
+    } Parms{};
+    Parms.InText = (struct FText)InText;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UMultiLineEditableTextBox::SetIsReadOnly(bool bReadOnly)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MultiLineEditableTextBox", "SetIsReadOnly");
+    struct
+    {
+        bool bReadOnly;
+    } Parms{};
+    Parms.bReadOnly = (bool)bReadOnly;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UMultiLineEditableTextBox::SetHintText(struct FText InHintText)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MultiLineEditableTextBox", "SetHintText");
+    struct
+    {
+        struct FText InHintText;
+    } Parms{};
+    Parms.InHintText = (struct FText)InHintText;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UMultiLineEditableTextBox::SetError(struct FText InError)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MultiLineEditableTextBox", "SetError");
+    struct
+    {
+        struct FText InError;
+    } Parms{};
+    Parms.InError = (struct FText)InError;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UMultiLineEditableTextBox::OnMultiLineEditableTextBoxCommittedEvent__DelegateSignature(const struct FText& Text, uint8_t CommitMethod)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MultiLineEditableTextBox", "OnMultiLineEditableTextBoxCommittedEvent__DelegateSignature");
+    struct
+    {
+        struct FText Text;
+        uint8_t CommitMethod;
+    } Parms{};
+    Parms.Text = (struct FText)Text;
+    Parms.CommitMethod = (uint8_t)CommitMethod;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UMultiLineEditableTextBox::OnMultiLineEditableTextBoxChangedEvent__DelegateSignature(const struct FText& Text)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MultiLineEditableTextBox", "OnMultiLineEditableTextBoxChangedEvent__DelegateSignature");
+    struct
+    {
+        struct FText Text;
+    } Parms{};
+    Parms.Text = (struct FText)Text;
+    this->ProcessEvent(Func, &Parms);
+}
+
+bool UMultiLineEditableTextBox::JudgInFontLibrary()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MultiLineEditableTextBox", "JudgInFontLibrary");
+    struct
+    {
+        bool ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct FText UMultiLineEditableTextBox::GetText()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MultiLineEditableTextBox", "GetText");
+    struct
+    {
+        struct FText ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct FText UMultiLineEditableTextBox::GetHintText()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MultiLineEditableTextBox", "GetHintText");
+    struct
+    {
+        struct FText ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// UProgressBar
+void UProgressBar::SetPercent(float InPercent)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ProgressBar", "SetPercent");
+    struct
+    {
+        float InPercent;
+    } Parms{};
+    Parms.InPercent = (float)InPercent;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UProgressBar::SetIsMarquee(bool InbIsMarquee)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ProgressBar", "SetIsMarquee");
+    struct
+    {
+        bool InbIsMarquee;
+    } Parms{};
+    Parms.InbIsMarquee = (bool)InbIsMarquee;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UProgressBar::SetFillColorAndOpacity(struct FLinearColor InColor)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ProgressBar", "SetFillColorAndOpacity");
+    struct
+    {
+        struct FLinearColor InColor;
+    } Parms{};
+    Parms.InColor = (struct FLinearColor)InColor;
+    this->ProcessEvent(Func, &Parms);
+}
+
+// URetainerBox
+void URetainerBox::SetTextureParameter(struct FName TextureParameter)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("RetainerBox", "SetTextureParameter");
+    struct
+    {
+        struct FName TextureParameter;
+    } Parms{};
+    Parms.TextureParameter = (struct FName)TextureParameter;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void URetainerBox::SetRetainRendering(bool bInRetainRendering)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("RetainerBox", "SetRetainRendering");
+    struct
+    {
+        bool bInRetainRendering;
+    } Parms{};
+    Parms.bInRetainRendering = (bool)bInRetainRendering;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void URetainerBox::SetRenderingPhase(int32_t RenderPhase, int32_t TotalPhases)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("RetainerBox", "SetRenderingPhase");
+    struct
+    {
+        int32_t RenderPhase;
+        int32_t TotalPhases;
+    } Parms{};
+    Parms.RenderPhase = (int32_t)RenderPhase;
+    Parms.TotalPhases = (int32_t)TotalPhases;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void URetainerBox::SetEffectMaterial(struct UMaterialInterface* EffectMaterial)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("RetainerBox", "SetEffectMaterial");
+    struct
+    {
+        struct UMaterialInterface* EffectMaterial;
+    } Parms{};
+    Parms.EffectMaterial = (struct UMaterialInterface*)EffectMaterial;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void URetainerBox::RequestRender()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("RetainerBox", "RequestRender");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+struct UMaterialInstanceDynamic* URetainerBox::GetEffectMaterial()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("RetainerBox", "GetEffectMaterial");
+    struct
+    {
+        struct UMaterialInstanceDynamic* ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// USafeZone
+void USafeZone::SetSidesToPad(bool InPadLeft, bool InPadRight, bool InPadTop, bool InPadBottom)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("SafeZone", "SetSidesToPad");
+    struct
+    {
+        bool InPadLeft;
+        bool InPadRight;
+        bool InPadTop;
+        bool InPadBottom;
+    } Parms{};
+    Parms.InPadLeft = (bool)InPadLeft;
+    Parms.InPadRight = (bool)InPadRight;
+    Parms.InPadTop = (bool)InPadTop;
+    Parms.InPadBottom = (bool)InPadBottom;
+    this->ProcessEvent(Func, &Parms);
+}
+
+// UScaleBox
+void UScaleBox::SetUserSpecifiedScale(float InUserSpecifiedScale)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ScaleBox", "SetUserSpecifiedScale");
+    struct
+    {
+        float InUserSpecifiedScale;
+    } Parms{};
+    Parms.InUserSpecifiedScale = (float)InUserSpecifiedScale;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UScaleBox::SetStretchDirection(uint8_t InStretchDirection)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ScaleBox", "SetStretchDirection");
+    struct
+    {
+        uint8_t InStretchDirection;
+    } Parms{};
+    Parms.InStretchDirection = (uint8_t)InStretchDirection;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UScaleBox::SetStretch(uint8_t InStretch)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ScaleBox", "SetStretch");
+    struct
+    {
+        uint8_t InStretch;
+    } Parms{};
+    Parms.InStretch = (uint8_t)InStretch;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UScaleBox::SetIgnoreInheritedScale(bool bInIgnoreInheritedScale)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ScaleBox", "SetIgnoreInheritedScale");
+    struct
+    {
+        bool bInIgnoreInheritedScale;
+    } Parms{};
+    Parms.bInIgnoreInheritedScale = (bool)bInIgnoreInheritedScale;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UScaleBox::SetAssumePaintSizeUse(uint8_t InType)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ScaleBox", "SetAssumePaintSizeUse");
+    struct
+    {
+        uint8_t InType;
+    } Parms{};
+    Parms.InType = (uint8_t)InType;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UScaleBox::SetAssumePaintSize(struct FVector2D Size)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ScaleBox", "SetAssumePaintSize");
+    struct
+    {
+        struct FVector2D Size;
+    } Parms{};
+    Parms.Size = (struct FVector2D)Size;
+    this->ProcessEvent(Func, &Parms);
+}
+
+// UScaleBoxSlot
+void UScaleBoxSlot::SetVerticalAlignment(uint8_t InVerticalAlignment)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ScaleBoxSlot", "SetVerticalAlignment");
+    struct
+    {
+        uint8_t InVerticalAlignment;
+    } Parms{};
+    Parms.InVerticalAlignment = (uint8_t)InVerticalAlignment;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UScaleBoxSlot::SetPadding(struct FMargin InPadding)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ScaleBoxSlot", "SetPadding");
+    struct
+    {
+        struct FMargin InPadding;
+    } Parms{};
+    Parms.InPadding = (struct FMargin)InPadding;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UScaleBoxSlot::SetHorizontalAlignment(uint8_t InHorizontalAlignment)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ScaleBoxSlot", "SetHorizontalAlignment");
+    struct
+    {
+        uint8_t InHorizontalAlignment;
+    } Parms{};
+    Parms.InHorizontalAlignment = (uint8_t)InHorizontalAlignment;
+    this->ProcessEvent(Func, &Parms);
+}
+
+// UScrollBar
+void UScrollBar::SetState(float InOffsetFraction, float InThumbSizeFraction)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ScrollBar", "SetState");
+    struct
+    {
+        float InOffsetFraction;
+        float InThumbSizeFraction;
+    } Parms{};
+    Parms.InOffsetFraction = (float)InOffsetFraction;
+    Parms.InThumbSizeFraction = (float)InThumbSizeFraction;
+    this->ProcessEvent(Func, &Parms);
+}
+
+// UScrollBoxSlot
+void UScrollBoxSlot::SetVerticalAlignment(uint8_t InVerticalAlignment)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ScrollBoxSlot", "SetVerticalAlignment");
+    struct
+    {
+        uint8_t InVerticalAlignment;
+    } Parms{};
+    Parms.InVerticalAlignment = (uint8_t)InVerticalAlignment;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UScrollBoxSlot::SetPadding(struct FMargin InPadding)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ScrollBoxSlot", "SetPadding");
+    struct
+    {
+        struct FMargin InPadding;
+    } Parms{};
+    Parms.InPadding = (struct FMargin)InPadding;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UScrollBoxSlot::SetHorizontalAlignment(uint8_t InHorizontalAlignment)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("ScrollBoxSlot", "SetHorizontalAlignment");
+    struct
+    {
+        uint8_t InHorizontalAlignment;
+    } Parms{};
+    Parms.InHorizontalAlignment = (uint8_t)InHorizontalAlignment;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -3946,4303 +7344,16 @@ void USizeBox::ClearHeightOverride()
     this->ProcessEvent(Func, &Parms);
 }
 
-// UWidgetBlueprintGeneratedClass
-void UWidgetBlueprintGeneratedClass::UnloadWidgetTree(uint8_t bSetPackageReload)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetBlueprintGeneratedClass", "UnloadWidgetTree");
-    struct
-    {
-        uint8_t bSetPackageReload;
-    } Parms{};
-    Parms.bSetPackageReload = (uint8_t)bSetPackageReload;
-    this->ProcessEvent(Func, &Parms);
-}
-
-// UCanvasPanel
-void UCanvasPanel::ReleaseCacheSlateWidget()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanel", "ReleaseCacheSlateWidget");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-struct UCanvasPanelSlot* UCanvasPanel::AddChildToCanvas(struct UWidget* Content)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanel", "AddChildToCanvas");
-    struct
-    {
-        struct UWidget* Content;
-        struct UCanvasPanelSlot* ReturnValue;
-    } Parms{};
-    Parms.Content = (struct UWidget*)Content;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-// UButton
-void UButton::SetTouchMethod(EButtonTouchMethod InTouchMethod)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Button", "SetTouchMethod");
-    struct
-    {
-        enum EButtonTouchMethod InTouchMethod;
-    } Parms{};
-    Parms.InTouchMethod = (enum EButtonTouchMethod)InTouchMethod;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UButton::SetStyle(const struct FButtonStyle& InStyle)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Button", "SetStyle");
-    struct
-    {
-        struct FButtonStyle InStyle;
-    } Parms{};
-    Parms.InStyle = (struct FButtonStyle)InStyle;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UButton::SetPressMethod(EButtonPressMethod InPressMethod)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Button", "SetPressMethod");
-    struct
-    {
-        enum EButtonPressMethod InPressMethod;
-    } Parms{};
-    Parms.InPressMethod = (enum EButtonPressMethod)InPressMethod;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UButton::SetColorAndOpacity(struct FLinearColor InColorAndOpacity)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Button", "SetColorAndOpacity");
-    struct
-    {
-        struct FLinearColor InColorAndOpacity;
-    } Parms{};
-    Parms.InColorAndOpacity = (struct FLinearColor)InColorAndOpacity;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UButton::SetClickMethod(EButtonClickMethod InClickMethod)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Button", "SetClickMethod");
-    struct
-    {
-        enum EButtonClickMethod InClickMethod;
-    } Parms{};
-    Parms.InClickMethod = (enum EButtonClickMethod)InClickMethod;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UButton::SetBackgroundColor(struct FLinearColor InBackgroundColor)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Button", "SetBackgroundColor");
-    struct
-    {
-        struct FLinearColor InBackgroundColor;
-    } Parms{};
-    Parms.InBackgroundColor = (struct FLinearColor)InBackgroundColor;
-    this->ProcessEvent(Func, &Parms);
-}
-
-uint8_t UButton::IsPressed()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Button", "IsPressed");
-    struct
-    {
-        uint8_t ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-// UBackgroundBlur
-void UBackgroundBlur::SetVerticalAlignment(EVerticalAlignment InVerticalAlignment)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BackgroundBlur", "SetVerticalAlignment");
-    struct
-    {
-        enum EVerticalAlignment InVerticalAlignment;
-    } Parms{};
-    Parms.InVerticalAlignment = (enum EVerticalAlignment)InVerticalAlignment;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UBackgroundBlur::SetSimulate3DUIParams(struct FVector4 InSimulate3DUIParams)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BackgroundBlur", "SetSimulate3DUIParams");
-    struct
-    {
-        struct FVector4 InSimulate3DUIParams;
-    } Parms{};
-    Parms.InSimulate3DUIParams = (struct FVector4)InSimulate3DUIParams;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UBackgroundBlur::SetPadding(struct FMargin InPadding)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BackgroundBlur", "SetPadding");
-    struct
-    {
-        struct FMargin InPadding;
-    } Parms{};
-    Parms.InPadding = (struct FMargin)InPadding;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UBackgroundBlur::SetLowQualityFallbackBrush(const struct FSlateBrush& InBrush)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BackgroundBlur", "SetLowQualityFallbackBrush");
-    struct
-    {
-        struct FSlateBrush InBrush;
-    } Parms{};
-    Parms.InBrush = (struct FSlateBrush)InBrush;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UBackgroundBlur::SetHorizontalAlignment(EHorizontalAlignment InHorizontalAlignment)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BackgroundBlur", "SetHorizontalAlignment");
-    struct
-    {
-        enum EHorizontalAlignment InHorizontalAlignment;
-    } Parms{};
-    Parms.InHorizontalAlignment = (enum EHorizontalAlignment)InHorizontalAlignment;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UBackgroundBlur::SetFake3DBlurType(EFake3DBlurType InFake3DBlurType)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BackgroundBlur", "SetFake3DBlurType");
-    struct
-    {
-        enum EFake3DBlurType InFake3DBlurType;
-    } Parms{};
-    Parms.InFake3DBlurType = (enum EFake3DBlurType)InFake3DBlurType;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UBackgroundBlur::SetFake3DBlur(uint8_t bEnable)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BackgroundBlur", "SetFake3DBlur");
-    struct
-    {
-        uint8_t bEnable;
-    } Parms{};
-    Parms.bEnable = (uint8_t)bEnable;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UBackgroundBlur::SetBlurStrength(float InStrength)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BackgroundBlur", "SetBlurStrength");
-    struct
-    {
-        float InStrength;
-    } Parms{};
-    Parms.InStrength = (float)InStrength;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UBackgroundBlur::SetBlurShapeMaskBrush(const struct FSlateBrush& InBrush)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BackgroundBlur", "SetBlurShapeMaskBrush");
-    struct
-    {
-        struct FSlateBrush InBrush;
-    } Parms{};
-    Parms.InBrush = (struct FSlateBrush)InBrush;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UBackgroundBlur::SetBlurRadius(int32_t InBlurRadius)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BackgroundBlur", "SetBlurRadius");
-    struct
-    {
-        int32_t InBlurRadius;
-    } Parms{};
-    Parms.InBlurRadius = (int32_t)InBlurRadius;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UBackgroundBlur::SetApplyBlurShapeMask(uint8_t bInApplyBlurShapeMask)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BackgroundBlur", "SetApplyBlurShapeMask");
-    struct
-    {
-        uint8_t bInApplyBlurShapeMask;
-    } Parms{};
-    Parms.bInApplyBlurShapeMask = (uint8_t)bInApplyBlurShapeMask;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UBackgroundBlur::SetApplyAlphaToBlur(uint8_t bInApplyAlphaToBlur)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BackgroundBlur", "SetApplyAlphaToBlur");
-    struct
-    {
-        uint8_t bInApplyAlphaToBlur;
-    } Parms{};
-    Parms.bInApplyAlphaToBlur = (uint8_t)bInApplyAlphaToBlur;
-    this->ProcessEvent(Func, &Parms);
-}
-
-// UCheckbox
-void UCheckbox::SetIsChecked(uint8_t InIsChecked)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Checkbox", "SetIsChecked");
-    struct
-    {
-        uint8_t InIsChecked;
-    } Parms{};
-    Parms.InIsChecked = (uint8_t)InIsChecked;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UCheckbox::SetCheckedState(ECheckBoxState InCheckedState)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Checkbox", "SetCheckedState");
-    struct
-    {
-        enum ECheckBoxState InCheckedState;
-    } Parms{};
-    Parms.InCheckedState = (enum ECheckBoxState)InCheckedState;
-    this->ProcessEvent(Func, &Parms);
-}
-
-uint8_t UCheckbox::IsPressed()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Checkbox", "IsPressed");
-    struct
-    {
-        uint8_t ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-uint8_t UCheckbox::IsChecked()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Checkbox", "IsChecked");
-    struct
-    {
-        uint8_t ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-ECheckBoxState UCheckbox::GetCheckedState()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Checkbox", "GetCheckedState");
-    struct
-    {
-        enum ECheckBoxState ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-// UComboBoxString
-void UComboBoxString::SetSelectedOption(struct FString Option)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ComboBoxString", "SetSelectedOption");
-    struct
-    {
-        struct FString Option;
-    } Parms{};
-    Parms.Option = (struct FString)Option;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UComboBoxString::SetSelectedIndex(int32_t Index)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ComboBoxString", "SetSelectedIndex");
-    struct
-    {
-        int32_t Index;
-    } Parms{};
-    Parms.Index = (int32_t)Index;
-    this->ProcessEvent(Func, &Parms);
-}
-
-uint8_t UComboBoxString::RemoveOption(struct FString Option)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ComboBoxString", "RemoveOption");
-    struct
-    {
-        struct FString Option;
-        uint8_t ReturnValue;
-    } Parms{};
-    Parms.Option = (struct FString)Option;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-void UComboBoxString::RefreshOptions()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ComboBoxString", "RefreshOptions");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UComboBoxString::OnSelectionChangedEvent__DelegateSignature(struct FString SelectedItem, ESelectInfo SelectionType)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ComboBoxString", "OnSelectionChangedEvent__DelegateSignature");
-    struct
-    {
-        struct FString SelectedItem;
-        enum ESelectInfo SelectionType;
-    } Parms{};
-    Parms.SelectedItem = (struct FString)SelectedItem;
-    Parms.SelectionType = (enum ESelectInfo)SelectionType;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UComboBoxString::OnOpeningEvent__DelegateSignature()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ComboBoxString", "OnOpeningEvent__DelegateSignature");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-uint8_t UComboBoxString::IsOpen()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ComboBoxString", "IsOpen");
-    struct
-    {
-        uint8_t ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct FString UComboBoxString::GetSelectedOption()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ComboBoxString", "GetSelectedOption");
-    struct
-    {
-        struct FString ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-int32_t UComboBoxString::GetSelectedIndex()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ComboBoxString", "GetSelectedIndex");
-    struct
-    {
-        int32_t ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-int32_t UComboBoxString::GetOptionCount()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ComboBoxString", "GetOptionCount");
-    struct
-    {
-        int32_t ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct FString UComboBoxString::GetOptionAtIndex(int32_t Index)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ComboBoxString", "GetOptionAtIndex");
-    struct
-    {
-        int32_t Index;
-        struct FString ReturnValue;
-    } Parms{};
-    Parms.Index = (int32_t)Index;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-int32_t UComboBoxString::FindOptionIndex(struct FString Option)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ComboBoxString", "FindOptionIndex");
-    struct
-    {
-        struct FString Option;
-        int32_t ReturnValue;
-    } Parms{};
-    Parms.Option = (struct FString)Option;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-void UComboBoxString::ClearSelection()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ComboBoxString", "ClearSelection");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UComboBoxString::ClearOptions()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ComboBoxString", "ClearOptions");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UComboBoxString::AddOption(struct FString Option)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ComboBoxString", "AddOption");
-    struct
-    {
-        struct FString Option;
-    } Parms{};
-    Parms.Option = (struct FString)Option;
-    this->ProcessEvent(Func, &Parms);
-}
-
-// UListViewBase
-void UListViewBase::SetWheelScrollMultiplier(float NewWheelScrollMultiplier)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ListViewBase", "SetWheelScrollMultiplier");
-    struct
-    {
-        float NewWheelScrollMultiplier;
-    } Parms{};
-    Parms.NewWheelScrollMultiplier = (float)NewWheelScrollMultiplier;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UListViewBase::SetScrollOffset(float InScrollOffset)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ListViewBase", "SetScrollOffset");
-    struct
-    {
-        float InScrollOffset;
-    } Parms{};
-    Parms.InScrollOffset = (float)InScrollOffset;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UListViewBase::SetScrollBarVisibility(ESlateVisibility InVisibility)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ListViewBase", "SetScrollBarVisibility");
-    struct
-    {
-        enum ESlateVisibility InVisibility;
-    } Parms{};
-    Parms.InVisibility = (enum ESlateVisibility)InVisibility;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UListViewBase::ScrollToTop()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ListViewBase", "ScrollToTop");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UListViewBase::ScrollToBottom()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ListViewBase", "ScrollToBottom");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UListViewBase::RequestRefresh()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ListViewBase", "RequestRefresh");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UListViewBase::RegenerateAllEntries()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ListViewBase", "RegenerateAllEntries");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-struct TArray<struct UUserWidget*> UListViewBase::GetDisplayedEntryWidgets()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ListViewBase", "GetDisplayedEntryWidgets");
-    struct
-    {
-        struct TArray<struct UUserWidget*> ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-// UListView
-void UListView::SetSelectionMode(ESelectionMode SelectionMode)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ListView", "SetSelectionMode");
-    struct
-    {
-        enum ESelectionMode SelectionMode;
-    } Parms{};
-    Parms.SelectionMode = (enum ESelectionMode)SelectionMode;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UListView::SetSelectedIndex(int32_t Index)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ListView", "SetSelectedIndex");
-    struct
-    {
-        int32_t Index;
-    } Parms{};
-    Parms.Index = (int32_t)Index;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UListView::ScrollIndexIntoView(int32_t Index)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ListView", "ScrollIndexIntoView");
-    struct
-    {
-        int32_t Index;
-    } Parms{};
-    Parms.Index = (int32_t)Index;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UListView::RemoveItem(struct UObject* Item)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ListView", "RemoveItem");
-    struct
-    {
-        struct UObject* Item;
-    } Parms{};
-    Parms.Item = (struct UObject*)Item;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UListView::NavigateToIndex(int32_t Index)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ListView", "NavigateToIndex");
-    struct
-    {
-        int32_t Index;
-    } Parms{};
-    Parms.Index = (int32_t)Index;
-    this->ProcessEvent(Func, &Parms);
-}
-
-uint8_t UListView::IsRefreshPending()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ListView", "IsRefreshPending");
-    struct
-    {
-        uint8_t ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-int32_t UListView::GetNumItems()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ListView", "GetNumItems");
-    struct
-    {
-        int32_t ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct TArray<struct UObject*> UListView::GetListItems()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ListView", "GetListItems");
-    struct
-    {
-        struct TArray<struct UObject*> ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct UObject* UListView::GetItemAt(int32_t Index)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ListView", "GetItemAt");
-    struct
-    {
-        int32_t Index;
-        struct UObject* ReturnValue;
-    } Parms{};
-    Parms.Index = (int32_t)Index;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-int32_t UListView::GetIndexForItem(struct UObject* Item)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ListView", "GetIndexForItem");
-    struct
-    {
-        struct UObject* Item;
-        int32_t ReturnValue;
-    } Parms{};
-    Parms.Item = (struct UObject*)Item;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-void UListView::ClearListItems()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ListView", "ClearListItems");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UListView::BP_SetSelectedItem(struct UObject* Item)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ListView", "BP_SetSelectedItem");
-    struct
-    {
-        struct UObject* Item;
-    } Parms{};
-    Parms.Item = (struct UObject*)Item;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UListView::BP_SetListItems(const struct TArray<struct UObject*>& InListItems)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ListView", "BP_SetListItems");
-    struct
-    {
-        struct TArray<struct UObject*> InListItems;
-    } Parms{};
-    Parms.InListItems = (struct TArray<struct UObject*>)InListItems;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UListView::BP_SetItemSelection(struct UObject* Item, uint8_t bSelected)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ListView", "BP_SetItemSelection");
-    struct
-    {
-        struct UObject* Item;
-        uint8_t bSelected;
-    } Parms{};
-    Parms.Item = (struct UObject*)Item;
-    Parms.bSelected = (uint8_t)bSelected;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UListView::BP_ScrollItemIntoView(struct UObject* Item)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ListView", "BP_ScrollItemIntoView");
-    struct
-    {
-        struct UObject* Item;
-    } Parms{};
-    Parms.Item = (struct UObject*)Item;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UListView::BP_NavigateToItem(struct UObject* Item)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ListView", "BP_NavigateToItem");
-    struct
-    {
-        struct UObject* Item;
-    } Parms{};
-    Parms.Item = (struct UObject*)Item;
-    this->ProcessEvent(Func, &Parms);
-}
-
-uint8_t UListView::BP_IsItemVisible(struct UObject* Item)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ListView", "BP_IsItemVisible");
-    struct
-    {
-        struct UObject* Item;
-        uint8_t ReturnValue;
-    } Parms{};
-    Parms.Item = (struct UObject*)Item;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-uint8_t UListView::BP_GetSelectedItems(struct TArray<struct UObject*>& Items)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ListView", "BP_GetSelectedItems");
-    struct
-    {
-        struct TArray<struct UObject*> Items;
-        uint8_t ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    Items = Parms.Items;
-    return Parms.ReturnValue;
-}
-
-struct UObject* UListView::BP_GetSelectedItem()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ListView", "BP_GetSelectedItem");
-    struct
-    {
-        struct UObject* ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-int32_t UListView::BP_GetNumItemsSelected()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ListView", "BP_GetNumItemsSelected");
-    struct
-    {
-        int32_t ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-void UListView::BP_ClearSelection()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ListView", "BP_ClearSelection");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UListView::BP_CancelScrollIntoView()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ListView", "BP_CancelScrollIntoView");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UListView::AddItem(struct UObject* Item)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ListView", "AddItem");
-    struct
-    {
-        struct UObject* Item;
-    } Parms{};
-    Parms.Item = (struct UObject*)Item;
-    this->ProcessEvent(Func, &Parms);
-}
-
-// UEditableText
-void UEditableText::SetText(struct FText InText)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("EditableText", "SetText");
-    struct
-    {
-        struct FText InText;
-    } Parms{};
-    Parms.InText = (struct FText)InText;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UEditableText::SetJustification(ETextJustify InJustification)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("EditableText", "SetJustification");
-    struct
-    {
-        enum ETextJustify InJustification;
-    } Parms{};
-    Parms.InJustification = (enum ETextJustify)InJustification;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UEditableText::SetIsReadOnly(uint8_t InbIsReadyOnly)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("EditableText", "SetIsReadOnly");
-    struct
-    {
-        uint8_t InbIsReadyOnly;
-    } Parms{};
-    Parms.InbIsReadyOnly = (uint8_t)InbIsReadyOnly;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UEditableText::SetIsPassword(uint8_t InbIsPassword)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("EditableText", "SetIsPassword");
-    struct
-    {
-        uint8_t InbIsPassword;
-    } Parms{};
-    Parms.InbIsPassword = (uint8_t)InbIsPassword;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UEditableText::SetHintText(struct FText InHintText)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("EditableText", "SetHintText");
-    struct
-    {
-        struct FText InHintText;
-    } Parms{};
-    Parms.InHintText = (struct FText)InHintText;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UEditableText::SetCustomTextFlowPolicy(ECustomTextFlowPolicy InCustomTextFlowPolicy)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("EditableText", "SetCustomTextFlowPolicy");
-    struct
-    {
-        enum ECustomTextFlowPolicy InCustomTextFlowPolicy;
-    } Parms{};
-    Parms.InCustomTextFlowPolicy = (enum ECustomTextFlowPolicy)InCustomTextFlowPolicy;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UEditableText::OnEditableTextCommittedEvent__DelegateSignature(const struct FText& Text, ETextCommit CommitMethod)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("EditableText", "OnEditableTextCommittedEvent__DelegateSignature");
-    struct
-    {
-        struct FText Text;
-        enum ETextCommit CommitMethod;
-    } Parms{};
-    Parms.Text = (struct FText)Text;
-    Parms.CommitMethod = (enum ETextCommit)CommitMethod;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UEditableText::OnEditableTextChangedEvent__DelegateSignature(const struct FText& Text)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("EditableText", "OnEditableTextChangedEvent__DelegateSignature");
-    struct
-    {
-        struct FText Text;
-    } Parms{};
-    Parms.Text = (struct FText)Text;
-    this->ProcessEvent(Func, &Parms);
-}
-
-struct FText UEditableText::GetText()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("EditableText", "GetText");
-    struct
-    {
-        struct FText ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-// UEditableTextBox
-void UEditableTextBox::SetText(struct FText InText)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("EditableTextBox", "SetText");
-    struct
-    {
-        struct FText InText;
-    } Parms{};
-    Parms.InText = (struct FText)InText;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UEditableTextBox::SetJustification(ETextJustify InJustification)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("EditableTextBox", "SetJustification");
-    struct
-    {
-        enum ETextJustify InJustification;
-    } Parms{};
-    Parms.InJustification = (enum ETextJustify)InJustification;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UEditableTextBox::SetIsReadOnly(uint8_t bReadOnly)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("EditableTextBox", "SetIsReadOnly");
-    struct
-    {
-        uint8_t bReadOnly;
-    } Parms{};
-    Parms.bReadOnly = (uint8_t)bReadOnly;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UEditableTextBox::SetIsPassword(uint8_t bIsPassword)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("EditableTextBox", "SetIsPassword");
-    struct
-    {
-        uint8_t bIsPassword;
-    } Parms{};
-    Parms.bIsPassword = (uint8_t)bIsPassword;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UEditableTextBox::SetHintText(struct FText InText)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("EditableTextBox", "SetHintText");
-    struct
-    {
-        struct FText InText;
-    } Parms{};
-    Parms.InText = (struct FText)InText;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UEditableTextBox::SetError(struct FText InError)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("EditableTextBox", "SetError");
-    struct
-    {
-        struct FText InError;
-    } Parms{};
-    Parms.InError = (struct FText)InError;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UEditableTextBox::SetCustomTextFlowPolicy(ECustomTextFlowPolicy InCustomTextFlowPolicy)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("EditableTextBox", "SetCustomTextFlowPolicy");
-    struct
-    {
-        enum ECustomTextFlowPolicy InCustomTextFlowPolicy;
-    } Parms{};
-    Parms.InCustomTextFlowPolicy = (enum ECustomTextFlowPolicy)InCustomTextFlowPolicy;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UEditableTextBox::OnEditableTextBoxCommittedEvent__DelegateSignature(const struct FText& Text, ETextCommit CommitMethod)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("EditableTextBox", "OnEditableTextBoxCommittedEvent__DelegateSignature");
-    struct
-    {
-        struct FText Text;
-        enum ETextCommit CommitMethod;
-    } Parms{};
-    Parms.Text = (struct FText)Text;
-    Parms.CommitMethod = (enum ETextCommit)CommitMethod;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UEditableTextBox::OnEditableTextBoxChangedEvent__DelegateSignature(const struct FText& Text)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("EditableTextBox", "OnEditableTextBoxChangedEvent__DelegateSignature");
-    struct
-    {
-        struct FText Text;
-    } Parms{};
-    Parms.Text = (struct FText)Text;
-    this->ProcessEvent(Func, &Parms);
-}
-
-uint8_t UEditableTextBox::HasError()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("EditableTextBox", "HasError");
-    struct
-    {
-        uint8_t ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct FText UEditableTextBox::GetText()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("EditableTextBox", "GetText");
-    struct
-    {
-        struct FText ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-void UEditableTextBox::ClearError()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("EditableTextBox", "ClearError");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-// UExpandableArea
-void UExpandableArea::SetIsExpanded_Animated(uint8_t IsExpanded)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ExpandableArea", "SetIsExpanded_Animated");
-    struct
-    {
-        uint8_t IsExpanded;
-    } Parms{};
-    Parms.IsExpanded = (uint8_t)IsExpanded;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UExpandableArea::SetIsExpanded(uint8_t IsExpanded)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ExpandableArea", "SetIsExpanded");
-    struct
-    {
-        uint8_t IsExpanded;
-    } Parms{};
-    Parms.IsExpanded = (uint8_t)IsExpanded;
-    this->ProcessEvent(Func, &Parms);
-}
-
-uint8_t UExpandableArea::GetIsExpanded()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ExpandableArea", "GetIsExpanded");
-    struct
-    {
-        uint8_t ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-// UGridPanel
-void UGridPanel::SetRowFill(int32_t ColumnIndex, float Coefficient)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("GridPanel", "SetRowFill");
-    struct
-    {
-        int32_t ColumnIndex;
-        float Coefficient;
-    } Parms{};
-    Parms.ColumnIndex = (int32_t)ColumnIndex;
-    Parms.Coefficient = (float)Coefficient;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UGridPanel::SetColumnFill(int32_t ColumnIndex, float Coefficient)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("GridPanel", "SetColumnFill");
-    struct
-    {
-        int32_t ColumnIndex;
-        float Coefficient;
-    } Parms{};
-    Parms.ColumnIndex = (int32_t)ColumnIndex;
-    Parms.Coefficient = (float)Coefficient;
-    this->ProcessEvent(Func, &Parms);
-}
-
-struct UGridSlot* UGridPanel::AddChildToGrid(struct UWidget* Content, int32_t InRow, int32_t InColumn)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("GridPanel", "AddChildToGrid");
-    struct
-    {
-        struct UWidget* Content;
-        int32_t InRow;
-        int32_t InColumn;
-        struct UGridSlot* ReturnValue;
-    } Parms{};
-    Parms.Content = (struct UWidget*)Content;
-    Parms.InRow = (int32_t)InRow;
-    Parms.InColumn = (int32_t)InColumn;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-// UHorizontalBox
-struct UHorizontalBoxSlot* UHorizontalBox::AddChildToHorizontalBox(struct UWidget* Content)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("HorizontalBox", "AddChildToHorizontalBox");
-    struct
-    {
-        struct UWidget* Content;
-        struct UHorizontalBoxSlot* ReturnValue;
-    } Parms{};
-    Parms.Content = (struct UWidget*)Content;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-// UInvalidationBox
-void UInvalidationBox::SetCanCache(uint8_t CanCache)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("InvalidationBox", "SetCanCache");
-    struct
-    {
-        uint8_t CanCache;
-    } Parms{};
-    Parms.CanCache = (uint8_t)CanCache;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UInvalidationBox::InvalidateCache()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("InvalidationBox", "InvalidateCache");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-uint8_t UInvalidationBox::GetCanCache()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("InvalidationBox", "GetCanCache");
-    struct
-    {
-        uint8_t ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-// UMultiLineEditableText
-void UMultiLineEditableText::SetWidgetStyle(const struct FTextBlockStyle& InWidgetStyle)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MultiLineEditableText", "SetWidgetStyle");
-    struct
-    {
-        struct FTextBlockStyle InWidgetStyle;
-    } Parms{};
-    Parms.InWidgetStyle = (struct FTextBlockStyle)InWidgetStyle;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UMultiLineEditableText::SetText(struct FText InText)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MultiLineEditableText", "SetText");
-    struct
-    {
-        struct FText InText;
-    } Parms{};
-    Parms.InText = (struct FText)InText;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UMultiLineEditableText::SetIsReadOnly(uint8_t bReadOnly)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MultiLineEditableText", "SetIsReadOnly");
-    struct
-    {
-        uint8_t bReadOnly;
-    } Parms{};
-    Parms.bReadOnly = (uint8_t)bReadOnly;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UMultiLineEditableText::SetHintText(struct FText InHintText)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MultiLineEditableText", "SetHintText");
-    struct
-    {
-        struct FText InHintText;
-    } Parms{};
-    Parms.InHintText = (struct FText)InHintText;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UMultiLineEditableText::SetCustomTextFlowPolicy(ECustomTextFlowPolicy InCustomTextFlowPolicy)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MultiLineEditableText", "SetCustomTextFlowPolicy");
-    struct
-    {
-        enum ECustomTextFlowPolicy InCustomTextFlowPolicy;
-    } Parms{};
-    Parms.InCustomTextFlowPolicy = (enum ECustomTextFlowPolicy)InCustomTextFlowPolicy;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UMultiLineEditableText::OnMultiLineEditableTextCommittedEvent__DelegateSignature(const struct FText& Text, ETextCommit CommitMethod)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MultiLineEditableText", "OnMultiLineEditableTextCommittedEvent__DelegateSignature");
-    struct
-    {
-        struct FText Text;
-        enum ETextCommit CommitMethod;
-    } Parms{};
-    Parms.Text = (struct FText)Text;
-    Parms.CommitMethod = (enum ETextCommit)CommitMethod;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UMultiLineEditableText::OnMultiLineEditableTextChangedEvent__DelegateSignature(const struct FText& Text)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MultiLineEditableText", "OnMultiLineEditableTextChangedEvent__DelegateSignature");
-    struct
-    {
-        struct FText Text;
-    } Parms{};
-    Parms.Text = (struct FText)Text;
-    this->ProcessEvent(Func, &Parms);
-}
-
-struct FText UMultiLineEditableText::GetText()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MultiLineEditableText", "GetText");
-    struct
-    {
-        struct FText ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct FText UMultiLineEditableText::GetHintText()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MultiLineEditableText", "GetHintText");
-    struct
-    {
-        struct FText ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-// UMultiLineEditableTextBox
-void UMultiLineEditableTextBox::SetTextStyle(const struct FTextBlockStyle& InTextStyle)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MultiLineEditableTextBox", "SetTextStyle");
-    struct
-    {
-        struct FTextBlockStyle InTextStyle;
-    } Parms{};
-    Parms.InTextStyle = (struct FTextBlockStyle)InTextStyle;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UMultiLineEditableTextBox::SetText(struct FText InText)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MultiLineEditableTextBox", "SetText");
-    struct
-    {
-        struct FText InText;
-    } Parms{};
-    Parms.InText = (struct FText)InText;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UMultiLineEditableTextBox::SetIsReadOnly(uint8_t bReadOnly)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MultiLineEditableTextBox", "SetIsReadOnly");
-    struct
-    {
-        uint8_t bReadOnly;
-    } Parms{};
-    Parms.bReadOnly = (uint8_t)bReadOnly;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UMultiLineEditableTextBox::SetHintText(struct FText InHintText)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MultiLineEditableTextBox", "SetHintText");
-    struct
-    {
-        struct FText InHintText;
-    } Parms{};
-    Parms.InHintText = (struct FText)InHintText;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UMultiLineEditableTextBox::SetError(struct FText InError)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MultiLineEditableTextBox", "SetError");
-    struct
-    {
-        struct FText InError;
-    } Parms{};
-    Parms.InError = (struct FText)InError;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UMultiLineEditableTextBox::SetCustomTextFlowPolicy(ECustomTextFlowPolicy InCustomTextFlowPolicy)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MultiLineEditableTextBox", "SetCustomTextFlowPolicy");
-    struct
-    {
-        enum ECustomTextFlowPolicy InCustomTextFlowPolicy;
-    } Parms{};
-    Parms.InCustomTextFlowPolicy = (enum ECustomTextFlowPolicy)InCustomTextFlowPolicy;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UMultiLineEditableTextBox::OnMultiLineEditableTextBoxCommittedEvent__DelegateSignature(const struct FText& Text, ETextCommit CommitMethod)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MultiLineEditableTextBox", "OnMultiLineEditableTextBoxCommittedEvent__DelegateSignature");
-    struct
-    {
-        struct FText Text;
-        enum ETextCommit CommitMethod;
-    } Parms{};
-    Parms.Text = (struct FText)Text;
-    Parms.CommitMethod = (enum ETextCommit)CommitMethod;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UMultiLineEditableTextBox::OnMultiLineEditableTextBoxChangedEvent__DelegateSignature(const struct FText& Text)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MultiLineEditableTextBox", "OnMultiLineEditableTextBoxChangedEvent__DelegateSignature");
-    struct
-    {
-        struct FText Text;
-    } Parms{};
-    Parms.Text = (struct FText)Text;
-    this->ProcessEvent(Func, &Parms);
-}
-
-struct FText UMultiLineEditableTextBox::GetText()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MultiLineEditableTextBox", "GetText");
-    struct
-    {
-        struct FText ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct FText UMultiLineEditableTextBox::GetHintText()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MultiLineEditableTextBox", "GetHintText");
-    struct
-    {
-        struct FText ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-// UOverlay
-struct UOverlaySlot* UOverlay::AddChildToOverlay(struct UWidget* Content)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Overlay", "AddChildToOverlay");
-    struct
-    {
-        struct UWidget* Content;
-        struct UOverlaySlot* ReturnValue;
-    } Parms{};
-    Parms.Content = (struct UWidget*)Content;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-// UProgressBar
-void UProgressBar::SetPercent(float InPercent)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ProgressBar", "SetPercent");
-    struct
-    {
-        float InPercent;
-    } Parms{};
-    Parms.InPercent = (float)InPercent;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UProgressBar::SetIsMarquee(uint8_t InbIsMarquee)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ProgressBar", "SetIsMarquee");
-    struct
-    {
-        uint8_t InbIsMarquee;
-    } Parms{};
-    Parms.InbIsMarquee = (uint8_t)InbIsMarquee;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UProgressBar::SetFillColorAndOpacity(struct FLinearColor InColor)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ProgressBar", "SetFillColorAndOpacity");
-    struct
-    {
-        struct FLinearColor InColor;
-    } Parms{};
-    Parms.InColor = (struct FLinearColor)InColor;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UProgressBar::SetBidirectionalValue(float InLeftValue, float InRightValue)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ProgressBar", "SetBidirectionalValue");
-    struct
-    {
-        float InLeftValue;
-        float InRightValue;
-    } Parms{};
-    Parms.InLeftValue = (float)InLeftValue;
-    Parms.InRightValue = (float)InRightValue;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UProgressBar::SetBidirectionalRightValue(float InRightValue)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ProgressBar", "SetBidirectionalRightValue");
-    struct
-    {
-        float InRightValue;
-    } Parms{};
-    Parms.InRightValue = (float)InRightValue;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UProgressBar::SetBidirectionalLeftValue(float InLeftValue)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ProgressBar", "SetBidirectionalLeftValue");
-    struct
-    {
-        float InLeftValue;
-    } Parms{};
-    Parms.InLeftValue = (float)InLeftValue;
-    this->ProcessEvent(Func, &Parms);
-}
-
-// URadialImage
-void URadialImage::SetPercent(float InPercent)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("RadialImage", "SetPercent");
-    struct
-    {
-        float InPercent;
-    } Parms{};
-    Parms.InPercent = (float)InPercent;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void URadialImage::SetOpacity(float InOpacity)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("RadialImage", "SetOpacity");
-    struct
-    {
-        float InOpacity;
-    } Parms{};
-    Parms.InOpacity = (float)InOpacity;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void URadialImage::SetIsClockWise(uint8_t InClockWise)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("RadialImage", "SetIsClockWise");
-    struct
-    {
-        uint8_t InClockWise;
-    } Parms{};
-    Parms.InClockWise = (uint8_t)InClockWise;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void URadialImage::SetColorAndOpacity(struct FLinearColor InColorAndOpacity)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("RadialImage", "SetColorAndOpacity");
-    struct
-    {
-        struct FLinearColor InColorAndOpacity;
-    } Parms{};
-    Parms.InColorAndOpacity = (struct FLinearColor)InColorAndOpacity;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void URadialImage::SetBrushTintColor(struct FSlateColor TintColor)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("RadialImage", "SetBrushTintColor");
-    struct
-    {
-        struct FSlateColor TintColor;
-    } Parms{};
-    Parms.TintColor = (struct FSlateColor)TintColor;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void URadialImage::SetBrushSize(struct FVector2D DesiredSize)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("RadialImage", "SetBrushSize");
-    struct
-    {
-        struct FVector2D DesiredSize;
-    } Parms{};
-    Parms.DesiredSize = (struct FVector2D)DesiredSize;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void URadialImage::SetBrushResourceObject(struct UObject* ResourceObject)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("RadialImage", "SetBrushResourceObject");
-    struct
-    {
-        struct UObject* ResourceObject;
-    } Parms{};
-    Parms.ResourceObject = (struct UObject*)ResourceObject;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void URadialImage::SetBrush(const struct FSlateBrush& InBrush)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("RadialImage", "SetBrush");
-    struct
-    {
-        struct FSlateBrush InBrush;
-    } Parms{};
-    Parms.InBrush = (struct FSlateBrush)InBrush;
-    this->ProcessEvent(Func, &Parms);
-}
-
-struct UMaterialInstanceDynamic* URadialImage::GetDynamicMaterial()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("RadialImage", "GetDynamicMaterial");
-    struct
-    {
-        struct UMaterialInstanceDynamic* ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-// URetainerBox
-void URetainerBox::SetTextureParameter(struct FName TextureParameter)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("RetainerBox", "SetTextureParameter");
-    struct
-    {
-        struct FName TextureParameter;
-    } Parms{};
-    Parms.TextureParameter = (struct FName)TextureParameter;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void URetainerBox::SetRetainRendering(uint8_t bInRetainRendering)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("RetainerBox", "SetRetainRendering");
-    struct
-    {
-        uint8_t bInRetainRendering;
-    } Parms{};
-    Parms.bInRetainRendering = (uint8_t)bInRetainRendering;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void URetainerBox::SetRenderingPhase(int32_t RenderPhase, int32_t TotalPhases)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("RetainerBox", "SetRenderingPhase");
-    struct
-    {
-        int32_t RenderPhase;
-        int32_t TotalPhases;
-    } Parms{};
-    Parms.RenderPhase = (int32_t)RenderPhase;
-    Parms.TotalPhases = (int32_t)TotalPhases;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void URetainerBox::SetEffectMaterial(struct UMaterialInterface* EffectMaterial)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("RetainerBox", "SetEffectMaterial");
-    struct
-    {
-        struct UMaterialInterface* EffectMaterial;
-    } Parms{};
-    Parms.EffectMaterial = (struct UMaterialInterface*)EffectMaterial;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void URetainerBox::RequestRender()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("RetainerBox", "RequestRender");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-struct UMaterialInstanceDynamic* URetainerBox::GetEffectMaterial()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("RetainerBox", "GetEffectMaterial");
-    struct
-    {
-        struct UMaterialInstanceDynamic* ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-// USafeZone
-void USafeZone::SetSidesToPad(uint8_t InPadLeft, uint8_t InPadRight, uint8_t InPadTop, uint8_t InPadBottom)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("SafeZone", "SetSidesToPad");
-    struct
-    {
-        uint8_t InPadLeft;
-        uint8_t InPadRight;
-        uint8_t InPadTop;
-        uint8_t InPadBottom;
-    } Parms{};
-    Parms.InPadLeft = (uint8_t)InPadLeft;
-    Parms.InPadRight = (uint8_t)InPadRight;
-    Parms.InPadTop = (uint8_t)InPadTop;
-    Parms.InPadBottom = (uint8_t)InPadBottom;
-    this->ProcessEvent(Func, &Parms);
-}
-
-// UScaleBox
-void UScaleBox::SetUserSpecifiedScale(float InUserSpecifiedScale)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ScaleBox", "SetUserSpecifiedScale");
-    struct
-    {
-        float InUserSpecifiedScale;
-    } Parms{};
-    Parms.InUserSpecifiedScale = (float)InUserSpecifiedScale;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UScaleBox::SetStretchDirection(EStretchDirection InStretchDirection)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ScaleBox", "SetStretchDirection");
-    struct
-    {
-        enum EStretchDirection InStretchDirection;
-    } Parms{};
-    Parms.InStretchDirection = (enum EStretchDirection)InStretchDirection;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UScaleBox::SetStretch(EStretch InStretch)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ScaleBox", "SetStretch");
-    struct
-    {
-        enum EStretch InStretch;
-    } Parms{};
-    Parms.InStretch = (enum EStretch)InStretch;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UScaleBox::SetIgnoreInheritedScale(uint8_t bInIgnoreInheritedScale)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ScaleBox", "SetIgnoreInheritedScale");
-    struct
-    {
-        uint8_t bInIgnoreInheritedScale;
-    } Parms{};
-    Parms.bInIgnoreInheritedScale = (uint8_t)bInIgnoreInheritedScale;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UScaleBox::SetCheckExceedBounds(uint8_t bInCheckExceedBounds)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ScaleBox", "SetCheckExceedBounds");
-    struct
-    {
-        uint8_t bInCheckExceedBounds;
-    } Parms{};
-    Parms.bInCheckExceedBounds = (uint8_t)bInCheckExceedBounds;
-    this->ProcessEvent(Func, &Parms);
-}
-
-// USlider
-void USlider::SetValue(float InValue)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Slider", "SetValue");
-    struct
-    {
-        float InValue;
-    } Parms{};
-    Parms.InValue = (float)InValue;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void USlider::SetStepSize(float InValue)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Slider", "SetStepSize");
-    struct
-    {
-        float InValue;
-    } Parms{};
-    Parms.InValue = (float)InValue;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void USlider::SetSliderHandleColor(struct FLinearColor InValue)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Slider", "SetSliderHandleColor");
-    struct
-    {
-        struct FLinearColor InValue;
-    } Parms{};
-    Parms.InValue = (struct FLinearColor)InValue;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void USlider::SetSliderBarColor(struct FLinearColor InValue)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Slider", "SetSliderBarColor");
-    struct
-    {
-        struct FLinearColor InValue;
-    } Parms{};
-    Parms.InValue = (struct FLinearColor)InValue;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void USlider::SetMinValue(float InValue)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Slider", "SetMinValue");
-    struct
-    {
-        float InValue;
-    } Parms{};
-    Parms.InValue = (float)InValue;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void USlider::SetMaxValue(float InValue)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Slider", "SetMaxValue");
-    struct
-    {
-        float InValue;
-    } Parms{};
-    Parms.InValue = (float)InValue;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void USlider::SetLocked(uint8_t InValue)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Slider", "SetLocked");
-    struct
-    {
-        uint8_t InValue;
-    } Parms{};
-    Parms.InValue = (uint8_t)InValue;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void USlider::SetIndentHandle(uint8_t InValue)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Slider", "SetIndentHandle");
-    struct
-    {
-        uint8_t InValue;
-    } Parms{};
-    Parms.InValue = (uint8_t)InValue;
-    this->ProcessEvent(Func, &Parms);
-}
-
-float USlider::GetValue()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Slider", "GetValue");
-    struct
-    {
-        float ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-float USlider::GetNormalizedValue()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Slider", "GetNormalizedValue");
-    struct
-    {
-        float ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-// USpacer
-void USpacer::SetSize(struct FVector2D InSize)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Spacer", "SetSize");
-    struct
-    {
-        struct FVector2D InSize;
-    } Parms{};
-    Parms.InSize = (struct FVector2D)InSize;
-    this->ProcessEvent(Func, &Parms);
-}
-
-// USpinBox
-void USpinBox::SetValue(float NewValue)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "SetValue");
-    struct
-    {
-        float NewValue;
-    } Parms{};
-    Parms.NewValue = (float)NewValue;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void USpinBox::SetMinValue(float NewValue)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "SetMinValue");
-    struct
-    {
-        float NewValue;
-    } Parms{};
-    Parms.NewValue = (float)NewValue;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void USpinBox::SetMinSliderValue(float NewValue)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "SetMinSliderValue");
-    struct
-    {
-        float NewValue;
-    } Parms{};
-    Parms.NewValue = (float)NewValue;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void USpinBox::SetMaxValue(float NewValue)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "SetMaxValue");
-    struct
-    {
-        float NewValue;
-    } Parms{};
-    Parms.NewValue = (float)NewValue;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void USpinBox::SetMaxSliderValue(float NewValue)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "SetMaxSliderValue");
-    struct
-    {
-        float NewValue;
-    } Parms{};
-    Parms.NewValue = (float)NewValue;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void USpinBox::SetForegroundColor(struct FSlateColor InForegroundColor)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "SetForegroundColor");
-    struct
-    {
-        struct FSlateColor InForegroundColor;
-    } Parms{};
-    Parms.InForegroundColor = (struct FSlateColor)InForegroundColor;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void USpinBox::OnSpinBoxValueCommittedEvent__DelegateSignature(float InValue, ETextCommit CommitMethod)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "OnSpinBoxValueCommittedEvent__DelegateSignature");
-    struct
-    {
-        float InValue;
-        enum ETextCommit CommitMethod;
-    } Parms{};
-    Parms.InValue = (float)InValue;
-    Parms.CommitMethod = (enum ETextCommit)CommitMethod;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void USpinBox::OnSpinBoxValueChangedEvent__DelegateSignature(float InValue)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "OnSpinBoxValueChangedEvent__DelegateSignature");
-    struct
-    {
-        float InValue;
-    } Parms{};
-    Parms.InValue = (float)InValue;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void USpinBox::OnSpinBoxBeginSliderMovement__DelegateSignature()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "OnSpinBoxBeginSliderMovement__DelegateSignature");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-float USpinBox::GetValue()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "GetValue");
-    struct
-    {
-        float ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-float USpinBox::GetMinValue()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "GetMinValue");
-    struct
-    {
-        float ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-float USpinBox::GetMinSliderValue()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "GetMinSliderValue");
-    struct
-    {
-        float ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-float USpinBox::GetMaxValue()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "GetMaxValue");
-    struct
-    {
-        float ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-float USpinBox::GetMaxSliderValue()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "GetMaxSliderValue");
-    struct
-    {
-        float ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-void USpinBox::ClearMinValue()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "ClearMinValue");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-void USpinBox::ClearMinSliderValue()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "ClearMinSliderValue");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-void USpinBox::ClearMaxValue()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "ClearMaxValue");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-void USpinBox::ClearMaxSliderValue()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "ClearMaxSliderValue");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-// UTileView
-void UTileView::SetEntryWidth(float NewWidth)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("TileView", "SetEntryWidth");
-    struct
-    {
-        float NewWidth;
-    } Parms{};
-    Parms.NewWidth = (float)NewWidth;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UTileView::SetEntryHeight(float NewHeight)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("TileView", "SetEntryHeight");
-    struct
-    {
-        float NewHeight;
-    } Parms{};
-    Parms.NewHeight = (float)NewHeight;
-    this->ProcessEvent(Func, &Parms);
-}
-
-// UTreeView
-void UTreeView::SetItemExpansion(struct UObject* Item, uint8_t bExpandItem)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("TreeView", "SetItemExpansion");
-    struct
-    {
-        struct UObject* Item;
-        uint8_t bExpandItem;
-    } Parms{};
-    Parms.Item = (struct UObject*)Item;
-    Parms.bExpandItem = (uint8_t)bExpandItem;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UTreeView::ExpandAll()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("TreeView", "ExpandAll");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UTreeView::CollapseAll()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("TreeView", "CollapseAll");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-// UUniformGridPanel
-void UUniformGridPanel::SetSlotPadding(struct FMargin InSlotPadding)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("UniformGridPanel", "SetSlotPadding");
-    struct
-    {
-        struct FMargin InSlotPadding;
-    } Parms{};
-    Parms.InSlotPadding = (struct FMargin)InSlotPadding;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UUniformGridPanel::SetMinDesiredSlotWidth(float InMinDesiredSlotWidth)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("UniformGridPanel", "SetMinDesiredSlotWidth");
-    struct
-    {
-        float InMinDesiredSlotWidth;
-    } Parms{};
-    Parms.InMinDesiredSlotWidth = (float)InMinDesiredSlotWidth;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UUniformGridPanel::SetMinDesiredSlotHeight(float InMinDesiredSlotHeight)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("UniformGridPanel", "SetMinDesiredSlotHeight");
-    struct
-    {
-        float InMinDesiredSlotHeight;
-    } Parms{};
-    Parms.InMinDesiredSlotHeight = (float)InMinDesiredSlotHeight;
-    this->ProcessEvent(Func, &Parms);
-}
-
-struct UUniformGridSlot* UUniformGridPanel::AddChildToUniformGrid(struct UWidget* Content, int32_t InRow, int32_t InColumn)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("UniformGridPanel", "AddChildToUniformGrid");
-    struct
-    {
-        struct UWidget* Content;
-        int32_t InRow;
-        int32_t InColumn;
-        struct UUniformGridSlot* ReturnValue;
-    } Parms{};
-    Parms.Content = (struct UWidget*)Content;
-    Parms.InRow = (int32_t)InRow;
-    Parms.InColumn = (int32_t)InColumn;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-// UVerticalBox
-void UVerticalBox::SwitchWidgetsByIndex(int32_t Index1, int32_t Index2)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("VerticalBox", "SwitchWidgetsByIndex");
-    struct
-    {
-        int32_t Index1;
-        int32_t Index2;
-    } Parms{};
-    Parms.Index1 = (int32_t)Index1;
-    Parms.Index2 = (int32_t)Index2;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UVerticalBox::SwitchWidgets(struct UWidget* Content1, struct UWidget* Content2)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("VerticalBox", "SwitchWidgets");
-    struct
-    {
-        struct UWidget* Content1;
-        struct UWidget* Content2;
-    } Parms{};
-    Parms.Content1 = (struct UWidget*)Content1;
-    Parms.Content2 = (struct UWidget*)Content2;
-    this->ProcessEvent(Func, &Parms);
-}
-
-struct UVerticalBoxSlot* UVerticalBox::AddChildToVerticalBox(struct UWidget* Content)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("VerticalBox", "AddChildToVerticalBox");
-    struct
-    {
-        struct UWidget* Content;
-        struct UVerticalBoxSlot* ReturnValue;
-    } Parms{};
-    Parms.Content = (struct UWidget*)Content;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-// UWrapBox
-void UWrapBox::SetInnerSlotPadding(struct FVector2D InPadding)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WrapBox", "SetInnerSlotPadding");
-    struct
-    {
-        struct FVector2D InPadding;
-    } Parms{};
-    Parms.InPadding = (struct FVector2D)InPadding;
-    this->ProcessEvent(Func, &Parms);
-}
-
-struct UWrapBoxSlot* UWrapBox::AddChildToWrapBox(struct UWidget* Content)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WrapBox", "AddChildToWrapBox");
-    struct
-    {
-        struct UWidget* Content;
-        struct UWrapBoxSlot* ReturnValue;
-    } Parms{};
-    Parms.Content = (struct UWidget*)Content;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-// UDragDropOperation
-void UDragDropOperation::Drop(const struct FPointerEvent& PointerEvent)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("DragDropOperation", "Drop");
-    struct
-    {
-        struct FPointerEvent PointerEvent;
-    } Parms{};
-    Parms.PointerEvent = (struct FPointerEvent)PointerEvent;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UDragDropOperation::Dragged(const struct FPointerEvent& PointerEvent)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("DragDropOperation", "Dragged");
-    struct
-    {
-        struct FPointerEvent PointerEvent;
-    } Parms{};
-    Parms.PointerEvent = (struct FPointerEvent)PointerEvent;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UDragDropOperation::DragCancelled(const struct FPointerEvent& PointerEvent)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("DragDropOperation", "DragCancelled");
-    struct
-    {
-        struct FPointerEvent PointerEvent;
-    } Parms{};
-    Parms.PointerEvent = (struct FPointerEvent)PointerEvent;
-    this->ProcessEvent(Func, &Parms);
-}
-
-// UWidgetComponent
-void UWidgetComponent::SetWindowVisibility(EWindowVisibility InVisibility)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "SetWindowVisibility");
-    struct
-    {
-        enum EWindowVisibility InVisibility;
-    } Parms{};
-    Parms.InVisibility = (enum EWindowVisibility)InVisibility;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UWidgetComponent::SetWindowFocusable(uint8_t bInWindowFocusable)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "SetWindowFocusable");
-    struct
-    {
-        uint8_t bInWindowFocusable;
-    } Parms{};
-    Parms.bInWindowFocusable = (uint8_t)bInWindowFocusable;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UWidgetComponent::SetWidgetSpace(EWidgetSpace NewSpace)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "SetWidgetSpace");
-    struct
-    {
-        enum EWidgetSpace NewSpace;
-    } Parms{};
-    Parms.NewSpace = (enum EWidgetSpace)NewSpace;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UWidgetComponent::SetWidget(struct UUserWidget* Widget)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "SetWidget");
-    struct
-    {
-        struct UUserWidget* Widget;
-    } Parms{};
-    Parms.Widget = (struct UUserWidget*)Widget;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UWidgetComponent::SetTwoSided(uint8_t bWantTwoSided)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "SetTwoSided");
-    struct
-    {
-        uint8_t bWantTwoSided;
-    } Parms{};
-    Parms.bWantTwoSided = (uint8_t)bWantTwoSided;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UWidgetComponent::SetTintColorAndOpacity(struct FLinearColor NewTintColorAndOpacity)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "SetTintColorAndOpacity");
-    struct
-    {
-        struct FLinearColor NewTintColorAndOpacity;
-    } Parms{};
-    Parms.NewTintColorAndOpacity = (struct FLinearColor)NewTintColorAndOpacity;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UWidgetComponent::SetTickWhenOffscreen(uint8_t bWantTickWhenOffscreen)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "SetTickWhenOffscreen");
-    struct
-    {
-        uint8_t bWantTickWhenOffscreen;
-    } Parms{};
-    Parms.bWantTickWhenOffscreen = (uint8_t)bWantTickWhenOffscreen;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UWidgetComponent::SetRedrawTime(float InRedrawTime)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "SetRedrawTime");
-    struct
-    {
-        float InRedrawTime;
-    } Parms{};
-    Parms.InRedrawTime = (float)InRedrawTime;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UWidgetComponent::SetPivot(const struct FVector2D& InPivot)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "SetPivot");
-    struct
-    {
-        struct FVector2D InPivot;
-    } Parms{};
-    Parms.InPivot = (struct FVector2D)InPivot;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UWidgetComponent::SetOwnerPlayer(struct ULocalPlayer* LocalPlayer)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "SetOwnerPlayer");
-    struct
-    {
-        struct ULocalPlayer* LocalPlayer;
-    } Parms{};
-    Parms.LocalPlayer = (struct ULocalPlayer*)LocalPlayer;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UWidgetComponent::SetManuallyRedraw(uint8_t bUseManualRedraw)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "SetManuallyRedraw");
-    struct
-    {
-        uint8_t bUseManualRedraw;
-    } Parms{};
-    Parms.bUseManualRedraw = (uint8_t)bUseManualRedraw;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UWidgetComponent::SetGeometryMode(EWidgetGeometryMode InGeometryMode)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "SetGeometryMode");
-    struct
-    {
-        enum EWidgetGeometryMode InGeometryMode;
-    } Parms{};
-    Parms.InGeometryMode = (enum EWidgetGeometryMode)InGeometryMode;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UWidgetComponent::SetDrawSize(struct FVector2D size)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "SetDrawSize");
-    struct
-    {
-        struct FVector2D size;
-    } Parms{};
-    Parms.size = (struct FVector2D)size;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UWidgetComponent::SetDrawAtDesiredSize(uint8_t bInDrawAtDesiredSize)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "SetDrawAtDesiredSize");
-    struct
-    {
-        uint8_t bInDrawAtDesiredSize;
-    } Parms{};
-    Parms.bInDrawAtDesiredSize = (uint8_t)bInDrawAtDesiredSize;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UWidgetComponent::SetCylinderArcAngle(float InCylinderArcAngle)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "SetCylinderArcAngle");
-    struct
-    {
-        float InCylinderArcAngle;
-    } Parms{};
-    Parms.InCylinderArcAngle = (float)InCylinderArcAngle;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UWidgetComponent::SetBackgroundColor(struct FLinearColor NewBackgroundColor)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "SetBackgroundColor");
-    struct
-    {
-        struct FLinearColor NewBackgroundColor;
-    } Parms{};
-    Parms.NewBackgroundColor = (struct FLinearColor)NewBackgroundColor;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UWidgetComponent::RequestRedraw()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "RequestRedraw");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-EWindowVisibility UWidgetComponent::GetWindowVisiblility()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "GetWindowVisiblility");
-    struct
-    {
-        enum EWindowVisibility ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-uint8_t UWidgetComponent::GetWindowFocusable()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "GetWindowFocusable");
-    struct
-    {
-        uint8_t ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-EWidgetSpace UWidgetComponent::GetWidgetSpace()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "GetWidgetSpace");
-    struct
-    {
-        enum EWidgetSpace ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct UUserWidget* UWidgetComponent::GetUserWidgetObject()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "GetUserWidgetObject");
-    struct
-    {
-        struct UUserWidget* ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-uint8_t UWidgetComponent::GetTwoSided()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "GetTwoSided");
-    struct
-    {
-        uint8_t ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-uint8_t UWidgetComponent::GetTickWhenOffscreen()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "GetTickWhenOffscreen");
-    struct
-    {
-        uint8_t ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct UTextureRenderTarget2D* UWidgetComponent::GetRenderTarget()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "GetRenderTarget");
-    struct
-    {
-        struct UTextureRenderTarget2D* ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-float UWidgetComponent::GetRedrawTime()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "GetRedrawTime");
-    struct
-    {
-        float ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct FVector2D UWidgetComponent::GetPivot()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "GetPivot");
-    struct
-    {
-        struct FVector2D ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct ULocalPlayer* UWidgetComponent::GetOwnerPlayer()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "GetOwnerPlayer");
-    struct
-    {
-        struct ULocalPlayer* ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct UMaterialInstanceDynamic* UWidgetComponent::GetMaterialInstance()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "GetMaterialInstance");
-    struct
-    {
-        struct UMaterialInstanceDynamic* ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-uint8_t UWidgetComponent::GetManuallyRedraw()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "GetManuallyRedraw");
-    struct
-    {
-        uint8_t ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-EWidgetGeometryMode UWidgetComponent::GetGeometryMode()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "GetGeometryMode");
-    struct
-    {
-        enum EWidgetGeometryMode ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct FVector2D UWidgetComponent::GetDrawSize()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "GetDrawSize");
-    struct
-    {
-        struct FVector2D ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-uint8_t UWidgetComponent::GetDrawAtDesiredSize()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "GetDrawAtDesiredSize");
-    struct
-    {
-        uint8_t ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-float UWidgetComponent::GetCylinderArcAngle()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "GetCylinderArcAngle");
-    struct
-    {
-        float ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct FVector2D UWidgetComponent::GetCurrentDrawSize()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent", "GetCurrentDrawSize");
-    struct
-    {
-        struct FVector2D ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-// UAsyncTaskDownloadImage
-struct UAsyncTaskDownloadImage* UAsyncTaskDownloadImage::DownloadImage(struct FString URL)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = StaticClass()->GetFunction("AsyncTaskDownloadImage", "DownloadImage");
-    struct
-    {
-        struct FString URL;
-        struct UAsyncTaskDownloadImage* ReturnValue;
-    } Parms{};
-    Parms.URL = (struct FString)URL;
-    GetDefaultObj()->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-// UBackgroundBlurSlot
-void UBackgroundBlurSlot::SetVerticalAlignment(EVerticalAlignment InVerticalAlignment)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BackgroundBlurSlot", "SetVerticalAlignment");
-    struct
-    {
-        enum EVerticalAlignment InVerticalAlignment;
-    } Parms{};
-    Parms.InVerticalAlignment = (enum EVerticalAlignment)InVerticalAlignment;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UBackgroundBlurSlot::SetPadding(struct FMargin InPadding)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BackgroundBlurSlot", "SetPadding");
-    struct
-    {
-        struct FMargin InPadding;
-    } Parms{};
-    Parms.InPadding = (struct FMargin)InPadding;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UBackgroundBlurSlot::SetHorizontalAlignment(EHorizontalAlignment InHorizontalAlignment)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BackgroundBlurSlot", "SetHorizontalAlignment");
-    struct
-    {
-        enum EHorizontalAlignment InHorizontalAlignment;
-    } Parms{};
-    Parms.InHorizontalAlignment = (enum EHorizontalAlignment)InHorizontalAlignment;
-    this->ProcessEvent(Func, &Parms);
-}
-
-// UBoolBinding
-uint8_t UBoolBinding::GetValue()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BoolBinding", "GetValue");
-    struct
-    {
-        uint8_t ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-// UBorderSlot
-void UBorderSlot::SetVerticalAlignment(EVerticalAlignment InVerticalAlignment)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BorderSlot", "SetVerticalAlignment");
-    struct
-    {
-        enum EVerticalAlignment InVerticalAlignment;
-    } Parms{};
-    Parms.InVerticalAlignment = (enum EVerticalAlignment)InVerticalAlignment;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UBorderSlot::SetPadding(struct FMargin InPadding)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BorderSlot", "SetPadding");
-    struct
-    {
-        struct FMargin InPadding;
-    } Parms{};
-    Parms.InPadding = (struct FMargin)InPadding;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UBorderSlot::SetHorizontalAlignment(EHorizontalAlignment InHorizontalAlignment)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BorderSlot", "SetHorizontalAlignment");
-    struct
-    {
-        enum EHorizontalAlignment InHorizontalAlignment;
-    } Parms{};
-    Parms.InHorizontalAlignment = (enum EHorizontalAlignment)InHorizontalAlignment;
-    this->ProcessEvent(Func, &Parms);
-}
-
-// UBrushBinding
-struct FSlateBrush UBrushBinding::GetValue()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("BrushBinding", "GetValue");
-    struct
-    {
-        struct FSlateBrush ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-// UButtonSlot
-void UButtonSlot::SetVerticalAlignment(EVerticalAlignment InVerticalAlignment)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ButtonSlot", "SetVerticalAlignment");
-    struct
-    {
-        enum EVerticalAlignment InVerticalAlignment;
-    } Parms{};
-    Parms.InVerticalAlignment = (enum EVerticalAlignment)InVerticalAlignment;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UButtonSlot::SetPadding(struct FMargin InPadding)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ButtonSlot", "SetPadding");
-    struct
-    {
-        struct FMargin InPadding;
-    } Parms{};
-    Parms.InPadding = (struct FMargin)InPadding;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UButtonSlot::SetHorizontalAlignment(EHorizontalAlignment InHorizontalAlignment)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ButtonSlot", "SetHorizontalAlignment");
-    struct
-    {
-        enum EHorizontalAlignment InHorizontalAlignment;
-    } Parms{};
-    Parms.InHorizontalAlignment = (enum EHorizontalAlignment)InHorizontalAlignment;
-    this->ProcessEvent(Func, &Parms);
-}
-
-// UCanvasPanelSlot
-void UCanvasPanelSlot::SetZOrder(int32_t InZOrder)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "SetZOrder");
-    struct
-    {
-        int32_t InZOrder;
-    } Parms{};
-    Parms.InZOrder = (int32_t)InZOrder;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UCanvasPanelSlot::SetSublingIndex(int32_t InSublingIndex)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "SetSublingIndex");
-    struct
-    {
-        int32_t InSublingIndex;
-    } Parms{};
-    Parms.InSublingIndex = (int32_t)InSublingIndex;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UCanvasPanelSlot::SetSize(struct FVector2D InSize)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "SetSize");
-    struct
-    {
-        struct FVector2D InSize;
-    } Parms{};
-    Parms.InSize = (struct FVector2D)InSize;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UCanvasPanelSlot::SetPosition(struct FVector2D InPosition)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "SetPosition");
-    struct
-    {
-        struct FVector2D InPosition;
-    } Parms{};
-    Parms.InPosition = (struct FVector2D)InPosition;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UCanvasPanelSlot::SetOffsets(struct FMargin InOffset)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "SetOffsets");
-    struct
-    {
-        struct FMargin InOffset;
-    } Parms{};
-    Parms.InOffset = (struct FMargin)InOffset;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UCanvasPanelSlot::SetMinimum(struct FVector2D InMinimumAnchors)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "SetMinimum");
-    struct
-    {
-        struct FVector2D InMinimumAnchors;
-    } Parms{};
-    Parms.InMinimumAnchors = (struct FVector2D)InMinimumAnchors;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UCanvasPanelSlot::SetMaximum(struct FVector2D InMaximumAnchors)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "SetMaximum");
-    struct
-    {
-        struct FVector2D InMaximumAnchors;
-    } Parms{};
-    Parms.InMaximumAnchors = (struct FVector2D)InMaximumAnchors;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UCanvasPanelSlot::SetLayout(const struct FAnchorData& InLayoutData)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "SetLayout");
-    struct
-    {
-        struct FAnchorData InLayoutData;
-    } Parms{};
-    Parms.InLayoutData = (struct FAnchorData)InLayoutData;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UCanvasPanelSlot::SetAutoSize(uint8_t InbAutoSize)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "SetAutoSize");
-    struct
-    {
-        uint8_t InbAutoSize;
-    } Parms{};
-    Parms.InbAutoSize = (uint8_t)InbAutoSize;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UCanvasPanelSlot::SetAnchors(struct FAnchors InAnchors)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "SetAnchors");
-    struct
-    {
-        struct FAnchors InAnchors;
-    } Parms{};
-    Parms.InAnchors = (struct FAnchors)InAnchors;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UCanvasPanelSlot::SetAlignment(struct FVector2D InAlignment)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "SetAlignment");
-    struct
-    {
-        struct FVector2D InAlignment;
-    } Parms{};
-    Parms.InAlignment = (struct FVector2D)InAlignment;
-    this->ProcessEvent(Func, &Parms);
-}
-
-int32_t UCanvasPanelSlot::GetZOrder()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "GetZOrder");
-    struct
-    {
-        int32_t ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct FVector2D UCanvasPanelSlot::GetSize()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "GetSize");
-    struct
-    {
-        struct FVector2D ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct FVector2D UCanvasPanelSlot::GetPosition()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "GetPosition");
-    struct
-    {
-        struct FVector2D ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct FMargin UCanvasPanelSlot::GetOffsets()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "GetOffsets");
-    struct
-    {
-        struct FMargin ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct FAnchorData UCanvasPanelSlot::GetLayout()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "GetLayout");
-    struct
-    {
-        struct FAnchorData ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-uint8_t UCanvasPanelSlot::GetAutoSize()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "GetAutoSize");
-    struct
-    {
-        uint8_t ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct FAnchors UCanvasPanelSlot::GetAnchors()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "GetAnchors");
-    struct
-    {
-        struct FAnchors ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct FVector2D UCanvasPanelSlot::GetAlignment()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("CanvasPanelSlot", "GetAlignment");
-    struct
-    {
-        struct FVector2D ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-// UCheckedStateBinding
-ECheckBoxState UCheckedStateBinding::GetValue()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("CheckedStateBinding", "GetValue");
-    struct
-    {
-        enum ECheckBoxState ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-// UCircularThrobber
-void UCircularThrobber::SetRadius(float InRadius)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("CircularThrobber", "SetRadius");
-    struct
-    {
-        float InRadius;
-    } Parms{};
-    Parms.InRadius = (float)InRadius;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UCircularThrobber::SetPeriod(float InPeriod)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("CircularThrobber", "SetPeriod");
-    struct
-    {
-        float InPeriod;
-    } Parms{};
-    Parms.InPeriod = (float)InPeriod;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UCircularThrobber::SetNumberOfPieces(int32_t InNumberOfPieces)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("CircularThrobber", "SetNumberOfPieces");
-    struct
-    {
-        int32_t InNumberOfPieces;
-    } Parms{};
-    Parms.InNumberOfPieces = (int32_t)InNumberOfPieces;
-    this->ProcessEvent(Func, &Parms);
-}
-
-// UColorBinding
-struct FSlateColor UColorBinding::GetSlateValue()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ColorBinding", "GetSlateValue");
-    struct
-    {
-        struct FSlateColor ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct FLinearColor UColorBinding::GetLinearValue()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ColorBinding", "GetLinearValue");
-    struct
-    {
-        struct FLinearColor ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-// UDynamicEntryBoxBase
-void UDynamicEntryBoxBase::SetEntrySpacing(const struct FVector2D& InEntrySpacing)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("DynamicEntryBoxBase", "SetEntrySpacing");
-    struct
-    {
-        struct FVector2D InEntrySpacing;
-    } Parms{};
-    Parms.InEntrySpacing = (struct FVector2D)InEntrySpacing;
-    this->ProcessEvent(Func, &Parms);
-}
-
-int32_t UDynamicEntryBoxBase::GetNumEntries()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("DynamicEntryBoxBase", "GetNumEntries");
-    struct
-    {
-        int32_t ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct TArray<struct UUserWidget*> UDynamicEntryBoxBase::GetAllEntries()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("DynamicEntryBoxBase", "GetAllEntries");
-    struct
-    {
-        struct TArray<struct UUserWidget*> ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-// UDynamicEntryBox
-void UDynamicEntryBox::Reset(uint8_t bDeleteWidgets)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("DynamicEntryBox", "Reset");
-    struct
-    {
-        uint8_t bDeleteWidgets;
-    } Parms{};
-    Parms.bDeleteWidgets = (uint8_t)bDeleteWidgets;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UDynamicEntryBox::RemoveEntry(struct UUserWidget* EntryWidget)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("DynamicEntryBox", "RemoveEntry");
-    struct
-    {
-        struct UUserWidget* EntryWidget;
-    } Parms{};
-    Parms.EntryWidget = (struct UUserWidget*)EntryWidget;
-    this->ProcessEvent(Func, &Parms);
-}
-
-struct UUserWidget* UDynamicEntryBox::BP_CreateEntryOfClass(struct UUserWidget* EntryClass)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("DynamicEntryBox", "BP_CreateEntryOfClass");
-    struct
-    {
-        struct UUserWidget* EntryClass;
-        struct UUserWidget* ReturnValue;
-    } Parms{};
-    Parms.EntryClass = (struct UUserWidget*)EntryClass;
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct UUserWidget* UDynamicEntryBox::BP_CreateEntry()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("DynamicEntryBox", "BP_CreateEntry");
-    struct
-    {
-        struct UUserWidget* ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-// UFloatBinding
-float UFloatBinding::GetValue()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("FloatBinding", "GetValue");
-    struct
-    {
-        float ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-// UGridSlot
-void UGridSlot::SetVerticalAlignment(EVerticalAlignment InVerticalAlignment)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("GridSlot", "SetVerticalAlignment");
-    struct
-    {
-        enum EVerticalAlignment InVerticalAlignment;
-    } Parms{};
-    Parms.InVerticalAlignment = (enum EVerticalAlignment)InVerticalAlignment;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UGridSlot::SetRowSpan(int32_t InRowSpan)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("GridSlot", "SetRowSpan");
-    struct
-    {
-        int32_t InRowSpan;
-    } Parms{};
-    Parms.InRowSpan = (int32_t)InRowSpan;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UGridSlot::SetRow(int32_t InRow)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("GridSlot", "SetRow");
-    struct
-    {
-        int32_t InRow;
-    } Parms{};
-    Parms.InRow = (int32_t)InRow;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UGridSlot::SetPadding(struct FMargin InPadding)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("GridSlot", "SetPadding");
-    struct
-    {
-        struct FMargin InPadding;
-    } Parms{};
-    Parms.InPadding = (struct FMargin)InPadding;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UGridSlot::SetNudge(struct FVector2D InNudge)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("GridSlot", "SetNudge");
-    struct
-    {
-        struct FVector2D InNudge;
-    } Parms{};
-    Parms.InNudge = (struct FVector2D)InNudge;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UGridSlot::SetLayer(int32_t InLayer)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("GridSlot", "SetLayer");
-    struct
-    {
-        int32_t InLayer;
-    } Parms{};
-    Parms.InLayer = (int32_t)InLayer;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UGridSlot::SetHorizontalAlignment(EHorizontalAlignment InHorizontalAlignment)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("GridSlot", "SetHorizontalAlignment");
-    struct
-    {
-        enum EHorizontalAlignment InHorizontalAlignment;
-    } Parms{};
-    Parms.InHorizontalAlignment = (enum EHorizontalAlignment)InHorizontalAlignment;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UGridSlot::SetColumnSpan(int32_t InColumnSpan)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("GridSlot", "SetColumnSpan");
-    struct
-    {
-        int32_t InColumnSpan;
-    } Parms{};
-    Parms.InColumnSpan = (int32_t)InColumnSpan;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UGridSlot::SetColumn(int32_t InColumn)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("GridSlot", "SetColumn");
-    struct
-    {
-        int32_t InColumn;
-    } Parms{};
-    Parms.InColumn = (int32_t)InColumn;
-    this->ProcessEvent(Func, &Parms);
-}
-
-// UHorizontalBoxSlot
-void UHorizontalBoxSlot::SetVerticalAlignment(EVerticalAlignment InVerticalAlignment)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("HorizontalBoxSlot", "SetVerticalAlignment");
-    struct
-    {
-        enum EVerticalAlignment InVerticalAlignment;
-    } Parms{};
-    Parms.InVerticalAlignment = (enum EVerticalAlignment)InVerticalAlignment;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UHorizontalBoxSlot::SetSize(struct FSlateChildSize InSize)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("HorizontalBoxSlot", "SetSize");
-    struct
-    {
-        struct FSlateChildSize InSize;
-    } Parms{};
-    Parms.InSize = (struct FSlateChildSize)InSize;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UHorizontalBoxSlot::SetPadding(struct FMargin InPadding)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("HorizontalBoxSlot", "SetPadding");
-    struct
-    {
-        struct FMargin InPadding;
-    } Parms{};
-    Parms.InPadding = (struct FMargin)InPadding;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UHorizontalBoxSlot::SetHorizontalAlignment(EHorizontalAlignment InHorizontalAlignment)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("HorizontalBoxSlot", "SetHorizontalAlignment");
-    struct
-    {
-        enum EHorizontalAlignment InHorizontalAlignment;
-    } Parms{};
-    Parms.InHorizontalAlignment = (enum EHorizontalAlignment)InHorizontalAlignment;
-    this->ProcessEvent(Func, &Parms);
-}
-
-// UInputKeySelector
-void UInputKeySelector::SetTextBlockVisibility(ESlateVisibility InVisibility)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("InputKeySelector", "SetTextBlockVisibility");
-    struct
-    {
-        enum ESlateVisibility InVisibility;
-    } Parms{};
-    Parms.InVisibility = (enum ESlateVisibility)InVisibility;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UInputKeySelector::SetSelectedKey(const struct FInputChord& InSelectedKey)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("InputKeySelector", "SetSelectedKey");
-    struct
-    {
-        struct FInputChord InSelectedKey;
-    } Parms{};
-    Parms.InSelectedKey = (struct FInputChord)InSelectedKey;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UInputKeySelector::SetNoKeySpecifiedText(struct FText InNoKeySpecifiedText)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("InputKeySelector", "SetNoKeySpecifiedText");
-    struct
-    {
-        struct FText InNoKeySpecifiedText;
-    } Parms{};
-    Parms.InNoKeySpecifiedText = (struct FText)InNoKeySpecifiedText;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UInputKeySelector::SetKeySelectionText(struct FText InKeySelectionText)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("InputKeySelector", "SetKeySelectionText");
-    struct
-    {
-        struct FText InKeySelectionText;
-    } Parms{};
-    Parms.InKeySelectionText = (struct FText)InKeySelectionText;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UInputKeySelector::SetEscapeKeys(const struct TArray<struct FKey>& InKeys)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("InputKeySelector", "SetEscapeKeys");
-    struct
-    {
-        struct TArray<struct FKey> InKeys;
-    } Parms{};
-    Parms.InKeys = (struct TArray<struct FKey>)InKeys;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UInputKeySelector::SetAllowModifierKeys(uint8_t bInAllowModifierKeys)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("InputKeySelector", "SetAllowModifierKeys");
-    struct
-    {
-        uint8_t bInAllowModifierKeys;
-    } Parms{};
-    Parms.bInAllowModifierKeys = (uint8_t)bInAllowModifierKeys;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UInputKeySelector::SetAllowGamepadKeys(uint8_t bInAllowGamepadKeys)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("InputKeySelector", "SetAllowGamepadKeys");
-    struct
-    {
-        uint8_t bInAllowGamepadKeys;
-    } Parms{};
-    Parms.bInAllowGamepadKeys = (uint8_t)bInAllowGamepadKeys;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UInputKeySelector::OnKeySelected__DelegateSignature(struct FInputChord SelectedKey)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("InputKeySelector", "OnKeySelected__DelegateSignature");
-    struct
-    {
-        struct FInputChord SelectedKey;
-    } Parms{};
-    Parms.SelectedKey = (struct FInputChord)SelectedKey;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UInputKeySelector::OnIsSelectingKeyChanged__DelegateSignature()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("InputKeySelector", "OnIsSelectingKeyChanged__DelegateSignature");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-uint8_t UInputKeySelector::GetIsSelectingKey()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("InputKeySelector", "GetIsSelectingKey");
-    struct
-    {
-        uint8_t ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-// UInt32Binding
-int32_t UInt32Binding::GetValue()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Int32Binding", "GetValue");
-    struct
-    {
-        int32_t ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-// IUserListEntry
-void IUserListEntry::BP_OnItemSelectionChanged(uint8_t bIsSelected)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("UserListEntry", "BP_OnItemSelectionChanged");
-    struct
-    {
-        uint8_t bIsSelected;
-    } Parms{};
-    Parms.bIsSelected = (uint8_t)bIsSelected;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void IUserListEntry::BP_OnItemExpansionChanged(uint8_t bIsExpanded)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("UserListEntry", "BP_OnItemExpansionChanged");
-    struct
-    {
-        uint8_t bIsExpanded;
-    } Parms{};
-    Parms.bIsExpanded = (uint8_t)bIsExpanded;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void IUserListEntry::BP_OnEntryReleased()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("UserListEntry", "BP_OnEntryReleased");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-// UUserListEntryLibrary
-uint8_t UUserListEntryLibrary::IsListItemSelected(struct TScriptInterface<IUserListEntry> UserListEntry)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = StaticClass()->GetFunction("UserListEntryLibrary", "IsListItemSelected");
-    struct
-    {
-        struct TScriptInterface<IUserListEntry> UserListEntry;
-        uint8_t ReturnValue;
-    } Parms{};
-    Parms.UserListEntry = (struct TScriptInterface<IUserListEntry>)UserListEntry;
-    GetDefaultObj()->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-uint8_t UUserListEntryLibrary::IsListItemExpanded(struct TScriptInterface<IUserListEntry> UserListEntry)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = StaticClass()->GetFunction("UserListEntryLibrary", "IsListItemExpanded");
-    struct
-    {
-        struct TScriptInterface<IUserListEntry> UserListEntry;
-        uint8_t ReturnValue;
-    } Parms{};
-    Parms.UserListEntry = (struct TScriptInterface<IUserListEntry>)UserListEntry;
-    GetDefaultObj()->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct UListViewBase* UUserListEntryLibrary::GetOwningListView(struct TScriptInterface<IUserListEntry> UserListEntry)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = StaticClass()->GetFunction("UserListEntryLibrary", "GetOwningListView");
-    struct
-    {
-        struct TScriptInterface<IUserListEntry> UserListEntry;
-        struct UListViewBase* ReturnValue;
-    } Parms{};
-    Parms.UserListEntry = (struct TScriptInterface<IUserListEntry>)UserListEntry;
-    GetDefaultObj()->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-// IUserObjectListEntry
-void IUserObjectListEntry::OnListItemObjectSet(struct UObject* ListItemObject)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("UserObjectListEntry", "OnListItemObjectSet");
-    struct
-    {
-        struct UObject* ListItemObject;
-    } Parms{};
-    Parms.ListItemObject = (struct UObject*)ListItemObject;
-    this->ProcessEvent(Func, &Parms);
-}
-
-// UUserObjectListEntryLibrary
-struct UObject* UUserObjectListEntryLibrary::GetListItemObject(struct TScriptInterface<IUserObjectListEntry> UserObjectListEntry)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = StaticClass()->GetFunction("UserObjectListEntryLibrary", "GetListItemObject");
-    struct
-    {
-        struct TScriptInterface<IUserObjectListEntry> UserObjectListEntry;
-        struct UObject* ReturnValue;
-    } Parms{};
-    Parms.UserObjectListEntry = (struct TScriptInterface<IUserObjectListEntry>)UserObjectListEntry;
-    GetDefaultObj()->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-// ULine
-void ULine::SetThickness(float InThickness)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Line", "SetThickness");
-    struct
-    {
-        float InThickness;
-    } Parms{};
-    Parms.InThickness = (float)InThickness;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void ULine::SetOpacity(float InOpacity)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Line", "SetOpacity");
-    struct
-    {
-        float InOpacity;
-    } Parms{};
-    Parms.InOpacity = (float)InOpacity;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void ULine::SetColorAndOpacity(struct FLinearColor InColorAndOpacity)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("Line", "SetColorAndOpacity");
-    struct
-    {
-        struct FLinearColor InColorAndOpacity;
-    } Parms{};
-    Parms.InColorAndOpacity = (struct FLinearColor)InColorAndOpacity;
-    this->ProcessEvent(Func, &Parms);
-}
-
-// UMenuAnchor
-void UMenuAnchor::ToggleOpen(uint8_t bFocusOnOpen)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MenuAnchor", "ToggleOpen");
-    struct
-    {
-        uint8_t bFocusOnOpen;
-    } Parms{};
-    Parms.bFocusOnOpen = (uint8_t)bFocusOnOpen;
-    this->ProcessEvent(Func, &Parms);
-}
-
-uint8_t UMenuAnchor::ShouldOpenDueToClick()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MenuAnchor", "ShouldOpenDueToClick");
-    struct
-    {
-        uint8_t ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-void UMenuAnchor::SetPlacement(EMenuPlacement InPlacement)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MenuAnchor", "SetPlacement");
-    struct
-    {
-        enum EMenuPlacement InPlacement;
-    } Parms{};
-    Parms.InPlacement = (enum EMenuPlacement)InPlacement;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UMenuAnchor::Open(uint8_t bFocusMenu)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MenuAnchor", "Open");
-    struct
-    {
-        uint8_t bFocusMenu;
-    } Parms{};
-    Parms.bFocusMenu = (uint8_t)bFocusMenu;
-    this->ProcessEvent(Func, &Parms);
-}
-
-uint8_t UMenuAnchor::IsOpen()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MenuAnchor", "IsOpen");
-    struct
-    {
-        uint8_t ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-uint8_t UMenuAnchor::HasOpenSubMenus()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MenuAnchor", "HasOpenSubMenus");
-    struct
-    {
-        uint8_t ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct FVector2D UMenuAnchor::GetMenuPosition()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MenuAnchor", "GetMenuPosition");
-    struct
-    {
-        struct FVector2D ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-void UMenuAnchor::FitInWindow(uint8_t bFit)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MenuAnchor", "FitInWindow");
-    struct
-    {
-        uint8_t bFit;
-    } Parms{};
-    Parms.bFit = (uint8_t)bFit;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UMenuAnchor::Close()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MenuAnchor", "Close");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-// UMirrorImage
-void UMirrorImage::SetOpacity(float InOpacity)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MirrorImage", "SetOpacity");
-    struct
-    {
-        float InOpacity;
-    } Parms{};
-    Parms.InOpacity = (float)InOpacity;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UMirrorImage::SetColorAndOpacity(struct FLinearColor InColorAndOpacity)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MirrorImage", "SetColorAndOpacity");
-    struct
-    {
-        struct FLinearColor InColorAndOpacity;
-    } Parms{};
-    Parms.InColorAndOpacity = (struct FLinearColor)InColorAndOpacity;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UMirrorImage::SetBrushTintColor(struct FSlateColor TintColor)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MirrorImage", "SetBrushTintColor");
-    struct
-    {
-        struct FSlateColor TintColor;
-    } Parms{};
-    Parms.TintColor = (struct FSlateColor)TintColor;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UMirrorImage::SetBrushSize(struct FVector2D DesiredSize)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MirrorImage", "SetBrushSize");
-    struct
-    {
-        struct FVector2D DesiredSize;
-    } Parms{};
-    Parms.DesiredSize = (struct FVector2D)DesiredSize;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UMirrorImage::SetBrushResourceObject(struct UObject* ResourceObject)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MirrorImage", "SetBrushResourceObject");
-    struct
-    {
-        struct UObject* ResourceObject;
-    } Parms{};
-    Parms.ResourceObject = (struct UObject*)ResourceObject;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UMirrorImage::SetBrushFromTextureDynamic(struct UTexture2DDynamic* Texture, uint8_t bMatchSize)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MirrorImage", "SetBrushFromTextureDynamic");
-    struct
-    {
-        struct UTexture2DDynamic* Texture;
-        uint8_t bMatchSize;
-    } Parms{};
-    Parms.Texture = (struct UTexture2DDynamic*)Texture;
-    Parms.bMatchSize = (uint8_t)bMatchSize;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UMirrorImage::SetBrushFromTexture(struct UTexture2D* Texture, uint8_t bMatchSize)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MirrorImage", "SetBrushFromTexture");
-    struct
-    {
-        struct UTexture2D* Texture;
-        uint8_t bMatchSize;
-    } Parms{};
-    Parms.Texture = (struct UTexture2D*)Texture;
-    Parms.bMatchSize = (uint8_t)bMatchSize;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UMirrorImage::SetBrushFromSoftTexture(struct TSoftObjectPtr<UTexture2D> SoftTexture, uint8_t bMatchSize)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MirrorImage", "SetBrushFromSoftTexture");
-    struct
-    {
-        struct TSoftObjectPtr<UTexture2D> SoftTexture;
-        uint8_t bMatchSize;
-    } Parms{};
-    Parms.SoftTexture = (struct TSoftObjectPtr<UTexture2D>)SoftTexture;
-    Parms.bMatchSize = (uint8_t)bMatchSize;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UMirrorImage::SetBrushFromSoftMaterial(struct TSoftObjectPtr<UMaterialInterface> SoftMaterial)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MirrorImage", "SetBrushFromSoftMaterial");
-    struct
-    {
-        struct TSoftObjectPtr<UMaterialInterface> SoftMaterial;
-    } Parms{};
-    Parms.SoftMaterial = (struct TSoftObjectPtr<UMaterialInterface>)SoftMaterial;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UMirrorImage::SetBrushFromSoftAtlasInterfaceWithAmplifiedRate(struct TSoftObjectPtr<UObject> SoftTexture, uint8_t bMatchSize, uint8_t bMatchAmplifiedRate)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MirrorImage", "SetBrushFromSoftAtlasInterfaceWithAmplifiedRate");
-    struct
-    {
-        struct TSoftObjectPtr<UObject> SoftTexture;
-        uint8_t bMatchSize;
-        uint8_t bMatchAmplifiedRate;
-    } Parms{};
-    Parms.SoftTexture = (struct TSoftObjectPtr<UObject>)SoftTexture;
-    Parms.bMatchSize = (uint8_t)bMatchSize;
-    Parms.bMatchAmplifiedRate = (uint8_t)bMatchAmplifiedRate;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UMirrorImage::SetBrushFromSoftAtlasInterface(struct TSoftObjectPtr<UObject> SoftTexture, uint8_t bMatchSize)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MirrorImage", "SetBrushFromSoftAtlasInterface");
-    struct
-    {
-        struct TSoftObjectPtr<UObject> SoftTexture;
-        uint8_t bMatchSize;
-    } Parms{};
-    Parms.SoftTexture = (struct TSoftObjectPtr<UObject>)SoftTexture;
-    Parms.bMatchSize = (uint8_t)bMatchSize;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UMirrorImage::SetBrushFromMaterial(struct UMaterialInterface* Material)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MirrorImage", "SetBrushFromMaterial");
-    struct
-    {
-        struct UMaterialInterface* Material;
-    } Parms{};
-    Parms.Material = (struct UMaterialInterface*)Material;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UMirrorImage::SetBrushFromAtlasInterfaceWithAmplifiedRate(struct TScriptInterface<ISlateTextureAtlasInterface> AtlasRegion, uint8_t bMatchSize, uint8_t bMatchAmplifiedRate)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MirrorImage", "SetBrushFromAtlasInterfaceWithAmplifiedRate");
-    struct
-    {
-        struct TScriptInterface<ISlateTextureAtlasInterface> AtlasRegion;
-        uint8_t bMatchSize;
-        uint8_t bMatchAmplifiedRate;
-    } Parms{};
-    Parms.AtlasRegion = (struct TScriptInterface<ISlateTextureAtlasInterface>)AtlasRegion;
-    Parms.bMatchSize = (uint8_t)bMatchSize;
-    Parms.bMatchAmplifiedRate = (uint8_t)bMatchAmplifiedRate;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UMirrorImage::SetBrushFromAtlasInterface(struct TScriptInterface<ISlateTextureAtlasInterface> AtlasRegion, uint8_t bMatchSize)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MirrorImage", "SetBrushFromAtlasInterface");
-    struct
-    {
-        struct TScriptInterface<ISlateTextureAtlasInterface> AtlasRegion;
-        uint8_t bMatchSize;
-    } Parms{};
-    Parms.AtlasRegion = (struct TScriptInterface<ISlateTextureAtlasInterface>)AtlasRegion;
-    Parms.bMatchSize = (uint8_t)bMatchSize;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UMirrorImage::SetBrushFromAsset(struct USlateBrushAsset* Asset)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MirrorImage", "SetBrushFromAsset");
-    struct
-    {
-        struct USlateBrushAsset* Asset;
-    } Parms{};
-    Parms.Asset = (struct USlateBrushAsset*)Asset;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UMirrorImage::SetBrush(const struct FSlateBrush& InBrush)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MirrorImage", "SetBrush");
-    struct
-    {
-        struct FSlateBrush InBrush;
-    } Parms{};
-    Parms.InBrush = (struct FSlateBrush)InBrush;
-    this->ProcessEvent(Func, &Parms);
-}
-
-struct UMaterialInstanceDynamic* UMirrorImage::GetDynamicMaterial()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MirrorImage", "GetDynamicMaterial");
-    struct
-    {
-        struct UMaterialInstanceDynamic* ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-// UMouseCursorBinding
-EMouseCursor UMouseCursorBinding::GetValue()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("MouseCursorBinding", "GetValue");
-    struct
-    {
-        enum EMouseCursor ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-// UOverlaySlot
-void UOverlaySlot::SetVerticalAlignment(EVerticalAlignment InVerticalAlignment)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("OverlaySlot", "SetVerticalAlignment");
-    struct
-    {
-        enum EVerticalAlignment InVerticalAlignment;
-    } Parms{};
-    Parms.InVerticalAlignment = (enum EVerticalAlignment)InVerticalAlignment;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UOverlaySlot::SetPadding(struct FMargin InPadding)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("OverlaySlot", "SetPadding");
-    struct
-    {
-        struct FMargin InPadding;
-    } Parms{};
-    Parms.InPadding = (struct FMargin)InPadding;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UOverlaySlot::SetHorizontalAlignment(EHorizontalAlignment InHorizontalAlignment)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("OverlaySlot", "SetHorizontalAlignment");
-    struct
-    {
-        enum EHorizontalAlignment InHorizontalAlignment;
-    } Parms{};
-    Parms.InHorizontalAlignment = (enum EHorizontalAlignment)InHorizontalAlignment;
-    this->ProcessEvent(Func, &Parms);
-}
-
-// UScaleBoxSlot
-void UScaleBoxSlot::SetVerticalAlignment(EVerticalAlignment InVerticalAlignment)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ScaleBoxSlot", "SetVerticalAlignment");
-    struct
-    {
-        enum EVerticalAlignment InVerticalAlignment;
-    } Parms{};
-    Parms.InVerticalAlignment = (enum EVerticalAlignment)InVerticalAlignment;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UScaleBoxSlot::SetPadding(struct FMargin InPadding)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ScaleBoxSlot", "SetPadding");
-    struct
-    {
-        struct FMargin InPadding;
-    } Parms{};
-    Parms.InPadding = (struct FMargin)InPadding;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UScaleBoxSlot::SetHorizontalAlignment(EHorizontalAlignment InHorizontalAlignment)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ScaleBoxSlot", "SetHorizontalAlignment");
-    struct
-    {
-        enum EHorizontalAlignment InHorizontalAlignment;
-    } Parms{};
-    Parms.InHorizontalAlignment = (enum EHorizontalAlignment)InHorizontalAlignment;
-    this->ProcessEvent(Func, &Parms);
-}
-
-// UScrollBar
-void UScrollBar::SetState(float InOffsetFraction, float InThumbSizeFraction)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ScrollBar", "SetState");
-    struct
-    {
-        float InOffsetFraction;
-        float InThumbSizeFraction;
-    } Parms{};
-    Parms.InOffsetFraction = (float)InOffsetFraction;
-    Parms.InThumbSizeFraction = (float)InThumbSizeFraction;
-    this->ProcessEvent(Func, &Parms);
-}
-
-// UScrollBoxSlot
-void UScrollBoxSlot::SetVerticalAlignment(EVerticalAlignment InVerticalAlignment)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ScrollBoxSlot", "SetVerticalAlignment");
-    struct
-    {
-        enum EVerticalAlignment InVerticalAlignment;
-    } Parms{};
-    Parms.InVerticalAlignment = (enum EVerticalAlignment)InVerticalAlignment;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UScrollBoxSlot::SetPadding(struct FMargin InPadding)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ScrollBoxSlot", "SetPadding");
-    struct
-    {
-        struct FMargin InPadding;
-    } Parms{};
-    Parms.InPadding = (struct FMargin)InPadding;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UScrollBoxSlot::SetHorizontalAlignment(EHorizontalAlignment InHorizontalAlignment)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("ScrollBoxSlot", "SetHorizontalAlignment");
-    struct
-    {
-        enum EHorizontalAlignment InHorizontalAlignment;
-    } Parms{};
-    Parms.InHorizontalAlignment = (enum EHorizontalAlignment)InHorizontalAlignment;
-    this->ProcessEvent(Func, &Parms);
-}
-
 // USizeBoxSlot
-void USizeBoxSlot::SetVerticalAlignment(EVerticalAlignment InVerticalAlignment)
+void USizeBoxSlot::SetVerticalAlignment(uint8_t InVerticalAlignment)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("SizeBoxSlot", "SetVerticalAlignment");
     struct
     {
-        enum EVerticalAlignment InVerticalAlignment;
+        uint8_t InVerticalAlignment;
     } Parms{};
-    Parms.InVerticalAlignment = (enum EVerticalAlignment)InVerticalAlignment;
+    Parms.InVerticalAlignment = (uint8_t)InVerticalAlignment;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -8258,15 +7369,15 @@ void USizeBoxSlot::SetPadding(struct FMargin InPadding)
     this->ProcessEvent(Func, &Parms);
 }
 
-void USizeBoxSlot::SetHorizontalAlignment(EHorizontalAlignment InHorizontalAlignment)
+void USizeBoxSlot::SetHorizontalAlignment(uint8_t InHorizontalAlignment)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("SizeBoxSlot", "SetHorizontalAlignment");
     struct
     {
-        enum EHorizontalAlignment InHorizontalAlignment;
+        uint8_t InHorizontalAlignment;
     } Parms{};
-    Parms.InHorizontalAlignment = (enum EHorizontalAlignment)InHorizontalAlignment;
+    Parms.InHorizontalAlignment = (uint8_t)InHorizontalAlignment;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -8335,7 +7446,7 @@ float USlateBlueprintLibrary::TransformScalarAbsoluteToLocal(const struct FGeome
     return Parms.ReturnValue;
 }
 
-void USlateBlueprintLibrary::ScreenToWidgetLocal(struct UObject* WorldContextObject, const struct FGeometry& Geometry, struct FVector2D ScreenPosition, struct FVector2D& LocalCoordinate)
+void USlateBlueprintLibrary::ScreenToWidgetLocal(struct UObject* WorldContextObject, const struct FGeometry& Geometry, struct FVector2D ScreenPosition, struct FVector2D& LocalCoordinate, bool bIncludeWindowPosition)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("SlateBlueprintLibrary", "ScreenToWidgetLocal");
@@ -8345,15 +7456,17 @@ void USlateBlueprintLibrary::ScreenToWidgetLocal(struct UObject* WorldContextObj
         struct FGeometry Geometry;
         struct FVector2D ScreenPosition;
         struct FVector2D LocalCoordinate;
+        bool bIncludeWindowPosition;
     } Parms{};
     Parms.WorldContextObject = (struct UObject*)WorldContextObject;
     Parms.Geometry = (struct FGeometry)Geometry;
     Parms.ScreenPosition = (struct FVector2D)ScreenPosition;
+    Parms.bIncludeWindowPosition = (bool)bIncludeWindowPosition;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     LocalCoordinate = Parms.LocalCoordinate;
 }
 
-void USlateBlueprintLibrary::ScreenToWidgetAbsolute(struct UObject* WorldContextObject, struct FVector2D ScreenPosition, struct FVector2D& AbsoluteCoordinate)
+void USlateBlueprintLibrary::ScreenToWidgetAbsolute(struct UObject* WorldContextObject, struct FVector2D ScreenPosition, struct FVector2D& AbsoluteCoordinate, bool bIncludeWindowPosition)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("SlateBlueprintLibrary", "ScreenToWidgetAbsolute");
@@ -8362,9 +7475,11 @@ void USlateBlueprintLibrary::ScreenToWidgetAbsolute(struct UObject* WorldContext
         struct UObject* WorldContextObject;
         struct FVector2D ScreenPosition;
         struct FVector2D AbsoluteCoordinate;
+        bool bIncludeWindowPosition;
     } Parms{};
     Parms.WorldContextObject = (struct UObject*)WorldContextObject;
     Parms.ScreenPosition = (struct FVector2D)ScreenPosition;
+    Parms.bIncludeWindowPosition = (bool)bIncludeWindowPosition;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     AbsoluteCoordinate = Parms.AbsoluteCoordinate;
 }
@@ -8421,7 +7536,7 @@ struct FVector2D USlateBlueprintLibrary::LocalToAbsolute(const struct FGeometry&
     return Parms.ReturnValue;
 }
 
-uint8_t USlateBlueprintLibrary::IsUnderLocation(const struct FGeometry& Geometry, const struct FVector2D& AbsoluteCoordinate)
+bool USlateBlueprintLibrary::IsUnderLocation(const struct FGeometry& Geometry, const struct FVector2D& AbsoluteCoordinate)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("SlateBlueprintLibrary", "IsUnderLocation");
@@ -8429,7 +7544,7 @@ uint8_t USlateBlueprintLibrary::IsUnderLocation(const struct FGeometry& Geometry
     {
         struct FGeometry Geometry;
         struct FVector2D AbsoluteCoordinate;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.Geometry = (struct FGeometry)Geometry;
     Parms.AbsoluteCoordinate = (struct FVector2D)AbsoluteCoordinate;
@@ -8479,7 +7594,7 @@ struct FVector2D USlateBlueprintLibrary::GetAbsoluteSize(const struct FGeometry&
     return Parms.ReturnValue;
 }
 
-uint8_t USlateBlueprintLibrary::EqualEqual_SlateBrush(const struct FSlateBrush& A, const struct FSlateBrush& B)
+bool USlateBlueprintLibrary::EqualEqual_SlateBrush(const struct FSlateBrush& A, const struct FSlateBrush& B)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("SlateBlueprintLibrary", "EqualEqual_SlateBrush");
@@ -8487,7 +7602,7 @@ uint8_t USlateBlueprintLibrary::EqualEqual_SlateBrush(const struct FSlateBrush& 
     {
         struct FSlateBrush A;
         struct FSlateBrush B;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.A = (struct FSlateBrush)A;
     Parms.B = (struct FSlateBrush)B;
@@ -8529,6 +7644,324 @@ struct FVector2D USlateBlueprintLibrary::AbsoluteToLocal(const struct FGeometry&
     return Parms.ReturnValue;
 }
 
+// USpacer
+void USpacer::SetSize(struct FVector2D InSize)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("Spacer", "SetSize");
+    struct
+    {
+        struct FVector2D InSize;
+    } Parms{};
+    Parms.InSize = (struct FVector2D)InSize;
+    this->ProcessEvent(Func, &Parms);
+}
+
+// USpinBox
+void USpinBox::SetValue(float NewValue)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "SetValue");
+    struct
+    {
+        float NewValue;
+    } Parms{};
+    Parms.NewValue = (float)NewValue;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void USpinBox::SetMinValue(float NewValue)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "SetMinValue");
+    struct
+    {
+        float NewValue;
+    } Parms{};
+    Parms.NewValue = (float)NewValue;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void USpinBox::SetMinSliderValue(float NewValue)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "SetMinSliderValue");
+    struct
+    {
+        float NewValue;
+    } Parms{};
+    Parms.NewValue = (float)NewValue;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void USpinBox::SetMinFractionalDigits(int32_t NewValue)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "SetMinFractionalDigits");
+    struct
+    {
+        int32_t NewValue;
+    } Parms{};
+    Parms.NewValue = (int32_t)NewValue;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void USpinBox::SetMaxValue(float NewValue)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "SetMaxValue");
+    struct
+    {
+        float NewValue;
+    } Parms{};
+    Parms.NewValue = (float)NewValue;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void USpinBox::SetMaxSliderValue(float NewValue)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "SetMaxSliderValue");
+    struct
+    {
+        float NewValue;
+    } Parms{};
+    Parms.NewValue = (float)NewValue;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void USpinBox::SetMaxFractionalDigits(int32_t NewValue)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "SetMaxFractionalDigits");
+    struct
+    {
+        int32_t NewValue;
+    } Parms{};
+    Parms.NewValue = (int32_t)NewValue;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void USpinBox::SetForegroundColor(struct FSlateColor InForegroundColor)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "SetForegroundColor");
+    struct
+    {
+        struct FSlateColor InForegroundColor;
+    } Parms{};
+    Parms.InForegroundColor = (struct FSlateColor)InForegroundColor;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void USpinBox::SetDelta(float NewValue)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "SetDelta");
+    struct
+    {
+        float NewValue;
+    } Parms{};
+    Parms.NewValue = (float)NewValue;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void USpinBox::SetAlwaysUsesDeltaSnap(bool bNewValue)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "SetAlwaysUsesDeltaSnap");
+    struct
+    {
+        bool bNewValue;
+    } Parms{};
+    Parms.bNewValue = (bool)bNewValue;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void USpinBox::OnSpinBoxValueCommittedEvent__DelegateSignature(float InValue, uint8_t CommitMethod)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "OnSpinBoxValueCommittedEvent__DelegateSignature");
+    struct
+    {
+        float InValue;
+        uint8_t CommitMethod;
+    } Parms{};
+    Parms.InValue = (float)InValue;
+    Parms.CommitMethod = (uint8_t)CommitMethod;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void USpinBox::OnSpinBoxValueChangedEvent__DelegateSignature(float InValue)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "OnSpinBoxValueChangedEvent__DelegateSignature");
+    struct
+    {
+        float InValue;
+    } Parms{};
+    Parms.InValue = (float)InValue;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void USpinBox::OnSpinBoxBeginSliderMovement__DelegateSignature()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "OnSpinBoxBeginSliderMovement__DelegateSignature");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+float USpinBox::GetValue()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "GetValue");
+    struct
+    {
+        float ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+float USpinBox::GetMinValue()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "GetMinValue");
+    struct
+    {
+        float ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+float USpinBox::GetMinSliderValue()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "GetMinSliderValue");
+    struct
+    {
+        float ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+int32_t USpinBox::GetMinFractionalDigits()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "GetMinFractionalDigits");
+    struct
+    {
+        int32_t ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+float USpinBox::GetMaxValue()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "GetMaxValue");
+    struct
+    {
+        float ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+float USpinBox::GetMaxSliderValue()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "GetMaxSliderValue");
+    struct
+    {
+        float ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+int32_t USpinBox::GetMaxFractionalDigits()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "GetMaxFractionalDigits");
+    struct
+    {
+        int32_t ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+float USpinBox::GetDelta()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "GetDelta");
+    struct
+    {
+        float ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+bool USpinBox::GetAlwaysUsesDeltaSnap()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "GetAlwaysUsesDeltaSnap");
+    struct
+    {
+        bool ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+void USpinBox::ClearMinValue()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "ClearMinValue");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+void USpinBox::ClearMinSliderValue()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "ClearMinSliderValue");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+void USpinBox::ClearMaxValue()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "ClearMaxValue");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
+void USpinBox::ClearMaxSliderValue()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("SpinBox", "ClearMaxSliderValue");
+    struct
+    {
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+}
+
 // UTextBinding
 struct FText UTextBinding::GetTextValue()
 {
@@ -8554,6 +7987,227 @@ struct FString UTextBinding::GetStringValue()
     return Parms.ReturnValue;
 }
 
+// UTextBlock
+void UTextBlock::SetTextTransformPolicy(ETextTransformPolicy InTransformPolicy)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "SetTextTransformPolicy");
+    struct
+    {
+        enum ETextTransformPolicy InTransformPolicy;
+    } Parms{};
+    Parms.InTransformPolicy = (enum ETextTransformPolicy)InTransformPolicy;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UTextBlock::SetText(struct FText InText)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "SetText");
+    struct
+    {
+        struct FText InText;
+    } Parms{};
+    Parms.InText = (struct FText)InText;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UTextBlock::SetStrikeBrush(struct FSlateBrush InStrikeBrush)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "SetStrikeBrush");
+    struct
+    {
+        struct FSlateBrush InStrikeBrush;
+    } Parms{};
+    Parms.InStrikeBrush = (struct FSlateBrush)InStrikeBrush;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UTextBlock::SetSimpleTextMode(bool SimpleTextMode)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "SetSimpleTextMode");
+    struct
+    {
+        bool SimpleTextMode;
+    } Parms{};
+    Parms.SimpleTextMode = (bool)SimpleTextMode;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UTextBlock::SetShadowOffset(struct FVector2D InShadowOffset)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "SetShadowOffset");
+    struct
+    {
+        struct FVector2D InShadowOffset;
+    } Parms{};
+    Parms.InShadowOffset = (struct FVector2D)InShadowOffset;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UTextBlock::SetShadowColorAndOpacity(struct FLinearColor InShadowColorAndOpacity)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "SetShadowColorAndOpacity");
+    struct
+    {
+        struct FLinearColor InShadowColorAndOpacity;
+    } Parms{};
+    Parms.InShadowColorAndOpacity = (struct FLinearColor)InShadowColorAndOpacity;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UTextBlock::SetOpacity(float InOpacity)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "SetOpacity");
+    struct
+    {
+        float InOpacity;
+    } Parms{};
+    Parms.InOpacity = (float)InOpacity;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UTextBlock::SetMinDesiredWidth(float InMinDesiredWidth)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "SetMinDesiredWidth");
+    struct
+    {
+        float InMinDesiredWidth;
+    } Parms{};
+    Parms.InMinDesiredWidth = (float)InMinDesiredWidth;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UTextBlock::SetForceUiLayerId(int32_t InLayerId)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "SetForceUiLayerId");
+    struct
+    {
+        int32_t InLayerId;
+    } Parms{};
+    Parms.InLayerId = (int32_t)InLayerId;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UTextBlock::SetFont(struct FSlateFontInfo InFontInfo)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "SetFont");
+    struct
+    {
+        struct FSlateFontInfo InFontInfo;
+    } Parms{};
+    Parms.InFontInfo = (struct FSlateFontInfo)InFontInfo;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UTextBlock::SetEnableAutoTruncate(bool bEnable)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "SetEnableAutoTruncate");
+    struct
+    {
+        bool bEnable;
+    } Parms{};
+    Parms.bEnable = (bool)bEnable;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UTextBlock::SetColorAndOpacity(struct FSlateColor InColorAndOpacity)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "SetColorAndOpacity");
+    struct
+    {
+        struct FSlateColor InColorAndOpacity;
+    } Parms{};
+    Parms.InColorAndOpacity = (struct FSlateColor)InColorAndOpacity;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UTextBlock::SetAutoWrapText(bool InAutoTextWrap)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "SetAutoWrapText");
+    struct
+    {
+        bool InAutoTextWrap;
+    } Parms{};
+    Parms.InAutoTextWrap = (bool)InAutoTextWrap;
+    this->ProcessEvent(Func, &Parms);
+}
+
+struct FText UTextBlock::RefreshL10NTextBaseInt(int64_t InputNumber)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "RefreshL10NTextBaseInt");
+    struct
+    {
+        int64_t InputNumber;
+        struct FText ReturnValue;
+    } Parms{};
+    Parms.InputNumber = (int64_t)InputNumber;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct FText UTextBlock::RefreshL10NTextBaseFloat(float InputNumber)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "RefreshL10NTextBaseFloat");
+    struct
+    {
+        float InputNumber;
+        struct FText ReturnValue;
+    } Parms{};
+    Parms.InputNumber = (float)InputNumber;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct FText UTextBlock::GetText()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "GetText");
+    struct
+    {
+        struct FText ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct UMaterialInstanceDynamic* UTextBlock::GetDynamicOutlineMaterial()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "GetDynamicOutlineMaterial");
+    struct
+    {
+        struct UMaterialInstanceDynamic* ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct UMaterialInstanceDynamic* UTextBlock::GetDynamicFontMaterial()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("TextBlock", "GetDynamicFontMaterial");
+    struct
+    {
+        struct UMaterialInstanceDynamic* ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
 // UThrobber
 void UThrobber::SetNumberOfPieces(int32_t InNumberOfPieces)
 {
@@ -8567,39 +8221,39 @@ void UThrobber::SetNumberOfPieces(int32_t InNumberOfPieces)
     this->ProcessEvent(Func, &Parms);
 }
 
-void UThrobber::SetAnimateVertically(uint8_t bInAnimateVertically)
+void UThrobber::SetAnimateVertically(bool bInAnimateVertically)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("Throbber", "SetAnimateVertically");
     struct
     {
-        uint8_t bInAnimateVertically;
+        bool bInAnimateVertically;
     } Parms{};
-    Parms.bInAnimateVertically = (uint8_t)bInAnimateVertically;
+    Parms.bInAnimateVertically = (bool)bInAnimateVertically;
     this->ProcessEvent(Func, &Parms);
 }
 
-void UThrobber::SetAnimateOpacity(uint8_t bInAnimateOpacity)
+void UThrobber::SetAnimateOpacity(bool bInAnimateOpacity)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("Throbber", "SetAnimateOpacity");
     struct
     {
-        uint8_t bInAnimateOpacity;
+        bool bInAnimateOpacity;
     } Parms{};
-    Parms.bInAnimateOpacity = (uint8_t)bInAnimateOpacity;
+    Parms.bInAnimateOpacity = (bool)bInAnimateOpacity;
     this->ProcessEvent(Func, &Parms);
 }
 
-void UThrobber::SetAnimateHorizontally(uint8_t bInAnimateHorizontally)
+void UThrobber::SetAnimateHorizontally(bool bInAnimateHorizontally)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("Throbber", "SetAnimateHorizontally");
     struct
     {
-        uint8_t bInAnimateHorizontally;
+        bool bInAnimateHorizontally;
     } Parms{};
-    Parms.bInAnimateHorizontally = (uint8_t)bInAnimateHorizontally;
+    Parms.bInAnimateHorizontally = (bool)bInAnimateHorizontally;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -8628,16 +8282,71 @@ struct FName UUMGSequencePlayer::GetUserTag()
     return Parms.ReturnValue;
 }
 
+// UUniformGridPanel
+void UUniformGridPanel::SetSlotPadding(struct FMargin InSlotPadding)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("UniformGridPanel", "SetSlotPadding");
+    struct
+    {
+        struct FMargin InSlotPadding;
+    } Parms{};
+    Parms.InSlotPadding = (struct FMargin)InSlotPadding;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UUniformGridPanel::SetMinDesiredSlotWidth(float InMinDesiredSlotWidth)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("UniformGridPanel", "SetMinDesiredSlotWidth");
+    struct
+    {
+        float InMinDesiredSlotWidth;
+    } Parms{};
+    Parms.InMinDesiredSlotWidth = (float)InMinDesiredSlotWidth;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UUniformGridPanel::SetMinDesiredSlotHeight(float InMinDesiredSlotHeight)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("UniformGridPanel", "SetMinDesiredSlotHeight");
+    struct
+    {
+        float InMinDesiredSlotHeight;
+    } Parms{};
+    Parms.InMinDesiredSlotHeight = (float)InMinDesiredSlotHeight;
+    this->ProcessEvent(Func, &Parms);
+}
+
+struct UUniformGridSlot* UUniformGridPanel::AddChildToUniformGrid(struct UWidget* Content, int32_t InRow, int32_t InColumn)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("UniformGridPanel", "AddChildToUniformGrid");
+    struct
+    {
+        struct UWidget* Content;
+        int32_t InRow;
+        int32_t InColumn;
+        struct UUniformGridSlot* ReturnValue;
+    } Parms{};
+    Parms.Content = (struct UWidget*)Content;
+    Parms.InRow = (int32_t)InRow;
+    Parms.InColumn = (int32_t)InColumn;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
 // UUniformGridSlot
-void UUniformGridSlot::SetVerticalAlignment(EVerticalAlignment InVerticalAlignment)
+void UUniformGridSlot::SetVerticalAlignment(uint8_t InVerticalAlignment)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("UniformGridSlot", "SetVerticalAlignment");
     struct
     {
-        enum EVerticalAlignment InVerticalAlignment;
+        uint8_t InVerticalAlignment;
     } Parms{};
-    Parms.InVerticalAlignment = (enum EVerticalAlignment)InVerticalAlignment;
+    Parms.InVerticalAlignment = (uint8_t)InVerticalAlignment;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -8653,15 +8362,15 @@ void UUniformGridSlot::SetRow(int32_t InRow)
     this->ProcessEvent(Func, &Parms);
 }
 
-void UUniformGridSlot::SetHorizontalAlignment(EHorizontalAlignment InHorizontalAlignment)
+void UUniformGridSlot::SetHorizontalAlignment(uint8_t InHorizontalAlignment)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("UniformGridSlot", "SetHorizontalAlignment");
     struct
     {
-        enum EHorizontalAlignment InHorizontalAlignment;
+        uint8_t InHorizontalAlignment;
     } Parms{};
-    Parms.InHorizontalAlignment = (enum EHorizontalAlignment)InHorizontalAlignment;
+    Parms.InHorizontalAlignment = (uint8_t)InHorizontalAlignment;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -8677,16 +8386,47 @@ void UUniformGridSlot::SetColumn(int32_t InColumn)
     this->ProcessEvent(Func, &Parms);
 }
 
+// UVerticalBox
+struct UVerticalBoxSlot* UVerticalBox::AddChildToVerticalBoxAt(struct UWidget* Content, int32_t Index)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("VerticalBox", "AddChildToVerticalBoxAt");
+    struct
+    {
+        struct UWidget* Content;
+        int32_t Index;
+        struct UVerticalBoxSlot* ReturnValue;
+    } Parms{};
+    Parms.Content = (struct UWidget*)Content;
+    Parms.Index = (int32_t)Index;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct UVerticalBoxSlot* UVerticalBox::AddChildToVerticalBox(struct UWidget* Content)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("VerticalBox", "AddChildToVerticalBox");
+    struct
+    {
+        struct UWidget* Content;
+        struct UVerticalBoxSlot* ReturnValue;
+    } Parms{};
+    Parms.Content = (struct UWidget*)Content;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
 // UVerticalBoxSlot
-void UVerticalBoxSlot::SetVerticalAlignment(EVerticalAlignment InVerticalAlignment)
+void UVerticalBoxSlot::SetVerticalAlignment(uint8_t InVerticalAlignment)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("VerticalBoxSlot", "SetVerticalAlignment");
     struct
     {
-        enum EVerticalAlignment InVerticalAlignment;
+        uint8_t InVerticalAlignment;
     } Parms{};
-    Parms.InVerticalAlignment = (enum EVerticalAlignment)InVerticalAlignment;
+    Parms.InVerticalAlignment = (uint8_t)InVerticalAlignment;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -8714,15 +8454,15 @@ void UVerticalBoxSlot::SetPadding(struct FMargin InPadding)
     this->ProcessEvent(Func, &Parms);
 }
 
-void UVerticalBoxSlot::SetHorizontalAlignment(EHorizontalAlignment InHorizontalAlignment)
+void UVerticalBoxSlot::SetHorizontalAlignment(uint8_t InHorizontalAlignment)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("VerticalBoxSlot", "SetHorizontalAlignment");
     struct
     {
-        enum EHorizontalAlignment InHorizontalAlignment;
+        uint8_t InHorizontalAlignment;
     } Parms{};
-    Parms.InHorizontalAlignment = (enum EHorizontalAlignment)InHorizontalAlignment;
+    Parms.InHorizontalAlignment = (uint8_t)InHorizontalAlignment;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -8809,6 +8549,69 @@ ESlateVisibility UVisibilityBinding::GetValue()
     struct
     {
         enum ESlateVisibility ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+// UVisibilityWidgetSwitcher
+void UVisibilityWidgetSwitcher::SetActiveWidgetIndex(int32_t Index)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("VisibilityWidgetSwitcher", "SetActiveWidgetIndex");
+    struct
+    {
+        int32_t Index;
+    } Parms{};
+    Parms.Index = (int32_t)Index;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UVisibilityWidgetSwitcher::SetActiveWidget(struct UWidget* Widget)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("VisibilityWidgetSwitcher", "SetActiveWidget");
+    struct
+    {
+        struct UWidget* Widget;
+    } Parms{};
+    Parms.Widget = (struct UWidget*)Widget;
+    this->ProcessEvent(Func, &Parms);
+}
+
+struct UWidget* UVisibilityWidgetSwitcher::GetWidgetAtIndex(int32_t Index)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("VisibilityWidgetSwitcher", "GetWidgetAtIndex");
+    struct
+    {
+        int32_t Index;
+        struct UWidget* ReturnValue;
+    } Parms{};
+    Parms.Index = (int32_t)Index;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+int32_t UVisibilityWidgetSwitcher::GetActiveWidgetIndex()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("VisibilityWidgetSwitcher", "GetActiveWidgetIndex");
+    struct
+    {
+        int32_t ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct UWidget* UVisibilityWidgetSwitcher::GetActiveWidget()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("VisibilityWidgetSwitcher", "GetActiveWidget");
+    struct
+    {
+        struct UWidget* ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
@@ -8920,7 +8723,7 @@ void UWidgetAnimation::BindToAnimationFinished(struct UUserWidget* Widget, struc
 }
 
 // UWidgetAnimationPlayCallbackProxy
-struct UWidgetAnimationPlayCallbackProxy* UWidgetAnimationPlayCallbackProxy::CreatePlayAnimationTimeRangeProxyObject(struct UUMGSequencePlayer*& Result, struct UUserWidget* Widget, struct UWidgetAnimation* InAnimation, float StartAtTime, float EndAtTime, int32_t NumLoopsToPlay, EUMGSequencePlayMode PlayMode, float PlaybackSpeed)
+struct UWidgetAnimationPlayCallbackProxy* UWidgetAnimationPlayCallbackProxy::CreatePlayAnimationTimeRangeProxyObject(struct UUMGSequencePlayer*& Result, struct UUserWidget* Widget, struct UWidgetAnimation* InAnimation, float StartAtTime, float EndAtTime, int32_t NumLoopsToPlay, uint8_t PlayMode, float PlaybackSpeed)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("WidgetAnimationPlayCallbackProxy", "CreatePlayAnimationTimeRangeProxyObject");
@@ -8932,7 +8735,7 @@ struct UWidgetAnimationPlayCallbackProxy* UWidgetAnimationPlayCallbackProxy::Cre
         float StartAtTime;
         float EndAtTime;
         int32_t NumLoopsToPlay;
-        enum EUMGSequencePlayMode PlayMode;
+        uint8_t PlayMode;
         float PlaybackSpeed;
         struct UWidgetAnimationPlayCallbackProxy* ReturnValue;
     } Parms{};
@@ -8941,14 +8744,14 @@ struct UWidgetAnimationPlayCallbackProxy* UWidgetAnimationPlayCallbackProxy::Cre
     Parms.StartAtTime = (float)StartAtTime;
     Parms.EndAtTime = (float)EndAtTime;
     Parms.NumLoopsToPlay = (int32_t)NumLoopsToPlay;
-    Parms.PlayMode = (enum EUMGSequencePlayMode)PlayMode;
+    Parms.PlayMode = (uint8_t)PlayMode;
     Parms.PlaybackSpeed = (float)PlaybackSpeed;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     Result = Parms.Result;
     return Parms.ReturnValue;
 }
 
-struct UWidgetAnimationPlayCallbackProxy* UWidgetAnimationPlayCallbackProxy::CreatePlayAnimationProxyObject(struct UUMGSequencePlayer*& Result, struct UUserWidget* Widget, struct UWidgetAnimation* InAnimation, float StartAtTime, int32_t NumLoopsToPlay, EUMGSequencePlayMode PlayMode, float PlaybackSpeed)
+struct UWidgetAnimationPlayCallbackProxy* UWidgetAnimationPlayCallbackProxy::CreatePlayAnimationProxyObject(struct UUMGSequencePlayer*& Result, struct UUserWidget* Widget, struct UWidgetAnimation* InAnimation, float StartAtTime, int32_t NumLoopsToPlay, uint8_t PlayMode, float PlaybackSpeed)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("WidgetAnimationPlayCallbackProxy", "CreatePlayAnimationProxyObject");
@@ -8959,7 +8762,7 @@ struct UWidgetAnimationPlayCallbackProxy* UWidgetAnimationPlayCallbackProxy::Cre
         struct UWidgetAnimation* InAnimation;
         float StartAtTime;
         int32_t NumLoopsToPlay;
-        enum EUMGSequencePlayMode PlayMode;
+        uint8_t PlayMode;
         float PlaybackSpeed;
         struct UWidgetAnimationPlayCallbackProxy* ReturnValue;
     } Parms{};
@@ -8967,7 +8770,7 @@ struct UWidgetAnimationPlayCallbackProxy* UWidgetAnimationPlayCallbackProxy::Cre
     Parms.InAnimation = (struct UWidgetAnimation*)InAnimation;
     Parms.StartAtTime = (float)StartAtTime;
     Parms.NumLoopsToPlay = (int32_t)NumLoopsToPlay;
-    Parms.PlayMode = (enum EUMGSequencePlayMode)PlayMode;
+    Parms.PlayMode = (uint8_t)PlayMode;
     Parms.PlaybackSpeed = (float)PlaybackSpeed;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     Result = Parms.Result;
@@ -9014,7 +8817,7 @@ struct FEventReply UWidgetBlueprintLibrary::Unhandled()
     return Parms.ReturnValue;
 }
 
-void UWidgetBlueprintLibrary::SetWindowTitleBarState(struct UWidget* TitleBarContent, EWindowTitleBarMode Mode, uint8_t bTitleBarDragEnabled, uint8_t bWindowButtonsVisible, uint8_t bTitleBarVisible)
+void UWidgetBlueprintLibrary::SetWindowTitleBarState(struct UWidget* TitleBarContent, EWindowTitleBarMode Mode, bool bTitleBarDragEnabled, bool bWindowButtonsVisible, bool bTitleBarVisible)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("WidgetBlueprintLibrary", "SetWindowTitleBarState");
@@ -9022,15 +8825,15 @@ void UWidgetBlueprintLibrary::SetWindowTitleBarState(struct UWidget* TitleBarCon
     {
         struct UWidget* TitleBarContent;
         enum EWindowTitleBarMode Mode;
-        uint8_t bTitleBarDragEnabled;
-        uint8_t bWindowButtonsVisible;
-        uint8_t bTitleBarVisible;
+        bool bTitleBarDragEnabled;
+        bool bWindowButtonsVisible;
+        bool bTitleBarVisible;
     } Parms{};
     Parms.TitleBarContent = (struct UWidget*)TitleBarContent;
     Parms.Mode = (enum EWindowTitleBarMode)Mode;
-    Parms.bTitleBarDragEnabled = (uint8_t)bTitleBarDragEnabled;
-    Parms.bWindowButtonsVisible = (uint8_t)bWindowButtonsVisible;
-    Parms.bTitleBarVisible = (uint8_t)bTitleBarVisible;
+    Parms.bTitleBarDragEnabled = (bool)bTitleBarDragEnabled;
+    Parms.bWindowButtonsVisible = (bool)bWindowButtonsVisible;
+    Parms.bTitleBarVisible = (bool)bTitleBarVisible;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
 }
 
@@ -9046,19 +8849,19 @@ void UWidgetBlueprintLibrary::SetWindowTitleBarOnCloseClickedDelegate(struct FDe
     GetDefaultObj()->ProcessEvent(Func, &Parms);
 }
 
-void UWidgetBlueprintLibrary::SetWindowTitleBarCloseButtonActive(uint8_t bActive)
+void UWidgetBlueprintLibrary::SetWindowTitleBarCloseButtonActive(bool bActive)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("WidgetBlueprintLibrary", "SetWindowTitleBarCloseButtonActive");
     struct
     {
-        uint8_t bActive;
+        bool bActive;
     } Parms{};
-    Parms.bActive = (uint8_t)bActive;
+    Parms.bActive = (bool)bActive;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
 }
 
-struct FEventReply UWidgetBlueprintLibrary::SetUserFocus(struct FEventReply& Reply, struct UWidget* FocusWidget, uint8_t bInAllUsers)
+struct FEventReply UWidgetBlueprintLibrary::SetUserFocus(struct FEventReply& Reply, struct UWidget* FocusWidget, bool bInAllUsers)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("WidgetBlueprintLibrary", "SetUserFocus");
@@ -9066,11 +8869,11 @@ struct FEventReply UWidgetBlueprintLibrary::SetUserFocus(struct FEventReply& Rep
     {
         struct FEventReply Reply;
         struct UWidget* FocusWidget;
-        uint8_t bInAllUsers;
+        bool bInAllUsers;
         struct FEventReply ReturnValue;
     } Parms{};
     Parms.FocusWidget = (struct UWidget*)FocusWidget;
-    Parms.bInAllUsers = (uint8_t)bInAllUsers;
+    Parms.bInAllUsers = (bool)bInAllUsers;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     Reply = Parms.Reply;
     return Parms.ReturnValue;
@@ -9108,7 +8911,7 @@ void UWidgetBlueprintLibrary::SetInputMode_UIOnlyEx(struct APlayerController* Pl
     GetDefaultObj()->ProcessEvent(Func, &Parms);
 }
 
-void UWidgetBlueprintLibrary::SetInputMode_UIOnly(struct APlayerController* Target, struct UWidget* InWidgetToFocus, uint8_t bLockMouseToViewport)
+void UWidgetBlueprintLibrary::SetInputMode_UIOnly(struct APlayerController* Target, struct UWidget* InWidgetToFocus, bool bLockMouseToViewport)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("WidgetBlueprintLibrary", "SetInputMode_UIOnly");
@@ -9116,11 +8919,11 @@ void UWidgetBlueprintLibrary::SetInputMode_UIOnly(struct APlayerController* Targ
     {
         struct APlayerController* Target;
         struct UWidget* InWidgetToFocus;
-        uint8_t bLockMouseToViewport;
+        bool bLockMouseToViewport;
     } Parms{};
     Parms.Target = (struct APlayerController*)Target;
     Parms.InWidgetToFocus = (struct UWidget*)InWidgetToFocus;
-    Parms.bLockMouseToViewport = (uint8_t)bLockMouseToViewport;
+    Parms.bLockMouseToViewport = (bool)bLockMouseToViewport;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
 }
 
@@ -9136,7 +8939,7 @@ void UWidgetBlueprintLibrary::SetInputMode_GameOnly(struct APlayerController* Pl
     GetDefaultObj()->ProcessEvent(Func, &Parms);
 }
 
-void UWidgetBlueprintLibrary::SetInputMode_GameAndUIEx(struct APlayerController* PlayerController, struct UWidget* InWidgetToFocus, EMouseLockMode InMouseLockMode, uint8_t bHideCursorDuringCapture)
+void UWidgetBlueprintLibrary::SetInputMode_GameAndUIEx(struct APlayerController* PlayerController, struct UWidget* InWidgetToFocus, EMouseLockMode InMouseLockMode, bool bHideCursorDuringCapture)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("WidgetBlueprintLibrary", "SetInputMode_GameAndUIEx");
@@ -9145,16 +8948,16 @@ void UWidgetBlueprintLibrary::SetInputMode_GameAndUIEx(struct APlayerController*
         struct APlayerController* PlayerController;
         struct UWidget* InWidgetToFocus;
         enum EMouseLockMode InMouseLockMode;
-        uint8_t bHideCursorDuringCapture;
+        bool bHideCursorDuringCapture;
     } Parms{};
     Parms.PlayerController = (struct APlayerController*)PlayerController;
     Parms.InWidgetToFocus = (struct UWidget*)InWidgetToFocus;
     Parms.InMouseLockMode = (enum EMouseLockMode)InMouseLockMode;
-    Parms.bHideCursorDuringCapture = (uint8_t)bHideCursorDuringCapture;
+    Parms.bHideCursorDuringCapture = (bool)bHideCursorDuringCapture;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
 }
 
-void UWidgetBlueprintLibrary::SetInputMode_GameAndUI(struct APlayerController* Target, struct UWidget* InWidgetToFocus, uint8_t bLockMouseToViewport, uint8_t bHideCursorDuringCapture)
+void UWidgetBlueprintLibrary::SetInputMode_GameAndUI(struct APlayerController* Target, struct UWidget* InWidgetToFocus, bool bLockMouseToViewport, bool bHideCursorDuringCapture)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("WidgetBlueprintLibrary", "SetInputMode_GameAndUI");
@@ -9162,30 +8965,30 @@ void UWidgetBlueprintLibrary::SetInputMode_GameAndUI(struct APlayerController* T
     {
         struct APlayerController* Target;
         struct UWidget* InWidgetToFocus;
-        uint8_t bLockMouseToViewport;
-        uint8_t bHideCursorDuringCapture;
+        bool bLockMouseToViewport;
+        bool bHideCursorDuringCapture;
     } Parms{};
     Parms.Target = (struct APlayerController*)Target;
     Parms.InWidgetToFocus = (struct UWidget*)InWidgetToFocus;
-    Parms.bLockMouseToViewport = (uint8_t)bLockMouseToViewport;
-    Parms.bHideCursorDuringCapture = (uint8_t)bHideCursorDuringCapture;
+    Parms.bLockMouseToViewport = (bool)bLockMouseToViewport;
+    Parms.bHideCursorDuringCapture = (bool)bHideCursorDuringCapture;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
 }
 
-uint8_t UWidgetBlueprintLibrary::SetHardwareCursor(struct UObject* WorldContextObject, EMouseCursor CursorShape, struct FName CursorName, struct FVector2D HotSpot)
+bool UWidgetBlueprintLibrary::SetHardwareCursor(struct UObject* WorldContextObject, uint8_t CursorShape, struct FName CursorName, struct FVector2D HotSpot)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("WidgetBlueprintLibrary", "SetHardwareCursor");
     struct
     {
         struct UObject* WorldContextObject;
-        enum EMouseCursor CursorShape;
+        uint8_t CursorShape;
         struct FName CursorName;
         struct FVector2D HotSpot;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.WorldContextObject = (struct UObject*)WorldContextObject;
-    Parms.CursorShape = (enum EMouseCursor)CursorShape;
+    Parms.CursorShape = (uint8_t)CursorShape;
     Parms.CursorName = (struct FName)CursorName;
     Parms.HotSpot = (struct FVector2D)HotSpot;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
@@ -9202,7 +9005,7 @@ void UWidgetBlueprintLibrary::SetFocusToGameViewport()
     GetDefaultObj()->ProcessEvent(Func, &Parms);
 }
 
-void UWidgetBlueprintLibrary::SetColorVisionDeficiencyType(EColorVisionDeficiency Type, float Severity, uint8_t CorrectDeficiency, uint8_t ShowCorrectionWithDeficiency)
+void UWidgetBlueprintLibrary::SetColorVisionDeficiencyType(EColorVisionDeficiency Type, float Severity, bool CorrectDeficiency, bool ShowCorrectionWithDeficiency)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("WidgetBlueprintLibrary", "SetColorVisionDeficiencyType");
@@ -9210,13 +9013,13 @@ void UWidgetBlueprintLibrary::SetColorVisionDeficiencyType(EColorVisionDeficienc
     {
         enum EColorVisionDeficiency Type;
         float Severity;
-        uint8_t CorrectDeficiency;
-        uint8_t ShowCorrectionWithDeficiency;
+        bool CorrectDeficiency;
+        bool ShowCorrectionWithDeficiency;
     } Parms{};
     Parms.Type = (enum EColorVisionDeficiency)Type;
     Parms.Severity = (float)Severity;
-    Parms.CorrectDeficiency = (uint8_t)CorrectDeficiency;
-    Parms.ShowCorrectionWithDeficiency = (uint8_t)ShowCorrectionWithDeficiency;
+    Parms.CorrectDeficiency = (bool)CorrectDeficiency;
+    Parms.ShowCorrectionWithDeficiency = (bool)ShowCorrectionWithDeficiency;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
 }
 
@@ -9272,17 +9075,17 @@ struct FEventReply UWidgetBlueprintLibrary::ReleaseMouseCapture(struct FEventRep
     return Parms.ReturnValue;
 }
 
-struct FEventReply UWidgetBlueprintLibrary::ReleaseJoystickCapture(struct FEventReply& Reply, uint8_t bInAllJoysticks)
+struct FEventReply UWidgetBlueprintLibrary::ReleaseJoystickCapture(struct FEventReply& Reply, bool bInAllJoysticks)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("WidgetBlueprintLibrary", "ReleaseJoystickCapture");
     struct
     {
         struct FEventReply Reply;
-        uint8_t bInAllJoysticks;
+        bool bInAllJoysticks;
         struct FEventReply ReturnValue;
     } Parms{};
-    Parms.bInAllJoysticks = (uint8_t)bInAllJoysticks;
+    Parms.bInAllJoysticks = (bool)bInAllJoysticks;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     Reply = Parms.Reply;
     return Parms.ReturnValue;
@@ -9376,13 +9179,13 @@ struct FEventReply UWidgetBlueprintLibrary::LockMouse(struct FEventReply& Reply,
     return Parms.ReturnValue;
 }
 
-uint8_t UWidgetBlueprintLibrary::IsDragDropping()
+bool UWidgetBlueprintLibrary::IsDragDropping()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("WidgetBlueprintLibrary", "IsDragDropping");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
@@ -9556,7 +9359,7 @@ struct UObject* UWidgetBlueprintLibrary::GetBrushResource(const struct FSlateBru
     return Parms.ReturnValue;
 }
 
-void UWidgetBlueprintLibrary::GetAllWidgetsWithInterface(struct UObject* WorldContextObject, struct TArray<struct UUserWidget*>& FoundWidgets, struct IInterface* Interface, uint8_t TopLevelOnly)
+void UWidgetBlueprintLibrary::GetAllWidgetsWithInterface(struct UObject* WorldContextObject, struct TArray<struct UUserWidget*>& FoundWidgets, struct IInterface* Interface, bool TopLevelOnly)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("WidgetBlueprintLibrary", "GetAllWidgetsWithInterface");
@@ -9565,16 +9368,16 @@ void UWidgetBlueprintLibrary::GetAllWidgetsWithInterface(struct UObject* WorldCo
         struct UObject* WorldContextObject;
         struct TArray<struct UUserWidget*> FoundWidgets;
         struct IInterface* Interface;
-        uint8_t TopLevelOnly;
+        bool TopLevelOnly;
     } Parms{};
     Parms.WorldContextObject = (struct UObject*)WorldContextObject;
     Parms.Interface = (struct IInterface*)Interface;
-    Parms.TopLevelOnly = (uint8_t)TopLevelOnly;
+    Parms.TopLevelOnly = (bool)TopLevelOnly;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     FoundWidgets = Parms.FoundWidgets;
 }
 
-void UWidgetBlueprintLibrary::GetAllWidgetsOfClass(struct UObject* WorldContextObject, struct TArray<struct UUserWidget*>& FoundWidgets, struct UUserWidget* WidgetClass, uint8_t TopLevelOnly)
+void UWidgetBlueprintLibrary::GetAllWidgetsOfClass(struct UObject* WorldContextObject, struct TArray<struct UUserWidget*>& FoundWidgets, struct UUserWidget* WidgetClass, bool TopLevelOnly)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("WidgetBlueprintLibrary", "GetAllWidgetsOfClass");
@@ -9583,11 +9386,11 @@ void UWidgetBlueprintLibrary::GetAllWidgetsOfClass(struct UObject* WorldContextO
         struct UObject* WorldContextObject;
         struct TArray<struct UUserWidget*> FoundWidgets;
         struct UUserWidget* WidgetClass;
-        uint8_t TopLevelOnly;
+        bool TopLevelOnly;
     } Parms{};
     Parms.WorldContextObject = (struct UObject*)WorldContextObject;
     Parms.WidgetClass = (struct UUserWidget*)WidgetClass;
-    Parms.TopLevelOnly = (uint8_t)TopLevelOnly;
+    Parms.TopLevelOnly = (bool)TopLevelOnly;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     FoundWidgets = Parms.FoundWidgets;
 }
@@ -9606,7 +9409,7 @@ struct FEventReply UWidgetBlueprintLibrary::EndDragDrop(struct FEventReply& Repl
     return Parms.ReturnValue;
 }
 
-void UWidgetBlueprintLibrary::DrawTextFormatted(struct FPaintContext& Context, const struct FText& Text, struct FVector2D Position, struct UFont* Font, int32_t FontSize, struct FName FontTypeFace, struct FLinearColor Tint)
+void UWidgetBlueprintLibrary::DrawTextFormatted(struct FPaintContext& Context, const struct FText& Text, struct FVector2D position, struct UFont* Font, int32_t FontSize, struct FName FontTypeFace, struct FLinearColor Tint)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("WidgetBlueprintLibrary", "DrawTextFormatted");
@@ -9614,14 +9417,14 @@ void UWidgetBlueprintLibrary::DrawTextFormatted(struct FPaintContext& Context, c
     {
         struct FPaintContext Context;
         struct FText Text;
-        struct FVector2D Position;
+        struct FVector2D position;
         struct UFont* Font;
         int32_t FontSize;
         struct FName FontTypeFace;
         struct FLinearColor Tint;
     } Parms{};
     Parms.Text = (struct FText)Text;
-    Parms.Position = (struct FVector2D)Position;
+    Parms.position = (struct FVector2D)position;
     Parms.Font = (struct UFont*)Font;
     Parms.FontSize = (int32_t)FontSize;
     Parms.FontTypeFace = (struct FName)FontTypeFace;
@@ -9630,7 +9433,7 @@ void UWidgetBlueprintLibrary::DrawTextFormatted(struct FPaintContext& Context, c
     Context = Parms.Context;
 }
 
-void UWidgetBlueprintLibrary::DrawText(struct FPaintContext& Context, struct FString inString, struct FVector2D Position, struct FLinearColor Tint)
+void UWidgetBlueprintLibrary::DrawText(struct FPaintContext& Context, struct FString inString, struct FVector2D position, struct FLinearColor Tint)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("WidgetBlueprintLibrary", "DrawText");
@@ -9638,17 +9441,17 @@ void UWidgetBlueprintLibrary::DrawText(struct FPaintContext& Context, struct FSt
     {
         struct FPaintContext Context;
         struct FString inString;
-        struct FVector2D Position;
+        struct FVector2D position;
         struct FLinearColor Tint;
     } Parms{};
     Parms.inString = (struct FString)inString;
-    Parms.Position = (struct FVector2D)Position;
+    Parms.position = (struct FVector2D)position;
     Parms.Tint = (struct FLinearColor)Tint;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     Context = Parms.Context;
 }
 
-void UWidgetBlueprintLibrary::DrawLines(struct FPaintContext& Context, const struct TArray<struct FVector2D>& Points, struct FLinearColor Tint, uint8_t bAntiAlias, float Thickness)
+void UWidgetBlueprintLibrary::DrawLines(struct FPaintContext& Context, const struct TArray<struct FVector2D>& Points, struct FLinearColor Tint, bool bAntiAlias, float Thickness)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("WidgetBlueprintLibrary", "DrawLines");
@@ -9657,18 +9460,18 @@ void UWidgetBlueprintLibrary::DrawLines(struct FPaintContext& Context, const str
         struct FPaintContext Context;
         struct TArray<struct FVector2D> Points;
         struct FLinearColor Tint;
-        uint8_t bAntiAlias;
+        bool bAntiAlias;
         float Thickness;
     } Parms{};
     Parms.Points = (struct TArray<struct FVector2D>)Points;
     Parms.Tint = (struct FLinearColor)Tint;
-    Parms.bAntiAlias = (uint8_t)bAntiAlias;
+    Parms.bAntiAlias = (bool)bAntiAlias;
     Parms.Thickness = (float)Thickness;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     Context = Parms.Context;
 }
 
-void UWidgetBlueprintLibrary::DrawLine(struct FPaintContext& Context, struct FVector2D PositionA, struct FVector2D PositionB, struct FLinearColor Tint, uint8_t bAntiAlias, float Thickness)
+void UWidgetBlueprintLibrary::DrawLine(struct FPaintContext& Context, struct FVector2D PositionA, struct FVector2D PositionB, struct FLinearColor Tint, bool bAntiAlias, float Thickness)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("WidgetBlueprintLibrary", "DrawLine");
@@ -9678,32 +9481,32 @@ void UWidgetBlueprintLibrary::DrawLine(struct FPaintContext& Context, struct FVe
         struct FVector2D PositionA;
         struct FVector2D PositionB;
         struct FLinearColor Tint;
-        uint8_t bAntiAlias;
+        bool bAntiAlias;
         float Thickness;
     } Parms{};
     Parms.PositionA = (struct FVector2D)PositionA;
     Parms.PositionB = (struct FVector2D)PositionB;
     Parms.Tint = (struct FLinearColor)Tint;
-    Parms.bAntiAlias = (uint8_t)bAntiAlias;
+    Parms.bAntiAlias = (bool)bAntiAlias;
     Parms.Thickness = (float)Thickness;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     Context = Parms.Context;
 }
 
-void UWidgetBlueprintLibrary::DrawBox(struct FPaintContext& Context, struct FVector2D Position, struct FVector2D size, struct USlateBrushAsset* Brush, struct FLinearColor Tint)
+void UWidgetBlueprintLibrary::DrawBox(struct FPaintContext& Context, struct FVector2D position, struct FVector2D Size, struct USlateBrushAsset* Brush, struct FLinearColor Tint)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("WidgetBlueprintLibrary", "DrawBox");
     struct
     {
         struct FPaintContext Context;
-        struct FVector2D Position;
-        struct FVector2D size;
+        struct FVector2D position;
+        struct FVector2D Size;
         struct USlateBrushAsset* Brush;
         struct FLinearColor Tint;
     } Parms{};
-    Parms.Position = (struct FVector2D)Position;
-    Parms.size = (struct FVector2D)size;
+    Parms.position = (struct FVector2D)position;
+    Parms.Size = (struct FVector2D)Size;
     Parms.Brush = (struct USlateBrushAsset*)Brush;
     Parms.Tint = (struct FLinearColor)Tint;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
@@ -9788,17 +9591,17 @@ struct UUserWidget* UWidgetBlueprintLibrary::Create(struct UObject* WorldContext
     return Parms.ReturnValue;
 }
 
-struct FEventReply UWidgetBlueprintLibrary::ClearUserFocus(struct FEventReply& Reply, uint8_t bInAllUsers)
+struct FEventReply UWidgetBlueprintLibrary::ClearUserFocus(struct FEventReply& Reply, bool bInAllUsers)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("WidgetBlueprintLibrary", "ClearUserFocus");
     struct
     {
         struct FEventReply Reply;
-        uint8_t bInAllUsers;
+        bool bInAllUsers;
         struct FEventReply ReturnValue;
     } Parms{};
-    Parms.bInAllUsers = (uint8_t)bInAllUsers;
+    Parms.bInAllUsers = (bool)bInAllUsers;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     Reply = Parms.Reply;
     return Parms.ReturnValue;
@@ -9820,7 +9623,7 @@ struct FEventReply UWidgetBlueprintLibrary::CaptureMouse(struct FEventReply& Rep
     return Parms.ReturnValue;
 }
 
-struct FEventReply UWidgetBlueprintLibrary::CaptureJoystick(struct FEventReply& Reply, struct UWidget* CapturingWidget, uint8_t bInAllJoysticks)
+struct FEventReply UWidgetBlueprintLibrary::CaptureJoystick(struct FEventReply& Reply, struct UWidget* CapturingWidget, bool bInAllJoysticks)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("WidgetBlueprintLibrary", "CaptureJoystick");
@@ -9828,11 +9631,11 @@ struct FEventReply UWidgetBlueprintLibrary::CaptureJoystick(struct FEventReply& 
     {
         struct FEventReply Reply;
         struct UWidget* CapturingWidget;
-        uint8_t bInAllJoysticks;
+        bool bInAllJoysticks;
         struct FEventReply ReturnValue;
     } Parms{};
     Parms.CapturingWidget = (struct UWidget*)CapturingWidget;
-    Parms.bInAllJoysticks = (uint8_t)bInAllJoysticks;
+    Parms.bInAllJoysticks = (bool)bInAllJoysticks;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     Reply = Parms.Reply;
     return Parms.ReturnValue;
@@ -9846,119 +9649,6 @@ void UWidgetBlueprintLibrary::CancelDragDrop()
     {
     } Parms{};
     GetDefaultObj()->ProcessEvent(Func, &Parms);
-}
-
-// UWidgetComponent3DUI
-void UWidgetComponent3DUI::Show()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent3DUI", "Show");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UWidgetComponent3DUI::SetWidget(struct UUserWidget* Widget)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent3DUI", "SetWidget");
-    struct
-    {
-        struct UUserWidget* Widget;
-    } Parms{};
-    Parms.Widget = (struct UUserWidget*)Widget;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UWidgetComponent3DUI::SetOwnerPlayer(struct ULocalPlayer* LocalPlayer)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent3DUI", "SetOwnerPlayer");
-    struct
-    {
-        struct ULocalPlayer* LocalPlayer;
-    } Parms{};
-    Parms.LocalPlayer = (struct ULocalPlayer*)LocalPlayer;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UWidgetComponent3DUI::SetIsDraw(uint8_t InIsDraw)
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent3DUI", "SetIsDraw");
-    struct
-    {
-        uint8_t InIsDraw;
-    } Parms{};
-    Parms.InIsDraw = (uint8_t)InIsDraw;
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UWidgetComponent3DUI::RemoveFromParent()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent3DUI", "RemoveFromParent");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-void UWidgetComponent3DUI::Hide()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent3DUI", "Hide");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-}
-
-struct UUserWidget* UWidgetComponent3DUI::GetUserWidgetObject()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent3DUI", "GetUserWidgetObject");
-    struct
-    {
-        struct UUserWidget* ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct ULocalPlayer* UWidgetComponent3DUI::GetOwnerPlayer()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent3DUI", "GetOwnerPlayer");
-    struct
-    {
-        struct ULocalPlayer* ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-struct FVector2D UWidgetComponent3DUI::GetDrawSize()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent3DUI", "GetDrawSize");
-    struct
-    {
-        struct FVector2D ReturnValue;
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
-    return Parms.ReturnValue;
-}
-
-void UWidgetComponent3DUI::AddToViewport()
-{
-    static struct UFunction* Func = nullptr;
-    if (!Func) Func = ClassPrivate->GetFunction("WidgetComponent3DUI", "AddToViewport");
-    struct
-    {
-    } Parms{};
-    this->ProcessEvent(Func, &Parms);
 }
 
 // UWidgetInteractionComponent
@@ -9986,18 +9676,18 @@ void UWidgetInteractionComponent::SetCustomHitResult(const struct FHitResult& Hi
     this->ProcessEvent(Func, &Parms);
 }
 
-uint8_t UWidgetInteractionComponent::SendKeyChar(struct FString Characters, uint8_t bRepeat)
+bool UWidgetInteractionComponent::SendKeyChar(struct FString Characters, bool bRepeat)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("WidgetInteractionComponent", "SendKeyChar");
     struct
     {
         struct FString Characters;
-        uint8_t bRepeat;
-        uint8_t ReturnValue;
+        bool bRepeat;
+        bool ReturnValue;
     } Parms{};
     Parms.Characters = (struct FString)Characters;
-    Parms.bRepeat = (uint8_t)bRepeat;
+    Parms.bRepeat = (bool)bRepeat;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
@@ -10026,14 +9716,14 @@ void UWidgetInteractionComponent::ReleasePointerKey(struct FKey Key)
     this->ProcessEvent(Func, &Parms);
 }
 
-uint8_t UWidgetInteractionComponent::ReleaseKey(struct FKey Key)
+bool UWidgetInteractionComponent::ReleaseKey(struct FKey Key)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("WidgetInteractionComponent", "ReleaseKey");
     struct
     {
         struct FKey Key;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.Key = (struct FKey)Key;
     this->ProcessEvent(Func, &Parms);
@@ -10052,67 +9742,67 @@ void UWidgetInteractionComponent::PressPointerKey(struct FKey Key)
     this->ProcessEvent(Func, &Parms);
 }
 
-uint8_t UWidgetInteractionComponent::PressKey(struct FKey Key, uint8_t bRepeat)
+bool UWidgetInteractionComponent::PressKey(struct FKey Key, bool bRepeat)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("WidgetInteractionComponent", "PressKey");
     struct
     {
         struct FKey Key;
-        uint8_t bRepeat;
-        uint8_t ReturnValue;
+        bool bRepeat;
+        bool ReturnValue;
     } Parms{};
     Parms.Key = (struct FKey)Key;
-    Parms.bRepeat = (uint8_t)bRepeat;
+    Parms.bRepeat = (bool)bRepeat;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UWidgetInteractionComponent::PressAndReleaseKey(struct FKey Key)
+bool UWidgetInteractionComponent::PressAndReleaseKey(struct FKey Key)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("WidgetInteractionComponent", "PressAndReleaseKey");
     struct
     {
         struct FKey Key;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.Key = (struct FKey)Key;
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UWidgetInteractionComponent::IsOverInteractableWidget()
+bool UWidgetInteractionComponent::IsOverInteractableWidget()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("WidgetInteractionComponent", "IsOverInteractableWidget");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UWidgetInteractionComponent::IsOverHitTestVisibleWidget()
+bool UWidgetInteractionComponent::IsOverHitTestVisibleWidget()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("WidgetInteractionComponent", "IsOverHitTestVisibleWidget");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
 }
 
-uint8_t UWidgetInteractionComponent::IsOverFocusableWidget()
+bool UWidgetInteractionComponent::IsOverFocusableWidget()
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("WidgetInteractionComponent", "IsOverFocusableWidget");
     struct
     {
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     this->ProcessEvent(Func, &Parms);
     return Parms.ReturnValue;
@@ -10349,7 +10039,7 @@ void UWidgetLayoutLibrary::RemoveAllWidgets(struct UObject* WorldContextObject)
     GetDefaultObj()->ProcessEvent(Func, &Parms);
 }
 
-uint8_t UWidgetLayoutLibrary::ProjectWorldLocationToWidgetPosition(struct APlayerController* PlayerController, struct FVector WorldLocation, struct FVector2D& ScreenPosition)
+bool UWidgetLayoutLibrary::ProjectWorldLocationToWidgetPosition(struct APlayerController* PlayerController, struct FVector WorldLocation, struct FVector2D& ScreenPosition, bool bPlayerViewportRelative)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("WidgetLayoutLibrary", "ProjectWorldLocationToWidgetPosition");
@@ -10358,10 +10048,12 @@ uint8_t UWidgetLayoutLibrary::ProjectWorldLocationToWidgetPosition(struct APlaye
         struct APlayerController* PlayerController;
         struct FVector WorldLocation;
         struct FVector2D ScreenPosition;
-        uint8_t ReturnValue;
+        bool bPlayerViewportRelative;
+        bool ReturnValue;
     } Parms{};
     Parms.PlayerController = (struct APlayerController*)PlayerController;
     Parms.WorldLocation = (struct FVector)WorldLocation;
+    Parms.bPlayerViewportRelative = (bool)bPlayerViewportRelative;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
     ScreenPosition = Parms.ScreenPosition;
     return Parms.ReturnValue;
@@ -10423,7 +10115,7 @@ struct FGeometry UWidgetLayoutLibrary::GetPlayerScreenWidgetGeometry(struct APla
     return Parms.ReturnValue;
 }
 
-uint8_t UWidgetLayoutLibrary::GetMousePositionScaledByDPI(struct APlayerController* Player, float& LocationX, float& LocationY)
+bool UWidgetLayoutLibrary::GetMousePositionScaledByDPI(struct APlayerController* Player, float& LocationX, float& LocationY)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = StaticClass()->GetFunction("WidgetLayoutLibrary", "GetMousePositionScaledByDPI");
@@ -10432,7 +10124,7 @@ uint8_t UWidgetLayoutLibrary::GetMousePositionScaledByDPI(struct APlayerControll
         struct APlayerController* Player;
         float LocationX;
         float LocationY;
-        uint8_t ReturnValue;
+        bool ReturnValue;
     } Parms{};
     Parms.Player = (struct APlayerController*)Player;
     GetDefaultObj()->ProcessEvent(Func, &Parms);
@@ -10467,16 +10159,91 @@ struct FVector2D UWidgetLayoutLibrary::GetMousePositionOnPlatform()
     return Parms.ReturnValue;
 }
 
+// UWidgetSwitcher
+void UWidgetSwitcher::SetActiveWidgetIndex(int32_t Index)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetSwitcher", "SetActiveWidgetIndex");
+    struct
+    {
+        int32_t Index;
+    } Parms{};
+    Parms.Index = (int32_t)Index;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UWidgetSwitcher::SetActiveWidget(struct UWidget* Widget)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetSwitcher", "SetActiveWidget");
+    struct
+    {
+        struct UWidget* Widget;
+    } Parms{};
+    Parms.Widget = (struct UWidget*)Widget;
+    this->ProcessEvent(Func, &Parms);
+}
+
+struct UWidget* UWidgetSwitcher::GetWidgetAtIndex(int32_t Index)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetSwitcher", "GetWidgetAtIndex");
+    struct
+    {
+        int32_t Index;
+        struct UWidget* ReturnValue;
+    } Parms{};
+    Parms.Index = (int32_t)Index;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+int32_t UWidgetSwitcher::GetNumWidgets()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetSwitcher", "GetNumWidgets");
+    struct
+    {
+        int32_t ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+int32_t UWidgetSwitcher::GetActiveWidgetIndex()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetSwitcher", "GetActiveWidgetIndex");
+    struct
+    {
+        int32_t ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+struct UWidget* UWidgetSwitcher::GetActiveWidget()
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WidgetSwitcher", "GetActiveWidget");
+    struct
+    {
+        struct UWidget* ReturnValue;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
 // UWidgetSwitcherSlot
-void UWidgetSwitcherSlot::SetVerticalAlignment(EVerticalAlignment InVerticalAlignment)
+void UWidgetSwitcherSlot::SetVerticalAlignment(uint8_t InVerticalAlignment)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("WidgetSwitcherSlot", "SetVerticalAlignment");
     struct
     {
-        enum EVerticalAlignment InVerticalAlignment;
+        uint8_t InVerticalAlignment;
     } Parms{};
-    Parms.InVerticalAlignment = (enum EVerticalAlignment)InVerticalAlignment;
+    Parms.InVerticalAlignment = (uint8_t)InVerticalAlignment;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -10492,28 +10259,28 @@ void UWidgetSwitcherSlot::SetPadding(struct FMargin InPadding)
     this->ProcessEvent(Func, &Parms);
 }
 
-void UWidgetSwitcherSlot::SetHorizontalAlignment(EHorizontalAlignment InHorizontalAlignment)
+void UWidgetSwitcherSlot::SetHorizontalAlignment(uint8_t InHorizontalAlignment)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("WidgetSwitcherSlot", "SetHorizontalAlignment");
     struct
     {
-        enum EHorizontalAlignment InHorizontalAlignment;
+        uint8_t InHorizontalAlignment;
     } Parms{};
-    Parms.InHorizontalAlignment = (enum EHorizontalAlignment)InHorizontalAlignment;
+    Parms.InHorizontalAlignment = (uint8_t)InHorizontalAlignment;
     this->ProcessEvent(Func, &Parms);
 }
 
 // UWindowTitleBarArea
-void UWindowTitleBarArea::SetVerticalAlignment(EVerticalAlignment InVerticalAlignment)
+void UWindowTitleBarArea::SetVerticalAlignment(uint8_t InVerticalAlignment)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("WindowTitleBarArea", "SetVerticalAlignment");
     struct
     {
-        enum EVerticalAlignment InVerticalAlignment;
+        uint8_t InVerticalAlignment;
     } Parms{};
-    Parms.InVerticalAlignment = (enum EVerticalAlignment)InVerticalAlignment;
+    Parms.InVerticalAlignment = (uint8_t)InVerticalAlignment;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -10529,28 +10296,28 @@ void UWindowTitleBarArea::SetPadding(struct FMargin InPadding)
     this->ProcessEvent(Func, &Parms);
 }
 
-void UWindowTitleBarArea::SetHorizontalAlignment(EHorizontalAlignment InHorizontalAlignment)
+void UWindowTitleBarArea::SetHorizontalAlignment(uint8_t InHorizontalAlignment)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("WindowTitleBarArea", "SetHorizontalAlignment");
     struct
     {
-        enum EHorizontalAlignment InHorizontalAlignment;
+        uint8_t InHorizontalAlignment;
     } Parms{};
-    Parms.InHorizontalAlignment = (enum EHorizontalAlignment)InHorizontalAlignment;
+    Parms.InHorizontalAlignment = (uint8_t)InHorizontalAlignment;
     this->ProcessEvent(Func, &Parms);
 }
 
 // UWindowTitleBarAreaSlot
-void UWindowTitleBarAreaSlot::SetVerticalAlignment(EVerticalAlignment InVerticalAlignment)
+void UWindowTitleBarAreaSlot::SetVerticalAlignment(uint8_t InVerticalAlignment)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("WindowTitleBarAreaSlot", "SetVerticalAlignment");
     struct
     {
-        enum EVerticalAlignment InVerticalAlignment;
+        uint8_t InVerticalAlignment;
     } Parms{};
-    Parms.InVerticalAlignment = (enum EVerticalAlignment)InVerticalAlignment;
+    Parms.InVerticalAlignment = (uint8_t)InVerticalAlignment;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -10566,28 +10333,55 @@ void UWindowTitleBarAreaSlot::SetPadding(struct FMargin InPadding)
     this->ProcessEvent(Func, &Parms);
 }
 
-void UWindowTitleBarAreaSlot::SetHorizontalAlignment(EHorizontalAlignment InHorizontalAlignment)
+void UWindowTitleBarAreaSlot::SetHorizontalAlignment(uint8_t InHorizontalAlignment)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("WindowTitleBarAreaSlot", "SetHorizontalAlignment");
     struct
     {
-        enum EHorizontalAlignment InHorizontalAlignment;
+        uint8_t InHorizontalAlignment;
     } Parms{};
-    Parms.InHorizontalAlignment = (enum EHorizontalAlignment)InHorizontalAlignment;
+    Parms.InHorizontalAlignment = (uint8_t)InHorizontalAlignment;
     this->ProcessEvent(Func, &Parms);
 }
 
+// UWrapBox
+void UWrapBox::SetInnerSlotPadding(struct FVector2D InPadding)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WrapBox", "SetInnerSlotPadding");
+    struct
+    {
+        struct FVector2D InPadding;
+    } Parms{};
+    Parms.InPadding = (struct FVector2D)InPadding;
+    this->ProcessEvent(Func, &Parms);
+}
+
+struct UWrapBoxSlot* UWrapBox::AddChildToWrapBox(struct UWidget* Content)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("WrapBox", "AddChildToWrapBox");
+    struct
+    {
+        struct UWidget* Content;
+        struct UWrapBoxSlot* ReturnValue;
+    } Parms{};
+    Parms.Content = (struct UWidget*)Content;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
 // UWrapBoxSlot
-void UWrapBoxSlot::SetVerticalAlignment(EVerticalAlignment InVerticalAlignment)
+void UWrapBoxSlot::SetVerticalAlignment(uint8_t InVerticalAlignment)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("WrapBoxSlot", "SetVerticalAlignment");
     struct
     {
-        enum EVerticalAlignment InVerticalAlignment;
+        uint8_t InVerticalAlignment;
     } Parms{};
-    Parms.InVerticalAlignment = (enum EVerticalAlignment)InVerticalAlignment;
+    Parms.InVerticalAlignment = (uint8_t)InVerticalAlignment;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -10603,15 +10397,15 @@ void UWrapBoxSlot::SetPadding(struct FMargin InPadding)
     this->ProcessEvent(Func, &Parms);
 }
 
-void UWrapBoxSlot::SetHorizontalAlignment(EHorizontalAlignment InHorizontalAlignment)
+void UWrapBoxSlot::SetHorizontalAlignment(uint8_t InHorizontalAlignment)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("WrapBoxSlot", "SetHorizontalAlignment");
     struct
     {
-        enum EHorizontalAlignment InHorizontalAlignment;
+        uint8_t InHorizontalAlignment;
     } Parms{};
-    Parms.InHorizontalAlignment = (enum EHorizontalAlignment)InHorizontalAlignment;
+    Parms.InHorizontalAlignment = (uint8_t)InHorizontalAlignment;
     this->ProcessEvent(Func, &Parms);
 }
 
@@ -10627,15 +10421,15 @@ void UWrapBoxSlot::SetFillSpanWhenLessThan(float InFillSpanWhenLessThan)
     this->ProcessEvent(Func, &Parms);
 }
 
-void UWrapBoxSlot::SetFillEmptySpace(uint8_t InbFillEmptySpace)
+void UWrapBoxSlot::SetFillEmptySpace(bool InbFillEmptySpace)
 {
     static struct UFunction* Func = nullptr;
     if (!Func) Func = ClassPrivate->GetFunction("WrapBoxSlot", "SetFillEmptySpace");
     struct
     {
-        uint8_t InbFillEmptySpace;
+        bool InbFillEmptySpace;
     } Parms{};
-    Parms.InbFillEmptySpace = (uint8_t)InbFillEmptySpace;
+    Parms.InbFillEmptySpace = (bool)InbFillEmptySpace;
     this->ProcessEvent(Func, &Parms);
 }
 

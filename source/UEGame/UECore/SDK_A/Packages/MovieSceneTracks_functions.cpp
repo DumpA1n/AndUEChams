@@ -6,6 +6,199 @@
 namespace SDK
 {
 
+// UMovieSceneParameterSection
+bool UMovieSceneParameterSection::RemoveVectorParameter(struct FName InParameterName)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneParameterSection", "RemoveVectorParameter");
+    struct
+    {
+        struct FName InParameterName;
+        bool ReturnValue;
+    } Parms{};
+    Parms.InParameterName = (struct FName)InParameterName;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+bool UMovieSceneParameterSection::RemoveVector2DParameter(struct FName InParameterName)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneParameterSection", "RemoveVector2DParameter");
+    struct
+    {
+        struct FName InParameterName;
+        bool ReturnValue;
+    } Parms{};
+    Parms.InParameterName = (struct FName)InParameterName;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+bool UMovieSceneParameterSection::RemoveTransformParameter(struct FName InParameterName)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneParameterSection", "RemoveTransformParameter");
+    struct
+    {
+        struct FName InParameterName;
+        bool ReturnValue;
+    } Parms{};
+    Parms.InParameterName = (struct FName)InParameterName;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+bool UMovieSceneParameterSection::RemoveScalarParameter(struct FName InParameterName)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneParameterSection", "RemoveScalarParameter");
+    struct
+    {
+        struct FName InParameterName;
+        bool ReturnValue;
+    } Parms{};
+    Parms.InParameterName = (struct FName)InParameterName;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+bool UMovieSceneParameterSection::RemoveColorParameter(struct FName InParameterName)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneParameterSection", "RemoveColorParameter");
+    struct
+    {
+        struct FName InParameterName;
+        bool ReturnValue;
+    } Parms{};
+    Parms.InParameterName = (struct FName)InParameterName;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+bool UMovieSceneParameterSection::RemoveBoolParameter(struct FName InParameterName)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneParameterSection", "RemoveBoolParameter");
+    struct
+    {
+        struct FName InParameterName;
+        bool ReturnValue;
+    } Parms{};
+    Parms.InParameterName = (struct FName)InParameterName;
+    this->ProcessEvent(Func, &Parms);
+    return Parms.ReturnValue;
+}
+
+void UMovieSceneParameterSection::GetParameterNames(struct TSet<struct FName>& ParameterNames)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneParameterSection", "GetParameterNames");
+    struct
+    {
+        struct TSet<struct FName> ParameterNames;
+    } Parms{};
+    this->ProcessEvent(Func, &Parms);
+    ParameterNames = Parms.ParameterNames;
+}
+
+void UMovieSceneParameterSection::AddVectorParameterKey(struct FName InParameterName, struct FFrameNumber InTime, struct FVector InValue)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneParameterSection", "AddVectorParameterKey");
+    struct
+    {
+        struct FName InParameterName;
+        struct FFrameNumber InTime;
+        struct FVector InValue;
+    } Parms{};
+    Parms.InParameterName = (struct FName)InParameterName;
+    Parms.InTime = (struct FFrameNumber)InTime;
+    Parms.InValue = (struct FVector)InValue;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UMovieSceneParameterSection::AddVector2DParameterKey(struct FName InParameterName, struct FFrameNumber InTime, struct FVector2D InValue)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneParameterSection", "AddVector2DParameterKey");
+    struct
+    {
+        struct FName InParameterName;
+        struct FFrameNumber InTime;
+        struct FVector2D InValue;
+    } Parms{};
+    Parms.InParameterName = (struct FName)InParameterName;
+    Parms.InTime = (struct FFrameNumber)InTime;
+    Parms.InValue = (struct FVector2D)InValue;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UMovieSceneParameterSection::AddTransformParameterKey(struct FName InParameterName, struct FFrameNumber InTime, const struct FTransform& InValue)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneParameterSection", "AddTransformParameterKey");
+    struct
+    {
+        struct FName InParameterName;
+        struct FFrameNumber InTime;
+        struct FTransform InValue;
+    } Parms{};
+    Parms.InParameterName = (struct FName)InParameterName;
+    Parms.InTime = (struct FFrameNumber)InTime;
+    Parms.InValue = (struct FTransform)InValue;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UMovieSceneParameterSection::AddScalarParameterKey(struct FName InParameterName, struct FFrameNumber InTime, float InValue)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneParameterSection", "AddScalarParameterKey");
+    struct
+    {
+        struct FName InParameterName;
+        struct FFrameNumber InTime;
+        float InValue;
+    } Parms{};
+    Parms.InParameterName = (struct FName)InParameterName;
+    Parms.InTime = (struct FFrameNumber)InTime;
+    Parms.InValue = (float)InValue;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UMovieSceneParameterSection::AddColorParameterKey(struct FName InParameterName, struct FFrameNumber InTime, struct FLinearColor InValue)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneParameterSection", "AddColorParameterKey");
+    struct
+    {
+        struct FName InParameterName;
+        struct FFrameNumber InTime;
+        struct FLinearColor InValue;
+    } Parms{};
+    Parms.InParameterName = (struct FName)InParameterName;
+    Parms.InTime = (struct FFrameNumber)InTime;
+    Parms.InValue = (struct FLinearColor)InValue;
+    this->ProcessEvent(Func, &Parms);
+}
+
+void UMovieSceneParameterSection::AddBoolParameterKey(struct FName InParameterName, struct FFrameNumber InTime, bool InValue)
+{
+    static struct UFunction* Func = nullptr;
+    if (!Func) Func = ClassPrivate->GetFunction("MovieSceneParameterSection", "AddBoolParameterKey");
+    struct
+    {
+        struct FName InParameterName;
+        struct FFrameNumber InTime;
+        bool InValue;
+    } Parms{};
+    Parms.InParameterName = (struct FName)InParameterName;
+    Parms.InTime = (struct FFrameNumber)InTime;
+    Parms.InValue = (bool)InValue;
+    this->ProcessEvent(Func, &Parms);
+}
+
 // IMovieSceneTransformOrigin
 struct FTransform IMovieSceneTransformOrigin::BP_GetTransformOrigin()
 {

@@ -25,19 +25,19 @@ struct UMobileInstalledContent : UObject
 
 	// Object: Function MobilePatchingUtils.MobileInstalledContent.Mount
 	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x8ee1218
+	// Offset: 0x3521a94
 	// Params: [ Num(3) Size(0x19) ]
-	uint8_t Mount(int32_t PakOrder, struct FString MountPoint);
+	bool Mount(int32_t PakOrder, struct FString MountPoint);
 
 	// Object: Function MobilePatchingUtils.MobileInstalledContent.GetInstalledContentSize
 	// Flags: [Final|Native|Public|BlueprintCallable|BlueprintPure]
-	// Offset: 0x8ee11e4
+	// Offset: 0x3521b98
 	// Params: [ Num(1) Size(0x4) ]
 	float GetInstalledContentSize();
 
 	// Object: Function MobilePatchingUtils.MobileInstalledContent.GetDiskFreeSpace
 	// Flags: [Final|Native|Public|BlueprintCallable|BlueprintPure]
-	// Offset: 0x8ee11b0
+	// Offset: 0x3521bcc
 	// Params: [ Num(1) Size(0x4) ]
 	float GetDiskFreeSpace();
 };
@@ -52,43 +52,43 @@ struct UMobilePendingContent : UMobileInstalledContent
 
 	// Object: Function MobilePatchingUtils.MobilePendingContent.StartInstall
 	// Flags: [Final|Native|Public|BlueprintCallable]
-	// Offset: 0x8ee14f4
+	// Offset: 0x3521c14
 	// Params: [ Num(2) Size(0x20) ]
 	void StartInstall(struct FDelegate OnSucceeded, struct FDelegate OnFailed);
 
 	// Object: Function MobilePatchingUtils.MobilePendingContent.GetTotalDownloadedSize
 	// Flags: [Final|Native|Public|BlueprintCallable|BlueprintPure]
-	// Offset: 0x8ee14c0
+	// Offset: 0x3521e50
 	// Params: [ Num(1) Size(0x4) ]
 	float GetTotalDownloadedSize();
 
 	// Object: Function MobilePatchingUtils.MobilePendingContent.GetRequiredDiskSpace
 	// Flags: [Final|Native|Public|BlueprintCallable|BlueprintPure]
-	// Offset: 0x8ee148c
+	// Offset: 0x3521e84
 	// Params: [ Num(1) Size(0x4) ]
 	float GetRequiredDiskSpace();
 
 	// Object: Function MobilePatchingUtils.MobilePendingContent.GetInstallProgress
 	// Flags: [Final|Native|Public|BlueprintCallable|BlueprintPure]
-	// Offset: 0x8ee1458
+	// Offset: 0x3521d1c
 	// Params: [ Num(1) Size(0x4) ]
 	float GetInstallProgress();
 
 	// Object: Function MobilePatchingUtils.MobilePendingContent.GetDownloadStatusText
 	// Flags: [Final|Native|Public|BlueprintCallable|BlueprintPure]
-	// Offset: 0x8ee1388
+	// Offset: 0x3521d50
 	// Params: [ Num(1) Size(0x18) ]
 	struct FText GetDownloadStatusText();
 
 	// Object: Function MobilePatchingUtils.MobilePendingContent.GetDownloadSpeed
 	// Flags: [Final|Native|Public|BlueprintCallable|BlueprintPure]
-	// Offset: 0x8ee1354
+	// Offset: 0x3521e1c
 	// Params: [ Num(1) Size(0x4) ]
 	float GetDownloadSpeed();
 
 	// Object: Function MobilePatchingUtils.MobilePendingContent.GetDownloadSize
 	// Flags: [Final|Native|Public|BlueprintCallable|BlueprintPure]
-	// Offset: 0x8ee1320
+	// Offset: 0x3521eb8
 	// Params: [ Num(1) Size(0x4) ]
 	float GetDownloadSize();
 };
@@ -101,31 +101,31 @@ struct UMobilePatchingLibrary : UBlueprintFunctionLibrary
 
 	// Object: Function MobilePatchingUtils.MobilePatchingLibrary.RequestContent
 	// Flags: [Final|Native|Static|Public|BlueprintCallable]
-	// Offset: 0x8ee17f0
+	// Offset: 0x3522000
 	// Params: [ Num(5) Size(0x50) ]
 	static void RequestContent(struct FString RemoteManifestURL, struct FString CloudURL, struct FString InstallDirectory, struct FDelegate OnSucceeded, struct FDelegate OnFailed);
 
 	// Object: Function MobilePatchingUtils.MobilePatchingLibrary.HasActiveWiFiConnection
 	// Flags: [Final|Native|Static|Public|BlueprintCallable|BlueprintPure]
-	// Offset: 0x8ee17b8
+	// Offset: 0x85cf828
 	// Params: [ Num(1) Size(0x1) ]
-	static uint8_t HasActiveWiFiConnection();
+	static bool HasActiveWiFiConnection();
 
 	// Object: Function MobilePatchingUtils.MobilePatchingLibrary.GetSupportedPlatformNames
 	// Flags: [Final|Native|Static|Public|BlueprintCallable|BlueprintPure]
-	// Offset: 0x8ee1748
+	// Offset: 0x3521ef4
 	// Params: [ Num(1) Size(0x10) ]
 	static struct TArray<struct FString> GetSupportedPlatformNames();
 
 	// Object: Function MobilePatchingUtils.MobilePatchingLibrary.GetInstalledContent
 	// Flags: [Final|Native|Static|Public|BlueprintCallable|BlueprintPure]
-	// Offset: 0x8ee169c
+	// Offset: 0x35221dc
 	// Params: [ Num(2) Size(0x18) ]
 	static struct UMobileInstalledContent* GetInstalledContent(struct FString InstallDirectory);
 
 	// Object: Function MobilePatchingUtils.MobilePatchingLibrary.GetActiveDeviceProfileName
 	// Flags: [Final|Native|Static|Public|BlueprintCallable|BlueprintPure]
-	// Offset: 0x8ee1604
+	// Offset: 0x3521f64
 	// Params: [ Num(1) Size(0x10) ]
 	static struct FString GetActiveDeviceProfileName();
 };
